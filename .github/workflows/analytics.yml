@@ -41,13 +41,22 @@ jobs:
         run: |
           # playlistItems.list (1 quota unit) + videos.list (1 unit/50 ids) per
           # channel, 4x/day across 2 channels — well under YouTube's 10k/day cap.
-          python scripts/export_analytics.py --label histold
-          python scripts/export_analytics.py --config channels/medimyth/config.yaml --label medimyth
+          #
+          # Each channel's export is allowed to fail independently (e.g. MediMyth
+          # before its OAuth is set up) so one missing/broken channel never blocks
+          # the other's data from landing — merge_channel_json.py already skips
+          # any input file that doesn't exist.
+          python scripts/export_analytics.py --label histold \
+            || echo "::warning::histold analytics export failed — continuing"
+          python scripts/export_analytics.py --config channels/medimyth/config.yaml --label medimyth \
+            || echo "::warning::medimyth analytics export failed (OAuth not set up yet?) — continuing"
           python scripts/merge_channel_json.py --labels histold,medimyth --out data/analytics.json \
             data/analytics.json channels/medimyth/data/analytics.json
 
-          python scripts/export_trends.py --label histold
-          python scripts/export_trends.py --config channels/medimyth/config.yaml --label medimyth
+          python scripts/export_trends.py --label histold \
+            || echo "::warning::histold trends export failed — continuing"
+          python scripts/export_trends.py --config channels/medimyth/config.yaml --label medimyth \
+            || echo "::warning::medimyth trends export failed — continuing"
           python scripts/merge_channel_json.py --labels histold,medimyth --out data/trends.json \
             data/trends.json channels/medimyth/data/trends.json
 
