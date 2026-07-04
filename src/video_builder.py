@@ -77,7 +77,14 @@ def _segment_durations(total: float, n: int, word_times) -> list[float]:
 
 
 def _build_segment_clip(
-    asset: Asset, duration: float, w: int, h: int, fps: int, dest: Path, preset: str = "veryfast"
+    asset: Asset,
+    duration: float,
+    w: int,
+    h: int,
+    fps: int,
+    dest: Path,
+    preset: str = "veryfast",
+    grade_filter: str = "",
 ) -> Path:
     """Produce a silent, normalized clip of exactly `duration` seconds."""
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -85,12 +92,13 @@ def _build_segment_clip(
         f"scale={w}:{h}:force_original_aspect_ratio=increase,"
         f"crop={w}:{h},setsar=1,fps={fps}"
     )
+    video_filter = ",".join(part for part in [scale_fill, grade_filter] if part)
     if asset.is_video:
         # Loop the input if shorter than needed, then trim to duration.
         cmd = [
             "ffmpeg", "-y", "-stream_loop", "-1", "-i", str(asset.path),
             "-t", f"{duration:.3f}",
-            "-vf", scale_fill,
+            "-vf", video_filter,
             "-an", "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
@@ -104,10 +112,11 @@ def _build_segment_clip(
             f"scale={w*2}:{h*2}:force_original_aspect_ratio=increase,"
             f"crop={w*2}:{h*2},{zoom},setsar=1"
         )
+        image_filter = ",".join(part for part in [vf, grade_filter] if part)
         cmd = [
             "ffmpeg", "-y", "-loop", "1", "-i", str(asset.path),
             "-t", f"{duration:.3f}",
-            "-vf", vf,
+            "-vf", image_filter,
             "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
@@ -139,7 +148,7 @@ def _pick_music(cfg: Config, root: Path) -> Path | None:
 
 def build_video(
     cfg: Config,
-    assets: list[Asset],
+    assets: list[list[Asset]],
     voiceover_path: Path,
     voiceover_duration: float,
     word_times,
@@ -158,19 +167,34 @@ def build_video(
 
 
 def build_broll_silent(
-    cfg: Config, assets: list[Asset], voiceover_duration: float, word_times,
+    cfg: Config, assets: list[list[Asset]], voiceover_duration: float, word_times,
     fmt: str, work_dir: Path, out_name: str = "silent.mp4",
 ) -> Path:
     """Build a silent background video by concatenating per-segment b-roll clips."""
     w, h, fps = _dims(cfg, fmt)
     preset, _ = _encode_settings(cfg)
+    grade_filter = ""
+    if cfg.get("video.color_grade.enabled", True):
+        grade_filter = str(cfg.get("video.color_grade.filter", "") or "").strip()
     durations = _segment_durations(voiceover_duration + 0.5, len(assets), word_times)
     clips: list[Path] = []
-    for i, (asset, dur) in enumerate(zip(assets, durations)):
-        clip = _build_segment_clip(
-            asset, dur, w, h, fps, work_dir / "clips" / f"clip_{i:02d}.mp4", preset
-        )
-        clips.append(clip)
+    for i, (segment_assets, dur) in enumerate(zip(assets, durations)):
+        usable_assets = segment_assets or []
+        if not usable_assets:
+            continue
+        sub_duration = max(dur / len(usable_assets), 1.0)
+        for j, asset in enumerate(usable_assets):
+            clip = _build_segment_clip(
+                asset,
+                sub_duration,
+                w,
+                h,
+                fps,
+                work_dir / "clips" / f"clip_{i:02d}_{j:02d}.mp4",
+                preset,
+                grade_filter,
+            )
+            clips.append(clip)
     return _concat(clips, work_dir / out_name)
 
 

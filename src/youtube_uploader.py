@@ -15,6 +15,7 @@ from .config import Config, env, base_dir
 SCOPES = [
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.readonly",
+    "https://www.googleapis.com/auth/yt-analytics.readonly",
 ]
 
 
@@ -77,6 +78,13 @@ def get_my_channel(youtube) -> tuple[str, str]:
     if not items:
         raise RuntimeError("No YouTube channel found for the authorized credentials.")
     return items[0]["id"], items[0]["snippet"]["title"]
+
+
+def build_analytics_client(creds):
+    """Build a YouTube Analytics API v2 client from existing OAuth creds."""
+    from googleapiclient.discovery import build
+
+    return build("youtubeAnalytics", "v2", credentials=creds)
 
 
 def upload_video(

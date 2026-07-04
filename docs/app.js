@@ -131,8 +131,16 @@ function daysAgo(iso) {
   return (Date.now() - t) / 86400000;
 }
 
+function analyticsChannels(analytics) {
+  if (analytics && analytics.channels) return analytics.channels;
+  if (analytics && Array.isArray(analytics.videos)) {
+    return { [analytics.channel || "channel"]: analytics };
+  }
+  return {};
+}
+
 function renderKpis(analytics) {
-  const channels = (analytics && analytics.channels) || {};
+  const channels = analyticsChannels(analytics);
   let allVideos = [];
   for (const key of Object.keys(channels)) {
     const vids = (channels[key].videos || []).map((v) => ({ ...v, _channel: key }));
@@ -141,11 +149,26 @@ function renderKpis(analytics) {
   const totalViews = allVideos.reduce((sum, v) => sum + (v.views || 0), 0);
   const last7 = allVideos.filter((v) => daysAgo(v.publishedAt) <= 7).length;
   const last30 = allVideos.filter((v) => daysAgo(v.publishedAt) <= 30).length;
+  const retentionVideos = allVideos.filter((v) => Number.isFinite(Number(v.avg_view_pct)));
+  const avgRetention = retentionVideos.length
+    ? retentionVideos.reduce((sum, v) => sum + Number(v.avg_view_pct), 0) / retentionVideos.length
+    : null;
 
   document.getElementById("kpiTotalVideos").textContent = allVideos.length || "0";
   document.getElementById("kpiTotalViews").textContent = fmtNum(totalViews);
   document.getElementById("kpiCadence7").textContent = last7;
   document.getElementById("kpiCadence30").textContent = `last 30d: ${last30}`;
+  const retentionEl = document.getElementById("kpiAvgRetention");
+  const retentionSub = document.getElementById("kpiRetentionSub");
+  if (avgRetention === null) {
+    retentionEl.textContent = "N/A";
+    retentionEl.classList.add("na");
+    retentionSub.textContent = "needs YT Analytics API";
+  } else {
+    retentionEl.textContent = `${avgRetention.toFixed(1)}%`;
+    retentionEl.classList.remove("na");
+    retentionSub.textContent = `${retentionVideos.length} videos with retention`;
+  }
 
   return allVideos;
 }
@@ -162,6 +185,12 @@ function renderVideoList(allVideos) {
     .slice(0, 25)
     .map((v) => {
       const date = v.publishedAt ? new Date(v.publishedAt).toLocaleDateString() : "";
+      const retention = Number.isFinite(Number(v.avg_view_pct))
+        ? `<span>${Number(v.avg_view_pct).toFixed(1)}% retention</span>`
+        : "";
+      const subs = Number.isFinite(Number(v.subs_gained))
+        ? `<span>+${fmtNum(Number(v.subs_gained))} subs</span>`
+        : "";
       return `
       <a class="video-row" href="https://youtu.be/${v.id}" target="_blank" rel="noopener">
         <img class="video-row__thumb" src="${v.thumbnail || ""}" alt="" loading="lazy">
@@ -170,6 +199,8 @@ function renderVideoList(allVideos) {
           <div class="video-row__stats">
             <span>${fmtNum(v.views || 0)} views</span>
             <span>${fmtNum(v.likes || 0)} likes</span>
+            ${retention}
+            ${subs}
             <span>${date}</span>
           </div>
         </div>

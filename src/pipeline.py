@@ -114,6 +114,24 @@ def _rebuild_segments(state: dict):
     ]
 
 
+def _rebuild_assets(stage: Path, state: dict):
+    from .assets import Asset
+
+    stored = state.get("assets", [])
+    if not stored:
+        return []
+
+    # New shape: one list of sub-clips per narration segment.
+    if isinstance(stored[0], list) and stored[0] and isinstance(stored[0][0], list):
+        return [
+            [Asset(stage / p, is_video, []) for p, is_video in segment_assets]
+            for segment_assets in stored
+        ]
+
+    # Backward compatibility for in-progress stages created before fast cuts.
+    return [[Asset(stage / p, is_video, [])] for p, is_video in stored]
+
+
 def _effective_mode(cfg: Config, fmt: str) -> str:
     """Visual mode for this format. Long-form always b-roll (mascot render too heavy).
 
@@ -173,7 +191,14 @@ def _step_captions(cfg: Config, stage: Path, st: dict) -> None:
     mode = _effective_mode(cfg, st["fmt"])
     position = {"mascot": "top", "captions_only": "center",
                 "motion_graphics": "center"}.get(mode, "bottom")
-    build_ass(cfg, words, stage / "captions.ass", st["fmt"], position=position)
+    build_ass(
+        cfg,
+        words,
+        stage / "captions.ass",
+        st["fmt"],
+        position=position,
+        words_per_caption=cfg.get("video.captions.words_per_beat", 4),
+    )
     st["captions"] = "captions.ass"
 
 
@@ -186,17 +211,19 @@ def _step_assets(cfg: Config, stage: Path, st: dict) -> None:
 
     segs = _rebuild_segments(st)
     assets = fetch_for_segments(cfg, segs, stage, st["fmt"])
-    st["assets"] = [[str(Path(a.path).relative_to(stage)), a.is_video] for a in assets]
+    st["assets"] = [
+        [[str(Path(a.path).relative_to(stage)), a.is_video] for a in segment_assets]
+        for segment_assets in assets
+    ]
 
 
 def _step_render(cfg: Config, stage: Path, st: dict) -> None:
     """Build the silent visuals. broll → silent.mp4; mascot → bg.mp4 + owl.mov."""
-    from .assets import Asset
     from .tts import WordTiming
     from . import video_builder as vb
 
     duration = st["voiceover"]["duration"]
-    assets = [Asset(stage / p, is_video, []) for p, is_video in st["assets"]]
+    assets = _rebuild_assets(stage, st)
     words = [WordTiming(*w) for w in st["voiceover"]["words"]]
     mode = _effective_mode(cfg, st["fmt"])
 

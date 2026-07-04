@@ -1,8 +1,8 @@
 """Fetch stock footage / images from Pexels for each script segment.
 
-Given a Script, returns an ordered list of local media files (video or image),
-one (or more) per segment, chosen by the segment's keywords. Falls back to a
-solid-color clip if a download fails so the pipeline never hard-stops.
+Given a Script, returns an ordered list of local media files (video or image)
+for each segment, chosen by the segment's keywords. Falls back to a solid-color
+clip if downloads fail so the pipeline never hard-stops.
 """
 from __future__ import annotations
 
@@ -84,67 +84,92 @@ def fetch_for_segments(
     segments: list,            # list[script_generator.Segment]
     work_dir: Path,
     fmt: str,
-) -> list[Asset]:
-    """Return one Asset per segment (download or fallback)."""
+) -> list[list[Asset]]:
+    """Return N Assets for each segment (download or fallback)."""
     orientation = (
         cfg.get("assets.orientation_short", "portrait")
         if fmt == "short"
         else cfg.get("assets.orientation_long", "landscape")
     )
     prefer_video = cfg.get("assets.prefer_video", True)
-    assets: list[Asset] = []
+    per_segment = max(int(cfg.get("assets.per_segment_clips", 1)), 1)
+    assets: list[list[Asset]] = []
 
     for idx, seg in enumerate(segments):
         query = " ".join(seg.keywords[:3]) or "history"
         dest_base = work_dir / "assets" / f"seg_{idx:02d}"
-        asset = _fetch_one(query, orientation, prefer_video, dest_base)
-        if asset is None:
-            clip = _solid_clip(dest_base.with_suffix(".mp4"), 5, orientation)
-            asset = Asset(clip, True, seg.keywords)
-        assets.append(asset)
+        found = _fetch_one(query, orientation, prefer_video, dest_base, per_segment)
+        while len(found) < per_segment:
+            sub = len(found)
+            clip = _solid_clip(work_dir / "assets" / f"seg_{idx:02d}_{sub:02d}.mp4", 5, orientation)
+            found.append(Asset(clip, True, seg.keywords))
+        assets.append(found)
     return assets
 
 
-def _fetch_one(query: str, orientation: str, prefer_video: bool, dest_base: Path) -> Asset | None:
+def _fetch_one(
+    query: str,
+    orientation: str,
+    prefer_video: bool,
+    dest_base: Path,
+    n: int,
+) -> list[Asset]:
     try:
         headers = _headers()
     except RuntimeError:
-        return None
+        return []
 
+    assets: list[Asset] = []
+    seen_urls: set[str] = set()
     if prefer_video:
         try:
             r = requests.get(
                 PEXELS_VIDEO_URL,
                 headers=headers,
-                params={"query": query, "per_page": 8, "orientation": orientation},
+                params={"query": query, "per_page": max(8, n * 4), "orientation": orientation},
                 timeout=30,
             )
             r.raise_for_status()
             vids = r.json().get("videos", [])
             random.shuffle(vids)
             for v in vids:
+                if len(assets) >= n:
+                    break
                 link = _pick_video_file(v, orientation)
-                if link and _download(link, dest_base.with_suffix(".mp4")):
-                    return Asset(dest_base.with_suffix(".mp4"), True, [query])
+                if not link or link in seen_urls:
+                    continue
+                seen_urls.add(link)
+                dest = dest_base.with_name(f"{dest_base.name}_{len(assets):02d}").with_suffix(".mp4")
+                if _download(link, dest):
+                    assets.append(Asset(dest, True, [query]))
         except Exception as exc:  # noqa: BLE001
             print(f"  ! pexels video search failed: {exc}")
+
+    if len(assets) >= n:
+        return assets
 
     # Photo fallback.
     try:
         r = requests.get(
             PEXELS_PHOTO_URL,
             headers=headers,
-            params={"query": query, "per_page": 8, "orientation": orientation},
+            params={"query": query, "per_page": max(8, (n - len(assets)) * 4), "orientation": orientation},
             timeout=30,
         )
         r.raise_for_status()
         photos = r.json().get("photos", [])
         random.shuffle(photos)
         for p in photos:
+            if len(assets) >= n:
+                break
             link = p.get("src", {}).get("large2x") or p.get("src", {}).get("large")
-            if link and _download(link, dest_base.with_suffix(".jpg")):
-                return Asset(dest_base.with_suffix(".jpg"), False, [query])
+            if not link or link in seen_urls:
+                continue
+            seen_urls.add(link)
+            dest = dest_base.with_name(f"{dest_base.name}_{len(assets):02d}").with_suffix(".jpg")
+            if _download(link, dest):
+                assets.append(Asset(dest, False, [query]))
     except Exception as exc:  # noqa: BLE001
         print(f"  ! pexels photo search failed: {exc}")
 
-    return None
+    return assets

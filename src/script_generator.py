@@ -76,12 +76,17 @@ TASK: Write ONE {fmt}-form YouTube video script in the "history / did-you-know" 
 {direction}
 
 Constraints:
-- Total narration should be about {words} words (~{secs} seconds at 150 wpm).
+- Total narration MUST be 90-120 words. Count your words before answering and
+  comply exactly; this is a hard limit, not a suggestion (target ~{words} words).
 - Break the narration into {seg_hint}. Each segment is one or two spoken sentences.
 - For EACH segment provide 2-4 visual search keywords describing concrete,
   filmable imagery (e.g. "ancient roman ruins", "old library books", "stormy ocean").
   Avoid abstract keywords. These drive stock-footage search.
-- First segment MUST be a strong hook (a question or shocking fact).
+- The FIRST segment is the hook and MUST be 8-15 words. It must NOT open with a
+  dry date/setup ("In 1915, Alice Ball was a chemist who..."). Instead lead with
+  the consequence, twist, or stakes, e.g. "She cured leprosy. Then a man stole
+  her credit." or "This law could send you to prison for reading it." Bury the
+  date/setup (if any) in segment 2, never segment 1.
 - Be factually accurate. Do NOT invent dates, names, or statistics.
 - Avoid graphic, violent, or sensitive detail (keep it advertiser-friendly).
 - The title must be specific and curiosity-driven, <= 80 characters.
@@ -187,6 +192,12 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
         for s in data["segments"]
         if s.get("narration", "").strip()
     ]
+
+    word_count = len(" ".join(s.narration for s in segments).split())
+    if fmt == "short" and not (80 <= word_count <= 130):
+        print(f"  ! WARNING: narration is {word_count} words (target 90-120): "
+              f"prompt compliance was off for this generation.")
+
     tags = data.get("tags", []) + cfg.get("youtube.default_tags", [])
     # De-dup tags preserving order.
     seen, uniq = set(), []

@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import load_config, base_dir  # noqa: E402
-from src.youtube_uploader import get_credentials  # noqa: E402
+from src.youtube_uploader import build_analytics_client, get_credentials  # noqa: E402
 
 
 def _uploads_playlist_id(youtube) -> str:
@@ -72,6 +72,39 @@ def _video_stats(youtube, video_ids: list[str]) -> list[dict]:
     return out
 
 
+def _retention_and_subs(
+    youtube_analytics,
+    video_ids: list[str],
+    start_date: str,
+    end_date: str,
+) -> dict[str, dict]:
+    if not video_ids:
+        return {}
+    try:
+        resp = youtube_analytics.reports().query(
+            ids="channel==MINE",
+            startDate=start_date,
+            endDate=end_date,
+            metrics="averageViewPercentage,subscribersGained",
+            dimensions="video",
+            filters=f"video=={','.join(video_ids)}",
+            maxResults=len(video_ids),
+        ).execute()
+    except Exception as exc:  # noqa: BLE001 - analytics should not block basic stats
+        print(f"  ! YouTube Analytics retention/subscribers skipped: {exc}", file=sys.stderr)
+        return {}
+
+    out: dict[str, dict] = {}
+    for row in resp.get("rows", []):
+        if len(row) < 3:
+            continue
+        out[row[0]] = {
+            "avg_view_pct": float(row[1] or 0),
+            "subs_gained": int(row[2] or 0),
+        }
+    return out
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=None)
@@ -84,10 +117,21 @@ def main() -> int:
 
     creds = get_credentials(interactive=False)
     youtube = build("youtube", "v3", credentials=creds)
+    youtube_analytics = build_analytics_client(creds)
 
     playlist_id = _uploads_playlist_id(youtube)
     video_ids = _recent_video_ids(youtube, playlist_id, args.limit)
     videos = _video_stats(youtube, video_ids)
+    today = datetime.now(timezone.utc).date().isoformat()
+    published_dates = [
+        v["publishedAt"][:10]
+        for v in videos
+        if isinstance(v.get("publishedAt"), str) and len(v["publishedAt"]) >= 10
+    ]
+    start_date = min(published_dates) if published_dates else today
+    retention = _retention_and_subs(youtube_analytics, video_ids, start_date, today)
+    for video in videos:
+        video.update(retention.get(video["id"], {}))
     videos.sort(key=lambda v: v["publishedAt"], reverse=True)
 
     out = {

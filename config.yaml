@@ -35,7 +35,7 @@ tts:
 
 assets:
   provider: "pexels"           # "pexels" (videos+photos)
-  per_segment_clips: 1
+  per_segment_clips: 3
   prefer_video: true           # use stock video clips; fall back to photos
   orientation_short: "portrait"
   orientation_long: "landscape"
@@ -55,6 +55,9 @@ video:
   # Visual mode for SHORTS: "mascot" (talking owl on branded bg) or "broll" (stock footage).
   # Long-form always uses b-roll (mascot full-frame render is too heavy for 7-min videos).
   mode: "broll"               # topic-matched stock footage + captions, no mascot
+  color_grade:
+    enabled: true
+    filter: "eq=contrast=1.05:saturation=0.9:gamma=0.95"
   mascot:
     dir: "Mascot"              # (unused while mode is broll; kept if you switch back)
     scale: 0.48
@@ -66,6 +69,7 @@ video:
     fontsize_short: 96               # real pixels (subtitle canvas = video resolution)
     fontsize_long: 56
     outline: 6
+    words_per_beat: 4                 # words grouped per caption card (3-6 typical for fast-paced shorts)
     margin_bottom: 220               # px from bottom (broll mode)
     margin_top: 380                  # px from top (mascot mode, clear of the corner owl)
     primary_color: "&H00FFFFFF"      # white  (ASS BGR hex)

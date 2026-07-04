@@ -2,8 +2,10 @@ name: Publish Video
 
 on:
   schedule:
-    # Daily run for the Histold channel.
-    - cron: "0 13 * * *"
+    # Three daily Histold runs. Times shown in IST.
+    - cron: "0 7 * * *"    # 12:30pm IST
+    - cron: "0 13 * * *"   # 6:30pm IST
+    - cron: "0 16 * * *"   # 9:30pm IST
   workflow_dispatch:
     inputs:
       format:
