@@ -1,9 +1,9 @@
 /* ============================================================
    YT-Automation Control Deck — vanilla JS, no build step.
    Reads data/analytics.json + data/trends.json (written by
-   .github/workflows/analytics.yml) via raw.githubusercontent.com,
-   and dispatches/reads GitHub Actions via the REST API using a
-   fine-grained PAT stored in localStorage.
+   .github/workflows/analytics.yml) via the GitHub Contents API,
+   and dispatches/reads GitHub Actions via the REST API — both
+   authenticated with a fine-grained PAT stored in localStorage.
    ============================================================ */
 
 const LS_KEY = "ytauto_dashboard_settings";
@@ -24,11 +24,6 @@ function isConfigured(s) {
   return Boolean(s.owner && s.repo && s.pat);
 }
 
-function rawUrl(s, path) {
-  const branch = s.branch || "master";
-  return `https://raw.githubusercontent.com/${s.owner}/${s.repo}/${branch}/${path}?_=${Date.now()}`;
-}
-
 function apiUrl(s, path) {
   return `https://api.github.com/repos/${s.owner}/${s.repo}${path}`;
 }
@@ -40,9 +35,11 @@ function ghHeaders(s) {
   };
 }
 
-function rawHeaders(s) {
-  // raw.githubusercontent.com needs auth too since this is a private repo.
-  return s.pat ? { Authorization: `Bearer ${s.pat}` } : {};
+function rawContentHeaders(s) {
+  // api.github.com supports authenticated CORS properly; raw.githubusercontent.com
+  // does not (its preflight rejects the Authorization header), so file reads go
+  // through the Contents API with Accept: raw instead of a raw.githubusercontent.com URL.
+  return { ...ghHeaders(s), Accept: "application/vnd.github.raw" };
 }
 
 /* ---------------------------------------------------------- */
@@ -95,24 +92,31 @@ function setConn(state, label) {
 }
 
 /* ---------------------------------------------------------- */
-/* Analytics + trends (raw.githubusercontent.com)               */
+/* Analytics + trends (via the Contents API, not raw.githubusercontent.com) */
 /* ---------------------------------------------------------- */
+async function fetchRepoFile(s, path) {
+  const res = await fetch(`${apiUrl(s, `/contents/${path}`)}?_=${Date.now()}`, {
+    cache: "no-store",
+    headers: rawContentHeaders(s),
+  });
+  if (!res.ok) throw new Error(`${path} ${res.status}`);
+  return res.text();
+}
+
 async function loadAnalytics(s) {
-  const res = await fetch(rawUrl(s, "data/analytics.json"), { cache: "no-store", headers: rawHeaders(s) });
-  if (!res.ok) throw new Error(`analytics.json ${res.status}`);
-  return res.json();
+  return JSON.parse(await fetchRepoFile(s, "data/analytics.json"));
 }
 
 async function loadTrends(s) {
-  const res = await fetch(rawUrl(s, "data/trends.json"), { cache: "no-store", headers: rawHeaders(s) });
-  if (!res.ok) throw new Error(`trends.json ${res.status}`);
-  return res.json();
+  return JSON.parse(await fetchRepoFile(s, "data/trends.json"));
 }
 
 async function loadPendingApprovals(s) {
-  const res = await fetch(rawUrl(s, "data/pending_approvals.json"), { cache: "no-store", headers: rawHeaders(s) });
-  if (!res.ok) return [];
-  return res.json();
+  try {
+    return JSON.parse(await fetchRepoFile(s, "data/pending_approvals.json"));
+  } catch {
+    return [];
+  }
 }
 
 function fmtNum(n) {
