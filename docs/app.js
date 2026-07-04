@@ -40,6 +40,11 @@ function ghHeaders(s) {
   };
 }
 
+function rawHeaders(s) {
+  // raw.githubusercontent.com needs auth too since this is a private repo.
+  return s.pat ? { Authorization: `Bearer ${s.pat}` } : {};
+}
+
 /* ---------------------------------------------------------- */
 /* Settings modal                                              */
 /* ---------------------------------------------------------- */
@@ -93,19 +98,19 @@ function setConn(state, label) {
 /* Analytics + trends (raw.githubusercontent.com)               */
 /* ---------------------------------------------------------- */
 async function loadAnalytics(s) {
-  const res = await fetch(rawUrl(s, "data/analytics.json"), { cache: "no-store" });
+  const res = await fetch(rawUrl(s, "data/analytics.json"), { cache: "no-store", headers: rawHeaders(s) });
   if (!res.ok) throw new Error(`analytics.json ${res.status}`);
   return res.json();
 }
 
 async function loadTrends(s) {
-  const res = await fetch(rawUrl(s, "data/trends.json"), { cache: "no-store" });
+  const res = await fetch(rawUrl(s, "data/trends.json"), { cache: "no-store", headers: rawHeaders(s) });
   if (!res.ok) throw new Error(`trends.json ${res.status}`);
   return res.json();
 }
 
 async function loadPendingApprovals(s) {
-  const res = await fetch(rawUrl(s, "data/pending_approvals.json"), { cache: "no-store" });
+  const res = await fetch(rawUrl(s, "data/pending_approvals.json"), { cache: "no-store", headers: rawHeaders(s) });
   if (!res.ok) return [];
   return res.json();
 }
