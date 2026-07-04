@@ -290,10 +290,20 @@ document.getElementById("btnDispatch").addEventListener("click", async () => {
 
 async function dispatchApprove(s, data) {
   if (!isConfigured(s)) return;
+  const privacy = prompt(
+    "Privacy for this upload — private / unlisted / public\n(leave blank to use whatever was set when this draft was generated):",
+    "private"
+  );
+  if (privacy === null) return; // cancelled
+  if (privacy && !["private", "unlisted", "public"].includes(privacy)) {
+    alert("Must be private, unlisted, public, or blank.");
+    return;
+  }
   try {
     await dispatchWorkflow(s, "approve.yml", {
       stage_dir_name: data.stage,
       source_run_id: data.run,
+      privacy_status: privacy || "",
     });
     alert("Approval dispatched — check Run History for approve.yml.");
   } catch (err) {

@@ -278,18 +278,34 @@ def _is_satisfied(st: dict) -> bool:
     return all(s in st["done"] for s in st["target_steps"] if not (s == "upload" and skip))
 
 
-def run_stage(cfg: Config, stage: Path, *, one_step: bool, notifier=None, force_upload: bool = False) -> dict:
+def run_stage(
+    cfg: Config,
+    stage: Path,
+    *,
+    one_step: bool,
+    notifier=None,
+    force_upload: bool = False,
+    privacy_override: str | None = None,
+) -> dict:
     """Execute pending steps for a stage. If one_step, do exactly one then return.
 
     force_upload reopens a stage that previously finished with no_upload=True
     (its "upload" step was skipped, not failed) so the upload step now runs —
     used by the approval-queue flow after a human approves a rendered draft.
+    privacy_override lets that approval choose a privacy status different from
+    whatever (if anything) was set when the draft was originally generated.
     Returns the (updated) state dict. Sends notifications on terminal events.
     """
     st = load_state(stage)
+    dirty = False
     if force_upload and st.get("no_upload"):
         st["no_upload"] = False
         st["complete"] = False
+        dirty = True
+    if privacy_override:
+        st.setdefault("overrides", {})["privacy"] = privacy_override
+        dirty = True
+    if dirty:
         save_state(stage, st)
 
     pending = _pending_steps(st)

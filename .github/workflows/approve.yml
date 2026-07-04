@@ -15,6 +15,11 @@ on:
         description: "The publish.yml run ID that rendered this draft"
         type: string
         required: true
+      privacy_status:
+        description: "Privacy for this upload (optional — overrides whatever was set when the draft was generated)"
+        type: choice
+        options: ["", private, unlisted, public]
+        default: ""
 
 permissions:
   contents: write
@@ -64,7 +69,10 @@ jobs:
 
       - name: Resume with upload
         run: |
-          python -m src.main --stage "${{ inputs.stage_dir_name }}" --resume --force-upload
+          PRIVACY="${{ inputs.privacy_status }}"
+          ARGS=(--stage "${{ inputs.stage_dir_name }}" --resume --force-upload)
+          [ -n "$PRIVACY" ] && ARGS+=(--privacy "$PRIVACY")
+          python -m src.main "${ARGS[@]}"
 
       - name: Remove entry from pending approvals
         run: |

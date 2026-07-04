@@ -97,7 +97,8 @@ def main(argv: list[str] | None = None) -> int:
 
         stage = _resolve_stage(cfg, args)
         st = pipeline.run_stage(cfg, stage, one_step=args.step, notifier=notifier,
-                                 force_upload=args.force_upload)
+                                 force_upload=args.force_upload,
+                                 privacy_override=args.privacy if args.stage else None)
         result = _summary(stage, st)
 
         # Clear status line for schedulers to parse.
