@@ -12,10 +12,18 @@ from pathlib import Path
 from .config import Config, env, base_dir
 
 # upload = post videos; readonly = let us confirm which channel the token targets.
-SCOPES = [
+UPLOAD_SCOPES = [
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.readonly",
-    "https://www.googleapis.com/auth/yt-analytics.readonly",
+]
+
+ANALYTICS_SCOPE = "https://www.googleapis.com/auth/yt-analytics.readonly"
+
+# Full scope set used only by setup_oauth.py / analytics export. Uploads keep
+# using UPLOAD_SCOPES so old upload tokens do not break before re-consent.
+SCOPES = [
+    *UPLOAD_SCOPES,
+    ANALYTICS_SCOPE,
 ]
 
 
@@ -30,7 +38,7 @@ def _client_secret_path() -> Path:
     return p if p.is_absolute() else base_dir() / p
 
 
-def get_credentials(interactive: bool = False):
+def get_credentials(interactive: bool = False, scopes: list[str] | None = None):
     """Load cached creds, refreshing or running the OAuth flow as needed.
 
     interactive=True is used by setup_oauth.py to launch the browser consent.
@@ -39,10 +47,11 @@ def get_credentials(interactive: bool = False):
     from google.oauth2.credentials import Credentials
     from google.auth.transport.requests import Request
 
+    scopes = scopes or UPLOAD_SCOPES
     tok = token_file()
     creds = None
     if tok.exists():
-        creds = Credentials.from_authorized_user_file(str(tok), SCOPES)
+        creds = Credentials.from_authorized_user_file(str(tok), scopes)
 
     if creds and creds.valid:
         return creds
@@ -59,7 +68,7 @@ def get_credentials(interactive: bool = False):
 
     from google_auth_oauthlib.flow import InstalledAppFlow
 
-    flow = InstalledAppFlow.from_client_secrets_file(str(_client_secret_path()), SCOPES)
+    flow = InstalledAppFlow.from_client_secrets_file(str(_client_secret_path()), scopes)
     creds = flow.run_local_server(port=0)
     _save(creds)
     return creds

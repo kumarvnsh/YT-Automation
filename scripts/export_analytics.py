@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import load_config, base_dir  # noqa: E402
-from src.youtube_uploader import build_analytics_client, get_credentials  # noqa: E402
+from src.youtube_uploader import SCOPES, build_analytics_client, get_credentials  # noqa: E402
 
 
 def _uploads_playlist_id(youtube) -> str:
@@ -117,7 +117,6 @@ def main() -> int:
 
     creds = get_credentials(interactive=False)
     youtube = build("youtube", "v3", credentials=creds)
-    youtube_analytics = build_analytics_client(creds)
 
     playlist_id = _uploads_playlist_id(youtube)
     video_ids = _recent_video_ids(youtube, playlist_id, args.limit)
@@ -129,7 +128,13 @@ def main() -> int:
         if isinstance(v.get("publishedAt"), str) and len(v["publishedAt"]) >= 10
     ]
     start_date = min(published_dates) if published_dates else today
-    retention = _retention_and_subs(youtube_analytics, video_ids, start_date, today)
+    try:
+        analytics_creds = get_credentials(interactive=False, scopes=SCOPES)
+        youtube_analytics = build_analytics_client(analytics_creds)
+        retention = _retention_and_subs(youtube_analytics, video_ids, start_date, today)
+    except Exception as exc:  # noqa: BLE001 - keep basic analytics working
+        print(f"  ! YouTube Analytics client skipped: {exc}", file=sys.stderr)
+        retention = {}
     for video in videos:
         video.update(retention.get(video["id"], {}))
     videos.sort(key=lambda v: v["publishedAt"], reverse=True)

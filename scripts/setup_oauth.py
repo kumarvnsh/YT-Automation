@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import load_config  # noqa: E402
-from src.youtube_uploader import get_credentials, token_file  # noqa: E402
+from src.youtube_uploader import SCOPES, get_credentials, token_file  # noqa: E402
 
 
 def main() -> None:
@@ -26,7 +26,7 @@ def main() -> None:
     cfg_path = sys.argv[1] if len(sys.argv) > 1 else None
     load_config(cfg_path)
     print("Launching Google OAuth consent flow in your browser...")
-    get_credentials(interactive=True)
+    get_credentials(interactive=True, scopes=SCOPES)
     print(f"Success. Token cached at: {token_file()}")
     print("You can now run the pipeline with YouTube upload enabled.")
 
