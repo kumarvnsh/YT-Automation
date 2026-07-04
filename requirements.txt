@@ -1,0 +1,20 @@
+# --- Core pipeline ---
+edge-tts>=6.1.9            # Free Microsoft TTS (voiceover) with word-boundary timing
+requests>=2.31.0          # Stock footage/image downloads (Pexels/Pixabay)
+PyYAML>=6.0               # config.yaml loader
+python-dotenv>=1.0.0      # load API keys from .env
+Pillow>=10.0.0            # mascot compositing (owl frames + background)
+numpy>=1.24.0             # mascot voiceover amplitude analysis (lip-sync)
+
+# --- Script generation (pick ONE provider; both optional) ---
+anthropic>=0.39.0         # Claude (default script writer)
+openai>=1.40.0            # OpenAI alternative (script writer and/or TTS)
+
+# --- YouTube upload (Google Data API v3) ---
+google-api-python-client>=2.140.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+
+# NOTE: ffmpeg must be installed on the system (not a pip package).
+#   macOS:  brew install ffmpeg
+#   Ubuntu: sudo apt-get install ffmpeg

@@ -1,0 +1,28 @@
+# Secrets — never commit (all channels)
+.env
+**/.env
+secrets/
+**/secrets/
+*.json.token
+
+# Generated media & logs (all channels)
+output/
+**/output/
+logs/
+run.log
+
+# Analytics/trends exports ARE tracked (small JSON, dashboard reads them)
+!data/analytics.json
+!data/trends.json
+!channels/*/data/analytics.json
+!channels/*/data/trends.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+# Local tooling state
+.claude/

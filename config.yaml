@@ -1,0 +1,99 @@
+# ===========================================================================
+# YT-Automation configuration
+# Edit this file to change the channel niche, video style, and providers.
+# Anything secret (API keys) lives in .env, NOT here.
+# ===========================================================================
+
+channel:
+  niche: "History / Did-you-know"
+  # High-level instruction handed to the script writer. Tune the voice here.
+  persona: >
+    You write punchy, accurate, surprising history and 'did you know' content.
+    Hook the viewer in the first sentence, stay factually correct, avoid
+    sensitive/graphic detail, and end with a memorable takeaway. No clickbait
+    that the content doesn't deliver on.
+  language: "en"
+  # Trend-aware topics: bridge trending searches to history + use anniversaries.
+  topic_source: "blend"          # "angles" | "trends" | "on_this_day" | "blend"
+  trend_region: "global"
+  # Topics already used are stored in data/used_topics.json to avoid repeats.
+
+script:
+  provider: "anthropic"        # "anthropic" | "openai"
+  anthropic_model: "claude-sonnet-4-6"
+  openai_model: "gpt-4o-mini"
+  # Target spoken duration. The writer aims for ~150 words/min.
+  shorts_target_seconds: 45
+  longform_target_seconds: 420   # 7 minutes
+
+tts:
+  provider: "edge"             # "edge" (free) | "elevenlabs" | "openai"
+  edge_voice: "en-US-GuyNeural"        # try en-US-AriaNeural, en-GB-RyanNeural
+  edge_rate: "+8%"
+  elevenlabs_voice_id: "21m00Tcm4TlvDq8ikWAM"   # only used if provider=elevenlabs
+  openai_voice: "onyx"                          # only used if provider=openai
+
+assets:
+  provider: "pexels"           # "pexels" (videos+photos)
+  per_segment_clips: 1
+  prefer_video: true           # use stock video clips; fall back to photos
+  orientation_short: "portrait"
+  orientation_long: "landscape"
+
+video:
+  short:
+    width: 1080
+    height: 1920
+    fps: 30
+  long:
+    width: 1920
+    height: 1080
+    fps: 30
+  encode:
+    preset: "veryfast"         # ffmpeg x264 preset; faster = quicker render, slightly larger file
+    crf: 23                    # 18-28; lower = higher quality/larger. 23 is a good balance
+  # Visual mode for SHORTS: "mascot" (talking owl on branded bg) or "broll" (stock footage).
+  # Long-form always uses b-roll (mascot full-frame render is too heavy for 7-min videos).
+  mode: "broll"               # topic-matched stock footage + captions, no mascot
+  mascot:
+    dir: "Mascot"              # (unused while mode is broll; kept if you switch back)
+    scale: 0.48
+    margin_right: 30
+    margin_bottom: 230
+  captions:
+    enabled: true
+    font: "Arial"
+    fontsize_short: 96               # real pixels (subtitle canvas = video resolution)
+    fontsize_long: 56
+    outline: 6
+    margin_bottom: 220               # px from bottom (broll mode)
+    margin_top: 380                  # px from top (mascot mode, clear of the corner owl)
+    primary_color: "&H00FFFFFF"      # white  (ASS BGR hex)
+    outline_color: "&H00000000"      # black outline
+  background_music:
+    enabled: true
+    # Drop royalty-free .mp3 files in assets/music/. One is picked at random.
+    volume: 0.12
+
+youtube:
+  enabled: true
+  privacy_status: "public"     # "private" | "unlisted" | "public"
+  category_id: "27"            # 27 = Education
+  made_for_kids: false
+  # Safety lock: uploads abort unless the authorized channel matches this ID.
+  # This is the Histold channel. Leave blank to disable the check.
+  expected_channel_id: "UCJImBb1E8e0llDt8ISdF_1g"
+  default_tags: ["history", "did you know", "facts", "history shorts", "education"]
+
+notifications:
+  enabled: true                # master switch for WhatsApp alerts
+  channel: "openwa"            # currently only OpenWA is implemented
+  notify_on_start: false       # ping when a daily run begins
+  notify_on_success: true      # ping when a video uploads (or renders, if no-upload)
+  notify_on_failure: true      # ping on any failure
+  notify_on_credits: true      # special alert when AI credits run out / flow stops
+
+output:
+  dir: "output"                # rendered videos + metadata land here
+  delete_after_upload: true    # once uploaded to YouTube, delete the local renders (saves disk)
+  keep_days: 3                 # also prune leftover run folders older than this many days

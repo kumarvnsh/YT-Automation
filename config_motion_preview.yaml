@@ -1,0 +1,78 @@
+# ===========================================================================
+# ONE-OFF PREVIEW: Histold in motion-graphics mode (captions, no mascot), PRIVATE.
+# Uses Histold's token/output (base = project root). Does NOT change Histold's
+# live config.yaml. Run:
+#   python -m src.main --config config_motion_preview.yaml --step
+# ===========================================================================
+
+channel:
+  niche: "History / Did-you-know"
+  persona: >
+    You write punchy, accurate, surprising history and 'did you know' content.
+    Hook the viewer in the first sentence, stay factually correct, avoid
+    sensitive/graphic detail, and end with a memorable takeaway.
+  language: "en"
+
+script:
+  provider: "anthropic"
+  anthropic_model: "claude-sonnet-4-6"
+  openai_model: "gpt-4o-mini"
+  shorts_target_seconds: 45
+  longform_target_seconds: 420
+
+tts:
+  provider: "edge"
+  edge_voice: "en-US-GuyNeural"
+  edge_rate: "+8%"
+  elevenlabs_voice_id: "21m00Tcm4TlvDq8ikWAM"
+  openai_voice: "onyx"
+
+assets:
+  provider: "pexels"
+  per_segment_clips: 1
+  prefer_video: true
+  orientation_short: "portrait"
+  orientation_long: "landscape"
+
+video:
+  short:
+    width: 1080
+    height: 1920
+    fps: 30
+  long:
+    width: 1920
+    height: 1080
+    fps: 30
+  encode:
+    preset: "veryfast"
+    crf: 23
+  mode: "broll"                 # topic-matched stock footage + captions, NO mascot
+  captions:
+    enabled: true
+    font: "Arial"
+    fontsize_short: 104
+    fontsize_long: 56
+    outline: 7
+    margin_bottom: 220
+    margin_top: 380
+    primary_color: "&H00FFFFFF"
+    outline_color: "&H00000000"
+  background_music:
+    enabled: false
+    volume: 0.12
+
+notifications:
+  enabled: false
+
+youtube:
+  enabled: true
+  privacy_status: "private"          # PREVIEW — private so only you can review
+  category_id: "27"
+  made_for_kids: false
+  expected_channel_id: "UCJImBb1E8e0llDt8ISdF_1g"   # Histold (lock)
+  default_tags: ["history", "did you know", "facts", "history shorts", "education"]
+
+output:
+  dir: "output"
+  delete_after_upload: true
+  keep_days: 3

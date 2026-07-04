@@ -1,0 +1,37 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#20305a"/>
+      <stop offset="100%" stop-color="#0d152b"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6dd97"/>
+      <stop offset="50%" stop-color="#e8b84b"/>
+      <stop offset="100%" stop-color="#c8952f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- badge -->
+  <circle cx="400" cy="400" r="384" fill="url(#bg)"/>
+  <circle cx="400" cy="400" r="384" fill="none" stroke="url(#gold)" stroke-width="16"/>
+  <circle cx="400" cy="400" r="346" fill="none" stroke="#e8b84b" stroke-width="3" opacity="0.35"/>
+
+  <!-- hourglass: timeless 'history' mark, legible at tiny sizes -->
+  <g fill="url(#gold)">
+    <rect x="252" y="206" width="296" height="36" rx="12"/>
+    <rect x="252" y="558" width="296" height="36" rx="12"/>
+  </g>
+  <g fill="url(#gold)">
+    <path d="M286 242 L514 242 L412 398 L388 398 Z"/>
+    <path d="M388 402 L412 402 L514 558 L286 558 Z"/>
+  </g>
+
+  <!-- sand: a few falling grains for a touch of life -->
+  <g fill="#0d152b">
+    <circle cx="400" cy="440" r="6"/>
+    <circle cx="400" cy="470" r="5"/>
+    <circle cx="400" cy="498" r="4"/>
+  </g>
+  <!-- sand pile at the base -->
+  <path d="M348 558 Q400 512 452 558 Z" fill="#0d152b"/>
+</svg>

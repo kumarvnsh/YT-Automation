@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  macOS launchd agent — runs the Histold daily pipeline at 09:00 every day.
+
+  INSTALL:
+    cp scripts/com.histold.daily.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.histold.daily.plist
+
+  CHANGE TIME:  edit Hour/Minute below, then:
+    launchctl unload ~/Library/LaunchAgents/com.histold.daily.plist
+    launchctl load   ~/Library/LaunchAgents/com.histold.daily.plist
+
+  RUN NOW (test):
+    launchctl start com.histold.daily
+
+  UNINSTALL:
+    launchctl unload ~/Library/LaunchAgents/com.histold.daily.plist
+    rm ~/Library/LaunchAgents/com.histold.daily.plist
+
+  NOTE: launchd only fires while your Mac is awake/logged in. If the Mac was
+  asleep at 09:00, the run fires shortly after it wakes (RunAtLoad covers boot).
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.histold.daily</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/vnshkumar/Documents/YT-Automation/scripts/run_daily.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/vnshkumar/Documents/YT-Automation</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/vnshkumar/Documents/YT-Automation/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/vnshkumar/Documents/YT-Automation/logs/launchd.err.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
