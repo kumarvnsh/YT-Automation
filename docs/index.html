@@ -55,23 +55,12 @@
           <div class="panel__body">
             <div class="form-grid">
               <div class="field">
-                <label for="dChannel">Channel</label>
-                <select id="dChannel">
-                  <option value="histold">Histold</option>
-                  <option value="medimyth">MediMyth</option>
-                </select>
-              </div>
-              <div class="field">
                 <label for="dFormat">Format</label>
                 <select id="dFormat">
                   <option value="short">Short</option>
                   <option value="long">Long</option>
                   <option value="both">Both</option>
                 </select>
-              </div>
-              <div class="field span-2">
-                <label for="dTopic">Topic Override (optional)</label>
-                <input type="text" id="dTopic" placeholder="e.g. the invention of the printing press">
               </div>
               <div class="field">
                 <label for="dPrivacy">Privacy Override</label>
@@ -82,8 +71,11 @@
                   <option value="public">Public</option>
                 </select>
               </div>
-              <div class="field">
-                <label>&nbsp;</label>
+              <div class="field span-2">
+                <label for="dTopic">Topic Override (optional — write any video on demand)</label>
+                <input type="text" id="dTopic" placeholder="e.g. the invention of the printing press">
+              </div>
+              <div class="field span-2">
                 <div class="checkbox-row"><input type="checkbox" id="dDryRun"><label for="dDryRun">Dry run (script only)</label></div>
                 <div class="checkbox-row"><input type="checkbox" id="dNoUpload"><label for="dNoUpload">No upload (send to approval queue)</label></div>
               </div>

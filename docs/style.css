@@ -332,17 +332,6 @@ body::before {
   display: flex;
   gap: 12px;
 }
-.video-row__stats .chan-tag {
-  color: var(--void);
-  background: var(--amber);
-  padding: 1px 6px;
-  border-radius: 2px;
-  font-weight: 600;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-.video-row__stats .chan-tag.medimyth { background: var(--green); }
-
 /* Trends */
 .trend-channel { margin-bottom: 18px; }
 .trend-channel:last-child { margin-bottom: 0; }

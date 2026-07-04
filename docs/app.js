@@ -157,7 +157,6 @@ function renderVideoList(allVideos) {
   el.innerHTML = sorted
     .slice(0, 25)
     .map((v) => {
-      const chanClass = v._channel === "medimyth" ? "medimyth" : "";
       const date = v.publishedAt ? new Date(v.publishedAt).toLocaleDateString() : "";
       return `
       <a class="video-row" href="https://youtu.be/${v.id}" target="_blank" rel="noopener">
@@ -165,7 +164,6 @@ function renderVideoList(allVideos) {
         <div class="video-row__meta">
           <p class="video-row__title">${escapeHtml(v.title || "(untitled)")}</p>
           <div class="video-row__stats">
-            <span class="chan-tag ${chanClass}">${v._channel}</span>
             <span>${fmtNum(v.views || 0)} views</span>
             <span>${fmtNum(v.likes || 0)} likes</span>
             <span>${date}</span>
@@ -226,10 +224,9 @@ function renderApprovals(list, s) {
       <div class="approval-row">
         <div>
           <div class="approval-row__title">${escapeHtml(item.title || item.stage_dir_name)}</div>
-          <div class="approval-row__meta">${item.channel} &middot; ${item.stage_dir_name} &middot; run #${item.run_id}</div>
+          <div class="approval-row__meta">${item.stage_dir_name} &middot; run #${item.run_id}</div>
         </div>
         <button class="btn btn--primary approve-btn"
-          data-channel="${item.channel}"
           data-stage="${item.stage_dir_name}"
           data-run="${item.run_id}">Approve &amp; Upload</button>
       </div>`)
@@ -272,7 +269,6 @@ document.getElementById("btnDispatch").addEventListener("click", async () => {
     return;
   }
   const inputs = {
-    channel: document.getElementById("dChannel").value,
     format: document.getElementById("dFormat").value,
     topic: document.getElementById("dTopic").value.trim(),
     privacy_status: document.getElementById("dPrivacy").value,
@@ -296,7 +292,6 @@ async function dispatchApprove(s, data) {
   if (!isConfigured(s)) return;
   try {
     await dispatchWorkflow(s, "approve.yml", {
-      channel: data.channel,
       stage_dir_name: data.stage,
       source_run_id: data.run,
     });
