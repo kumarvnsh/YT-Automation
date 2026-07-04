@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YT-AUTOMATION // Control Deck</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead__brand">
+      <h1>Control Deck</h1>
+      <span class="tag">YT-Automation</span>
+    </div>
+    <div class="masthead__status">
+      <span class="led" id="connLed"></span>
+      <span id="connLabel">checking link&hellip;</span>
+      <button class="btn btn--ghost" id="btnSettings">⚙ Settings</button>
+    </div>
+  </header>
+
+  <div class="ticker">
+    <div class="ticker__track" id="tickerTrack">
+      <span>Loading trending signals&hellip;</span>
+    </div>
+  </div>
+
+  <main class="deck">
+
+    <section class="kpi-row" id="kpiRow">
+      <div class="kpi"><div class="kpi__label">Total Videos</div><div class="kpi__value" id="kpiTotalVideos">–</div></div>
+      <div class="kpi"><div class="kpi__label">Total Views</div><div class="kpi__value" id="kpiTotalViews">–</div></div>
+      <div class="kpi"><div class="kpi__label">Last 7 Days</div><div class="kpi__value" id="kpiCadence7">–</div><div class="kpi__sub" id="kpiCadence30">last 30d: –</div></div>
+      <div class="kpi"><div class="kpi__label">Avg Retention</div><div class="kpi__value na">N/A</div><div class="kpi__sub">needs YT Analytics API</div></div>
+    </section>
+
+    <section class="grid-main">
+      <div class="col-main" style="display:grid; gap:20px;">
+
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Recent Uploads</h2>
+            <span class="section-label" id="videoCount"></span>
+          </div>
+          <div class="panel__body panel__body--tight" id="videoList">
+            <div class="empty-state"><strong>No data yet</strong>Connect the repo in Settings to load analytics.json</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Dispatch Run</h2>
+          </div>
+          <div class="panel__body">
+            <div class="form-grid">
+              <div class="field">
+                <label for="dChannel">Channel</label>
+                <select id="dChannel">
+                  <option value="histold">Histold</option>
+                  <option value="medimyth">MediMyth</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="dFormat">Format</label>
+                <select id="dFormat">
+                  <option value="short">Short</option>
+                  <option value="long">Long</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+              <div class="field span-2">
+                <label for="dTopic">Topic Override (optional)</label>
+                <input type="text" id="dTopic" placeholder="e.g. the invention of the printing press">
+              </div>
+              <div class="field">
+                <label for="dPrivacy">Privacy Override</label>
+                <select id="dPrivacy">
+                  <option value="">(use channel default)</option>
+                  <option value="private">Private</option>
+                  <option value="unlisted">Unlisted</option>
+                  <option value="public">Public</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>&nbsp;</label>
+                <div class="checkbox-row"><input type="checkbox" id="dDryRun"><label for="dDryRun">Dry run (script only)</label></div>
+                <div class="checkbox-row"><input type="checkbox" id="dNoUpload"><label for="dNoUpload">No upload (send to approval queue)</label></div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary" id="btnDispatch">▶ Trigger Run</button>
+              <span class="dispatch-msg" id="dispatchMsg"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-side" style="display:grid; gap:20px;">
+
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Approval Queue</h2>
+            <span class="section-label" id="approvalCount"></span>
+          </div>
+          <div class="panel__body panel__body--tight" id="approvalList">
+            <div class="empty-state"><strong>Queue empty</strong>Runs dispatched with "No upload" land here for review.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Run History</h2>
+            <button class="btn btn--ghost" id="btnRefreshRuns" style="font-size:11px;">↻</button>
+          </div>
+          <div class="panel__body panel__body--tight" id="runList">
+            <div class="empty-state"><strong>No runs loaded</strong>Connect in Settings, then refresh.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Trending Signals</h2>
+          </div>
+          <div class="panel__body" id="trendsPanel">
+            <div class="empty-state"><strong>No data yet</strong>Connect the repo in Settings to load trends.json</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">YT-Automation Control Deck &mdash; static page, zero hosting cost, Actions-driven</footer>
+
+  <!-- Settings modal -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal">
+      <div class="modal__head">
+        <h2>Settings</h2>
+        <button class="btn btn--ghost" id="btnCloseSettings">✕</button>
+      </div>
+      <div class="modal__body">
+        <div class="field">
+          <label for="sOwner">GitHub Owner</label>
+          <input type="text" id="sOwner" placeholder="your-github-username">
+        </div>
+        <div class="field">
+          <label for="sRepo">Repository</label>
+          <input type="text" id="sRepo" placeholder="YT-Automation">
+        </div>
+        <div class="field">
+          <label for="sBranch">Branch</label>
+          <input type="text" id="sBranch" placeholder="master" value="master">
+        </div>
+        <div class="field">
+          <label for="sPat">Fine-grained PAT (Actions: read/write, Contents: read)</label>
+          <input type="text" id="sPat" placeholder="github_pat_...">
+        </div>
+        <div class="modal__note">
+          Stored only in this browser's <code>localStorage</code> — never sent anywhere except
+          as an Authorization header to api.github.com for this repo. Generate one at
+          github.com/settings/tokens?type=beta scoped to this repo only.
+        </div>
+      </div>
+      <div class="modal__foot">
+        <button class="btn btn--ghost" id="btnClearSettings">Clear</button>
+        <button class="btn btn--primary" id="btnSaveSettings">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+name: Publish Video
+
+on:
+  schedule:
+    # Daily run for the primary (Histold) channel. workflow_dispatch inputs
+    # aren't available on schedule triggers, so this always targets the
+    # default channel/format below.
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Which channel to run"
+        type: choice
+        options: [histold, medimyth]
+        default: histold
+      format:
+        description: "Video format"
+        type: choice
+        options: [short, long, both]
+        default: short
+      topic:
+        description: "Override today's topic (optional)"
+        type: string
+        required: false
+        default: ""
+      privacy_status:
+        description: "Override youtube.privacy_status (optional)"
+        type: choice
+        options: ["", private, unlisted, public]
+        default: ""
+      dry_run:
+        description: "Script + metadata only, no render/upload"
+        type: boolean
+        default: false
+      no_upload:
+        description: "Render but don't upload (approval-queue draft)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: publish-${{ github.event.inputs.channel || 'histold' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve channel + config path
+        id: resolve
+        run: |
+          CHANNEL="${{ github.event.inputs.channel || 'histold' }}"
+          if [ "$CHANNEL" = "medimyth" ]; then
+            echo "config_path=channels/medimyth/config.yaml" >> "$GITHUB_OUTPUT"
+            echo "base_dir=channels/medimyth" >> "$GITHUB_OUTPUT"
+          else
+            echo "config_path=config.yaml" >> "$GITHUB_OUTPUT"
+            echo "base_dir=." >> "$GITHUB_OUTPUT"
+          fi
+          echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
+
+      - name: Reconstruct YouTube credentials
+        env:
+          YT_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_CLIENT_SECRET_JSON_B64 }}
+          YT_TOKEN_JSON_B64: ${{ secrets.YT_TOKEN_JSON_B64 }}
+          YT_MEDIMYTH_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_MEDIMYTH_CLIENT_SECRET_JSON_B64 }}
+          YT_MEDIMYTH_TOKEN_JSON_B64: ${{ secrets.YT_MEDIMYTH_TOKEN_JSON_B64 }}
+        run: |
+          BASE_DIR="${{ steps.resolve.outputs.base_dir }}"
+          mkdir -p "$BASE_DIR/secrets"
+          if [ "${{ steps.resolve.outputs.channel }}" = "medimyth" ]; then
+            echo "$YT_MEDIMYTH_CLIENT_SECRET_JSON_B64" | base64 -d > "$BASE_DIR/secrets/client_secret.json"
+            echo "$YT_MEDIMYTH_TOKEN_JSON_B64" | base64 -d > "$BASE_DIR/secrets/token.json"
+          else
+            echo "$YT_CLIENT_SECRET_JSON_B64" | base64 -d > "$BASE_DIR/secrets/client_secret.json"
+            echo "$YT_TOKEN_JSON_B64" | base64 -d > "$BASE_DIR/secrets/token.json"
+          fi
+          echo "YOUTUBE_CLIENT_SECRET_FILE=$BASE_DIR/secrets/client_secret.json" >> "$GITHUB_ENV"
+
+      - name: Run pipeline (time-budgeted --step loop)
+        id: run_pipeline
+        run: |
+          CONFIG_PATH="${{ steps.resolve.outputs.config_path }}"
+          FORMAT="${{ github.event.inputs.format || 'short' }}"
+          TOPIC="${{ github.event.inputs.topic }}"
+          PRIVACY="${{ github.event.inputs.privacy_status }}"
+          DRY_RUN="${{ github.event.inputs.dry_run }}"
+          NO_UPLOAD="${{ github.event.inputs.no_upload }}"
+
+          ARGS=(--config "$CONFIG_PATH" --format "$FORMAT" --step)
+          [ -n "$TOPIC" ] && ARGS+=(--topic "$TOPIC")
+          [ -n "$PRIVACY" ] && ARGS+=(--privacy "$PRIVACY")
+          [ "$DRY_RUN" = "true" ] && ARGS+=(--dry-run)
+          [ "$NO_UPLOAD" = "true" ] && ARGS+=(--no-upload)
+
+          STATUS="TIMEOUT"
+          END=$((SECONDS + 5*3600))
+          while [ $SECONDS -lt $END ]; do
+            OUT=$(python -m src.main "${ARGS[@]}" 2>&1)
+            echo "$OUT"
+            if echo "$OUT" | grep -q "STATUS: DONE"; then STATUS="DONE"; break; fi
+            if echo "$OUT" | grep -q "STATUS: ERROR"; then STATUS="ERROR"; break; fi
+          done
+          echo "pipeline_status=$STATUS" >> "$GITHUB_OUTPUT"
+          if [ "$STATUS" != "DONE" ]; then
+            echo "Pipeline did not complete successfully: $STATUS"
+            exit 1
+          fi
+
+      - name: Resolve stage directory
+        id: stage
+        if: always()
+        run: |
+          BASE_DIR="${{ steps.resolve.outputs.base_dir }}"
+          STAGE_DIR=$(ls -td "$BASE_DIR"/output/*/ 2>/dev/null | head -1 || true)
+          STAGE_NAME=$(basename "${STAGE_DIR%/}" 2>/dev/null || true)
+          echo "stage_dir=$STAGE_DIR" >> "$GITHUB_OUTPUT"
+          echo "stage_name=$STAGE_NAME" >> "$GITHUB_OUTPUT"
+          TITLE=$(python -c "import json,sys; print(json.load(open(sys.argv[1])).get('title',''))" "${STAGE_DIR}metadata.json" 2>/dev/null || true)
+          {
+            echo "title<<EOF_TITLE"
+            echo "$TITLE"
+            echo "EOF_TITLE"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Record pending approval
+        if: ${{ github.event.inputs.no_upload == 'true' && steps.run_pipeline.outputs.pipeline_status == 'DONE' }}
+        env:
+          CHANNEL: ${{ steps.resolve.outputs.channel }}
+          STAGE_NAME: ${{ steps.stage.outputs.stage_name }}
+          TITLE: ${{ steps.stage.outputs.title }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PYEOF'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          path = Path("data/pending_approvals.json")
+          entries = json.loads(path.read_text()) if path.exists() else []
+          entries.append({
+              "run_id": os.environ["RUN_ID"],
+              "channel": os.environ["CHANNEL"],
+              "stage_dir_name": os.environ["STAGE_NAME"],
+              "title": os.environ.get("TITLE", ""),
+              "created": datetime.now(timezone.utc).isoformat(),
+          })
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(entries, indent=2))
+          PYEOF
+
+      - name: Commit dedup state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/used_topics.json channels/*/data/used_topics.json data/pending_approvals.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update used topics / approval queue [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Upload run artifact (also used by approve.yml for no-upload drafts)
+        if: always() && steps.stage.outputs.stage_dir != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-${{ steps.resolve.outputs.channel }}-${{ steps.stage.outputs.stage_name }}
+          path: ${{ steps.stage.outputs.stage_dir }}
+          retention-days: 14
+          if-no-files-found: ignore

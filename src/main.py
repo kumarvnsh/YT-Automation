@@ -26,6 +26,13 @@ from . import pipeline
 
 def _resolve_stage(cfg: Config, args):
     """Pick the stage to work on for this invocation."""
+    if args.stage:
+        stage = pipeline.stage_path(cfg, args.stage)
+        if not pipeline.state_path(stage).exists():
+            print(f"ERROR: no such stage: {stage}", file=sys.stderr)
+            raise SystemExit(2)
+        print(f"Targeting explicit stage: {stage.name}")
+        return stage
     if args.resume or args.step:
         stage = pipeline.active_stage(cfg, args.format if args.format != "both" else None)
         if stage is not None:
@@ -33,7 +40,10 @@ def _resolve_stage(cfg: Config, args):
             return stage
         print("No incomplete stage found — starting a new one.")
     fmt = "short" if args.format == "both" else args.format
-    return pipeline.new_stage(cfg, fmt, no_upload=args.no_upload, dry_run=args.dry_run)
+    return pipeline.new_stage(
+        cfg, fmt, no_upload=args.no_upload, dry_run=args.dry_run,
+        topic=args.topic, privacy=args.privacy,
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -46,6 +56,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--step", action="store_true",
                         help="Execute exactly ONE pending step then exit (for time-capped schedulers).")
     parser.add_argument("--config", default=None)
+    parser.add_argument("--topic", default=None,
+                        help="Override today's topic direction (skips trend/angle logic).")
+    parser.add_argument("--privacy", choices=["private", "unlisted", "public"], default=None,
+                        help="Override youtube.privacy_status for this run.")
+    parser.add_argument("--stage", default=None,
+                        help="Explicit stage dir name under output/ to target, bypassing "
+                             "active-stage lookup (used to resume a specific --no-upload run).")
+    parser.add_argument("--force-upload", action="store_true",
+                        help="With --resume/--stage, upload a stage that previously finished "
+                             "with --no-upload (approval-queue flow).")
     args = parser.parse_args(argv)
 
     if not shutil.which("ffmpeg") and not args.dry_run:
@@ -64,15 +84,20 @@ def main(argv: list[str] | None = None) -> int:
         if formats:
             results = []
             for fmt in formats:
-                stage = pipeline.new_stage(cfg, fmt, no_upload=args.no_upload, dry_run=args.dry_run)
-                st = pipeline.run_stage(cfg, stage, one_step=False, notifier=notifier)
+                stage = pipeline.new_stage(
+                    cfg, fmt, no_upload=args.no_upload, dry_run=args.dry_run,
+                    topic=args.topic, privacy=args.privacy,
+                )
+                st = pipeline.run_stage(cfg, stage, one_step=False, notifier=notifier,
+                                         force_upload=args.force_upload)
                 results.append(_summary(stage, st))
             print("\n=== Summary ===")
             print(json.dumps(results, indent=2))
             return 0
 
         stage = _resolve_stage(cfg, args)
-        st = pipeline.run_stage(cfg, stage, one_step=args.step, notifier=notifier)
+        st = pipeline.run_stage(cfg, stage, one_step=args.step, notifier=notifier,
+                                 force_upload=args.force_upload)
         result = _summary(stage, st)
 
         # Clear status line for schedulers to parse.

@@ -1,0 +1,64 @@
+name: Export Analytics & Trends
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Reconstruct YouTube credentials (both channels)
+        env:
+          YT_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_CLIENT_SECRET_JSON_B64 }}
+          YT_TOKEN_JSON_B64: ${{ secrets.YT_TOKEN_JSON_B64 }}
+          YT_MEDIMYTH_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_MEDIMYTH_CLIENT_SECRET_JSON_B64 }}
+          YT_MEDIMYTH_TOKEN_JSON_B64: ${{ secrets.YT_MEDIMYTH_TOKEN_JSON_B64 }}
+        run: |
+          mkdir -p secrets channels/medimyth/secrets
+          echo "$YT_CLIENT_SECRET_JSON_B64" | base64 -d > secrets/client_secret.json
+          echo "$YT_TOKEN_JSON_B64" | base64 -d > secrets/token.json
+          echo "$YT_MEDIMYTH_CLIENT_SECRET_JSON_B64" | base64 -d > channels/medimyth/secrets/client_secret.json
+          echo "$YT_MEDIMYTH_TOKEN_JSON_B64" | base64 -d > channels/medimyth/secrets/token.json
+
+      - name: Export analytics + trends (both channels) and merge
+        run: |
+          # playlistItems.list (1 quota unit) + videos.list (1 unit/50 ids) per
+          # channel, 4x/day across 2 channels — well under YouTube's 10k/day cap.
+          python scripts/export_analytics.py --label histold
+          python scripts/export_analytics.py --config channels/medimyth/config.yaml --label medimyth
+          python scripts/merge_channel_json.py --labels histold,medimyth --out data/analytics.json \
+            data/analytics.json channels/medimyth/data/analytics.json
+
+          python scripts/export_trends.py --label histold
+          python scripts/export_trends.py --config channels/medimyth/config.yaml --label medimyth
+          python scripts/merge_channel_json.py --labels histold,medimyth --out data/trends.json \
+            data/trends.json channels/medimyth/data/trends.json
+
+      - name: Commit exports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/analytics.json data/trends.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh analytics + trends [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

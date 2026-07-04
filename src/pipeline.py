@@ -33,13 +33,19 @@ def _out_root(cfg: Config) -> Path:
     return base_dir() / cfg.get("output.dir", "output")
 
 
-def new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool) -> Path:
+def new_stage(
+    cfg: Config,
+    fmt: str,
+    *,
+    no_upload: bool,
+    dry_run: bool,
+    topic: str | None = None,
+    privacy: str | None = None,
+) -> Path:
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     stage = _out_root(cfg) / f"{ts}_{fmt}"
     stage.mkdir(parents=True, exist_ok=True)
     target = ["script"] if dry_run else list(STEP_ORDER)
-    if no_upload and "upload" in target:
-        target.remove("upload")
     state = {
         "fmt": fmt,
         "created": ts,
@@ -47,9 +53,16 @@ def new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool) -> Path:
         "done": [],
         "complete": False,
         "error": None,
+        "no_upload": no_upload,
+        "overrides": {"topic": topic, "privacy": privacy},
     }
     save_state(stage, state)
     return stage
+
+
+def stage_path(cfg: Config, name: str) -> Path:
+    """Resolve an explicit stage directory by name (bypasses active-stage lookup)."""
+    return _out_root(cfg) / name
 
 
 def state_path(stage: Path) -> Path:
@@ -115,7 +128,8 @@ def _effective_mode(cfg: Config, fmt: str) -> str:
 def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     from .script_generator import generate_script
 
-    script = generate_script(cfg, st["fmt"])
+    overrides = st.get("overrides", {})
+    script = generate_script(cfg, st["fmt"], topic_override=overrides.get("topic"))
     st["script"] = script.to_dict()
     st["title"] = script.title
     (stage / "script.json").write_text(json.dumps(script.to_dict(), indent=2), encoding="utf-8")
@@ -126,7 +140,7 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
                 "description": script.description,
                 "tags": script.tags,
                 "format": st["fmt"],
-                "privacy_status": cfg.get("youtube.privacy_status", "private"),
+                "privacy_status": overrides.get("privacy") or cfg.get("youtube.privacy_status", "private"),
             },
             indent=2,
         ),
@@ -227,7 +241,11 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
     from .youtube_uploader import upload_video
 
     sc = st["script"]
-    vid = upload_video(cfg, stage / "video.mp4", sc["title"], sc["description"], sc["tags"])
+    privacy_override = st.get("overrides", {}).get("privacy")
+    vid = upload_video(
+        cfg, stage / "video.mp4", sc["title"], sc["description"], sc["tags"],
+        privacy_override=privacy_override,
+    )
     st["youtube_id"] = vid
     st["youtube_url"] = f"https://youtu.be/{vid}"
 
@@ -246,13 +264,35 @@ STEP_FUNCS = {
 # --------------------------------------------------------------------------- #
 # runner
 # --------------------------------------------------------------------------- #
-def run_stage(cfg: Config, stage: Path, *, one_step: bool, notifier=None) -> dict:
+def _skip_upload(st: dict) -> bool:
+    return bool(st.get("no_upload")) and "upload" not in st.get("done", [])
+
+
+def _pending_steps(st: dict) -> list[str]:
+    skip = _skip_upload(st)
+    return [s for s in st["target_steps"] if s not in st["done"] and not (s == "upload" and skip)]
+
+
+def _is_satisfied(st: dict) -> bool:
+    skip = _skip_upload(st)
+    return all(s in st["done"] for s in st["target_steps"] if not (s == "upload" and skip))
+
+
+def run_stage(cfg: Config, stage: Path, *, one_step: bool, notifier=None, force_upload: bool = False) -> dict:
     """Execute pending steps for a stage. If one_step, do exactly one then return.
 
+    force_upload reopens a stage that previously finished with no_upload=True
+    (its "upload" step was skipped, not failed) so the upload step now runs —
+    used by the approval-queue flow after a human approves a rendered draft.
     Returns the (updated) state dict. Sends notifications on terminal events.
     """
     st = load_state(stage)
-    pending = [s for s in st["target_steps"] if s not in st["done"]]
+    if force_upload and st.get("no_upload"):
+        st["no_upload"] = False
+        st["complete"] = False
+        save_state(stage, st)
+
+    pending = _pending_steps(st)
 
     for step in pending:
         print(f"  → step: {step}")
@@ -272,10 +312,13 @@ def run_stage(cfg: Config, stage: Path, *, one_step: bool, notifier=None) -> dic
             break
 
     # Completion handling
-    if all(s in st["done"] for s in st["target_steps"]) and not st.get("complete"):
+    if _is_satisfied(st) and not st.get("complete"):
         st["complete"] = True
         save_state(stage, st)
-        topics.record_topic(st.get("title", "untitled"), st["fmt"])
+        if not st.get("topic_recorded"):
+            topics.record_topic(st.get("title", "untitled"), st["fmt"])
+            st["topic_recorded"] = True
+            save_state(stage, st)
         if notifier is not None:
             notifier.notify_success(
                 st["fmt"], st.get("title", ""), st.get("youtube_url")
@@ -318,4 +361,4 @@ def _prune_old_stages(cfg: Config, keep: Path | None = None) -> None:
 
 def remaining_steps(stage: Path) -> list[str]:
     st = load_state(stage)
-    return [s for s in st["target_steps"] if s not in st["done"]]
+    return _pending_steps(st)

@@ -1,0 +1,118 @@
+name: Approve Pending Video
+
+# Resumes a stage that was rendered by publish.yml with no_upload=true (an
+# approval-queue draft): downloads that run's artifact, rehydrates the stage
+# directory, and finishes with the upload step.
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Channel the draft belongs to"
+        type: choice
+        options: [histold, medimyth]
+        required: true
+      stage_dir_name:
+        description: "Stage directory name, e.g. 20260704_180000_short"
+        type: string
+        required: true
+      source_run_id:
+        description: "The publish.yml run ID that rendered this draft"
+        type: string
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve channel + config path
+        id: resolve
+        run: |
+          CHANNEL="${{ inputs.channel }}"
+          if [ "$CHANNEL" = "medimyth" ]; then
+            echo "config_path=channels/medimyth/config.yaml" >> "$GITHUB_OUTPUT"
+            echo "base_dir=channels/medimyth" >> "$GITHUB_OUTPUT"
+          else
+            echo "config_path=config.yaml" >> "$GITHUB_OUTPUT"
+            echo "base_dir=." >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Reconstruct YouTube credentials
+        env:
+          YT_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_CLIENT_SECRET_JSON_B64 }}
+          YT_TOKEN_JSON_B64: ${{ secrets.YT_TOKEN_JSON_B64 }}
+          YT_MEDIMYTH_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_MEDIMYTH_CLIENT_SECRET_JSON_B64 }}
+          YT_MEDIMYTH_TOKEN_JSON_B64: ${{ secrets.YT_MEDIMYTH_TOKEN_JSON_B64 }}
+        run: |
+          BASE_DIR="${{ steps.resolve.outputs.base_dir }}"
+          mkdir -p "$BASE_DIR/secrets"
+          if [ "${{ inputs.channel }}" = "medimyth" ]; then
+            echo "$YT_MEDIMYTH_CLIENT_SECRET_JSON_B64" | base64 -d > "$BASE_DIR/secrets/client_secret.json"
+            echo "$YT_MEDIMYTH_TOKEN_JSON_B64" | base64 -d > "$BASE_DIR/secrets/token.json"
+          else
+            echo "$YT_CLIENT_SECRET_JSON_B64" | base64 -d > "$BASE_DIR/secrets/client_secret.json"
+            echo "$YT_TOKEN_JSON_B64" | base64 -d > "$BASE_DIR/secrets/token.json"
+          fi
+          echo "YOUTUBE_CLIENT_SECRET_FILE=$BASE_DIR/secrets/client_secret.json" >> "$GITHUB_ENV"
+
+      - name: Download rendered draft artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: run-${{ inputs.channel }}-${{ inputs.stage_dir_name }}
+          path: ${{ steps.resolve.outputs.base_dir }}/output/${{ inputs.stage_dir_name }}
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resume with upload
+        run: |
+          python -m src.main --config "${{ steps.resolve.outputs.config_path }}" \
+            --stage "${{ inputs.stage_dir_name }}" --resume --force-upload
+
+      - name: Remove entry from pending approvals
+        run: |
+          python - <<'PYEOF'
+          import json
+          from pathlib import Path
+
+          path = Path("data/pending_approvals.json")
+          if path.exists():
+              entries = json.loads(path.read_text())
+              entries = [e for e in entries if e.get("stage_dir_name") != "${{ inputs.stage_dir_name }}"]
+              path.write_text(json.dumps(entries, indent=2))
+          PYEOF
+
+      - name: Commit approval queue + dedup state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pending_approvals.json data/used_topics.json channels/*/data/used_topics.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: approve + upload ${{ inputs.stage_dir_name }} [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

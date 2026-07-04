@@ -86,6 +86,7 @@ def upload_video(
     description: str,
     tags: list[str],
     thumbnail_path: Path | None = None,
+    privacy_override: str | None = None,
 ) -> str:
     """Upload and return the new video ID. Honors config privacy/category."""
     from googleapiclient.discovery import build
@@ -115,7 +116,7 @@ def upload_video(
             "categoryId": str(cfg.get("youtube.category_id", "27")),
         },
         "status": {
-            "privacyStatus": cfg.get("youtube.privacy_status", "private"),
+            "privacyStatus": privacy_override or cfg.get("youtube.privacy_status", "private"),
             "selfDeclaredMadeForKids": bool(cfg.get("youtube.made_for_kids", False)),
         },
     }

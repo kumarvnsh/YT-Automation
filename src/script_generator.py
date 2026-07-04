@@ -47,7 +47,7 @@ _SYSTEM = (
 )
 
 
-def _build_prompt(cfg: Config, fmt: str) -> str:
+def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> str:
     persona = cfg.get("channel.persona", "").strip()
     if fmt == "short":
         secs = cfg.get("script.shorts_target_seconds", 45)
@@ -59,12 +59,16 @@ def _build_prompt(cfg: Config, fmt: str) -> str:
     avoid = recent_titles()
     avoid_block = "\n".join(f"- {t}" for t in avoid) if avoid else "(none yet)"
 
-    # Topic direction: trend-aware signals, or the curated angle bank.
-    source = cfg.get("channel.topic_source", "angles")
-    if source in ("trends", "on_this_day", "blend"):
-        direction = _trend_direction(cfg, source)
+    # Topic direction: an explicit override wins; otherwise trend-aware
+    # signals, or the curated angle bank.
+    if topic_override:
+        direction = f"Today's REQUIRED topic (do not deviate): {topic_override}"
     else:
-        direction = f"Today's creative angle to explore: {pick_angle(cfg)}"
+        source = cfg.get("channel.topic_source", "angles")
+        if source in ("trends", "on_this_day", "blend"):
+            direction = _trend_direction(cfg, source)
+        else:
+            direction = f"Today's creative angle to explore: {pick_angle(cfg)}"
 
     return f"""{persona}
 
@@ -171,9 +175,9 @@ def _call_openai(cfg: Config, prompt: str) -> str:
     return resp.choices[0].message.content or ""
 
 
-def generate_script(cfg: Config, fmt: str) -> Script:
+def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) -> Script:
     """Generate a Script for fmt in {'short', 'long'}."""
-    prompt = _build_prompt(cfg, fmt)
+    prompt = _build_prompt(cfg, fmt, topic_override=topic_override)
     provider = cfg.get("script.provider", "anthropic")
     raw = _call_anthropic(cfg, prompt) if provider == "anthropic" else _call_openai(cfg, prompt)
     data = _extract_json(raw)
