@@ -3,9 +3,10 @@ name: Publish Video
 on:
   schedule:
     # Three daily Histold runs. Times shown in IST.
-    - cron: "0 7 * * *"    # 12:30pm IST
-    - cron: "0 13 * * *"   # 6:30pm IST
-    - cron: "0 16 * * *"   # 9:30pm IST
+    # Avoid :00 UTC because GitHub may delay/drop jobs at top-of-hour load spikes.
+    - cron: "7 7 * * *"    # 12:37pm IST
+    - cron: "7 13 * * *"   # 6:37pm IST
+    - cron: "7 16 * * *"   # 9:37pm IST
   workflow_dispatch:
     inputs:
       format:
