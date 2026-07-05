@@ -68,7 +68,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          WINDOW_MIN=165  # < 3h so the guard never swallows the next real slot (13:07 -> 16:07)
+          WINDOW_MIN=45  # NOTE: GH backup cron often fires 47-204min late — outside this window it WILL duplicate
           NOW=$(date -u +%s)
           RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/publish.yml/runs?per_page=20" \
             --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | "\(.status) \(.conclusion) \(.created_at)"')
