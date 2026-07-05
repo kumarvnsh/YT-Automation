@@ -32,6 +32,10 @@ on:
         description: "Render but don't upload (approval-queue draft)"
         type: boolean
         default: false
+      scheduled:
+        description: "Set by the external cron trigger — enables the duplicate-slot guard"
+        type: boolean
+        default: false
 
 concurrency:
   group: publish-histold
@@ -39,6 +43,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write  # duplicate-slot guard lists runs and cancels its own
 
 jobs:
   publish:
@@ -53,6 +58,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # GitHub cron is kept as backup for the external cron trigger. When both
+      # fire for the same slot (GH cron often runs 1-3h late), whichever comes
+      # second must not publish a duplicate. Applies only to schedule events and
+      # dispatches marked scheduled=true — manual dashboard runs are never skipped.
+      - name: Duplicate-slot guard
+        if: github.event_name == 'schedule' || github.event.inputs.scheduled == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          WINDOW_MIN=165  # < 3h so the guard never swallows the next real slot (13:07 -> 16:07)
+          NOW=$(date -u +%s)
+          RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/publish.yml/runs?per_page=20" \
+            --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | "\(.status) \(.conclusion) \(.created_at)"')
+          while read -r STATUS CONCLUSION CREATED; do
+            [ -z "$STATUS" ] && continue
+            if [ "$STATUS" = "queued" ] || [ "$STATUS" = "in_progress" ]; then
+              echo "Another publish run is already active ($CREATED) — skipping this one."
+              gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
+              sleep 60; exit 1
+            fi
+            if [ "$STATUS" = "completed" ] && [ "$CONCLUSION" = "success" ]; then
+              AGE_MIN=$(( (NOW - $(date -u -d "$CREATED" +%s)) / 60 ))
+              if [ "$AGE_MIN" -lt "$WINDOW_MIN" ]; then
+                echo "Slot already published ${AGE_MIN}min ago ($CREATED) — skipping duplicate."
+                gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
+                sleep 60; exit 1
+              fi
+            fi
+          done <<< "$RUNS"
+          echo "No recent publish for this slot — proceeding."
 
       - uses: actions/setup-python@v5
         with:
