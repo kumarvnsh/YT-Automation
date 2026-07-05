@@ -240,7 +240,31 @@ document.getElementById("videoNext").addEventListener("click", () => {
   renderVideoPage();
 });
 
+/* Topics published from the trends panel are marked "used" in localStorage so
+   the panel rotates the next fresh one in. Optimistic: marked on dispatch, not
+   on upload completion. */
+const USED_TRENDS_KEY = "ytauto_used_trends";
+const TREND_DISPLAY_LIMIT = 5;
+let lastTrends = null; // cached so a publish click can re-render
+
+function getUsedTrends() {
+  try {
+    return JSON.parse(localStorage.getItem(USED_TRENDS_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function markTrendUsed(topic, poolStillPresent) {
+  const used = new Set(getUsedTrends());
+  used.add(topic);
+  // Prune entries no longer in the current pool so storage stays bounded.
+  const pruned = [...used].filter((t) => poolStillPresent.has(t));
+  localStorage.setItem(USED_TRENDS_KEY, JSON.stringify(pruned));
+}
+
 function renderTrends(trends) {
+  lastTrends = trends;
   const el = document.getElementById("trendsPanel");
   const channels = (trends && trends.channels) || {};
   const keys = Object.keys(channels);
@@ -248,19 +272,68 @@ function renderTrends(trends) {
     el.innerHTML = `<div class="empty-state"><strong>No data yet</strong>Connect the repo in Settings to load trends.json</div>`;
     return;
   }
+  const used = new Set(getUsedTrends());
+
   el.innerHTML = keys
     .map((key) => {
       const c = channels[key];
-      const otd = (c.on_this_day || []).slice(0, 5);
+      const pool = (c.on_this_day || []).filter((e) => !used.has(e));
+      const shown = pool.slice(0, TREND_DISPLAY_LIMIT);
+      const rows = shown.length
+        ? shown
+            .map(
+              (e) => `
+          <li class="trend-list__item">
+            <span class="trend-list__text">${escapeHtml(e)}</span>
+            <button class="btn btn--primary trend-publish" data-topic="${escapeHtml(e)}">▶ Publish</button>
+          </li>`
+            )
+            .join("")
+        : `<li class="trend-list__empty">All trends published — refreshes on the next analytics run.</li>`;
       return `
       <div class="trend-channel">
         <h3>${key} — ${escapeHtml(c.date || "")}</h3>
-        <ul class="trend-list">
-          ${otd.map((e) => `<li>${escapeHtml(e)}</li>`).join("") || "<li>no on-this-day data</li>"}
-        </ul>
+        <ul class="trend-list">${rows}</ul>
       </div>`;
     })
     .join("");
+
+  el.querySelectorAll(".trend-publish").forEach((btn) => {
+    btn.addEventListener("click", () => publishTrend(btn.dataset.topic, btn));
+  });
+}
+
+async function publishTrend(topic, btn) {
+  const s = getSettings();
+  if (!isConfigured(s)) {
+    alert("Configure Settings first (owner/repo/PAT).");
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = "Dispatching…";
+  try {
+    await dispatchWorkflow(s, "publish.yml", {
+      format: "short",
+      topic,
+      privacy_status: "",
+      dry_run: "false",
+      no_upload: "false",
+    });
+    // Collect every topic currently in any channel's pool so pruning keeps
+    // still-relevant used entries and drops stale ones.
+    const poolStillPresent = new Set();
+    const channels = (lastTrends && lastTrends.channels) || {};
+    for (const key of Object.keys(channels)) {
+      (channels[key].on_this_day || []).forEach((e) => poolStillPresent.add(e));
+    }
+    markTrendUsed(topic, poolStillPresent);
+    renderTrends(lastTrends); // next pooled trend rotates in
+    setTimeout(() => loadRuns(getSettings(), 1), 4000);
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = "▶ Publish";
+    alert("Failed to dispatch: " + err.message);
+  }
 }
 
 function renderStatsTicker(allVideos) {
