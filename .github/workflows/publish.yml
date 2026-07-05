@@ -1,12 +1,9 @@
 name: Publish Video
 
 on:
-  schedule:
-    # Three daily Histold runs. Times shown in IST.
-    # Avoid :00 UTC because GitHub may delay/drop jobs at top-of-hour load spikes.
-    - cron: "7 7 * * *"    # 12:37pm IST
-    - cron: "7 13 * * *"   # 6:37pm IST
-    - cron: "7 16 * * *"   # 9:37pm IST
+  # Scheduling is handled externally by cron-job.org (12:37pm/6:37pm/9:37pm IST),
+  # which POSTs to this workflow's dispatches endpoint with inputs.scheduled=true.
+  # GitHub's own cron was dropped: it fired 47-204min late or not at all.
   workflow_dispatch:
     inputs:
       format:
@@ -59,16 +56,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      # GitHub cron is kept as backup for the external cron trigger. When both
-      # fire for the same slot (GH cron often runs 1-3h late), whichever comes
-      # second must not publish a duplicate. Applies only to schedule events and
-      # dispatches marked scheduled=true — manual dashboard runs are never skipped.
+      # Protects against double-fire of the external cron trigger (retries,
+      # accidental double dispatch). Applies only to dispatches marked
+      # scheduled=true — manual dashboard runs are never skipped.
       - name: Duplicate-slot guard
-        if: github.event_name == 'schedule' || github.event.inputs.scheduled == 'true'
+        if: github.event.inputs.scheduled == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          WINDOW_MIN=45  # NOTE: GH backup cron often fires 47-204min late — outside this window it WILL duplicate
+          WINDOW_MIN=45
           NOW=$(date -u +%s)
           RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/publish.yml/runs?per_page=20" \
             --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | "\(.status) \(.conclusion) \(.created_at)"')
