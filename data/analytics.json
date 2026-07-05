@@ -2,14 +2,23 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-04T19:13:35.633702+00:00",
+      "updated": "2026-07-05T03:25:04.827753+00:00",
       "videos": [
+        {
+          "id": "hsGjxllQcRM",
+          "title": "He Sold a 'University' That Wasn't One \u2014 And Paid $25 Million",
+          "publishedAt": "2026-07-05T01:30:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/hsGjxllQcRM/mqdefault.jpg",
+          "views": 469,
+          "likes": 20,
+          "comments": 0
+        },
         {
           "id": "AOltRhgt6C8",
           "title": "Why John Adams Was the Real Champion of Independence #History #FoundingFathers #USA",
           "publishedAt": "2026-07-04T17:37:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AOltRhgt6C8/mqdefault.jpg",
-          "views": 2,
+          "views": 4,
           "likes": 0,
           "comments": 0
         },
@@ -18,34 +27,25 @@
           "title": "A Bored Girl on a Boat Inspired the Most Surreal Story Ever Written",
           "publishedAt": "2026-07-04T16:56:36Z",
           "thumbnail": "https://i.ytimg.com/vi/I95HH0VYSWA/mqdefault.jpg",
-          "views": 93,
-          "likes": 4,
-          "comments": 2
-        },
-        {
-          "id": "hsGjxllQcRM",
-          "title": "He Sold a 'University' That Wasn't One \u2014 And Paid $25 Million",
-          "publishedAt": "2026-07-04T16:24:16Z",
-          "thumbnail": "https://i9.ytimg.com/vi/hsGjxllQcRM/mqdefault.jpg?sqp=CIi1pdIG&rs=AOn4CLAzYTzMo8NVp9E0c4W6mYcZtL5WkQ",
-          "views": 0,
-          "likes": 0,
-          "comments": 0
+          "views": 660,
+          "likes": 35,
+          "comments": 3
         },
         {
           "id": "lWEng1urs5Y",
           "title": "She Took the Photo That Unlocked DNA \u2014 Then Was Written Out of History",
           "publishedAt": "2026-07-04T16:18:41Z",
           "thumbnail": "https://i.ytimg.com/vi/lWEng1urs5Y/mqdefault.jpg",
-          "views": 413,
-          "likes": 27,
-          "comments": 0
+          "views": 1006,
+          "likes": 46,
+          "comments": 1
         },
         {
           "id": "kTKnlxWUZTM",
           "title": "NASA's $265M Mars Lander Was Guided by a 1997 Nintendo-Level Computer",
           "publishedAt": "2026-07-04T14:43:27Z",
           "thumbnail": "https://i.ytimg.com/vi/kTKnlxWUZTM/mqdefault.jpg",
-          "views": 595,
+          "views": 824,
           "likes": 21,
           "comments": 0
         },
@@ -54,7 +54,7 @@
           "title": "George Rogers Clark's most daring move #history #shorts #military",
           "publishedAt": "2026-07-04T13:11:46Z",
           "thumbnail": "https://i.ytimg.com/vi/ofPlqOKT5EI/mqdefault.jpg",
-          "views": 1101,
+          "views": 1125,
           "likes": 22,
           "comments": 0
         },
@@ -62,7 +62,7 @@
           "id": "Pu4tUGOZaZ0",
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-04T12:55:21Z",
-          "thumbnail": "https://i9.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg?sqp=CIi1pdIG&rs=AOn4CLAUO4Z-dUlErXWGBQdNx0peoyYEuw",
+          "thumbnail": "https://i9.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg?sqp=CIydp9IG&rs=AOn4CLB8NNdAf-mXD_E3H-FEN1RS5wdp2w",
           "views": 0,
           "likes": 0,
           "comments": 0
@@ -72,8 +72,8 @@
           "title": "America Doubled in Size Overnight \u2014 And It Almost Didn't Happen",
           "publishedAt": "2026-07-04T11:39:02Z",
           "thumbnail": "https://i.ytimg.com/vi/kc_cez1PROQ/mqdefault.jpg",
-          "views": 208,
-          "likes": 10,
+          "views": 416,
+          "likes": 16,
           "comments": 0
         },
         {
@@ -81,7 +81,7 @@
           "title": "She Cured a Disease at 23 \u2014 Then Someone Erased Her Name",
           "publishedAt": "2026-07-04T09:17:25Z",
           "thumbnail": "https://i.ytimg.com/vi/k538gxMQ4y0/mqdefault.jpg",
-          "views": 984,
+          "views": 991,
           "likes": 10,
           "comments": 0
         },
@@ -90,7 +90,7 @@
           "title": "Why Your Paycheck Is Literally Named After Salt",
           "publishedAt": "2026-07-04T08:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/ndY05QQm-ug/mqdefault.jpg",
-          "views": 466,
+          "views": 472,
           "likes": 4,
           "comments": 0
         },
@@ -99,7 +99,7 @@
           "title": "They Invented Writing\u2014Then Disappeared #historylesson #ancient #facts",
           "publishedAt": "2026-07-04T07:03:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Ya3QulUczbg/mqdefault.jpg",
-          "views": 1135,
+          "views": 1143,
           "likes": 29,
           "comments": 0
         },
@@ -108,7 +108,7 @@
           "title": "Napoleon Was NOT Short \u2014 Here's Why Everyone Thinks He Was",
           "publishedAt": "2026-07-04T06:31:33Z",
           "thumbnail": "https://i.ytimg.com/vi/hqXY7D0BePA/mqdefault.jpg",
-          "views": 559,
+          "views": 590,
           "likes": 21,
           "comments": 0
         },
@@ -225,7 +225,7 @@
           "title": "Vikings Never Wore Horned Helmets \ud83e\ude96 #shorts",
           "publishedAt": "2026-06-28T07:56:54Z",
           "thumbnail": "https://i.ytimg.com/vi/BVEM8ZL8X8A/mqdefault.jpg",
-          "views": 1396,
+          "views": 1397,
           "likes": 16,
           "comments": 0,
           "avg_view_pct": 65.48,
