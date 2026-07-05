@@ -173,16 +173,32 @@ function renderKpis(analytics) {
   return allVideos;
 }
 
+const VIDEO_PAGE_SIZE = 10;
+let videoPageItems = [];
+let videoPage = 1;
+
 function renderVideoList(allVideos) {
   const el = document.getElementById("videoList");
   document.getElementById("videoCount").textContent = allVideos.length ? `${allVideos.length} videos` : "";
   if (!allVideos.length) {
     el.innerHTML = `<div class="empty-state"><strong>No videos yet</strong>Once a run uploads, it'll show up here.</div>`;
+    videoPageItems = [];
+    document.getElementById("videoPagination").style.display = "none";
     return;
   }
-  const sorted = [...allVideos].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-  el.innerHTML = sorted
-    .slice(0, 25)
+  videoPageItems = [...allVideos].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+  videoPage = 1;
+  renderVideoPage();
+}
+
+function renderVideoPage() {
+  const el = document.getElementById("videoList");
+  const totalPages = Math.max(1, Math.ceil(videoPageItems.length / VIDEO_PAGE_SIZE));
+  videoPage = Math.min(Math.max(1, videoPage), totalPages);
+  const start = (videoPage - 1) * VIDEO_PAGE_SIZE;
+  const pageItems = videoPageItems.slice(start, start + VIDEO_PAGE_SIZE);
+
+  el.innerHTML = pageItems
     .map((v) => {
       const date = v.publishedAt ? new Date(v.publishedAt).toLocaleDateString() : "";
       const retention = Number.isFinite(Number(v.avg_view_pct))
@@ -207,7 +223,22 @@ function renderVideoList(allVideos) {
       </a>`;
     })
     .join("");
+
+  const pagination = document.getElementById("videoPagination");
+  pagination.style.display = totalPages > 1 ? "flex" : "none";
+  document.getElementById("videoPageLabel").textContent = `Page ${videoPage} of ${totalPages}`;
+  document.getElementById("videoPrev").disabled = videoPage <= 1;
+  document.getElementById("videoNext").disabled = videoPage >= totalPages;
 }
+
+document.getElementById("videoPrev").addEventListener("click", () => {
+  videoPage -= 1;
+  renderVideoPage();
+});
+document.getElementById("videoNext").addEventListener("click", () => {
+  videoPage += 1;
+  renderVideoPage();
+});
 
 function renderTrends(trends) {
   const el = document.getElementById("trendsPanel");
@@ -232,18 +263,26 @@ function renderTrends(trends) {
     .join("");
 }
 
-function renderTicker(trends) {
+function renderStatsTicker(allVideos) {
   const el = document.getElementById("tickerTrack");
-  const channels = (trends && trends.channels) || {};
-  const terms = [];
-  for (const key of Object.keys(channels)) {
-    (channels[key].trends || []).slice(0, 10).forEach((t) => terms.push(t));
-  }
-  if (!terms.length) {
-    el.innerHTML = "<span>No trend signals yet — run the analytics workflow.</span>";
+  if (!allVideos.length) {
+    el.innerHTML = "<span>No stats yet — waiting on analytics.json.</span>";
     return;
   }
-  const doubled = terms.concat(terms); // seamless loop
+  const totalViews = allVideos.reduce((sum, v) => sum + (v.views || 0), 0);
+  const totalLikes = allVideos.reduce((sum, v) => sum + (v.likes || 0), 0);
+  const views48h = allVideos
+    .filter((v) => daysAgo(v.publishedAt) <= 2)
+    .reduce((sum, v) => sum + (v.views || 0), 0);
+  const subsGained = allVideos.reduce((sum, v) => sum + (Number(v.subs_gained) || 0), 0);
+
+  const items = [
+    `TOTAL VIEWS ${fmtNum(totalViews)}`,
+    `VIEWS (48H) ${fmtNum(views48h)}`,
+    `LIKES ${fmtNum(totalLikes)}`,
+    `SUBS GAINED ${fmtNum(subsGained)}`,
+  ];
+  const doubled = items.concat(items); // seamless loop
   el.innerHTML = doubled.map((t) => `<span>${escapeHtml(t)}</span>`).join("");
 }
 
@@ -356,16 +395,34 @@ function statusPill(run) {
   return `<span class="status-pill neutral">${run.conclusion || "unknown"}</span>`;
 }
 
-async function loadRuns(s) {
+const RUN_PAGE_SIZE = 10;
+let runPage = 1;
+let runHasNext = false;
+
+function parseLinkHeader(header) {
+  const rels = {};
+  if (!header) return rels;
+  header.split(",").forEach((part) => {
+    const match = part.match(/<([^>]+)>;\s*rel="([^"]+)"/);
+    if (match) rels[match[2]] = match[1];
+  });
+  return rels;
+}
+
+async function loadRuns(s, page = 1) {
   const el = document.getElementById("runList");
+  const pagination = document.getElementById("runPagination");
   if (!isConfigured(s)) return;
   try {
-    const res = await fetch(apiUrl(s, "/actions/runs?per_page=10"), { headers: ghHeaders(s) });
+    const res = await fetch(apiUrl(s, `/actions/runs?per_page=${RUN_PAGE_SIZE}&page=${page}`), { headers: ghHeaders(s) });
     if (!res.ok) throw new Error(`${res.status}`);
     const data = await res.json();
     const runs = data.workflow_runs || [];
+    runPage = page;
+    runHasNext = Boolean(parseLinkHeader(res.headers.get("link")).next);
     if (!runs.length) {
       el.innerHTML = `<div class="empty-state"><strong>No runs yet</strong>Trigger one from Dispatch Run.</div>`;
+      pagination.style.display = "none";
       return;
     }
     el.innerHTML = runs
@@ -377,12 +434,20 @@ async function loadRuns(s) {
           <span class="run-row__meta">#${r.run_number}</span>
         </div>`)
       .join("");
+
+    pagination.style.display = runPage > 1 || runHasNext ? "flex" : "none";
+    document.getElementById("runPageLabel").textContent = `Page ${runPage}`;
+    document.getElementById("runPrev").disabled = runPage <= 1;
+    document.getElementById("runNext").disabled = !runHasNext;
   } catch (err) {
     el.innerHTML = `<div class="empty-state"><strong>Couldn't load runs</strong>${escapeHtml(err.message)}</div>`;
+    pagination.style.display = "none";
   }
 }
 
-document.getElementById("btnRefreshRuns").addEventListener("click", () => loadRuns(getSettings()));
+document.getElementById("btnRefreshRuns").addEventListener("click", () => loadRuns(getSettings(), 1));
+document.getElementById("runPrev").addEventListener("click", () => loadRuns(getSettings(), runPage - 1));
+document.getElementById("runNext").addEventListener("click", () => loadRuns(getSettings(), runPage + 1));
 
 /* ---------------------------------------------------------- */
 /* Boot                                                         */
@@ -405,10 +470,10 @@ async function boot() {
     if (analytics) {
       const allVideos = renderKpis(analytics);
       renderVideoList(allVideos);
+      renderStatsTicker(allVideos);
     }
     if (trends) {
       renderTrends(trends);
-      renderTicker(trends);
     }
     renderApprovals(approvals || [], s);
     setConn("ok", `linked to ${s.owner}/${s.repo}`);

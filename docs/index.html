@@ -22,7 +22,7 @@
 
   <div class="ticker">
     <div class="ticker__track" id="tickerTrack">
-      <span>Loading trending signals&hellip;</span>
+      <span>Loading stats&hellip;</span>
     </div>
   </div>
 
@@ -45,6 +45,11 @@
           </div>
           <div class="panel__body panel__body--tight" id="videoList">
             <div class="empty-state"><strong>No data yet</strong>Connect the repo in Settings to load analytics.json</div>
+          </div>
+          <div class="pagination" id="videoPagination" style="display:none;">
+            <button class="btn btn--ghost" id="videoPrev">‹ Prev</button>
+            <span class="pagination__label" id="videoPageLabel"></span>
+            <button class="btn btn--ghost" id="videoNext">Next ›</button>
           </div>
         </div>
 
@@ -108,6 +113,11 @@
           </div>
           <div class="panel__body panel__body--tight" id="runList">
             <div class="empty-state"><strong>No runs loaded</strong>Connect in Settings, then refresh.</div>
+          </div>
+          <div class="pagination" id="runPagination" style="display:none;">
+            <button class="btn btn--ghost" id="runPrev">‹ Prev</button>
+            <span class="pagination__label" id="runPageLabel"></span>
+            <button class="btn btn--ghost" id="runNext">Next ›</button>
           </div>
         </div>
 

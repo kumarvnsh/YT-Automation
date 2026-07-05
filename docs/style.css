@@ -204,6 +204,12 @@ body::before {
   display: grid;
   gap: 20px;
 }
+/* Grid items default to min-width:auto (= content min-content), which lets a
+   nowrap title deep inside bubble up and blow out every ancestor grid track.
+   Force each level back down to the track's actual width. */
+.deck > *,
+.grid-main > *,
+.panel { min-width: 0; }
 
 .kpi-row {
   display: grid;
@@ -516,4 +522,76 @@ footer.foot {
   text-transform: uppercase;
   color: var(--ink-faint);
   margin: 4px 0 -6px;
+}
+
+/* ---------------------------------------------------------- */
+/* Pagination                                                   */
+/* ---------------------------------------------------------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--line);
+}
+.pagination__label {
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 0.5px;
+}
+.pagination .btn {
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+/* ---------------------------------------------------------- */
+/* Mobile                                                       */
+/* ---------------------------------------------------------- */
+@media (max-width: 640px) {
+  .masthead {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  .masthead__brand h1 { font-size: 22px; }
+  .masthead__status { flex-wrap: wrap; gap: 8px; }
+
+  .ticker__track { font-size: 11px; }
+
+  .deck { padding: 16px 14px 60px; gap: 14px; }
+
+  .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .kpi { padding: 12px 14px; }
+  .kpi__value { font-size: 26px; }
+
+  .panel__head { padding: 12px 14px; }
+  .panel__body { padding: 14px; }
+
+  .form-grid { grid-template-columns: 1fr; }
+  .field.span-2 { grid-column: span 1; }
+
+  .video-row { padding: 10px 14px; gap: 10px; }
+  .video-row__thumb { width: 72px; height: 40px; }
+  .video-row__stats { flex-wrap: wrap; gap: 6px 10px; }
+
+  .run-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "status number"
+      "link link"
+      "meta meta";
+    row-gap: 4px;
+  }
+  .run-row .status-pill { grid-area: status; justify-self: start; }
+  .run-row a { grid-area: link; }
+  .run-row__meta { grid-area: meta; }
+  .run-row__meta:last-of-type { grid-area: number; justify-self: end; }
+
+  .approval-row { flex-wrap: wrap; }
+
+  .pagination { padding: 10px 14px; }
+
+  .modal { width: 94vw; }
+  .modal__body { padding: 16px; }
 }
