@@ -2,15 +2,24 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-06T15:33:09.109725+00:00",
+      "updated": "2026-07-06T19:57:35.148303+00:00",
       "videos": [
+        {
+          "id": "7c7PVFvy4xI",
+          "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
+          "publishedAt": "2026-07-06T16:10:00Z",
+          "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
+          "views": 56,
+          "likes": 3,
+          "comments": 0
+        },
         {
           "id": "Pu4tUGOZaZ0",
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 68,
-          "likes": 0,
+          "views": 128,
+          "likes": 1,
           "comments": 0
         },
         {
@@ -18,8 +27,8 @@
           "title": "He Refused to Move Seats \u2014 The Army Tried to Destroy Him For It",
           "publishedAt": "2026-07-06T13:16:37Z",
           "thumbnail": "https://i.ytimg.com/vi/GJa3gT3ksJU/mqdefault.jpg",
-          "views": 387,
-          "likes": 7,
+          "views": 573,
+          "likes": 9,
           "comments": 0
         },
         {
@@ -27,7 +36,7 @@
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 279,
+          "views": 347,
           "likes": 4,
           "comments": 0
         },
@@ -36,7 +45,7 @@
           "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
-          "views": 614,
+          "views": 615,
           "likes": 18,
           "comments": 1
         },
@@ -45,7 +54,7 @@
           "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
           "publishedAt": "2026-07-06T07:09:42Z",
           "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
-          "views": 581,
+          "views": 587,
           "likes": 12,
           "comments": 5
         },
@@ -54,7 +63,7 @@
           "title": "The General Twice Shivaji's Size Thought He'd Win Easily \u2014 He Was Wrong",
           "publishedAt": "2026-07-06T03:33:13Z",
           "thumbnail": "https://i.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg",
-          "views": 751,
+          "views": 753,
           "likes": 5,
           "comments": 0
         },
@@ -63,7 +72,7 @@
           "title": "England's First Planned Colony in North America Wasn't Where You Think",
           "publishedAt": "2026-07-06T03:24:33Z",
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
-          "views": 652,
+          "views": 650,
           "likes": 10,
           "comments": 1
         },
@@ -72,7 +81,7 @@
           "title": "The Law That Gave American Workers the Right to Fight Back",
           "publishedAt": "2026-07-05T21:21:47Z",
           "thumbnail": "https://i.ytimg.com/vi/LF6m8tqecls/mqdefault.jpg",
-          "views": 923,
+          "views": 917,
           "likes": 10,
           "comments": 0
         },
@@ -81,7 +90,7 @@
           "title": "He Won Wimbledon Five Times in a Row \u2014 Then Walked Away at 26",
           "publishedAt": "2026-07-05T16:09:52Z",
           "thumbnail": "https://i.ytimg.com/vi/-IL2E9HLqB8/mqdefault.jpg",
-          "views": 959,
+          "views": 962,
           "likes": 8,
           "comments": 0
         },
@@ -90,7 +99,7 @@
           "title": "Allies to Enemies: How France Became Britain's Diplomatic Foe in 1940",
           "publishedAt": "2026-07-05T14:48:38Z",
           "thumbnail": "https://i.ytimg.com/vi/ysS4D7Cv9go/mqdefault.jpg",
-          "views": 906,
+          "views": 907,
           "likes": 10,
           "comments": 8
         },
@@ -99,7 +108,7 @@
           "title": "Britain Declared Its Ally an Enemy \u2014 In Under 3 Months",
           "publishedAt": "2026-07-05T14:00:30Z",
           "thumbnail": "https://i.ytimg.com/vi/j3-259R5-Xo/mqdefault.jpg",
-          "views": 963,
+          "views": 962,
           "likes": 20,
           "comments": 0
         },
@@ -108,7 +117,7 @@
           "title": "Alexander the Great May Have Been Buried Alive \u2014 And Known It",
           "publishedAt": "2026-07-05T13:32:06Z",
           "thumbnail": "https://i.ytimg.com/vi/xGk9jhw4Y8A/mqdefault.jpg",
-          "views": 3,
+          "views": 4,
           "likes": 0,
           "comments": 0
         },
@@ -117,7 +126,7 @@
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1218,
+          "views": 1219,
           "likes": 12,
           "comments": 0
         },
@@ -126,9 +135,11 @@
           "title": "The Most Iconic Logo in History Was a Typo Nobody Bothered to Fix",
           "publishedAt": "2026-07-05T05:37:28Z",
           "thumbnail": "https://i.ytimg.com/vi/2Oo9MEQmU8E/mqdefault.jpg",
-          "views": 1209,
+          "views": 1207,
           "likes": 9,
-          "comments": 2
+          "comments": 2,
+          "avg_view_pct": 49.18,
+          "subs_gained": 0
         },
         {
           "id": "hsGjxllQcRM",
@@ -137,7 +148,9 @@
           "thumbnail": "https://i.ytimg.com/vi/hsGjxllQcRM/mqdefault.jpg",
           "views": 988,
           "likes": 31,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 53.49,
+          "subs_gained": 1
         },
         {
           "id": "AOltRhgt6C8",
@@ -146,16 +159,20 @@
           "thumbnail": "https://i.ytimg.com/vi/AOltRhgt6C8/mqdefault.jpg",
           "views": 5,
           "likes": 0,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 25.05,
+          "subs_gained": 0
         },
         {
           "id": "I95HH0VYSWA",
           "title": "A Bored Girl on a Boat Inspired the Most Surreal Story Ever Written",
           "publishedAt": "2026-07-04T16:56:36Z",
           "thumbnail": "https://i.ytimg.com/vi/I95HH0VYSWA/mqdefault.jpg",
-          "views": 952,
-          "likes": 38,
-          "comments": 4
+          "views": 955,
+          "likes": 39,
+          "comments": 4,
+          "avg_view_pct": 61.3,
+          "subs_gained": 3
         },
         {
           "id": "lWEng1urs5Y",
@@ -164,7 +181,9 @@
           "thumbnail": "https://i.ytimg.com/vi/lWEng1urs5Y/mqdefault.jpg",
           "views": 1015,
           "likes": 48,
-          "comments": 1
+          "comments": 1,
+          "avg_view_pct": 63.56,
+          "subs_gained": 3
         },
         {
           "id": "kTKnlxWUZTM",
@@ -173,7 +192,9 @@
           "thumbnail": "https://i.ytimg.com/vi/kTKnlxWUZTM/mqdefault.jpg",
           "views": 827,
           "likes": 21,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 53.0,
+          "subs_gained": 1
         },
         {
           "id": "ofPlqOKT5EI",
@@ -182,7 +203,9 @@
           "thumbnail": "https://i.ytimg.com/vi/ofPlqOKT5EI/mqdefault.jpg",
           "views": 1127,
           "likes": 23,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 54.730000000000004,
+          "subs_gained": 1
         },
         {
           "id": "kc_cez1PROQ",
@@ -191,7 +214,9 @@
           "thumbnail": "https://i.ytimg.com/vi/kc_cez1PROQ/mqdefault.jpg",
           "views": 950,
           "likes": 25,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 56.76,
+          "subs_gained": 0
         },
         {
           "id": "k538gxMQ4y0",
@@ -200,7 +225,9 @@
           "thumbnail": "https://i.ytimg.com/vi/k538gxMQ4y0/mqdefault.jpg",
           "views": 1066,
           "likes": 10,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 40.64,
+          "subs_gained": 0
         },
         {
           "id": "ndY05QQm-ug",
@@ -209,16 +236,20 @@
           "thumbnail": "https://i.ytimg.com/vi/ndY05QQm-ug/mqdefault.jpg",
           "views": 497,
           "likes": 4,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 78.25,
+          "subs_gained": 0
         },
         {
           "id": "Ya3QulUczbg",
           "title": "They Invented Writing\u2014Then Disappeared #historylesson #ancient #facts",
           "publishedAt": "2026-07-04T07:03:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Ya3QulUczbg/mqdefault.jpg",
-          "views": 1168,
+          "views": 1169,
           "likes": 30,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 152.66,
+          "subs_gained": 1
         },
         {
           "id": "hqXY7D0BePA",
@@ -228,8 +259,8 @@
           "views": 672,
           "likes": 24,
           "comments": 0,
-          "avg_view_pct": 34.96,
-          "subs_gained": 0
+          "avg_view_pct": 52.82,
+          "subs_gained": 1
         },
         {
           "id": "ukElNJKTi0E",
@@ -239,7 +270,7 @@
           "views": 41,
           "likes": 2,
           "comments": 0,
-          "avg_view_pct": 17.06,
+          "avg_view_pct": 32.62,
           "subs_gained": 0
         },
         {
@@ -338,7 +369,7 @@
           "views": 1397,
           "likes": 16,
           "comments": 0,
-          "avg_view_pct": 65.48,
+          "avg_view_pct": 65.44,
           "subs_gained": 0
         }
       ]
