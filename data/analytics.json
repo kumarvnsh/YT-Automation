@@ -2,15 +2,33 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-06T03:33:11.585454+00:00",
+      "updated": "2026-07-06T10:22:03.187396+00:00",
       "videos": [
+        {
+          "id": "4RCpWx1IkWo",
+          "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
+          "publishedAt": "2026-07-06T09:26:20Z",
+          "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
+          "views": 313,
+          "likes": 8,
+          "comments": 0
+        },
+        {
+          "id": "mwjWvWVutmM",
+          "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
+          "publishedAt": "2026-07-06T07:09:42Z",
+          "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
+          "views": 432,
+          "likes": 12,
+          "comments": 5
+        },
         {
           "id": "1v8zY1sWPDs",
           "title": "The General Twice Shivaji's Size Thought He'd Win Easily \u2014 He Was Wrong",
-          "publishedAt": "2026-07-06T03:29:21Z",
-          "thumbnail": "https://i9.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg?sqp=CLjCrNIG&rs=AOn4CLBVXhAX2u7viPAf3PgRJp5bBooECA",
-          "views": 1,
-          "likes": 0,
+          "publishedAt": "2026-07-06T03:33:13Z",
+          "thumbnail": "https://i.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg",
+          "views": 739,
+          "likes": 4,
           "comments": 0
         },
         {
@@ -18,16 +36,16 @@
           "title": "England's First Planned Colony in North America Wasn't Where You Think",
           "publishedAt": "2026-07-06T03:24:33Z",
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
-          "views": 80,
-          "likes": 3,
-          "comments": 0
+          "views": 641,
+          "likes": 10,
+          "comments": 1
         },
         {
           "id": "LF6m8tqecls",
           "title": "The Law That Gave American Workers the Right to Fight Back",
           "publishedAt": "2026-07-05T21:21:47Z",
           "thumbnail": "https://i.ytimg.com/vi/LF6m8tqecls/mqdefault.jpg",
-          "views": 913,
+          "views": 923,
           "likes": 10,
           "comments": 0
         },
@@ -36,7 +54,7 @@
           "title": "He Won Wimbledon Five Times in a Row \u2014 Then Walked Away at 26",
           "publishedAt": "2026-07-05T16:09:52Z",
           "thumbnail": "https://i.ytimg.com/vi/-IL2E9HLqB8/mqdefault.jpg",
-          "views": 950,
+          "views": 961,
           "likes": 8,
           "comments": 0
         },
@@ -45,7 +63,7 @@
           "title": "Allies to Enemies: How France Became Britain's Diplomatic Foe in 1940",
           "publishedAt": "2026-07-05T14:48:38Z",
           "thumbnail": "https://i.ytimg.com/vi/ysS4D7Cv9go/mqdefault.jpg",
-          "views": 900,
+          "views": 906,
           "likes": 10,
           "comments": 8
         },
@@ -54,8 +72,8 @@
           "title": "Britain Declared Its Ally an Enemy \u2014 In Under 3 Months",
           "publishedAt": "2026-07-05T14:00:30Z",
           "thumbnail": "https://i.ytimg.com/vi/j3-259R5-Xo/mqdefault.jpg",
-          "views": 952,
-          "likes": 19,
+          "views": 959,
+          "likes": 20,
           "comments": 0
         },
         {
@@ -63,7 +81,7 @@
           "title": "Alexander the Great May Have Been Buried Alive \u2014 And Known It",
           "publishedAt": "2026-07-05T13:32:06Z",
           "thumbnail": "https://i.ytimg.com/vi/xGk9jhw4Y8A/mqdefault.jpg",
-          "views": 2,
+          "views": 3,
           "likes": 0,
           "comments": 0
         },
@@ -72,7 +90,7 @@
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1210,
+          "views": 1217,
           "likes": 12,
           "comments": 0
         },
@@ -81,7 +99,7 @@
           "title": "The Most Iconic Logo in History Was a Typo Nobody Bothered to Fix",
           "publishedAt": "2026-07-05T05:37:28Z",
           "thumbnail": "https://i.ytimg.com/vi/2Oo9MEQmU8E/mqdefault.jpg",
-          "views": 1208,
+          "views": 1209,
           "likes": 9,
           "comments": 2
         },
@@ -90,7 +108,7 @@
           "title": "He Sold a 'University' That Wasn't One \u2014 And Paid $25 Million",
           "publishedAt": "2026-07-05T01:30:28Z",
           "thumbnail": "https://i.ytimg.com/vi/hsGjxllQcRM/mqdefault.jpg",
-          "views": 987,
+          "views": 988,
           "likes": 31,
           "comments": 0
         },
@@ -108,7 +126,7 @@
           "title": "A Bored Girl on a Boat Inspired the Most Surreal Story Ever Written",
           "publishedAt": "2026-07-04T16:56:36Z",
           "thumbnail": "https://i.ytimg.com/vi/I95HH0VYSWA/mqdefault.jpg",
-          "views": 929,
+          "views": 948,
           "likes": 38,
           "comments": 4
         },
@@ -117,8 +135,8 @@
           "title": "She Took the Photo That Unlocked DNA \u2014 Then Was Written Out of History",
           "publishedAt": "2026-07-04T16:18:41Z",
           "thumbnail": "https://i.ytimg.com/vi/lWEng1urs5Y/mqdefault.jpg",
-          "views": 1013,
-          "likes": 47,
+          "views": 1015,
+          "likes": 48,
           "comments": 1
         },
         {
@@ -143,7 +161,7 @@
           "id": "Pu4tUGOZaZ0",
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-04T12:55:21Z",
-          "thumbnail": "https://i9.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg?sqp=CLjCrNIG&rs=AOn4CLDCZLdUzGe-HZYx0e20z2p2YC5KFg",
+          "thumbnail": "https://i9.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg?sqp=CNCCrtIG&rs=AOn4CLA4-hso57Mgh-WZwlRjAnmWY9KK2w",
           "views": 0,
           "likes": 0,
           "comments": 0
@@ -162,7 +180,7 @@
           "title": "She Cured a Disease at 23 \u2014 Then Someone Erased Her Name",
           "publishedAt": "2026-07-04T09:17:25Z",
           "thumbnail": "https://i.ytimg.com/vi/k538gxMQ4y0/mqdefault.jpg",
-          "views": 1039,
+          "views": 1061,
           "likes": 10,
           "comments": 0
         },
@@ -171,7 +189,7 @@
           "title": "Why Your Paycheck Is Literally Named After Salt",
           "publishedAt": "2026-07-04T08:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/ndY05QQm-ug/mqdefault.jpg",
-          "views": 477,
+          "views": 493,
           "likes": 4,
           "comments": 0
         },
@@ -180,7 +198,7 @@
           "title": "They Invented Writing\u2014Then Disappeared #historylesson #ancient #facts",
           "publishedAt": "2026-07-04T07:03:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Ya3QulUczbg/mqdefault.jpg",
-          "views": 1164,
+          "views": 1168,
           "likes": 30,
           "comments": 0
         },
@@ -189,8 +207,8 @@
           "title": "Napoleon Was NOT Short \u2014 Here's Why Everyone Thinks He Was",
           "publishedAt": "2026-07-04T06:31:33Z",
           "thumbnail": "https://i.ytimg.com/vi/hqXY7D0BePA/mqdefault.jpg",
-          "views": 642,
-          "likes": 23,
+          "views": 670,
+          "likes": 24,
           "comments": 0,
           "avg_view_pct": 34.96,
           "subs_gained": 0
@@ -200,7 +218,7 @@
           "title": "The Man Who Faked His Own Death Twice \u2014 Then Spied Against Two Nations",
           "publishedAt": "2026-07-04T06:16:55Z",
           "thumbnail": "https://i.ytimg.com/vi/ukElNJKTi0E/mqdefault.jpg",
-          "views": 40,
+          "views": 41,
           "likes": 2,
           "comments": 0,
           "avg_view_pct": 17.06,
@@ -211,7 +229,7 @@
           "title": "Romans Built Seawalls That Got STRONGER Over Time \u2014 We Forgot How",
           "publishedAt": "2026-07-01T13:08:16Z",
           "thumbnail": "https://i.ytimg.com/vi/4O8YxFwlxp8/mqdefault.jpg",
-          "views": 110,
+          "views": 111,
           "likes": 4,
           "comments": 0,
           "avg_view_pct": 50.690000000000005,
@@ -233,7 +251,7 @@
           "title": "He Left a Key on a Wrapped Photographic Plate \u2014 and Changed Medicine",
           "publishedAt": "2026-06-29T18:11:07Z",
           "thumbnail": "https://i.ytimg.com/vi/QBA1OaAvT9A/mqdefault.jpg",
-          "views": 508,
+          "views": 510,
           "likes": 7,
           "comments": 0,
           "avg_view_pct": 39.47,
@@ -244,7 +262,7 @@
           "title": "Peter the Great Literally Taxed Men for Having a Beard",
           "publishedAt": "2026-06-29T07:39:14Z",
           "thumbnail": "https://i.ytimg.com/vi/ia9dfhTLgGw/mqdefault.jpg",
-          "views": 650,
+          "views": 651,
           "likes": 10,
           "comments": 0,
           "avg_view_pct": 47.05,
@@ -288,7 +306,7 @@
           "title": "The Lincoln\u2013Kennedy Coincidences That Still Baffle Historians",
           "publishedAt": "2026-06-28T08:25:49Z",
           "thumbnail": "https://i.ytimg.com/vi/Yj2OvWfmozc/mqdefault.jpg",
-          "views": 1057,
+          "views": 1058,
           "likes": 31,
           "comments": 0,
           "avg_view_pct": 52.17,
