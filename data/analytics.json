@@ -2,14 +2,32 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-07T14:33:54.357530+00:00",
+      "updated": "2026-07-07T19:55:25.579320+00:00",
       "videos": [
+        {
+          "id": "5xTsaJl1ZoE",
+          "title": "She Was Told Law Firms Don't Hire Women \u2014 Then She Ran the Whole Court",
+          "publishedAt": "2026-07-07T16:09:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
+          "views": 542,
+          "likes": 28,
+          "comments": 0
+        },
+        {
+          "id": "FMAOcUJ4VNk",
+          "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
+          "publishedAt": "2026-07-07T14:50:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
+          "views": 781,
+          "likes": 24,
+          "comments": 0
+        },
         {
           "id": "_vPg1nQAlCc",
           "title": "Outnumbered 10-to-1, They Won Anyway \u2014 With One Desperate Charge",
           "publishedAt": "2026-07-07T13:09:38Z",
           "thumbnail": "https://i.ytimg.com/vi/_vPg1nQAlCc/mqdefault.jpg",
-          "views": 484,
+          "views": 608,
           "likes": 13,
           "comments": 0
         },
@@ -18,8 +36,8 @@
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 927,
-          "likes": 26,
+          "views": 1181,
+          "likes": 23,
           "comments": 5
         },
         {
@@ -27,8 +45,8 @@
           "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
           "publishedAt": "2026-07-07T07:09:24Z",
           "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
-          "views": 716,
-          "likes": 13,
+          "views": 728,
+          "likes": 14,
           "comments": 1
         },
         {
@@ -36,8 +54,8 @@
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 742,
-          "likes": 28,
+          "views": 772,
+          "likes": 30,
           "comments": 0
         },
         {
@@ -45,8 +63,8 @@
           "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
           "publishedAt": "2026-07-07T06:40:49Z",
           "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
-          "views": 627,
-          "likes": 29,
+          "views": 639,
+          "likes": 30,
           "comments": 0
         },
         {
@@ -54,7 +72,7 @@
           "title": "Four Nations Saved a Species \u2014 With the World's First Wildlife Treaty",
           "publishedAt": "2026-07-07T06:21:37Z",
           "thumbnail": "https://i.ytimg.com/vi/vO8dOVuzpEI/mqdefault.jpg",
-          "views": 582,
+          "views": 593,
           "likes": 13,
           "comments": 0
         },
@@ -63,8 +81,8 @@
           "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
           "publishedAt": "2026-07-06T16:10:00Z",
           "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
-          "views": 180,
-          "likes": 4,
+          "views": 210,
+          "likes": 6,
           "comments": 0
         },
         {
@@ -72,8 +90,8 @@
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 172,
-          "likes": 2,
+          "views": 183,
+          "likes": 3,
           "comments": 0
         },
         {
@@ -90,8 +108,8 @@
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 443,
-          "likes": 5,
+          "views": 461,
+          "likes": 7,
           "comments": 0
         },
         {
@@ -99,7 +117,7 @@
           "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
-          "views": 631,
+          "views": 633,
           "likes": 18,
           "comments": 2
         },
@@ -108,7 +126,7 @@
           "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
           "publishedAt": "2026-07-06T07:09:42Z",
           "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
-          "views": 589,
+          "views": 590,
           "likes": 12,
           "comments": 5
         },
@@ -119,7 +137,9 @@
           "thumbnail": "https://i.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg",
           "views": 759,
           "likes": 5,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 38.91,
+          "subs_gained": 0
         },
         {
           "id": "l8zwn_sIlg4",
@@ -128,7 +148,9 @@
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
           "views": 652,
           "likes": 11,
-          "comments": 1
+          "comments": 1,
+          "avg_view_pct": 57.31,
+          "subs_gained": 1
         },
         {
           "id": "LF6m8tqecls",
@@ -137,7 +159,9 @@
           "thumbnail": "https://i.ytimg.com/vi/LF6m8tqecls/mqdefault.jpg",
           "views": 917,
           "likes": 10,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 43.17,
+          "subs_gained": 0
         },
         {
           "id": "-IL2E9HLqB8",
@@ -146,7 +170,9 @@
           "thumbnail": "https://i.ytimg.com/vi/-IL2E9HLqB8/mqdefault.jpg",
           "views": 964,
           "likes": 8,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 42.15,
+          "subs_gained": 0
         },
         {
           "id": "ysS4D7Cv9go",
@@ -155,7 +181,9 @@
           "thumbnail": "https://i.ytimg.com/vi/ysS4D7Cv9go/mqdefault.jpg",
           "views": 905,
           "likes": 10,
-          "comments": 8
+          "comments": 8,
+          "avg_view_pct": 50.57000000000001,
+          "subs_gained": 0
         },
         {
           "id": "j3-259R5-Xo",
@@ -164,7 +192,9 @@
           "thumbnail": "https://i.ytimg.com/vi/j3-259R5-Xo/mqdefault.jpg",
           "views": 963,
           "likes": 20,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 56.56,
+          "subs_gained": 2
         },
         {
           "id": "xGk9jhw4Y8A",
@@ -173,26 +203,30 @@
           "thumbnail": "https://i.ytimg.com/vi/xGk9jhw4Y8A/mqdefault.jpg",
           "views": 4,
           "likes": 0,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 100.0,
+          "subs_gained": 0
         },
         {
           "id": "ongtmecwyME",
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1225,
+          "views": 1226,
           "likes": 12,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 71.95,
+          "subs_gained": 0
         },
         {
           "id": "2Oo9MEQmU8E",
           "title": "The Most Iconic Logo in History Was a Typo Nobody Bothered to Fix",
           "publishedAt": "2026-07-05T05:37:28Z",
           "thumbnail": "https://i.ytimg.com/vi/2Oo9MEQmU8E/mqdefault.jpg",
-          "views": 1207,
+          "views": 1209,
           "likes": 9,
           "comments": 2,
-          "avg_view_pct": 49.18,
+          "avg_view_pct": 55.26,
           "subs_gained": 0
         },
         {
@@ -203,7 +237,7 @@
           "views": 990,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 53.49,
+          "avg_view_pct": 53.66,
           "subs_gained": 1
         },
         {
@@ -222,10 +256,10 @@
           "title": "A Bored Girl on a Boat Inspired the Most Surreal Story Ever Written",
           "publishedAt": "2026-07-04T16:56:36Z",
           "thumbnail": "https://i.ytimg.com/vi/I95HH0VYSWA/mqdefault.jpg",
-          "views": 958,
+          "views": 959,
           "likes": 39,
           "comments": 4,
-          "avg_view_pct": 61.3,
+          "avg_view_pct": 64.05,
           "subs_gained": 3
         },
         {
@@ -236,7 +270,7 @@
           "views": 1016,
           "likes": 48,
           "comments": 1,
-          "avg_view_pct": 63.56,
+          "avg_view_pct": 63.27,
           "subs_gained": 3
         },
         {
@@ -247,7 +281,7 @@
           "views": 828,
           "likes": 21,
           "comments": 0,
-          "avg_view_pct": 53.0,
+          "avg_view_pct": 52.99,
           "subs_gained": 1
         },
         {
@@ -258,7 +292,7 @@
           "views": 1127,
           "likes": 23,
           "comments": 0,
-          "avg_view_pct": 54.730000000000004,
+          "avg_view_pct": 54.81,
           "subs_gained": 1
         },
         {
@@ -269,8 +303,8 @@
           "views": 950,
           "likes": 25,
           "comments": 0,
-          "avg_view_pct": 56.76,
-          "subs_gained": 0
+          "avg_view_pct": 53.18000000000001,
+          "subs_gained": 1
         },
         {
           "id": "k538gxMQ4y0",
@@ -280,7 +314,7 @@
           "views": 1067,
           "likes": 10,
           "comments": 0,
-          "avg_view_pct": 40.64,
+          "avg_view_pct": 41.23,
           "subs_gained": 0
         },
         {
@@ -291,7 +325,7 @@
           "views": 497,
           "likes": 4,
           "comments": 0,
-          "avg_view_pct": 78.25,
+          "avg_view_pct": 75.31,
           "subs_gained": 0
         },
         {
@@ -302,7 +336,7 @@
           "views": 1174,
           "likes": 30,
           "comments": 0,
-          "avg_view_pct": 152.66,
+          "avg_view_pct": 151.14,
           "subs_gained": 1
         },
         {
@@ -313,7 +347,7 @@
           "views": 673,
           "likes": 24,
           "comments": 0,
-          "avg_view_pct": 52.82,
+          "avg_view_pct": 53.75,
           "subs_gained": 1
         },
         {
@@ -324,7 +358,7 @@
           "views": 41,
           "likes": 2,
           "comments": 0,
-          "avg_view_pct": 32.62,
+          "avg_view_pct": 31.17,
           "subs_gained": 0
         },
         {
@@ -357,7 +391,7 @@
           "views": 510,
           "likes": 7,
           "comments": 0,
-          "avg_view_pct": 39.47,
+          "avg_view_pct": 39.4,
           "subs_gained": 1
         },
         {
@@ -412,7 +446,7 @@
           "views": 1058,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 52.17,
+          "avg_view_pct": 52.1,
           "subs_gained": 2
         },
         {
