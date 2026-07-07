@@ -94,7 +94,7 @@ meta:
   # API. Requires the META_ACCESS_TOKEN secret (non-expiring System User token).
   # Only shorts (vertical 1080x1920) are cross-posted. Best-effort: a Meta
   # failure never blocks the YouTube upload.
-  enabled: false               # master switch; or set META_CROSS_POST=true per run to test
+  enabled: true                # master switch; every short cross-posts to FB + IG (scheduled + manual)
   post_to_facebook: true
   post_to_instagram: true
   page_id: "1194740133719930"          # Histold Facebook Page
