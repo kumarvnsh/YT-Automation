@@ -2,15 +2,60 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-07T03:23:44.313225+00:00",
+      "updated": "2026-07-07T09:41:25.816612+00:00",
       "videos": [
+        {
+          "id": "lgxraDQIeBs",
+          "title": "Europe Was Almost One Empire \u2014 Three Times Over",
+          "publishedAt": "2026-07-07T09:36:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "7_G3tHrlWKo",
+          "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
+          "publishedAt": "2026-07-07T07:09:24Z",
+          "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
+          "views": 303,
+          "likes": 10,
+          "comments": 1
+        },
+        {
+          "id": "gINkHXhoZSc",
+          "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
+          "publishedAt": "2026-07-07T06:52:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
+          "views": 527,
+          "likes": 27,
+          "comments": 0
+        },
+        {
+          "id": "DP8pSiVptwI",
+          "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
+          "publishedAt": "2026-07-07T06:40:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
+          "views": 337,
+          "likes": 25,
+          "comments": 0
+        },
+        {
+          "id": "vO8dOVuzpEI",
+          "title": "Four Nations Saved a Species \u2014 With the World's First Wildlife Treaty",
+          "publishedAt": "2026-07-07T06:21:37Z",
+          "thumbnail": "https://i.ytimg.com/vi/vO8dOVuzpEI/mqdefault.jpg",
+          "views": 442,
+          "likes": 13,
+          "comments": 0
+        },
         {
           "id": "7c7PVFvy4xI",
           "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
           "publishedAt": "2026-07-06T16:10:00Z",
           "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
-          "views": 143,
-          "likes": 3,
+          "views": 167,
+          "likes": 4,
           "comments": 0
         },
         {
@@ -18,7 +63,7 @@
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 164,
+          "views": 170,
           "likes": 1,
           "comments": 0
         },
@@ -27,7 +72,7 @@
           "title": "He Refused to Move Seats \u2014 The Army Tried to Destroy Him For It",
           "publishedAt": "2026-07-06T13:16:37Z",
           "thumbnail": "https://i.ytimg.com/vi/GJa3gT3ksJU/mqdefault.jpg",
-          "views": 596,
+          "views": 597,
           "likes": 9,
           "comments": 0
         },
@@ -36,7 +81,7 @@
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 393,
+          "views": 426,
           "likes": 5,
           "comments": 0
         },
@@ -45,9 +90,9 @@
           "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
-          "views": 626,
+          "views": 629,
           "likes": 18,
-          "comments": 1
+          "comments": 2
         },
         {
           "id": "mwjWvWVutmM",
@@ -72,8 +117,8 @@
           "title": "England's First Planned Colony in North America Wasn't Where You Think",
           "publishedAt": "2026-07-06T03:24:33Z",
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
-          "views": 650,
-          "likes": 10,
+          "views": 652,
+          "likes": 11,
           "comments": 1
         },
         {
@@ -90,7 +135,7 @@
           "title": "He Won Wimbledon Five Times in a Row \u2014 Then Walked Away at 26",
           "publishedAt": "2026-07-05T16:09:52Z",
           "thumbnail": "https://i.ytimg.com/vi/-IL2E9HLqB8/mqdefault.jpg",
-          "views": 963,
+          "views": 964,
           "likes": 8,
           "comments": 0
         },
@@ -126,7 +171,7 @@
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1220,
+          "views": 1225,
           "likes": 12,
           "comments": 0
         },
@@ -190,7 +235,7 @@
           "title": "NASA's $265M Mars Lander Was Guided by a 1997 Nintendo-Level Computer",
           "publishedAt": "2026-07-04T14:43:27Z",
           "thumbnail": "https://i.ytimg.com/vi/kTKnlxWUZTM/mqdefault.jpg",
-          "views": 827,
+          "views": 828,
           "likes": 21,
           "comments": 0,
           "avg_view_pct": 53.0,
@@ -223,7 +268,7 @@
           "title": "She Cured a Disease at 23 \u2014 Then Someone Erased Her Name",
           "publishedAt": "2026-07-04T09:17:25Z",
           "thumbnail": "https://i.ytimg.com/vi/k538gxMQ4y0/mqdefault.jpg",
-          "views": 1066,
+          "views": 1067,
           "likes": 10,
           "comments": 0,
           "avg_view_pct": 40.64,
@@ -245,7 +290,7 @@
           "title": "They Invented Writing\u2014Then Disappeared #historylesson #ancient #facts",
           "publishedAt": "2026-07-04T07:03:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Ya3QulUczbg/mqdefault.jpg",
-          "views": 1173,
+          "views": 1174,
           "likes": 30,
           "comments": 0,
           "avg_view_pct": 152.66,
