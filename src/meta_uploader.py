@@ -142,8 +142,29 @@ def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str
 # --------------------------------------------------------------------------- #
 # Facebook Reels
 # --------------------------------------------------------------------------- #
+def _page_access_token(user_token: str, page_id: str, ver: str) -> str:
+    """Page publishing needs a Page token, not the user/system-user token.
+
+    Derive it from the system-user token (which must have a role on the Page +
+    pages_show_list/pages_read_engagement). A Page token from a non-expiring
+    system-user token is itself non-expiring.
+    """
+    r = requests.get(f"{GRAPH}/{ver}/{page_id}",
+                     params={"fields": "access_token", "access_token": user_token}, timeout=30)
+    _raise_graph(r, "FB page-token fetch")
+    tok = r.json().get("access_token")
+    if not tok:
+        raise RuntimeError(
+            "No Page access token returned — the token's System User likely isn't "
+            "assigned to the Histold Page with content permissions in Business settings."
+        )
+    return tok
+
+
 def _publish_facebook_reel(token: str, page_id: str, video_url: str, description: str,
                            ver: str, timeout_s: int = 300) -> str:
+    token = _page_access_token(token, page_id, ver)  # switch to the Page token
+
     # 1. start — reserve a video id + upload url
     start = requests.post(f"{GRAPH}/{ver}/{page_id}/video_reels",
                           data={"upload_phase": "start", "access_token": token}, timeout=60)
