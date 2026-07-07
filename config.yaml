@@ -89,6 +89,19 @@ youtube:
   expected_channel_id: "UCJImBb1E8e0llDt8ISdF_1g"
   default_tags: ["history", "did you know", "facts", "history shorts", "education"]
 
+meta:
+  # Cross-post rendered shorts to Facebook Reels + Instagram Reels via the Graph
+  # API. Requires the META_ACCESS_TOKEN secret (non-expiring System User token).
+  # Only shorts (vertical 1080x1920) are cross-posted. Best-effort: a Meta
+  # failure never blocks the YouTube upload.
+  enabled: false               # master switch; or set META_CROSS_POST=true per run to test
+  post_to_facebook: true
+  post_to_instagram: true
+  page_id: "1194740133719930"          # Histold Facebook Page
+  ig_user_id: "17841410834243353"      # Histold Instagram business account
+  api_version: "v21.0"
+  hashtags: ["#history", "#shorts", "#didyouknow", "#historyfacts"]
+
 notifications:
   enabled: true                # master switch for WhatsApp alerts
   channel: "openwa"            # currently only OpenWA is implemented

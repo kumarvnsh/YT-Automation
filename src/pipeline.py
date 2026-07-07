@@ -15,7 +15,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from .config import Config, base_dir
+from .config import Config, base_dir, env
 from . import topics
 
 STEP_ORDER = ["script", "voiceover", "captions", "assets", "render", "compose", "upload"]
@@ -262,19 +262,33 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
 
 
 def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
-    if not cfg.get("youtube.enabled", False):
-        st["upload_skipped"] = "youtube.enabled=false"
-        return
-    from .youtube_uploader import upload_video
-
     sc = st["script"]
-    privacy_override = st.get("overrides", {}).get("privacy")
-    vid = upload_video(
-        cfg, stage / "video.mp4", sc["title"], sc["description"], sc["tags"],
-        privacy_override=privacy_override,
-    )
-    st["youtube_id"] = vid
-    st["youtube_url"] = f"https://youtu.be/{vid}"
+
+    if cfg.get("youtube.enabled", False):
+        from .youtube_uploader import upload_video
+
+        privacy_override = st.get("overrides", {}).get("privacy")
+        vid = upload_video(
+            cfg, stage / "video.mp4", sc["title"], sc["description"], sc["tags"],
+            privacy_override=privacy_override,
+        )
+        st["youtube_id"] = vid
+        st["youtube_url"] = f"https://youtu.be/{vid}"
+    else:
+        st["upload_skipped"] = "youtube.enabled=false"
+
+    # Cross-post to Facebook/Instagram Reels. Only shorts (vertical) qualify, and
+    # this is best-effort: a Meta failure must never fail the run or block the
+    # primary YouTube upload. Enable via config or the META_CROSS_POST env toggle.
+    meta_on = cfg.get("meta.enabled", False) or env("META_CROSS_POST") == "true"
+    if meta_on and st.get("fmt") == "short":
+        from .meta_uploader import publish_reel
+
+        try:
+            st["meta"] = publish_reel(cfg, stage / "video.mp4", sc["title"], sc["description"])
+        except Exception as exc:  # noqa: BLE001
+            print(f"  ! Meta cross-post skipped: {exc}")
+            st["meta_error"] = str(exc)
 
 
 STEP_FUNCS = {

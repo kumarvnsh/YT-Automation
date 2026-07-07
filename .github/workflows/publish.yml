@@ -33,6 +33,10 @@ on:
         description: "Set by the external cron trigger — enables the duplicate-slot guard"
         type: boolean
         default: false
+      cross_post:
+        description: "Also post this short to Facebook + Instagram Reels (test toggle; config meta.enabled does it for every run)"
+        type: boolean
+        default: false
 
 concurrency:
   group: publish-histold
@@ -51,6 +55,8 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
       YOUTUBE_CLIENT_SECRET_FILE: secrets/client_secret.json
+      META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}   # used to host the mp4 as a public release asset for Meta to pull
     steps:
       - uses: actions/checkout@v4
         with:
@@ -114,6 +120,9 @@ jobs:
           PRIVACY="${{ github.event.inputs.privacy_status }}"
           DRY_RUN="${{ github.event.inputs.dry_run }}"
           NO_UPLOAD="${{ github.event.inputs.no_upload }}"
+          CROSS_POST="${{ github.event.inputs.cross_post }}"
+
+          [ "$CROSS_POST" = "true" ] && export META_CROSS_POST=true
 
           ARGS=(--format "$FORMAT" --step)
           [ -n "$TOPIC" ] && ARGS+=(--topic "$TOPIC")
