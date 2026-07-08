@@ -2,15 +2,24 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-08T08:28:12.514202+00:00",
+      "updated": "2026-07-08T14:07:06.961241+00:00",
       "videos": [
+        {
+          "id": "gpxm4GYWPuc",
+          "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
+          "publishedAt": "2026-07-08T13:10:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
+          "views": 108,
+          "likes": 2,
+          "comments": 0
+        },
         {
           "id": "WC4h4q3-pAo",
           "title": "The Day the Stock Market Hit Rock Bottom \u2014 and Nobody Rang a Bell",
           "publishedAt": "2026-07-08T07:09:43Z",
           "thumbnail": "https://i.ytimg.com/vi/WC4h4q3-pAo/mqdefault.jpg",
-          "views": 24,
-          "likes": 0,
+          "views": 278,
+          "likes": 1,
           "comments": 0
         },
         {
@@ -18,7 +27,7 @@
           "title": "The Forgotten Machine That Nearly Beat the Bicycle to History",
           "publishedAt": "2026-07-08T04:06:51Z",
           "thumbnail": "https://i.ytimg.com/vi/0XfidH7YZzc/mqdefault.jpg",
-          "views": 530,
+          "views": 708,
           "likes": 9,
           "comments": 0
         },
@@ -54,7 +63,7 @@
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 1216,
+          "views": 1218,
           "likes": 23,
           "comments": 5
         },
@@ -63,7 +72,7 @@
           "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
           "publishedAt": "2026-07-07T07:09:24Z",
           "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
-          "views": 735,
+          "views": 736,
           "likes": 14,
           "comments": 1
         },
@@ -72,7 +81,7 @@
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 789,
+          "views": 794,
           "likes": 31,
           "comments": 0
         },
@@ -81,7 +90,7 @@
           "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
           "publishedAt": "2026-07-07T06:40:49Z",
           "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
-          "views": 643,
+          "views": 645,
           "likes": 30,
           "comments": 0
         },
@@ -99,7 +108,7 @@
           "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
           "publishedAt": "2026-07-06T16:10:00Z",
           "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
-          "views": 286,
+          "views": 320,
           "likes": 10,
           "comments": 0
         },
@@ -108,7 +117,7 @@
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 249,
+          "views": 257,
           "likes": 8,
           "comments": 0
         },
@@ -126,7 +135,7 @@
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 583,
+          "views": 602,
           "likes": 10,
           "comments": 1
         },
@@ -135,7 +144,7 @@
           "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
-          "views": 633,
+          "views": 635,
           "likes": 18,
           "comments": 2
         },
@@ -230,7 +239,7 @@
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1229,
+          "views": 1231,
           "likes": 12,
           "comments": 0,
           "avg_view_pct": 71.95,
@@ -241,7 +250,7 @@
           "title": "The Most Iconic Logo in History Was a Typo Nobody Bothered to Fix",
           "publishedAt": "2026-07-05T05:37:28Z",
           "thumbnail": "https://i.ytimg.com/vi/2Oo9MEQmU8E/mqdefault.jpg",
-          "views": 1210,
+          "views": 1211,
           "likes": 9,
           "comments": 2,
           "avg_view_pct": 55.26,
