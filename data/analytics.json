@@ -2,23 +2,50 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-08T14:07:06.961241+00:00",
+      "updated": "2026-07-08T19:25:29.835937+00:00",
       "videos": [
+        {
+          "id": "r419ISKWRk0",
+          "title": "He Ruled Two Kingdoms at Once \u2014 and Almost Nobody Noticed",
+          "publishedAt": "2026-07-08T17:49:04Z",
+          "thumbnail": "https://i.ytimg.com/vi/r419ISKWRk0/mqdefault.jpg",
+          "views": 316,
+          "likes": 9,
+          "comments": 2
+        },
+        {
+          "id": "hI7XI8VcN_g",
+          "title": "The 'Flying Saucer' Crash That the Army Explained Twice \u2014 Differently",
+          "publishedAt": "2026-07-08T16:09:40Z",
+          "thumbnail": "https://i.ytimg.com/vi/hI7XI8VcN_g/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "sZiE8ejUhBo",
+          "title": "He Sailed Into the Unknown \u2014 and Rewrote the World's Trade Routes",
+          "publishedAt": "2026-07-08T15:01:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
+          "views": 68,
+          "likes": 0,
+          "comments": 0
+        },
         {
           "id": "gpxm4GYWPuc",
           "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
           "publishedAt": "2026-07-08T13:10:28Z",
           "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
-          "views": 108,
-          "likes": 2,
-          "comments": 0
+          "views": 385,
+          "likes": 15,
+          "comments": 2
         },
         {
           "id": "WC4h4q3-pAo",
           "title": "The Day the Stock Market Hit Rock Bottom \u2014 and Nobody Rang a Bell",
           "publishedAt": "2026-07-08T07:09:43Z",
           "thumbnail": "https://i.ytimg.com/vi/WC4h4q3-pAo/mqdefault.jpg",
-          "views": 278,
+          "views": 346,
           "likes": 1,
           "comments": 0
         },
@@ -27,7 +54,7 @@
           "title": "The Forgotten Machine That Nearly Beat the Bicycle to History",
           "publishedAt": "2026-07-08T04:06:51Z",
           "thumbnail": "https://i.ytimg.com/vi/0XfidH7YZzc/mqdefault.jpg",
-          "views": 708,
+          "views": 703,
           "likes": 9,
           "comments": 0
         },
@@ -36,7 +63,7 @@
           "title": "She Was Told Law Firms Don't Hire Women \u2014 Then She Ran the Whole Court",
           "publishedAt": "2026-07-07T16:09:30Z",
           "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
-          "views": 1028,
+          "views": 1030,
           "likes": 32,
           "comments": 1
         },
@@ -46,7 +73,7 @@
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
           "views": 1083,
-          "likes": 23,
+          "likes": 24,
           "comments": 0
         },
         {
@@ -54,7 +81,7 @@
           "title": "Outnumbered 10-to-1, They Won Anyway \u2014 With One Desperate Charge",
           "publishedAt": "2026-07-07T13:09:38Z",
           "thumbnail": "https://i.ytimg.com/vi/_vPg1nQAlCc/mqdefault.jpg",
-          "views": 640,
+          "views": 638,
           "likes": 13,
           "comments": 0
         },
@@ -63,7 +90,7 @@
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 1218,
+          "views": 1219,
           "likes": 23,
           "comments": 5
         },
@@ -72,7 +99,7 @@
           "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
           "publishedAt": "2026-07-07T07:09:24Z",
           "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
-          "views": 736,
+          "views": 737,
           "likes": 14,
           "comments": 1
         },
@@ -81,18 +108,22 @@
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 794,
+          "views": 795,
           "likes": 31,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 68.23,
+          "subs_gained": 0
         },
         {
           "id": "DP8pSiVptwI",
           "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
           "publishedAt": "2026-07-07T06:40:49Z",
           "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
-          "views": 645,
+          "views": 644,
           "likes": 30,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 113.48,
+          "subs_gained": 0
         },
         {
           "id": "vO8dOVuzpEI",
@@ -101,25 +132,31 @@
           "thumbnail": "https://i.ytimg.com/vi/vO8dOVuzpEI/mqdefault.jpg",
           "views": 594,
           "likes": 13,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 101.64,
+          "subs_gained": 0
         },
         {
           "id": "7c7PVFvy4xI",
           "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
           "publishedAt": "2026-07-06T16:10:00Z",
           "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
-          "views": 320,
+          "views": 380,
           "likes": 10,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 61.46,
+          "subs_gained": 0
         },
         {
           "id": "Pu4tUGOZaZ0",
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 257,
+          "views": 272,
           "likes": 8,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 47.69,
+          "subs_gained": 0
         },
         {
           "id": "GJa3gT3ksJU",
@@ -128,16 +165,20 @@
           "thumbnail": "https://i.ytimg.com/vi/GJa3gT3ksJU/mqdefault.jpg",
           "views": 596,
           "likes": 9,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 95.14,
+          "subs_gained": 0
         },
         {
           "id": "Ad8L8rgBbZw",
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 602,
+          "views": 603,
           "likes": 10,
-          "comments": 1
+          "comments": 1,
+          "avg_view_pct": 71.45,
+          "subs_gained": 0
         },
         {
           "id": "4RCpWx1IkWo",
@@ -146,16 +187,20 @@
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
           "views": 635,
           "likes": 18,
-          "comments": 2
+          "comments": 2,
+          "avg_view_pct": 103.29000000000002,
+          "subs_gained": 2
         },
         {
           "id": "mwjWvWVutmM",
           "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
           "publishedAt": "2026-07-06T07:09:42Z",
           "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
-          "views": 589,
+          "views": 591,
           "likes": 12,
-          "comments": 5
+          "comments": 5,
+          "avg_view_pct": 99.23,
+          "subs_gained": 0
         },
         {
           "id": "1v8zY1sWPDs",
@@ -165,7 +210,7 @@
           "views": 760,
           "likes": 5,
           "comments": 0,
-          "avg_view_pct": 38.91,
+          "avg_view_pct": 38.85,
           "subs_gained": 0
         },
         {
@@ -176,7 +221,7 @@
           "views": 653,
           "likes": 11,
           "comments": 1,
-          "avg_view_pct": 57.31,
+          "avg_view_pct": 57.08,
           "subs_gained": 1
         },
         {
@@ -198,7 +243,7 @@
           "views": 964,
           "likes": 8,
           "comments": 0,
-          "avg_view_pct": 42.15,
+          "avg_view_pct": 42.16,
           "subs_gained": 0
         },
         {
@@ -209,7 +254,7 @@
           "views": 905,
           "likes": 10,
           "comments": 8,
-          "avg_view_pct": 50.57000000000001,
+          "avg_view_pct": 50.43,
           "subs_gained": 0
         },
         {
@@ -220,7 +265,7 @@
           "views": 963,
           "likes": 20,
           "comments": 0,
-          "avg_view_pct": 56.56,
+          "avg_view_pct": 56.46,
           "subs_gained": 2
         },
         {
@@ -239,10 +284,10 @@
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1231,
+          "views": 1233,
           "likes": 12,
           "comments": 0,
-          "avg_view_pct": 71.95,
+          "avg_view_pct": 71.78,
           "subs_gained": 0
         },
         {
@@ -264,7 +309,7 @@
           "views": 990,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 53.66,
+          "avg_view_pct": 53.61,
           "subs_gained": 1
         },
         {
@@ -286,7 +331,7 @@
           "views": 959,
           "likes": 39,
           "comments": 4,
-          "avg_view_pct": 64.05,
+          "avg_view_pct": 63.89,
           "subs_gained": 3
         },
         {
@@ -330,7 +375,7 @@
           "views": 949,
           "likes": 25,
           "comments": 0,
-          "avg_view_pct": 53.18000000000001,
+          "avg_view_pct": 53.07999999999999,
           "subs_gained": 1
         },
         {
@@ -341,7 +386,7 @@
           "views": 1067,
           "likes": 10,
           "comments": 0,
-          "avg_view_pct": 41.23,
+          "avg_view_pct": 41.34,
           "subs_gained": 0
         },
         {
@@ -352,7 +397,7 @@
           "views": 497,
           "likes": 4,
           "comments": 0,
-          "avg_view_pct": 75.31,
+          "avg_view_pct": 76.64,
           "subs_gained": 0
         },
         {
@@ -363,7 +408,7 @@
           "views": 1174,
           "likes": 30,
           "comments": 0,
-          "avg_view_pct": 151.14,
+          "avg_view_pct": 150.75,
           "subs_gained": 1
         },
         {
@@ -374,7 +419,7 @@
           "views": 672,
           "likes": 24,
           "comments": 0,
-          "avg_view_pct": 53.75,
+          "avg_view_pct": 53.97,
           "subs_gained": 1
         },
         {
