@@ -2,15 +2,33 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-09T14:58:52.733238+00:00",
+      "updated": "2026-07-09T19:46:36.897002+00:00",
       "videos": [
+        {
+          "id": "ABSo-s-cQPE",
+          "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
+          "publishedAt": "2026-07-09T19:20:02Z",
+          "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
+          "views": 226,
+          "likes": 2,
+          "comments": 0
+        },
+        {
+          "id": "08B4lsuemvU",
+          "title": "Argentina Declared Independence With a King Already Picked \u2014 Then Changed Its Mind",
+          "publishedAt": "2026-07-09T16:09:34Z",
+          "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
+          "views": 361,
+          "likes": 5,
+          "comments": 0
+        },
         {
           "id": "-Bh7FffOJ_k",
           "title": "The Wave That Was Taller Than the Empire State Building",
           "publishedAt": "2026-07-09T13:12:19Z",
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
-          "views": 525,
-          "likes": 15,
+          "views": 699,
+          "likes": 16,
           "comments": 0
         },
         {
@@ -18,7 +36,7 @@
           "title": "Decades Before the iPod, This Hat Let You Listen to the Radio",
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 27,
+          "views": 39,
           "likes": 1,
           "comments": 0
         },
@@ -27,7 +45,7 @@
           "title": "This Artist Broke the Law Just to Paint a Nude Model #arthistory #banned #scandal",
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 812,
+          "views": 837,
           "likes": 10,
           "comments": 0
         },
@@ -36,7 +54,7 @@
           "title": "The Wave That Climbed Higher Than the Eiffel Tower \u2014 And Few Noticed",
           "publishedAt": "2026-07-09T07:15:53Z",
           "thumbnail": "https://i.ytimg.com/vi/MUp4BtZxwuU/mqdefault.jpg",
-          "views": 614,
+          "views": 623,
           "likes": 12,
           "comments": 0
         },
@@ -45,7 +63,7 @@
           "title": "The Titanic Had a Bakery, a Pool, and a Warning Nobody Listened To",
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 811,
+          "views": 849,
           "likes": 13,
           "comments": 0
         },
@@ -54,7 +72,7 @@
           "title": "He Ruled Two Kingdoms at Once \u2014 and Almost Nobody Noticed",
           "publishedAt": "2026-07-08T17:49:04Z",
           "thumbnail": "https://i.ytimg.com/vi/r419ISKWRk0/mqdefault.jpg",
-          "views": 619,
+          "views": 618,
           "likes": 13,
           "comments": 2
         },
@@ -72,7 +90,7 @@
           "title": "He Sailed Into the Unknown \u2014 and Rewrote the World's Trade Routes",
           "publishedAt": "2026-07-08T15:01:17Z",
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
-          "views": 132,
+          "views": 140,
           "likes": 1,
           "comments": 0
         },
@@ -81,7 +99,7 @@
           "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
           "publishedAt": "2026-07-08T13:10:28Z",
           "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
-          "views": 547,
+          "views": 557,
           "likes": 17,
           "comments": 2
         },
@@ -90,7 +108,7 @@
           "title": "The Day the Stock Market Hit Rock Bottom \u2014 and Nobody Rang a Bell",
           "publishedAt": "2026-07-08T07:09:43Z",
           "thumbnail": "https://i.ytimg.com/vi/WC4h4q3-pAo/mqdefault.jpg",
-          "views": 472,
+          "views": 471,
           "likes": 1,
           "comments": 0
         },
@@ -101,62 +119,74 @@
           "thumbnail": "https://i.ytimg.com/vi/0XfidH7YZzc/mqdefault.jpg",
           "views": 711,
           "likes": 9,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 57.71999999999999,
+          "subs_gained": 0
         },
         {
           "id": "5xTsaJl1ZoE",
           "title": "She Was Told Law Firms Don't Hire Women \u2014 Then She Ran the Whole Court",
           "publishedAt": "2026-07-07T16:09:30Z",
           "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
-          "views": 1035,
+          "views": 1036,
           "likes": 32,
-          "comments": 1
+          "comments": 1,
+          "avg_view_pct": 74.42,
+          "subs_gained": 1
         },
         {
           "id": "FMAOcUJ4VNk",
           "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1083,
+          "views": 1087,
           "likes": 24,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 61.25000000000001,
+          "subs_gained": 0
         },
         {
           "id": "_vPg1nQAlCc",
           "title": "Outnumbered 10-to-1, They Won Anyway \u2014 With One Desperate Charge",
           "publishedAt": "2026-07-07T13:09:38Z",
           "thumbnail": "https://i.ytimg.com/vi/_vPg1nQAlCc/mqdefault.jpg",
-          "views": 639,
+          "views": 641,
           "likes": 13,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 55.13,
+          "subs_gained": 0
         },
         {
           "id": "lgxraDQIeBs",
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 1230,
-          "likes": 23,
-          "comments": 5
+          "views": 1242,
+          "likes": 24,
+          "comments": 5,
+          "avg_view_pct": 65.66,
+          "subs_gained": 2
         },
         {
           "id": "7_G3tHrlWKo",
           "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
           "publishedAt": "2026-07-07T07:09:24Z",
           "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
-          "views": 739,
+          "views": 740,
           "likes": 14,
-          "comments": 1
+          "comments": 1,
+          "avg_view_pct": 49.1,
+          "subs_gained": 0
         },
         {
           "id": "gINkHXhoZSc",
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 799,
+          "views": 802,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 68.23,
+          "avg_view_pct": 151.14,
           "subs_gained": 0
         },
         {
@@ -164,11 +194,11 @@
           "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
           "publishedAt": "2026-07-07T06:40:49Z",
           "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
-          "views": 664,
+          "views": 666,
           "likes": 30,
           "comments": 0,
-          "avg_view_pct": 113.48,
-          "subs_gained": 0
+          "avg_view_pct": 83.61,
+          "subs_gained": 1
         },
         {
           "id": "vO8dOVuzpEI",
@@ -178,7 +208,7 @@
           "views": 595,
           "likes": 13,
           "comments": 0,
-          "avg_view_pct": 101.64,
+          "avg_view_pct": 80.36,
           "subs_gained": 0
         },
         {
@@ -186,10 +216,10 @@
           "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
           "publishedAt": "2026-07-06T16:10:00Z",
           "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
-          "views": 384,
+          "views": 387,
           "likes": 10,
           "comments": 0,
-          "avg_view_pct": 61.46,
+          "avg_view_pct": 64.23,
           "subs_gained": 0
         },
         {
@@ -197,10 +227,10 @@
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 272,
+          "views": 274,
           "likes": 8,
           "comments": 0,
-          "avg_view_pct": 47.69,
+          "avg_view_pct": 54.72,
           "subs_gained": 0
         },
         {
@@ -208,7 +238,7 @@
           "title": "He Refused to Move Seats \u2014 The Army Tried to Destroy Him For It",
           "publishedAt": "2026-07-06T13:16:37Z",
           "thumbnail": "https://i.ytimg.com/vi/GJa3gT3ksJU/mqdefault.jpg",
-          "views": 597,
+          "views": 598,
           "likes": 9,
           "comments": 0,
           "avg_view_pct": 95.14,
@@ -219,10 +249,10 @@
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 611,
+          "views": 616,
           "likes": 10,
           "comments": 1,
-          "avg_view_pct": 71.45,
+          "avg_view_pct": 67.58,
           "subs_gained": 0
         },
         {
@@ -230,10 +260,10 @@
           "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
-          "views": 636,
+          "views": 638,
           "likes": 18,
           "comments": 2,
-          "avg_view_pct": 103.29000000000002,
+          "avg_view_pct": 102.8,
           "subs_gained": 2
         },
         {
@@ -241,10 +271,10 @@
           "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
           "publishedAt": "2026-07-06T07:09:42Z",
           "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
-          "views": 592,
+          "views": 594,
           "likes": 12,
           "comments": 5,
-          "avg_view_pct": 99.23,
+          "avg_view_pct": 99.22,
           "subs_gained": 0
         },
         {
@@ -252,10 +282,10 @@
           "title": "The General Twice Shivaji's Size Thought He'd Win Easily \u2014 He Was Wrong",
           "publishedAt": "2026-07-06T03:33:13Z",
           "thumbnail": "https://i.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg",
-          "views": 760,
+          "views": 761,
           "likes": 5,
           "comments": 0,
-          "avg_view_pct": 38.85,
+          "avg_view_pct": 39.03,
           "subs_gained": 0
         },
         {
@@ -263,10 +293,10 @@
           "title": "England's First Planned Colony in North America Wasn't Where You Think",
           "publishedAt": "2026-07-06T03:24:33Z",
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
-          "views": 656,
+          "views": 660,
           "likes": 11,
           "comments": 1,
-          "avg_view_pct": 57.08,
+          "avg_view_pct": 57.03,
           "subs_gained": 1
         },
         {
@@ -274,7 +304,7 @@
           "title": "The Law That Gave American Workers the Right to Fight Back",
           "publishedAt": "2026-07-05T21:21:47Z",
           "thumbnail": "https://i.ytimg.com/vi/LF6m8tqecls/mqdefault.jpg",
-          "views": 917,
+          "views": 919,
           "likes": 10,
           "comments": 0,
           "avg_view_pct": 43.17,
@@ -332,7 +362,7 @@
           "views": 1232,
           "likes": 12,
           "comments": 0,
-          "avg_view_pct": 71.78,
+          "avg_view_pct": 71.81,
           "subs_gained": 0
         },
         {
@@ -343,7 +373,7 @@
           "views": 1209,
           "likes": 9,
           "comments": 2,
-          "avg_view_pct": 55.26,
+          "avg_view_pct": 55.2,
           "subs_gained": 0
         },
         {
@@ -354,7 +384,7 @@
           "views": 995,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 53.61,
+          "avg_view_pct": 53.68999999999999,
           "subs_gained": 1
         },
         {
@@ -376,7 +406,7 @@
           "views": 959,
           "likes": 39,
           "comments": 4,
-          "avg_view_pct": 63.89,
+          "avg_view_pct": 63.88,
           "subs_gained": 3
         },
         {
@@ -387,7 +417,7 @@
           "views": 1017,
           "likes": 48,
           "comments": 1,
-          "avg_view_pct": 63.27,
+          "avg_view_pct": 63.31,
           "subs_gained": 3
         },
         {
@@ -398,7 +428,7 @@
           "views": 832,
           "likes": 21,
           "comments": 0,
-          "avg_view_pct": 52.99,
+          "avg_view_pct": 53.06999999999999,
           "subs_gained": 1
         },
         {
@@ -499,28 +529,6 @@
           "comments": 0,
           "avg_view_pct": 29.799999999999997,
           "subs_gained": 0
-        },
-        {
-          "id": "QBA1OaAvT9A",
-          "title": "He Left a Key on a Wrapped Photographic Plate \u2014 and Changed Medicine",
-          "publishedAt": "2026-06-29T18:11:07Z",
-          "thumbnail": "https://i.ytimg.com/vi/QBA1OaAvT9A/mqdefault.jpg",
-          "views": 511,
-          "likes": 7,
-          "comments": 0,
-          "avg_view_pct": 39.4,
-          "subs_gained": 1
-        },
-        {
-          "id": "ia9dfhTLgGw",
-          "title": "Peter the Great Literally Taxed Men for Having a Beard",
-          "publishedAt": "2026-06-29T07:39:14Z",
-          "thumbnail": "https://i.ytimg.com/vi/ia9dfhTLgGw/mqdefault.jpg",
-          "views": 651,
-          "likes": 10,
-          "comments": 0,
-          "avg_view_pct": 47.05,
-          "subs_gained": 1
         }
       ]
     }
