@@ -403,7 +403,7 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
         entries = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
         entries.append({
             "video_id": st["youtube_id"],
-            "run_id": env("GITHUB_RUN_ID") or "",
+            "run_id": env("PUBLISH_ARTIFACT_RUN_ID") or env("GITHUB_RUN_ID") or "",
             "stage_dir_name": stage.name,
             "title": st.get("title", ""),
             "published_at": datetime.now(timezone.utc).isoformat(),
@@ -424,9 +424,12 @@ def _cleanup(cfg: Config, stage: Path, st: dict) -> None:
     """After a successful upload, delete this run's local files; also prune old runs."""
     import shutil
 
-    if st.get("youtube_id") and cfg.get("output.delete_after_upload", False):
+    preserve_artifact = env("PRESERVE_STAGE_ARTIFACT") == "true"
+    if st.get("youtube_id") and cfg.get("output.delete_after_upload", False) and not preserve_artifact:
         shutil.rmtree(stage, ignore_errors=True)
         print(f"  🧹 removed local renders for {stage.name} (already on YouTube)")
+    elif st.get("youtube_id") and preserve_artifact:
+        print(f"  ✓ preserving {stage.name} until the workflow uploads its artifact")
     _prune_old_stages(cfg, keep=stage)
 
 

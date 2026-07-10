@@ -145,6 +145,8 @@ jobs:
         env:
           PUBLISH_SCHEDULED: ${{ github.event.inputs.scheduled }}
           PUBLISH_WORKFLOW: publish
+          # Keep the completed stage on the runner until upload-artifact runs.
+          PRESERVE_STAGE_ARTIFACT: "true"
         run: |
           FORMAT="${{ github.event.inputs.format || 'short' }}"
           TOPIC="${{ github.event.inputs.topic }}"

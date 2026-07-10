@@ -71,6 +71,8 @@ jobs:
         env:
           PUBLISH_SCHEDULED: "false"
           PUBLISH_WORKFLOW: approve
+          # Reposts must download the original draft artifact, not this approval run.
+          PUBLISH_ARTIFACT_RUN_ID: ${{ inputs.source_run_id }}
         run: |
           PRIVACY="${{ inputs.privacy_status }}"
           ARGS=(--stage "${{ inputs.stage_dir_name }}" --resume --force-upload)

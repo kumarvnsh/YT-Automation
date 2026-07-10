@@ -14,6 +14,7 @@ Settings → Secrets and variables → Actions → New repository secret. Add ea
 | `YT_TOKEN_JSON_B64` | `secrets/token.json` (Histold) | `base64 -i secrets/token.json \| pbcopy` |
 | `YT_MEDIMYTH_CLIENT_SECRET_JSON_B64` | `channels/medimyth/secrets/client_secret.json` | `base64 -i channels/medimyth/secrets/client_secret.json \| pbcopy` |
 | `YT_MEDIMYTH_TOKEN_JSON_B64` | `channels/medimyth/secrets/token.json` | `base64 -i channels/medimyth/secrets/token.json \| pbcopy` |
+| `META_ACCESS_TOKEN` | Meta Business system user | Non-expiring token assigned to the Histold Facebook Page and Instagram professional account |
 | `OPENAI_API_KEY` (optional) | `.env` | only if `script.provider: openai` for either channel |
 | `ELEVENLABS_API_KEY` (optional) | `.env` | only if `tts.provider: elevenlabs` for either channel |
 
@@ -36,6 +37,12 @@ Actions read/write, Contents read) — generate at
 **WhatsApp notifications will not fire from CI** unless `OPENWA_BASE_URL` points somewhere
 publicly reachable (it's currently `localhost`, unreachable from a GitHub-hosted runner) —
 this is expected; the pipeline degrades gracefully with WhatsApp env vars unset.
+
+The `META_ACCESS_TOKEN` needs both publishing and analytics permissions. Include
+`pages_show_list`, `pages_read_engagement`, `pages_manage_posts`, `instagram_basic`,
+`instagram_content_publish`, and `instagram_manage_insights`, and assign the system user
+the Page's content and insights tasks. The Meta analytics exporter now fails visibly when
+these permissions are missing instead of showing zero or stale view counts.
 
 ## 2. Enable GitHub Pages
 
