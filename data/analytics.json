@@ -2,23 +2,41 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-10T16:12:42.316235+00:00",
+      "updated": "2026-07-10T19:27:24.846068+00:00",
       "videos": [
+        {
+          "id": "hXA0Zta874Q",
+          "title": "He Flew Around the World in 91 Hours \u2014 Using Only a Radio and Luck",
+          "publishedAt": "2026-07-10T18:03:03Z",
+          "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
+          "views": 278,
+          "likes": 9,
+          "comments": 1
+        },
+        {
+          "id": "Yw77rxLMmCY",
+          "title": "Erling Haaland Is Literally Finishing What His Father Started",
+          "publishedAt": "2026-07-10T16:16:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
+          "views": 781,
+          "likes": 8,
+          "comments": 0
+        },
         {
           "id": "Lpt-QnNWJOg",
           "title": "The Real Reason Pokemon Was Invented Has Nothing to Do With Games",
           "publishedAt": "2026-07-10T12:30:10Z",
           "thumbnail": "https://i.ytimg.com/vi/Lpt-QnNWJOg/mqdefault.jpg",
-          "views": 545,
-          "likes": 10,
-          "comments": 3
+          "views": 708,
+          "likes": 11,
+          "comments": 4
         },
         {
           "id": "mOgSMDUQCp0",
           "title": "France Blew Up a Civilian Ship \u2014 Then Called It a Success",
           "publishedAt": "2026-07-10T09:03:40Z",
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
-          "views": 758,
+          "views": 769,
           "likes": 3,
           "comments": 0
         },
@@ -27,7 +45,7 @@
           "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 720,
+          "views": 732,
           "likes": 6,
           "comments": 0
         },
@@ -54,7 +72,7 @@
           "title": "Would You Wear This 1949 Radio Hat? \ud83c\udfa9 #retro #tech #fashion",
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 155,
+          "views": 169,
           "likes": 1,
           "comments": 0
         },
@@ -81,9 +99,11 @@
           "title": "The Titanic Had a Bakery, a Pool, and a Warning Nobody Listened To",
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 882,
-          "likes": 14,
-          "comments": 0
+          "views": 883,
+          "likes": 13,
+          "comments": 0,
+          "avg_view_pct": 126.84,
+          "subs_gained": 0
         },
         {
           "id": "r419ISKWRk0",
@@ -92,16 +112,20 @@
           "thumbnail": "https://i.ytimg.com/vi/r419ISKWRk0/mqdefault.jpg",
           "views": 620,
           "likes": 13,
-          "comments": 2
+          "comments": 2,
+          "avg_view_pct": 54.14,
+          "subs_gained": 1
         },
         {
           "id": "hI7XI8VcN_g",
           "title": "Why the Army Told Two Different Stories About the Same 'Flying Saucer' Crash",
           "publishedAt": "2026-07-08T16:09:40Z",
           "thumbnail": "https://i.ytimg.com/vi/hI7XI8VcN_g/mqdefault.jpg",
-          "views": 4,
+          "views": 6,
           "likes": 0,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 18.75,
+          "subs_gained": 0
         },
         {
           "id": "sZiE8ejUhBo",
@@ -110,16 +134,20 @@
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
           "views": 207,
           "likes": 3,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 53.790000000000006,
+          "subs_gained": 1
         },
         {
           "id": "gpxm4GYWPuc",
           "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
           "publishedAt": "2026-07-08T13:10:28Z",
           "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
-          "views": 600,
+          "views": 602,
           "likes": 19,
-          "comments": 2
+          "comments": 2,
+          "avg_view_pct": 67.62,
+          "subs_gained": 2
         },
         {
           "id": "WC4h4q3-pAo",
@@ -128,7 +156,9 @@
           "thumbnail": "https://i.ytimg.com/vi/WC4h4q3-pAo/mqdefault.jpg",
           "views": 474,
           "likes": 1,
-          "comments": 0
+          "comments": 0,
+          "avg_view_pct": 54.230000000000004,
+          "subs_gained": 0
         },
         {
           "id": "0XfidH7YZzc",
@@ -138,7 +168,7 @@
           "views": 715,
           "likes": 9,
           "comments": 0,
-          "avg_view_pct": 57.71999999999999,
+          "avg_view_pct": 57.86,
           "subs_gained": 0
         },
         {
@@ -147,9 +177,9 @@
           "publishedAt": "2026-07-07T16:09:30Z",
           "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
           "views": 1038,
-          "likes": 32,
+          "likes": 33,
           "comments": 1,
-          "avg_view_pct": 74.42,
+          "avg_view_pct": 74.94,
           "subs_gained": 1
         },
         {
@@ -157,10 +187,10 @@
           "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1091,
+          "views": 1092,
           "likes": 24,
           "comments": 0,
-          "avg_view_pct": 61.25000000000001,
+          "avg_view_pct": 61.63000000000001,
           "subs_gained": 0
         },
         {
@@ -171,7 +201,7 @@
           "views": 643,
           "likes": 13,
           "comments": 0,
-          "avg_view_pct": 55.13,
+          "avg_view_pct": 55.17999999999999,
           "subs_gained": 0
         },
         {
@@ -179,10 +209,10 @@
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 1266,
+          "views": 1268,
           "likes": 24,
           "comments": 5,
-          "avg_view_pct": 65.66,
+          "avg_view_pct": 65.76,
           "subs_gained": 2
         },
         {
@@ -193,7 +223,7 @@
           "views": 741,
           "likes": 14,
           "comments": 1,
-          "avg_view_pct": 49.1,
+          "avg_view_pct": 49.03,
           "subs_gained": 0
         },
         {
@@ -201,10 +231,10 @@
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 803,
+          "views": 809,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 151.14,
+          "avg_view_pct": 149.72,
           "subs_gained": 0
         },
         {
@@ -215,7 +245,7 @@
           "views": 667,
           "likes": 30,
           "comments": 0,
-          "avg_view_pct": 83.61,
+          "avg_view_pct": 84.27,
           "subs_gained": 1
         },
         {
@@ -237,7 +267,7 @@
           "views": 387,
           "likes": 10,
           "comments": 0,
-          "avg_view_pct": 64.23,
+          "avg_view_pct": 66.16,
           "subs_gained": 0
         },
         {
@@ -248,7 +278,7 @@
           "views": 275,
           "likes": 8,
           "comments": 0,
-          "avg_view_pct": 54.72,
+          "avg_view_pct": 62.61,
           "subs_gained": 0
         },
         {
@@ -270,7 +300,7 @@
           "views": 620,
           "likes": 10,
           "comments": 1,
-          "avg_view_pct": 67.58,
+          "avg_view_pct": 66.7,
           "subs_gained": 0
         },
         {
@@ -292,7 +322,7 @@
           "views": 594,
           "likes": 12,
           "comments": 5,
-          "avg_view_pct": 99.22,
+          "avg_view_pct": 99.27,
           "subs_gained": 0
         },
         {
@@ -380,7 +410,7 @@
           "views": 1235,
           "likes": 12,
           "comments": 0,
-          "avg_view_pct": 71.81,
+          "avg_view_pct": 71.41,
           "subs_gained": 0
         },
         {
@@ -391,7 +421,7 @@
           "views": 1212,
           "likes": 9,
           "comments": 2,
-          "avg_view_pct": 55.2,
+          "avg_view_pct": 55.279999999999994,
           "subs_gained": 0
         },
         {
@@ -402,7 +432,7 @@
           "views": 996,
           "likes": 31,
           "comments": 0,
-          "avg_view_pct": 53.68999999999999,
+          "avg_view_pct": 54.86,
           "subs_gained": 1
         },
         {
@@ -424,7 +454,7 @@
           "views": 961,
           "likes": 39,
           "comments": 4,
-          "avg_view_pct": 63.88,
+          "avg_view_pct": 63.73,
           "subs_gained": 3
         },
         {
@@ -435,7 +465,7 @@
           "views": 1018,
           "likes": 48,
           "comments": 1,
-          "avg_view_pct": 63.31,
+          "avg_view_pct": 63.44,
           "subs_gained": 3
         },
         {
@@ -446,7 +476,7 @@
           "views": 834,
           "likes": 21,
           "comments": 0,
-          "avg_view_pct": 53.06999999999999,
+          "avg_view_pct": 53.26,
           "subs_gained": 1
         },
         {
@@ -457,7 +487,7 @@
           "views": 1128,
           "likes": 23,
           "comments": 0,
-          "avg_view_pct": 54.81,
+          "avg_view_pct": 54.90999999999999,
           "subs_gained": 1
         },
         {
@@ -479,7 +509,7 @@
           "views": 1069,
           "likes": 10,
           "comments": 0,
-          "avg_view_pct": 41.34,
+          "avg_view_pct": 41.11,
           "subs_gained": 0
         },
         {
@@ -501,30 +531,8 @@
           "views": 1176,
           "likes": 30,
           "comments": 0,
-          "avg_view_pct": 150.75,
+          "avg_view_pct": 151.05,
           "subs_gained": 1
-        },
-        {
-          "id": "hqXY7D0BePA",
-          "title": "Napoleon Was NOT Short \u2014 Here's Why Everyone Thinks He Was",
-          "publishedAt": "2026-07-04T06:31:33Z",
-          "thumbnail": "https://i.ytimg.com/vi/hqXY7D0BePA/mqdefault.jpg",
-          "views": 674,
-          "likes": 23,
-          "comments": 0,
-          "avg_view_pct": 54.54,
-          "subs_gained": 1
-        },
-        {
-          "id": "ukElNJKTi0E",
-          "title": "The Man Who Faked His Own Death Twice \u2014 Then Spied Against Two Nations",
-          "publishedAt": "2026-07-04T06:16:55Z",
-          "thumbnail": "https://i.ytimg.com/vi/ukElNJKTi0E/mqdefault.jpg",
-          "views": 43,
-          "likes": 2,
-          "comments": 0,
-          "avg_view_pct": 43.26,
-          "subs_gained": 0
         }
       ]
     }
