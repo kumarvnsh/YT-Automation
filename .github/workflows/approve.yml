@@ -68,6 +68,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Resume with upload
+        env:
+          PUBLISH_SCHEDULED: "false"
+          PUBLISH_WORKFLOW: approve
         run: |
           PRIVACY="${{ inputs.privacy_status }}"
           ARGS=(--stage "${{ inputs.stage_dir_name }}" --resume --force-upload)
@@ -91,9 +94,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/pending_approvals.json data/used_topics.json 2>/dev/null || true
+          git add data/pending_approvals.json data/used_topics.json data/published_index.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "chore: approve + upload ${{ inputs.stage_dir_name }} [skip ci]"
+            git pull --rebase --autostash
             git push
           else
             echo "No changes to commit."

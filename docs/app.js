@@ -119,6 +119,22 @@ async function loadPendingApprovals(s) {
   }
 }
 
+async function loadPublishedIndex(s) {
+  try {
+    return JSON.parse(await fetchRepoFile(s, "data/published_index.json"));
+  } catch {
+    return [];
+  }
+}
+
+async function loadMetaAnalytics(s) {
+  try {
+    return JSON.parse(await fetchRepoFile(s, "data/meta_analytics.json"));
+  } catch {
+    return null;
+  }
+}
+
 function fmtNum(n) {
   if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
   if (n >= 1_000) return (n / 1_000).toFixed(1) + "K";
@@ -146,6 +162,11 @@ function renderKpis(analytics) {
     const vids = (channels[key].videos || []).map((v) => ({ ...v, _channel: key }));
     allVideos = allVideos.concat(vids);
   }
+  renderKpisFromVideos(allVideos, true);
+  return allVideos;
+}
+
+function renderKpisFromVideos(allVideos, isYouTube) {
   const totalViews = allVideos.reduce((sum, v) => sum + (v.views || 0), 0);
   const last7 = allVideos.filter((v) => daysAgo(v.publishedAt) <= 7).length;
   const last30 = allVideos.filter((v) => daysAgo(v.publishedAt) <= 30).length;
@@ -160,28 +181,26 @@ function renderKpis(analytics) {
   document.getElementById("kpiCadence30").textContent = `last 30d: ${last30}`;
   const retentionEl = document.getElementById("kpiAvgRetention");
   const retentionSub = document.getElementById("kpiRetentionSub");
-  if (avgRetention === null) {
+  if (avgRetention === null || !isYouTube) {
     retentionEl.textContent = "N/A";
     retentionEl.classList.add("na");
-    retentionSub.textContent = "needs YT Analytics API";
+    retentionSub.textContent = isYouTube ? "needs YT Analytics API" : "YouTube only";
   } else {
     retentionEl.textContent = `${avgRetention.toFixed(1)}%`;
     retentionEl.classList.remove("na");
     retentionSub.textContent = `${retentionVideos.length} videos with retention`;
   }
-
-  return allVideos;
 }
 
 const VIDEO_PAGE_SIZE = 10;
 let videoPageItems = [];
 let videoPage = 1;
 
-function renderVideoList(allVideos) {
+function renderVideoList(allVideos, emptyMsg) {
   const el = document.getElementById("videoList");
   document.getElementById("videoCount").textContent = allVideos.length ? `${allVideos.length} videos` : "";
   if (!allVideos.length) {
-    el.innerHTML = `<div class="empty-state"><strong>No videos yet</strong>Once a run uploads, it'll show up here.</div>`;
+    el.innerHTML = `<div class="empty-state"><strong>No videos yet</strong>${emptyMsg || "Once a run uploads, it'll show up here."}</div>`;
     videoPageItems = [];
     document.getElementById("videoPagination").style.display = "none";
     return;
@@ -208,7 +227,7 @@ function renderVideoPage() {
         ? `<span>+${fmtNum(Number(v.subs_gained))} subs</span>`
         : "";
       return `
-      <a class="video-row" href="https://youtu.be/${v.id}" target="_blank" rel="noopener">
+      <a class="video-row" href="${v.url || `https://youtu.be/${v.id}`}" target="_blank" rel="noopener">
         <img class="video-row__thumb" src="${v.thumbnail || ""}" alt="" loading="lazy">
         <div class="video-row__meta">
           <p class="video-row__title">${escapeHtml(v.title || "(untitled)")}</p>
@@ -336,10 +355,10 @@ async function publishTrend(topic, btn) {
   }
 }
 
-function renderStatsTicker(allVideos) {
+function renderStatsTicker(allVideos, isYouTube = true) {
   const el = document.getElementById("tickerTrack");
   if (!allVideos.length) {
-    el.innerHTML = "<span>No stats yet — waiting on analytics.json.</span>";
+    el.innerHTML = "<span>No stats yet — waiting on analytics data.</span>";
     return;
   }
   const totalViews = allVideos.reduce((sum, v) => sum + (v.views || 0), 0);
@@ -350,14 +369,41 @@ function renderStatsTicker(allVideos) {
   const subsGained = allVideos.reduce((sum, v) => sum + (Number(v.subs_gained) || 0), 0);
 
   const items = [
-    `TOTAL VIEWS ${fmtNum(totalViews)}`,
-    `VIEWS (48H) ${fmtNum(views48h)}`,
-    `LIKES ${fmtNum(totalLikes)}`,
-    `SUBS GAINED ${fmtNum(subsGained)}`,
+    `Total views ${fmtNum(totalViews)}`,
+    `Views (48h) ${fmtNum(views48h)}`,
+    `Likes ${fmtNum(totalLikes)}`,
   ];
-  const doubled = items.concat(items); // seamless loop
-  el.innerHTML = doubled.map((t) => `<span>${escapeHtml(t)}</span>`).join("");
+  if (isYouTube) items.push(`Subs gained ${fmtNum(subsGained)}`);
+  el.innerHTML = items.map((t) => `<span>${escapeHtml(t)}</span>`).join("");
 }
+
+/* ---------------------------------------------------------- */
+/* Platform tabs: YouTube / Facebook / Instagram               */
+/* ---------------------------------------------------------- */
+const platformVideos = { youtube: [], facebook: [], instagram: [] };
+let currentPlatform = "youtube";
+
+function showPlatform(platform) {
+  currentPlatform = platform;
+  document.querySelectorAll(".platform-tab").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.platform === platform);
+  });
+  const videos = platformVideos[platform] || [];
+  const isYouTube = platform === "youtube";
+  const label = platform.charAt(0).toUpperCase() + platform.slice(1);
+  renderKpisFromVideos(videos, isYouTube);
+  renderVideoList(
+    videos,
+    isYouTube
+      ? undefined
+      : `No ${label} data yet — it's exported by the analytics workflow every ~6h (needs the META_ACCESS_TOKEN secret).`
+  );
+  renderStatsTicker(videos, isYouTube);
+}
+
+document.querySelectorAll(".platform-tab").forEach((btn) => {
+  btn.addEventListener("click", () => showPlatform(btn.dataset.platform));
+});
 
 function renderApprovals(list, s) {
   const el = document.getElementById("approvalList");
@@ -382,6 +428,110 @@ function renderApprovals(list, s) {
   el.querySelectorAll(".approve-btn").forEach((btn) => {
     btn.addEventListener("click", () => dispatchApprove(s, btn.dataset));
   });
+}
+
+/* ---------------------------------------------------------- */
+/* Underperformers: retitle / repost stuck videos              */
+/* ---------------------------------------------------------- */
+const UNDER_VIEW_THRESHOLD = 100; // views
+const UNDER_MIN_AGE_HOURS = 30;   // 24h rule + 6h analytics-refresh lag buffer
+const ARTIFACT_MAX_DAYS = 13;     // render artifact retention is 14d; 1d margin
+
+function hoursAgo(iso) {
+  return daysAgo(iso) * 24;
+}
+
+function renderUnderperformers(allVideos, index, analytics, s) {
+  const el = document.getElementById("underperformerList");
+  const staleEl = document.getElementById("underStaleness");
+  const byId = new Map((index || []).map((e) => [e.video_id, e]));
+
+  const flagged = allVideos.filter((v) => {
+    const age = hoursAgo(v.publishedAt);
+    if (!(age >= UNDER_MIN_AGE_HOURS) || (v.views || 0) >= UNDER_VIEW_THRESHOLD) return false;
+    const entry = byId.get(v.id);
+    // Skip deleted originals (stale analytics rows) and already-republished videos.
+    if (entry && (entry.republished_as || entry.republished_from)) return false;
+    return true;
+  });
+
+  document.getElementById("underCount").textContent = flagged.length ? `${flagged.length} flagged` : "";
+
+  // Staleness note: analytics refreshes every ~6h, so view counts lag.
+  const channels = analyticsChannels(analytics);
+  const updated = Object.values(channels)
+    .map((c) => new Date(c.updated || 0).getTime())
+    .filter((t) => t > 0);
+  staleEl.textContent = updated.length
+    ? `stats refreshed ${Math.round((Date.now() - Math.max(...updated)) / 3600000)}h ago (up to 6h lag)`
+    : "";
+
+  if (!flagged.length) {
+    el.innerHTML = `<div class="empty-state"><strong>Nothing flagged</strong>Videos stuck under ${UNDER_VIEW_THRESHOLD} views ~24h after publish appear here.</div>`;
+    return;
+  }
+
+  el.innerHTML = flagged
+    .map((v) => {
+      const entry = byId.get(v.id);
+      const channel = (entry && entry.channel) || v._channel || "histold";
+      const canRepost = Boolean(
+        entry && entry.run_id && entry.stage_dir_name && daysAgo(entry.published_at) < ARTIFACT_MAX_DAYS
+      );
+      const retitledBadge = entry && entry.retitled_at ? `<span class="under-badge">retitled</span>` : "";
+      const repostTip = canRepost ? "" : ` title="no render artifact available (older video or artifact expired) — retitle instead" disabled`;
+      return `
+      <div class="approval-row">
+        <div>
+          <div class="approval-row__title">${escapeHtml(v.title || "(untitled)")} ${retitledBadge}</div>
+          <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; ${Math.round(hoursAgo(v.publishedAt))}h ago &middot; <a href="https://youtu.be/${v.id}" target="_blank" rel="noopener">watch</a></div>
+        </div>
+        <div class="under-actions">
+          <button class="btn btn--ghost under-retitle" data-video="${v.id}" data-channel="${escapeHtml(channel)}">Retitle</button>
+          <button class="btn btn--primary under-repost" data-video="${v.id}" data-channel="${escapeHtml(channel)}"
+            data-run="${entry ? entry.run_id : ""}" data-stage="${entry ? entry.stage_dir_name : ""}"${repostTip}>Repost</button>
+        </div>
+      </div>`;
+    })
+    .join("");
+
+  el.querySelectorAll(".under-retitle").forEach((btn) => {
+    btn.addEventListener("click", () => dispatchRepublish(s, "retitle", btn));
+  });
+  el.querySelectorAll(".under-repost").forEach((btn) => {
+    btn.addEventListener("click", () => dispatchRepublish(s, "repost", btn));
+  });
+}
+
+async function dispatchRepublish(s, mode, btn) {
+  if (!isConfigured(s)) {
+    alert("Configure Settings first (owner/repo/PAT).");
+    return;
+  }
+  const d = btn.dataset;
+  if (mode === "repost") {
+    const ok = confirm(
+      "Repost will DELETE the current video (views/comments lost) and re-upload the same render with a fresh AI title.\n\nProceed?"
+    );
+    if (!ok) return;
+  }
+  btn.disabled = true;
+  btn.textContent = "Dispatching…";
+  try {
+    await dispatchWorkflow(s, "republish.yml", {
+      mode,
+      video_id: d.video,
+      source_run_id: d.run || "",
+      stage_dir_name: d.stage || "",
+      channel: d.channel || "histold",
+    });
+    btn.textContent = "Dispatched ✓";
+    setTimeout(() => loadRuns(getSettings(), 1), 4000);
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = mode === "repost" ? "Repost" : "Retitle";
+    alert("Failed to dispatch: " + err.message);
+  }
 }
 
 function escapeHtml(str) {
@@ -534,17 +684,24 @@ async function boot() {
   setConn("warn", "connecting...");
 
   try {
-    const [analytics, trends, approvals] = await Promise.all([
+    const [analytics, trends, approvals, publishedIndex, meta] = await Promise.all([
       loadAnalytics(s).catch(() => null),
       loadTrends(s).catch(() => null),
       loadPendingApprovals(s).catch(() => []),
+      loadPublishedIndex(s).catch(() => []),
+      loadMetaAnalytics(s).catch(() => null),
     ]);
 
     if (analytics) {
       const allVideos = renderKpis(analytics);
-      renderVideoList(allVideos);
-      renderStatsTicker(allVideos);
+      platformVideos.youtube = allVideos;
+      renderUnderperformers(allVideos, publishedIndex || [], analytics, s);
     }
+    if (meta) {
+      platformVideos.facebook = (meta.facebook && meta.facebook.videos) || [];
+      platformVideos.instagram = (meta.instagram && meta.instagram.videos) || [];
+    }
+    showPlatform(currentPlatform);
     if (trends) {
       renderTrends(trends);
     }

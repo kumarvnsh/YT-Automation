@@ -381,8 +381,43 @@ def run_stage(
                 st["fmt"], st.get("title", ""), st.get("youtube_url")
             )
         print("  ✓ stage complete")
+        _record_published(cfg, stage, st)
         _cleanup(cfg, stage, st)
     return st
+
+
+def _record_published(cfg: Config, stage: Path, st: dict) -> None:
+    """Append the uploaded video to data/published_index.json.
+
+    Must run before _cleanup: cleanup deletes the stage dir, and this index is
+    the only durable video_id → run/stage mapping (used by the daily cap and
+    the dashboard retitle/repost feature). Best-effort: never fails the run.
+    """
+    if not st.get("youtube_id"):
+        return
+    try:
+        from datetime import timezone
+
+        path = base_dir() / "data" / "published_index.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        entries = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+        entries.append({
+            "video_id": st["youtube_id"],
+            "run_id": env("GITHUB_RUN_ID") or "",
+            "stage_dir_name": stage.name,
+            "title": st.get("title", ""),
+            "published_at": datetime.now(timezone.utc).isoformat(),
+            "channel": env("CHANNEL_LABEL") or "histold",
+            "scheduled": env("PUBLISH_SCHEDULED") == "true",
+            "workflow": env("PUBLISH_WORKFLOW") or "publish",
+            "retitled_at": None,
+            "republished_from": None,
+            "republished_as": None,
+        })
+        path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+        print(f"  ✓ recorded {st['youtube_id']} in {path.name}")
+    except Exception as exc:  # noqa: BLE001
+        print(f"  ! published-index record skipped: {exc}")
 
 
 def _cleanup(cfg: Config, stage: Path, st: dict) -> None:

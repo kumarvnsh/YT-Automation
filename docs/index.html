@@ -28,6 +28,12 @@
 
   <main class="deck">
 
+    <nav class="platform-tabs" id="platformTabs" aria-label="Platform">
+      <button class="platform-tab active" data-platform="youtube" type="button">YouTube</button>
+      <button class="platform-tab" data-platform="facebook" type="button">Facebook</button>
+      <button class="platform-tab" data-platform="instagram" type="button">Instagram</button>
+    </nav>
+
     <section class="kpi-row" id="kpiRow">
       <div class="kpi"><div class="kpi__label">Total Videos</div><div class="kpi__value" id="kpiTotalVideos">–</div></div>
       <div class="kpi"><div class="kpi__label">Total Views</div><div class="kpi__value" id="kpiTotalViews">–</div></div>
@@ -108,6 +114,17 @@
 
         <div class="panel">
           <div class="panel__head">
+            <h2>Underperformers</h2>
+            <span class="section-label" id="underCount"></span>
+          </div>
+          <div class="panel__body panel__body--tight" id="underperformerList">
+            <div class="empty-state"><strong>Nothing flagged</strong>Videos stuck under 100 views ~24h after publish appear here.</div>
+          </div>
+          <div class="under-staleness" id="underStaleness"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
             <h2>Run History</h2>
             <button class="btn btn--ghost" id="btnRefreshRuns" style="font-size:11px;">↻</button>
           </div>
@@ -134,8 +151,6 @@
     </section>
 
   </main>
-
-  <footer class="foot">YT-Automation Control Deck &mdash; static page, zero hosting cost, Actions-driven</footer>
 
   <!-- Settings modal -->
   <div class="modal-backdrop" id="settingsModal">

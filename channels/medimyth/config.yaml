@@ -37,7 +37,7 @@ script:
   provider: "anthropic"
   anthropic_model: "claude-sonnet-4-6"
   openai_model: "gpt-4o-mini"
-  shorts_target_seconds: 45
+  shorts_target_seconds: 20
   longform_target_seconds: 420
 
 tts:
@@ -84,7 +84,15 @@ youtube:
   category_id: "27"                   # Education
   made_for_kids: false
   expected_channel_id: ""             # fill in after OAuth + whoami (locks uploads to MediMyth)
-  default_tags: ["medical facts", "health myths", "did you know", "medicine", "health", "myth vs fact", "science"]
+  default_tags: ["medical facts", "health myths", "did you know", "medicine", "health", "myth vs fact", "science", "shorts", "viral", "trending"]
+
+republish:
+  auto: false             # medimyth: manual review only (analytics export not wired yet)
+  view_threshold: 100
+  min_age_hours: 30
+  max_age_days: 13
+  max_per_check: 1
+  mode: repost
 
 notifications:
   enabled: false                      # enable + set OpenWA vars in this channel's .env if you want alerts

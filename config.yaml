@@ -23,7 +23,7 @@ script:
   anthropic_model: "claude-sonnet-4-6"
   openai_model: "gpt-4o-mini"
   # Target spoken duration. The writer aims for ~150 words/min.
-  shorts_target_seconds: 45
+  shorts_target_seconds: 20
   longform_target_seconds: 420   # 7 minutes
 
 tts:
@@ -87,7 +87,17 @@ youtube:
   # Safety lock: uploads abort unless the authorized channel matches this ID.
   # This is the Histold channel. Leave blank to disable the check.
   expected_channel_id: "UCJImBb1E8e0llDt8ISdF_1g"
-  default_tags: ["history", "did you know", "facts", "history shorts", "education"]
+  default_tags: ["history", "did you know", "facts", "history shorts", "education", "shorts", "viral", "trending"]
+
+republish:
+  # Auto-repost stuck videos: checked after every analytics export (~6h).
+  # One auto attempt per video ever; manual dashboard buttons unaffected.
+  auto: true
+  view_threshold: 100     # flag videos still under this many views...
+  min_age_hours: 30       # ...this long after publish (24h rule + 6h analytics lag)
+  max_age_days: 13        # repost needs the render artifact (14d retention, 1d margin)
+  max_per_check: 1        # dispatch at most this many republishes per analytics run
+  mode: repost            # repost (delete + re-upload, new title) | retitle (title swap only)
 
 meta:
   # Cross-post rendered shorts to Facebook Reels + Instagram Reels via the Graph

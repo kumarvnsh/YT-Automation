@@ -19,11 +19,16 @@ UPLOAD_SCOPES = [
 
 ANALYTICS_SCOPE = "https://www.googleapis.com/auth/yt-analytics.readonly"
 
+# Full manage scope: needed only by the retitle/republish flow (videos.update /
+# videos.delete). Uploads keep using UPLOAD_SCOPES so old tokens don't break.
+MANAGE_SCOPE = "https://www.googleapis.com/auth/youtube"
+
 # Full scope set used only by setup_oauth.py / analytics export. Uploads keep
 # using UPLOAD_SCOPES so old upload tokens do not break before re-consent.
 SCOPES = [
     *UPLOAD_SCOPES,
     ANALYTICS_SCOPE,
+    MANAGE_SCOPE,
 ]
 
 
@@ -96,6 +101,83 @@ def build_analytics_client(creds):
     return build("youtubeAnalytics", "v2", credentials=creds)
 
 
+def _verify_channel(cfg: Config, youtube) -> None:
+    """Safety lock: refuse to act on the wrong channel."""
+    expected = (cfg.get("youtube.expected_channel_id") or "").strip()
+    if not expected:
+        return
+    channel_id, channel_title = get_my_channel(youtube)
+    if channel_id != expected:
+        raise RuntimeError(
+            f"Channel mismatch — refusing to proceed. Authorized channel is "
+            f"'{channel_title}' ({channel_id}), but config expects {expected}. "
+            f"Delete secrets/token.json and re-run scripts/setup_oauth.py, "
+            f"then select the correct channel."
+        )
+    print(f"  channel verified: {channel_title} ({channel_id})")
+
+
+def _build_manage_client(cfg: Config):
+    """YouTube client with the full manage scope (update/delete)."""
+    from googleapiclient.discovery import build
+
+    creds = get_credentials(interactive=False, scopes=[*UPLOAD_SCOPES, MANAGE_SCOPE])
+    youtube = build("youtube", "v3", credentials=creds)
+    _verify_channel(cfg, youtube)
+    return youtube
+
+
+def _reraise_if_scope_error(exc: Exception) -> None:
+    from googleapiclient.errors import HttpError
+
+    if isinstance(exc, HttpError) and exc.resp.status == 403 and (
+        b"insufficientPermissions" in exc.content or b"insufficient" in exc.content
+    ):
+        raise RuntimeError(
+            "YouTube token lacks the full 'youtube' manage scope — re-run "
+            "scripts/setup_oauth.py locally and update the YT_TOKEN_JSON_B64 "
+            "repo secret (see GITHUB_ACTIONS_SETUP.md §6)."
+        ) from exc
+
+
+def get_video_snippet(youtube, video_id: str) -> dict:
+    """Fetch the snippet of an existing video; raise clearly if missing."""
+    resp = youtube.videos().list(part="snippet", id=video_id).execute()
+    items = resp.get("items", [])
+    if not items:
+        raise RuntimeError(
+            f"Video {video_id} not found — already deleted, or owned by a "
+            f"different channel than the authorized token."
+        )
+    return items[0]["snippet"]
+
+
+def update_video_title(cfg: Config, video_id: str, new_title: str) -> None:
+    """Change only the title of an existing video (retitle flow)."""
+    youtube = _build_manage_client(cfg)
+    snippet = get_video_snippet(youtube, video_id)
+    snippet["title"] = new_title[:100]
+    # videos().update requires categoryId to be present in the snippet.
+    snippet.setdefault("categoryId", str(cfg.get("youtube.category_id", "27")))
+    try:
+        youtube.videos().update(part="snippet", body={"id": video_id, "snippet": snippet}).execute()
+    except Exception as exc:  # noqa: BLE001
+        _reraise_if_scope_error(exc)
+        raise
+    print(f"  retitled {video_id}: {new_title}")
+
+
+def delete_video(cfg: Config, video_id: str) -> None:
+    """Permanently delete a video from the channel (republish flow)."""
+    youtube = _build_manage_client(cfg)
+    try:
+        youtube.videos().delete(id=video_id).execute()
+    except Exception as exc:  # noqa: BLE001
+        _reraise_if_scope_error(exc)
+        raise
+    print(f"  deleted video {video_id}")
+
+
 def upload_video(
     cfg: Config,
     video_path: Path,
@@ -111,19 +193,7 @@ def upload_video(
 
     creds = get_credentials(interactive=False)
     youtube = build("youtube", "v3", credentials=creds)
-
-    # Safety lock: never upload to the wrong channel.
-    expected = (cfg.get("youtube.expected_channel_id") or "").strip()
-    if expected:
-        channel_id, channel_title = get_my_channel(youtube)
-        if channel_id != expected:
-            raise RuntimeError(
-                f"Channel mismatch — refusing to upload. Authorized channel is "
-                f"'{channel_title}' ({channel_id}), but config expects {expected}. "
-                f"Delete secrets/token.json and re-run scripts/setup_oauth.py, "
-                f"then select the correct channel."
-            )
-        print(f"  channel verified: {channel_title} ({channel_id})")
+    _verify_channel(cfg, youtube)
 
     body = {
         "snippet": {

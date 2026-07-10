@@ -63,3 +63,45 @@ You'll get a public URL like `https://kumarvnsh.github.io/YT-Automation/`.
 3. `workflow_dispatch` with `privacy_status: private` for a real first live upload — confirm
    the channel-mismatch safety lock (`youtube.expected_channel_id`) passes.
 4. Only after step 3 succeeds, trust the `schedule:` cron in `publish.yml` for unattended runs.
+
+## 5. cron-job.org schedule (2 shorts/day)
+
+Publishing is triggered externally by cron-job.org (GitHub's own cron proved unreliable).
+Current cadence (configured 2026-07-10): **2 shorts/day at 9:00 AM and 6:00 PM IST**.
+
+1. Log into cron-job.org → Cronjobs.
+2. Keep exactly **two** jobs: one at **9:00 AM IST**, one at **6:00 PM IST** (job
+   timezone Asia/Kolkata; in UTC that is 03:30 and 12:30).
+3. Both jobs use the identical request:
+   - `POST https://api.github.com/repos/kumarvnsh/YT-Automation/actions/workflows/publish.yml/dispatches`
+   - Body: `{"ref":"master","inputs":{"format":"short","scheduled":"true"}}`
+   - Headers: existing `Authorization: Bearer <PAT>` + `Accept: application/vnd.github+json`.
+4. "Test run" each job once and confirm a **Publish Video** run appears in the Actions tab
+   (it will really upload — test near an intended slot, or temporarily add
+   `"no_upload":"true"` to the body for the test).
+
+The workflow additionally enforces a **hard cap of 2 scheduled uploads per IST day**
+(counted from `data/published_index.json`), so a stray third cron job or a double-fire
+self-cancels. Manual dashboard dispatches are exempt from the cap.
+
+## 6. OAuth re-consent for retitle/republish (one-time)
+
+The dashboard's Underperformers panel (retitle / repost buttons) needs the full
+`youtube` manage scope, which the original token lacks. After pulling the code that adds
+`MANAGE_SCOPE`:
+
+1. Locally: `rm secrets/token.json`, then `python scripts/setup_oauth.py` and approve the
+   consent screen (it now includes "Manage your YouTube account"). Pick the Histold channel.
+2. `base64 -i secrets/token.json | pbcopy` → update the `YT_TOKEN_JSON_B64` repo secret.
+3. Sanity: `python scripts/whoami_youtube.py`, then trigger the analytics workflow once.
+
+Until this is done, retitle/repost runs fail with an explicit "token lacks the full
+youtube scope" error; normal uploads are unaffected.
+
+**Auto-republish** is also gated on this re-consent. With `republish.auto: true` in
+`config.yaml`, every analytics export (~6h) checks for videos under
+`republish.view_threshold` views after `republish.min_age_hours` and automatically
+dispatches one `republish.yml` run (`republish.mode`: `repost` deletes + re-uploads with
+a fresh title; `retitle` only swaps the title). Each video gets exactly ONE automatic
+attempt, ever — after that only the dashboard's manual buttons apply. Set
+`republish.auto: false` to go back to manual-only.

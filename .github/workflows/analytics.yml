@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write  # auto-republish dispatches republish.yml
 
 jobs:
   export:
@@ -43,13 +44,27 @@ jobs:
           python scripts/export_trends.py --label histold
           python scripts/merge_channel_json.py --labels histold --out data/trends.json data/trends.json
 
+      - name: Export Facebook + Instagram analytics
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+        run: python scripts/export_meta_analytics.py
+
+      # Auto-republish stuck videos (config republish.auto). Dispatches
+      # republish.yml per candidate and stamps auto_dispatched_at in the index
+      # so each video gets exactly one automatic attempt.
+      - name: Auto-republish underperformers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/auto_republish.py --label histold
+
       - name: Commit exports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/analytics.json data/trends.json
+          git add data/analytics.json data/trends.json data/published_index.json data/meta_analytics.json
           if ! git diff --cached --quiet; then
             git commit -m "chore: refresh analytics + trends [skip ci]"
+            git pull --rebase --autostash
             git push
           else
             echo "No changes to commit."
