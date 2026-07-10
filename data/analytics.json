@@ -2,15 +2,24 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-10T09:35:26.789736+00:00",
+      "updated": "2026-07-10T14:26:37.950891+00:00",
       "videos": [
+        {
+          "id": "Lpt-QnNWJOg",
+          "title": "Pokemon Was Inspired by a Childhood Hobby Most Kids Have Abandoned",
+          "publishedAt": "2026-07-10T12:30:10Z",
+          "thumbnail": "https://i.ytimg.com/vi/Lpt-QnNWJOg/mqdefault.jpg",
+          "views": 75,
+          "likes": 1,
+          "comments": 0
+        },
         {
           "id": "mOgSMDUQCp0",
           "title": "France Blew Up a Civilian Ship \u2014 Then Called It a Success",
           "publishedAt": "2026-07-10T09:03:40Z",
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
-          "views": 53,
-          "likes": 1,
+          "views": 758,
+          "likes": 3,
           "comments": 0
         },
         {
@@ -18,7 +27,7 @@
           "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 700,
+          "views": 716,
           "likes": 6,
           "comments": 0
         },
@@ -27,7 +36,7 @@
           "title": "Argentina Declared Independence With a King Already Picked \u2014 Then Changed Its Mind",
           "publishedAt": "2026-07-09T16:09:34Z",
           "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
-          "views": 565,
+          "views": 567,
           "likes": 6,
           "comments": 0
         },
@@ -42,10 +51,10 @@
         },
         {
           "id": "-I3k-5EYohU",
-          "title": "Decades Before the iPod, This Hat Let You Listen to the Radio",
+          "title": "Would You Wear This 1949 Radio Hat? \ud83c\udfa9 #retro #tech #fashion",
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 50,
+          "views": 59,
           "likes": 1,
           "comments": 0
         },
@@ -54,8 +63,8 @@
           "title": "This Artist Broke the Law Just to Paint a Nude Model #arthistory #banned #scandal",
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 851,
-          "likes": 10,
+          "views": 852,
+          "likes": 9,
           "comments": 0
         },
         {
@@ -72,7 +81,7 @@
           "title": "The Titanic Had a Bakery, a Pool, and a Warning Nobody Listened To",
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 880,
+          "views": 881,
           "likes": 13,
           "comments": 0
         },
@@ -90,7 +99,7 @@
           "title": "The 'Flying Saucer' Crash That the Army Explained Twice \u2014 Differently",
           "publishedAt": "2026-07-08T16:09:40Z",
           "thumbnail": "https://i.ytimg.com/vi/hI7XI8VcN_g/mqdefault.jpg",
-          "views": 3,
+          "views": 4,
           "likes": 0,
           "comments": 0
         },
@@ -99,8 +108,8 @@
           "title": "He Sailed Into the Unknown \u2014 and Rewrote the World's Trade Routes",
           "publishedAt": "2026-07-08T15:01:17Z",
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
-          "views": 191,
-          "likes": 2,
+          "views": 199,
+          "likes": 3,
           "comments": 0
         },
         {
@@ -108,7 +117,7 @@
           "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
           "publishedAt": "2026-07-08T13:10:28Z",
           "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
-          "views": 588,
+          "views": 597,
           "likes": 19,
           "comments": 2
         },
@@ -137,7 +146,7 @@
           "title": "She Was Told Law Firms Don't Hire Women \u2014 Then She Ran the Whole Court",
           "publishedAt": "2026-07-07T16:09:30Z",
           "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
-          "views": 1036,
+          "views": 1038,
           "likes": 32,
           "comments": 1,
           "avg_view_pct": 74.42,
@@ -148,7 +157,7 @@
           "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1087,
+          "views": 1089,
           "likes": 24,
           "comments": 0,
           "avg_view_pct": 61.25000000000001,
@@ -159,7 +168,7 @@
           "title": "Outnumbered 10-to-1, They Won Anyway \u2014 With One Desperate Charge",
           "publishedAt": "2026-07-07T13:09:38Z",
           "thumbnail": "https://i.ytimg.com/vi/_vPg1nQAlCc/mqdefault.jpg",
-          "views": 641,
+          "views": 643,
           "likes": 13,
           "comments": 0,
           "avg_view_pct": 55.13,
@@ -170,7 +179,7 @@
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 1257,
+          "views": 1262,
           "likes": 24,
           "comments": 5,
           "avg_view_pct": 65.66,
@@ -181,7 +190,7 @@
           "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
           "publishedAt": "2026-07-07T07:09:24Z",
           "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
-          "views": 740,
+          "views": 741,
           "likes": 14,
           "comments": 1,
           "avg_view_pct": 49.1,
@@ -192,7 +201,7 @@
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 802,
+          "views": 803,
           "likes": 31,
           "comments": 0,
           "avg_view_pct": 151.14,
@@ -203,7 +212,7 @@
           "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
           "publishedAt": "2026-07-07T06:40:49Z",
           "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
-          "views": 666,
+          "views": 667,
           "likes": 30,
           "comments": 0,
           "avg_view_pct": 83.61,
@@ -214,7 +223,7 @@
           "title": "Four Nations Saved a Species \u2014 With the World's First Wildlife Treaty",
           "publishedAt": "2026-07-07T06:21:37Z",
           "thumbnail": "https://i.ytimg.com/vi/vO8dOVuzpEI/mqdefault.jpg",
-          "views": 594,
+          "views": 595,
           "likes": 13,
           "comments": 0,
           "avg_view_pct": 80.36,
@@ -236,7 +245,7 @@
           "title": "The Law That Forces the Government to Tell You Its Secrets",
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 274,
+          "views": 275,
           "likes": 8,
           "comments": 0,
           "avg_view_pct": 54.72,
@@ -368,7 +377,7 @@
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1232,
+          "views": 1235,
           "likes": 12,
           "comments": 0,
           "avg_view_pct": 71.81,
@@ -401,7 +410,7 @@
           "title": "Why John Adams Was the Real Champion of Independence #History #FoundingFathers #USA",
           "publishedAt": "2026-07-04T17:37:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AOltRhgt6C8/mqdefault.jpg",
-          "views": 5,
+          "views": 6,
           "likes": 0,
           "comments": 0,
           "avg_view_pct": 25.05,
@@ -445,7 +454,7 @@
           "title": "George Rogers Clark's most daring move #history #shorts #military",
           "publishedAt": "2026-07-04T13:11:46Z",
           "thumbnail": "https://i.ytimg.com/vi/ofPlqOKT5EI/mqdefault.jpg",
-          "views": 1126,
+          "views": 1128,
           "likes": 23,
           "comments": 0,
           "avg_view_pct": 54.81,
@@ -503,7 +512,7 @@
           "views": 672,
           "likes": 23,
           "comments": 0,
-          "avg_view_pct": 53.97,
+          "avg_view_pct": 54.54,
           "subs_gained": 1
         },
         {
@@ -514,18 +523,7 @@
           "views": 41,
           "likes": 2,
           "comments": 0,
-          "avg_view_pct": 31.17,
-          "subs_gained": 0
-        },
-        {
-          "id": "4O8YxFwlxp8",
-          "title": "Romans Built Seawalls That Got STRONGER Over Time \u2014 We Forgot How",
-          "publishedAt": "2026-07-01T13:08:16Z",
-          "thumbnail": "https://i.ytimg.com/vi/4O8YxFwlxp8/mqdefault.jpg",
-          "views": 111,
-          "likes": 4,
-          "comments": 0,
-          "avg_view_pct": 50.690000000000005,
+          "avg_view_pct": 43.26,
           "subs_gained": 0
         }
       ]
