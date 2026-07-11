@@ -293,26 +293,37 @@ function renderTrends(trends) {
   }
   const used = new Set(getUsedTrends());
 
-  el.innerHTML = keys
-    .map((key) => {
-      const c = channels[key];
-      const pool = (c.on_this_day || []).filter((e) => !used.has(e));
-      const shown = pool.slice(0, TREND_DISPLAY_LIMIT);
-      const rows = shown.length
-        ? shown
-            .map(
-              (e) => `
+  const rowsFor = (pool) =>
+    pool
+      .map(
+        (e) => `
           <li class="trend-list__item">
             <span class="trend-list__text">${escapeHtml(e)}</span>
             <button class="btn btn--primary trend-publish" data-topic="${escapeHtml(e)}">▶ Publish</button>
           </li>`
-            )
-            .join("")
-        : `<li class="trend-list__empty">All trends published — refreshes on the next analytics run.</li>`;
+      )
+      .join("");
+
+  el.innerHTML = keys
+    .map((key) => {
+      const c = channels[key];
+      // Live searches are ranked biggest-first by the exporter; show the top ones.
+      const trending = (c.trends || []).filter((e) => !used.has(e)).slice(0, TREND_DISPLAY_LIMIT);
+      const otd = (c.on_this_day || []).filter((e) => !used.has(e)).slice(0, TREND_DISPLAY_LIMIT);
+      const sections = [];
+      if (trending.length) {
+        sections.push(`<h4 class="trend-group">🔥 Trending now</h4><ul class="trend-list">${rowsFor(trending)}</ul>`);
+      }
+      if (otd.length) {
+        sections.push(`<h4 class="trend-group">📅 On this day</h4><ul class="trend-list">${rowsFor(otd)}</ul>`);
+      }
+      if (!sections.length) {
+        sections.push(`<ul class="trend-list"><li class="trend-list__empty">All trends published — refreshes on the next analytics run.</li></ul>`);
+      }
       return `
       <div class="trend-channel">
         <h3>${key} — ${escapeHtml(c.date || "")}</h3>
-        <ul class="trend-list">${rows}</ul>
+        ${sections.join("")}
       </div>`;
     })
     .join("");
