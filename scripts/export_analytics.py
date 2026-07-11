@@ -141,6 +141,8 @@ def _video_stats(youtube, video_ids: list[str]) -> list[dict]:
                 {
                     "id": v["id"],
                     "title": sn.get("title", ""),
+                    "description": sn.get("description", ""),
+                    "tags": sn.get("tags", []),
                     "publishedAt": sn.get("publishedAt", ""),
                     "thumbnail": thumb,
                     "views": int(stt.get("viewCount", 0)),

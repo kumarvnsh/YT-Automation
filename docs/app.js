@@ -394,6 +394,11 @@ function renderStatsTicker(allVideos, isYouTube = true) {
 const platformVideos = { youtube: [], facebook: [], instagram: [] };
 let currentPlatform = "youtube";
 const DEFAULT_PLAYLIST_TITLE = "Erased From History";
+const UNSORTED_PAGE_SIZE = 10;
+let unsortedPageItems = [];
+let unsortedPlaylists = [];
+let unsortedPage = 1;
+let unsortedSettings = null;
 
 function showPlatform(platform) {
   currentPlatform = platform;
@@ -455,42 +460,64 @@ function primaryYouTubeChannel(analytics) {
 function renderUnsortedVideos(analytics, s) {
   const el = document.getElementById("unsortedList");
   const countEl = document.getElementById("unsortedCount");
+  const bulkBtn = document.getElementById("bulkSortBtn");
   const channel = primaryYouTubeChannel(analytics);
-  const playlists = (((channel || {}).playlists || {}).items || []);
-  const videos = ((channel || {}).videos || []).filter((v) => v.is_unsorted);
+  unsortedSettings = s;
+  unsortedPlaylists = (((channel || {}).playlists || {}).items || []);
+  unsortedPageItems = ((channel || {}).videos || [])
+    .filter((v) => v.is_unsorted)
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+  unsortedPage = 1;
 
-  countEl.textContent = videos.length ? `${videos.length} unsorted` : "";
+  countEl.textContent = unsortedPageItems.length ? `${unsortedPageItems.length} unsorted` : "";
+  bulkBtn.style.display = unsortedPageItems.length ? "inline-flex" : "none";
+  document.getElementById("unsortedPagination").style.display = "none";
   if (!channel) {
     el.innerHTML = `<div class="empty-state"><strong>No analytics data</strong>Run Export Analytics &amp; Trends first.</div>`;
     return;
   }
-  if (!videos.length) {
+  if (!unsortedPageItems.length) {
     el.innerHTML = `<div class="empty-state"><strong>All sorted</strong>Recent videos are already in a playlist.</div>`;
     return;
   }
+  renderUnsortedPage();
+}
 
-  const options = playlists.length
-    ? playlists
+function renderUnsortedPage() {
+  const el = document.getElementById("unsortedList");
+  const totalPages = Math.max(1, Math.ceil(unsortedPageItems.length / UNSORTED_PAGE_SIZE));
+  unsortedPage = Math.min(Math.max(1, unsortedPage), totalPages);
+  const start = (unsortedPage - 1) * UNSORTED_PAGE_SIZE;
+  const videos = unsortedPageItems.slice(start, start + UNSORTED_PAGE_SIZE);
+
+  const options = unsortedPlaylists.length
+    ? unsortedPlaylists
         .map((p) => `<option value="${escapeHtml(p.id)}">${escapeHtml(p.title || p.id)}</option>`)
         .join("")
     : `<option value="">Create ${escapeHtml(DEFAULT_PLAYLIST_TITLE)}</option>`;
   el.innerHTML = videos
     .map((v) => `
-      <div class="playlist-row">
-        <div class="playlist-row__meta">
-          <div class="approval-row__title">${escapeHtml(v.title || "(untitled)")}</div>
-          <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; ${playlists.length ? "choose playlist" : `will create ${escapeHtml(DEFAULT_PLAYLIST_TITLE)}`} &middot; <a href="${v.url || `https://youtu.be/${v.id}`}" target="_blank" rel="noopener">watch</a></div>
+        <div class="playlist-row">
+          <div class="playlist-row__meta">
+            <div class="approval-row__title">${escapeHtml(v.title || "(untitled)")}</div>
+          <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; ${unsortedPlaylists.length ? "choose playlist" : `will create ${escapeHtml(DEFAULT_PLAYLIST_TITLE)}`} &middot; <a href="${v.url || `https://youtu.be/${v.id}`}" target="_blank" rel="noopener">watch</a></div>
         </div>
         <div class="playlist-row__actions">
           <select class="playlist-select" aria-label="Playlist for ${escapeHtml(v.title || v.id)}">${options}</select>
-          <button class="btn btn--primary playlist-add" data-video="${escapeHtml(v.id)}">${playlists.length ? "Add" : "Create + Add"}</button>
+          <button class="btn btn--primary playlist-add" data-video="${escapeHtml(v.id)}">${unsortedPlaylists.length ? "Add" : "Create + Add"}</button>
         </div>
       </div>`)
     .join("");
 
   el.querySelectorAll(".playlist-add").forEach((btn) => {
-    btn.addEventListener("click", () => dispatchPlaylistSort(s, btn));
+    btn.addEventListener("click", () => dispatchPlaylistSort(unsortedSettings, btn));
   });
+
+  const pagination = document.getElementById("unsortedPagination");
+  pagination.style.display = totalPages > 1 ? "flex" : "none";
+  document.getElementById("unsortedPageLabel").textContent = `Page ${unsortedPage} of ${totalPages}`;
+  document.getElementById("unsortedPrev").disabled = unsortedPage <= 1;
+  document.getElementById("unsortedNext").disabled = unsortedPage >= totalPages;
 }
 
 async function dispatchPlaylistSort(s, btn) {
@@ -517,6 +544,44 @@ async function dispatchPlaylistSort(s, btn) {
     alert("Failed to dispatch playlist sort: " + err.message);
   }
 }
+
+async function dispatchBulkPlaylistSort() {
+  const s = unsortedSettings || getSettings();
+  const btn = document.getElementById("bulkSortBtn");
+  if (!isConfigured(s)) {
+    alert("Configure Settings first (owner/repo/PAT).");
+    return;
+  }
+  if (!unsortedPageItems.length) return;
+  const ok = confirm(`Auto-sort ${unsortedPageItems.length} unsorted videos into matching playlists?`);
+  if (!ok) return;
+  btn.disabled = true;
+  btn.textContent = "Queueing...";
+  try {
+    await dispatchWorkflow(s, "playlist.yml", {
+      bulk_sort: "true",
+      video_id: "",
+      playlist_id: "",
+      playlist_title: DEFAULT_PLAYLIST_TITLE,
+    });
+    btn.textContent = "Queued";
+    setTimeout(() => loadRuns(getSettings(), 1), 4000);
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = "Bulk Auto Sort";
+    alert("Failed to dispatch bulk sort: " + err.message);
+  }
+}
+
+document.getElementById("bulkSortBtn").addEventListener("click", dispatchBulkPlaylistSort);
+document.getElementById("unsortedPrev").addEventListener("click", () => {
+  unsortedPage -= 1;
+  renderUnsortedPage();
+});
+document.getElementById("unsortedNext").addEventListener("click", () => {
+  unsortedPage += 1;
+  renderUnsortedPage();
+});
 
 /* ---------------------------------------------------------- */
 /* Underperformers: retitle / repost stuck videos              */

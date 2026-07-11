@@ -6,7 +6,8 @@ on:
       video_id:
         description: "YouTube video ID to sort"
         type: string
-        required: true
+        required: false
+        default: ""
       playlist_id:
         description: "Destination playlist ID"
         type: string
@@ -17,6 +18,10 @@ on:
         type: string
         required: false
         default: "Erased From History"
+      bulk_sort:
+        description: "Automatically sort every unsorted video from analytics"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -50,10 +55,14 @@ jobs:
 
       - name: Add video to playlist
         run: |
-          python scripts/playlist_sort.py \
-            --video-id "${{ inputs.video_id }}" \
-            --playlist-id "${{ inputs.playlist_id }}" \
-            --playlist-title "${{ inputs.playlist_title }}"
+          if [ "${{ inputs.bulk_sort }}" = "true" ]; then
+            python scripts/playlist_sort.py --bulk
+          else
+            python scripts/playlist_sort.py \
+              --video-id "${{ inputs.video_id }}" \
+              --playlist-id "${{ inputs.playlist_id }}" \
+              --playlist-title "${{ inputs.playlist_title }}"
+          fi
 
       - name: Commit playlist assignment
         run: |

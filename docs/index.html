@@ -119,10 +119,18 @@
         <div class="panel">
           <div class="panel__head">
             <h2>Unsorted Videos</h2>
-            <span class="section-label" id="unsortedCount"></span>
+            <div class="panel-head-actions">
+              <span class="section-label" id="unsortedCount"></span>
+              <button class="btn btn--ghost" id="bulkSortBtn" style="display:none;">Bulk Auto Sort</button>
+            </div>
           </div>
           <div class="panel__body panel__body--tight" id="unsortedList">
             <div class="empty-state"><strong>No playlist data yet</strong>Run analytics after playlists are exported.</div>
+          </div>
+          <div class="pagination" id="unsortedPagination" style="display:none;">
+            <button class="btn btn--ghost" id="unsortedPrev">‹ Prev</button>
+            <span class="pagination__label" id="unsortedPageLabel"></span>
+            <button class="btn btn--ghost" id="unsortedNext">Next ›</button>
           </div>
         </div>
 
