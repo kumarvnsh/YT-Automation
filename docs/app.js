@@ -588,6 +588,32 @@ document.getElementById("btnDispatch").addEventListener("click", async () => {
   }
 });
 
+document.getElementById("btnRefreshAnalytics").addEventListener("click", async () => {
+  const s = getSettings();
+  if (!isConfigured(s)) {
+    alert("Configure Settings first (owner/repo/PAT).");
+    return;
+  }
+  const btn = document.getElementById("btnRefreshAnalytics");
+  btn.disabled = true;
+  btn.textContent = "↻ Dispatching…";
+  try {
+    await dispatchWorkflow(s, "analytics.yml", {});
+    btn.textContent = "✓ Queued";
+    // The export takes a few minutes and lands as a data commit; reload to see it.
+    setTimeout(() => loadRuns(s), 4000);
+  } catch (err) {
+    btn.textContent = "↻ Refresh analytics";
+    alert("Failed to dispatch analytics refresh: " + err.message);
+    btn.disabled = false;
+    return;
+  }
+  setTimeout(() => {
+    btn.textContent = "↻ Refresh analytics";
+    btn.disabled = false;
+  }, 60000);
+});
+
 async function dispatchApprove(s, data) {
   if (!isConfigured(s)) return;
   const privacy = prompt(
