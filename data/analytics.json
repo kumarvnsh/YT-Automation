@@ -2,14 +2,23 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-11T07:22:44.548554+00:00",
+      "updated": "2026-07-11T07:55:59.811475+00:00",
       "videos": [
+        {
+          "id": "HOzzS9c9bSI",
+          "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
+          "publishedAt": "2026-07-11T07:42:54Z",
+          "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
+          "views": 144,
+          "likes": 1,
+          "comments": 0
+        },
         {
           "id": "hXA0Zta874Q",
           "title": "He Flew Around the World in 91 Hours \u2014 Using Only a Radio and Luck",
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 798,
+          "views": 796,
           "likes": 21,
           "comments": 1
         },
@@ -18,7 +27,7 @@
           "title": "Erling Haaland Is Literally Finishing What His Father Started",
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1089,
+          "views": 1092,
           "likes": 8,
           "comments": 0
         },
@@ -27,7 +36,7 @@
           "title": "The Real Reason Pokemon Was Invented Has Nothing to Do With Games",
           "publishedAt": "2026-07-10T12:30:10Z",
           "thumbnail": "https://i.ytimg.com/vi/Lpt-QnNWJOg/mqdefault.jpg",
-          "views": 719,
+          "views": 720,
           "likes": 11,
           "comments": 5
         },
@@ -45,7 +54,7 @@
           "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 740,
+          "views": 738,
           "likes": 6,
           "comments": 0
         },
@@ -187,7 +196,7 @@
           "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1093,
+          "views": 1092,
           "likes": 24,
           "comments": 0,
           "avg_view_pct": 61.63000000000001,
@@ -393,7 +402,7 @@
         },
         {
           "id": "xGk9jhw4Y8A",
-          "title": "Alexander the Great May Have Been Buried Alive \u2014 And Known It",
+          "title": "Scientists Think Alexander the Great Was Conscious When They Buried Him",
           "publishedAt": "2026-07-05T13:32:06Z",
           "thumbnail": "https://i.ytimg.com/vi/xGk9jhw4Y8A/mqdefault.jpg",
           "views": 3,
@@ -522,17 +531,6 @@
           "comments": 0,
           "avg_view_pct": 76.64,
           "subs_gained": 0
-        },
-        {
-          "id": "Ya3QulUczbg",
-          "title": "They Invented Writing\u2014Then Disappeared #historylesson #ancient #facts",
-          "publishedAt": "2026-07-04T07:03:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/Ya3QulUczbg/mqdefault.jpg",
-          "views": 1176,
-          "likes": 30,
-          "comments": 0,
-          "avg_view_pct": 151.05,
-          "subs_gained": 1
         }
       ]
     }
