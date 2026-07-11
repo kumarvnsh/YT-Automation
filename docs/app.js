@@ -436,6 +436,7 @@ function renderApprovals(list, s) {
 const UNDER_VIEW_THRESHOLD = 100; // views
 const UNDER_MIN_AGE_HOURS = 30;   // 24h rule + 6h analytics-refresh lag buffer
 const ARTIFACT_MAX_DAYS = 13;     // render artifact retention is 14d; 1d margin
+const RETITLE_COOLDOWN_HOURS = 24; // hide freshly retitled videos while the new title runs
 
 function hoursAgo(iso) {
   return daysAgo(iso) * 24;
@@ -452,6 +453,8 @@ function renderUnderperformers(allVideos, index, analytics, s) {
     const entry = byId.get(v.id);
     // Skip deleted originals (stale analytics rows) and already-republished videos.
     if (entry && (entry.republished_as || entry.republished_from)) return false;
+    // A fresh retitle gets RETITLE_COOLDOWN_HOURS to prove itself before reflagging.
+    if (entry && entry.retitled_at && hoursAgo(entry.retitled_at) < RETITLE_COOLDOWN_HOURS) return false;
     return true;
   });
 
