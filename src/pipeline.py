@@ -446,6 +446,7 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             "title": st.get("title", ""),
             "published_at": datetime.now(timezone.utc).isoformat(),
             "channel": env("CHANNEL_LABEL") or "histold",
+            "slot": st.get("slot") or env("PUBLISH_SLOT") or "manual",
             "scheduled": env("PUBLISH_SCHEDULED") == "true",
             "workflow": env("PUBLISH_WORKFLOW") or "publish",
             "retitled_at": None,
