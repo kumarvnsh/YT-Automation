@@ -141,26 +141,61 @@ def _create_playlist(youtube, title: str) -> dict:
     }
 
 
+class _ChannelPlaylists:
+    """One fetch of the channel's playlists, shared across a bulk run.
+
+    Memberships load lazily per playlist and are cached, so sorting 50 videos
+    costs one playlists.list plus one playlistItems.list per *target* playlist
+    instead of refetching everything per video. A playlist whose items cannot
+    be read (playlistNotFound) caches as None and is treated as unusable.
+    """
+
+    def __init__(self, youtube):
+        self.youtube = youtube
+        self.uploads_id = export_analytics._uploads_playlist_id(youtube)
+        self.playlists = export_analytics._owned_playlists(youtube, self.uploads_id)
+        self._members: dict[str, set[str] | None] = {}
+
+    def members(self, playlist_id: str) -> set[str] | None:
+        if playlist_id not in self._members:
+            try:
+                self._members[playlist_id] = set(
+                    export_analytics._playlist_video_ids(self.youtube, playlist_id)
+                )
+            except Exception as exc:  # noqa: BLE001
+                if not export_analytics._is_playlist_not_found(exc):
+                    raise
+                self._members[playlist_id] = None
+        return self._members[playlist_id]
+
+    def create(self, title: str) -> dict:
+        playlist = _create_playlist(self.youtube, title)
+        self.playlists.append(playlist)
+        # Brand-new playlist: known empty. Never list it right away — a fresh
+        # playlist can 404 on playlistItems.list before it propagates.
+        self._members[playlist["id"]] = set()
+        return playlist
+
+
 def _resolve_target_playlist(
-    youtube,
-    playlists: list[dict],
+    channel: _ChannelPlaylists,
     playlist_id: str | None,
     playlist_title: str,
 ) -> dict:
     if playlist_id:
-        target = next((p for p in playlists if p["id"] == playlist_id), None)
+        target = next((p for p in channel.playlists if p["id"] == playlist_id), None)
         if target is None:
             raise ValueError(f"Playlist {playlist_id!r} not found on this channel.")
         return target
 
     wanted = _normalize_title(playlist_title or DEFAULT_PLAYLIST_TITLE)
     target = next(
-        (p for p in playlists if _normalize_title(p.get("title", "")) == wanted),
+        (p for p in channel.playlists if _normalize_title(p.get("title", "")) == wanted),
         None,
     )
     if target is not None:
         return target
-    return _create_playlist(youtube, playlist_title or DEFAULT_PLAYLIST_TITLE)
+    return channel.create(playlist_title or DEFAULT_PLAYLIST_TITLE)
 
 
 def add_video_to_playlist(
@@ -168,15 +203,21 @@ def add_video_to_playlist(
     video_id: str,
     playlist_id: str | None = None,
     playlist_title: str = DEFAULT_PLAYLIST_TITLE,
+    channel: _ChannelPlaylists | None = None,
 ) -> dict:
-    uploads_playlist_id = export_analytics._uploads_playlist_id(youtube)
-    if playlist_id == uploads_playlist_id:
+    channel = channel or _ChannelPlaylists(youtube)
+    if playlist_id == channel.uploads_id:
         raise ValueError("Refusing to add videos to the automatic uploads playlist.")
 
-    playlists = export_analytics._owned_playlists(youtube, uploads_playlist_id)
-    target = _resolve_target_playlist(youtube, playlists, playlist_id, playlist_title)
+    target = _resolve_target_playlist(channel, playlist_id, playlist_title)
 
-    existing_ids = set(export_analytics._playlist_video_ids(youtube, target["id"]))
+    existing_ids = channel.members(target["id"])
+    if existing_ids is None:
+        raise ValueError(
+            f"Playlist {target['title']!r} ({target['id']}) exists but its items "
+            "cannot be read (YouTube returned playlistNotFound). Delete or recreate "
+            "that playlist on the channel, or pass an explicit --playlist-id."
+        )
     if video_id in existing_ids:
         return {
             "status": "already-present",
@@ -194,6 +235,7 @@ def add_video_to_playlist(
             }
         },
     ).execute()
+    existing_ids.add(video_id)
     return {
         "status": "inserted",
         "video_id": video_id,
@@ -204,6 +246,7 @@ def add_video_to_playlist(
 
 
 def bulk_sort_videos(youtube, videos: list[dict]) -> list[dict]:
+    channel = _ChannelPlaylists(youtube)
     results = []
     for video in videos:
         if not video.get("is_unsorted"):
@@ -211,11 +254,15 @@ def bulk_sort_videos(youtube, videos: list[dict]) -> list[dict]:
         video_id = video.get("id")
         if not video_id:
             continue
-        result = add_video_to_playlist(
-            youtube,
-            video_id,
-            playlist_title=infer_playlist_title(video),
-        )
+        try:
+            result = add_video_to_playlist(
+                youtube,
+                video_id,
+                playlist_title=infer_playlist_title(video),
+                channel=channel,
+            )
+        except Exception as exc:  # noqa: BLE001 - keep sorting the rest
+            result = {"status": "error", "video_id": video_id, "error": str(exc)}
         results.append(result)
     return results
 
@@ -278,13 +325,20 @@ def main() -> int:
 
     if args.bulk:
         results = bulk_sort_videos(youtube, _analytics_videos())
+        errors = 0
         for result in results:
+            if result["status"] == "error":
+                errors += 1
+                print(f"error: {result['video_id']} — {result['error']}")
+                continue
             _record_assignment(result)
             print(
                 f"{result['status']}: {result['video_id']} -> "
                 f"{result['playlist_title']} ({result['playlist_id']})"
             )
-        print(f"bulk complete: {len(results)} video(s) processed")
+        print(f"bulk complete: {len(results)} video(s) processed, {errors} error(s)")
+        if errors and errors == len(results):
+            return 1
     else:
         result = add_video_to_playlist(
             youtube,
