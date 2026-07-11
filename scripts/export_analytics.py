@@ -49,6 +49,85 @@ def _recent_video_ids(youtube, playlist_id: str, limit: int) -> list[str]:
     return ids
 
 
+def _owned_playlists(youtube, uploads_playlist_id: str) -> list[dict]:
+    """Return selectable owner playlists, excluding the automatic uploads list."""
+    playlists: list[dict] = []
+    page_token = None
+    while True:
+        resp = youtube.playlists().list(
+            part="snippet,contentDetails",
+            mine=True,
+            maxResults=50,
+            pageToken=page_token,
+        ).execute()
+        for item in resp.get("items", []):
+            if item["id"] == uploads_playlist_id:
+                continue
+            playlists.append(
+                {
+                    "id": item["id"],
+                    "title": item.get("snippet", {}).get("title", ""),
+                    "video_count": int(
+                        item.get("contentDetails", {}).get("itemCount", 0)
+                    ),
+                }
+            )
+        page_token = resp.get("nextPageToken")
+        if not page_token:
+            break
+    return playlists
+
+
+def _playlist_video_ids(youtube, playlist_id: str) -> list[str]:
+    ids: list[str] = []
+    page_token = None
+    while True:
+        resp = youtube.playlistItems().list(
+            part="contentDetails",
+            playlistId=playlist_id,
+            maxResults=50,
+            pageToken=page_token,
+        ).execute()
+        for item in resp.get("items", []):
+            video_id = item.get("contentDetails", {}).get("videoId")
+            if video_id:
+                ids.append(video_id)
+        page_token = resp.get("nextPageToken")
+        if not page_token:
+            break
+    return ids
+
+
+def _playlist_memberships(youtube, playlists: list[dict]) -> dict[str, list[str]]:
+    """Map playlist id -> video ids for selectable owner playlists."""
+    return {
+        playlist["id"]: _playlist_video_ids(youtube, playlist["id"])
+        for playlist in playlists
+    }
+
+
+def _annotate_playlist_memberships(
+    videos: list[dict],
+    playlists: list[dict],
+    memberships: dict[str, list[str]],
+) -> None:
+    playlist_by_id = {playlist["id"]: playlist for playlist in playlists}
+    video_to_playlists: dict[str, list[str]] = {}
+    for playlist_id, video_ids in memberships.items():
+        for video_id in video_ids:
+            video_to_playlists.setdefault(video_id, []).append(playlist_id)
+
+    for video in videos:
+        playlist_ids = video_to_playlists.get(video["id"], [])
+        video["playlist_ids"] = playlist_ids
+        video["playlists"] = [
+            playlist_by_id[playlist_id]["title"]
+            for playlist_id in playlist_ids
+            if playlist_id in playlist_by_id
+        ]
+        video["is_unsorted"] = not playlist_ids
+
+
 def _video_stats(youtube, video_ids: list[str]) -> list[dict]:
     out: list[dict] = []
     for i in range(0, len(video_ids), 50):
@@ -121,6 +200,9 @@ def main() -> int:
     playlist_id = _uploads_playlist_id(youtube)
     video_ids = _recent_video_ids(youtube, playlist_id, args.limit)
     videos = _video_stats(youtube, video_ids)
+    playlists = _owned_playlists(youtube, playlist_id)
+    memberships = _playlist_memberships(youtube, playlists)
+    _annotate_playlist_memberships(videos, playlists, memberships)
     today = datetime.now(timezone.utc).date().isoformat()
     published_dates = [
         v["publishedAt"][:10]
@@ -142,6 +224,10 @@ def main() -> int:
     out = {
         "channel": args.label,
         "updated": datetime.now(timezone.utc).isoformat(),
+        "playlists": {
+            "uploads_playlist_id": playlist_id,
+            "items": playlists,
+        },
         "videos": videos,
     }
 

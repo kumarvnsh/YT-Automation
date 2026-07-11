@@ -1,0 +1,62 @@
+name: Sort Video Into Playlist
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: "YouTube video ID to sort"
+        type: string
+        required: true
+      playlist_id:
+        description: "Destination playlist ID"
+        type: string
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  playlist:
+    runs-on: ubuntu-latest
+    env:
+      YOUTUBE_CLIENT_SECRET_FILE: secrets/client_secret.json
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Reconstruct YouTube credentials
+        env:
+          YT_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_CLIENT_SECRET_JSON_B64 }}
+          YT_TOKEN_JSON_B64: ${{ secrets.YT_TOKEN_JSON_B64 }}
+        run: |
+          mkdir -p secrets
+          echo "$YT_CLIENT_SECRET_JSON_B64" | base64 -d > secrets/client_secret.json
+          echo "$YT_TOKEN_JSON_B64" | base64 -d > secrets/token.json
+
+      - name: Add video to playlist
+        run: |
+          python scripts/playlist_sort.py \
+            --video-id "${{ inputs.video_id }}" \
+            --playlist-id "${{ inputs.playlist_id }}"
+
+      - name: Commit playlist assignment
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/published_index.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: sort ${{ inputs.video_id }} into playlist [skip ci]"
+            git pull --rebase --autostash
+            git push
+          else
+            echo "No index changes to commit."
+          fi

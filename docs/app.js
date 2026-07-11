@@ -442,6 +442,87 @@ function renderApprovals(list, s) {
 }
 
 /* ---------------------------------------------------------- */
+/* Playlist sorting                                            */
+/* ---------------------------------------------------------- */
+function primaryYouTubeChannel(analytics) {
+  const channels = analyticsChannels(analytics);
+  const keys = Object.keys(channels);
+  if (!keys.length) return null;
+  return channels.histold || channels[keys[0]];
+}
+
+function renderUnsortedVideos(analytics, s) {
+  const el = document.getElementById("unsortedList");
+  const countEl = document.getElementById("unsortedCount");
+  const channel = primaryYouTubeChannel(analytics);
+  const playlists = (((channel || {}).playlists || {}).items || []);
+  const videos = ((channel || {}).videos || []).filter((v) => v.is_unsorted);
+
+  countEl.textContent = videos.length ? `${videos.length} unsorted` : "";
+  if (!channel) {
+    el.innerHTML = `<div class="empty-state"><strong>No analytics data</strong>Run Export Analytics &amp; Trends first.</div>`;
+    return;
+  }
+  if (!playlists.length) {
+    el.innerHTML = `<div class="empty-state"><strong>No playlists found</strong>Create at least one playlist in YouTube Studio, then run analytics again.</div>`;
+    return;
+  }
+  if (!videos.length) {
+    el.innerHTML = `<div class="empty-state"><strong>All sorted</strong>Recent videos are already in a playlist.</div>`;
+    return;
+  }
+
+  const options = playlists
+    .map((p) => `<option value="${escapeHtml(p.id)}">${escapeHtml(p.title || p.id)}</option>`)
+    .join("");
+  el.innerHTML = videos
+    .map((v) => `
+      <div class="playlist-row">
+        <div class="playlist-row__meta">
+          <div class="approval-row__title">${escapeHtml(v.title || "(untitled)")}</div>
+          <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; <a href="${v.url || `https://youtu.be/${v.id}`}" target="_blank" rel="noopener">watch</a></div>
+        </div>
+        <div class="playlist-row__actions">
+          <select class="playlist-select" aria-label="Playlist for ${escapeHtml(v.title || v.id)}">${options}</select>
+          <button class="btn btn--primary playlist-add" data-video="${escapeHtml(v.id)}">Add</button>
+        </div>
+      </div>`)
+    .join("");
+
+  el.querySelectorAll(".playlist-add").forEach((btn) => {
+    btn.addEventListener("click", () => dispatchPlaylistSort(s, btn));
+  });
+}
+
+async function dispatchPlaylistSort(s, btn) {
+  if (!isConfigured(s)) {
+    alert("Configure Settings first (owner/repo/PAT).");
+    return;
+  }
+  const row = btn.closest(".playlist-row");
+  const select = row ? row.querySelector(".playlist-select") : null;
+  const playlistId = select ? select.value : "";
+  if (!playlistId) {
+    alert("Choose a playlist first.");
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = "Adding...";
+  try {
+    await dispatchWorkflow(s, "playlist.yml", {
+      video_id: btn.dataset.video,
+      playlist_id: playlistId,
+    });
+    btn.textContent = "Queued";
+    setTimeout(() => loadRuns(getSettings(), 1), 4000);
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = "Add";
+    alert("Failed to dispatch playlist sort: " + err.message);
+  }
+}
+
+/* ---------------------------------------------------------- */
 /* Underperformers: retitle / repost stuck videos              */
 /* ---------------------------------------------------------- */
 const UNDER_VIEW_THRESHOLD = 100; // views
@@ -735,6 +816,7 @@ async function boot() {
     if (analytics) {
       const allVideos = renderKpis(analytics);
       platformVideos.youtube = allVideos;
+      renderUnsortedVideos(analytics, s);
       renderUnderperformers(allVideos, publishedIndex || [], analytics, s);
     }
     if (meta) {

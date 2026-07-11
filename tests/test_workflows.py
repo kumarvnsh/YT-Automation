@@ -52,6 +52,13 @@ class WorkflowRegressionTests(unittest.TestCase):
         )
         self.assertIn("if: steps.meta_analytics.outcome == 'failure'", workflow)
 
+    def test_playlist_workflow_sorts_video_into_selected_playlist(self) -> None:
+        workflow = (ROOT / ".github/workflows/playlist.yml").read_text()
+        self.assertIn("video_id:", workflow)
+        self.assertIn("playlist_id:", workflow)
+        self.assertIn("python scripts/playlist_sort.py", workflow)
+        self.assertIn("data/published_index.json", workflow)
+
 
 if __name__ == "__main__":
     unittest.main()
