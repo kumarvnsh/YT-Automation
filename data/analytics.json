@@ -2,29 +2,29 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-11T12:35:15.824808+00:00",
+      "updated": "2026-07-11T12:41:53.603354+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
           {
-            "id": "PLAFf09AcOp_8",
-            "title": "Lost Cities",
-            "video_count": 0
+            "id": "PLKz3dl1lEDLM",
+            "title": "Forgotten Ancient Technology",
+            "video_count": 1
           },
           {
             "id": "PLZPTJFrAwVuA",
             "title": "Ancient Mysteries",
-            "video_count": 3
+            "video_count": 4
           },
           {
             "id": "PLY6ySex-tqTQ",
             "title": "Vanished Civilizations",
-            "video_count": 3
+            "video_count": 5
           },
           {
             "id": "PLTrU7sep9IQc",
             "title": "Erased From History",
-            "video_count": 32
+            "video_count": 39
           }
         ]
       },
@@ -89,7 +89,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 801,
+          "views": 800,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -125,7 +125,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1146,
+          "views": 1138,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -232,7 +232,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 744,
+          "views": 745,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -332,7 +332,7 @@
           ],
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 212,
+          "views": 213,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [
@@ -434,7 +434,7 @@
           ],
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 888,
+          "views": 889,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -1411,9 +1411,13 @@
           "views": 3,
           "likes": 0,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLZPTJFrAwVuA"
+          ],
+          "playlists": [
+            "Ancient Mysteries"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 100.0,
           "subs_gained": 0
         },
@@ -1475,9 +1479,13 @@
           "views": 1212,
           "likes": 9,
           "comments": 2,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLKz3dl1lEDLM"
+          ],
+          "playlists": [
+            "Forgotten Ancient Technology"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 55.279999999999994,
           "subs_gained": 0
         },
@@ -1506,9 +1514,13 @@
           "views": 996,
           "likes": 31,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLY6ySex-tqTQ"
+          ],
+          "playlists": [
+            "Vanished Civilizations"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 54.86,
           "subs_gained": 1
         },
@@ -1539,9 +1551,13 @@
           "views": 6,
           "likes": 0,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 25.05,
           "subs_gained": 0
         },
@@ -1572,9 +1588,13 @@
           "views": 961,
           "likes": 39,
           "comments": 4,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 63.73,
           "subs_gained": 3
         },
@@ -1604,9 +1624,13 @@
           "views": 1018,
           "likes": 48,
           "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 63.44,
           "subs_gained": 3
         },
@@ -1637,9 +1661,13 @@
           "views": 837,
           "likes": 21,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 53.26,
           "subs_gained": 1
         },
@@ -1671,9 +1699,13 @@
           "views": 1128,
           "likes": 23,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 54.90999999999999,
           "subs_gained": 1
         },
@@ -1704,9 +1736,13 @@
           "views": 950,
           "likes": 25,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 53.07999999999999,
           "subs_gained": 1
         },
@@ -1737,9 +1773,13 @@
           "views": 1069,
           "likes": 10,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 41.11,
           "subs_gained": 0
         },
@@ -1767,9 +1807,13 @@
           "views": 498,
           "likes": 4,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLY6ySex-tqTQ"
+          ],
+          "playlists": [
+            "Vanished Civilizations"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 76.64,
           "subs_gained": 0
         }
