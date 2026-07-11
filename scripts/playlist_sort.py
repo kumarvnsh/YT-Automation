@@ -19,23 +19,72 @@ from scripts import export_analytics  # noqa: E402
 from src.config import base_dir, load_config  # noqa: E402
 from src.youtube_uploader import MANAGE_SCOPE, UPLOAD_SCOPES, get_credentials, _verify_channel  # noqa: E402
 
+DEFAULT_PLAYLIST_TITLE = "Erased From History"
 
-def add_video_to_playlist(youtube, video_id: str, playlist_id: str) -> dict:
+
+def _normalize_title(title: str) -> str:
+    return " ".join(title.lower().split())
+
+
+def _create_playlist(youtube, title: str) -> dict:
+    resp = youtube.playlists().insert(
+        part="snippet,status",
+        body={
+            "snippet": {
+                "title": title,
+                "description": "Automatically created by the Histold dashboard.",
+            },
+            "status": {"privacyStatus": "public"},
+        },
+    ).execute()
+    return {
+        "id": resp["id"],
+        "title": resp.get("snippet", {}).get("title", title),
+        "video_count": int(resp.get("contentDetails", {}).get("itemCount", 0)),
+    }
+
+
+def _resolve_target_playlist(
+    youtube,
+    playlists: list[dict],
+    playlist_id: str | None,
+    playlist_title: str,
+) -> dict:
+    if playlist_id:
+        target = next((p for p in playlists if p["id"] == playlist_id), None)
+        if target is None:
+            raise ValueError(f"Playlist {playlist_id!r} not found on this channel.")
+        return target
+
+    wanted = _normalize_title(playlist_title or DEFAULT_PLAYLIST_TITLE)
+    target = next(
+        (p for p in playlists if _normalize_title(p.get("title", "")) == wanted),
+        None,
+    )
+    if target is not None:
+        return target
+    return _create_playlist(youtube, playlist_title or DEFAULT_PLAYLIST_TITLE)
+
+
+def add_video_to_playlist(
+    youtube,
+    video_id: str,
+    playlist_id: str | None = None,
+    playlist_title: str = DEFAULT_PLAYLIST_TITLE,
+) -> dict:
     uploads_playlist_id = export_analytics._uploads_playlist_id(youtube)
     if playlist_id == uploads_playlist_id:
         raise ValueError("Refusing to add videos to the automatic uploads playlist.")
 
     playlists = export_analytics._owned_playlists(youtube, uploads_playlist_id)
-    target = next((p for p in playlists if p["id"] == playlist_id), None)
-    if target is None:
-        raise ValueError(f"Playlist {playlist_id!r} not found on this channel.")
+    target = _resolve_target_playlist(youtube, playlists, playlist_id, playlist_title)
 
-    existing_ids = set(export_analytics._playlist_video_ids(youtube, playlist_id))
+    existing_ids = set(export_analytics._playlist_video_ids(youtube, target["id"]))
     if video_id in existing_ids:
         return {
             "status": "already-present",
             "video_id": video_id,
-            "playlist_id": playlist_id,
+            "playlist_id": target["id"],
             "playlist_title": target["title"],
         }
 
@@ -43,7 +92,7 @@ def add_video_to_playlist(youtube, video_id: str, playlist_id: str) -> dict:
         part="snippet",
         body={
             "snippet": {
-                "playlistId": playlist_id,
+                "playlistId": target["id"],
                 "resourceId": {"kind": "youtube#video", "videoId": video_id},
             }
         },
@@ -51,7 +100,7 @@ def add_video_to_playlist(youtube, video_id: str, playlist_id: str) -> dict:
     return {
         "status": "inserted",
         "video_id": video_id,
-        "playlist_id": playlist_id,
+        "playlist_id": target["id"],
         "playlist_title": target["title"],
         "playlist_item_id": resp.get("id", ""),
     }
@@ -89,7 +138,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=None)
     parser.add_argument("--video-id", required=True)
-    parser.add_argument("--playlist-id", required=True)
+    parser.add_argument("--playlist-id", default="")
+    parser.add_argument("--playlist-title", default=DEFAULT_PLAYLIST_TITLE)
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -99,7 +149,12 @@ def main() -> int:
     youtube = build("youtube", "v3", credentials=creds)
     _verify_channel(cfg, youtube)
 
-    result = add_video_to_playlist(youtube, args.video_id, args.playlist_id)
+    result = add_video_to_playlist(
+        youtube,
+        args.video_id,
+        playlist_id=args.playlist_id or None,
+        playlist_title=args.playlist_title,
+    )
     _record_assignment(result)
     print(
         f"{result['status']}: {result['video_id']} -> "

@@ -56,7 +56,9 @@ class WorkflowRegressionTests(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/playlist.yml").read_text()
         self.assertIn("video_id:", workflow)
         self.assertIn("playlist_id:", workflow)
+        self.assertIn("playlist_title:", workflow)
         self.assertIn("python scripts/playlist_sort.py", workflow)
+        self.assertIn("--playlist-title", workflow)
         self.assertIn("data/published_index.json", workflow)
 
 

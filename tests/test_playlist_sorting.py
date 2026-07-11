@@ -36,9 +36,21 @@ class _Playlists:
             {"id": "playlist-lost", "snippet": {"title": "Lost Cities"}, "contentDetails": {"itemCount": 1}},
             {"id": "playlist-ancient", "snippet": {"title": "Ancient Mysteries"}, "contentDetails": {"itemCount": 0}},
         ]
+        self.inserts = []
 
     def list(self, **_kwargs):
         return _Execute({"items": self.items})
+
+    def insert(self, **kwargs):
+        self.inserts.append(kwargs["body"])
+        title = kwargs["body"]["snippet"]["title"]
+        playlist = {
+            "id": "playlist-created",
+            "snippet": {"title": title},
+            "contentDetails": {"itemCount": 0},
+        }
+        self.items.append(playlist)
+        return _Execute(playlist)
 
 
 class _PlaylistItems:
@@ -69,12 +81,13 @@ class _PlaylistItems:
 class _YouTube:
     def __init__(self):
         self.playlist_items = _PlaylistItems()
+        self.playlists_resource = _Playlists()
 
     def channels(self):
         return _Channels()
 
     def playlists(self):
-        return _Playlists()
+        return self.playlists_resource
 
     def playlistItems(self):
         return self.playlist_items
@@ -138,6 +151,41 @@ class PlaylistSortCommandTests(unittest.TestCase):
                 "resourceId": {"kind": "youtube#video", "videoId": "video-unsorted"},
             },
             youtube.playlist_items.inserts[0]["snippet"],
+        )
+
+    def test_add_video_to_playlist_uses_existing_playlist_title_when_id_missing(self) -> None:
+        from scripts import playlist_sort
+
+        youtube = _YouTube()
+
+        result = playlist_sort.add_video_to_playlist(
+            youtube, "video-unsorted", playlist_title="Ancient Mysteries"
+        )
+
+        self.assertEqual("inserted", result["status"])
+        self.assertEqual("playlist-ancient", result["playlist_id"])
+        self.assertEqual([], youtube.playlists_resource.inserts)
+
+    def test_add_video_to_playlist_creates_default_playlist_when_missing(self) -> None:
+        from scripts import playlist_sort
+
+        youtube = _YouTube()
+
+        result = playlist_sort.add_video_to_playlist(
+            youtube, "video-unsorted", playlist_title="Erased From History"
+        )
+
+        self.assertEqual("inserted", result["status"])
+        self.assertEqual("playlist-created", result["playlist_id"])
+        self.assertEqual(
+            {
+                "snippet": {
+                    "title": "Erased From History",
+                    "description": "Automatically created by the Histold dashboard.",
+                },
+                "status": {"privacyStatus": "public"},
+            },
+            youtube.playlists_resource.inserts[0],
         )
 
 

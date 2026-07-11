@@ -10,7 +10,13 @@ on:
       playlist_id:
         description: "Destination playlist ID"
         type: string
-        required: true
+        required: false
+        default: ""
+      playlist_title:
+        description: "Playlist title to find or create when playlist_id is blank"
+        type: string
+        required: false
+        default: "Erased From History"
 
 permissions:
   contents: write
@@ -46,7 +52,8 @@ jobs:
         run: |
           python scripts/playlist_sort.py \
             --video-id "${{ inputs.video_id }}" \
-            --playlist-id "${{ inputs.playlist_id }}"
+            --playlist-id "${{ inputs.playlist_id }}" \
+            --playlist-title "${{ inputs.playlist_title }}"
 
       - name: Commit playlist assignment
         run: |

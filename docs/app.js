@@ -393,6 +393,7 @@ function renderStatsTicker(allVideos, isYouTube = true) {
 /* ---------------------------------------------------------- */
 const platformVideos = { youtube: [], facebook: [], instagram: [] };
 let currentPlatform = "youtube";
+const DEFAULT_PLAYLIST_TITLE = "Erased From History";
 
 function showPlatform(platform) {
   currentPlatform = platform;
@@ -463,28 +464,26 @@ function renderUnsortedVideos(analytics, s) {
     el.innerHTML = `<div class="empty-state"><strong>No analytics data</strong>Run Export Analytics &amp; Trends first.</div>`;
     return;
   }
-  if (!playlists.length) {
-    el.innerHTML = `<div class="empty-state"><strong>No playlists found</strong>Create at least one playlist in YouTube Studio, then run analytics again.</div>`;
-    return;
-  }
   if (!videos.length) {
     el.innerHTML = `<div class="empty-state"><strong>All sorted</strong>Recent videos are already in a playlist.</div>`;
     return;
   }
 
-  const options = playlists
-    .map((p) => `<option value="${escapeHtml(p.id)}">${escapeHtml(p.title || p.id)}</option>`)
-    .join("");
+  const options = playlists.length
+    ? playlists
+        .map((p) => `<option value="${escapeHtml(p.id)}">${escapeHtml(p.title || p.id)}</option>`)
+        .join("")
+    : `<option value="">Create ${escapeHtml(DEFAULT_PLAYLIST_TITLE)}</option>`;
   el.innerHTML = videos
     .map((v) => `
       <div class="playlist-row">
         <div class="playlist-row__meta">
           <div class="approval-row__title">${escapeHtml(v.title || "(untitled)")}</div>
-          <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; <a href="${v.url || `https://youtu.be/${v.id}`}" target="_blank" rel="noopener">watch</a></div>
+          <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; ${playlists.length ? "choose playlist" : `will create ${escapeHtml(DEFAULT_PLAYLIST_TITLE)}`} &middot; <a href="${v.url || `https://youtu.be/${v.id}`}" target="_blank" rel="noopener">watch</a></div>
         </div>
         <div class="playlist-row__actions">
           <select class="playlist-select" aria-label="Playlist for ${escapeHtml(v.title || v.id)}">${options}</select>
-          <button class="btn btn--primary playlist-add" data-video="${escapeHtml(v.id)}">Add</button>
+          <button class="btn btn--primary playlist-add" data-video="${escapeHtml(v.id)}">${playlists.length ? "Add" : "Create + Add"}</button>
         </div>
       </div>`)
     .join("");
@@ -502,16 +501,13 @@ async function dispatchPlaylistSort(s, btn) {
   const row = btn.closest(".playlist-row");
   const select = row ? row.querySelector(".playlist-select") : null;
   const playlistId = select ? select.value : "";
-  if (!playlistId) {
-    alert("Choose a playlist first.");
-    return;
-  }
   btn.disabled = true;
-  btn.textContent = "Adding...";
+  btn.textContent = playlistId ? "Adding..." : "Creating...";
   try {
     await dispatchWorkflow(s, "playlist.yml", {
       video_id: btn.dataset.video,
       playlist_id: playlistId,
+      playlist_title: playlistId ? "" : DEFAULT_PLAYLIST_TITLE,
     });
     btn.textContent = "Queued";
     setTimeout(() => loadRuns(getSettings(), 1), 4000);
