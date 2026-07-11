@@ -49,6 +49,8 @@ def new_stage(
     state = {
         "fmt": fmt,
         "created": ts,
+        "job_id": f"{ts}_{fmt}",
+        "slot": env("PUBLISH_SLOT", "manual"),
         "target_steps": target,
         "done": [],
         "complete": False,
@@ -152,6 +154,12 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     st["title"] = script.title
     st["script_provider"] = script.provider
     st["script_fallback_used"] = script.fallback_used
+    st["topic_reservation"] = topics.reserve_topic(
+        script.title,
+        st["fmt"],
+        st.get("slot", "manual"),
+        st.get("job_id") or stage.name,
+    )
     (stage / "script.json").write_text(json.dumps(script.to_dict(), indent=2), encoding="utf-8")
     (stage / "metadata.json").write_text(
         json.dumps(
