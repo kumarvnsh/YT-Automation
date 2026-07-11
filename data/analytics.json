@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-11T13:18:50.390752+00:00",
+      "updated": "2026-07-11T19:03:15.695611+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "xSlT9wViqcU",
+          "title": "Wimbledon's Most Surprising National Coincidence \u2014 It Took 148 Years",
+          "description": "Wimbledon has crowned champions since 1877, but July 2026 marks the first time two players from the same small nation have met in a women's singles final. Czech tennis dominance has a surprisingly deep history. Discover the moment that made it possible.",
+          "tags": [
+            "czech tennis",
+            "did you know",
+            "education",
+            "facts",
+            "grand slam",
+            "history",
+            "history facts",
+            "history shorts",
+            "muchova",
+            "noskova",
+            "short history",
+            "shorts",
+            "sports history",
+            "tennis history",
+            "trending",
+            "viral",
+            "wimbledon"
+          ],
+          "publishedAt": "2026-07-11T16:15:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/xSlT9wViqcU/mqdefault.jpg",
+          "views": 212,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "HOzzS9c9bSI",
           "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
           "description": "FIFA is the most powerful body in world football, but its origin story is surprisingly humble. When it was founded in 1904, Britain \u2014 the nation that invented the sport \u2014 refused to participate. It's one of history's great ironies that the game's creator nearly missed running it entirely. #FIFA #footballhistory #soccerfacts",
@@ -54,9 +86,9 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 621,
+          "views": 629,
           "likes": 6,
-          "comments": 0,
+          "comments": 1,
           "playlist_ids": [
             "PLTrU7sep9IQc"
           ],
@@ -89,7 +121,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 801,
+          "views": 803,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -125,7 +157,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1154,
+          "views": 1199,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -161,7 +193,7 @@
           ],
           "publishedAt": "2026-07-10T12:30:10Z",
           "thumbnail": "https://i.ytimg.com/vi/Lpt-QnNWJOg/mqdefault.jpg",
-          "views": 721,
+          "views": 725,
           "likes": 11,
           "comments": 5,
           "playlist_ids": [
@@ -199,7 +231,7 @@
           ],
           "publishedAt": "2026-07-10T09:03:40Z",
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
-          "views": 775,
+          "views": 776,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [
@@ -232,7 +264,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 744,
+          "views": 753,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -241,7 +273,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 51.22,
+          "subs_gained": 0
         },
         {
           "id": "08B4lsuemvU",
@@ -273,7 +307,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 49.63,
+          "subs_gained": 0
         },
         {
           "id": "-Bh7FffOJ_k",
@@ -307,7 +343,9 @@
           "playlists": [
             "Vanished Civilizations"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 72.35,
+          "subs_gained": 0
         },
         {
           "id": "-I3k-5EYohU",
@@ -332,7 +370,7 @@
           ],
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 210,
+          "views": 211,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [
@@ -341,7 +379,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 45.63,
+          "subs_gained": 0
         },
         {
           "id": "BBibvaSIgLM",
@@ -370,7 +410,7 @@
           ],
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 858,
+          "views": 862,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -379,7 +419,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 100.24,
+          "subs_gained": 0
         },
         {
           "id": "MUp4BtZxwuU",
@@ -411,7 +453,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 147.03,
+          "subs_gained": 0
         },
         {
           "id": "Yi1mtK9HAHM",
@@ -434,7 +478,7 @@
           ],
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 887,
+          "views": 891,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -444,7 +488,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 126.84,
+          "avg_view_pct": 117.48,
           "subs_gained": 0
         },
         {
@@ -480,8 +524,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.14,
-          "subs_gained": 1
+          "avg_view_pct": 53.90999999999999,
+          "subs_gained": 2
         },
         {
           "id": "hI7XI8VcN_g",
@@ -515,7 +559,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 18.75,
+          "avg_view_pct": 53.23,
           "subs_gained": 0
         },
         {
@@ -542,7 +586,7 @@
           ],
           "publishedAt": "2026-07-08T15:01:17Z",
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
-          "views": 212,
+          "views": 210,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [
@@ -552,7 +596,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 53.790000000000006,
+          "avg_view_pct": 54.53,
           "subs_gained": 1
         },
         {
@@ -588,7 +632,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.62,
+          "avg_view_pct": 67.52,
           "subs_gained": 2
         },
         {
@@ -623,7 +667,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.230000000000004,
+          "avg_view_pct": 54.37,
           "subs_gained": 0
         },
         {
@@ -659,7 +703,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 57.86,
+          "avg_view_pct": 58.41,
           "subs_gained": 0
         },
         {
@@ -694,7 +738,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 74.94,
+          "avg_view_pct": 74.85,
           "subs_gained": 1
         },
         {
@@ -720,7 +764,7 @@
           ],
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1095,
+          "views": 1096,
           "likes": 24,
           "comments": 0,
           "playlist_ids": [
@@ -730,7 +774,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 61.63000000000001,
+          "avg_view_pct": 61.71,
           "subs_gained": 0
         },
         {
@@ -767,7 +811,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.17999999999999,
+          "avg_view_pct": 55.50000000000001,
           "subs_gained": 0
         },
         {
@@ -804,7 +848,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.76,
+          "avg_view_pct": 66.16,
           "subs_gained": 2
         },
         {
@@ -840,7 +884,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 49.03,
+          "avg_view_pct": 49.15,
           "subs_gained": 0
         },
         {
@@ -874,7 +918,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 149.72,
+          "avg_view_pct": 149.42,
           "subs_gained": 0
         },
         {
@@ -909,7 +953,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 84.27,
+          "avg_view_pct": 84.35,
           "subs_gained": 1
         },
         {
@@ -943,7 +987,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 80.36,
+          "avg_view_pct": 80.02,
           "subs_gained": 0
         },
         {
@@ -980,7 +1024,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 66.16,
+          "avg_view_pct": 66.51,
           "subs_gained": 0
         },
         {
@@ -1017,7 +1061,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 62.61,
+          "avg_view_pct": 63.06,
           "subs_gained": 0
         },
         {
@@ -1051,7 +1095,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 95.14,
+          "avg_view_pct": 94.9,
           "subs_gained": 0
         },
         {
@@ -1087,7 +1131,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 66.7,
+          "avg_view_pct": 66.53,
           "subs_gained": 0
         },
         {
@@ -1125,7 +1169,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 102.8,
+          "avg_view_pct": 102.78,
           "subs_gained": 2
         },
         {
@@ -1160,7 +1204,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 99.27,
+          "avg_view_pct": 99.04,
           "subs_gained": 0
         },
         {
@@ -1198,7 +1242,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 39.03,
+          "avg_view_pct": 38.96,
           "subs_gained": 0
         },
         {
@@ -1236,7 +1280,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 57.03,
+          "avg_view_pct": 57.330000000000005,
           "subs_gained": 1
         },
         {
@@ -1272,7 +1316,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 43.17,
+          "avg_view_pct": 43.27,
           "subs_gained": 0
         },
         {
@@ -1785,40 +1829,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 41.11,
-          "subs_gained": 0
-        },
-        {
-          "id": "ndY05QQm-ug",
-          "title": "Why Your Paycheck Is Literally Named After Salt",
-          "description": "The word 'salary' has a surprisingly ancient and salty origin \u2014 tracing back to Roman soldiers who were paid in one of history's most valuable commodities. Before refrigeration, salt was so precious it shaped empires, trade routes, and even the words we still use today. This everyday word hiding in your pay stub has a 2,000-year-old story worth knowing.",
-          "tags": [
-            "ancient rome",
-            "did you know",
-            "education",
-            "etymology",
-            "everyday words",
-            "facts",
-            "history",
-            "history shorts",
-            "language history",
-            "roman history",
-            "salt history",
-            "surprising facts",
-            "word origins"
-          ],
-          "publishedAt": "2026-07-04T08:05:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/ndY05QQm-ug/mqdefault.jpg",
-          "views": 498,
-          "likes": 4,
-          "comments": 0,
-          "playlist_ids": [
-            "PLY6ySex-tqTQ"
-          ],
-          "playlists": [
-            "Vanished Civilizations"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 76.64,
           "subs_gained": 0
         }
       ]
