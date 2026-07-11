@@ -28,11 +28,15 @@
 
   <main class="deck">
 
-    <nav class="platform-tabs" id="platformTabs" aria-label="Platform">
-      <button class="platform-tab active" data-platform="youtube" type="button">YouTube</button>
-      <button class="platform-tab" data-platform="facebook" type="button">Facebook</button>
-      <button class="platform-tab" data-platform="instagram" type="button">Instagram</button>
-    </nav>
+    <div class="tabs-row">
+      <nav class="platform-tabs" id="platformTabs" aria-label="Platform">
+        <button class="platform-tab active" data-platform="youtube" type="button">YouTube</button>
+        <button class="platform-tab" data-platform="facebook" type="button">Facebook</button>
+        <button class="platform-tab" data-platform="instagram" type="button">Instagram</button>
+      </nav>
+      <button class="btn btn--ghost btn--icon" id="btnRefreshAnalytics" type="button"
+        title="Refresh analytics — runs the Export Analytics &amp; Trends workflow">↻</button>
+    </div>
 
     <section class="kpi-row" id="kpiRow">
       <div class="kpi"><div class="kpi__label">Total Videos</div><div class="kpi__value" id="kpiTotalVideos">–</div></div>
