@@ -98,12 +98,33 @@ def _playlist_video_ids(youtube, playlist_id: str) -> list[str]:
     return ids
 
 
+def _is_playlist_not_found(exc: Exception) -> bool:
+    """True for the YouTube API's playlistNotFound (HTTP 404) error.
+
+    Some owner playlists returned by playlists.list (special/series lists)
+    404 on playlistItems.list; duck-typed so tests don't need googleapiclient.
+    """
+    return getattr(getattr(exc, "resp", None), "status", None) == 404
+
+
 def _playlist_memberships(youtube, playlists: list[dict]) -> dict[str, list[str]]:
-    """Map playlist id -> video ids for selectable owner playlists."""
-    return {
-        playlist["id"]: _playlist_video_ids(youtube, playlist["id"])
-        for playlist in playlists
-    }
+    """Map playlist id -> video ids for selectable owner playlists.
+
+    Playlists whose items cannot be read are skipped instead of failing the
+    whole export; their videos simply stay in the unsorted pool.
+    """
+    memberships: dict[str, list[str]] = {}
+    for playlist in playlists:
+        try:
+            memberships[playlist["id"]] = _playlist_video_ids(youtube, playlist["id"])
+        except Exception as exc:  # noqa: BLE001
+            if not _is_playlist_not_found(exc):
+                raise
+            print(
+                f"  ! playlist {playlist.get('title', '')!r} ({playlist['id']}) "
+                "items unreadable (playlistNotFound) — skipping"
+            )
+    return memberships
 
 
 def _annotate_playlist_memberships(
