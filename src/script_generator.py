@@ -335,27 +335,47 @@ Return JSON with EXACTLY this shape:
 
 
 def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) -> Script:
-    """Generate a Script for fmt in {'short', 'long'}."""
+    """Generate a Script for fmt in {'short', 'long'}.
+
+    Shorts enforce the narration word budget HERE, where a retry costs one
+    LLM call — an over-length script that slips through renders a full video
+    only for the quality gate to block its upload at the very end. Bounds
+    reuse the quality gate's duration ratios so the two stay in agreement.
+    """
     prompt = _build_prompt(cfg, fmt, topic_override=topic_override)
-    raw, provider, fallback_used = _call_with_routing(
-        cfg, prompt, _parse_script_response
-    )
-    data, segments = _parse_script_response(raw)
+    target = int(cfg.get("script.shorts_target_seconds", 20) * 150 / 60)
+    lo = int(target * float(cfg.get("quality.min_duration_ratio", 0.75)))
+    hi = int(target * float(cfg.get("quality.max_duration_ratio", 1.35)))
 
-    word_count = len(" ".join(s.narration for s in segments).split())
-    if fmt == "short":
-        target = int(cfg.get("script.shorts_target_seconds", 20) * 150 / 60)
-        lo, hi = int(target * 0.75), int(target * 1.35)
-        if not (lo <= word_count <= hi):
-            print(f"  ! WARNING: narration is {word_count} words (target ~{target}): "
-                  f"prompt compliance was off for this generation.")
+    word_count = None
+    for _attempt in range(3):
+        attempt_prompt = prompt
+        if word_count is not None:
+            print(f"  ! narration was {word_count} words (need {lo}-{hi}) — regenerating.")
+            attempt_prompt += (
+                f"\n\nIMPORTANT: your previous draft was {word_count} words. "
+                f"The total narration across all segments MUST be between {lo} "
+                f"and {hi} words. Rewrite the script to fit that budget."
+            )
+        raw, provider, fallback_used = _call_with_routing(
+            cfg, attempt_prompt, _parse_script_response
+        )
+        data, segments = _parse_script_response(raw)
+        word_count = len(" ".join(s.narration for s in segments).split())
+        if fmt == "short" and not (lo <= word_count <= hi):
+            continue
+        return Script(
+            title=data["title"].strip()[:100],
+            description=data["description"].strip(),
+            tags=_dedupe_tags(data.get("tags", []), cfg),
+            segments=segments,
+            topic=data.get("topic", data["title"]).strip(),
+            provider=provider,
+            fallback_used=fallback_used,
+        )
 
-    return Script(
-        title=data["title"].strip()[:100],
-        description=data["description"].strip(),
-        tags=_dedupe_tags(data.get("tags", []), cfg),
-        segments=segments,
-        topic=data.get("topic", data["title"]).strip(),
-        provider=provider,
-        fallback_used=fallback_used,
+    raise RuntimeError(
+        f"script narration stayed out of bounds after 3 attempts: last draft was "
+        f"{word_count} words (need {lo}-{hi} for a "
+        f"{cfg.get('script.shorts_target_seconds', 20)}s short)"
     )
