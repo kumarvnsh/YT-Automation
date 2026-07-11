@@ -25,5 +25,14 @@
     "slot": "evening",
     "date": "2026-07-11",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260711_161354_short",
+    "title": "Wimbledon's Most Surprising National Coincidence \u2014 It Took 148 Years",
+    "fingerprint": "148_coincidence_it_most_national_s_surprising_took_wimbledon_years",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-11",
+    "status": "reserved"
   }
 ]
