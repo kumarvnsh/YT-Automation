@@ -50,6 +50,41 @@ class PipelineArtifactTests(unittest.TestCase):
             entries = json.loads((Path(tmp) / "data" / "published_index.json").read_text())
             self.assertEqual(entries[0]["run_id"], "source-run-123")
 
+    def test_published_index_records_slot_from_publish_slot_env(self) -> None:
+        cfg = Config({})
+        with tempfile.TemporaryDirectory() as tmp:
+            stage = Path(tmp) / "20260710_090000_short"
+            stage.mkdir()
+            values = {"PUBLISH_SLOT": "morning"}
+            with patch("src.pipeline.base_dir", return_value=Path(tmp)), patch(
+                "src.pipeline.env", side_effect=lambda key, default=None: values.get(key, default)
+            ):
+                pipeline._record_published(
+                    cfg,
+                    stage,
+                    {"youtube_id": "video-2", "title": "Title"},
+                )
+
+            entries = json.loads((Path(tmp) / "data" / "published_index.json").read_text())
+            self.assertEqual(entries[0]["slot"], "morning")
+
+    def test_published_index_slot_defaults_to_manual(self) -> None:
+        cfg = Config({})
+        with tempfile.TemporaryDirectory() as tmp:
+            stage = Path(tmp) / "20260710_090000_short"
+            stage.mkdir()
+            with patch("src.pipeline.base_dir", return_value=Path(tmp)), patch(
+                "src.pipeline.env", side_effect=lambda key, default=None: default
+            ):
+                pipeline._record_published(
+                    cfg,
+                    stage,
+                    {"youtube_id": "video-3", "title": "Title"},
+                )
+
+            entries = json.loads((Path(tmp) / "data" / "published_index.json").read_text())
+            self.assertEqual(entries[0]["slot"], "manual")
+
 
 if __name__ == "__main__":
     unittest.main()

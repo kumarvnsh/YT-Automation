@@ -81,6 +81,14 @@ video:
     # Drop royalty-free .mp3 files in assets/music/. One is picked at random.
     volume: 0.12
 
+quality:
+  # Deterministic local checks run after compose and before upload. A failed
+  # check blocks the upload; the report is saved to <stage>/quality.json.
+  enabled: true
+  min_duration_ratio: 0.75     # video/voiceover + narration/target lower bound
+  max_duration_ratio: 1.35     # ...and upper bound
+  banned_terms: ["graphic sexual", "extreme gore"]
+
 youtube:
   enabled: true
   privacy_status: "public"     # "private" | "unlisted" | "public"

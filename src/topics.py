@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import json
 import random
+import re
 from datetime import date
+from difflib import SequenceMatcher
 from pathlib import Path
 
 from .config import base_dir
@@ -16,6 +18,10 @@ from .config import base_dir
 
 def _used_topics_file():
     return base_dir() / "data" / "used_topics.json"
+
+
+def _reservations_file() -> Path:
+    return base_dir() / "data" / "topic_reservations.json"
 
 # Broad angles to keep the content fresh across many days.
 SEED_ANGLES = [
@@ -61,6 +67,61 @@ def pick_angle(cfg=None) -> str:
     """
     angles = cfg.get("channel.angles") if cfg is not None else None
     return random.choice(angles if angles else SEED_ANGLES)
+
+
+def topic_fingerprint(title: str) -> str:
+    """Normalize a title into an order-insensitive keyword fingerprint."""
+    words = re.findall(r"[a-z0-9]+", title.lower())
+    ignored = {"a", "an", "and", "the", "of", "to", "in", "how", "why"}
+    return "_".join(sorted({word for word in words if word not in ignored}))
+
+
+def _load_reservations() -> list[dict]:
+    path = _reservations_file()
+    if not path.exists():
+        return []
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+
+
+def _write_reservations(entries: list[dict]) -> None:
+    path = _reservations_file()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+
+
+def _fingerprint_is_near(left: str, right: str) -> bool:
+    return SequenceMatcher(None, left, right).ratio() >= 0.82
+
+
+def reserve_topic(title: str, fmt: str, slot: str, job_id: str) -> dict:
+    """Reserve a topic for one job, rejecting near-duplicates across slots.
+
+    Idempotent per job_id: a retry after a partial run returns the original
+    reservation instead of tripping the duplicate check against itself.
+    """
+    entries = _load_reservations()
+    existing = next((item for item in entries if item["job_id"] == job_id), None)
+    if existing:
+        return existing
+    fingerprint = topic_fingerprint(title)
+    recent = [item["fingerprint"] for item in entries[-60:]]
+    recent += [topic_fingerprint(t) for t in recent_titles(60)]
+    if any(_fingerprint_is_near(fingerprint, other) for other in recent):
+        raise ValueError(f"duplicate topic rejected: {title}")
+    reservation = {
+        "job_id": job_id,
+        "title": title,
+        "fingerprint": fingerprint,
+        "format": fmt,
+        "slot": slot,
+        "date": date.today().isoformat(),
+        "status": "reserved",
+    }
+    _write_reservations(entries + [reservation])
+    return reservation
 
 
 def record_topic(title: str, fmt: str) -> None:

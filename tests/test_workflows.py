@@ -12,6 +12,16 @@ class WorkflowRegressionTests(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/publish.yml").read_text()
         self.assertIn('PRESERVE_STAGE_ARTIFACT: "true"', workflow)
 
+    def test_publish_exports_ist_slot_before_pipeline_loop(self) -> None:
+        workflow = (ROOT / ".github/workflows/publish.yml").read_text()
+        self.assertIn("export PUBLISH_SLOT=morning", workflow)
+        self.assertIn("export PUBLISH_SLOT=evening", workflow)
+        self.assertIn('HOUR_IST=$(TZ=Asia/Kolkata date +%H)', workflow)
+
+    def test_publish_commits_topic_reservations(self) -> None:
+        workflow = (ROOT / ".github/workflows/publish.yml").read_text()
+        self.assertIn("data/topic_reservations.json", workflow)
+
     def test_approval_index_points_to_downloaded_source_artifact(self) -> None:
         workflow = (ROOT / ".github/workflows/approve.yml").read_text()
         self.assertIn("PUBLISH_ARTIFACT_RUN_ID: ${{ inputs.source_run_id }}", workflow)

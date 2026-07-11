@@ -6,8 +6,9 @@ into discrete, idempotent steps that persist their output to a stage directory a
 record progress in state.json. A killed run can be resumed; a step-at-a-time mode
 lets a scheduler complete the whole pipeline across several short calls.
 
-Steps: script → voiceover → captions → assets → render → upload
-Each step is skipped if already marked done in state.json.
+Steps: script → voiceover → captions → assets → render → compose → quality → upload
+Each step is skipped if already marked done in state.json. Stages created before
+the quality step keep their original target_steps and remain resumable.
 """
 from __future__ import annotations
 
@@ -18,7 +19,10 @@ from pathlib import Path
 from .config import Config, base_dir, env
 from . import topics
 
-STEP_ORDER = ["script", "voiceover", "captions", "assets", "render", "compose", "upload"]
+STEP_ORDER = [
+    "script", "voiceover", "captions", "assets", "render", "compose",
+    "quality", "upload",
+]
 
 
 # --------------------------------------------------------------------------- #
@@ -49,6 +53,8 @@ def new_stage(
     state = {
         "fmt": fmt,
         "created": ts,
+        "job_id": f"{ts}_{fmt}",
+        "slot": env("PUBLISH_SLOT", "manual"),
         "target_steps": target,
         "done": [],
         "complete": False,
@@ -152,6 +158,12 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     st["title"] = script.title
     st["script_provider"] = script.provider
     st["script_fallback_used"] = script.fallback_used
+    st["topic_reservation"] = topics.reserve_topic(
+        script.title,
+        st["fmt"],
+        st.get("slot", "manual"),
+        st.get("job_id") or stage.name,
+    )
     (stage / "script.json").write_text(json.dumps(script.to_dict(), indent=2), encoding="utf-8")
     (stage / "metadata.json").write_text(
         json.dumps(
@@ -263,7 +275,30 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
     st["video"] = "video.mp4"
 
 
+def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
+    from .quality_gate import validate_stage
+
+    if not cfg.get("quality.enabled", True):
+        st["quality"] = {"passed": True, "skipped": True, "score": 100, "checks": {}, "errors": []}
+        return
+    report = validate_stage(cfg, stage, st)
+    st["quality"] = report
+    (stage / "quality.json").write_text(
+        json.dumps(report, indent=2), encoding="utf-8"
+    )
+    if not report["passed"]:
+        failed = ", ".join(
+            name for name, status in report["checks"].items() if status == "fail"
+        )
+        raise RuntimeError(f"quality gate failed: {failed}")
+
+
 def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
+    # Stages created before the quality step have no "quality" field and keep
+    # their legacy resume/approval contract; a new stage cannot skip a failure.
+    if "quality" in st and not st["quality"].get("passed", False):
+        raise RuntimeError("upload blocked because quality gate did not pass")
+
     sc = st["script"]
 
     if cfg.get("youtube.enabled", False):
@@ -300,6 +335,7 @@ STEP_FUNCS = {
     "assets": _step_assets,
     "render": _step_render,
     "compose": _step_compose,
+    "quality": _step_quality,
     "upload": _step_upload,
 }
 
@@ -410,6 +446,7 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             "title": st.get("title", ""),
             "published_at": datetime.now(timezone.utc).isoformat(),
             "channel": env("CHANNEL_LABEL") or "histold",
+            "slot": st.get("slot") or env("PUBLISH_SLOT") or "manual",
             "scheduled": env("PUBLISH_SCHEDULED") == "true",
             "workflow": env("PUBLISH_WORKFLOW") or "publish",
             "retitled_at": None,
