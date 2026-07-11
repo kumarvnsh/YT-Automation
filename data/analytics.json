@@ -2,14 +2,14 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-11T12:41:53.603354+00:00",
+      "updated": "2026-07-11T12:44:25.491010+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
           {
             "id": "PLKz3dl1lEDLM",
             "title": "Forgotten Ancient Technology",
-            "video_count": 1
+            "video_count": 2
           },
           {
             "id": "PLZPTJFrAwVuA",
@@ -1448,9 +1448,13 @@
           "views": 1235,
           "likes": 12,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLKz3dl1lEDLM"
+          ],
+          "playlists": [
+            "Forgotten Ancient Technology"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 71.41,
           "subs_gained": 0
         },
