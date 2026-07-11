@@ -24,6 +24,9 @@ SCRIPT_JSON = {
 
 class ScriptProviderRoutingTests(unittest.TestCase):
     def _generate(self, cfg: Config):
+        # The fixture narration is 8 words; a 3s target puts it inside the
+        # enforced word budget so routing behavior is what's under test here.
+        cfg.raw.setdefault("script", {}).setdefault("shorts_target_seconds", 3)
         return generate_script(cfg, "short", topic_override="test topic")
 
     def test_legacy_provider_calls_only_configured_provider(self) -> None:
