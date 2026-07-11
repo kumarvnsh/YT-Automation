@@ -2,43 +2,59 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-11T08:02:02.741192+00:00",
+      "updated": "2026-07-11T11:33:33.472174+00:00",
+      "playlists": {
+        "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
+        "items": []
+      },
       "videos": [
         {
           "id": "HOzzS9c9bSI",
           "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 171,
-          "likes": 1,
-          "comments": 0
+          "views": 609,
+          "likes": 6,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "hXA0Zta874Q",
           "title": "He Flew Around the World in 91 Hours \u2014 Using Only a Radio and Luck",
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 798,
+          "views": 800,
           "likes": 21,
-          "comments": 1
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "Yw77rxLMmCY",
           "title": "Erling Haaland Is Literally Finishing What His Father Started",
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1089,
+          "views": 1138,
           "likes": 8,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "Lpt-QnNWJOg",
           "title": "The Real Reason Pokemon Was Invented Has Nothing to Do With Games",
           "publishedAt": "2026-07-10T12:30:10Z",
           "thumbnail": "https://i.ytimg.com/vi/Lpt-QnNWJOg/mqdefault.jpg",
-          "views": 719,
+          "views": 721,
           "likes": 11,
-          "comments": 5
+          "comments": 5,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "mOgSMDUQCp0",
@@ -47,16 +63,22 @@
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
           "views": 775,
           "likes": 3,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "ABSo-s-cQPE",
           "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 740,
+          "views": 743,
           "likes": 6,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "08B4lsuemvU",
@@ -65,7 +87,10 @@
           "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
           "views": 564,
           "likes": 6,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "-Bh7FffOJ_k",
@@ -74,25 +99,34 @@
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
           "views": 705,
           "likes": 17,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "-I3k-5EYohU",
           "title": "Would You Wear This 1949 Radio Hat? \ud83c\udfa9 #retro #tech #fashion",
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 203,
+          "views": 210,
           "likes": 2,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "BBibvaSIgLM",
           "title": "This Artist Broke the Law Just to Paint a Nude Model #arthistory #banned #scandal",
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 857,
+          "views": 858,
           "likes": 9,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "MUp4BtZxwuU",
@@ -101,7 +135,10 @@
           "thumbnail": "https://i.ytimg.com/vi/MUp4BtZxwuU/mqdefault.jpg",
           "views": 625,
           "likes": 12,
-          "comments": 0
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
         },
         {
           "id": "Yi1mtK9HAHM",
@@ -111,6 +148,9 @@
           "views": 887,
           "likes": 13,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 126.84,
           "subs_gained": 0
         },
@@ -122,6 +162,9 @@
           "views": 620,
           "likes": 13,
           "comments": 2,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 54.14,
           "subs_gained": 1
         },
@@ -133,6 +176,9 @@
           "views": 7,
           "likes": 0,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 18.75,
           "subs_gained": 0
         },
@@ -141,9 +187,12 @@
           "title": "He Sailed Into the Unknown \u2014 and Rewrote the World's Trade Routes",
           "publishedAt": "2026-07-08T15:01:17Z",
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
-          "views": 211,
+          "views": 212,
           "likes": 3,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 53.790000000000006,
           "subs_gained": 1
         },
@@ -155,6 +204,9 @@
           "views": 603,
           "likes": 19,
           "comments": 2,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 67.62,
           "subs_gained": 2
         },
@@ -166,6 +218,9 @@
           "views": 474,
           "likes": 1,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 54.230000000000004,
           "subs_gained": 0
         },
@@ -177,6 +232,9 @@
           "views": 715,
           "likes": 9,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 57.86,
           "subs_gained": 0
         },
@@ -188,6 +246,9 @@
           "views": 1038,
           "likes": 33,
           "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 74.94,
           "subs_gained": 1
         },
@@ -196,9 +257,12 @@
           "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1093,
+          "views": 1094,
           "likes": 24,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 61.63000000000001,
           "subs_gained": 0
         },
@@ -210,6 +274,9 @@
           "views": 643,
           "likes": 13,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 55.17999999999999,
           "subs_gained": 0
         },
@@ -218,9 +285,12 @@
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
-          "views": 1278,
+          "views": 1280,
           "likes": 24,
           "comments": 5,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 65.76,
           "subs_gained": 2
         },
@@ -232,6 +302,9 @@
           "views": 741,
           "likes": 14,
           "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 49.03,
           "subs_gained": 0
         },
@@ -243,6 +316,9 @@
           "views": 810,
           "likes": 31,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 149.72,
           "subs_gained": 0
         },
@@ -254,6 +330,9 @@
           "views": 670,
           "likes": 30,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 84.27,
           "subs_gained": 1
         },
@@ -265,6 +344,9 @@
           "views": 595,
           "likes": 13,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 80.36,
           "subs_gained": 0
         },
@@ -276,6 +358,9 @@
           "views": 387,
           "likes": 10,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 66.16,
           "subs_gained": 0
         },
@@ -287,6 +372,9 @@
           "views": 275,
           "likes": 8,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 62.61,
           "subs_gained": 0
         },
@@ -298,6 +386,9 @@
           "views": 598,
           "likes": 9,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 95.14,
           "subs_gained": 0
         },
@@ -309,6 +400,9 @@
           "views": 620,
           "likes": 10,
           "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 66.7,
           "subs_gained": 0
         },
@@ -320,6 +414,9 @@
           "views": 639,
           "likes": 18,
           "comments": 2,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 102.8,
           "subs_gained": 2
         },
@@ -331,6 +428,9 @@
           "views": 594,
           "likes": 12,
           "comments": 5,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 99.27,
           "subs_gained": 0
         },
@@ -342,6 +442,9 @@
           "views": 761,
           "likes": 5,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 39.03,
           "subs_gained": 0
         },
@@ -353,6 +456,9 @@
           "views": 662,
           "likes": 11,
           "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 57.03,
           "subs_gained": 1
         },
@@ -364,6 +470,9 @@
           "views": 919,
           "likes": 10,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 43.17,
           "subs_gained": 0
         },
@@ -375,6 +484,9 @@
           "views": 965,
           "likes": 8,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 42.16,
           "subs_gained": 0
         },
@@ -386,6 +498,9 @@
           "views": 905,
           "likes": 10,
           "comments": 8,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 50.43,
           "subs_gained": 0
         },
@@ -397,6 +512,9 @@
           "views": 963,
           "likes": 20,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 56.46,
           "subs_gained": 2
         },
@@ -408,6 +526,9 @@
           "views": 3,
           "likes": 0,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 100.0,
           "subs_gained": 0
         },
@@ -419,6 +540,9 @@
           "views": 1235,
           "likes": 12,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 71.41,
           "subs_gained": 0
         },
@@ -430,6 +554,9 @@
           "views": 1212,
           "likes": 9,
           "comments": 2,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 55.279999999999994,
           "subs_gained": 0
         },
@@ -441,6 +568,9 @@
           "views": 996,
           "likes": 31,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 54.86,
           "subs_gained": 1
         },
@@ -452,6 +582,9 @@
           "views": 6,
           "likes": 0,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 25.05,
           "subs_gained": 0
         },
@@ -463,6 +596,9 @@
           "views": 961,
           "likes": 39,
           "comments": 4,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 63.73,
           "subs_gained": 3
         },
@@ -474,6 +610,9 @@
           "views": 1018,
           "likes": 48,
           "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 63.44,
           "subs_gained": 3
         },
@@ -485,6 +624,9 @@
           "views": 837,
           "likes": 21,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 53.26,
           "subs_gained": 1
         },
@@ -496,6 +638,9 @@
           "views": 1128,
           "likes": 23,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 54.90999999999999,
           "subs_gained": 1
         },
@@ -507,6 +652,9 @@
           "views": 950,
           "likes": 25,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 53.07999999999999,
           "subs_gained": 1
         },
@@ -518,6 +666,9 @@
           "views": 1069,
           "likes": 10,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 41.11,
           "subs_gained": 0
         },
@@ -529,6 +680,9 @@
           "views": 498,
           "likes": 4,
           "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
           "avg_view_pct": 76.64,
           "subs_gained": 0
         }
