@@ -2,8 +2,8 @@
 """Merge N per-channel JSON exports into one file the dashboard fetches once.
 
 Usage:
-  python scripts/merge_channel_json.py --labels histold,medimyth --out data/analytics.json \\
-      data/analytics.json channels/medimyth/data/analytics.json
+  python scripts/merge_channel_json.py --labels histold --out data/analytics.json \\
+      data/analytics.json
 
 Output shape: {"channels": {"<label>": <parsed input file>, ...}}
 Standalone (no src/ imports) so it works with no env/config setup.

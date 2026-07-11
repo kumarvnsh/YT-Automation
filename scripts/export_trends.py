@@ -24,7 +24,7 @@ from src import trends  # noqa: E402
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=None)
-    parser.add_argument("--label", default="channel", help="Channel key for the merged JSON, e.g. histold/medimyth.")
+    parser.add_argument("--label", default="channel", help="Channel key for the merged JSON, e.g. histold.")
     args = parser.parse_args()
 
     cfg = load_config(args.config)

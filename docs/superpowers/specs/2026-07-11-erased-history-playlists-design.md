@@ -13,7 +13,7 @@ into YouTube playlists through GitHub Actions.
 This change covers the primary Histold config, script generation prompt,
 YouTube upload post-actions, analytics export, dashboard UI, and a new playlist
 workflow. It does not redesign the renderer, scheduler, Meta cross-posting, or
-the separate MediMyth channel.
+unrelated channel expansion work.
 
 ## Channel Positioning
 

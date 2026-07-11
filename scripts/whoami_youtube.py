@@ -16,7 +16,7 @@ from src.youtube_uploader import get_credentials  # noqa: E402
 
 
 def main() -> int:
-    # Optional channel config path, e.g. channels/medimyth/config.yaml
+    # Optional config path; defaults to the root Histold config.
     cfg = load_config(sys.argv[1] if len(sys.argv) > 1 else None)
     from googleapiclient.discovery import build
 

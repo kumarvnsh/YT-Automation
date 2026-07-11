@@ -21,8 +21,7 @@ from src.youtube_uploader import SCOPES, get_credentials, token_file  # noqa: E4
 
 
 def main() -> None:
-    # Optional: pass a channel config path to authorize that channel, e.g.
-    #   python scripts/setup_oauth.py channels/medimyth/config.yaml
+    # Optional: pass a config path; defaults to the root Histold config.
     cfg_path = sys.argv[1] if len(sys.argv) > 1 else None
     load_config(cfg_path)
     print("Launching Google OAuth consent flow in your browser...")

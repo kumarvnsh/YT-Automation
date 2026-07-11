@@ -488,7 +488,6 @@ function renderUnderperformers(allVideos, index, analytics, s) {
   el.innerHTML = flagged
     .map((v) => {
       const entry = byId.get(v.id);
-      const channel = (entry && entry.channel) || v._channel || "histold";
       const canRepost = Boolean(
         entry && entry.run_id && entry.stage_dir_name && daysAgo(entry.published_at) < ARTIFACT_MAX_DAYS
       );
@@ -501,8 +500,8 @@ function renderUnderperformers(allVideos, index, analytics, s) {
           <div class="approval-row__meta">${fmtNum(v.views || 0)} views &middot; ${Math.round(hoursAgo(v.publishedAt))}h ago &middot; <a href="https://youtu.be/${v.id}" target="_blank" rel="noopener">watch</a></div>
         </div>
         <div class="under-actions">
-          <button class="btn btn--ghost under-retitle" data-video="${v.id}" data-channel="${escapeHtml(channel)}">Retitle</button>
-          <button class="btn btn--primary under-repost" data-video="${v.id}" data-channel="${escapeHtml(channel)}"
+          <button class="btn btn--ghost under-retitle" data-video="${v.id}">Retitle</button>
+          <button class="btn btn--primary under-repost" data-video="${v.id}"
             data-run="${entry ? entry.run_id : ""}" data-stage="${entry ? entry.stage_dir_name : ""}"${repostTip}>Repost</button>
         </div>
       </div>`;
@@ -537,7 +536,6 @@ async function dispatchRepublish(s, mode, btn) {
       video_id: d.video,
       source_run_id: d.run || "",
       stage_dir_name: d.stage || "",
-      channel: d.channel || "histold",
     });
     btn.textContent = "Dispatched ✓";
     setTimeout(() => loadRuns(getSettings(), 1), 4000);

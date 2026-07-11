@@ -108,7 +108,7 @@ def _retention_and_subs(
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=None)
-    parser.add_argument("--label", default="channel", help="Channel key for the merged JSON, e.g. histold/medimyth.")
+    parser.add_argument("--label", default="channel", help="Channel key for the merged JSON, e.g. histold.")
     parser.add_argument("--limit", type=int, default=50, help="Max recent videos to fetch stats for.")
     args = parser.parse_args()
 

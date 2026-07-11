@@ -16,10 +16,8 @@ except ImportError:  # dotenv is optional at runtime
 # Code root = parent of the src/ directory that contains this file.
 ROOT = Path(__file__).resolve().parent.parent
 
-# Channel base directory: where a channel's data lives (config, .env, secrets,
-# Mascot, output, data). Defaults to ROOT (the Histold channel). When a second
-# channel is run via --config path/to/config.yaml, base becomes that config's
-# folder, so all per-channel data is isolated. Set by load_config().
+# Base directory for config-scoped data (.env, secrets, Mascot, output, data).
+# Defaults to ROOT for the Histold channel. Set by load_config().
 _BASE = ROOT
 
 

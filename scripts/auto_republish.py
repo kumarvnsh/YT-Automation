@@ -59,7 +59,6 @@ def _dispatch(mode: str, video_id: str, entry: dict, label: str) -> None:
                 "video_id": video_id,
                 "source_run_id": str(entry.get("run_id", "")),
                 "stage_dir_name": entry.get("stage_dir_name", ""),
-                "channel": label,
             },
         },
         timeout=30,

@@ -12,22 +12,9 @@ Settings → Secrets and variables → Actions → New repository secret. Add ea
 | `PEXELS_API_KEY` | `.env` → `PEXELS_API_KEY` | copy the value directly |
 | `YT_CLIENT_SECRET_JSON_B64` | `secrets/client_secret.json` (Histold) | `base64 -i secrets/client_secret.json \| pbcopy` |
 | `YT_TOKEN_JSON_B64` | `secrets/token.json` (Histold) | `base64 -i secrets/token.json \| pbcopy` |
-| `YT_MEDIMYTH_CLIENT_SECRET_JSON_B64` | `channels/medimyth/secrets/client_secret.json` | `base64 -i channels/medimyth/secrets/client_secret.json \| pbcopy` |
-| `YT_MEDIMYTH_TOKEN_JSON_B64` | `channels/medimyth/secrets/token.json` | `base64 -i channels/medimyth/secrets/token.json \| pbcopy` |
 | `META_ACCESS_TOKEN` | Meta Business system user | Non-expiring token assigned to the Histold Facebook Page and Instagram professional account |
-| `OPENAI_API_KEY` (optional) | `.env` | only if `script.provider: openai` for either channel |
-| `ELEVENLABS_API_KEY` (optional) | `.env` | only if `tts.provider: elevenlabs` for either channel |
-
-**MediMyth OAuth is not set up yet.** Before you can generate its secrets, run locally:
-
-```bash
-python scripts/setup_oauth.py channels/medimyth/config.yaml
-python scripts/whoami_youtube.py channels/medimyth/config.yaml
-```
-
-The second command prints the channel ID — paste it into `channels/medimyth/config.yaml`'s
-`youtube.expected_channel_id` (currently blank) so uploads are locked to the right channel,
-then commit that one-line change.
+| `OPENAI_API_KEY` (optional) | `.env` | only if `script.provider: openai` |
+| `ELEVENLABS_API_KEY` (optional) | `.env` | only if `tts.provider: elevenlabs` |
 
 **Not a repo secret:** the fine-grained PAT used by the dashboard (scope: this repo's
 Actions read/write, Contents read) — generate at
@@ -97,7 +84,7 @@ The dashboard's Underperformers panel (retitle / repost buttons) needs the full
 `youtube` manage scope, which the original token lacks. After pulling the code that adds
 `MANAGE_SCOPE`:
 
-1. Locally: `rm secrets/token.json`, then `python scripts/setup_oauth.py` and approve the
+1. Locally: remove `secrets/token.json`, then `python scripts/setup_oauth.py` and approve the
    consent screen (it now includes "Manage your YouTube account"). Pick the Histold channel.
 2. `base64 -i secrets/token.json | pbcopy` → update the `YT_TOKEN_JSON_B64` repo secret.
 3. Sanity: `python scripts/whoami_youtube.py`, then trigger the analytics workflow once.
