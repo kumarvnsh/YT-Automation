@@ -72,9 +72,57 @@ The pipeline is scheduler-agnostic. `scripts/run_daily.sh` is the entry point.
 - **macOS launchd** — more reliable than cron on laptops; create a `LaunchAgent` plist calling `run_daily.sh`.
 - **Cloud (hands-off, Mac can be off)** — GitHub Actions on a `schedule:` cron, with keys stored as repo **Secrets** and `secrets/token.json` committed as an encrypted secret. Ask and I'll generate the workflow file.
 
+## Automated content factory (scheduled publishing)
+
+Production scheduling is driven by **cron-job.org**, which dispatches the
+`publish.yml` GitHub Actions workflow twice a day (9:00am / 6:00pm IST). Each
+dispatch is an **independent job slot**:
+
+- The workflow derives `PUBLISH_SLOT=morning` (before 14:00 IST) or
+  `PUBLISH_SLOT=evening` from the runner clock and passes it to the pipeline.
+- Each new stage records a `job_id` and `slot`, and reserves its topic in
+  `data/topic_reservations.json` right after script generation. A reservation
+  is idempotent per job (safe to resume) and rejects near-duplicate topics
+  across slots, so the morning and evening videos always cover distinct topics.
+- The workflow commits `data/topic_reservations.json` back to the repo along
+  with the other dedup state.
+
+### Script provider routing
+
+Script generation defaults to **Claude with automatic OpenAI fallback**: if the
+Anthropic call fails or returns invalid JSON, the same prompt is retried on
+OpenAI, and the stage records `script_provider` / `script_fallback_used`.
+Configure in `config.yaml`:
+
+```yaml
+script:
+  provider: "anthropic"     # primary provider
+  routing: "fallback"       # fallback | random | round_robin (optional modes)
+  fallback_provider: "openai"
+```
+
+`random` picks a provider per run; `round_robin` alternates runs (state in
+`data/provider_rotation.json`). Removing `routing` restores the legacy
+single-provider behavior.
+
+### Quality gate
+
+Every **new** job runs a deterministic, local `quality` step between compose
+and upload — no API calls, just state/file checks and one ffprobe call:
+script structure, upload metadata, topic reservation, narration length, audio,
+captions, assets, video presence, resolution, duration ratio, and configured
+banned terms. The report is written to `<stage>/quality.json`; a failed check
+**blocks the upload** and fails the run. Tune thresholds under `quality:` in
+`config.yaml`. Stages created before this feature keep their original step
+list and remain resumable/approvable as before.
+
+> Scope note: this phase does **not** change the Pexels asset flow and does
+> **not** add AI image generation. Analytics-based topic weighting and
+> provider performance selection are deferred.
+
 ## Configuration
 
-All non-secret behavior lives in **`config.yaml`** — niche persona, target durations, TTS voice, resolutions, caption styling, privacy status, default tags. No code changes needed to retune the channel.
+All non-secret behavior lives in **`config.yaml`** — niche persona, target durations, TTS voice, resolutions, caption styling, privacy status, default tags, provider routing, and quality thresholds. No code changes needed to retune the channel.
 
 ## Cost notes
 
