@@ -22,6 +22,14 @@ class WorkflowRegressionTests(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/publish.yml").read_text()
         self.assertIn("data/topic_reservations.json", workflow)
 
+    def test_dashboard_deploys_on_docs_changes(self) -> None:
+        workflow = (ROOT / ".github/workflows/deploy-pages.yml").read_text()
+        self.assertIn('paths: ["docs/**"]', workflow)
+        self.assertIn("workflow_dispatch", workflow)
+        self.assertIn("actions/upload-pages-artifact", workflow)
+        self.assertIn("actions/deploy-pages", workflow)
+        self.assertIn("path: docs", workflow)
+
     def test_approval_index_points_to_downloaded_source_artifact(self) -> None:
         workflow = (ROOT / ".github/workflows/approve.yml").read_text()
         self.assertIn("PUBLISH_ARTIFACT_RUN_ID: ${{ inputs.source_run_id }}", workflow)
