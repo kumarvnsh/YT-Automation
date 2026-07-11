@@ -2,525 +2,1410 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-11T11:33:33.472174+00:00",
+      "updated": "2026-07-11T12:35:15.824808+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
-        "items": []
+        "items": [
+          {
+            "id": "PLAFf09AcOp_8",
+            "title": "Lost Cities",
+            "video_count": 0
+          },
+          {
+            "id": "PLZPTJFrAwVuA",
+            "title": "Ancient Mysteries",
+            "video_count": 3
+          },
+          {
+            "id": "PLY6ySex-tqTQ",
+            "title": "Vanished Civilizations",
+            "video_count": 3
+          },
+          {
+            "id": "PLTrU7sep9IQc",
+            "title": "Erased From History",
+            "video_count": 32
+          }
+        ]
       },
       "videos": [
         {
           "id": "HOzzS9c9bSI",
           "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
+          "description": "FIFA is the most powerful body in world football, but its origin story is surprisingly humble. When it was founded in 1904, Britain \u2014 the nation that invented the sport \u2014 refused to participate. It's one of history's great ironies that the game's creator nearly missed running it entirely. #FIFA #footballhistory #soccerfacts",
+          "tags": [
+            "1904",
+            "did you know",
+            "education",
+            "facts",
+            "fifa",
+            "football facts",
+            "football history",
+            "history",
+            "history facts",
+            "history shorts",
+            "shorts",
+            "soccer",
+            "sports history",
+            "surprising history",
+            "trending",
+            "viral",
+            "world cup"
+          ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 609,
+          "views": 621,
           "likes": 6,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "hXA0Zta874Q",
           "title": "He Flew Around the World in 91 Hours \u2014 Using Only a Radio and Luck",
+          "description": "On July 10, 1938, Howard Hughes landed in New York having circled the entire globe in just 91 hours \u2014 smashing the previous record by nearly four days. He used modified commercial aircraft and sheer determination to pull it off. The flight made him one of the most celebrated Americans alive.",
+          "tags": [
+            "1938",
+            "american history",
+            "around the world",
+            "aviation history",
+            "did you know",
+            "education",
+            "facts",
+            "flying record",
+            "golden age of aviation",
+            "history",
+            "history shorts",
+            "howard hughes",
+            "shorts",
+            "trending",
+            "viral",
+            "world record"
+          ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 800,
+          "views": 801,
           "likes": 21,
           "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "Yw77rxLMmCY",
           "title": "Erling Haaland Is Literally Finishing What His Father Started",
+          "description": "Erling Haaland and his father Alfie both wore the number nine shirt for Manchester City \u2014 separated by over two decades. It's one of football's most remarkable father-son stories, written across the same pitch. Watch to see how history repeated itself at the Etihad.",
+          "tags": [
+            "alfie haaland",
+            "did you know",
+            "education",
+            "erling haaland",
+            "etihad stadium",
+            "facts",
+            "father son",
+            "football history",
+            "history",
+            "history shorts",
+            "manchester city",
+            "norway football",
+            "premier league",
+            "shorts",
+            "sports legacy",
+            "trending",
+            "viral"
+          ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1138,
+          "views": 1146,
           "likes": 8,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "Lpt-QnNWJOg",
           "title": "The Real Reason Pokemon Was Invented Has Nothing to Do With Games",
+          "description": "Pokemon is one of the biggest franchises on Earth, but its origin traces back to one man's childhood obsession with collecting insects in rural Japan. Creator Satoshi Tajiri wanted city kids to experience that same wonder of discovery \u2014 and built a billion-dollar world around it. The bugs were always the point.",
+          "tags": [
+            "childhood history",
+            "did you know",
+            "education",
+            "facts",
+            "fun facts",
+            "game history",
+            "gaming facts",
+            "history",
+            "history shorts",
+            "japan history",
+            "nintendo",
+            "pokemon",
+            "satoshi tajiri",
+            "shorts",
+            "trending",
+            "video game origins",
+            "viral"
+          ],
           "publishedAt": "2026-07-10T12:30:10Z",
           "thumbnail": "https://i.ytimg.com/vi/Lpt-QnNWJOg/mqdefault.jpg",
           "views": 721,
           "likes": 11,
           "comments": 5,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "mOgSMDUQCp0",
           "title": "France Blew Up a Civilian Ship \u2014 Then Called It a Success",
+          "description": "On July 10, 1985, French secret agents sank the Greenpeace vessel Rainbow Warrior in Auckland harbour, killing a photographer aboard. The agents were caught, convicted \u2014 and later quietly celebrated as heroes back in France. It remains one of the most brazen acts of state-sponsored sabotage in peacetime history. #Greenpeace #RainbowWarrior #HistoryFacts",
+          "tags": [
+            "1985",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "france",
+            "greenpeace",
+            "history",
+            "history facts",
+            "history shorts",
+            "new zealand",
+            "pacific history",
+            "rainbow warrior",
+            "secret agents",
+            "shorts",
+            "spy history",
+            "state sabotage",
+            "trending",
+            "viral"
+          ],
           "publishedAt": "2026-07-10T09:03:40Z",
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
           "views": 775,
           "likes": 3,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "ABSo-s-cQPE",
           "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
+          "description": "Since the first FIFA World Cup in 1930, football has delivered jaw-dropping upsets that nobody saw coming. From tiny nations toppling giants to last-minute winners, these moments rewrote what we thought was possible. Discover the most stunning confidence-shattering shocks in World Cup history. #FIFA #WorldCup #FootballHistory",
+          "tags": [
+            "did you know",
+            "education",
+            "facts",
+            "fifa world cup",
+            "football history",
+            "greatest upsets",
+            "history",
+            "history shorts",
+            "international football",
+            "soccer history",
+            "sports history",
+            "world cup moments",
+            "world cup shocks",
+            "world cup upsets"
+          ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 743,
+          "views": 744,
           "likes": 6,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "08B4lsuemvU",
           "title": "Argentina Declared Independence With a King Already Picked \u2014 Then Changed Its Mind",
+          "description": "On July 9, 1816, Argentina declared independence from Spain \u2014 but the plan behind it was stranger than you'd expect. The founding delegates secretly debated installing a foreign monarch before choosing something radical instead. History's boldest pivots often happen in the rooms nobody remembers. #ArgentinaIndependence #HistoryFacts #DidYouKnow",
+          "tags": [
+            "1816",
+            "argentina",
+            "did you know",
+            "education",
+            "facts",
+            "founding nations",
+            "history",
+            "history shorts",
+            "independence day",
+            "latin america history",
+            "revolution",
+            "south american history",
+            "spanish empire"
+          ],
           "publishedAt": "2026-07-09T16:09:34Z",
           "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
           "views": 564,
           "likes": 6,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "-Bh7FffOJ_k",
           "title": "The Wave That Was Taller Than the Empire State Building",
+          "description": "On July 9, 1958, a single earthquake in Alaska triggered the tallest wave ever recorded in modern history \u2014 and two fishermen rode it and survived. This is the story of the Lituya Bay megatsunami, a force of nature so extreme scientists struggled to believe eyewitness accounts. The physics behind it changed how we understand coastal disasters forever.",
+          "tags": [
+            "1958",
+            "alaska earthquake",
+            "did you know",
+            "education",
+            "facts",
+            "geology",
+            "history",
+            "history shorts",
+            "lituya bay",
+            "megatsunami",
+            "natural disaster",
+            "ocean wave",
+            "on this day",
+            "science history",
+            "survival story"
+          ],
           "publishedAt": "2026-07-09T13:12:19Z",
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
           "views": 705,
           "likes": 17,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLY6ySex-tqTQ"
+          ],
+          "playlists": [
+            "Vanished Civilizations"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "-I3k-5EYohU",
           "title": "Would You Wear This 1949 Radio Hat? \ud83c\udfa9 #retro #tech #fashion",
+          "description": "In 1949, American inventor Victor Hoeflich created the 'Radio Hat' \u2014 a working AM radio built into a straw hat, complete with a small antenna. It sold for around $7.95 and was marketed as the future of personal entertainment. History has a funny way of proving inventors right, just about 50 years too early. #forgotteninventions #retro #history",
+          "tags": [
+            "1940s technology",
+            "did you know",
+            "education",
+            "facts",
+            "forgotten inventions",
+            "history",
+            "history shorts",
+            "ipod history",
+            "portable radio",
+            "radio hat",
+            "retro gadgets",
+            "retro tech",
+            "short history facts",
+            "vintage",
+            "wearable tech"
+          ],
           "publishedAt": "2026-07-09T10:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 210,
+          "views": 212,
           "likes": 2,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "BBibvaSIgLM",
           "title": "This Artist Broke the Law Just to Paint a Nude Model #arthistory #banned #scandal",
+          "description": "Before the 19th century, painting the human figure from a live model was considered scandalous \u2014 and in many places outright banned. The story of how nude modeling became accepted in art schools reveals a fascinating clash between morality, science, and creative freedom. Discover the surprising history behind one of art's most essential traditions. #arthistory #didyouknow #historyofart\nWhy was anatomy for artists once considered a criminal act? Discover the strange history of life drawing and how early restrictions shaped the art world we know today.\n\nFrom the strict rules of the French Academy to the long-standing exclusion of women, this overview tracks how professional artists gained access to the human form. If you are interested in art history or figure drawing, these milestones explain why modern training looks the way it does.\n\nSubscribe for more art history breakdowns, and let me know in the comments which era of art we should cover next.",
+          "tags": [
+            "anatomy in art",
+            "art history",
+            "art school",
+            "did you know",
+            "education",
+            "facts",
+            "figure drawing",
+            "history",
+            "history facts",
+            "history shorts",
+            "life drawing",
+            "nude models",
+            "renaissance art",
+            "surprising history",
+            "anatomy for artists",
+            "history of art",
+            "french academy art",
+            "art history facts",
+            "drawing techniques"
+          ],
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
           "views": 858,
           "likes": 9,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "MUp4BtZxwuU",
           "title": "The Wave That Climbed Higher Than the Eiffel Tower \u2014 And Few Noticed",
+          "description": "On July 9, 1958, a massive earthquake triggered the tallest wave ever recorded in modern history \u2014 a megatsunami that stripped a mountain bare 1,722 feet above sea level. Incredibly, five people died, partly because almost no one was there to witness it. This is the story of Earth's most extreme wave.",
+          "tags": [
+            "alaska",
+            "did you know",
+            "earthquake",
+            "education",
+            "facts",
+            "geology",
+            "history",
+            "history shorts",
+            "lituya bay",
+            "megatsunami",
+            "natural disaster",
+            "ocean history",
+            "world records"
+          ],
           "publishedAt": "2026-07-09T07:15:53Z",
           "thumbnail": "https://i.ytimg.com/vi/MUp4BtZxwuU/mqdefault.jpg",
           "views": 625,
           "likes": 12,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "Yi1mtK9HAHM",
           "title": "The Titanic Had a Bakery, a Pool, and a Warning Nobody Listened To",
+          "description": "The Titanic wasn't just a tragic disaster \u2014 it was a floating city packed with jaw-dropping details most people never learn. From an ice warning ignored hours before impact to a survivor dog found aboard a rescue ship, the facts go far beyond what movies show. This video unpacks the most surprising truths about the most famous ship in history. #Titanic #HistoryFacts #DidYouKnow",
+          "tags": [
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "interesting history",
+            "ocean liner history",
+            "rms titanic",
+            "ship history",
+            "titanic",
+            "titanic facts",
+            "titanic stories",
+            "titanic survivors"
+          ],
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 887,
+          "views": 888,
           "likes": 13,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 126.84,
           "subs_gained": 0
         },
         {
           "id": "r419ISKWRk0",
           "title": "He Ruled Two Kingdoms at Once \u2014 and Almost Nobody Noticed",
+          "description": "In 1859, King Charles XV became one of Europe's most underrated rulers, simultaneously commanding two distinct kingdoms under a single crown. His reign reshaped Scandinavian politics, culture, and the push toward Nordic unity. Discover the surprising story behind this dual monarchy almost lost to history. #KingCharlesXV #ScandinavianHistory #SwedenNorway",
+          "tags": [
+            "1859",
+            "19th century europe",
+            "did you know",
+            "dual monarchy",
+            "education",
+            "european royalty",
+            "facts",
+            "history",
+            "history shorts",
+            "king charles xv",
+            "nordic history",
+            "norway",
+            "scandinavian history",
+            "sweden",
+            "union of kingdoms"
+          ],
           "publishedAt": "2026-07-08T17:49:04Z",
           "thumbnail": "https://i.ytimg.com/vi/r419ISKWRk0/mqdefault.jpg",
           "views": 620,
           "likes": 13,
           "comments": 2,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 54.14,
           "subs_gained": 1
         },
         {
           "id": "hI7XI8VcN_g",
           "title": "Why the Army hid the Roswell truth #history #mystery",
+          "description": "On July 8, 1947, the U.S. Army Air Force announced it had recovered a 'flying disc' near Roswell, New Mexico \u2014 then walked the story back within hours. What really happened became one of the most debated mysteries of the 20th century. The government's two contradictory official explanations only made things stranger.",
+          "tags": [
+            "1947",
+            "american history",
+            "area 51",
+            "cold war",
+            "conspiracy",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "mystery",
+            "on this day",
+            "roswell",
+            "ufo"
+          ],
           "publishedAt": "2026-07-08T16:09:40Z",
           "thumbnail": "https://i.ytimg.com/vi/hI7XI8VcN_g/mqdefault.jpg",
           "views": 7,
           "likes": 0,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLZPTJFrAwVuA"
+          ],
+          "playlists": [
+            "Ancient Mysteries"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 18.75,
           "subs_gained": 0
         },
         {
           "id": "sZiE8ejUhBo",
           "title": "He Sailed Into the Unknown \u2014 and Rewrote the World's Trade Routes",
+          "description": "In 1497, Vasco da Gama did something no European had ever managed \u2014 he sailed directly from Europe to India, bypassing every middleman who had controlled global spice trade for centuries. That single voyage shifted world power, made Portugal fabulously rich, and permanently changed what ended up on your dinner table. This is the story of one of history's most consequential journeys.",
+          "tags": [
+            "1497",
+            "age of exploration",
+            "did you know",
+            "education",
+            "european exploration",
+            "facts",
+            "history",
+            "history shorts",
+            "indian ocean",
+            "maritime history",
+            "portugal",
+            "sea route",
+            "spice trade",
+            "trade routes",
+            "vasco da gama",
+            "world history"
+          ],
           "publishedAt": "2026-07-08T15:01:17Z",
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
           "views": 212,
           "likes": 3,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLZPTJFrAwVuA"
+          ],
+          "playlists": [
+            "Ancient Mysteries"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 53.790000000000006,
           "subs_gained": 1
         },
         {
           "id": "gpxm4GYWPuc",
           "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
+          "description": "On July 8, 1853, Commodore Matthew Perry sailed four steam-powered warships into Edo Bay, Japan, forcing a nation that had been closed to the world for over 200 years to finally open its doors. The Japanese called his black-hulled ships 'black dragons breathing fire' \u2014 and they changed history forever. This is the story of the most dramatic diplomatic ultimatum of the 19th century.",
+          "tags": [
+            "19th century",
+            "american history",
+            "commodore perry",
+            "did you know",
+            "edo period",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "japan history",
+            "japan opening",
+            "meiji era",
+            "naval history",
+            "perry expedition",
+            "samurai"
+          ],
           "publishedAt": "2026-07-08T13:10:28Z",
           "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
           "views": 603,
           "likes": 19,
           "comments": 2,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 67.62,
           "subs_gained": 2
         },
         {
           "id": "WC4h4q3-pAo",
           "title": "The Day the Stock Market Hit Rock Bottom \u2014 and Nobody Rang a Bell",
+          "description": "On July 8, 1932, the Dow Jones Industrial Average collapsed to just 41.22 \u2014 its lowest point of the entire Great Depression. It had fallen nearly 90% from its 1929 peak, wiping out fortunes and reshaping the global economy forever. This is the story of that forgotten bottom.",
+          "tags": [
+            "1932",
+            "did you know",
+            "dow jones",
+            "economic collapse",
+            "education",
+            "facts",
+            "financial history",
+            "great depression",
+            "history",
+            "history facts",
+            "history shorts",
+            "on this day",
+            "stock market history",
+            "wall street history"
+          ],
           "publishedAt": "2026-07-08T07:09:43Z",
           "thumbnail": "https://i.ytimg.com/vi/WC4h4q3-pAo/mqdefault.jpg",
           "views": 474,
           "likes": 1,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 54.230000000000004,
           "subs_gained": 0
         },
         {
           "id": "0XfidH7YZzc",
           "title": "The Forgotten Machine That Nearly Beat the Bicycle to History",
+          "description": "Before bicycles ruled the roads, a strange, steam-powered personal vehicle called the velocipede briefly captivated cities across Europe and America. It promised a transport revolution \u2014 then vanished almost overnight. Discover why this forgotten invention lost the race and what killed it so completely.",
+          "tags": [
+            "19th century",
+            "bicycle history",
+            "did you know",
+            "education",
+            "facts",
+            "forgotten inventions",
+            "history",
+            "history facts",
+            "history shorts",
+            "invention",
+            "short history",
+            "surprising history",
+            "transport history",
+            "velocipede",
+            "victorian era"
+          ],
           "publishedAt": "2026-07-08T04:06:51Z",
           "thumbnail": "https://i.ytimg.com/vi/0XfidH7YZzc/mqdefault.jpg",
           "views": 715,
           "likes": 9,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 57.86,
           "subs_gained": 0
         },
         {
           "id": "5xTsaJl1ZoE",
           "title": "She Was Told Law Firms Don't Hire Women \u2014 Then She Ran the Whole Court",
+          "description": "On July 7, 1981, Ronald Reagan nominated Sandra Day O'Connor as the first woman ever appointed to the U.S. Supreme Court \u2014 decades after law firms refused to hire her despite graduating near the top of her Stanford Law class. Her appointment changed American legal history forever. On this anniversary, here's the story they don't teach in school.",
+          "tags": [
+            "american history",
+            "did you know",
+            "education",
+            "facts",
+            "first female justice",
+            "history",
+            "history shorts",
+            "legal history",
+            "on this day",
+            "ronald reagan",
+            "sandra day o'connor",
+            "supreme court",
+            "us history",
+            "women in history"
+          ],
           "publishedAt": "2026-07-07T16:09:30Z",
           "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
           "views": 1038,
           "likes": 33,
           "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 74.94,
           "subs_gained": 1
         },
         {
           "id": "FMAOcUJ4VNk",
           "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
+          "description": "In July 1944, Japanese forces on Saipan launched the largest banzai charge of the entire Pacific War \u2014 a massive final assault that shocked American defenders but ultimately sealed Japan's fate in the region. The fall of Saipan brought American bombers within striking range of the Japanese home islands, making it one of the most strategically decisive battles of World War II. This is the story of one desperate night that changed the war's direction forever. #WorldWarII #BattleOfSaipan #PacificWar",
+          "tags": [
+            "1944",
+            "banzai charge",
+            "battle of saipan",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "japan",
+            "military history",
+            "pacific war",
+            "saipan",
+            "us marines",
+            "world war 2",
+            "wwii pacific"
+          ],
           "publishedAt": "2026-07-07T14:50:25Z",
           "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1094,
+          "views": 1096,
           "likes": 24,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 61.63000000000001,
           "subs_gained": 0
         },
         {
           "id": "_vPg1nQAlCc",
           "title": "Outnumbered 10-to-1, They Won Anyway \u2014 With One Desperate Charge",
+          "description": "On July 7, 1520, a battered band of Spanish conquistadors and their indigenous allies pulled off one of history's most improbable battlefield reversals against a massive Aztec force at Otumba. The outcome hinged on a single, audacious moment. History rarely rewards the desperate \u2014 but this time it did.",
+          "tags": [
+            "1520",
+            "aztec",
+            "aztec empire",
+            "battle of otumba",
+            "conquistadors",
+            "did you know",
+            "education",
+            "facts",
+            "hernan cortes",
+            "history",
+            "history shorts",
+            "mesoamerica history",
+            "military history",
+            "on this day",
+            "spanish conquest",
+            "underdog battles"
+          ],
           "publishedAt": "2026-07-07T13:09:38Z",
           "thumbnail": "https://i.ytimg.com/vi/_vPg1nQAlCc/mqdefault.jpg",
           "views": 643,
           "likes": 13,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 55.17999999999999,
           "subs_gained": 0
         },
         {
           "id": "lgxraDQIeBs",
           "title": "Europe Was Almost One Empire \u2014 Three Times Over",
+          "description": "Europe's borders look natural today, but they were nearly erased by three separate conquerors across two thousand years. From Rome to Charlemagne to Napoleon, one continent kept reinventing itself after every collapse. This is the story of how Europe became the world's most fought-over peninsula. #history #europe #didyouknow",
+          "tags": [
+            "ancient history",
+            "charlemagne",
+            "did you know",
+            "education",
+            "empires",
+            "europe history",
+            "european civilization",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "medieval europe",
+            "napoleon",
+            "roman empire",
+            "short history",
+            "world history"
+          ],
           "publishedAt": "2026-07-07T09:36:50Z",
           "thumbnail": "https://i.ytimg.com/vi/lgxraDQIeBs/mqdefault.jpg",
           "views": 1280,
           "likes": 24,
           "comments": 5,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLY6ySex-tqTQ"
+          ],
+          "playlists": [
+            "Vanished Civilizations"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 65.76,
           "subs_gained": 2
         },
         {
           "id": "7_G3tHrlWKo",
           "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
+          "description": "On July 7, 1928, the Chillicothe Baking Company sold the world's first commercially sliced bread \u2014 and it happened to be inventor Otto Frederick Rohwedder's 48th birthday. The machine he built took 16 years to perfect after a warehouse fire destroyed his original prototype. Next time someone calls something 'the greatest thing since sliced bread,' now you know exactly when that era began.",
+          "tags": [
+            "1928",
+            "american history",
+            "bread",
+            "did you know",
+            "education",
+            "everyday history",
+            "facts",
+            "food history",
+            "history",
+            "history shorts",
+            "inventions",
+            "kitchen history",
+            "on this day",
+            "otto rohwedder",
+            "sliced bread"
+          ],
           "publishedAt": "2026-07-07T07:09:24Z",
           "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
           "views": 741,
           "likes": 14,
           "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 49.03,
           "subs_gained": 0
         },
         {
           "id": "gINkHXhoZSc",
           "title": "The Ship That Crossed the Atlantic So Fast, the Record Still Stands",
+          "description": "On July 7, 1952, the SS United States shattered the transatlantic speed record on her very first voyage, crossing in under four days \u2014 a feat no passenger ship has beaten since. Built partly as a secret military asset, she could carry 14,000 troops and outrun any submarine. She remains the fastest ocean liner ever to sail under the American flag.",
+          "tags": [
+            "1952",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "maritime history",
+            "ocean liner",
+            "ships",
+            "speed record",
+            "ss united states",
+            "transatlantic record"
+          ],
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
           "views": 810,
           "likes": 31,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 149.72,
           "subs_gained": 0
         },
         {
           "id": "DP8pSiVptwI",
           "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
+          "description": "On July 7, 1954, a teenage truck driver's voice hit Memphis radio for the first time \u2014 and the switchboard exploded. Elvis Presley's debut on WHBQ was so strange, the DJ called the studio just to find out if the singer was Black or white. That one song launched a cultural earthquake that reshaped music forever.",
+          "tags": [
+            "1950s",
+            "american history",
+            "did you know",
+            "education",
+            "elvis presley",
+            "facts",
+            "history",
+            "history shorts",
+            "memphis",
+            "music history",
+            "on this day",
+            "radio history",
+            "rock and roll",
+            "sun records"
+          ],
           "publishedAt": "2026-07-07T06:40:49Z",
           "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
           "views": 670,
           "likes": 30,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 84.27,
           "subs_gained": 1
         },
         {
           "id": "vO8dOVuzpEI",
           "title": "Four Nations Saved a Species \u2014 With the World's First Wildlife Treaty",
+          "description": "In 1911, four rival nations did something no countries had ever done before: agreed internationally to protect a wild animal. The North Pacific Fur Seal Convention banned open-water seal hunting and pulled northern fur seals back from the edge of extinction. It became the blueprint for every global conservation treaty that followed. #history #didyouknow #conservation",
+          "tags": [
+            "1911",
+            "animal protection",
+            "did you know",
+            "education",
+            "environmental history",
+            "facts",
+            "fur seals",
+            "history",
+            "history shorts",
+            "international treaty",
+            "north pacific",
+            "surprising history",
+            "wildlife conservation"
+          ],
           "publishedAt": "2026-07-07T06:21:37Z",
           "thumbnail": "https://i.ytimg.com/vi/vO8dOVuzpEI/mqdefault.jpg",
           "views": 595,
           "likes": 13,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 80.36,
           "subs_gained": 0
         },
         {
           "id": "7c7PVFvy4xI",
           "title": "A Family Vanished Into a Bookcase \u2014 And Hid for 761 Days",
+          "description": "On July 6, 1942, Anne Frank and her family stepped behind a hidden bookcase in an Amsterdam warehouse and disappeared from the world for over two years. What they left behind became one of history's most read books. Their story is a reminder that ordinary objects \u2014 a diary, a bookcase \u2014 can carry extraordinary weight.",
+          "tags": [
+            "amsterdam",
+            "anne frank",
+            "diary",
+            "did you know",
+            "education",
+            "facts",
+            "hidden annex",
+            "history",
+            "history facts",
+            "history shorts",
+            "holocaust history",
+            "nazi occupation",
+            "on this day",
+            "short history",
+            "true story",
+            "world war 2"
+          ],
           "publishedAt": "2026-07-06T16:10:00Z",
           "thumbnail": "https://i.ytimg.com/vi/7c7PVFvy4xI/mqdefault.jpg",
           "views": 387,
           "likes": 10,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLY6ySex-tqTQ"
+          ],
+          "playlists": [
+            "Vanished Civilizations"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 66.16,
           "subs_gained": 0
         },
         {
           "id": "Pu4tUGOZaZ0",
           "title": "The Law That Forces the Government to Tell You Its Secrets",
+          "description": "On July 4, 1966, President Lyndon B. Johnson quietly signed the Freedom of Information Act \u2014 a law that lets any citizen demand classified government records. It has since unlocked millions of secret files, from FBI surveillance programs to classified Cold War plans. The most powerful transparency law in history was born on Independence Day. #DidYouKnow #History #July4th",
+          "tags": [
+            "american history",
+            "civil liberties",
+            "cold war",
+            "declassified",
+            "did you know",
+            "education",
+            "facts",
+            "foia",
+            "freedom of information act",
+            "government transparency",
+            "history",
+            "history shorts",
+            "july 4th history",
+            "lbj",
+            "us government secrets",
+            "us law"
+          ],
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
           "views": 275,
           "likes": 8,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLZPTJFrAwVuA"
+          ],
+          "playlists": [
+            "Ancient Mysteries"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 62.61,
           "subs_gained": 0
         },
         {
           "id": "GJa3gT3ksJU",
           "title": "He Refused to Move Seats \u2014 The Army Tried to Destroy Him For It",
+          "description": "Before Jackie Robinson broke baseball's color barrier, he fought a different battle entirely \u2014 inside the U.S. Army. On July 6, 1944, his refusal to move to the back of a military bus led to a court-martial that nearly ended his future before it began. Robinson was acquitted, and history took a very different turn.",
+          "tags": [
+            "1944",
+            "baseball",
+            "civil rights",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "jackie robinson",
+            "military history",
+            "on this day",
+            "segregation",
+            "us army"
+          ],
           "publishedAt": "2026-07-06T13:16:37Z",
           "thumbnail": "https://i.ytimg.com/vi/GJa3gT3ksJU/mqdefault.jpg",
           "views": 598,
           "likes": 9,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 95.14,
           "subs_gained": 0
         },
         {
           "id": "Ad8L8rgBbZw",
           "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
+          "description": "In 1892, Dadabhai Naoroji became the first Indian elected to the British Parliament, winning by just three votes. Known as the 'Grand Old Man of India,' he used his seat to expose how British rule was draining India's wealth. His election shattered a ceiling that many believed would never break. #IndianHistory #BritishParliament #DadabhaiNaoroji",
+          "tags": [
+            "1892 election",
+            "british parliament",
+            "colonial history",
+            "dadabhai naoroji",
+            "did you know",
+            "did you know history",
+            "education",
+            "facts",
+            "first indian mp",
+            "grand old man of india",
+            "history",
+            "history shorts",
+            "india independence movement",
+            "indian history",
+            "victorian britain"
+          ],
           "publishedAt": "2026-07-06T11:57:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
           "views": 620,
           "likes": 10,
           "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 66.7,
           "subs_gained": 0
         },
         {
           "id": "4RCpWx1IkWo",
           "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
+          "description": "In 2003, scientists deliberately beamed a message containing human knowledge toward five carefully chosen stars, some of which orbit in their habitable zones. The signal is already en route, and the nearest target receives it in 2036 \u2014 decades before most people alive today will see the reply. It's the longest postal delay in human history, and nobody knows if anyone's listening.",
+          "tags": [
+            "55 cancri",
+            "alien contact",
+            "astronomy",
+            "cosmic call 2",
+            "deep space",
+            "did you know",
+            "education",
+            "extraterrestrial",
+            "facts",
+            "history",
+            "history shorts",
+            "meti",
+            "radio signal",
+            "science history",
+            "seti",
+            "space history",
+            "yevpatoria radar"
+          ],
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
           "views": 639,
           "likes": 18,
           "comments": 2,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 102.8,
           "subs_gained": 2
         },
         {
           "id": "mwjWvWVutmM",
           "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
+          "description": "On July 6, 1415, Czech theologian Jan Hus was executed at the Council of Constance after being guaranteed safe conduct to defend his beliefs. His death sparked a revolution that foreshadowed the Protestant Reformation by over a century. The promise of safety meant nothing when powerful institutions felt threatened. #history #didyouknow #JanHus",
+          "tags": [
+            "bohemia",
+            "church history",
+            "council of constance",
+            "did you know",
+            "education",
+            "facts",
+            "heresy",
+            "history",
+            "history shorts",
+            "jan hus",
+            "medieval history",
+            "on this day",
+            "reformation",
+            "religious history"
+          ],
           "publishedAt": "2026-07-06T07:09:42Z",
           "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
           "views": 594,
           "likes": 12,
           "comments": 5,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 99.27,
           "subs_gained": 0
         },
         {
           "id": "1v8zY1sWPDs",
           "title": "The General Twice Shivaji's Size Thought He'd Win Easily \u2014 He Was Wrong",
+          "description": "In 1659, Mughal-allied general Afzal Khan marched with a massive army to crush a young Maratha king named Shivaji Maharaj \u2014 and walked straight into one of history's greatest tactical traps. Shivaji's genius wasn't just courage; it was outsmarting a far larger force through intelligence, preparation, and nerves of steel. This is the rivalry that defined an empire. #ShivajiMaharaj #MarathaEmpire #IndianHistory",
+          "tags": [
+            "afzal khan",
+            "bijapur sultanate",
+            "chhatrapati shivaji",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "indian history",
+            "maratha empire",
+            "medieval india",
+            "mughal empire",
+            "pratapgad",
+            "shivaji maharaj",
+            "short history",
+            "warrior kings"
+          ],
           "publishedAt": "2026-07-06T03:33:13Z",
           "thumbnail": "https://i.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg",
           "views": 761,
           "likes": 5,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 39.03,
           "subs_gained": 0
         },
         {
           "id": "l8zwn_sIlg4",
           "title": "England's First Planned Colony in North America Wasn't Where You Think",
+          "description": "Before Plymouth Rock, before the Mayflower, a Bristol merchant named John Guy led 40 colonists to Newfoundland in 1610 \u2014 establishing England's first formally planned colonial settlement in North America. It was a bold commercial gamble that most history books have almost entirely forgotten. Discover the story of Cupers Cove and why it matters.",
+          "tags": [
+            "1610",
+            "bristol history",
+            "british history",
+            "colonial history",
+            "cupers cove",
+            "did you know",
+            "early colonies",
+            "education",
+            "english colonization",
+            "exploration",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "john guy",
+            "newfoundland",
+            "north america"
+          ],
           "publishedAt": "2026-07-06T03:24:33Z",
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
           "views": 662,
           "likes": 11,
           "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 57.03,
           "subs_gained": 1
         },
         {
           "id": "LF6m8tqecls",
           "title": "The Law That Gave American Workers the Right to Fight Back",
+          "description": "In 1935, one signature changed the lives of millions of American workers forever. The National Labor Relations Act gave employees the legal right to organize, bargain collectively, and form unions without fear of employer retaliation. It remains one of the most consequential pieces of labor legislation in U.S. history. #laborhistory #americanhistory #didyouknow",
+          "tags": [
+            "1930s history",
+            "american history",
+            "collective bargaining",
+            "did you know",
+            "education",
+            "facts",
+            "franklin roosevelt",
+            "history",
+            "history shorts",
+            "labor history",
+            "new deal",
+            "nlra",
+            "unions",
+            "us law history",
+            "workers rights"
+          ],
           "publishedAt": "2026-07-05T21:21:47Z",
           "thumbnail": "https://i.ytimg.com/vi/LF6m8tqecls/mqdefault.jpg",
           "views": 919,
           "likes": 10,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 43.17,
           "subs_gained": 0
         },
         {
           "id": "-IL2E9HLqB8",
           "title": "He Won Wimbledon Five Times in a Row \u2014 Then Walked Away at 26",
+          "description": "On July 5, 1980, Bj\u00f6rn Borg became the first man ever to win five consecutive Wimbledon titles \u2014 then shocked the world by retiring just two years later. His story is one of sport's greatest mysteries: why does someone at the absolute peak of greatness simply stop? Watch to find out the real reason Borg quit tennis forever.",
+          "tags": [
+            "1980s",
+            "bjorn borg",
+            "british grand prix weekend",
+            "did you know",
+            "education",
+            "facts",
+            "grand slam",
+            "history",
+            "history shorts",
+            "on this day",
+            "retirement mystery",
+            "silverstone",
+            "sports history",
+            "tennis history",
+            "tennis legends",
+            "wimbledon"
+          ],
           "publishedAt": "2026-07-05T16:09:52Z",
           "thumbnail": "https://i.ytimg.com/vi/-IL2E9HLqB8/mqdefault.jpg",
           "views": 965,
           "likes": 8,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 42.16,
           "subs_gained": 0
         },
         {
           "id": "ysS4D7Cv9go",
           "title": "Allies to Enemies: How France Became Britain's Diplomatic Foe in 1940",
+          "description": "In 1940, Britain and Vichy France severed diplomatic ties \u2014 a stunning collapse of one of history's closest alliances, triggered by armistice, suspicion, and a devastating naval confrontation. The split reshaped the war and left France divided between collaboration and resistance. Discover the political rupture that few history classes ever mention.",
+          "tags": [
+            "1940",
+            "allied powers",
+            "british history",
+            "did you know",
+            "diplomacy",
+            "education",
+            "facts",
+            "france history",
+            "french history",
+            "history",
+            "history shorts",
+            "vichy france",
+            "wartime politics",
+            "world war 2",
+            "ww2 europe"
+          ],
           "publishedAt": "2026-07-05T14:48:38Z",
           "thumbnail": "https://i.ytimg.com/vi/ysS4D7Cv9go/mqdefault.jpg",
           "views": 905,
           "likes": 10,
           "comments": 8,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 50.43,
           "subs_gained": 0
         },
         {
           "id": "j3-259R5-Xo",
           "title": "Britain Declared Its Ally an Enemy \u2014 In Under 3 Months",
+          "description": "In 1940, Britain made the stunning decision to sever all diplomatic ties with Vichy France, a government born from France's defeat by Nazi Germany. What began as an alliance ended in a bitter rupture that shaped the entire Western Front. This is the story of how two old allies became bitter rivals almost overnight. #WWII #VichyFrance #BritishHistory",
+          "tags": [
+            "allied powers",
+            "churchill",
+            "did you know",
+            "diplomatic history",
+            "education",
+            "european history",
+            "facts",
+            "france 1940",
+            "history",
+            "history shorts",
+            "nazi occupation",
+            "uk history",
+            "vichy france",
+            "world war 2",
+            "ww2 diplomacy"
+          ],
           "publishedAt": "2026-07-05T14:00:30Z",
           "thumbnail": "https://i.ytimg.com/vi/j3-259R5-Xo/mqdefault.jpg",
           "views": 963,
           "likes": 20,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 56.46,
           "subs_gained": 2
         },
         {
           "id": "xGk9jhw4Y8A",
           "title": "Scientists Think Alexander the Great Was Conscious When They Buried Him",
+          "description": "Alexander the Great was one of history's greatest conquerors, but scientists now believe his death may have been far more terrifying than anyone realized. Researchers think he suffered from Guillain-Barr\u00e9 Syndrome, a neurological disorder that could have left him fully conscious but completely paralyzed \u2014 aware of everything happening around him. This chilling theory reframes one of antiquity's most famous deaths entirely. #AlexanderTheGreat #AncientHistory #DidYouKnow",
+          "tags": [
+            "alexander the great",
+            "ancient greece",
+            "ancient history",
+            "buried alive",
+            "did you know",
+            "education",
+            "facts",
+            "guillain-barre syndrome",
+            "historical mysteries",
+            "history",
+            "history facts",
+            "history shorts",
+            "neurological disorder",
+            "shocking history",
+            "short history facts",
+            "world history"
+          ],
           "publishedAt": "2026-07-05T13:32:06Z",
           "thumbnail": "https://i.ytimg.com/vi/xGk9jhw4Y8A/mqdefault.jpg",
           "views": 3,
@@ -535,6 +1420,25 @@
         {
           "id": "ongtmecwyME",
           "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
+          "description": "In 1946, French engineer Louis R\u00e9ard unveiled the bikini at a Paris poolside fashion show \u2014 and it caused an immediate sensation. Named after the Bikini Atoll nuclear test site, the design was so controversial that R\u00e9ard had to hire a nude dancer because professional models refused. Today it's one of the most recognized garments on Earth. #history #didyouknow #fashionhistory",
+          "tags": [
+            "1946",
+            "bikini history",
+            "clothing origins",
+            "did you know",
+            "education",
+            "facts",
+            "fashion history",
+            "french history",
+            "history",
+            "history shorts",
+            "louis reard",
+            "paris",
+            "short history",
+            "swimsuit invention",
+            "unexpected history",
+            "vintage fashion"
+          ],
           "publishedAt": "2026-07-05T08:24:18Z",
           "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
           "views": 1235,
@@ -549,6 +1453,23 @@
         {
           "id": "2Oo9MEQmU8E",
           "title": "The Most Iconic Logo in History Was a Typo Nobody Bothered to Fix",
+          "description": "The FedEx logo has a hidden arrow that its designer almost didn't notice \u2014 and it's now considered one of the greatest design accidents ever made. Discover how a simple font overlap became a masterclass in branding. Sometimes the best ideas aren't planned at all.",
+          "tags": [
+            "accidental invention",
+            "branding",
+            "creative accidents",
+            "design history",
+            "did you know",
+            "education",
+            "facts",
+            "fedex",
+            "graphic design",
+            "hidden symbols",
+            "history",
+            "history facts",
+            "history shorts",
+            "logo design"
+          ],
           "publishedAt": "2026-07-05T05:37:28Z",
           "thumbnail": "https://i.ytimg.com/vi/2Oo9MEQmU8E/mqdefault.jpg",
           "views": 1212,
@@ -563,6 +1484,23 @@
         {
           "id": "hsGjxllQcRM",
           "title": "He Sold a 'University' That Wasn't One \u2014 And Paid $25 Million",
+          "description": "Trump University promised students insider real estate secrets from Donald Trump's handpicked experts \u2014 but investigators found the instructors had no special access and some had no real estate experience at all. In 2016, Trump agreed to pay $25 million to settle fraud lawsuits without admitting wrongdoing. This is one of the most documented consumer fraud settlements involving a U.S. presidential candidate in history.\n#TrumpUniversity #ConsumerFraud #AmericanHistory",
+          "tags": [
+            "american history",
+            "consumer fraud",
+            "did you know",
+            "education",
+            "education scam",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "lawsuit",
+            "political history",
+            "real estate scam",
+            "settlement",
+            "trump university"
+          ],
           "publishedAt": "2026-07-05T01:30:28Z",
           "thumbnail": "https://i.ytimg.com/vi/hsGjxllQcRM/mqdefault.jpg",
           "views": 996,
@@ -577,6 +1515,25 @@
         {
           "id": "AOltRhgt6C8",
           "title": "Jefferson Got the Credit, But Adams Did the Work for Independence",
+          "description": "John Adams was the fiercest champion of American independence \u2014 yet Thomas Jefferson got most of the credit for the Declaration. Adams spent years pushing Congress to vote for independence before a single word of the famous document was written. Discover the surprising backstory behind one of history's most famous signatures. #AmericanHistory #FoundingFathers #DidYouKnow",
+          "tags": [
+            "1776",
+            "american history",
+            "continental congress",
+            "declaration of independence",
+            "did you know",
+            "education",
+            "facts",
+            "founding fathers",
+            "history",
+            "history facts",
+            "history shorts",
+            "independence day",
+            "john adams",
+            "short history",
+            "thomas jefferson",
+            "us history"
+          ],
           "publishedAt": "2026-07-04T17:37:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AOltRhgt6C8/mqdefault.jpg",
           "views": 6,
@@ -591,6 +1548,25 @@
         {
           "id": "I95HH0VYSWA",
           "title": "A Bored Girl on a Boat Inspired the Most Surreal Story Ever Written",
+          "description": "On July 4, 1862, a real ten-year-old girl named Alice Liddell begged a mathematician to tell her a story during a rowboat trip \u2014 and what he made up on the spot became Alice's Adventures in Wonderland. Lewis Carroll wasn't a professional writer; he was a shy Oxford math lecturer who invented an entire genre to entertain one child. The story almost stayed private forever, tucked away in a handwritten gift book.",
+          "tags": [
+            "alice in wonderland",
+            "book history",
+            "childrens literature",
+            "classic books",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "july 4",
+            "lewis carroll",
+            "on this day",
+            "oxford history",
+            "surprising history",
+            "victorian history"
+          ],
           "publishedAt": "2026-07-04T16:56:36Z",
           "thumbnail": "https://i.ytimg.com/vi/I95HH0VYSWA/mqdefault.jpg",
           "views": 961,
@@ -605,6 +1581,24 @@
         {
           "id": "lWEng1urs5Y",
           "title": "She Took the Photo That Unlocked DNA \u2014 Then Was Written Out of History",
+          "description": "Rosalind Franklin produced the X-ray image that revealed DNA's double helix structure, yet Watson and Crick received the Nobel Prize without her knowledge or credit. Her contribution was hidden for decades, only fully acknowledged long after her death. This is the story of science's most overlooked genius.",
+          "tags": [
+            "biology",
+            "did you know",
+            "dna discovery",
+            "education",
+            "facts",
+            "forgotten history",
+            "history",
+            "history shorts",
+            "nobel prize",
+            "photo 51",
+            "real history",
+            "rosalind franklin",
+            "science history",
+            "watson and crick",
+            "women in science"
+          ],
           "publishedAt": "2026-07-04T16:18:41Z",
           "thumbnail": "https://i.ytimg.com/vi/lWEng1urs5Y/mqdefault.jpg",
           "views": 1018,
@@ -619,6 +1613,25 @@
         {
           "id": "kTKnlxWUZTM",
           "title": "NASA's $265M Mars Lander Was Guided by a 1997 Nintendo-Level Computer",
+          "description": "On July 4th, 1997, NASA's Pathfinder spacecraft bounced onto Mars inside giant airbags and stunned the world \u2014 all controlled by a processor weaker than a modern calculator. It was the first successful Mars surface mission in over 20 years, and it changed planetary exploration forever. Watch to find out just how brilliantly low-tech this mission really was.",
+          "tags": [
+            "1997",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "july 4th",
+            "mars",
+            "nasa",
+            "pathfinder",
+            "planetary science",
+            "science history",
+            "sojourner rover",
+            "space exploration",
+            "space history"
+          ],
           "publishedAt": "2026-07-04T14:43:27Z",
           "thumbnail": "https://i.ytimg.com/vi/kTKnlxWUZTM/mqdefault.jpg",
           "views": 837,
@@ -633,6 +1646,26 @@
         {
           "id": "ofPlqOKT5EI",
           "title": "George Rogers Clark's most daring move #history #shorts #military",
+          "description": "In July 1778, American militia leader George Rogers Clark pulled off one of the Revolution's most surprising victories \u2014 seizing the British-held town of Kaskaskia in complete silence. This bold Illinois campaign shifted control of the vast frontier and helped America claim the Northwest Territory after the war. It's a forgotten turning point that shaped the future map of the United States.",
+          "tags": [
+            "1778",
+            "american revolution",
+            "british empire",
+            "colonial america",
+            "did you know",
+            "education",
+            "facts",
+            "frontier history",
+            "george rogers clark",
+            "history",
+            "history facts",
+            "history shorts",
+            "illinois campaign",
+            "kaskaskia",
+            "military history",
+            "northwest territory",
+            "revolutionary war"
+          ],
           "publishedAt": "2026-07-04T13:11:46Z",
           "thumbnail": "https://i.ytimg.com/vi/ofPlqOKT5EI/mqdefault.jpg",
           "views": 1128,
@@ -647,6 +1680,25 @@
         {
           "id": "kc_cez1PROQ",
           "title": "America Doubled in Size Overnight \u2014 And It Almost Didn't Happen",
+          "description": "On July 4, 1803, Americans learned their country had just doubled in size thanks to one of the greatest land deals in history. Napoleon was broke, Jefferson was nervous, and the whole thing was technically unconstitutional \u2014 yet it reshaped a continent. The Louisiana Purchase remains the single largest territorial addition in U.S. history, acquired for less than three cents per acre. #History #July4th #LouisianaPurchase",
+          "tags": [
+            "1803",
+            "american history",
+            "did you know",
+            "education",
+            "facts",
+            "founding fathers",
+            "history",
+            "history facts",
+            "history shorts",
+            "july 4th history",
+            "louisiana purchase",
+            "napoleon",
+            "short history",
+            "territory",
+            "thomas jefferson",
+            "us history"
+          ],
           "publishedAt": "2026-07-04T11:39:02Z",
           "thumbnail": "https://i.ytimg.com/vi/kc_cez1PROQ/mqdefault.jpg",
           "views": 950,
@@ -661,6 +1713,25 @@
         {
           "id": "k538gxMQ4y0",
           "title": "She Cured a Disease at 23 \u2014 Then Someone Erased Her Name",
+          "description": "Alice Ball was a 23-year-old chemist who developed the first effective treatment for leprosy in 1915 \u2014 then died before she could publish her work. A colleague took credit for years, and her name nearly vanished from history. It took nearly a century for the world to finally say her name. #hiddenhistory #womeninstem #aliceball",
+          "tags": [
+            "alice ball",
+            "black history",
+            "chemistry history",
+            "did you know",
+            "education",
+            "facts",
+            "forgotten history",
+            "hawaii history",
+            "hidden figures",
+            "history",
+            "history facts",
+            "history shorts",
+            "leprosy treatment",
+            "medical history",
+            "stem pioneers",
+            "women in science"
+          ],
           "publishedAt": "2026-07-04T09:17:25Z",
           "thumbnail": "https://i.ytimg.com/vi/k538gxMQ4y0/mqdefault.jpg",
           "views": 1069,
@@ -675,6 +1746,22 @@
         {
           "id": "ndY05QQm-ug",
           "title": "Why Your Paycheck Is Literally Named After Salt",
+          "description": "The word 'salary' has a surprisingly ancient and salty origin \u2014 tracing back to Roman soldiers who were paid in one of history's most valuable commodities. Before refrigeration, salt was so precious it shaped empires, trade routes, and even the words we still use today. This everyday word hiding in your pay stub has a 2,000-year-old story worth knowing.",
+          "tags": [
+            "ancient rome",
+            "did you know",
+            "education",
+            "etymology",
+            "everyday words",
+            "facts",
+            "history",
+            "history shorts",
+            "language history",
+            "roman history",
+            "salt history",
+            "surprising facts",
+            "word origins"
+          ],
           "publishedAt": "2026-07-04T08:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/ndY05QQm-ug/mqdefault.jpg",
           "views": 498,
