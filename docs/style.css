@@ -213,6 +213,18 @@ a:hover { color: var(--accent); }
 .grid-main > *,
 .panel { min-width: 0; }
 
+.tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn--icon {
+  padding: 7px 11px;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .platform-tabs {
   display: flex;
   gap: 4px;

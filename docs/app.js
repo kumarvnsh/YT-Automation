@@ -596,20 +596,22 @@ document.getElementById("btnRefreshAnalytics").addEventListener("click", async (
   }
   const btn = document.getElementById("btnRefreshAnalytics");
   btn.disabled = true;
-  btn.textContent = "↻ Dispatching…";
+  btn.textContent = "…";
   try {
     await dispatchWorkflow(s, "analytics.yml", {});
-    btn.textContent = "✓ Queued";
+    btn.textContent = "✓";
+    btn.title = "Analytics refresh queued — data lands as a commit in a few minutes";
     // The export takes a few minutes and lands as a data commit; reload to see it.
     setTimeout(() => loadRuns(s), 4000);
   } catch (err) {
-    btn.textContent = "↻ Refresh analytics";
+    btn.textContent = "↻";
     alert("Failed to dispatch analytics refresh: " + err.message);
     btn.disabled = false;
     return;
   }
   setTimeout(() => {
-    btn.textContent = "↻ Refresh analytics";
+    btn.textContent = "↻";
+    btn.title = "Refresh analytics — runs the Export Analytics & Trends workflow";
     btn.disabled = false;
   }, 60000);
 });
