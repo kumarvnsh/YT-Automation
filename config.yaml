@@ -19,7 +19,9 @@ channel:
   # Topics already used are stored in data/used_topics.json to avoid repeats.
 
 script:
-  provider: "anthropic"        # "anthropic" | "openai"
+  provider: "anthropic"        # primary provider: "anthropic" | "openai"
+  routing: "fallback"          # "fallback" | "random" | "round_robin"
+  fallback_provider: "openai"
   anthropic_model: "claude-sonnet-4-6"
   openai_model: "gpt-4o-mini"
   # Target spoken duration. The writer aims for ~150 words/min.

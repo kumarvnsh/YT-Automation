@@ -150,6 +150,8 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     script = generate_script(cfg, st["fmt"], topic_override=overrides.get("topic"))
     st["script"] = script.to_dict()
     st["title"] = script.title
+    st["script_provider"] = script.provider
+    st["script_fallback_used"] = script.fallback_used
     (stage / "script.json").write_text(json.dumps(script.to_dict(), indent=2), encoding="utf-8")
     (stage / "metadata.json").write_text(
         json.dumps(

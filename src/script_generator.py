@@ -12,10 +12,11 @@ The narration of all segments concatenated IS the voiceover script.
 from __future__ import annotations
 
 import json
+import random
 import re
 from dataclasses import dataclass, field, asdict
 
-from .config import Config, env
+from .config import Config, base_dir, env
 from .topics import recent_titles, pick_angle
 
 
@@ -32,6 +33,8 @@ class Script:
     tags: list[str]
     segments: list[Segment]
     topic: str
+    provider: str | None = None
+    fallback_used: bool = False
 
     @property
     def full_narration(self) -> str:
@@ -182,6 +185,116 @@ def _call_openai(cfg: Config, prompt: str) -> str:
     return resp.choices[0].message.content or ""
 
 
+def _provider_call(cfg: Config, provider: str, prompt: str) -> str:
+    if provider == "anthropic":
+        return _call_anthropic(cfg, prompt)
+    if provider == "openai":
+        return _call_openai(cfg, prompt)
+    raise RuntimeError(f"Unsupported script provider: {provider}")
+
+
+def _next_round_robin_provider(cfg: Config) -> str:
+    providers = [
+        cfg.get("script.provider") or cfg.get("script.primary_provider", "anthropic"),
+        cfg.get("script.fallback_provider", "openai"),
+    ]
+    providers = list(dict.fromkeys(providers))
+    path = base_dir() / "data" / "provider_rotation.json"
+    try:
+        index = int(json.loads(path.read_text(encoding="utf-8")).get("next_index", 0))
+    except (FileNotFoundError, json.JSONDecodeError, ValueError):
+        index = 0
+    selected = providers[index % len(providers)]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps({"next_index": (index + 1) % len(providers)}), encoding="utf-8"
+    )
+    return selected
+
+
+def _provider_sequence(cfg: Config) -> list[str]:
+    legacy = cfg.get("script.provider", "anthropic")
+    routing = cfg.get("script.routing")
+    if not routing:
+        return [legacy]
+
+    primary = cfg.get("script.provider") or cfg.get("script.primary_provider", legacy)
+    fallback = cfg.get("script.fallback_provider", "openai")
+    if routing == "random":
+        primary = random.choice([primary, fallback])
+    elif routing == "round_robin":
+        primary = _next_round_robin_provider(cfg)
+    elif routing != "fallback":
+        raise RuntimeError(f"Unsupported script routing mode: {routing}")
+
+    return list(dict.fromkeys([primary, fallback]))
+
+
+def _call_with_routing(cfg: Config, prompt: str, validator=None) -> tuple[str, str, bool]:
+    errors = []
+    for index, provider in enumerate(_provider_sequence(cfg)):
+        try:
+            raw = _provider_call(cfg, provider, prompt)
+            if validator is not None:
+                validator(raw)
+            return raw, provider, index > 0
+        except Exception as exc:  # noqa: BLE001 - try configured fallback provider
+            errors.append(f"{provider}: {exc}")
+    raise RuntimeError("All script providers failed: " + " | ".join(errors))
+
+
+def _parse_script_response(raw: str) -> tuple[dict, list[Segment]]:
+    data = _extract_json(raw)
+    if not isinstance(data, dict):
+        raise ValueError("script response must be an object")
+    for key in ("title", "description"):
+        if not isinstance(data.get(key), str) or not data[key].strip():
+            raise ValueError(f"script response missing or invalid: {key}")
+    if not isinstance(data.get("segments"), list):
+        raise ValueError("script response missing or invalid: segments")
+    if "tags" in data and (
+        not isinstance(data["tags"], list)
+        or not all(isinstance(tag, str) for tag in data["tags"])
+    ):
+        raise ValueError("script response has invalid tags")
+    if "topic" in data and (
+        not isinstance(data["topic"], str) or not data["topic"].strip()
+    ):
+        raise ValueError("script response has invalid topic")
+
+    segments = []
+    for item in data["segments"]:
+        if not isinstance(item, dict) or not isinstance(item.get("narration"), str):
+            raise ValueError("script response has invalid segment narration")
+        narration = item["narration"].strip()
+        keywords = item.get("keywords", [])
+        if not narration or not isinstance(keywords, list) or not all(
+            isinstance(keyword, str) for keyword in keywords
+        ):
+            raise ValueError("script response has invalid segment")
+        segments.append(Segment(narration, keywords))
+    if not segments:
+        raise ValueError("script response has no non-empty segments")
+    return data, segments
+
+
+def _parse_title_response(raw: str) -> str:
+    title = _extract_json(raw).get("title", "").replace("#", "").strip()[:100]
+    if not title:
+        raise ValueError("title response missing: title")
+    return title
+
+
+def _dedupe_tags(tags: list[str], cfg: Config) -> list[str]:
+    seen, unique = set(), []
+    for tag in tags + (cfg.get("youtube.default_tags", []) or []):
+        normalized = tag.lower().strip()
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            unique.append(normalized)
+    return unique[:30]
+
+
 def regenerate_title(cfg: Config, old_title: str, context_text: str) -> str:
     """Produce a fresh title for an existing video (retitle/republish flow).
 
@@ -205,10 +318,11 @@ Requirements:
 Return JSON with EXACTLY this shape:
 {{"title": "..."}}"""
 
-    provider = cfg.get("script.provider", "anthropic")
     for attempt in range(2):
-        raw = _call_anthropic(cfg, prompt) if provider == "anthropic" else _call_openai(cfg, prompt)
-        title = _extract_json(raw).get("title", "").replace("#", "").strip()[:100]
+        raw, _provider, _fallback_used = _call_with_routing(
+            cfg, prompt, _parse_title_response
+        )
+        title = _parse_title_response(raw)
         if title and title.lower() != old_title.lower().strip():
             return title
     raise RuntimeError(f"Could not generate a title distinct from: {old_title!r}")
@@ -217,15 +331,10 @@ Return JSON with EXACTLY this shape:
 def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) -> Script:
     """Generate a Script for fmt in {'short', 'long'}."""
     prompt = _build_prompt(cfg, fmt, topic_override=topic_override)
-    provider = cfg.get("script.provider", "anthropic")
-    raw = _call_anthropic(cfg, prompt) if provider == "anthropic" else _call_openai(cfg, prompt)
-    data = _extract_json(raw)
-
-    segments = [
-        Segment(narration=s["narration"], keywords=s.get("keywords", []))
-        for s in data["segments"]
-        if s.get("narration", "").strip()
-    ]
+    raw, provider, fallback_used = _call_with_routing(
+        cfg, prompt, _parse_script_response
+    )
+    data, segments = _parse_script_response(raw)
 
     word_count = len(" ".join(s.narration for s in segments).split())
     if fmt == "short":
@@ -235,19 +344,12 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
             print(f"  ! WARNING: narration is {word_count} words (target ~{target}): "
                   f"prompt compliance was off for this generation.")
 
-    tags = data.get("tags", []) + cfg.get("youtube.default_tags", [])
-    # De-dup tags preserving order.
-    seen, uniq = set(), []
-    for t in tags:
-        tl = t.lower().strip()
-        if tl and tl not in seen:
-            seen.add(tl)
-            uniq.append(tl)
-
     return Script(
         title=data["title"].strip()[:100],
         description=data["description"].strip(),
-        tags=uniq[:30],
+        tags=_dedupe_tags(data.get("tags", []), cfg),
         segments=segments,
         topic=data.get("topic", data["title"]).strip(),
+        provider=provider,
+        fallback_used=fallback_used,
     )
