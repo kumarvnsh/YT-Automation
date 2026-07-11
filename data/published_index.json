@@ -50,5 +50,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "HOzzS9c9bSI",
+    "run_id": "29144902433",
+    "stage_dir_name": "20260711_074142_short",
+    "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
+    "published_at": "2026-07-11T07:43:26.132980+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

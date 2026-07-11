@@ -7,5 +7,14 @@
     "slot": "morning",
     "date": "2026-07-11",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260711_074142_short",
+    "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
+    "fingerprint": "britain_by_countries_fifa_founded_join_refused_seven_was",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-11",
+    "status": "reserved"
   }
 ]
