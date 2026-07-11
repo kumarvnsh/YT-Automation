@@ -124,7 +124,8 @@ def _trend_direction(cfg: Config, source: str) -> str:
     parts = [f"TODAY IS {sig['date']}. Make the topic feel timely and on-niche "
              "(a past event, myth, or tradition)."]
     if trend_terms:
-        parts.append("Trending searches right now (may be unrelated to history):\n- "
+        parts.append("Trending searches right now, biggest first, with news context "
+                     "(may be unrelated to history):\n- "
                      + "\n- ".join(trend_terms))
     if otd:
         parts.append("On this day in history:\n- " + "\n- ".join(otd))
@@ -132,8 +133,13 @@ def _trend_direction(cfg: Config, source: str) -> str:
     parts.append(
         "Pick the STRONGEST idea for a history / did-you-know short:\n"
         "1) BEST: a trending search you can genuinely and ACCURATELY bridge to a real "
-        "past event, myth, or tradition — open with that hook so it rides the trend.\n"
-        "2) Otherwise: a fascinating 'on this day' anniversary above.\n"
+        "past event, myth, or tradition — open with that hook so it rides the trend. "
+        "Work down the trend list IN ORDER and seriously attempt a bridge for each "
+        "before moving on; several queries about the same event (a tournament, an "
+        "election, a film) mean it is huge — a sports event bridges to the history of "
+        "the sport, the host city, past finals, famous upsets, or the trophy itself.\n"
+        "2) Only if NO trend above bridges honestly: a fascinating 'on this day' "
+        "anniversary above.\n"
         "3) Otherwise: your own strong idea in the niche.\n"
         "Never force a tie that isn't real, and stay strictly factual."
     )

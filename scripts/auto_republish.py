@@ -107,6 +107,10 @@ def main() -> None:
             continue
         if entry.get("auto_dispatched_at"):
             continue  # one auto attempt per video, ever
+        if _hours_ago(entry.get("retitled_at") or "") >= 0 and _hours_ago(entry["retitled_at"]) < 24:
+            continue  # fresh retitle: give the new title 24h before reflagging
+        if mode == "repost" and not (entry.get("run_id") and entry.get("stage_dir_name")):
+            continue  # retitle-only index entry: no artifact mapping to repost
         if mode == "repost" and _hours_ago(entry.get("published_at", "")) > max_age_d * 24:
             continue  # artifact expired
         if mode == "retitle" and entry.get("retitled_at"):

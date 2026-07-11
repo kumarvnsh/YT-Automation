@@ -67,6 +67,34 @@ def _manage_client(cfg):
     return build("youtube", "v3", credentials=creds)
 
 
+def _record_retitle(video_id: str, new_title: str) -> None:
+    """Persist retitled_at so the dashboard's retitle cooldown works.
+
+    Videos published before the index existed get a minimal entry appended;
+    its empty run_id/stage_dir_name keeps repost (manual and auto) disabled.
+    """
+    entries = _load_index()
+    entry = _find_entry(entries, video_id)
+    if entry is None:
+        entry = {
+            "video_id": video_id,
+            "run_id": "",
+            "stage_dir_name": "",
+            "title": "",
+            "published_at": "",
+            "channel": env("CHANNEL_LABEL") or "histold",
+            "scheduled": False,
+            "workflow": "republish",
+            "retitled_at": None,
+            "republished_from": None,
+            "republished_as": None,
+        }
+        entries.append(entry)
+    entry["title"] = new_title
+    entry["retitled_at"] = datetime.now(timezone.utc).isoformat()
+    _save_index(entries)
+
+
 def do_retitle(cfg, video_id: str) -> None:
     youtube = _manage_client(cfg)
     snippet = get_video_snippet(youtube, video_id)
@@ -76,12 +104,7 @@ def do_retitle(cfg, video_id: str) -> None:
     new_title = regenerate_title(cfg, old_title, context)
     update_video_title(cfg, video_id, new_title)
 
-    entries = _load_index()
-    entry = _find_entry(entries, video_id)
-    if entry:
-        entry["title"] = new_title
-        entry["retitled_at"] = datetime.now(timezone.utc).isoformat()
-        _save_index(entries)
+    _record_retitle(video_id, new_title)
 
     Notifier(cfg).send(
         f"🔁 Retitled underperformer\n“{old_title}”\n→ “{new_title}”\nhttps://youtu.be/{video_id}"

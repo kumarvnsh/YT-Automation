@@ -26,33 +26,61 @@ def _region_list(region: str | None) -> list[str]:
     return [r]
 
 
+def _strip_cdata(text: str) -> str:
+    return re.sub(r"<!\[CDATA\[|\]\]>", "", text).strip()
+
+
+def _parse_trend_items(xml: str) -> list[tuple[str, int, str]]:
+    """Return (term, approx_traffic, news_headline) per RSS <item>."""
+    out = []
+    for it in re.findall(r"<item>(.*?)</item>", xml, flags=re.DOTALL):
+        m = re.search(r"<title>(.*?)</title>", it, flags=re.DOTALL)
+        if not m:
+            continue
+        term = _strip_cdata(m.group(1))
+        if not term:
+            continue
+        traffic = 0
+        t = re.search(r"<ht:approx_traffic>(.*?)</ht:approx_traffic>", it, flags=re.DOTALL)
+        if t:
+            digits = re.sub(r"[^0-9]", "", _strip_cdata(t.group(1)))
+            traffic = int(digits) if digits else 0
+        headline = ""
+        n = re.search(r"<ht:news_item_title>(.*?)</ht:news_item_title>", it, flags=re.DOTALL)
+        if n:
+            headline = _strip_cdata(n.group(1))
+        out.append((term, traffic, headline))
+    return out
+
+
 def fetch_trending_searches(region: str | None = None, limit: int = 18) -> list[str]:
-    """Return current trending search terms for the region(s)."""
-    terms: list[str] = []
+    """Return current trending searches, biggest first, with news context.
+
+    Each entry is "term — first news headline" when the RSS carries one; the
+    headline is what lets a bare query like "england game time" read as the
+    World Cup. Entries are ranked by approximate search traffic (not shuffled)
+    so a major ongoing event surfaces at the top instead of by lottery.
+    """
+    collected: list[tuple[str, int, str]] = []
     for geo in _region_list(region):
         url = f"https://trends.google.com/trending/rss?geo={geo}"
         try:
             r = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
             r.raise_for_status()
-            # <item><title>Term</title> ... — grab item titles.
-            items = re.findall(r"<item>(.*?)</item>", r.text, flags=re.DOTALL)
-            for it in items:
-                m = re.search(r"<title>(.*?)</title>", it, flags=re.DOTALL)
-                if m:
-                    t = re.sub(r"<!\[CDATA\[|\]\]>", "", m.group(1)).strip()
-                    if t:
-                        terms.append(t)
+            collected.extend(_parse_trend_items(r.text))
         except Exception as exc:  # noqa: BLE001
             print(f"  (trends fetch failed for {geo}: {exc})")
-    # De-dup preserving order, cap.
-    seen, uniq = set(), []
-    for t in terms:
-        k = t.lower()
-        if k not in seen:
-            seen.add(k)
-            uniq.append(t)
-    random.shuffle(uniq)
-    return uniq[:limit]
+    # De-dup by term keeping the highest-traffic occurrence, then rank.
+    best: dict[str, tuple[str, int, str]] = {}
+    for term, traffic, headline in collected:
+        key = term.lower()
+        if key not in best or traffic > best[key][1]:
+            best[key] = (term, traffic, headline)
+    ranked = sorted(best.values(), key=lambda item: item[1], reverse=True)
+    return [
+        f"{term} — {headline}" if headline else term
+        for term, _traffic, headline in ranked[:limit]
+    ]
 
 
 def fetch_on_this_day(when: _dt.date | None = None, limit: int = 12) -> list[str]:
