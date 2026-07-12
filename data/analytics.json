@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-12T02:46:00.054667+00:00",
+      "updated": "2026-07-12T08:17:33.331506+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,37 @@
       },
       "videos": [
         {
+          "id": "QYwnxriSAAk",
+          "title": "The Medal of Honor Was Created Mid-War \u2014 By Pure Accident",
+          "description": "America's highest military honor wasn't planned as a permanent award \u2014 it was rushed through Congress during the Civil War as a quick morale fix. Today marks the anniversary of its authorization on July 12, 1862. Over 3,500 have been awarded since, with fewer than 70 living recipients today. #MedalOfHonor #AmericanHistory #DidYouKnow",
+          "tags": [
+            "american history",
+            "bravery",
+            "civil war",
+            "congress",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "july 12",
+            "medal of honor",
+            "military history",
+            "shorts",
+            "trending",
+            "us history",
+            "viral"
+          ],
+          "publishedAt": "2026-07-12T04:03:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
+          "views": 668,
+          "likes": 9,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "xSlT9wViqcU",
           "title": "Wimbledon's Most Surprising National Coincidence \u2014 It Took 148 Years",
           "description": "Wimbledon has crowned champions since 1877, but July 2026 marks the first time two players from the same small nation have met in a women's singles final. Czech tennis dominance has a surprisingly deep history. Discover the moment that made it possible.",
@@ -54,7 +85,7 @@
           ],
           "publishedAt": "2026-07-11T16:15:28Z",
           "thumbnail": "https://i.ytimg.com/vi/xSlT9wViqcU/mqdefault.jpg",
-          "views": 444,
+          "views": 448,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -157,7 +188,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1222,
+          "views": 1239,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -264,7 +295,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 756,
+          "views": 757,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -410,7 +441,7 @@
           ],
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 865,
+          "views": 868,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -478,7 +509,7 @@
           ],
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 895,
+          "views": 900,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -514,7 +545,7 @@
           ],
           "publishedAt": "2026-07-08T17:49:04Z",
           "thumbnail": "https://i.ytimg.com/vi/r419ISKWRk0/mqdefault.jpg",
-          "views": 620,
+          "views": 619,
           "likes": 13,
           "comments": 2,
           "playlist_ids": [
@@ -1793,43 +1824,6 @@
           "is_unsorted": false,
           "avg_view_pct": 53.07999999999999,
           "subs_gained": 1
-        },
-        {
-          "id": "k538gxMQ4y0",
-          "title": "She Cured a Disease at 23 \u2014 Then Someone Erased Her Name",
-          "description": "Alice Ball was a 23-year-old chemist who developed the first effective treatment for leprosy in 1915 \u2014 then died before she could publish her work. A colleague took credit for years, and her name nearly vanished from history. It took nearly a century for the world to finally say her name. #hiddenhistory #womeninstem #aliceball",
-          "tags": [
-            "alice ball",
-            "black history",
-            "chemistry history",
-            "did you know",
-            "education",
-            "facts",
-            "forgotten history",
-            "hawaii history",
-            "hidden figures",
-            "history",
-            "history facts",
-            "history shorts",
-            "leprosy treatment",
-            "medical history",
-            "stem pioneers",
-            "women in science"
-          ],
-          "publishedAt": "2026-07-04T09:17:25Z",
-          "thumbnail": "https://i.ytimg.com/vi/k538gxMQ4y0/mqdefault.jpg",
-          "views": 1069,
-          "likes": 10,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 41.11,
-          "subs_gained": 0
         }
       ]
     }
