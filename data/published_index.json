@@ -114,5 +114,19 @@
         "status": "inserted"
       }
     ]
+  },
+  {
+    "video_id": "twUMm4KyNiA",
+    "run_id": "29193661594",
+    "stage_dir_name": "20260712_130207_short",
+    "title": "His Dad Won Wimbledon. Now He's Playing the Same Final.",
+    "published_at": "2026-07-12T13:03:39.351043+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
