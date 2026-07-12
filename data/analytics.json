@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-12T08:17:33.331506+00:00",
+      "updated": "2026-07-12T13:19:15.689299+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -24,11 +24,43 @@
           {
             "id": "PLTrU7sep9IQc",
             "title": "Erased From History",
-            "video_count": 39
+            "video_count": 41
           }
         ]
       },
       "videos": [
+        {
+          "id": "twUMm4KyNiA",
+          "title": "His Dad Won Wimbledon. Now He's Playing the Same Final.",
+          "description": "Cruz Hewitt has reached the Wimbledon junior boys' final in 2026 \u2014 exactly 25 years after his father Lleyton Hewitt won the senior title in 2001, becoming the youngest world number one in history at just 20. Sport rarely writes a script this poetic. Discover the extraordinary legacy behind the Hewitt name at Wimbledon.",
+          "tags": [
+            "cruz hewitt",
+            "did you know",
+            "education",
+            "facts",
+            "family legacy",
+            "grand slam",
+            "history",
+            "history shorts",
+            "junior tennis",
+            "lleyton hewitt",
+            "shorts",
+            "sports history",
+            "tennis history",
+            "trending",
+            "viral",
+            "wimbledon",
+            "wimbledon 2026"
+          ],
+          "publishedAt": "2026-07-12T13:03:19Z",
+          "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
+          "views": 178,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "QYwnxriSAAk",
           "title": "The Medal of Honor Was Created Mid-War \u2014 By Pure Accident",
@@ -53,16 +85,20 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 668,
+          "views": 748,
           "likes": 9,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "xSlT9wViqcU",
-          "title": "Wimbledon's Most Surprising National Coincidence \u2014 It Took 148 Years",
+          "title": "Why It Took Wimbledon 148 Years to Repeat This Strange Coincidence",
           "description": "Wimbledon has crowned champions since 1877, but July 2026 marks the first time two players from the same small nation have met in a women's singles final. Czech tennis dominance has a surprisingly deep history. Discover the moment that made it possible.",
           "tags": [
             "czech tennis",
@@ -85,16 +121,20 @@
           ],
           "publishedAt": "2026-07-11T16:15:28Z",
           "thumbnail": "https://i.ytimg.com/vi/xSlT9wViqcU/mqdefault.jpg",
-          "views": 448,
-          "likes": 2,
+          "views": 1161,
+          "likes": 6,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "HOzzS9c9bSI",
-          "title": "FIFA Was Founded by Seven Countries \u2014 and Britain Refused to Join",
+          "title": "Britain Refused To Join FIFA \u2014 Here's Why That's Insane",
           "description": "FIFA is the most powerful body in world football, but its origin story is surprisingly humble. When it was founded in 1904, Britain \u2014 the nation that invented the sport \u2014 refused to participate. It's one of history's great ironies that the game's creator nearly missed running it entirely. #FIFA #footballhistory #soccerfacts",
           "tags": [
             "1904",
@@ -117,7 +157,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 641,
+          "views": 643,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -130,7 +170,7 @@
         },
         {
           "id": "hXA0Zta874Q",
-          "title": "He Flew Around the World in 91 Hours \u2014 Using Only a Radio and Luck",
+          "title": "The 91-Hour Flight That Should Have Killed Him",
           "description": "On July 10, 1938, Howard Hughes landed in New York having circled the entire globe in just 91 hours \u2014 smashing the previous record by nearly four days. He used modified commercial aircraft and sheer determination to pull it off. The flight made him one of the most celebrated Americans alive.",
           "tags": [
             "1938",
@@ -188,7 +228,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1239,
+          "views": 1251,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -295,7 +335,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 757,
+          "views": 767,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -441,7 +481,7 @@
           ],
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 868,
+          "views": 869,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -509,7 +549,7 @@
           ],
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 900,
+          "views": 908,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -519,7 +559,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 117.48,
+          "avg_view_pct": 117.64000000000001,
           "subs_gained": 0
         },
         {
@@ -653,7 +693,7 @@
           ],
           "publishedAt": "2026-07-08T13:10:28Z",
           "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
-          "views": 604,
+          "views": 605,
           "likes": 19,
           "comments": 2,
           "playlist_ids": [
@@ -1700,7 +1740,7 @@
           ],
           "publishedAt": "2026-07-04T16:18:41Z",
           "thumbnail": "https://i.ytimg.com/vi/lWEng1urs5Y/mqdefault.jpg",
-          "views": 1018,
+          "views": 1019,
           "likes": 48,
           "comments": 1,
           "playlist_ids": [
@@ -1786,43 +1826,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 54.90999999999999,
-          "subs_gained": 1
-        },
-        {
-          "id": "kc_cez1PROQ",
-          "title": "America Doubled in Size Overnight \u2014 And It Almost Didn't Happen",
-          "description": "On July 4, 1803, Americans learned their country had just doubled in size thanks to one of the greatest land deals in history. Napoleon was broke, Jefferson was nervous, and the whole thing was technically unconstitutional \u2014 yet it reshaped a continent. The Louisiana Purchase remains the single largest territorial addition in U.S. history, acquired for less than three cents per acre. #History #July4th #LouisianaPurchase",
-          "tags": [
-            "1803",
-            "american history",
-            "did you know",
-            "education",
-            "facts",
-            "founding fathers",
-            "history",
-            "history facts",
-            "history shorts",
-            "july 4th history",
-            "louisiana purchase",
-            "napoleon",
-            "short history",
-            "territory",
-            "thomas jefferson",
-            "us history"
-          ],
-          "publishedAt": "2026-07-04T11:39:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/kc_cez1PROQ/mqdefault.jpg",
-          "views": 950,
-          "likes": 25,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 53.07999999999999,
           "subs_gained": 1
         }
       ]
