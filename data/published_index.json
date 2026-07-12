@@ -78,5 +78,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "QYwnxriSAAk",
+    "run_id": "29179081346",
+    "stage_dir_name": "20260712_040205_short",
+    "title": "The Medal of Honor Was Created Mid-War \u2014 By Pure Accident",
+    "published_at": "2026-07-12T04:03:56.320312+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

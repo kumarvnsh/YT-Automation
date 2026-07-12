@@ -34,5 +34,14 @@
     "slot": "evening",
     "date": "2026-07-11",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260712_040205_short",
+    "title": "The Medal of Honor Was Created Mid-War \u2014 By Pure Accident",
+    "fingerprint": "accident_by_created_honor_medal_mid_pure_war_was",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-12",
+    "status": "reserved"
   }
 ]
