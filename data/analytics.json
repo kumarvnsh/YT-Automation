@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-13T09:27:12.701498+00:00",
+      "updated": "2026-07-13T14:34:06.739598+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "Ey04v7ot92E",
+          "title": "One Tip From a Staffer Brought Down a U.S. President",
+          "description": "On July 13, 1973, a single question during a Senate hearing accidentally exposed secret recordings that would end Richard Nixon's presidency. Alexander Butterfield's revelation about the White House taping system changed American political history forever. One offhand answer unraveled the most powerful office on earth.",
+          "tags": [
+            "1970s",
+            "american history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "nixon",
+            "political scandal",
+            "senate",
+            "shorts",
+            "trending",
+            "us presidents",
+            "viral",
+            "watergate",
+            "white house"
+          ],
+          "publishedAt": "2026-07-13T13:03:23Z",
+          "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
+          "views": 128,
+          "likes": 2,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "TSfS-PefD2I",
           "title": "The Word 'Artificial Intelligence' Was Invented at a Summer Retreat",
           "description": "Before ChatGPT, before Siri, before any AI you've ever used \u2014 four scientists coined the term 'Artificial Intelligence' at a quiet college in 1956. The word that now shapes the entire modern world was born in a summer workshop most people have never heard of. This is where it all started.",
@@ -54,7 +86,7 @@
           ],
           "publishedAt": "2026-07-13T04:03:28Z",
           "thumbnail": "https://i.ytimg.com/vi/TSfS-PefD2I/mqdefault.jpg",
-          "views": 626,
+          "views": 798,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -86,7 +118,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1178,
+          "views": 1182,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -121,7 +153,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 880,
+          "views": 894,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -193,7 +225,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 662,
+          "views": 683,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -228,7 +260,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 826,
+          "views": 830,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -266,7 +298,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1284,
+          "views": 1292,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -379,7 +411,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 772,
+          "views": 773,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -449,7 +481,7 @@
           ],
           "publishedAt": "2026-07-09T13:12:19Z",
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
-          "views": 706,
+          "views": 708,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [
@@ -1275,7 +1307,7 @@
           "publishedAt": "2026-07-06T09:26:20Z",
           "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
           "views": 639,
-          "likes": 18,
+          "likes": 17,
           "comments": 2,
           "playlist_ids": [
             "PLTrU7sep9IQc"
@@ -1796,43 +1828,6 @@
           "is_unsorted": false,
           "avg_view_pct": 63.35000000000001,
           "subs_gained": 3
-        },
-        {
-          "id": "kTKnlxWUZTM",
-          "title": "NASA's $265M Mars Lander Was Guided by a 1997 Nintendo-Level Computer",
-          "description": "On July 4th, 1997, NASA's Pathfinder spacecraft bounced onto Mars inside giant airbags and stunned the world \u2014 all controlled by a processor weaker than a modern calculator. It was the first successful Mars surface mission in over 20 years, and it changed planetary exploration forever. Watch to find out just how brilliantly low-tech this mission really was.",
-          "tags": [
-            "1997",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "july 4th",
-            "mars",
-            "nasa",
-            "pathfinder",
-            "planetary science",
-            "science history",
-            "sojourner rover",
-            "space exploration",
-            "space history"
-          ],
-          "publishedAt": "2026-07-04T14:43:27Z",
-          "thumbnail": "https://i.ytimg.com/vi/kTKnlxWUZTM/mqdefault.jpg",
-          "views": 838,
-          "likes": 21,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 53.37,
-          "subs_gained": 1
         }
       ]
     }
