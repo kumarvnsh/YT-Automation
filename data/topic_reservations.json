@@ -52,5 +52,14 @@
     "slot": "evening",
     "date": "2026-07-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260713_040203_short",
+    "title": "The Word 'Artificial Intelligence' Was Invented at a Summer Retreat",
+    "fingerprint": "artificial_at_intelligence_invented_retreat_summer_was_word",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-13",
+    "status": "reserved"
   }
 ]

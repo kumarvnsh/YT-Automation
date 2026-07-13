@@ -139,5 +139,19 @@
         "status": "inserted"
       }
     ]
+  },
+  {
+    "video_id": "TSfS-PefD2I",
+    "run_id": "29222935017",
+    "stage_dir_name": "20260713_040203_short",
+    "title": "The Word 'Artificial Intelligence' Was Invented at a Summer Retreat",
+    "published_at": "2026-07-13T04:03:46.072910+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
