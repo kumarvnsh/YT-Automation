@@ -153,5 +153,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Ey04v7ot92E",
+    "run_id": "29252116284",
+    "stage_dir_name": "20260713_130214_short",
+    "title": "One Tip From a Staffer Brought Down a U.S. President",
+    "published_at": "2026-07-13T13:03:54.384386+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

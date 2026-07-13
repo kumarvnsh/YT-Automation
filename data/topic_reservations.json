@@ -61,5 +61,14 @@
     "slot": "morning",
     "date": "2026-07-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260713_130214_short",
+    "title": "One Tip From a Staffer Brought Down a U.S. President",
+    "fingerprint": "brought_down_from_one_president_s_staffer_tip_u",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-13",
+    "status": "reserved"
   }
 ]
