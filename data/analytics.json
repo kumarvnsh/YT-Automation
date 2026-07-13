@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-12T19:05:52.679849+00:00",
+      "updated": "2026-07-13T02:47:21.905297+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -24,7 +24,7 @@
           {
             "id": "PLTrU7sep9IQc",
             "title": "Erased From History",
-            "video_count": 41
+            "video_count": 42
           }
         ]
       },
@@ -54,16 +54,20 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1108,
+          "views": 1160,
           "likes": 5,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "QYwnxriSAAk",
-          "title": "The Medal of Honor Was Created Mid-War \u2014 By Pure Accident",
+          "title": "The Bizarre Mistake That Gave Us the Medal of Honor",
           "description": "America's highest military honor wasn't planned as a permanent award \u2014 it was rushed through Congress during the Civil War as a quick morale fix. Today marks the anniversary of its authorization on July 12, 1862. Over 3,500 have been awarded since, with fewer than 70 living recipients today. #MedalOfHonor #AmericanHistory #DidYouKnow",
           "tags": [
             "american history",
@@ -85,7 +89,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 836,
+          "views": 860,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -121,7 +125,7 @@
           ],
           "publishedAt": "2026-07-11T16:15:28Z",
           "thumbnail": "https://i.ytimg.com/vi/xSlT9wViqcU/mqdefault.jpg",
-          "views": 1172,
+          "views": 1174,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -157,7 +161,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 640,
+          "views": 644,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -192,7 +196,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 807,
+          "views": 808,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -230,7 +234,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1259,
+          "views": 1269,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -343,7 +347,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 769,
+          "views": 771,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -377,7 +381,7 @@
           ],
           "publishedAt": "2026-07-09T16:09:34Z",
           "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
-          "views": 564,
+          "views": 563,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -413,7 +417,7 @@
           ],
           "publishedAt": "2026-07-09T13:12:19Z",
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
-          "views": 705,
+          "views": 706,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [
@@ -523,7 +527,7 @@
           ],
           "publishedAt": "2026-07-09T07:15:53Z",
           "thumbnail": "https://i.ytimg.com/vi/MUp4BtZxwuU/mqdefault.jpg",
-          "views": 625,
+          "views": 624,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -557,7 +561,7 @@
           ],
           "publishedAt": "2026-07-09T05:16:27Z",
           "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 909,
+          "views": 923,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -567,7 +571,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 116.5,
+          "avg_view_pct": 116.35,
           "subs_gained": 0
         },
         {
@@ -987,7 +991,7 @@
           ],
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 810,
+          "views": 812,
           "likes": 31,
           "comments": 0,
           "playlist_ids": [
@@ -1066,7 +1070,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 79.86,
+          "avg_view_pct": 80.21,
           "subs_gained": 0
         },
         {
@@ -1130,7 +1134,7 @@
           ],
           "publishedAt": "2026-07-06T13:32:02Z",
           "thumbnail": "https://i.ytimg.com/vi/Pu4tUGOZaZ0/mqdefault.jpg",
-          "views": 275,
+          "views": 277,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -1174,7 +1178,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 94.9,
+          "avg_view_pct": 94.97,
           "subs_gained": 0
         },
         {
@@ -1210,7 +1214,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 66.53,
+          "avg_view_pct": 66.38,
           "subs_gained": 0
         },
         {
@@ -1248,7 +1252,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 102.78,
+          "avg_view_pct": 102.8,
           "subs_gained": 2
         },
         {
@@ -1283,7 +1287,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 99.04,
+          "avg_view_pct": 99.27,
           "subs_gained": 0
         },
         {
@@ -1349,7 +1353,7 @@
           ],
           "publishedAt": "2026-07-06T03:24:33Z",
           "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
-          "views": 662,
+          "views": 663,
           "likes": 11,
           "comments": 1,
           "playlist_ids": [
@@ -1578,7 +1582,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.36,
+          "avg_view_pct": 71.46,
           "subs_gained": 0
         },
         {
@@ -1613,7 +1617,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.64,
+          "avg_view_pct": 55.55,
           "subs_gained": 0
         },
         {
@@ -1648,7 +1652,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.93,
+          "avg_view_pct": 55.010000000000005,
           "subs_gained": 1
         },
         {
