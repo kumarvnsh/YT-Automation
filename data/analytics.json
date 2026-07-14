@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-14T18:21:51.729888+00:00",
+      "updated": "2026-07-14T19:20:08.784226+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,39 @@
       },
       "videos": [
         {
+          "id": "wtdl4iJe71Y",
+          "title": "She Walked Into a Parliament That Had Never Seen a Woman Before",
+          "description": "In 1957, Rawya Ateya became the first woman ever elected to a parliament in the Arab world, taking her seat in Egypt's National Assembly against all historical precedent. Her election didn't just break a barrier \u2014 it rewrote what political representation meant across an entire region. One seat changed everything. #WomensHistory #EgyptHistory #Trailblazers",
+          "tags": [
+            "1957",
+            "arab world",
+            "did you know",
+            "education",
+            "egypt history",
+            "facts",
+            "first female parliamentarian",
+            "history",
+            "history shorts",
+            "middle east history",
+            "national assembly egypt",
+            "political trailblazers",
+            "rawya ateya",
+            "shorts",
+            "trending",
+            "viral",
+            "women in politics",
+            "womens history"
+          ],
+          "publishedAt": "2026-07-14T18:25:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
+          "views": 46,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "J3N5e4alRYs",
           "title": "A Sniper Fired at the French President \u2014 During the National Parade",
           "description": "On July 14, 2002, a gunman concealed a rifle in a guitar case and opened fire on President Jacques Chirac during France's Bastille Day parade in Paris. The shot missed, and Chirac calmly continued the ceremony. It remains one of the most brazen assassination attempts against a sitting head of state in modern European history. #BastilleDay #FrenchHistory #DidYouKnow",
@@ -54,7 +87,7 @@
           ],
           "publishedAt": "2026-07-14T13:03:51Z",
           "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 598,
+          "views": 577,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -90,7 +123,7 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 726,
+          "views": 738,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [
@@ -171,7 +204,9 @@
           "playlists": [
             "Forgotten Ancient Technology"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 120.43000000000002,
+          "subs_gained": 0
         },
         {
           "id": "twUMm4KyNiA",
@@ -198,7 +233,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1184,
+          "views": 1186,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -207,7 +242,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 65.78,
+          "subs_gained": 1
         },
         {
           "id": "QYwnxriSAAk",
@@ -233,7 +270,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 922,
+          "views": 923,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -243,7 +280,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 77.01,
+          "avg_view_pct": 74.85,
           "subs_gained": 0
         },
         {
@@ -281,8 +318,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 50.71,
-          "subs_gained": 0
+          "avg_view_pct": 70.89,
+          "subs_gained": 1
         },
         {
           "id": "HOzzS9c9bSI",
@@ -319,7 +356,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.58,
+          "avg_view_pct": 71.32,
           "subs_gained": 0
         },
         {
@@ -356,7 +393,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.18,
+          "avg_view_pct": 67.61,
           "subs_gained": 0
         },
         {
@@ -394,7 +431,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 62.8,
+          "avg_view_pct": 63.1,
           "subs_gained": 0
         },
         {
@@ -507,7 +544,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.40999999999999,
+          "avg_view_pct": 55.47,
           "subs_gained": 0
         },
         {
@@ -577,7 +614,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.35,
+          "avg_view_pct": 72.21,
           "subs_gained": 0
         },
         {
@@ -653,7 +690,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 98.15,
+          "avg_view_pct": 97.94,
           "subs_gained": 0
         },
         {
@@ -721,7 +758,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 113.67,
+          "avg_view_pct": 112.09,
           "subs_gained": 0
         },
         {
@@ -865,7 +902,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 68.04,
+          "avg_view_pct": 67.85,
           "subs_gained": 2
         },
         {
@@ -1151,7 +1188,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 148.93,
+          "avg_view_pct": 148.82,
           "subs_gained": 0
         },
         {
@@ -1294,7 +1331,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.06,
+          "avg_view_pct": 63.35000000000001,
           "subs_gained": 0
         },
         {
@@ -1513,7 +1550,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 57.46,
+          "avg_view_pct": 57.50999999999999,
           "subs_gained": 1
         },
         {
@@ -1767,7 +1804,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.55,
+          "avg_view_pct": 65.58,
           "subs_gained": 0
         },
         {
@@ -1802,44 +1839,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.010000000000005,
-          "subs_gained": 1
-        },
-        {
-          "id": "AOltRhgt6C8",
-          "title": "Jefferson Got the Credit, But Adams Did the Work for Independence",
-          "description": "John Adams was the fiercest champion of American independence \u2014 yet Thomas Jefferson got most of the credit for the Declaration. Adams spent years pushing Congress to vote for independence before a single word of the famous document was written. Discover the surprising backstory behind one of history's most famous signatures. #AmericanHistory #FoundingFathers #DidYouKnow",
-          "tags": [
-            "1776",
-            "american history",
-            "continental congress",
-            "declaration of independence",
-            "did you know",
-            "education",
-            "facts",
-            "founding fathers",
-            "history",
-            "history facts",
-            "history shorts",
-            "independence day",
-            "john adams",
-            "short history",
-            "thomas jefferson",
-            "us history"
-          ],
-          "publishedAt": "2026-07-04T17:37:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/AOltRhgt6C8/mqdefault.jpg",
-          "views": 6,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 25.05,
+          "avg_view_pct": 180.91,
           "subs_gained": 0
         }
       ]
