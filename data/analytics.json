@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-13T19:23:15.078453+00:00",
+      "updated": "2026-07-14T02:29:26.553477+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -54,7 +54,7 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 463,
+          "views": 485,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -86,7 +86,7 @@
           ],
           "publishedAt": "2026-07-13T04:03:28Z",
           "thumbnail": "https://i.ytimg.com/vi/TSfS-PefD2I/mqdefault.jpg",
-          "views": 804,
+          "views": 801,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -118,7 +118,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1179,
+          "views": 1180,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -153,7 +153,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 900,
+          "views": 916,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -191,7 +191,7 @@
           ],
           "publishedAt": "2026-07-11T16:15:28Z",
           "thumbnail": "https://i.ytimg.com/vi/xSlT9wViqcU/mqdefault.jpg",
-          "views": 1174,
+          "views": 1175,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -229,7 +229,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 692,
+          "views": 725,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -304,7 +304,7 @@
           ],
           "publishedAt": "2026-07-10T16:16:25Z",
           "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1295,
+          "views": 1298,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -382,7 +382,7 @@
           ],
           "publishedAt": "2026-07-10T09:03:40Z",
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
-          "views": 778,
+          "views": 784,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [
@@ -417,7 +417,7 @@
           ],
           "publishedAt": "2026-07-09T19:20:02Z",
           "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 775,
+          "views": 776,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -487,7 +487,7 @@
           ],
           "publishedAt": "2026-07-09T13:12:19Z",
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
-          "views": 710,
+          "views": 724,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [
@@ -563,7 +563,7 @@
           ],
           "publishedAt": "2026-07-09T08:35:24Z",
           "thumbnail": "https://i.ytimg.com/vi/BBibvaSIgLM/mqdefault.jpg",
-          "views": 870,
+          "views": 871,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -1061,7 +1061,7 @@
           ],
           "publishedAt": "2026-07-07T06:52:25Z",
           "thumbnail": "https://i.ytimg.com/vi/gINkHXhoZSc/mqdefault.jpg",
-          "views": 812,
+          "views": 813,
           "likes": 31,
           "comments": 0,
           "playlist_ids": [
