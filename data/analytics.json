@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-14T02:29:26.553477+00:00",
+      "updated": "2026-07-14T08:04:52.635528+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -29,6 +29,38 @@
         ]
       },
       "videos": [
+        {
+          "id": "cTzCiqFG5yA",
+          "title": "France Tore Down a Prison \u2014 And Started a Revolution in One Day",
+          "description": "On July 14, 1789, ordinary Parisians stormed the Bastille fortress, a symbol of royal tyranny, and sparked the French Revolution. The prison held only seven prisoners that day \u2014 but what it represented changed the world forever. France still celebrates this moment every July 14th as Bastille Day.",
+          "tags": [
+            "1789",
+            "bastille day",
+            "did you know",
+            "education",
+            "facts",
+            "france",
+            "french revolution",
+            "history",
+            "history facts",
+            "history shorts",
+            "july 14",
+            "paris history",
+            "revolution",
+            "shorts",
+            "trending",
+            "viral",
+            "world history"
+          ],
+          "publishedAt": "2026-07-14T04:03:38Z",
+          "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
+          "views": 686,
+          "likes": 12,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "Ey04v7ot92E",
           "title": "One Tip From a Staffer Brought Down a U.S. President",
@@ -118,7 +150,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1180,
+          "views": 1182,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -153,7 +185,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 916,
+          "views": 917,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -229,7 +261,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 725,
+          "views": 739,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -266,7 +298,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 831,
+          "views": 832,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -487,7 +519,7 @@
           ],
           "publishedAt": "2026-07-09T13:12:19Z",
           "thumbnail": "https://i.ytimg.com/vi/-Bh7FffOJ_k/mqdefault.jpg",
-          "views": 724,
+          "views": 741,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [
@@ -1797,42 +1829,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 63.89,
-          "subs_gained": 3
-        },
-        {
-          "id": "lWEng1urs5Y",
-          "title": "She Took the Photo That Unlocked DNA \u2014 Then Was Written Out of History",
-          "description": "Rosalind Franklin produced the X-ray image that revealed DNA's double helix structure, yet Watson and Crick received the Nobel Prize without her knowledge or credit. Her contribution was hidden for decades, only fully acknowledged long after her death. This is the story of science's most overlooked genius.",
-          "tags": [
-            "biology",
-            "did you know",
-            "dna discovery",
-            "education",
-            "facts",
-            "forgotten history",
-            "history",
-            "history shorts",
-            "nobel prize",
-            "photo 51",
-            "real history",
-            "rosalind franklin",
-            "science history",
-            "watson and crick",
-            "women in science"
-          ],
-          "publishedAt": "2026-07-04T16:18:41Z",
-          "thumbnail": "https://i.ytimg.com/vi/lWEng1urs5Y/mqdefault.jpg",
-          "views": 1019,
-          "likes": 48,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 63.3,
           "subs_gained": 3
         }
       ]
