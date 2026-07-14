@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-14T13:43:07.339210+00:00",
+      "updated": "2026-07-14T18:19:20.620248+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -54,8 +54,8 @@
           ],
           "publishedAt": "2026-07-14T13:03:51Z",
           "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 210,
-          "likes": 3,
+          "views": 598,
+          "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -86,7 +86,7 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 723,
+          "views": 732,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -118,7 +118,7 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 494,
+          "views": 497,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -182,7 +182,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1184,
+          "views": 1185,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -217,7 +217,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 918,
+          "views": 923,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -330,7 +330,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 832,
+          "views": 834,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -525,7 +525,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 49.52,
+          "avg_view_pct": 49.46,
           "subs_gained": 0
         },
         {
