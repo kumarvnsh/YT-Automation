@@ -239,5 +239,19 @@
         "status": "inserted"
       }
     ]
+  },
+  {
+    "video_id": "wtdl4iJe71Y",
+    "run_id": "29357676240",
+    "stage_dir_name": "20260714_182429_short",
+    "title": "She Walked Into a Parliament That Had Never Seen a Woman Before",
+    "published_at": "2026-07-14T18:26:08.650945+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

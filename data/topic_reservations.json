@@ -88,5 +88,14 @@
     "slot": "evening",
     "date": "2026-07-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260714_182429_short",
+    "title": "She Walked Into a Parliament That Had Never Seen a Woman Before",
+    "fingerprint": "before_had_into_never_parliament_seen_she_that_walked_woman",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-14",
+    "status": "reserved"
   }
 ]
