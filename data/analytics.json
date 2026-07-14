@@ -2,19 +2,19 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-14T18:19:20.620248+00:00",
+      "updated": "2026-07-14T18:21:51.729888+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
           {
             "id": "PLKz3dl1lEDLM",
             "title": "Forgotten Ancient Technology",
-            "video_count": 2
+            "video_count": 3
           },
           {
             "id": "PLZPTJFrAwVuA",
             "title": "Ancient Mysteries",
-            "video_count": 4
+            "video_count": 5
           },
           {
             "id": "PLY6ySex-tqTQ",
@@ -24,7 +24,7 @@
           {
             "id": "PLTrU7sep9IQc",
             "title": "Erased From History",
-            "video_count": 42
+            "video_count": 44
           }
         ]
       },
@@ -57,9 +57,13 @@
           "views": 598,
           "likes": 8,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "cTzCiqFG5yA",
@@ -86,12 +90,16 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 732,
+          "views": 726,
           "likes": 11,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLTrU7sep9IQc"
+          ],
+          "playlists": [
+            "Erased From History"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "Ey04v7ot92E",
@@ -118,12 +126,16 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 497,
+          "views": 499,
           "likes": 7,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLZPTJFrAwVuA"
+          ],
+          "playlists": [
+            "Ancient Mysteries"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "TSfS-PefD2I",
@@ -153,9 +165,13 @@
           "views": 801,
           "likes": 6,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
+          "playlist_ids": [
+            "PLKz3dl1lEDLM"
+          ],
+          "playlists": [
+            "Forgotten Ancient Technology"
+          ],
+          "is_unsorted": false
         },
         {
           "id": "twUMm4KyNiA",
@@ -182,7 +198,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1185,
+          "views": 1184,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -217,7 +233,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 923,
+          "views": 922,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
