@@ -152,7 +152,18 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "playlist_ids": [
+      "PLKz3dl1lEDLM"
+    ],
+    "playlist_assignments": [
+      {
+        "playlist_id": "PLKz3dl1lEDLM",
+        "playlist_title": "Forgotten Ancient Technology",
+        "assigned_at": "2026-07-14T18:20:07.356835+00:00",
+        "status": "inserted"
+      }
+    ]
   },
   {
     "video_id": "Ey04v7ot92E",
@@ -166,7 +177,18 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "playlist_ids": [
+      "PLZPTJFrAwVuA"
+    ],
+    "playlist_assignments": [
+      {
+        "playlist_id": "PLZPTJFrAwVuA",
+        "playlist_title": "Ancient Mysteries",
+        "assigned_at": "2026-07-14T18:20:07.356464+00:00",
+        "status": "inserted"
+      }
+    ]
   },
   {
     "video_id": "cTzCiqFG5yA",
@@ -180,7 +202,18 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "playlist_ids": [
+      "PLTrU7sep9IQc"
+    ],
+    "playlist_assignments": [
+      {
+        "playlist_id": "PLTrU7sep9IQc",
+        "playlist_title": "Erased From History",
+        "assigned_at": "2026-07-14T18:20:07.356083+00:00",
+        "status": "inserted"
+      }
+    ]
   },
   {
     "video_id": "J3N5e4alRYs",
@@ -194,6 +227,17 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "playlist_ids": [
+      "PLTrU7sep9IQc"
+    ],
+    "playlist_assignments": [
+      {
+        "playlist_id": "PLTrU7sep9IQc",
+        "playlist_title": "Erased From History",
+        "assigned_at": "2026-07-14T18:20:07.355643+00:00",
+        "status": "inserted"
+      }
+    ]
   }
 ]
