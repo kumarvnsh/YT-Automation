@@ -181,5 +181,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "J3N5e4alRYs",
+    "run_id": "29334788900",
+    "stage_dir_name": "20260714_130224_short",
+    "title": "A Sniper Fired at the French President \u2014 During the National Parade",
+    "published_at": "2026-07-14T13:04:17.133166+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

@@ -79,5 +79,14 @@
     "slot": "morning",
     "date": "2026-07-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260714_130224_short",
+    "title": "A Sniper Fired at the French President \u2014 During the National Parade",
+    "fingerprint": "at_during_fired_french_national_parade_president_sniper",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-14",
+    "status": "reserved"
   }
 ]
