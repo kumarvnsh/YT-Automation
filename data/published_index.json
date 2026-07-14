@@ -167,5 +167,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "cTzCiqFG5yA",
+    "run_id": "29304911578",
+    "stage_dir_name": "20260714_040220_short",
+    "title": "France Tore Down a Prison \u2014 And Started a Revolution in One Day",
+    "published_at": "2026-07-14T04:04:04.208538+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
