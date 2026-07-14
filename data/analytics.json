@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-14T08:04:52.635528+00:00",
+      "updated": "2026-07-14T13:43:07.339210+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "J3N5e4alRYs",
+          "title": "A Sniper Fired at the French President \u2014 During the National Parade",
+          "description": "On July 14, 2002, a gunman concealed a rifle in a guitar case and opened fire on President Jacques Chirac during France's Bastille Day parade in Paris. The shot missed, and Chirac calmly continued the ceremony. It remains one of the most brazen assassination attempts against a sitting head of state in modern European history. #BastilleDay #FrenchHistory #DidYouKnow",
+          "tags": [
+            "assassination attempt",
+            "bastille day",
+            "did you know",
+            "education",
+            "facts",
+            "france",
+            "french history",
+            "history",
+            "history shorts",
+            "jacques chirac",
+            "july 14",
+            "modern history",
+            "paris parade",
+            "presidential security",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-14T13:03:51Z",
+          "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
+          "views": 210,
+          "likes": 3,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "cTzCiqFG5yA",
           "title": "France Tore Down a Prison \u2014 And Started a Revolution in One Day",
           "description": "On July 14, 1789, ordinary Parisians stormed the Bastille fortress, a symbol of royal tyranny, and sparked the French Revolution. The prison held only seven prisoners that day \u2014 but what it represented changed the world forever. France still celebrates this moment every July 14th as Bastille Day.",
@@ -54,8 +86,8 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 686,
-          "likes": 12,
+          "views": 723,
+          "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -86,7 +118,7 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 485,
+          "views": 494,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -150,7 +182,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1182,
+          "views": 1184,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -185,7 +217,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 917,
+          "views": 918,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -261,7 +293,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 739,
+          "views": 742,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -414,7 +446,7 @@
           ],
           "publishedAt": "2026-07-10T09:03:40Z",
           "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
-          "views": 784,
+          "views": 791,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [
@@ -1793,43 +1825,6 @@
           "is_unsorted": false,
           "avg_view_pct": 25.05,
           "subs_gained": 0
-        },
-        {
-          "id": "I95HH0VYSWA",
-          "title": "A Bored Girl on a Boat Inspired the Most Surreal Story Ever Written",
-          "description": "On July 4, 1862, a real ten-year-old girl named Alice Liddell begged a mathematician to tell her a story during a rowboat trip \u2014 and what he made up on the spot became Alice's Adventures in Wonderland. Lewis Carroll wasn't a professional writer; he was a shy Oxford math lecturer who invented an entire genre to entertain one child. The story almost stayed private forever, tucked away in a handwritten gift book.",
-          "tags": [
-            "alice in wonderland",
-            "book history",
-            "childrens literature",
-            "classic books",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "july 4",
-            "lewis carroll",
-            "on this day",
-            "oxford history",
-            "surprising history",
-            "victorian history"
-          ],
-          "publishedAt": "2026-07-04T16:56:36Z",
-          "thumbnail": "https://i.ytimg.com/vi/I95HH0VYSWA/mqdefault.jpg",
-          "views": 961,
-          "likes": 39,
-          "comments": 4,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 63.89,
-          "subs_gained": 3
         }
       ]
     }
