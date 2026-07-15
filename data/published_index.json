@@ -253,5 +253,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "nHLzJ1AL_hI",
+    "run_id": "29387934480",
+    "stage_dir_name": "20260715_040157_short",
+    "title": "One Rock Unlocked 1,400 Years of Lost Language",
+    "published_at": "2026-07-15T04:03:43.585556+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

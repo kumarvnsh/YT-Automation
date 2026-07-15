@@ -97,5 +97,14 @@
     "slot": "evening",
     "date": "2026-07-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260715_040157_short",
+    "title": "One Rock Unlocked 1,400 Years of Lost Language",
+    "fingerprint": "1_400_language_lost_one_rock_unlocked_years",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-15",
+    "status": "reserved"
   }
 ]
