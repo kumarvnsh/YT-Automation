@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-15T02:27:23.816334+00:00",
+      "updated": "2026-07-15T08:10:04.472119+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,37 @@
       },
       "videos": [
         {
+          "id": "nHLzJ1AL_hI",
+          "title": "One Rock Unlocked 1,400 Years of Lost Language",
+          "description": "On July 15, 1799, French soldiers in Egypt accidentally unearthed a stone that had stumped the world for over a millennium. The Rosetta Stone held the key to decoding ancient Egyptian hieroglyphics \u2014 a script nobody alive could read. Discover how one lucky find rewrote human history.",
+          "tags": [
+            "ancient egypt",
+            "archaeology",
+            "did you know",
+            "education",
+            "facts",
+            "french history",
+            "hieroglyphics",
+            "history",
+            "history shorts",
+            "lost language",
+            "napoleon",
+            "on this day",
+            "rosetta stone",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-15T04:03:22Z",
+          "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
+          "views": 458,
+          "likes": 4,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "wtdl4iJe71Y",
           "title": "She Walked Into a Parliament That Had Never Seen a Woman Before",
           "description": "In 1957, Rawya Ateya became the first woman ever elected to a parliament in the Arab world, taking her seat in Egypt's National Assembly against all historical precedent. Her election didn't just break a barrier \u2014 it rewrote what political representation meant across an entire region. One seat changed everything. #WomensHistory #EgyptHistory #Trailblazers",
@@ -55,8 +86,8 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 708,
-          "likes": 6,
+          "views": 827,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -87,7 +118,7 @@
           ],
           "publishedAt": "2026-07-14T13:03:51Z",
           "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 608,
+          "views": 615,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -136,7 +167,7 @@
         },
         {
           "id": "Ey04v7ot92E",
-          "title": "One Tip From a Staffer Brought Down a U.S. President",
+          "title": "The Staffer's Tip That Ended a U.S. Presidency",
           "description": "On July 13, 1973, a single question during a Senate hearing accidentally exposed secret recordings that would end Richard Nixon's presidency. Alexander Butterfield's revelation about the White House taping system changed American political history forever. One offhand answer unraveled the most powerful office on earth.",
           "tags": [
             "1970s",
@@ -159,7 +190,7 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 505,
+          "views": 508,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -270,7 +301,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 925,
+          "views": 926,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -346,7 +377,7 @@
           ],
           "publishedAt": "2026-07-11T07:42:54Z",
           "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 743,
+          "views": 742,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [
@@ -1805,41 +1836,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 65.58,
-          "subs_gained": 0
-        },
-        {
-          "id": "hsGjxllQcRM",
-          "title": "He Sold a 'University' That Wasn't One \u2014 And Paid $25 Million",
-          "description": "Trump University promised students insider real estate secrets from Donald Trump's handpicked experts \u2014 but investigators found the instructors had no special access and some had no real estate experience at all. In 2016, Trump agreed to pay $25 million to settle fraud lawsuits without admitting wrongdoing. This is one of the most documented consumer fraud settlements involving a U.S. presidential candidate in history.\n#TrumpUniversity #ConsumerFraud #AmericanHistory",
-          "tags": [
-            "american history",
-            "consumer fraud",
-            "did you know",
-            "education",
-            "education scam",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "lawsuit",
-            "political history",
-            "real estate scam",
-            "settlement",
-            "trump university"
-          ],
-          "publishedAt": "2026-07-05T01:30:28Z",
-          "thumbnail": "https://i.ytimg.com/vi/hsGjxllQcRM/mqdefault.jpg",
-          "views": 996,
-          "likes": 31,
-          "comments": 0,
-          "playlist_ids": [
-            "PLY6ySex-tqTQ"
-          ],
-          "playlists": [
-            "Vanished Civilizations"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 180.91,
           "subs_gained": 0
         }
       ]
