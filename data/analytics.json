@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-15T08:10:04.472119+00:00",
+      "updated": "2026-07-15T13:43:27.301112+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,37 @@
       },
       "videos": [
         {
+          "id": "MkleVVyV5zg",
+          "title": "Two Countries Were Racing to Kill Each Other \u2014 Then Shook Hands in Space",
+          "description": "On July 15, 1975, American and Soviet spacecraft launched simultaneously, docked in orbit, and astronauts shook hands 140 miles above Earth. It was the last Apollo flight ever \u2014 and arguably the most symbolic mission of the entire Space Race. History's greatest rivalry ended with a handshake nobody saw coming.\n#SpaceRace #ApolloSoyuz #ColdWarHistory",
+          "tags": [
+            "1975",
+            "apollo soyuz",
+            "astronauts",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "nasa history",
+            "shorts",
+            "soviet space program",
+            "space history",
+            "space race",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-15T13:04:02Z",
+          "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
+          "views": 15,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "nHLzJ1AL_hI",
           "title": "One Rock Unlocked 1,400 Years of Lost Language",
           "description": "On July 15, 1799, French soldiers in Egypt accidentally unearthed a stone that had stumped the world for over a millennium. The Rosetta Stone held the key to decoding ancient Egyptian hieroglyphics \u2014 a script nobody alive could read. Discover how one lucky find rewrote human history.",
@@ -53,8 +84,8 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 458,
-          "likes": 4,
+          "views": 792,
+          "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -86,8 +117,8 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 827,
-          "likes": 7,
+          "views": 874,
+          "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -118,7 +149,7 @@
           ],
           "publishedAt": "2026-07-14T13:03:51Z",
           "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 615,
+          "views": 622,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -190,7 +221,7 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 508,
+          "views": 656,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -301,7 +332,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 926,
+          "views": 937,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -599,7 +630,7 @@
           ],
           "publishedAt": "2026-07-09T16:09:34Z",
           "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
-          "views": 564,
+          "views": 565,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -1801,41 +1832,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 71.46,
-          "subs_gained": 0
-        },
-        {
-          "id": "2Oo9MEQmU8E",
-          "title": "The Most Iconic Logo in History Was a Typo Nobody Bothered to Fix",
-          "description": "The FedEx logo has a hidden arrow that its designer almost didn't notice \u2014 and it's now considered one of the greatest design accidents ever made. Discover how a simple font overlap became a masterclass in branding. Sometimes the best ideas aren't planned at all.",
-          "tags": [
-            "accidental invention",
-            "branding",
-            "creative accidents",
-            "design history",
-            "did you know",
-            "education",
-            "facts",
-            "fedex",
-            "graphic design",
-            "hidden symbols",
-            "history",
-            "history facts",
-            "history shorts",
-            "logo design"
-          ],
-          "publishedAt": "2026-07-05T05:37:28Z",
-          "thumbnail": "https://i.ytimg.com/vi/2Oo9MEQmU8E/mqdefault.jpg",
-          "views": 1212,
-          "likes": 9,
-          "comments": 2,
-          "playlist_ids": [
-            "PLKz3dl1lEDLM"
-          ],
-          "playlists": [
-            "Forgotten Ancient Technology"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 65.58,
           "subs_gained": 0
         }
       ]
