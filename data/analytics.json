@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-15T13:43:27.301112+00:00",
+      "updated": "2026-07-15T19:11:03.917221+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -53,8 +53,8 @@
           ],
           "publishedAt": "2026-07-15T13:04:02Z",
           "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
-          "views": 15,
-          "likes": 0,
+          "views": 200,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -84,7 +84,7 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 792,
+          "views": 817,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -117,7 +117,7 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 874,
+          "views": 918,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -149,7 +149,7 @@
           ],
           "publishedAt": "2026-07-14T13:03:51Z",
           "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 622,
+          "views": 621,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -185,8 +185,8 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 740,
-          "likes": 11,
+          "views": 743,
+          "likes": 12,
           "comments": 0,
           "playlist_ids": [
             "PLTrU7sep9IQc"
@@ -194,7 +194,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 73.06,
+          "subs_gained": 0
         },
         {
           "id": "Ey04v7ot92E",
@@ -221,7 +223,7 @@
           ],
           "publishedAt": "2026-07-13T13:03:23Z",
           "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 656,
+          "views": 666,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -230,7 +232,9 @@
           "playlists": [
             "Ancient Mysteries"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 53.82,
+          "subs_gained": 0
         },
         {
           "id": "TSfS-PefD2I",
@@ -258,7 +262,7 @@
           "publishedAt": "2026-07-13T04:03:28Z",
           "thumbnail": "https://i.ytimg.com/vi/TSfS-PefD2I/mqdefault.jpg",
           "views": 801,
-          "likes": 6,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [
             "PLKz3dl1lEDLM"
@@ -267,7 +271,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 120.43000000000002,
+          "avg_view_pct": 114.91,
           "subs_gained": 0
         },
         {
@@ -295,7 +299,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1188,
+          "views": 1190,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -305,7 +309,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.78,
+          "avg_view_pct": 65.48,
           "subs_gained": 1
         },
         {
@@ -332,7 +336,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 937,
+          "views": 941,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -342,7 +346,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 74.85,
+          "avg_view_pct": 73.69,
           "subs_gained": 0
         },
         {
@@ -380,7 +384,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.89,
+          "avg_view_pct": 70.83,
           "subs_gained": 1
         },
         {
@@ -418,7 +422,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.32,
+          "avg_view_pct": 70.49,
           "subs_gained": 0
         },
         {
@@ -445,7 +449,7 @@
           ],
           "publishedAt": "2026-07-10T18:03:03Z",
           "thumbnail": "https://i.ytimg.com/vi/hXA0Zta874Q/mqdefault.jpg",
-          "views": 835,
+          "views": 836,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -455,7 +459,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.61,
+          "avg_view_pct": 67.53,
           "subs_gained": 0
         },
         {
@@ -493,7 +497,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.1,
+          "avg_view_pct": 63.0,
           "subs_gained": 0
         },
         {
@@ -571,7 +575,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.2,
+          "avg_view_pct": 70.1,
           "subs_gained": 1
         },
         {
@@ -606,7 +610,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.47,
+          "avg_view_pct": 55.54,
           "subs_gained": 0
         },
         {
@@ -640,7 +644,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 49.46,
+          "avg_view_pct": 49.39,
           "subs_gained": 0
         },
         {
@@ -676,7 +680,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.21,
+          "avg_view_pct": 71.72,
           "subs_gained": 0
         },
         {
@@ -752,7 +756,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 97.94,
+          "avg_view_pct": 97.92,
           "subs_gained": 0
         },
         {
@@ -1250,7 +1254,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 148.82,
+          "avg_view_pct": 148.64,
           "subs_gained": 0
         },
         {
