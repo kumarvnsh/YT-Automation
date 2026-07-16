@@ -281,5 +281,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "twmBUwdHyG0",
+    "run_id": "29470330050",
+    "stage_dir_name": "20260716_040154_short",
+    "title": "The First Paper Money in Europe Was Backed by Nothing Real",
+    "published_at": "2026-07-16T04:03:41.101922+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

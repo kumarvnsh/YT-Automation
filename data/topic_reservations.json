@@ -115,5 +115,14 @@
     "slot": "evening",
     "date": "2026-07-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260716_040154_short",
+    "title": "The First Paper Money in Europe Was Backed by Nothing Real",
+    "fingerprint": "backed_by_europe_first_money_nothing_paper_real_was",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-16",
+    "status": "reserved"
   }
 ]
