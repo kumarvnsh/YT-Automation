@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-16T13:50:09.600637+00:00",
+      "updated": "2026-07-16T19:10:46.758912+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -53,9 +53,9 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 51,
-          "likes": 0,
-          "comments": 0,
+          "views": 527,
+          "likes": 5,
+          "comments": 2,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -84,7 +84,7 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 171,
+          "views": 232,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -115,8 +115,8 @@
           ],
           "publishedAt": "2026-07-15T13:04:02Z",
           "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
-          "views": 661,
-          "likes": 9,
+          "views": 844,
+          "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -146,12 +146,14 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 829,
+          "views": 831,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 70.95,
+          "subs_gained": 0
         },
         {
           "id": "wtdl4iJe71Y",
@@ -179,12 +181,14 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 918,
+          "views": 923,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 40.85,
+          "subs_gained": 0
         },
         {
           "id": "J3N5e4alRYs",
@@ -220,7 +224,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 53.98,
+          "subs_gained": 1
         },
         {
           "id": "cTzCiqFG5yA",
@@ -257,7 +263,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 73.06,
+          "avg_view_pct": 72.07,
           "subs_gained": 0
         },
         {
@@ -295,7 +301,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 53.82,
+          "avg_view_pct": 55.05,
           "subs_gained": 0
         },
         {
@@ -361,7 +367,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1191,
+          "views": 1193,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -371,7 +377,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.48,
+          "avg_view_pct": 65.14,
           "subs_gained": 1
         },
         {
@@ -398,7 +404,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 953,
+          "views": 951,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -408,7 +414,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 73.69,
+          "avg_view_pct": 73.43,
           "subs_gained": 0
         },
         {
@@ -484,7 +490,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.49,
+          "avg_view_pct": 70.5,
           "subs_gained": 0
         },
         {
@@ -521,7 +527,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.53,
+          "avg_view_pct": 67.41,
           "subs_gained": 0
         },
         {
@@ -637,7 +643,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.1,
+          "avg_view_pct": 70.38,
           "subs_gained": 1
         },
         {
@@ -984,7 +990,7 @@
           ],
           "publishedAt": "2026-07-08T15:01:17Z",
           "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
-          "views": 210,
+          "views": 217,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [
@@ -1459,7 +1465,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.35000000000001,
+          "avg_view_pct": 64.17,
           "subs_gained": 0
         },
         {
@@ -1678,7 +1684,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 57.50999999999999,
+          "avg_view_pct": 57.54,
           "subs_gained": 1
         },
         {
