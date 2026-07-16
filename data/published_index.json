@@ -295,5 +295,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "9KkikPjPHQc",
+    "run_id": "29500472966",
+    "stage_dir_name": "20260716_130212_short",
+    "title": "He Was America's Most Watched Man \u2014 Then Vanished Without a Trace",
+    "published_at": "2026-07-16T13:04:07.206865+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
