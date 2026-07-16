@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-16T08:13:21.119903+00:00",
+      "updated": "2026-07-16T13:50:09.600637+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,37 @@
       },
       "videos": [
         {
+          "id": "9KkikPjPHQc",
+          "title": "He Was America's Most Watched Man \u2014 Then Vanished Without a Trace",
+          "description": "On July 16, 1999, John F. Kennedy Jr.'s plane disappeared over the Atlantic, stunning the world. Three days of searching ended in tragedy off Martha's Vineyard. The son of a president became one of America's most heartbreaking losses. #JFKJr #OnThisDay #HistoryShorts",
+          "tags": [
+            "1999",
+            "american history",
+            "celebrity history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "jfk jr",
+            "kennedy",
+            "martha's vineyard",
+            "on this day",
+            "plane crash",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-16T13:03:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
+          "views": 51,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "twmBUwdHyG0",
           "title": "The First Paper Money in Europe Was Backed by Nothing Real",
           "description": "On July 16, 1661, Sweden's Stockholms Banco issued the first banknotes in European history \u2014 and accidentally invented a financial crisis. The idea of trusting paper instead of gold coins seemed absurd, yet it rewired how the entire world handles money. Every bill in your wallet traces back to that one Swedish gamble.",
@@ -53,8 +84,8 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 92,
-          "likes": 1,
+          "views": 171,
+          "likes": 4,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -84,8 +115,8 @@
           ],
           "publishedAt": "2026-07-15T13:04:02Z",
           "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
-          "views": 287,
-          "likes": 3,
+          "views": 661,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -115,7 +146,7 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 828,
+          "views": 829,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -180,7 +211,7 @@
           ],
           "publishedAt": "2026-07-14T13:03:51Z",
           "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 623,
+          "views": 624,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [
@@ -216,7 +247,7 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 745,
+          "views": 748,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -367,7 +398,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 952,
+          "views": 953,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -1794,43 +1825,6 @@
           "is_unsorted": false,
           "avg_view_pct": 56.46,
           "subs_gained": 2
-        },
-        {
-          "id": "xGk9jhw4Y8A",
-          "title": "Scientists Think Alexander the Great Was Conscious When They Buried Him",
-          "description": "Alexander the Great was one of history's greatest conquerors, but scientists now believe his death may have been far more terrifying than anyone realized. Researchers think he suffered from Guillain-Barr\u00e9 Syndrome, a neurological disorder that could have left him fully conscious but completely paralyzed \u2014 aware of everything happening around him. This chilling theory reframes one of antiquity's most famous deaths entirely. #AlexanderTheGreat #AncientHistory #DidYouKnow",
-          "tags": [
-            "alexander the great",
-            "ancient greece",
-            "ancient history",
-            "buried alive",
-            "did you know",
-            "education",
-            "facts",
-            "guillain-barre syndrome",
-            "historical mysteries",
-            "history",
-            "history facts",
-            "history shorts",
-            "neurological disorder",
-            "shocking history",
-            "short history facts",
-            "world history"
-          ],
-          "publishedAt": "2026-07-05T13:32:06Z",
-          "thumbnail": "https://i.ytimg.com/vi/xGk9jhw4Y8A/mqdefault.jpg",
-          "views": 3,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 100.0,
-          "subs_gained": 0
         }
       ]
     }
