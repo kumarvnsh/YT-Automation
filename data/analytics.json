@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-16T02:35:16.250139+00:00",
+      "updated": "2026-07-16T08:13:21.119903+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,8 +30,39 @@
       },
       "videos": [
         {
+          "id": "twmBUwdHyG0",
+          "title": "The First Paper Money in Europe Was Backed by Nothing Real",
+          "description": "On July 16, 1661, Sweden's Stockholms Banco issued the first banknotes in European history \u2014 and accidentally invented a financial crisis. The idea of trusting paper instead of gold coins seemed absurd, yet it rewired how the entire world handles money. Every bill in your wallet traces back to that one Swedish gamble.",
+          "tags": [
+            "banking",
+            "currency",
+            "did you know",
+            "economics",
+            "education",
+            "european history",
+            "facts",
+            "finance history",
+            "history",
+            "history shorts",
+            "money",
+            "paper money",
+            "shorts",
+            "sweden",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-16T04:03:09Z",
+          "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
+          "views": 92,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "MkleVVyV5zg",
-          "title": "Two Countries Were Racing to Kill Each Other \u2014 Then Shook Hands in Space",
+          "title": "The Handshake that Stopped a War in Space",
           "description": "On July 15, 1975, American and Soviet spacecraft launched simultaneously, docked in orbit, and astronauts shook hands 140 miles above Earth. It was the last Apollo flight ever \u2014 and arguably the most symbolic mission of the entire Space Race. History's greatest rivalry ended with a handshake nobody saw coming.\n#SpaceRace #ApolloSoyuz #ColdWarHistory",
           "tags": [
             "1975",
@@ -53,8 +84,8 @@
           ],
           "publishedAt": "2026-07-15T13:04:02Z",
           "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
-          "views": 267,
-          "likes": 4,
+          "views": 287,
+          "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -84,7 +115,7 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 821,
+          "views": 828,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -185,7 +216,7 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 744,
+          "views": 745,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -261,7 +292,7 @@
           ],
           "publishedAt": "2026-07-13T04:03:28Z",
           "thumbnail": "https://i.ytimg.com/vi/TSfS-PefD2I/mqdefault.jpg",
-          "views": 802,
+          "views": 801,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -336,7 +367,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 949,
+          "views": 952,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -1799,43 +1830,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 100.0,
-          "subs_gained": 0
-        },
-        {
-          "id": "ongtmecwyME",
-          "title": "The Two-Piece Swimsuit So Scandalous No Model Would Wear It",
-          "description": "In 1946, French engineer Louis R\u00e9ard unveiled the bikini at a Paris poolside fashion show \u2014 and it caused an immediate sensation. Named after the Bikini Atoll nuclear test site, the design was so controversial that R\u00e9ard had to hire a nude dancer because professional models refused. Today it's one of the most recognized garments on Earth. #history #didyouknow #fashionhistory",
-          "tags": [
-            "1946",
-            "bikini history",
-            "clothing origins",
-            "did you know",
-            "education",
-            "facts",
-            "fashion history",
-            "french history",
-            "history",
-            "history shorts",
-            "louis reard",
-            "paris",
-            "short history",
-            "swimsuit invention",
-            "unexpected history",
-            "vintage fashion"
-          ],
-          "publishedAt": "2026-07-05T08:24:18Z",
-          "thumbnail": "https://i.ytimg.com/vi/ongtmecwyME/mqdefault.jpg",
-          "views": 1235,
-          "likes": 12,
-          "comments": 0,
-          "playlist_ids": [
-            "PLKz3dl1lEDLM"
-          ],
-          "playlists": [
-            "Forgotten Ancient Technology"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 71.46,
           "subs_gained": 0
         }
       ]
