@@ -309,5 +309,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "FQsqfzoQ1Ak",
+    "run_id": "29553793987",
+    "stage_dir_name": "20260717_040145_short",
+    "title": "A King Threw a Concert on a River \u2014 and Changed Music History",
+    "published_at": "2026-07-17T04:03:42.658229+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
