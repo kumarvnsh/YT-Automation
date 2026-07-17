@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-17T13:28:21.199746+00:00",
+      "updated": "2026-07-17T19:08:39.963558+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -51,8 +51,8 @@
           ],
           "publishedAt": "2026-07-17T13:04:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 71,
-          "likes": 1,
+          "views": 818,
+          "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -84,8 +84,8 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 429,
-          "likes": 6,
+          "views": 459,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -115,7 +115,7 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 781,
+          "views": 785,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [],
@@ -146,12 +146,14 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 744,
+          "views": 748,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 58.32000000000001,
+          "subs_gained": 0
         },
         {
           "id": "MkleVVyV5zg",
@@ -177,12 +179,14 @@
           ],
           "publishedAt": "2026-07-15T13:04:02Z",
           "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
-          "views": 862,
+          "views": 860,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 50.529999999999994,
+          "subs_gained": 0
         },
         {
           "id": "nHLzJ1AL_hI",
@@ -214,7 +218,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.95,
+          "avg_view_pct": 71.99,
           "subs_gained": 0
         },
         {
@@ -249,7 +253,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.85,
+          "avg_view_pct": 40.43,
           "subs_gained": 0
         },
         {
@@ -287,7 +291,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 53.98,
+          "avg_view_pct": 54.14,
           "subs_gained": 1
         },
         {
@@ -325,7 +329,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.07,
+          "avg_view_pct": 71.94,
           "subs_gained": 0
         },
         {
@@ -363,7 +367,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.05,
+          "avg_view_pct": 56.37,
           "subs_gained": 0
         },
         {
@@ -401,7 +405,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 114.91,
+          "avg_view_pct": 114.75999999999999,
           "subs_gained": 0
         },
         {
@@ -439,7 +443,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.14,
+          "avg_view_pct": 65.26,
           "subs_gained": 1
         },
         {
@@ -476,7 +480,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 73.43,
+          "avg_view_pct": 73.19,
           "subs_gained": 0
         },
         {
@@ -589,7 +593,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.41,
+          "avg_view_pct": 67.5,
           "subs_gained": 0
         },
         {
@@ -774,7 +778,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 49.39,
+          "avg_view_pct": 49.27,
           "subs_gained": 0
         },
         {
@@ -886,7 +890,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 97.92,
+          "avg_view_pct": 97.41,
           "subs_gained": 0
         },
         {
@@ -1746,7 +1750,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 57.54,
+          "avg_view_pct": 57.43000000000001,
           "subs_gained": 1
         },
         {
