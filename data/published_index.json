@@ -323,5 +323,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Ec6_nSqgo0Q",
+    "run_id": "29582371840",
+    "stage_dir_name": "20260717_130156_short",
+    "title": "Disneyland's Opening Day Was an Absolute Disaster \u2014 Walt Didn't Care",
+    "published_at": "2026-07-17T13:04:53.333522+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

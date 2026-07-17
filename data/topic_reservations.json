@@ -142,5 +142,14 @@
     "slot": "morning",
     "date": "2026-07-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260717_130156_short",
+    "title": "Disneyland's Opening Day Was an Absolute Disaster \u2014 Walt Didn't Care",
+    "fingerprint": "absolute_care_day_didn_disaster_disneyland_opening_s_t_walt_was",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-17",
+    "status": "reserved"
   }
 ]
