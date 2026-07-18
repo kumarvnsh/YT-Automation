@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-18T13:15:02.254416+00:00",
+      "updated": "2026-07-18T13:50:39.206176+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -86,7 +86,7 @@
           ],
           "publishedAt": "2026-07-18T05:32:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
-          "views": 938,
+          "views": 933,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -211,7 +211,7 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 857,
+          "views": 863,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [],
@@ -308,7 +308,7 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 880,
+          "views": 878,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -415,7 +415,7 @@
           ],
           "publishedAt": "2026-07-14T04:03:38Z",
           "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 752,
+          "views": 751,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
