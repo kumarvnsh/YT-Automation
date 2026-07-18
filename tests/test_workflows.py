@@ -8,6 +8,22 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 class WorkflowRegressionTests(unittest.TestCase):
+    def test_astrotold_publish_workflow_is_channel_isolated(self) -> None:
+        workflow = (ROOT / ".github/workflows/publish-astrotold.yml").read_text()
+        required_fragments = (
+            "channels/astrotold/config.yaml",
+            "ASTROTOLD_YT_CLIENT_SECRET_JSON_B64",
+            "ASTROTOLD_YT_TOKEN_JSON_B64",
+            "channels/astrotold/secrets",
+            "CHANNEL_LABEL=astrotold",
+            "channels/astrotold/data/topic_reservations.json",
+            "export PUBLISH_SLOT=morning",
+            "export PUBLISH_SLOT=evening",
+        )
+        for fragment in required_fragments:
+            with self.subTest(fragment=fragment):
+                self.assertIn(fragment, workflow)
+
     def test_publish_preserves_stage_until_artifact_upload(self) -> None:
         workflow = (ROOT / ".github/workflows/publish.yml").read_text()
         self.assertIn('PRESERVE_STAGE_ARTIFACT: "true"', workflow)

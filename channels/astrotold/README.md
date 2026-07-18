@@ -59,6 +59,38 @@ compliance before changing `youtube.privacy_status` to `public`.
 The dry run and `--no-upload` run above create material only in
 `channels/astrotold/output/`. They do not upload a video.
 
+## GitHub Actions scheduling
+
+The **Publish Astrotold Video** workflow is a separate manual-dispatch workflow
+that uses only Astrotold credentials and state. In the repository's **Settings
+→ Secrets and variables → Actions**, add these two base64 values from the
+verified local files:
+
+```bash
+base64 -i channels/astrotold/secrets/client_secret.json | pbcopy
+base64 -i channels/astrotold/secrets/token.json | pbcopy
+```
+
+Save them as `ASTROTOLD_YT_CLIENT_SECRET_JSON_B64` and
+`ASTROTOLD_YT_TOKEN_JSON_B64`, respectively. The workflow also uses the shared
+`ANTHROPIC_API_KEY`, `PEXELS_API_KEY`, and `OPENAI_API_KEY` repository secrets.
+Dispatch it first from the Actions tab with `dry_run: true`, then with
+`no_upload: true`, before allowing real uploads.
+
+For cron-job.org, create two jobs in the `Asia/Kolkata` timezone at **09:00**
+and **18:00**. Each job sends a `POST` to:
+
+```text
+https://api.github.com/repos/kumarvnsh/YT-Automation/actions/workflows/publish-astrotold.yml/dispatches
+```
+
+Use a GitHub token you create (do not store the token in this repository), an
+`Accept: application/vnd.github+json` header, and this request body:
+
+```json
+{"ref":"master","inputs":{"scheduled":"true"}}
+```
+
 ## Daily scheduling
 
 After the private-upload review is complete, add these local-time entries with

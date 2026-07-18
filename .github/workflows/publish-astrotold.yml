@@ -1,0 +1,148 @@
+name: Publish Astrotold Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Override the generated topic (optional)"
+        type: string
+        required: false
+        default: ""
+      privacy_status:
+        description: "Override the configured YouTube privacy status (optional)"
+        type: choice
+        options: ["", private, unlisted, public]
+        default: ""
+      dry_run:
+        description: "Generate only the script and metadata"
+        type: boolean
+        default: false
+      no_upload:
+        description: "Render without uploading"
+        type: boolean
+        default: false
+      scheduled:
+        description: "Set true when dispatched by cron-job.org"
+        type: boolean
+        default: false
+
+concurrency:
+  group: publish-astrotold
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ASTROTOLD_YT_CLIENT_SECRET_JSON_B64: ${{ secrets.ASTROTOLD_YT_CLIENT_SECRET_JSON_B64 }}
+      ASTROTOLD_YT_TOKEN_JSON_B64: ${{ secrets.ASTROTOLD_YT_TOKEN_JSON_B64 }}
+      YOUTUBE_CLIENT_SECRET_FILE: channels/astrotold/secrets/client_secret.json
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Reconstruct Astrotold YouTube credentials
+        run: |
+          mkdir -p channels/astrotold/secrets
+          echo "$ASTROTOLD_YT_CLIENT_SECRET_JSON_B64" | base64 --decode > channels/astrotold/secrets/client_secret.json
+          echo "$ASTROTOLD_YT_TOKEN_JSON_B64" | base64 --decode > channels/astrotold/secrets/token.json
+
+      - name: Run Astrotold pipeline (time-budgeted --step loop)
+        id: run_pipeline
+        env:
+          PUBLISH_SCHEDULED: ${{ github.event.inputs.scheduled }}
+          PRESERVE_STAGE_ARTIFACT: "true"
+        run: |
+          TOPIC="${{ github.event.inputs.topic }}"
+          PRIVACY="${{ github.event.inputs.privacy_status }}"
+          DRY_RUN="${{ github.event.inputs.dry_run }}"
+          NO_UPLOAD="${{ github.event.inputs.no_upload }}"
+          export CHANNEL_LABEL=astrotold
+
+          HOUR_IST=$(TZ=Asia/Kolkata date +%H)
+          if [ "$HOUR_IST" -lt 14 ]; then
+            export PUBLISH_SLOT=morning
+          else
+            export PUBLISH_SLOT=evening
+          fi
+          echo "Using Astrotold publish slot: $PUBLISH_SLOT"
+
+          ARGS=(--config channels/astrotold/config.yaml --format short --step)
+          [ -n "$TOPIC" ] && ARGS+=(--topic "$TOPIC")
+          [ -n "$PRIVACY" ] && ARGS+=(--privacy "$PRIVACY")
+          [ "$DRY_RUN" = "true" ] && ARGS+=(--dry-run)
+          [ "$NO_UPLOAD" = "true" ] && ARGS+=(--no-upload)
+
+          STATUS="TIMEOUT"
+          END=$((SECONDS + 5*3600))
+          while [ "$SECONDS" -lt "$END" ]; do
+            set +e
+            OUT=$(python -m src.main "${ARGS[@]}" 2>&1)
+            PY_STATUS=$?
+            set -e
+            echo "$OUT"
+            if [ "$PY_STATUS" -ne 0 ]; then STATUS="ERROR"; break; fi
+            if echo "$OUT" | grep -q "STATUS: DONE"; then STATUS="DONE"; break; fi
+            if echo "$OUT" | grep -q "STATUS: ERROR"; then STATUS="ERROR"; break; fi
+          done
+          echo "pipeline_status=$STATUS" >> "$GITHUB_OUTPUT"
+          if [ "$STATUS" != "DONE" ]; then
+            echo "Pipeline did not complete successfully: $STATUS"
+            exit 1
+          fi
+
+      - name: Resolve Astrotold stage directory
+        id: stage
+        if: always()
+        run: |
+          STAGE_DIR=$(ls -td channels/astrotold/output/*/ 2>/dev/null | head -1 || true)
+          STAGE_NAME=$(basename "${STAGE_DIR%/}" 2>/dev/null || true)
+          echo "stage_dir=$STAGE_DIR" >> "$GITHUB_OUTPUT"
+          echo "stage_name=$STAGE_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Commit Astrotold dedup state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin master
+          for state_file in \
+            channels/astrotold/data/used_topics.json \
+            channels/astrotold/data/published_index.json \
+            channels/astrotold/data/topic_reservations.json; do
+            [ -f "$state_file" ] && git add "$state_file"
+          done
+          if git diff --cached --quiet; then
+            echo "No Astrotold state changes to commit."
+          else
+            git commit -m "chore: update Astrotold publish state [skip ci]"
+            git push origin HEAD:master
+          fi
+
+      - name: Upload Astrotold run artifact
+        if: always() && steps.stage.outputs.stage_dir != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: astrotold-run-${{ steps.stage.outputs.stage_name }}
+          path: channels/astrotold/output/${{ steps.stage.outputs.stage_name }}
+          retention-days: 14
+          if-no-files-found: ignore
