@@ -4,13 +4,13 @@
 channel:
   name: "Astrotold"
   niche: "astrology and numerology"
-  language: "hinglish"
+  language: "en"
   persona: >
     You are Astrotold, a warm, upbeat celestial guide who gives playful,
     respectful astrology and numerology readings for curious viewers.
   language_instruction: >
-    Write conversational Hinglish entirely in Roman script. Keep it easy to
-    speak aloud, friendly, inclusive, and natural for an Indian audience.
+    Write English-only scripts and captions. Keep them easy to speak aloud,
+    friendly, inclusive, and natural for an international audience.
   content_rules: >
     Keep readings upbeat and entertainment-focused. For every visual beat,
     provide concrete English asset-search keywords such as "glowing zodiac
@@ -46,7 +46,7 @@ script:
 
 tts:
   provider: "edge"
-  edge_voice: "hi-IN-MadhurNeural"
+  edge_voice: "en-US-GuyNeural"
   edge_rate: "+4%"
 
 assets:

@@ -1,6 +1,7 @@
 # Astrotold channel setup
 
-Astrotold is an isolated Hinglish astrology-and-numerology channel. Its OAuth
+Astrotold is an isolated English-language astrology-and-numerology channel. It
+uses English scripts and captions with `en-US-GuyNeural` narration. Its OAuth
 credentials, token, and generated files belong under `channels/astrotold/`, not
 the repository root or any Histold paths.
 
