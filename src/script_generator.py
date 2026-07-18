@@ -15,6 +15,7 @@ import json
 import random
 import re
 from dataclasses import dataclass, field, asdict
+from datetime import date
 
 from .config import Config, base_dir, env
 from .topics import recent_titles, pick_angle, performance_examples, series_turn
@@ -52,6 +53,19 @@ _SYSTEM = (
 
 def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> str:
     persona = cfg.get("channel.persona", "").strip()
+    niche = (cfg.get("channel.niche") or "history / did-you-know").strip()
+    channel_rules = "\n".join(
+        rule
+        for rule in (
+            (cfg.get("channel.language_instruction") or "").strip(),
+            (cfg.get("channel.content_rules") or "").strip(),
+            (cfg.get("channel.safety_rules") or "").strip(),
+        )
+        if rule
+    )
+    task_context = f"TODAY'S DATE: {date.today().strftime('%-d %B %Y')}"
+    if channel_rules:
+        task_context += f"\n{channel_rules}"
     if fmt == "short":
         secs = cfg.get("script.shorts_target_seconds", 20)
         seg_hint = "3 to 5 short segments" if secs <= 30 else "5 to 7 short segments"
@@ -96,7 +110,8 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
 
     return f"""{persona}
 
-TASK: Write ONE {fmt}-form YouTube video script in the "history / did-you-know" niche.
+TASK: Write ONE {fmt}-form YouTube video script in the "{niche}" niche.
+{task_context}
 {direction}{perf_block}
 
 Constraints:
