@@ -365,5 +365,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "lwlDyo1eJoU",
+    "run_id": "29635519242",
+    "stage_dir_name": "20260718_071930_short",
+    "title": "The Secret Book That Brought Down America's Biggest Company",
+    "published_at": "2026-07-18T07:21:00.005198+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
