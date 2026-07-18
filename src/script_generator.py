@@ -63,7 +63,8 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         )
         if rule
     )
-    task_context = f"TODAY'S DATE: {date.today().strftime('%-d %B %Y')}"
+    today = date.today()
+    task_context = f"TODAY'S DATE: {today.day} {today:%B %Y}"
     if channel_rules:
         task_context += f"\n{channel_rules}"
     if fmt == "short":
