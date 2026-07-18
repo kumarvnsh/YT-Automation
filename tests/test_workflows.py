@@ -52,6 +52,11 @@ class WorkflowRegressionTests(unittest.TestCase):
             "channels/astrotold/data/published_index.json",
             "channels/astrotold/data/topic_reservations.json",
             "git push origin HEAD:master",
+            "PUSHED=false",
+            "PUSHED=true",
+            'if [ "$PUSHED" != "true" ]; then',
+            "Astrotold state could not be persisted after retries.",
+            "exit 1",
         )
         for fragment in required_fragments:
             with self.subTest(fragment=fragment):

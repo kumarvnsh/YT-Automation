@@ -187,6 +187,7 @@ jobs:
           # Union-merge our channel state with the current origin tip, then
           # rebuild the commit directly on that tip. This preserves concurrent
           # scheduled-slot reservations instead of failing on JSON conflicts.
+          PUSHED=false
           for attempt in 1 2 3; do
             git fetch origin master
             python scripts/merge_json_state.py --ref origin/master
@@ -197,14 +198,20 @@ jobs:
               channels/astrotold/data/topic_reservations.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "No Astrotold state changes to commit."
+              PUSHED=true
               break
             fi
             git commit -m "chore: update Astrotold publish state [skip ci]"
             if git push origin HEAD:master; then
+              PUSHED=true
               break
             fi
             echo "Push raced with another run (attempt $attempt) — refetching and remerging."
           done
+          if [ "$PUSHED" != "true" ]; then
+            echo "Astrotold state could not be persisted after retries."
+            exit 1
+          fi
 
       - name: Upload Astrotold run artifact
         if: always() && steps.stage.outputs.stage_dir != ''
