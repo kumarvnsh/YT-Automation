@@ -61,11 +61,21 @@ You'll get a public URL like `https://kumarvnsh.github.io/YT-Automation/`.
 ## 5. cron-job.org schedule (2 shorts/day)
 
 Publishing is triggered externally by cron-job.org (GitHub's own cron proved unreliable).
-Current cadence (configured 2026-07-10): **2 shorts/day at 9:00 AM and 6:00 PM IST**.
+Current cadence (updated 2026-07-18): **2 shorts/day at 9:30 AM and 9:30 PM IST**.
+The evening slot moved from 6:30 PM on 2026-07-18: 13:00 UTC is a dead zone for
+both the US and India, while 16:00 UTC lands at US midday.
+
+A video goes live roughly **3 minutes after** its trigger fires (generate, render,
+upload), so the two slots publish at ~04:03 and ~16:03 UTC. Aim the trigger, not
+the publish time.
+
+Keep the evening trigger before ~23:30 IST. The daily cap counts uploads per IST
+day, so a publish that rolls past midnight IST desyncs the counter and would let a
+third upload through.
 
 1. Log into cron-job.org → Cronjobs.
-2. Keep exactly **two** jobs: one at **9:00 AM IST**, one at **6:00 PM IST** (job
-   timezone Asia/Kolkata; in UTC that is 03:30 and 12:30).
+2. Keep exactly **two** jobs: one at **9:30 AM IST**, one at **9:30 PM IST** (job
+   timezone Asia/Kolkata; in UTC that is 04:00 and 16:00).
 3. Both jobs use the identical request:
    - `POST https://api.github.com/repos/kumarvnsh/YT-Automation/actions/workflows/publish.yml/dispatches`
    - Body: `{"ref":"master","inputs":{"format":"short","scheduled":"true"}}`
