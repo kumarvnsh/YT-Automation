@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+from contextlib import contextmanager
 from datetime import date
 import os
 from pathlib import Path
 import subprocess
+import tempfile
+from typing import Iterator
 import unittest
 from unittest.mock import patch
 
@@ -83,16 +86,54 @@ class AstrotoldConfigTests(unittest.TestCase):
 
 
 class ChannelRunnerTests(unittest.TestCase):
-    def run_runner(self, *args: str) -> subprocess.CompletedProcess[str]:
+    @contextmanager
+    def isolated_runner(self) -> Iterator[tuple[Path, Path, Path, Path]]:
+        runner_source = Path("scripts/run_channel.sh").resolve()
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            project_root = Path(temporary_directory)
+            runner_path = project_root / "scripts/run_channel.sh"
+            runner_path.parent.mkdir()
+            runner_path.write_text(runner_source.read_text(encoding="utf-8"), encoding="utf-8")
+            runner_path.chmod(0o755)
+
+            config_path = project_root / "channels/astrotold/config.yaml"
+            config_path.parent.mkdir(parents=True)
+            config_path.write_text("channel: {}\n", encoding="utf-8")
+
+            venv_bin = project_root / ".venv/bin"
+            venv_bin.mkdir(parents=True)
+            (venv_bin / "activate").write_text(
+                'VIRTUAL_ENV="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"\n'
+                "export VIRTUAL_ENV\n"
+                'export PATH="$VIRTUAL_ENV/bin:$PATH"\n',
+                encoding="utf-8",
+            )
+            fake_python = venv_bin / "python"
+            fake_python.write_text(
+                "#!/bin/sh\n"
+                'printf "PUBLISH_SLOT=%s\\n" "$PUBLISH_SLOT" > "$RUNNER_CAPTURE"\n'
+                'printf "%s\\n" "$@" >> "$RUNNER_CAPTURE"\n',
+                encoding="utf-8",
+            )
+            fake_python.chmod(0o755)
+
+            yield project_root, runner_path, config_path, project_root / "python-invocation.txt"
+
+    def run_runner(
+        self,
+        project_root: Path,
+        runner_path: Path,
+        capture_path: Path,
+        *args: str,
+    ) -> subprocess.CompletedProcess[str]:
         environment = os.environ.copy()
-        environment["BASH_FUNC_python%%"] = (
-            '() { echo "PIPELINE_INVOKED" >&2; exit 99; }'
-        )
+        environment["RUNNER_CAPTURE"] = str(capture_path)
         return subprocess.run(
-            ["scripts/run_channel.sh", *args],
+            [str(runner_path), *args],
             capture_output=True,
             check=False,
-            cwd=Path.cwd(),
+            cwd=project_root,
             env=environment,
             text=True,
         )
@@ -116,18 +157,68 @@ class ChannelRunnerTests(unittest.TestCase):
         )
 
     def test_channel_runner_rejects_an_empty_config_before_the_pipeline(self) -> None:
-        result = self.run_runner("", "morning")
+        with self.isolated_runner() as (project_root, runner_path, _, capture_path):
+            result = self.run_runner(project_root, runner_path, capture_path, "", "morning")
+            self.assertFalse(capture_path.exists())
 
         self.assertEqual(result.returncode, 2)
         self.assertIn("ERROR: config path is required.", result.stderr)
-        self.assertNotIn("PIPELINE_INVOKED", result.stderr)
 
     def test_channel_runner_rejects_an_invalid_slot_before_the_pipeline(self) -> None:
-        result = self.run_runner("channels/astrotold/config.yaml", "midday")
+        with self.isolated_runner() as (project_root, runner_path, _, capture_path):
+            result = self.run_runner(
+                project_root,
+                runner_path,
+                capture_path,
+                "channels/astrotold/config.yaml",
+                "midday",
+            )
+            self.assertFalse(capture_path.exists())
 
         self.assertEqual(result.returncode, 2)
         self.assertIn("ERROR: publish slot must be 'morning' or 'evening'.", result.stderr)
-        self.assertNotIn("PIPELINE_INVOKED", result.stderr)
+
+    def test_channel_runner_rejects_a_missing_config_before_the_pipeline(self) -> None:
+        with self.isolated_runner() as (project_root, runner_path, _, capture_path):
+            result = self.run_runner(
+                project_root,
+                runner_path,
+                capture_path,
+                "channels/astrotold/missing.yaml",
+                "morning",
+            )
+            self.assertFalse(capture_path.exists())
+
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("ERROR: config path is not readable:", result.stderr)
+
+    def test_channel_runner_passes_the_slot_and_config_to_python(self) -> None:
+        with self.isolated_runner() as (project_root, runner_path, _, capture_path):
+            result = self.run_runner(
+                project_root,
+                runner_path,
+                capture_path,
+                "channels/astrotold/config.yaml",
+                "morning",
+            )
+            invocation = capture_path.read_text(encoding="utf-8").splitlines()
+            logs_path = project_root / "logs"
+
+            self.assertEqual(result.returncode, 0)
+            self.assertTrue(logs_path.is_dir())
+
+        self.assertEqual(
+            invocation,
+            [
+                "PUBLISH_SLOT=morning",
+                "-m",
+                "src.main",
+                "--config",
+                "channels/astrotold/config.yaml",
+                "--format",
+                "short",
+            ],
+        )
 
 
 if __name__ == "__main__":

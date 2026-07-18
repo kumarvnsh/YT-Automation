@@ -37,6 +37,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_DIR"
 
+if [ ! -f "$CONFIG_PATH" ] || [ ! -r "$CONFIG_PATH" ]; then
+  echo "ERROR: config path is not readable: $CONFIG_PATH" >&2
+  usage
+  exit 2
+fi
+
+mkdir -p "$PROJECT_DIR/logs"
+
 if [ -d ".venv" ]; then
   # shellcheck disable=SC1091
   source .venv/bin/activate
