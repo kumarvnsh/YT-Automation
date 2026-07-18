@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 from src.config import Config, base_dir, load_config
 from src.script_generator import _build_prompt
+from src.youtube_uploader import token_file
 
 
 class ChannelPromptTests(unittest.TestCase):
@@ -41,6 +42,9 @@ class ChannelPromptTests(unittest.TestCase):
 
 
 class AstrotoldConfigTests(unittest.TestCase):
+    def tearDown(self) -> None:
+        load_config()
+
     def test_astrotold_configuration_is_isolated_and_safe(self) -> None:
         config_path = Path("channels/astrotold/config.yaml")
 
@@ -48,7 +52,15 @@ class AstrotoldConfigTests(unittest.TestCase):
 
         self.assertEqual(cfg.get("channel.name"), "Astrotold")
         self.assertEqual(cfg.get("channel.niche"), "astrology and numerology")
+        self.assertEqual(cfg.get("channel.language"), "hinglish")
+        self.assertIn("Roman script", cfg.get("channel.language_instruction"))
+        self.assertIn("concrete English asset-search keywords", cfg.get("channel.content_rules"))
+        self.assertIn("Strictly for entertainment only", cfg.get("channel.safety_rules"))
+        self.assertIn("medical, legal, financial, or emergency advice", cfg.get("channel.safety_rules"))
         self.assertEqual(cfg.get("tts.edge_voice"), "hi-IN-MadhurNeural")
+        self.assertEqual(cfg.get("tts.edge_rate"), "+4%")
+        self.assertEqual(cfg.get("script.shorts_target_seconds"), 28)
+        self.assertFalse(cfg.get("youtube.enabled"))
         self.assertEqual(cfg.get("youtube.privacy_status"), "private")
         self.assertEqual(cfg.get("youtube.expected_channel_id"), "")
         self.assertEqual(cfg.get("output.dir"), "output")
@@ -56,6 +68,16 @@ class AstrotoldConfigTests(unittest.TestCase):
             base_dir() / cfg.get("output.dir"),
             config_path.parent.resolve() / "output",
         )
+        self.assertEqual(token_file(), config_path.parent.resolve() / "secrets/token.json")
+        self.assertFalse(cfg.get("output.delete_after_upload"))
+        self.assertEqual(cfg.get("output.keep_days"), 7)
+        self.assertFalse(cfg.get("meta.enabled"))
+
+        env_example = config_path.parent / ".env.example"
+        self.assertTrue(env_example.is_file())
+        env_example_text = env_example.read_text(encoding="utf-8")
+        for variable in ("ANTHROPIC_API_KEY", "OPENAI_API_KEY", "PEXELS_API_KEY"):
+            self.assertIn(f"{variable}=", env_example_text)
 
 
 if __name__ == "__main__":
