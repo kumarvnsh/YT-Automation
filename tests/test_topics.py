@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import json
 import tempfile
 import unittest
+from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
@@ -22,10 +24,13 @@ class TopicReservationTests(unittest.TestCase):
             "The Forgotten Library of Alexandria", "short", "morning", "job-a"
         )
 
+        self.assertEqual("job-a", reservation["job_id"])
         self.assertEqual("morning", reservation["slot"])
         self.assertTrue(reservation["fingerprint"])
+        self.assertEqual(date.today().isoformat(), reservation["date"])
         self.assertEqual("reserved", reservation["status"])
-        self.assertTrue((self.tmp / "data" / "topic_reservations.json").exists())
+        saved = json.loads((self.tmp / "data" / "topic_reservations.json").read_text())
+        self.assertEqual([reservation], saved)
 
     def test_near_duplicate_topic_is_rejected(self) -> None:
         topics.reserve_topic(
