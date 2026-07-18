@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from datetime import date
+import os
 from pathlib import Path
+import subprocess
 import unittest
 from unittest.mock import patch
 
@@ -81,6 +83,20 @@ class AstrotoldConfigTests(unittest.TestCase):
 
 
 class ChannelRunnerTests(unittest.TestCase):
+    def run_runner(self, *args: str) -> subprocess.CompletedProcess[str]:
+        environment = os.environ.copy()
+        environment["BASH_FUNC_python%%"] = (
+            '() { echo "PIPELINE_INVOKED" >&2; exit 99; }'
+        )
+        return subprocess.run(
+            ["scripts/run_channel.sh", *args],
+            capture_output=True,
+            check=False,
+            cwd=Path.cwd(),
+            env=environment,
+            text=True,
+        )
+
     def test_channel_runner_requires_config_and_publish_slot(self) -> None:
         runner_path = Path("scripts/run_channel.sh")
 
@@ -98,6 +114,20 @@ class ChannelRunnerTests(unittest.TestCase):
             'python -m src.main --config "$CONFIG_PATH" --format short',
             runner,
         )
+
+    def test_channel_runner_rejects_an_empty_config_before_the_pipeline(self) -> None:
+        result = self.run_runner("", "morning")
+
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("ERROR: config path is required.", result.stderr)
+        self.assertNotIn("PIPELINE_INVOKED", result.stderr)
+
+    def test_channel_runner_rejects_an_invalid_slot_before_the_pipeline(self) -> None:
+        result = self.run_runner("channels/astrotold/config.yaml", "midday")
+
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("ERROR: publish slot must be 'morning' or 'evening'.", result.stderr)
+        self.assertNotIn("PIPELINE_INVOKED", result.stderr)
 
 
 if __name__ == "__main__":

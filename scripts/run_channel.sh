@@ -14,6 +14,12 @@ fi
 CONFIG_PATH="${1:-}"
 PUBLISH_SLOT="${2:-}"
 
+if [ -z "$CONFIG_PATH" ]; then
+  echo "ERROR: config path is required." >&2
+  usage
+  exit 2
+fi
+
 case "$PUBLISH_SLOT" in
   morning|evening)
     ;;
