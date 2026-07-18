@@ -24,6 +24,39 @@ class WorkflowRegressionTests(unittest.TestCase):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, workflow)
 
+    def test_astrotold_publish_guard_blocks_duplicate_scheduled_uploads(self) -> None:
+        workflow = (ROOT / ".github/workflows/publish-astrotold.yml").read_text()
+        required_fragments = (
+            "actions: write",
+            "name: Duplicate-slot guard",
+            "if: github.event.inputs.scheduled == 'true'",
+            "workflows/publish-astrotold.yml/runs?per_page=20",
+            'TZ=Asia/Kolkata date +%F',
+            'Path("channels/astrotold/data/published_index.json")',
+            'entry.get("channel", "astrotold") != "astrotold"',
+            'if [ "$COUNT" -ge 2 ]',
+            'gh run cancel "$GITHUB_RUN_ID"',
+        )
+        for fragment in required_fragments:
+            with self.subTest(fragment=fragment):
+                self.assertIn(fragment, workflow)
+
+    def test_astrotold_publish_merges_state_before_commit_retries(self) -> None:
+        workflow = (ROOT / ".github/workflows/publish-astrotold.yml").read_text()
+        required_fragments = (
+            "for attempt in 1 2 3",
+            "git fetch origin master",
+            "python scripts/merge_json_state.py --ref origin/master",
+            "git reset --mixed origin/master",
+            "channels/astrotold/data/used_topics.json",
+            "channels/astrotold/data/published_index.json",
+            "channels/astrotold/data/topic_reservations.json",
+            "git push origin HEAD:master",
+        )
+        for fragment in required_fragments:
+            with self.subTest(fragment=fragment):
+                self.assertIn(fragment, workflow)
+
     def test_publish_preserves_stage_until_artifact_upload(self) -> None:
         workflow = (ROOT / ".github/workflows/publish.yml").read_text()
         self.assertIn('PRESERVE_STAGE_ARTIFACT: "true"', workflow)

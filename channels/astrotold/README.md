@@ -103,7 +103,12 @@ marks the run as scheduled:
 {"ref":"master","inputs":{"scheduled":"true"}}
 ```
 
-## Daily scheduling
+## Local-only daily scheduling
+
+Choose exactly one scheduler: either the cron-job.org/GitHub Actions setup
+above **or** the local cron setup below. Never enable both, or Astrotold can
+receive duplicate uploads. The following instructions are for local-only
+scheduling; skip them when using GitHub Actions.
 
 After the private-upload review is complete, add these local-time entries with
 `crontab -e` to publish one Astrotold Short at 09:00 and one at 18:00 each day:

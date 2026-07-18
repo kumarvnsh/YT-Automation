@@ -30,6 +30,9 @@ IDENTITY_KEYS = {
     "data/used_topics.json": ("title", "date"),
     "data/pending_approvals.json": ("run_id", "stage_dir_name"),
     "data/published_index.json": ("video_id",),
+    "channels/astrotold/data/topic_reservations.json": ("job_id",),
+    "channels/astrotold/data/used_topics.json": ("title", "date"),
+    "channels/astrotold/data/published_index.json": ("video_id",),
 }
 
 

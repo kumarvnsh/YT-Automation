@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from scripts.merge_json_state import merge_lists  # noqa: E402
+from scripts.merge_json_state import IDENTITY_KEYS, merge_lists  # noqa: E402
 
 
 class MergeListsTests(unittest.TestCase):
@@ -45,6 +45,20 @@ class MergeListsTests(unittest.TestCase):
         merged = merge_lists(remote, local, ("job_id",))
 
         self.assertEqual(["old", "run-a", "run-b"], [e["job_id"] for e in merged])
+
+    def test_astrotold_channel_state_uses_the_same_identity_rules(self) -> None:
+        self.assertEqual(
+            ("job_id",),
+            IDENTITY_KEYS["channels/astrotold/data/topic_reservations.json"],
+        )
+        self.assertEqual(
+            ("title", "date"),
+            IDENTITY_KEYS["channels/astrotold/data/used_topics.json"],
+        )
+        self.assertEqual(
+            ("video_id",),
+            IDENTITY_KEYS["channels/astrotold/data/published_index.json"],
+        )
 
 
 class WorkflowContractTests(unittest.TestCase):

@@ -32,6 +32,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write  # duplicate-slot guard lists runs and cancels its own
 
 jobs:
   publish:
@@ -48,6 +49,65 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # External scheduler retries and accidental double dispatches must not
+      # produce a second scheduled upload. Manual dispatches are never skipped.
+      - name: Duplicate-slot guard
+        if: github.event.inputs.scheduled == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          WINDOW_MIN=45
+          NOW=$(date -u +%s)
+          RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/publish-astrotold.yml/runs?per_page=20" \
+            --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | "\(.status) \(.conclusion) \(.created_at)"')
+          while read -r STATUS CONCLUSION CREATED; do
+            [ -z "$STATUS" ] && continue
+            if [ "$STATUS" = "queued" ] || [ "$STATUS" = "in_progress" ]; then
+              echo "Another Astrotold publish run is active ($CREATED) — skipping this one."
+              gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
+              sleep 60; exit 1
+            fi
+            if [ "$STATUS" = "completed" ] && [ "$CONCLUSION" = "success" ]; then
+              AGE_MIN=$(( (NOW - $(date -u -d "$CREATED" +%s)) / 60 ))
+              if [ "$AGE_MIN" -lt "$WINDOW_MIN" ]; then
+                echo "An Astrotold publish completed ${AGE_MIN}min ago ($CREATED) — skipping duplicate."
+                gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
+                sleep 60; exit 1
+              fi
+            fi
+          done <<< "$RUNS"
+
+          # Limit scheduled Astrotold uploads to two per IST day. The check is
+          # channel-local so it neither reads nor affects another channel.
+          TODAY_IST=$(TZ=Asia/Kolkata date +%F)
+          COUNT=$(python3 - "$TODAY_IST" <<'PY'
+          import json, sys
+          from datetime import datetime, timezone, timedelta
+          from pathlib import Path
+
+          path = Path("channels/astrotold/data/published_index.json")
+          entries = json.loads(path.read_text()) if path.exists() else []
+          ist = timezone(timedelta(hours=5, minutes=30))
+          count = 0
+          for entry in entries:
+              if not entry.get("scheduled") or entry.get("channel", "astrotold") != "astrotold":
+                  continue
+              try:
+                  day = datetime.fromisoformat(entry["published_at"]).astimezone(ist).date().isoformat()
+              except (KeyError, ValueError):
+                  continue
+              if day == sys.argv[1]:
+                  count += 1
+          print(count)
+          PY
+          )
+          if [ "$COUNT" -ge 2 ]; then
+            echo "Astrotold daily cap reached ($COUNT scheduled uploads today IST) — skipping."
+            gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
+            sleep 60; exit 1
+          fi
+          echo "No recent Astrotold publish and daily cap OK ($COUNT/2) — proceeding."
 
       - uses: actions/setup-python@v5
         with:
@@ -124,19 +184,27 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin master
-          for state_file in \
-            channels/astrotold/data/used_topics.json \
-            channels/astrotold/data/published_index.json \
-            channels/astrotold/data/topic_reservations.json; do
-            [ -f "$state_file" ] && git add "$state_file"
-          done
-          if git diff --cached --quiet; then
-            echo "No Astrotold state changes to commit."
-          else
+          # Union-merge our channel state with the current origin tip, then
+          # rebuild the commit directly on that tip. This preserves concurrent
+          # scheduled-slot reservations instead of failing on JSON conflicts.
+          for attempt in 1 2 3; do
+            git fetch origin master
+            python scripts/merge_json_state.py --ref origin/master
+            git reset --mixed origin/master
+            git add \
+              channels/astrotold/data/used_topics.json \
+              channels/astrotold/data/published_index.json \
+              channels/astrotold/data/topic_reservations.json 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "No Astrotold state changes to commit."
+              break
+            fi
             git commit -m "chore: update Astrotold publish state [skip ci]"
-            git push origin HEAD:master
-          fi
+            if git push origin HEAD:master; then
+              break
+            fi
+            echo "Push raced with another run (attempt $attempt) — refetching and remerging."
+          done
 
       - name: Upload Astrotold run artifact
         if: always() && steps.stage.outputs.stage_dir != ''
