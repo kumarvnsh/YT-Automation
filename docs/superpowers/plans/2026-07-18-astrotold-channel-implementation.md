@@ -50,7 +50,9 @@ Files:
   - topic angles for birth dates 6/15/24, monthly birth-number readings, name initials, lucky colour/number/day, current-month zodiac readings, and weekly zodiac guidance
   - 28-second Shorts, Claude with OpenAI fallback, and Edge TTS voice hi-IN-MadhurNeural at +4 percent
   - private YouTube uploads, category 22, blank expected channel ID, and Astro tags
-  - output under channels/astrotold/output, no automatic delete, seven-day retention
+  - output.dir set to `output` (because load_config() uses the config folder as
+    base_dir, the workflow stage path remains channels/astrotold/output), no
+    automatic delete, seven-day retention
   - safe root video, assets, quality, and notifications defaults
   - disabled Meta cross-posting without any Histold social IDs.
 - [ ] Step 4: Create the guide with these commands:
@@ -115,4 +117,3 @@ Files:
 - Spec coverage: Tasks 1-2 cover configurable prompting, Hinglish, current date, prediction guardrails, Hindi TTS, and configuration isolation. Task 3 covers two local slots; Task 4 isolates cloud credentials and state; Task 5 verifies activation.
 - Placeholder scan: Each task has concrete files, commands, configuration requirements, expected failure/pass states, and a commit.
 - Type consistency: channel.language_instruction, channel.content_rules, and channel.safety_rules are consistent across source, tests, and configuration. Slots are always morning or evening.
-

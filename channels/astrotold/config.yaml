@@ -1,0 +1,138 @@
+# Astrotold is intentionally self-contained: credentials, output, and state
+# live beside this configuration file rather than in the Histold channel paths.
+
+channel:
+  name: "Astrotold"
+  niche: "astrology and numerology"
+  language: "hinglish"
+  persona: >
+    You are Astrotold, a warm, upbeat celestial guide who gives playful,
+    respectful astrology and numerology readings for curious viewers.
+  language_instruction: >
+    Write conversational Hinglish entirely in Roman script. Keep it easy to
+    speak aloud, friendly, inclusive, and natural for an Indian audience.
+  content_rules: >
+    Keep readings upbeat and entertainment-focused. For every visual beat,
+    provide concrete English asset-search keywords such as "glowing zodiac
+    wheel", "close-up birthday calendar", "golden number six", "colorful
+    initial letter", "moon over city skyline", or "crystal ball hands".
+  safety_rules: >
+    Strictly for entertainment only: never promise outcomes or claim certainty.
+    Do not provide medical, legal, financial, or emergency advice, and never
+    discourage viewers from seeking qualified professional help.
+  topic_source: "angles"
+  trend_region: "india"
+  angles:
+    - "What birth dates 6, 15, and 24 reveal in playful numerology"
+    - "Current-month guidance for each birth-number group"
+    - "Fun personality cues for name initials"
+    - "Lucky colour, number, and day for an entertainment reading"
+    - "Current-month zodiac reading"
+    - "Weekly zodiac guidance for every sign"
+
+series:
+  name: ""
+  every: 3
+  direction: ""
+
+script:
+  provider: "anthropic"
+  routing: "fallback"
+  fallback_provider: "openai"
+  anthropic_model: "claude-sonnet-4-6"
+  openai_model: "gpt-4o-mini"
+  shorts_target_seconds: 28
+  longform_target_seconds: 420
+
+tts:
+  provider: "edge"
+  edge_voice: "hi-IN-MadhurNeural"
+  edge_rate: "+4%"
+
+assets:
+  provider: "pexels"
+  per_segment_clips: 3
+  prefer_video: true
+  orientation_short: "portrait"
+  orientation_long: "landscape"
+
+video:
+  mode: "broll"
+  short:
+    width: 1080
+    height: 1920
+    fps: 30
+  long:
+    width: 1920
+    height: 1080
+    fps: 30
+  encode:
+    preset: "veryfast"
+    crf: 23
+  color_grade:
+    enabled: true
+    filter: "eq=contrast=1.05:saturation=0.9:gamma=0.95"
+  captions:
+    enabled: true
+    font: "Arial"
+    fontsize_short: 96
+    fontsize_long: 56
+    outline: 6
+    words_per_beat: 4
+    margin_bottom: 220
+    margin_top: 380
+    primary_color: "&H00FFFFFF"
+    outline_color: "&H00000000"
+  background_music:
+    enabled: true
+    volume: 0.12
+
+quality:
+  enabled: true
+  min_duration_ratio: 0.75
+  max_duration_ratio: 1.35
+  banned_terms: ["graphic sexual", "extreme gore"]
+
+youtube:
+  enabled: true
+  privacy_status: "private"
+  category_id: "22"
+  made_for_kids: false
+  # Leave blank until the verified Astrotold channel ID is available.
+  expected_channel_id: ""
+  default_tags:
+    - "astrology"
+    - "numerology"
+    - "zodiac"
+    - "horoscope"
+    - "Astrotold"
+    - "shorts"
+
+republish:
+  auto: false
+  view_threshold: 100
+  min_age_hours: 30
+  max_age_days: 13
+  max_per_check: 1
+  mode: "repost"
+
+meta:
+  enabled: false
+  post_to_facebook: false
+  post_to_instagram: false
+  api_version: "v21.0"
+  hashtags: ["#astrology", "#numerology", "#zodiac", "#shorts"]
+
+notifications:
+  enabled: false
+  channel: "openwa"
+  notify_on_start: false
+  notify_on_success: false
+  notify_on_failure: true
+  notify_on_credits: true
+
+output:
+  # load_config() makes this config directory the base directory.
+  dir: "output"
+  delete_after_upload: false
+  keep_days: 7
