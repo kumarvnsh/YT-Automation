@@ -124,6 +124,33 @@ def reserve_topic(title: str, fmt: str, slot: str, job_id: str) -> dict:
     return reservation
 
 
+def performance_examples(min_views: int = 50, k: int = 4) -> tuple[list[str], list[str]]:
+    """Past titles split by like-rate (likes/views): (winners, losers).
+
+    Like-rate is our retention proxy — Studio retention data isn't in the API
+    export. Videos below min_views are ignored: 1 like on 12 views is noise.
+    """
+    path = base_dir() / "data" / "analytics.json"
+    if not path.exists():
+        return [], []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return [], []
+    videos = []
+    for channel in (data.get("channels") or {"_": data}).values():
+        videos += channel.get("videos") or []
+    rated = [
+        ((v.get("likes") or 0) / v["views"], v["title"])
+        for v in videos
+        if (v.get("views") or 0) >= min_views and v.get("title")
+    ]
+    rated.sort(reverse=True)
+    winners = [t for rate, t in rated[:k] if rate >= 0.025]
+    losers = [t for rate, t in rated[-k:] if rate < 0.01]
+    return winners, losers
+
+
 def record_topic(title: str, fmt: str) -> None:
     """Persist a produced topic so future runs don't repeat it."""
     used = _load_used()

@@ -17,7 +17,7 @@ import re
 from dataclasses import dataclass, field, asdict
 
 from .config import Config, base_dir, env
-from .topics import recent_titles, pick_angle
+from .topics import recent_titles, pick_angle, performance_examples
 
 
 @dataclass
@@ -74,10 +74,20 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         else:
             direction = f"Today's creative angle to explore: {pick_angle(cfg)}"
 
+    # Like-rate feedback: what this channel's audience actually engaged with.
+    winners, losers = performance_examples()
+    perf_block = ""
+    if winners:
+        perf_block = ("\n\nThese past videos scored HIGHEST with this audience — favour "
+                      "topics and structures like them:\n- " + "\n- ".join(winners))
+        if losers:
+            perf_block += ("\nThese scored LOWEST — avoid this kind of topic:\n- "
+                           + "\n- ".join(losers))
+
     return f"""{persona}
 
 TASK: Write ONE {fmt}-form YouTube video script in the "history / did-you-know" niche.
-{direction}
+{direction}{perf_block}
 
 Constraints:
 - Total narration MUST be {lo}-{hi} words. Count your words before answering and
