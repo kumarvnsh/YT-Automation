@@ -337,5 +337,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "jbs777oROMY",
+    "run_id": "29629829645",
+    "stage_dir_name": "20260718_040133_short",
+    "title": "The Trojan War Was Retold for 400 Years Before Anyone Wrote It Down",
+    "published_at": "2026-07-18T04:03:36.015399+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
