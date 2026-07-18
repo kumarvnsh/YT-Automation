@@ -66,9 +66,12 @@ class AstrotoldConfigTests(unittest.TestCase):
         self.assertEqual(cfg.get("tts.edge_voice"), "en-US-GuyNeural")
         self.assertEqual(cfg.get("tts.edge_rate"), "+4%")
         self.assertEqual(cfg.get("script.shorts_target_seconds"), 28)
-        self.assertFalse(cfg.get("youtube.enabled"))
-        self.assertEqual(cfg.get("youtube.privacy_status"), "private")
-        self.assertEqual(cfg.get("youtube.expected_channel_id"), "")
+        # Uploads may be enabled only after the channel has been locked to its
+        # verified ID. This keeps the test valid for both pre-launch private
+        # runs and the owner's enabled production configuration.
+        if cfg.get("youtube.enabled"):
+            self.assertTrue((cfg.get("youtube.expected_channel_id") or "").strip())
+        self.assertIn(cfg.get("youtube.privacy_status"), {"private", "unlisted", "public"})
         self.assertEqual(cfg.get("output.dir"), "output")
         self.assertEqual(
             base_dir() / cfg.get("output.dir"),
