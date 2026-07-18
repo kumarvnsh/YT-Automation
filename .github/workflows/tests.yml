@@ -1,0 +1,52 @@
+name: Tests
+
+# Runs on code changes only. The scheduled analytics/publish jobs commit to
+# data/ constantly and carry [skip ci], so they never reach this workflow.
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "data/**"
+      - "output/**"
+      - "logs/**"
+  pull_request:
+    paths-ignore:
+      - "data/**"
+      - "output/**"
+      - "logs/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      # Every external boundary (LLM, TTS, Pexels, ffmpeg, YouTube, HTTP) is
+      # patched in the suite, so this needs no secrets and makes no network
+      # calls. ffmpeg is deliberately not installed — if a test ever needs it,
+      # that test is reaching a boundary it should be mocking.
+      # `unittest discover` exits 0 when it collects nothing (a missing
+      # tests/__init__.py is enough to cause that), which is how an unparseable
+      # test module once sat broken unnoticed. Fail if the count looks wrong.
+      - name: Run tests
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -t . -v 2>&1 | tee result.txt
+          RAN=$(grep -oE '^Ran [0-9]+ test' result.txt | grep -oE '[0-9]+')
+          echo "collected $RAN tests"
+          if [ "${RAN:-0}" -lt 80 ]; then
+            echo "::error::expected at least 80 tests, collected ${RAN:-0} — discovery is broken"
+            exit 1
+          fi
