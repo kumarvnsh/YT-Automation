@@ -351,5 +351,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "FDUlF365H28",
+    "run_id": "29632348787",
+    "stage_dir_name": "20260718_053030_short",
+    "title": "One Weather Report Nearly Cancelled D-Day | History's Almost Moments",
+    "published_at": "2026-07-18T05:32:46.272798+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
