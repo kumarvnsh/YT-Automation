@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-18T13:50:39.206176+00:00",
+      "updated": "2026-07-18T19:03:57.098873+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "-qkDx9745Y8",
+          "title": "England Expelled Every Jewish Person \u2014 On the Most Haunting Day Possible",
+          "description": "In 1290, King Edward I signed an order banishing all Jews from England \u2014 and the date was no accident. It fell on Tisha B'Av, the ancient day of mourning already tied to centuries of Jewish catastrophe. The exiles weren't allowed to return for 365 years. #history #didyouknow #medievalhistory",
+          "tags": [
+            "did you know",
+            "edict of expulsion",
+            "education",
+            "edward i",
+            "england history",
+            "exile",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "jewish history",
+            "medieval england",
+            "religious history",
+            "shorts",
+            "tisha bav",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-18T16:04:05Z",
+          "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
+          "views": 580,
+          "likes": 12,
+          "comments": 4,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "lwlDyo1eJoU",
           "title": "They Tried to Erase This Book\u2014It Destroyed Them Instead",
           "description": "Enron was worth $70 billion \u2014 until one quiet accountant noticed a hidden set of books that made it all a lie. The dark ledger revealed billions in fake profits, wiping out thousands of workers' retirement savings overnight. It remains the most stunning accounting fraud in American corporate history. #Enron #corporatefraud #historyfacts",
@@ -54,7 +86,7 @@
           ],
           "publishedAt": "2026-07-18T07:20:28Z",
           "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
-          "views": 194,
+          "views": 244,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -86,7 +118,7 @@
           ],
           "publishedAt": "2026-07-18T05:32:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
-          "views": 933,
+          "views": 942,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -118,8 +150,8 @@
           ],
           "publishedAt": "2026-07-18T04:03:00Z",
           "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
-          "views": 773,
-          "likes": 12,
+          "views": 776,
+          "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -147,8 +179,8 @@
           ],
           "publishedAt": "2026-07-17T13:04:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 838,
-          "likes": 14,
+          "views": 839,
+          "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -180,12 +212,14 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 600,
-          "likes": 8,
+          "views": 634,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 57.02,
+          "subs_gained": 0
         },
         {
           "id": "9KkikPjPHQc",
@@ -216,7 +250,9 @@
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 58.60999999999999,
+          "subs_gained": 0
         },
         {
           "id": "twmBUwdHyG0",
@@ -242,13 +278,13 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 798,
+          "views": 799,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.32000000000001,
+          "avg_view_pct": 48.13,
           "subs_gained": 0
         },
         {
@@ -281,8 +317,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 50.529999999999994,
-          "subs_gained": 0
+          "avg_view_pct": 57.48,
+          "subs_gained": 2
         },
         {
           "id": "nHLzJ1AL_hI",
@@ -308,13 +344,13 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 878,
+          "views": 880,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.99,
+          "avg_view_pct": 71.25,
           "subs_gained": 0
         },
         {
@@ -349,7 +385,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.43,
+          "avg_view_pct": 40.33,
           "subs_gained": 0
         },
         {
@@ -387,7 +423,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.14,
+          "avg_view_pct": 54.15,
           "subs_gained": 1
         },
         {
@@ -425,7 +461,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.94,
+          "avg_view_pct": 72.05,
           "subs_gained": 0
         },
         {
@@ -539,7 +575,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.26,
+          "avg_view_pct": 65.61,
           "subs_gained": 1
         },
         {
@@ -576,7 +612,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 73.19,
+          "avg_view_pct": 73.08,
           "subs_gained": 0
         },
         {
@@ -986,7 +1022,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 97.41,
+          "avg_view_pct": 97.15,
           "subs_gained": 0
         },
         {
@@ -1162,7 +1198,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 53.65,
+          "avg_view_pct": 54.89999999999999,
           "subs_gained": 1
         },
         {
@@ -1340,7 +1376,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 61.67,
+          "avg_view_pct": 61.73,
           "subs_gained": 0
         },
         {
@@ -1770,45 +1806,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 99.27,
-          "subs_gained": 0
-        },
-        {
-          "id": "1v8zY1sWPDs",
-          "title": "The General Twice Shivaji's Size Thought He'd Win Easily \u2014 He Was Wrong",
-          "description": "In 1659, Mughal-allied general Afzal Khan marched with a massive army to crush a young Maratha king named Shivaji Maharaj \u2014 and walked straight into one of history's greatest tactical traps. Shivaji's genius wasn't just courage; it was outsmarting a far larger force through intelligence, preparation, and nerves of steel. This is the rivalry that defined an empire. #ShivajiMaharaj #MarathaEmpire #IndianHistory",
-          "tags": [
-            "afzal khan",
-            "bijapur sultanate",
-            "chhatrapati shivaji",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "indian history",
-            "maratha empire",
-            "medieval india",
-            "mughal empire",
-            "pratapgad",
-            "shivaji maharaj",
-            "short history",
-            "warrior kings"
-          ],
-          "publishedAt": "2026-07-06T03:33:13Z",
-          "thumbnail": "https://i.ytimg.com/vi/1v8zY1sWPDs/mqdefault.jpg",
-          "views": 761,
-          "likes": 5,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 40.36,
+          "avg_view_pct": 98.99,
           "subs_gained": 0
         }
       ]
