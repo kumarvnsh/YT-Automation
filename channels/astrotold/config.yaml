@@ -96,11 +96,11 @@ quality:
 youtube:
   # Keep uploads disabled until the owner verifies and locks this channel ID.
   enabled: false
-  privacy_status: "private"
+  privacy_status: "public"
   category_id: "22"
   made_for_kids: false
   # Leave blank until the verified Astrotold channel ID is available.
-  expected_channel_id: ""
+  expected_channel_id: "UClCsmM8etN14YjUJ3mMJA8Q"
   default_tags:
     - "astrology"
     - "numerology"
