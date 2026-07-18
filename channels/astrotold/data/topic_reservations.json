@@ -34,5 +34,14 @@
     "slot": "manual",
     "date": "2026-07-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260718_183431_short",
+    "title": "The Universe Just Unlocked Your Lucky Colour, Number & Day Today",
+    "fingerprint": "colour_day_just_lucky_number_today_universe_unlocked_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-18",
+    "status": "reserved"
   }
 ]
