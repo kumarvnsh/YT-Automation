@@ -38,7 +38,7 @@ by `whoami_youtube.py` into `youtube.expected_channel_id` in
 `channels/astrotold/config.yaml`, then set `youtube.enabled` to `true` while
 leaving `youtube.privacy_status` set to `private`.
 
-4. Generate and upload only for private review:
+4. Run render-only checks (these do not upload):
 
 ```bash
 python -m src.main --config channels/astrotold/config.yaml --format short --dry-run
@@ -46,9 +46,14 @@ python -m src.main --config channels/astrotold/config.yaml --format short --no-u
 ```
 
 The channel begins with uploads disabled as a safety lock. After enabling it
-for the verified ID, review two private uploads in YouTube Studio for accuracy,
-presentation, and policy compliance before changing
-`youtube.privacy_status` to `public`.
+for the verified ID, make two private review uploads with:
+
+```bash
+python -m src.main --config channels/astrotold/config.yaml --format short
+```
+
+Review both uploads in YouTube Studio for accuracy, presentation, and policy
+compliance before changing `youtube.privacy_status` to `public`.
 
 The dry run and `--no-upload` run above create material only in
 `channels/astrotold/output/`. They do not upload a video.
