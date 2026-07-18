@@ -17,7 +17,7 @@ import re
 from dataclasses import dataclass, field, asdict
 
 from .config import Config, base_dir, env
-from .topics import recent_titles, pick_angle, performance_examples
+from .topics import recent_titles, pick_angle, performance_examples, series_turn
 
 
 @dataclass
@@ -63,16 +63,26 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     avoid = recent_titles()
     avoid_block = "\n".join(f"- {t}" for t in avoid) if avoid else "(none yet)"
 
-    # Topic direction: an explicit override wins; otherwise trend-aware
-    # signals, or the curated angle bank.
+    # Topic direction: an explicit override wins, then a series episode when
+    # one is due, then trend-aware signals or the curated angle bank.
+    series = None if topic_override else series_turn(cfg)
     if topic_override:
         direction = f"Today's REQUIRED topic (do not deviate): {topic_override}"
+    elif series:
+        direction = _series_direction(cfg, series)
     else:
         source = cfg.get("channel.topic_source", "angles")
         if source in ("trends", "on_this_day", "blend"):
             direction = _trend_direction(cfg, source)
         else:
             direction = f"Today's creative angle to explore: {pick_angle(cfg)}"
+
+    # A series episode carries its name in the title so the run is recognisable.
+    series_title_rule = (
+        f'\n- This is a "{series}" episode: the title MUST end with " | {series}", '
+        "and the whole thing (episode title + suffix) must still fit in 80 characters."
+        if series else ""
+    )
 
     # Like-rate feedback: what this channel's audience actually engaged with.
     winners, losers = performance_examples()
@@ -104,7 +114,7 @@ Constraints:
 - Be factually accurate. Do NOT invent dates, names, or statistics.
 - Avoid graphic, violent, or sensitive detail (keep it advertiser-friendly).
 - The title must be specific and curiosity-driven, <= 80 characters, and must
-  NOT contain hashtags (#).
+  NOT contain hashtags (#).{series_title_rule}
 - Provide 8-15 lowercase tags.
 - The description: 2-3 sentences + 3 relevant hashtags on the last line.
 
@@ -121,6 +131,29 @@ Return JSON with EXACTLY this shape:
     {{"narration": "...", "keywords": ["...", "..."]}}
   ]
 }}"""
+
+
+def _series_direction(cfg: Config, series: str) -> str:
+    """Build the topic-direction block for a recurring series episode.
+
+    Deliberately ignores trending searches: the trend-bridged videos on this
+    channel pull views but the worst like-rates, and a series episode is meant
+    to earn the subscribe, not the impression.
+    """
+    custom = (cfg.get("series.direction") or "").strip()
+    if custom:
+        return f'This video is an episode of the recurring series "{series}".\n\n{custom}'
+    return (
+        f'This video is an episode of the recurring series "{series}".\n\n'
+        "Pick a real historical moment that ALMOST went the other way — a decision, "
+        "accident, vote, weather turn, or missed message where one small change would "
+        "have redirected history. Make the near-miss itself the hook.\n"
+        "- The counterfactual must be genuine: something contemporaries or historians "
+        "actually recognised as a close call. Never invent a hinge that wasn't one.\n"
+        "- State plainly what nearly happened and what actually happened. Do not "
+        "speculate wildly about the alternate timeline — name the stakes and stop.\n"
+        "- End on the open question, so viewers argue about it in the comments."
+    )
 
 
 def _trend_direction(cfg: Config, source: str) -> str:

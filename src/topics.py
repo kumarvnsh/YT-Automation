@@ -124,6 +124,21 @@ def reserve_topic(title: str, fmt: str, slot: str, job_id: str) -> dict:
     return reservation
 
 
+def series_turn(cfg) -> str | None:
+    """Return the series name when this video is a series episode, else None.
+
+    Cadence is counted off how many topics have been produced, so it needs no
+    extra state file and stays correct across restarts.
+    """
+    name = (cfg.get("series.name") or "").strip() if cfg is not None else ""
+    if not name:
+        return None
+    every = int(cfg.get("series.every", 3))
+    if every < 1 or len(_load_used()) % every:
+        return None
+    return name
+
+
 def performance_examples(min_views: int = 50, k: int = 4) -> tuple[list[str], list[str]]:
     """Past titles split by like-rate (likes/views): (winners, losers).
 

@@ -18,6 +18,14 @@ channel:
   trend_region: "global"
   # Topics already used are stored in data/used_topics.json to avoid repeats.
 
+# Recurring named series. Every Nth video becomes an episode: it ignores the
+# trend signals and follows series.direction instead, and its title carries
+# " | <name>" so the run is recognisable. Blank name disables the series.
+series:
+  name: "History's Almost Moments"
+  every: 3                       # 1 = every video, 3 = every third
+  direction: ""                  # blank = built-in counterfactual brief
+
 script:
   provider: "anthropic"        # primary provider: "anthropic" | "openai"
   routing: "fallback"          # "fallback" | "random" | "round_robin"
