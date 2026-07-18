@@ -84,8 +84,20 @@ and **18:00**. Each job sends a `POST` to:
 https://api.github.com/repos/kumarvnsh/YT-Automation/actions/workflows/publish-astrotold.yml/dispatches
 ```
 
-Use a GitHub token you create (do not store the token in this repository), an
-`Accept: application/vnd.github+json` header, and this request body:
+Create a fine-grained GitHub token with repository access limited to
+`kumarvnsh/YT-Automation` and the minimum repository permission **Actions:
+write**. Do not store that token in this repository. Configure each cron-job.org
+job as an HTTP `POST` with these headers (replace the placeholder only in
+cron-job.org):
+
+```text
+Authorization: Bearer <fine-grained GitHub token>
+Accept: application/vnd.github+json
+Content-Type: application/json
+```
+
+Use this request body, which dispatches the workflow from the `master` ref and
+marks the run as scheduled:
 
 ```json
 {"ref":"master","inputs":{"scheduled":"true"}}
