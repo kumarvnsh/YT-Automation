@@ -80,5 +80,25 @@ class AstrotoldConfigTests(unittest.TestCase):
             self.assertIn(f"{variable}=", env_example_text)
 
 
+class ChannelRunnerTests(unittest.TestCase):
+    def test_channel_runner_requires_config_and_publish_slot(self) -> None:
+        runner_path = Path("scripts/run_channel.sh")
+
+        self.assertTrue(runner_path.is_file())
+        runner = runner_path.read_text(encoding="utf-8")
+
+        self.assertIn('CONFIG_PATH="${1:-}"', runner)
+        self.assertIn('PUBLISH_SLOT="${2:-}"', runner)
+        self.assertRegex(
+            runner,
+            r'case "\$PUBLISH_SLOT" in[\s\S]*morning\|evening\)',
+        )
+        self.assertIn("export PUBLISH_SLOT", runner)
+        self.assertIn(
+            'python -m src.main --config "$CONFIG_PATH" --format short',
+            runner,
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

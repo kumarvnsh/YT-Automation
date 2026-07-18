@@ -57,3 +57,13 @@ compliance before changing `youtube.privacy_status` to `public`.
 
 The dry run and `--no-upload` run above create material only in
 `channels/astrotold/output/`. They do not upload a video.
+
+## Daily scheduling
+
+After the private-upload review is complete, add these local-time entries with
+`crontab -e` to publish one Astrotold Short at 09:00 and one at 18:00 each day:
+
+```cron
+0 9 * * * /Users/vnshkumar/Documents/YT-Automation/scripts/run_channel.sh /Users/vnshkumar/Documents/YT-Automation/channels/astrotold/config.yaml morning >> /Users/vnshkumar/Documents/YT-Automation/logs/astrotold.log 2>&1
+0 18 * * * /Users/vnshkumar/Documents/YT-Automation/scripts/run_channel.sh /Users/vnshkumar/Documents/YT-Automation/channels/astrotold/config.yaml evening >> /Users/vnshkumar/Documents/YT-Automation/logs/astrotold.log 2>&1
+```
