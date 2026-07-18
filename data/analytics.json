@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-18T02:29:05.842409+00:00",
+      "updated": "2026-07-18T07:49:53.561555+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,102 @@
       },
       "videos": [
         {
+          "id": "lwlDyo1eJoU",
+          "title": "They Tried to Erase This Book\u2014It Destroyed Them Instead",
+          "description": "Enron was worth $70 billion \u2014 until one quiet accountant noticed a hidden set of books that made it all a lie. The dark ledger revealed billions in fake profits, wiping out thousands of workers' retirement savings overnight. It remains the most stunning accounting fraud in American corporate history. #Enron #corporatefraud #historyfacts",
+          "tags": [
+            "accounting fraud",
+            "american history",
+            "business history",
+            "corporate scandal",
+            "dark ledger",
+            "did you know",
+            "education",
+            "enron",
+            "facts",
+            "financial crime",
+            "hidden books",
+            "history",
+            "history shorts",
+            "shorts",
+            "trending",
+            "viral",
+            "whistleblower"
+          ],
+          "publishedAt": "2026-07-18T07:20:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
+          "views": 51,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "FDUlF365H28",
+          "title": "One Weather Report Nearly Cancelled D-Day | History's Almost Moments",
+          "description": "The largest invasion in history almost didn't happen \u2014 because of rain. Eisenhower's meteorologist spotted a narrow gap in the storm that changed everything. Would D-Day have succeeded if they'd waited even one more day?\n\n#history #dday #wwii",
+          "tags": [
+            "almost moments",
+            "close call",
+            "d-day",
+            "did you know",
+            "education",
+            "eisenhower",
+            "facts",
+            "history",
+            "history shorts",
+            "military history",
+            "normandy",
+            "shorts",
+            "trending",
+            "viral",
+            "weather",
+            "world war ii",
+            "wwii"
+          ],
+          "publishedAt": "2026-07-18T05:32:13Z",
+          "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
+          "views": 592,
+          "likes": 15,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "jbs777oROMY",
+          "title": "The Trojan War Was Retold for 400 Years Before Anyone Wrote It Down",
+          "description": "With AI and Hollywood both racing to tell the Odyssey, it's worth remembering the original story survived centuries without a single written word. Homer's epics were memorized and performed live \u2014 then finally written down around 700 BC. The story outlasted empires before ink ever touched it.",
+          "tags": [
+            "ancient greece",
+            "ancient history",
+            "did you know",
+            "education",
+            "facts",
+            "greek mythology",
+            "history",
+            "history facts",
+            "history shorts",
+            "homer",
+            "iliad",
+            "odyssey",
+            "oral tradition",
+            "shorts",
+            "trending",
+            "trojan war",
+            "viral"
+          ],
+          "publishedAt": "2026-07-18T04:03:00Z",
+          "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
+          "views": 560,
+          "likes": 12,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Ec6_nSqgo0Q",
           "title": "Disneyland's Opening Day Was an Absolute Disaster \u2014 Walt Didn't Care",
           "description": "On July 17, 1955, Disneyland opened to the public \u2014 and nearly everything went wrong. Counterfeit tickets flooded the gates, rides broke down, and the asphalt melted in the heat. Yet within a year, it became the most visited theme park on Earth. History's biggest wins often start as spectacular messes.",
@@ -51,7 +147,7 @@
           ],
           "publishedAt": "2026-07-17T13:04:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 836,
+          "views": 837,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -84,8 +180,8 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 499,
-          "likes": 7,
+          "views": 560,
+          "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -115,7 +211,7 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 798,
+          "views": 852,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [],
@@ -146,7 +242,7 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 766,
+          "views": 796,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -212,7 +308,7 @@
           ],
           "publishedAt": "2026-07-15T04:03:22Z",
           "thumbnail": "https://i.ytimg.com/vi/nHLzJ1AL_hI/mqdefault.jpg",
-          "views": 864,
+          "views": 874,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -296,7 +392,7 @@
         },
         {
           "id": "cTzCiqFG5yA",
-          "title": "France Tore Down a Prison \u2014 And Started a Revolution in One Day",
+          "title": "France's Most Infamous Prison Held Only 7 #history #france #revolution",
           "description": "On July 14, 1789, ordinary Parisians stormed the Bastille fortress, a symbol of royal tyranny, and sparked the French Revolution. The prison held only seven prisoners that day \u2014 but what it represented changed the world forever. France still celebrates this moment every July 14th as Bastille Day.",
           "tags": [
             "1789",
@@ -1712,118 +1808,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 38.96,
-          "subs_gained": 0
-        },
-        {
-          "id": "l8zwn_sIlg4",
-          "title": "England's First Planned Colony in North America Wasn't Where You Think",
-          "description": "Before Plymouth Rock, before the Mayflower, a Bristol merchant named John Guy led 40 colonists to Newfoundland in 1610 \u2014 establishing England's first formally planned colonial settlement in North America. It was a bold commercial gamble that most history books have almost entirely forgotten. Discover the story of Cupers Cove and why it matters.",
-          "tags": [
-            "1610",
-            "bristol history",
-            "british history",
-            "colonial history",
-            "cupers cove",
-            "did you know",
-            "early colonies",
-            "education",
-            "english colonization",
-            "exploration",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "john guy",
-            "newfoundland",
-            "north america"
-          ],
-          "publishedAt": "2026-07-06T03:24:33Z",
-          "thumbnail": "https://i.ytimg.com/vi/l8zwn_sIlg4/mqdefault.jpg",
-          "views": 667,
-          "likes": 11,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 57.43000000000001,
-          "subs_gained": 1
-        },
-        {
-          "id": "LF6m8tqecls",
-          "title": "The Law That Gave American Workers the Right to Fight Back",
-          "description": "In 1935, one signature changed the lives of millions of American workers forever. The National Labor Relations Act gave employees the legal right to organize, bargain collectively, and form unions without fear of employer retaliation. It remains one of the most consequential pieces of labor legislation in U.S. history. #laborhistory #americanhistory #didyouknow",
-          "tags": [
-            "1930s history",
-            "american history",
-            "collective bargaining",
-            "did you know",
-            "education",
-            "facts",
-            "franklin roosevelt",
-            "history",
-            "history shorts",
-            "labor history",
-            "new deal",
-            "nlra",
-            "unions",
-            "us law history",
-            "workers rights"
-          ],
-          "publishedAt": "2026-07-05T21:21:47Z",
-          "thumbnail": "https://i.ytimg.com/vi/LF6m8tqecls/mqdefault.jpg",
-          "views": 919,
-          "likes": 10,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 43.27,
-          "subs_gained": 0
-        },
-        {
-          "id": "-IL2E9HLqB8",
-          "title": "He Won Wimbledon Five Times in a Row \u2014 Then Walked Away at 26",
-          "description": "On July 5, 1980, Bj\u00f6rn Borg became the first man ever to win five consecutive Wimbledon titles \u2014 then shocked the world by retiring just two years later. His story is one of sport's greatest mysteries: why does someone at the absolute peak of greatness simply stop? Watch to find out the real reason Borg quit tennis forever.",
-          "tags": [
-            "1980s",
-            "bjorn borg",
-            "british grand prix weekend",
-            "did you know",
-            "education",
-            "facts",
-            "grand slam",
-            "history",
-            "history shorts",
-            "on this day",
-            "retirement mystery",
-            "silverstone",
-            "sports history",
-            "tennis history",
-            "tennis legends",
-            "wimbledon"
-          ],
-          "publishedAt": "2026-07-05T16:09:52Z",
-          "thumbnail": "https://i.ytimg.com/vi/-IL2E9HLqB8/mqdefault.jpg",
-          "views": 967,
-          "likes": 8,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 42.16,
+          "avg_view_pct": 40.36,
           "subs_gained": 0
         }
       ]
