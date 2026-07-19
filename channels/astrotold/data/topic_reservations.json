@@ -43,5 +43,14 @@
     "slot": "morning",
     "date": "2026-07-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260719_040150_short",
+    "title": "Every Zodiac Sign Has a Secret Mission This Week \u2014 What's Yours?",
+    "fingerprint": "every_has_mission_s_secret_sign_this_week_what_yours_zodiac",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-19",
+    "status": "reserved"
   }
 ]
