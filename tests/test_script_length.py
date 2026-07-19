@@ -188,6 +188,30 @@ class OptOutChannelTests(unittest.TestCase):
         self.assertNotIn("fact stack", prompt)
         self.assertNotIn("But here's the twist", prompt)
 
+    def test_segment_count_matches_the_short_word_budget(self) -> None:
+        """Regression: the beat scaffold asks for 6-8 segments, which blows a
+        28s budget. A non-enforcing channel must keep the original 3-5."""
+        from src.script_generator import _build_prompt
+
+        prompt = _build_prompt(self._astrotold_cfg(), "short", topic_override="t")
+        self.assertIn("3 to 5 short segments", prompt)
+        self.assertNotIn("6 to 8 segments", prompt)
+
+    def test_legacy_hook_rule_is_preserved(self) -> None:
+        from src.script_generator import _build_prompt
+
+        prompt = _build_prompt(self._astrotold_cfg(), "short", topic_override="t")
+        self.assertIn("hook and MUST be 8-15 words", prompt)
+
+    def test_long_form_keeps_the_legacy_hook_rule(self) -> None:
+        """Long-form is unaffected on every channel, opted in or not."""
+        from src.script_generator import _build_prompt
+
+        for cfg in (self._astrotold_cfg(), _cfg()):
+            prompt = _build_prompt(cfg, "long", topic_override="t")
+            self.assertIn("hook and MUST be 8-15 words", prompt)
+            self.assertNotIn("fact stack", prompt)
+
 
 if __name__ == "__main__":
     unittest.main()

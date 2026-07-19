@@ -98,9 +98,14 @@ STRUCTURE — every segment carries a "beat" tag, in this exact order:
    other video in this niche, rewrite it.
 """
 
-_LONG_STRUCTURE = """
-STRUCTURE — tag every segment's "beat" as "body". Open on an unresolved gap and
-close by calling back to the opening line.
+# The pre-existing hook rule, kept verbatim and in its original position inside
+# the Constraints list, for long-form and for any channel that has not opted
+# into the four beats. Changing this changes every channel.
+_LEGACY_HOOK = """- The FIRST segment is the hook and MUST be 8-15 words. It must NOT open with a
+  dry date/setup ("In 1915, Alice Ball was a chemist who..."). Instead lead with
+  the consequence, twist, or stakes, e.g. "She cured leprosy. Then a man stole
+  her credit." or "This law could send you to prison for reading it." Bury the
+  date/setup (if any) in segment 2, never segment 1.
 """
 
 
@@ -120,9 +125,13 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     task_context = f"TODAY'S DATE: {today.day} {today:%B %Y}"
     if channel_rules:
         task_context += f"\n{channel_rules}"
+    beats_on = fmt == "short" and enforce_beats(cfg)
     if fmt == "short":
         secs = cfg.get("script.shorts_target_seconds", 45)
-        seg_hint = "6 to 8 segments, one per beat below"
+        if beats_on:
+            seg_hint = "6 to 8 segments, one per beat below"
+        else:
+            seg_hint = "3 to 5 short segments" if secs <= 30 else "5 to 7 short segments"
     else:
         secs = cfg.get("script.longform_target_seconds", 420)
         seg_hint = "10 to 16 segments"
@@ -153,10 +162,15 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     )
 
     # The four-beat structure was derived from Histold's retention data and is
-    # opt-in per channel: a channel on a different format (or a shorter word
-    # budget than the beats need) leaves script.enforce_beats off.
-    structure_block = (
-        _SHORT_STRUCTURE if fmt == "short" and enforce_beats(cfg) else _LONG_STRUCTURE
+    # opt-in per channel. Everything else — long-form, and any channel that has
+    # not opted in — keeps the original hook rule, byte-for-byte and in its
+    # original position inside Constraints, so their prompts do not drift.
+    structure_block = _SHORT_STRUCTURE if beats_on else ""
+    hook_rule = "" if beats_on else _LEGACY_HOOK
+    segment_schema = (
+        '{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}'
+        if beats_on
+        else '{"narration": "...", "keywords": ["...", "..."]}'
     )
 
     # Retention feedback: what this channel's audience actually watched through.
@@ -183,7 +197,7 @@ Constraints:
 - For EACH segment provide 2-4 visual search keywords describing concrete,
   filmable imagery (e.g. "ancient roman ruins", "old library books", "stormy ocean").
   Avoid abstract keywords. These drive stock-footage search.
-- Be factually accurate. Do NOT invent dates, names, or statistics.
+{hook_rule}- Be factually accurate. Do NOT invent dates, names, or statistics.
 - Avoid graphic, violent, or sensitive detail (keep it advertiser-friendly).
 - The title must be specific and curiosity-driven, <= 80 characters, and must
   NOT contain hashtags (#).{series_title_rule}
@@ -200,7 +214,7 @@ Return JSON with EXACTLY this shape:
   "description": "...",
   "tags": ["...", "..."],
   "segments": [
-    {{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}}
+    {segment_schema}
   ]
 }}"""
 
