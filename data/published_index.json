@@ -449,5 +449,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "37MFhW_8TO0",
+    "run_id": "29700976074",
+    "stage_dir_name": "20260719_193821_short",
+    "title": "The Haaland Family Has Been Chasing One Record for 25 Years",
+    "published_at": "2026-07-19T19:41:45.399139+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

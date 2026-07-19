@@ -223,5 +223,14 @@
     "slot": "evening",
     "date": "2026-07-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260719_193821_short",
+    "title": "The Haaland Family Has Been Chasing One Record for 25 Years",
+    "fingerprint": "25_been_chasing_family_for_haaland_has_one_record_years",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-19",
+    "status": "reserved"
   }
 ]
