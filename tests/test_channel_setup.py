@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 from datetime import date
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -56,11 +57,15 @@ class AstrotoldConfigTests(unittest.TestCase):
         cfg = load_config(config_path)
 
         self.assertEqual(cfg.get("channel.name"), "Astrotold")
-        self.assertEqual(cfg.get("channel.niche"), "astrology and numerology")
+        self.assertEqual(cfg.get("channel.niche"), "numerology")
         self.assertEqual(cfg.get("channel.language"), "en")
         self.assertIn("English-only", cfg.get("channel.language_instruction"))
         self.assertIn("scripts and captions", cfg.get("channel.language_instruction"))
         self.assertIn("concrete English asset-search keywords", cfg.get("channel.content_rules"))
+        for theme in ("birth number", "name initials", "lucky"):
+            self.assertIn(theme, " ".join(cfg.get("channel.angles")).lower())
+            self.assertIn(theme, " ".join(cfg.get("youtube.default_tags")).lower())
+        self.assertNotIn("zodiac", json.dumps(cfg.raw).lower())
         self.assertIn("Strictly for entertainment only", cfg.get("channel.safety_rules"))
         self.assertIn("medical, legal, financial, or emergency advice", cfg.get("channel.safety_rules"))
         self.assertEqual(cfg.get("tts.edge_voice"), "en-US-GuyNeural")

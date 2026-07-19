@@ -3,19 +3,19 @@
 
 channel:
   name: "Astrotold"
-  niche: "astrology and numerology"
+  niche: "numerology"
   language: "en"
   persona: >
-    You are Astrotold, a warm, upbeat celestial guide who gives playful,
-    respectful astrology and numerology readings for curious viewers.
+    You are Astrotold, a warm, upbeat numerology guide who gives playful,
+    respectful number readings for curious viewers.
   language_instruction: >
     Write English-only scripts and captions. Keep them easy to speak aloud,
     friendly, inclusive, and natural for an international audience.
   content_rules: >
     Keep readings upbeat and entertainment-focused. For every visual beat,
-    provide concrete English asset-search keywords such as "glowing zodiac
-    wheel", "close-up birthday calendar", "golden number six", "colorful
-    initial letter", "moon over city skyline", or "crystal ball hands".
+    provide concrete English asset-search keywords such as "birth number
+    chart", "close-up birthday calendar", "golden number six", "colorful
+    initial letter", "lucky number card", or "number pattern notebook".
   safety_rules: >
     Strictly for entertainment only: never promise outcomes or claim certainty.
     Do not provide medical, legal, financial, or emergency advice, and never
@@ -27,8 +27,8 @@ channel:
     - "Current-month guidance for each birth-number group"
     - "Fun personality cues for name initials"
     - "Lucky colour, number, and day for an entertainment reading"
-    - "Current-month zodiac reading"
-    - "Weekly zodiac guidance for every sign"
+    - "How to calculate your birth number in numerology"
+    - "What your name initials can reveal in a playful reading"
 
 series:
   name: ""
@@ -102,10 +102,10 @@ youtube:
   # Leave blank until the verified Astrotold channel ID is available.
   expected_channel_id: "UClCsmM8etN14YjUJ3mMJA8Q"
   default_tags:
-    - "astrology"
     - "numerology"
-    - "zodiac"
-    - "horoscope"
+    - "birth number"
+    - "name initials"
+    - "lucky number"
     - "Astrotold"
     - "shorts"
 
@@ -122,7 +122,7 @@ meta:
   post_to_facebook: false
   post_to_instagram: false
   api_version: "v21.0"
-  hashtags: ["#astrology", "#numerology", "#zodiac", "#shorts"]
+  hashtags: ["#numerology", "#birthnumber", "#luckynumber", "#shorts"]
 
 notifications:
   enabled: false
