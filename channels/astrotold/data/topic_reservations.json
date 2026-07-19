@@ -52,5 +52,14 @@
     "slot": "morning",
     "date": "2026-07-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260719_050133_short",
+    "title": "Born on 1, 10, or 28? Your Final July Week Is About to Shift",
+    "fingerprint": "1_10_28_about_born_final_is_july_on_or_shift_week_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-19",
+    "status": "reserved"
   }
 ]
