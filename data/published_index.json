@@ -407,5 +407,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "K8FtgqilMJ4",
+    "run_id": "29690697304",
+    "stage_dir_name": "20260719_142256_short",
+    "title": "The Underground Railway Paris Built in Two Years \u2014 for a Party",
+    "published_at": "2026-07-19T14:26:09.446232+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
