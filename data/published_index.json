@@ -393,5 +393,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "2DFOa3Mj6tA",
+    "run_id": "29672654202",
+    "stage_dir_name": "20260719_060359_short",
+    "title": "He Almost Threw It in the Bin \u2014 Then Saved 200 Million Lives | History's Almost Moments",
+    "published_at": "2026-07-19T06:05:33.751782+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
