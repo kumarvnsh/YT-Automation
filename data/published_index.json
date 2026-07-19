@@ -435,5 +435,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "rRSHVJyCl10",
+    "run_id": "29694005991",
+    "stage_dir_name": "20260719_175104_short",
+    "title": "The First Tour de France Winner Was Disqualified \u2014 A Year After He Won",
+    "published_at": "2026-07-19T17:54:45.599009+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
