@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-19T02:42:44.816918+00:00",
+      "updated": "2026-07-19T08:18:20.582075+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,8 +30,42 @@
       },
       "videos": [
         {
+          "id": "2DFOa3Mj6tA",
+          "title": "He Almost Threw It in the Bin \u2014 Then Saved 200 Million Lives | History's Almost Moments",
+          "description": "In 1928, Alexander Fleming nearly discarded a contaminated petri dish \u2014 the one that contained penicillin. He almost missed the mould entirely. Would antibiotics have been discovered without him, or would millions more have died from treatable infections? Watch to find out how close we came to losing it all. #history #didyouknow #historysfacts",
+          "tags": [
+            "1928 discovery",
+            "alexander fleming",
+            "antibiotics",
+            "close call history",
+            "did you know",
+            "education",
+            "facts",
+            "historical turning points",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "medical history",
+            "near miss history",
+            "penicillin discovery",
+            "science history",
+            "shorts",
+            "trending",
+            "viral",
+            "youtube history"
+          ],
+          "publishedAt": "2026-07-19T06:04:54Z",
+          "thumbnail": "https://i.ytimg.com/vi/2DFOa3Mj6tA/mqdefault.jpg",
+          "views": 334,
+          "likes": 5,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "-qkDx9745Y8",
-          "title": "England Expelled Every Jewish Person \u2014 On the Most Haunting Day Possible",
+          "title": "England Expelled Every Jewish Person \u2014 On the Most Haunting Day Possible #england #jews #bannedff",
           "description": "In 1290, King Edward I signed an order banishing all Jews from England \u2014 and the date was no accident. It fell on Tisha B'Av, the ancient day of mourning already tied to centuries of Jewish catastrophe. The exiles weren't allowed to return for 365 years. #history #didyouknow #medievalhistory",
           "tags": [
             "did you know",
@@ -54,7 +88,7 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 776,
+          "views": 780,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
@@ -63,7 +97,7 @@
         },
         {
           "id": "lwlDyo1eJoU",
-          "title": "They Tried to Erase This Book\u2014It Destroyed Them Instead",
+          "title": "They Banned This Book to Survive. It Didn't Work.",
           "description": "Enron was worth $70 billion \u2014 until one quiet accountant noticed a hidden set of books that made it all a lie. The dark ledger revealed billions in fake profits, wiping out thousands of workers' retirement savings overnight. It remains the most stunning accounting fraud in American corporate history. #Enron #corporatefraud #historyfacts",
           "tags": [
             "accounting fraud",
@@ -86,7 +120,7 @@
           ],
           "publishedAt": "2026-07-18T07:20:28Z",
           "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
-          "views": 269,
+          "views": 295,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -118,7 +152,7 @@
           ],
           "publishedAt": "2026-07-18T05:32:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
-          "views": 939,
+          "views": 940,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -150,7 +184,7 @@
           ],
           "publishedAt": "2026-07-18T04:03:00Z",
           "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
-          "views": 780,
+          "views": 774,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -179,7 +213,7 @@
           ],
           "publishedAt": "2026-07-17T13:04:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 837,
+          "views": 841,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -212,7 +246,7 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 680,
+          "views": 736,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -245,7 +279,7 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 883,
+          "views": 903,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [],
@@ -565,7 +599,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1197,
+          "views": 1198,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1773,41 +1807,6 @@
           "is_unsorted": false,
           "avg_view_pct": 102.8,
           "subs_gained": 2
-        },
-        {
-          "id": "mwjWvWVutmM",
-          "title": "He Was Promised Safe Passage \u2014 Then Burned Alive for His Ideas",
-          "description": "On July 6, 1415, Czech theologian Jan Hus was executed at the Council of Constance after being guaranteed safe conduct to defend his beliefs. His death sparked a revolution that foreshadowed the Protestant Reformation by over a century. The promise of safety meant nothing when powerful institutions felt threatened. #history #didyouknow #JanHus",
-          "tags": [
-            "bohemia",
-            "church history",
-            "council of constance",
-            "did you know",
-            "education",
-            "facts",
-            "heresy",
-            "history",
-            "history shorts",
-            "jan hus",
-            "medieval history",
-            "on this day",
-            "reformation",
-            "religious history"
-          ],
-          "publishedAt": "2026-07-06T07:09:42Z",
-          "thumbnail": "https://i.ytimg.com/vi/mwjWvWVutmM/mqdefault.jpg",
-          "views": 595,
-          "likes": 12,
-          "comments": 5,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 98.99,
-          "subs_gained": 0
         }
       ]
     }
