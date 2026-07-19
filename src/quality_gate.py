@@ -11,11 +11,12 @@ import subprocess
 from pathlib import Path
 
 from .config import Config
+from .script_generator import validate_structure
 
 # Every check the gate runs, in report order. All are required: a single fail
 # fails the stage, and the score is purely informational.
 CHECK_NAMES = [
-    "script", "topic", "narration", "audio", "captions", "assets",
+    "script", "topic", "narration", "structure", "audio", "captions", "assets",
     "video", "dimensions", "duration", "safety", "metadata",
 ]
 
@@ -98,6 +99,19 @@ def validate_stage(cfg: Config, stage: Path, st: dict) -> dict:
         bool(narration) and min_ratio <= word_ratio <= max_ratio,
         f"narration length ratio {word_ratio:.2f} outside [{min_ratio}, {max_ratio}]",
     )
+
+    # --- four-beat structure (shorts only) ---------------------------------- #
+    # Last line of defence: generate_script already retries on a structural
+    # failure, but a script that slipped through must not reach upload.
+    if fmt == "short":
+        segments = script.get("segments") or []
+        structure_error = validate_structure(
+            [str(seg.get("beat", "")).strip().lower() for seg in segments],
+            [str(seg.get("narration", "")).strip() for seg in segments],
+        )
+        result("structure", structure_error is None, structure_error)
+    else:
+        result("structure", True)
 
     # --- voiceover audio ---------------------------------------------------- #
     voiceover = st.get("voiceover") or {}

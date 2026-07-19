@@ -139,11 +139,24 @@ def series_turn(cfg) -> str | None:
     return name
 
 
-def performance_examples(min_views: int = 50, k: int = 4) -> tuple[list[str], list[str]]:
-    """Past titles split by like-rate (likes/views): (winners, losers).
+# Average view percentage bounds. Above 100% the average viewer watched the
+# short more than once through — that loop is the strongest Shorts ranking
+# signal, and on this channel only 44s+ videos have ever reached it.
+WINNER_AVG_VIEW_PCT = 100.0
+LOSER_AVG_VIEW_PCT = 55.0
+# Like-rate fallback, used only for videos with no retention row yet.
+WINNER_LIKE_RATE = 0.025
+LOSER_LIKE_RATE = 0.01
 
-    Like-rate is our retention proxy — Studio retention data isn't in the API
-    export. Videos below min_views are ignored: 1 like on 12 views is noise.
+
+def performance_examples(min_views: int = 50, k: int = 4) -> tuple[list[str], list[str]]:
+    """Past titles split by retention: (winners, losers).
+
+    Ranks on `avg_view_pct` (YouTube Analytics averageViewPercentage), which
+    scripts/export_analytics.py already writes into analytics.json. Falls back
+    to like-rate for rows with no retention figure — videos too new for the
+    analytics lag, or exported before retention was collected. Videos below
+    min_views are ignored: 1 like on 12 views is noise.
     """
     path = base_dir() / "data" / "analytics.json"
     if not path.exists():
@@ -155,14 +168,26 @@ def performance_examples(min_views: int = 50, k: int = 4) -> tuple[list[str], li
     videos = []
     for channel in (data.get("channels") or {"_": data}).values():
         videos += channel.get("videos") or []
-    rated = [
-        ((v.get("likes") or 0) / v["views"], v["title"])
-        for v in videos
-        if (v.get("views") or 0) >= min_views and v.get("title")
-    ]
-    rated.sort(reverse=True)
-    winners = [t for rate, t in rated[:k] if rate >= 0.025]
-    losers = [t for rate, t in rated[-k:] if rate < 0.01]
+
+    retained, liked = [], []
+    for video in videos:
+        if (video.get("views") or 0) < min_views or not video.get("title"):
+            continue
+        avg_view_pct = video.get("avg_view_pct")
+        if avg_view_pct:
+            retained.append((float(avg_view_pct), video["title"]))
+        else:
+            liked.append(((video.get("likes") or 0) / video["views"], video["title"]))
+
+    # Retention rows win outright; like-rate only fills gaps in the k slots.
+    retained.sort(reverse=True)
+    liked.sort(reverse=True)
+    winners = [t for pct, t in retained[:k] if pct >= WINNER_AVG_VIEW_PCT]
+    losers = [t for pct, t in retained[-k:] if pct <= LOSER_AVG_VIEW_PCT]
+    if len(winners) < k:
+        winners += [t for rate, t in liked[: k - len(winners)] if rate >= WINNER_LIKE_RATE]
+    if len(losers) < k:
+        losers += [t for rate, t in liked[-(k - len(losers)):] if rate < LOSER_LIKE_RATE]
     return winners, losers
 
 

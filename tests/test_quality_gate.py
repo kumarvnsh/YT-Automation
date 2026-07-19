@@ -9,13 +9,15 @@ from unittest.mock import patch
 from src.config import Config
 from src import pipeline
 from src.quality_gate import validate_stage
+from tests.test_script_structure import valid_script
 
 
 def _quality_cfg() -> Config:
     return Config(
         {
-            # 2s at ~150 words/min → the 5-word fixture narration is exactly on target.
-            "script": {"shorts_target_seconds": 2},
+            # 45s at ~150 words/min → 112 words, bounds [84, 151]. The fixture
+            # narration is the four-beat reference script at 116 words.
+            "script": {"shorts_target_seconds": 45},
             "video": {
                 "short": {"width": 1080, "height": 1920},
                 "captions": {"enabled": True},
@@ -39,7 +41,8 @@ def _valid_state() -> dict:
             "description": "Test description",
             "tags": ["history"],
             "segments": [
-                {"narration": "One two three four five.", "keywords": ["old book"]}
+                {"beat": beat, "narration": narration, "keywords": ["old book"]}
+                for beat, narration in zip(*valid_script())
             ],
         },
         "voiceover": {
@@ -136,6 +139,41 @@ class QualityGateTests(unittest.TestCase):
         self.assertFalse(report["passed"])
         self.assertEqual("fail", report["checks"]["topic"])
 
+    def test_missing_pivot_fails_structure_check(self) -> None:
+        """A short with no mid-script turn must not reach upload."""
+        state = _valid_state()
+        state["script"]["segments"][2]["beat"] = "fact"
+
+        with patch("src.quality_gate.subprocess.run") as ffprobe_run:
+            ffprobe_run.return_value.stdout = _ffprobe_json()
+            report = validate_stage(_quality_cfg(), self.stage, state)
+
+        self.assertFalse(report["passed"])
+        self.assertEqual("fail", report["checks"]["structure"])
+
+    def test_untagged_legacy_script_fails_structure_check(self) -> None:
+        state = _valid_state()
+        for segment in state["script"]["segments"]:
+            segment.pop("beat")
+
+        with patch("src.quality_gate.subprocess.run") as ffprobe_run:
+            ffprobe_run.return_value.stdout = _ffprobe_json()
+            report = validate_stage(_quality_cfg(), self.stage, state)
+
+        self.assertEqual("fail", report["checks"]["structure"])
+
+    def test_long_form_skips_structure_check(self) -> None:
+        state = _valid_state()
+        state["fmt"] = "long"
+        for segment in state["script"]["segments"]:
+            segment["beat"] = "body"
+
+        with patch("src.quality_gate.subprocess.run") as ffprobe_run:
+            ffprobe_run.return_value.stdout = _ffprobe_json(1920, 1080)
+            report = validate_stage(_quality_cfg(), self.stage, state)
+
+        self.assertEqual("pass", report["checks"]["structure"])
+
     def test_report_uses_exact_check_names(self) -> None:
         with patch("src.quality_gate.subprocess.run") as ffprobe_run:
             ffprobe_run.return_value.stdout = _ffprobe_json()
@@ -143,7 +181,7 @@ class QualityGateTests(unittest.TestCase):
 
         self.assertEqual(
             {
-                "script", "topic", "narration", "audio", "captions", "assets",
+                "script", "topic", "narration", "structure", "audio", "captions", "assets",
                 "video", "dimensions", "duration", "safety", "metadata",
             },
             set(report["checks"]),

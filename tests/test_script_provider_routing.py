@@ -8,6 +8,7 @@ from unittest.mock import patch
 
 from src.config import Config
 from src.script_generator import generate_script, regenerate_title
+from tests.test_script_structure import valid_script
 
 
 SCRIPT_JSON = {
@@ -16,17 +17,18 @@ SCRIPT_JSON = {
     "description": "A short description.\n\n#history #shorts #facts",
     "tags": ["history", "facts"],
     "segments": [
-        {"narration": "This is the hook.", "keywords": ["old library"]},
-        {"narration": "This is the explanation.", "keywords": ["historic document"]},
+        {"beat": beat, "narration": narration, "keywords": ["old library"]}
+        for beat, narration in zip(*valid_script())
     ],
 }
 
 
 class ScriptProviderRoutingTests(unittest.TestCase):
     def _generate(self, cfg: Config):
-        # The fixture narration is 8 words; a 3s target puts it inside the
-        # enforced word budget so routing behavior is what's under test here.
-        cfg.raw.setdefault("script", {}).setdefault("shorts_target_seconds", 3)
+        # The fixture is the four-beat reference script at 117 words; a 45s
+        # target puts it inside the enforced word budget and satisfies the
+        # structure check, so routing behavior is what's under test here.
+        cfg.raw.setdefault("script", {}).setdefault("shorts_target_seconds", 45)
         return generate_script(cfg, "short", topic_override="test topic")
 
     def test_legacy_provider_calls_only_configured_provider(self) -> None:

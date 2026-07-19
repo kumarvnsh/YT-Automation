@@ -25,6 +25,9 @@ from .topics import recent_titles, pick_angle, performance_examples, series_turn
 class Segment:
     narration: str
     keywords: list[str] = field(default_factory=list)
+    # Structural role: one of SHORT_BEATS / LONG_BEATS. Defaults to "" so
+    # stages persisted before beat tagging still deserialize.
+    beat: str = ""
 
 
 @dataclass
@@ -50,6 +53,56 @@ _SYSTEM = (
     "YouTube channel. You return ONLY valid JSON, no markdown, no commentary."
 )
 
+# Valid `beat` tags on a segment. Shorts must use the four-beat structure;
+# long-form is unstructured and tags every segment "body".
+SHORT_BEATS = ("hook", "setup", "pivot", "fact", "callback")
+LONG_BEATS = ("body",)
+
+_SHORT_STRUCTURE = """
+STRUCTURE — every segment carries a "beat" tag, in this exact order:
+
+1. "hook" (exactly one, FIRST) — 14-22 words. State a claim containing an
+   unresolved gap; the viewer must finish it wanting the answer. Patterns that
+   work on this channel:
+     * implicate the viewer — "What if the alphabet you're reading right now
+       was invented by a civilization most people have completely forgotten?"
+     * unbeaten superlative — "A ship crossed the Atlantic so fast, no
+       passenger liner has beaten it since."
+     * number + contradiction — "The Titanic received six iceberg warnings the
+       day it sank and ignored every single one."
+   HARD RULE: the next segment must NOT fully resolve the hook. If the hook can
+   be answered in one sentence, it is too small — widen it.
+   Never open with a dry date/setup ("In 1915, Alice Ball was a chemist who...").
+
+2. "setup" (exactly one) — ~25 words. Who, when, where. Land exactly one hard
+   number (a date, duration, price, count, distance). Partially answer the
+   hook. Never fully.
+
+3. "pivot" (exactly one, roughly one third in) — open the segment with an
+   explicit turn phrase, then deliver the reframe:
+     "But here's the twist." / "What most people don't know..." / "But because..."
+   This beat is what holds viewers through the middle, where they otherwise drop.
+
+4. "fact" (3 to 5 of them) — the fact stack. Each fact must stand alone and be
+   individually surprising. Do NOT build one continuous argument; build a chain
+   of small payoffs, because each fact buys the next few seconds of attention.
+   Put the strangest, most specific fact LAST ("The only wood aboard was the
+   butcher's chopping block and the grand piano.").
+
+5. "callback" (exactly one, LAST) — ~20 words. Reuse a distinctive noun or
+   phrase from the hook and change what it means:
+     hook "the alphabet you're reading right now"
+     -> callback "every time you write a single letter, you're carrying forward
+        a gift from a civilization history tried its best to forget."
+   A generic uplifting summary is a FAILURE. If the closer would work on any
+   other video in this niche, rewrite it.
+"""
+
+_LONG_STRUCTURE = """
+STRUCTURE — tag every segment's "beat" as "body". Open on an unresolved gap and
+close by calling back to the opening line.
+"""
+
 
 def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> str:
     persona = cfg.get("channel.persona", "").strip()
@@ -68,8 +121,8 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     if channel_rules:
         task_context += f"\n{channel_rules}"
     if fmt == "short":
-        secs = cfg.get("script.shorts_target_seconds", 20)
-        seg_hint = "3 to 5 short segments" if secs <= 30 else "5 to 7 short segments"
+        secs = cfg.get("script.shorts_target_seconds", 45)
+        seg_hint = "6 to 8 segments, one per beat below"
     else:
         secs = cfg.get("script.longform_target_seconds", 420)
         seg_hint = "10 to 16 segments"
@@ -99,14 +152,20 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         if series else ""
     )
 
-    # Like-rate feedback: what this channel's audience actually engaged with.
+    # Shorts follow a fixed four-beat structure derived from the only videos on
+    # this channel that broke 100% average view percentage (i.e. looped). The
+    # beats are tagged in the JSON so _validate_structure can enforce them.
+    structure_block = _SHORT_STRUCTURE if fmt == "short" else _LONG_STRUCTURE
+
+    # Retention feedback: what this channel's audience actually watched through.
     winners, losers = performance_examples()
     perf_block = ""
     if winners:
-        perf_block = ("\n\nThese past videos scored HIGHEST with this audience — favour "
-                      "topics and structures like them:\n- " + "\n- ".join(winners))
+        perf_block = ("\n\nThese past videos held viewers LONGEST (highest average view "
+                      "percentage) — favour topics and structures like them:\n- "
+                      + "\n- ".join(winners))
         if losers:
-            perf_block += ("\nThese scored LOWEST — avoid this kind of topic:\n- "
+            perf_block += ("\nThese lost viewers FASTEST — avoid this kind of topic:\n- "
                            + "\n- ".join(losers))
 
     return f"""{persona}
@@ -114,7 +173,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
 TASK: Write ONE {fmt}-form YouTube video script in the "{niche}" niche.
 {task_context}
 {direction}{perf_block}
-
+{structure_block}
 Constraints:
 - Total narration MUST be {lo}-{hi} words. Count your words before answering and
   comply exactly; this is a hard limit, not a suggestion (target ~{words} words).
@@ -122,11 +181,6 @@ Constraints:
 - For EACH segment provide 2-4 visual search keywords describing concrete,
   filmable imagery (e.g. "ancient roman ruins", "old library books", "stormy ocean").
   Avoid abstract keywords. These drive stock-footage search.
-- The FIRST segment is the hook and MUST be 8-15 words. It must NOT open with a
-  dry date/setup ("In 1915, Alice Ball was a chemist who..."). Instead lead with
-  the consequence, twist, or stakes, e.g. "She cured leprosy. Then a man stole
-  her credit." or "This law could send you to prison for reading it." Bury the
-  date/setup (if any) in segment 2, never segment 1.
 - Be factually accurate. Do NOT invent dates, names, or statistics.
 - Avoid graphic, violent, or sensitive detail (keep it advertiser-friendly).
 - The title must be specific and curiosity-driven, <= 80 characters, and must
@@ -144,7 +198,7 @@ Return JSON with EXACTLY this shape:
   "description": "...",
   "tags": ["...", "..."],
   "segments": [
-    {{"narration": "...", "keywords": ["...", "..."]}}
+    {{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}}
   ]
 }}"""
 
@@ -203,6 +257,88 @@ def _trend_direction(cfg: Config, source: str) -> str:
         "Never force a tie that isn't real, and stay strictly factual."
     )
     return "\n\n".join(parts)
+
+
+# Deliberately permissive. The channel's three looping shorts open at 14, 15
+# and 18 words, and the 40%-retention failure opens at 13 — hook length is not
+# what separates them, so this only catches a hook too short to hold any gap
+# at all. The callback loop check below is the real discriminator.
+_HOOK_WORDS = (12, 24)
+_FACT_RANGE = (3, 5)
+# 4+ characters, because the SS United States short (148% avg view percentage)
+# loops on "ship" — a 5-char floor silently rejected the channel's second-best
+# video. That means the stopword list has to carry the weight.
+_MIN_CONTENT_WORD = 4
+_STOPWORDS = frozenset(
+    "about after again against also because been before being both between "
+    "could does done down during each even ever every first found from gets "
+    "have here into just like made make many more most much must none once "
+    "only over said says some such take than that their them then there "
+    "these they thing think this those three through took under until very "
+    "well went were what when which while will with would your years".split()
+)
+
+
+def _content_words(text: str) -> set[str]:
+    """Distinctive words used for the hook/callback loop check."""
+    return {
+        word
+        for word in re.findall(r"[a-z]+", text.lower())
+        if len(word) >= _MIN_CONTENT_WORD and word not in _STOPWORDS
+    }
+
+
+def validate_structure(beats: list[str], narrations: list[str]) -> str | None:
+    """Check the four-beat shorts structure. Returns an error, or None if valid.
+
+    Takes plain lists rather than Segments so the quality gate can reuse it on
+    a persisted script dict without importing the dataclass.
+    """
+    if not beats or any(not b for b in beats):
+        return "segments are missing beat tags"
+    unknown = sorted({b for b in beats if b not in SHORT_BEATS})
+    if unknown:
+        return f"unknown beat tags: {', '.join(unknown)}"
+
+    counts = {beat: beats.count(beat) for beat in SHORT_BEATS}
+    if counts["hook"] != 1 or beats[0] != "hook":
+        return "script needs exactly one 'hook' segment, and it must be first"
+    if counts["callback"] != 1 or beats[-1] != "callback":
+        return "script needs exactly one 'callback' segment, and it must be last"
+    if counts["setup"] != 1:
+        return f"script needs exactly one 'setup' segment (found {counts['setup']})"
+    if counts["pivot"] != 1:
+        return f"script needs exactly one 'pivot' segment (found {counts['pivot']})"
+
+    lo_facts, hi_facts = _FACT_RANGE
+    if not lo_facts <= counts["fact"] <= hi_facts:
+        return (
+            f"fact stack has {counts['fact']} segments, need {lo_facts}-{hi_facts}"
+        )
+
+    # The pivot has to land in the middle third — that is where viewers drop.
+    pivot_at = beats.index("pivot") / len(beats)
+    if not 0.2 <= pivot_at <= 0.6:
+        return (
+            f"'pivot' sits {pivot_at:.0%} through the script; it belongs "
+            "roughly one third in (20-60%)"
+        )
+
+    hook, callback = narrations[0], narrations[-1]
+    hook_words = len(hook.split())
+    lo_hook, hi_hook = _HOOK_WORDS
+    if not lo_hook <= hook_words <= hi_hook:
+        return f"hook is {hook_words} words, need {lo_hook}-{hi_hook}"
+
+    # Mechanical proxy for "the closer reopens the hook": they must share a
+    # distinctive word. Deliberately loose — it catches the generic uplift
+    # closer without trying to judge meaning.
+    if not _content_words(hook) & _content_words(callback):
+        return (
+            "callback shares no distinctive word with the hook — it must reuse "
+            "a noun or phrase from the opening line and change what it means"
+        )
+    return None
 
 
 def _extract_json(text: str) -> dict:
@@ -327,6 +463,7 @@ def _parse_script_response(raw: str) -> tuple[dict, list[Segment]]:
     ):
         raise ValueError("script response has invalid topic")
 
+    valid_beats = set(SHORT_BEATS) | set(LONG_BEATS)
     segments = []
     for item in data["segments"]:
         if not isinstance(item, dict) or not isinstance(item.get("narration"), str):
@@ -337,7 +474,10 @@ def _parse_script_response(raw: str) -> tuple[dict, list[Segment]]:
             isinstance(keyword, str) for keyword in keywords
         ):
             raise ValueError("script response has invalid segment")
-        segments.append(Segment(narration, keywords))
+        beat = str(item.get("beat", "")).strip().lower()
+        if beat and beat not in valid_beats:
+            raise ValueError(f"script response has unknown beat tag: {beat!r}")
+        segments.append(Segment(narration, keywords, beat))
     if not segments:
         raise ValueError("script response has no non-empty segments")
     return data, segments
@@ -402,11 +542,12 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
     reuse the quality gate's duration ratios so the two stay in agreement.
     """
     prompt = _build_prompt(cfg, fmt, topic_override=topic_override)
-    target = int(cfg.get("script.shorts_target_seconds", 20) * 150 / 60)
+    target = int(cfg.get("script.shorts_target_seconds", 45) * 150 / 60)
     lo = int(target * float(cfg.get("quality.min_duration_ratio", 0.75)))
     hi = int(target * float(cfg.get("quality.max_duration_ratio", 1.35)))
 
     word_count = None
+    structure_error = None
     for _attempt in range(3):
         attempt_prompt = prompt
         if word_count is not None:
@@ -416,12 +557,30 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
                 f"The total narration across all segments MUST be between {lo} "
                 f"and {hi} words. Rewrite the script to fit that budget."
             )
+        if structure_error is not None:
+            print(f"  ! structure: {structure_error} — regenerating.")
+            attempt_prompt += (
+                f"\n\nIMPORTANT: your previous draft broke the required "
+                f"structure: {structure_error}. Fix exactly that and keep "
+                "every other beat intact."
+            )
         raw, provider, fallback_used = _call_with_routing(
             cfg, attempt_prompt, _parse_script_response
         )
         data, segments = _parse_script_response(raw)
         word_count = len(" ".join(s.narration for s in segments).split())
         if fmt == "short" and not (lo <= word_count <= hi):
+            structure_error = None
+            continue
+        structure_error = (
+            validate_structure(
+                [s.beat for s in segments], [s.narration for s in segments]
+            )
+            if fmt == "short"
+            else None
+        )
+        if structure_error:
+            word_count = None
             continue
         return Script(
             title=data["title"].strip()[:100],
@@ -433,8 +592,12 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
             fallback_used=fallback_used,
         )
 
+    if structure_error:
+        raise RuntimeError(
+            f"script structure stayed invalid after 3 attempts: {structure_error}"
+        )
     raise RuntimeError(
         f"script narration stayed out of bounds after 3 attempts: last draft was "
         f"{word_count} words (need {lo}-{hi} for a "
-        f"{cfg.get('script.shorts_target_seconds', 20)}s short)"
+        f"{cfg.get('script.shorts_target_seconds', 45)}s short)"
     )

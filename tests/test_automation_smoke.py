@@ -14,6 +14,7 @@ from unittest.mock import patch
 
 from src.config import Config
 from src import pipeline
+from tests.test_script_structure import valid_script
 from src.tts import Voiceover, WordTiming
 
 
@@ -23,7 +24,8 @@ SCRIPT_JSON = {
     "description": "A short description.\n\n#history #shorts #facts",
     "tags": ["history", "facts"],
     "segments": [
-        {"narration": "One two three four five.", "keywords": ["old library"]},
+        {"beat": beat, "narration": narration, "keywords": ["old library"]}
+        for beat, narration in zip(*valid_script())
     ],
 }
 
@@ -31,7 +33,7 @@ SCRIPT_JSON = {
 def _cfg() -> Config:
     return Config(
         {
-            "script": {"provider": "anthropic", "shorts_target_seconds": 2},
+            "script": {"provider": "anthropic", "shorts_target_seconds": 45},
             "video": {
                 "mode": "broll",
                 "short": {"width": 1080, "height": 1920},

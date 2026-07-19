@@ -8,30 +8,57 @@ from unittest.mock import patch
 
 from src.config import Config
 from src.script_generator import generate_script
+from tests.test_script_structure import CALLBACK, FACTS, HOOK, PIVOT, SETUP
 
 
-def _script(narration: str) -> str:
+def _script(padding_words: int = 0) -> str:
+    """A structurally valid short, optionally padded past the word ceiling."""
+    padding = (" " + " ".join(["extra"] * padding_words)) if padding_words else ""
+    segments = [
+        {"beat": "hook", "narration": HOOK, "keywords": ["ancient alphabet"]},
+        {"beat": "setup", "narration": SETUP, "keywords": ["mediterranean coast"]},
+        {"beat": "pivot", "narration": PIVOT, "keywords": ["old papyrus"]},
+    ]
+    segments += [
+        {"beat": "fact", "narration": fact + padding, "keywords": ["stone carving"]}
+        for fact in FACTS
+    ]
+    segments.append(
+        {"beat": "callback", "narration": CALLBACK, "keywords": ["handwriting"]}
+    )
     return json.dumps(
         {
-            "topic": "test topic",
-            "title": "A Test History Hook",
+            "topic": "phoenician alphabet",
+            "title": "They Invented Writing Then Vanished",
             "description": "A short description.",
             "tags": ["history"],
-            "segments": [{"narration": narration, "keywords": ["old book"]}],
+            "segments": segments,
         }
     )
 
 
-# Target: 2s ≈ 5 words → bounds [3, 6] with the default 0.75/1.35 ratios.
-GOOD = _script("One two three four five.")
-LONG = _script("One two three four five six seven eight nine ten eleven twelve.")
+def _words(raw: str) -> int:
+    return len(
+        " ".join(seg["narration"] for seg in json.loads(raw)["segments"]).split()
+    )
+
+
+# 45s ≈ 112 words → bounds [84, 151] with the default 0.75/1.35 ratios.
+GOOD = _script()
+LONG = _script(padding_words=20)
+GOOD_WORDS = _words(GOOD)
+LONG_WORDS = _words(LONG)
 
 
 def _cfg() -> Config:
-    return Config({"script": {"provider": "anthropic", "shorts_target_seconds": 2}})
+    return Config({"script": {"provider": "anthropic", "shorts_target_seconds": 45}})
 
 
 class ScriptLengthTests(unittest.TestCase):
+    def test_fixtures_straddle_the_budget(self) -> None:
+        self.assertTrue(84 <= GOOD_WORDS <= 151, GOOD_WORDS)
+        self.assertGreater(LONG_WORDS, 151)
+
     def test_over_budget_draft_is_regenerated(self) -> None:
         with patch(
             "src.script_generator._call_anthropic", side_effect=[LONG, LONG, GOOD]
@@ -39,7 +66,7 @@ class ScriptLengthTests(unittest.TestCase):
             script = generate_script(_cfg(), "short", topic_override="test topic")
 
         self.assertEqual(3, call.call_count)
-        self.assertEqual(5, len(script.full_narration.split()))
+        self.assertEqual(GOOD_WORDS, len(script.full_narration.split()))
 
     def test_retry_prompt_carries_word_budget_feedback(self) -> None:
         with patch(
@@ -48,8 +75,8 @@ class ScriptLengthTests(unittest.TestCase):
             generate_script(_cfg(), "short", topic_override="test topic")
 
         retry_prompt = call.call_args_list[1].args[1]
-        self.assertIn("previous draft was 12 words", retry_prompt)
-        self.assertIn("MUST be between 3 and 6 words", retry_prompt)
+        self.assertIn(f"previous draft was {LONG_WORDS} words", retry_prompt)
+        self.assertIn("MUST be between 84 and 151 words", retry_prompt)
 
     def test_gives_up_with_clear_error_after_three_long_drafts(self) -> None:
         with patch("src.script_generator._call_anthropic", side_effect=[LONG] * 3):
@@ -61,7 +88,56 @@ class ScriptLengthTests(unittest.TestCase):
             script = generate_script(_cfg(), "long", topic_override="test topic")
 
         self.assertEqual(1, call.call_count)
-        self.assertEqual(12, len(script.full_narration.split()))
+        self.assertEqual(LONG_WORDS, len(script.full_narration.split()))
+
+
+class ScriptStructureRetryTests(unittest.TestCase):
+    """Structure failures retry in the same loop as word-count failures, so a
+    broken script costs one LLM call instead of a full render."""
+
+    def test_structurally_broken_draft_is_regenerated(self) -> None:
+        broken = json.loads(GOOD)
+        broken["segments"][2]["beat"] = "fact"  # drop the pivot
+        with patch(
+            "src.script_generator._call_anthropic",
+            side_effect=[json.dumps(broken), GOOD],
+        ) as call:
+            script = generate_script(_cfg(), "short", topic_override="test topic")
+
+        self.assertEqual(2, call.call_count)
+        self.assertEqual("pivot", script.segments[2].beat)
+
+    def test_retry_prompt_names_the_structural_failure(self) -> None:
+        broken = json.loads(GOOD)
+        broken["segments"][-1]["narration"] = "A memorable takeaway for everyone."
+        with patch(
+            "src.script_generator._call_anthropic",
+            side_effect=[json.dumps(broken), GOOD],
+        ) as call:
+            generate_script(_cfg(), "short", topic_override="test topic")
+
+        retry_prompt = call.call_args_list[1].args[1]
+        self.assertIn("broke the required structure", retry_prompt)
+        self.assertIn("shares no distinctive word", retry_prompt)
+
+    def test_gives_up_with_clear_error_after_three_broken_drafts(self) -> None:
+        broken = json.loads(GOOD)
+        broken["segments"][2]["beat"] = "fact"
+        with patch(
+            "src.script_generator._call_anthropic",
+            side_effect=[json.dumps(broken)] * 3,
+        ):
+            with self.assertRaisesRegex(RuntimeError, "structure stayed invalid"):
+                generate_script(_cfg(), "short", topic_override="test topic")
+
+    def test_beat_tags_survive_onto_the_script(self) -> None:
+        with patch("src.script_generator._call_anthropic", return_value=GOOD):
+            script = generate_script(_cfg(), "short", topic_override="test topic")
+
+        self.assertEqual(
+            ["hook", "setup", "pivot", "fact", "fact", "fact", "callback"],
+            [segment.beat for segment in script.segments],
+        )
 
 
 if __name__ == "__main__":

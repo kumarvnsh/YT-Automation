@@ -9,9 +9,9 @@ channel:
   # High-level instruction handed to the script writer. Tune the voice here.
   persona: >
     You write punchy, accurate, surprising history and 'did you know' content.
-    Hook the viewer in the first sentence, stay factually correct, avoid
-    sensitive/graphic detail, and end with a memorable takeaway. No clickbait
-    that the content doesn't deliver on.
+    Open on an unresolved gap, stay factually correct, avoid sensitive/graphic
+    detail, and close by calling back to your opening line so it means
+    something new. No clickbait that the content doesn't deliver on.
   language: "en"
   # Trend-aware topics: bridge trending searches to history + use anniversaries.
   topic_source: "blend"          # "angles" | "trends" | "on_this_day" | "blend"
@@ -33,7 +33,10 @@ script:
   anthropic_model: "claude-sonnet-4-6"
   openai_model: "gpt-4o-mini"
   # Target spoken duration. The writer aims for ~150 words/min.
-  shorts_target_seconds: 20
+  # Do NOT lower this below 45. Every short on this channel that exceeded 100%
+  # average view percentage ran 44s+; the 20s era (commit 886d4a5, 2026-07-10)
+  # averaged 10-14s watched vs 44-74s, a ~6x loss of watch time per view.
+  shorts_target_seconds: 45
   longform_target_seconds: 420   # 7 minutes
 
 tts:
