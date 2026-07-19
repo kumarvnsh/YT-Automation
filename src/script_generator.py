@@ -78,16 +78,17 @@ STRUCTURE — every segment carries a "beat" tag, in this exact order:
    number (a date, duration, price, count, distance). Partially answer the
    hook. Never fully.
 
-3. "pivot" (exactly one, roughly one third in) — open the segment with an
-   explicit turn phrase, then deliver the reframe:
+3. "pivot" (exactly one, roughly one third in, 15-20 words) — open the segment
+   with an explicit turn phrase, then deliver the reframe:
      "But here's the twist." / "What most people don't know..." / "But because..."
    This beat is what holds viewers through the middle, where they otherwise drop.
 
-4. "fact" (3 to 5 of them) — the fact stack. Each fact must stand alone and be
-   individually surprising. Do NOT build one continuous argument; build a chain
-   of small payoffs, because each fact buys the next few seconds of attention.
-   Put the strangest, most specific fact LAST ("The only wood aboard was the
-   butcher's chopping block and the grand piano.").
+4. "fact" (3 to 4 of them, 12-18 words EACH) — the fact stack. Each fact must
+   stand alone and be individually surprising. Do NOT build one continuous
+   argument; build a chain of small payoffs, because each fact buys the next
+   few seconds of attention. Put the strangest, most specific fact LAST ("The
+   only wood aboard was the butcher's chopping block and the grand piano.").
+   Keep them tight — this is the beat that most often runs long.
 
 5. "callback" (exactly one, LAST) — ~20 words. Reuse a distinctive noun or
    phrase from the hook and change what it means:
@@ -96,6 +97,11 @@ STRUCTURE — every segment carries a "beat" tag, in this exact order:
         a gift from a civilization history tried its best to forget."
    A generic uplifting summary is a FAILURE. If the closer would work on any
    other video in this niche, rewrite it.
+
+BUDGET CHECK — the beats above are sized to land inside the total word limit
+given under Constraints (roughly: hook 18 + setup 22 + pivot 18 + facts 3x15
++ callback 18). Add up your beats BEFORE answering. If the total exceeds the
+limit, cut a fact or tighten the fact stack — never pad the hook or callback.
 """
 
 # The pre-existing hook rule, kept verbatim and in its original position inside

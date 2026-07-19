@@ -13,6 +13,7 @@ from pathlib import Path
 
 import requests
 
+from . import imagegen
 from .config import Config, env
 
 PEXELS_VIDEO_URL = "https://api.pexels.com/videos/search"
@@ -95,9 +96,33 @@ def fetch_for_segments(
     per_segment = max(int(cfg.get("assets.per_segment_clips", 1)), 1)
     assets: list[list[Asset]] = []
 
+    # One generated illustration per segment beats three interchangeable stock
+    # clips, and keeps the per-video image count (and cost) predictable.
+    use_ai = imagegen.enabled(cfg) and fmt == "short"
+    ai_indices = (
+        imagegen.select_segments(cfg, [getattr(s, "beat", "") for s in segments])
+        if use_ai
+        else set()
+    )
+
     for idx, seg in enumerate(segments):
         query = " ".join(seg.keywords[:3]) or "history"
         dest_base = work_dir / "assets" / f"seg_{idx:02d}"
+
+        found: list[Asset] = []
+        if idx in ai_indices:
+            made = imagegen.generate(
+                cfg,
+                seg.narration,
+                seg.keywords,
+                dest_base.with_name(f"{dest_base.name}_ai").with_suffix(".png"),
+                variant=idx,
+            )
+            if made:
+                assets.append([Asset(made, False, seg.keywords)])
+                continue
+            # Generation failed for this segment — fall through to stock below.
+
         found = _fetch_one(query, orientation, prefer_video, dest_base, per_segment)
         while len(found) < per_segment:
             sub = len(found)

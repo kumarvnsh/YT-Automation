@@ -114,8 +114,10 @@ def active_stage(cfg: Config, fmt: str | None = None) -> Path | None:
 def _rebuild_segments(state: dict):
     from .script_generator import Segment
 
+    # The beat tag must survive the round-trip: the assets step uses it to
+    # decide which segments get a generated illustration instead of stock.
     return [
-        Segment(s["narration"], s.get("keywords", []))
+        Segment(s["narration"], s.get("keywords", []), s.get("beat", ""))
         for s in state["script"]["segments"]
     ]
 

@@ -57,6 +57,38 @@ assets:
   prefer_video: true           # use stock video clips; fall back to photos
   orientation_short: "portrait"
   orientation_long: "landscape"
+  # Generate one topical illustration per segment (shorts only) instead of
+  # pulling generic stock. Any failure falls back to the Pexels chain below,
+  # so this can never break a run.
+  ai_images:
+    enabled: true
+    # "illustrative" and "painterly" render engraved/painted plates. YouTube
+    # requires disclosure only for synthetic media a viewer could mistake for
+    # real footage, so these carry NO disclosure obligation and never present
+    # a fabricated image as evidence of a real person or event.
+    # "photoreal" gives up both protections: if you switch to it you must tick
+    # "altered or synthetic content" on every upload.
+    style: "illustrative"
+    # Which beats get a generated still; every other beat keeps moving stock
+    # footage. A short built entirely from stills reads as a slideshow, so
+    # images are spent where specificity pays — the pivot and the fact stack,
+    # which make concrete claims — while hook/setup/callback keep motion.
+    # Set to [] to generate an image for every segment instead.
+    beats: ["pivot", "fact"]
+    # Hard cap on generated images per video. When fewer than the eligible
+    # beats, the survivors are spread evenly across them (the pivot is always
+    # kept) so the stills don't bunch up in one stretch of the short.
+    # 0 = no cap. At 2 this is the pivot and the final, strongest fact.
+    max_images: 2
+    model: "gpt-image-1"       # uses the existing OPENAI_API_KEY
+    size: "1024x1536"          # portrait, matches the 1080x1920 short
+    quality: "medium"          # "low" | "medium" | "high" — cost scales with this
+    # Per-image hard timeout. A hung request falls back to stock footage
+    # instead of stalling a time-budgeted run.
+    timeout_seconds: 90
+    # Cost note: max_images caps spend per video. Multiply by your upload
+    # cadence (currently 2/day: cron-job.org dispatches morning + evening)
+    # and check current per-image pricing before raising it.
 
 video:
   short:
