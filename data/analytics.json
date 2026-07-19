@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-19T13:17:41.870148+00:00",
+      "updated": "2026-07-19T19:05:58.205571+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,104 @@
       },
       "videos": [
         {
+          "id": "rRSHVJyCl10",
+          "title": "The First Tour de France Winner Was Disqualified \u2014 A Year After He Won",
+          "description": "The very first Tour de France was won in 1903, but the story didn't end there. Maurice Garin's victory unravelled in ways nobody expected \u2014 and changed cycling forever. A wild piece of history hiding behind one of sport's biggest annual events.",
+          "tags": [
+            "1903",
+            "bizarre history",
+            "cycling",
+            "cycling history",
+            "did you know",
+            "disqualified",
+            "education",
+            "facts",
+            "first tour de france",
+            "french history",
+            "history",
+            "history facts",
+            "history shorts",
+            "maurice garin",
+            "shorts",
+            "sports history",
+            "tour de france",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-19T17:53:56Z",
+          "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
+          "views": 20,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "Cjl2tp-hpqk",
+          "title": "They Almost Guessed Wrong... And Lost WW2",
+          "description": "In June 1942, the entire Pacific War balanced on a single two-letter code designation \u2014 and the Americans weren't sure they'd cracked it correctly. One analyst's bluff confirmed the target, and the Battle of Midway became a turning point. What if the Japanese had changed their codes just one week earlier? #history #worldwar2 #midway",
+          "tags": [
+            "1942",
+            "almost moments",
+            "close call",
+            "codebreaking",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "intelligence",
+            "midway",
+            "naval history",
+            "navy",
+            "pacific war",
+            "shorts",
+            "trending",
+            "viral",
+            "world war 2"
+          ],
+          "publishedAt": "2026-07-19T15:35:15Z",
+          "thumbnail": "https://i.ytimg.com/vi/Cjl2tp-hpqk/mqdefault.jpg",
+          "views": 152,
+          "likes": 4,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "K8FtgqilMJ4",
+          "title": "The Underground Railway Paris Built in Two Years \u2014 for a Party",
+          "description": "On July 19, 1900, the first line of the Paris M\u00e9tro opened \u2014 built in just two years to impress visitors at the World's Fair. The engineering feat hid secrets stranger than the tunnels themselves. A story about ambition, deadline panic, and one architect who turned a subway entrance into art history.",
+          "tags": [
+            "art nouveau",
+            "did you know",
+            "education",
+            "engineering history",
+            "facts",
+            "french history",
+            "history",
+            "history shorts",
+            "paris 1900",
+            "paris metro",
+            "shorts",
+            "subway history",
+            "trending",
+            "underground railway",
+            "viral",
+            "world's fair"
+          ],
+          "publishedAt": "2026-07-19T14:25:04Z",
+          "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
+          "views": 188,
+          "likes": 2,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "2DFOa3Mj6tA",
           "title": "He Almost Threw It in the Bin \u2014 Then Saved 200 Million Lives | History's Almost Moments",
           "description": "In 1928, Alexander Fleming nearly discarded a contaminated petri dish \u2014 the one that contained penicillin. He almost missed the mould entirely. Would antibiotics have been discovered without him, or would millions more have died from treatable infections? Watch to find out how close we came to losing it all. #history #didyouknow #historysfacts",
@@ -56,7 +154,7 @@
           ],
           "publishedAt": "2026-07-19T06:04:54Z",
           "thumbnail": "https://i.ytimg.com/vi/2DFOa3Mj6tA/mqdefault.jpg",
-          "views": 671,
+          "views": 678,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -88,7 +186,7 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 780,
+          "views": 779,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
@@ -120,7 +218,7 @@
           ],
           "publishedAt": "2026-07-18T07:20:28Z",
           "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
-          "views": 602,
+          "views": 607,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -157,7 +255,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 38.36,
+          "subs_gained": 0
         },
         {
           "id": "jbs777oROMY",
@@ -189,7 +289,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 58.53,
+          "subs_gained": 0
         },
         {
           "id": "Ec6_nSqgo0Q",
@@ -218,7 +320,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 58.32999999999999,
+          "subs_gained": 0
         },
         {
           "id": "FQsqfzoQ1Ak",
@@ -246,13 +350,13 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 739,
+          "views": 744,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.02,
+          "avg_view_pct": 73.3,
           "subs_gained": 0
         },
         {
@@ -279,13 +383,13 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 929,
+          "views": 936,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.60999999999999,
+          "avg_view_pct": 60.89,
           "subs_gained": 0
         },
         {
@@ -312,13 +416,13 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 799,
+          "views": 800,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.13,
+          "avg_view_pct": 51.849999999999994,
           "subs_gained": 0
         },
         {
@@ -384,7 +488,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.25,
+          "avg_view_pct": 74.08,
           "subs_gained": 0
         },
         {
@@ -457,7 +561,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.15,
+          "avg_view_pct": 54.11,
           "subs_gained": 1
         },
         {
@@ -609,7 +713,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.61,
+          "avg_view_pct": 65.7,
           "subs_gained": 1
         },
         {
@@ -646,7 +750,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 73.08,
+          "avg_view_pct": 72.99,
           "subs_gained": 0
         },
         {
@@ -759,7 +863,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.5,
+          "avg_view_pct": 67.58,
           "subs_gained": 0
         },
         {
@@ -1699,114 +1803,6 @@
           "is_unsorted": false,
           "avg_view_pct": 64.17,
           "subs_gained": 0
-        },
-        {
-          "id": "GJa3gT3ksJU",
-          "title": "He Refused to Move Seats \u2014 The Army Tried to Destroy Him For It",
-          "description": "Before Jackie Robinson broke baseball's color barrier, he fought a different battle entirely \u2014 inside the U.S. Army. On July 6, 1944, his refusal to move to the back of a military bus led to a court-martial that nearly ended his future before it began. Robinson was acquitted, and history took a very different turn.",
-          "tags": [
-            "1944",
-            "baseball",
-            "civil rights",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "jackie robinson",
-            "military history",
-            "on this day",
-            "segregation",
-            "us army"
-          ],
-          "publishedAt": "2026-07-06T13:16:37Z",
-          "thumbnail": "https://i.ytimg.com/vi/GJa3gT3ksJU/mqdefault.jpg",
-          "views": 598,
-          "likes": 9,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 94.97,
-          "subs_gained": 0
-        },
-        {
-          "id": "Ad8L8rgBbZw",
-          "title": "The Indian Man Who Won a British Parliamentary Seat Against All Odds",
-          "description": "In 1892, Dadabhai Naoroji became the first Indian elected to the British Parliament, winning by just three votes. Known as the 'Grand Old Man of India,' he used his seat to expose how British rule was draining India's wealth. His election shattered a ceiling that many believed would never break. #IndianHistory #BritishParliament #DadabhaiNaoroji",
-          "tags": [
-            "1892 election",
-            "british parliament",
-            "colonial history",
-            "dadabhai naoroji",
-            "did you know",
-            "did you know history",
-            "education",
-            "facts",
-            "first indian mp",
-            "grand old man of india",
-            "history",
-            "history shorts",
-            "india independence movement",
-            "indian history",
-            "victorian britain"
-          ],
-          "publishedAt": "2026-07-06T11:57:57Z",
-          "thumbnail": "https://i.ytimg.com/vi/Ad8L8rgBbZw/mqdefault.jpg",
-          "views": 620,
-          "likes": 10,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 66.38,
-          "subs_gained": 0
-        },
-        {
-          "id": "4RCpWx1IkWo",
-          "title": "Humanity Sent a Message to the Stars \u2014 It Won't Arrive Until 2049",
-          "description": "In 2003, scientists deliberately beamed a message containing human knowledge toward five carefully chosen stars, some of which orbit in their habitable zones. The signal is already en route, and the nearest target receives it in 2036 \u2014 decades before most people alive today will see the reply. It's the longest postal delay in human history, and nobody knows if anyone's listening.",
-          "tags": [
-            "55 cancri",
-            "alien contact",
-            "astronomy",
-            "cosmic call 2",
-            "deep space",
-            "did you know",
-            "education",
-            "extraterrestrial",
-            "facts",
-            "history",
-            "history shorts",
-            "meti",
-            "radio signal",
-            "science history",
-            "seti",
-            "space history",
-            "yevpatoria radar"
-          ],
-          "publishedAt": "2026-07-06T09:26:20Z",
-          "thumbnail": "https://i.ytimg.com/vi/4RCpWx1IkWo/mqdefault.jpg",
-          "views": 639,
-          "likes": 17,
-          "comments": 2,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 102.8,
-          "subs_gained": 2
         }
       ]
     }
