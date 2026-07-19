@@ -32,6 +32,11 @@ script:
   fallback_provider: "openai"
   anthropic_model: "claude-sonnet-4-6"
   openai_model: "gpt-4o-mini"
+  # Require the four-beat looping structure (hook / setup / pivot / fact stack
+  # / callback) on every short, enforced at generation and again at the quality
+  # gate. Derived from the only Histold shorts that exceeded 100% average view
+  # percentage. Needs shorts_target_seconds >= 45 to fit the beats.
+  enforce_beats: true
   # Target spoken duration. The writer aims for ~150 words/min.
   # Do NOT lower this below 45. Every short on this channel that exceeded 100%
   # average view percentage ran 44s+; the 20s era (commit 886d4a5, 2026-07-10)

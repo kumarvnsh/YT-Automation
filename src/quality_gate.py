@@ -11,7 +11,7 @@ import subprocess
 from pathlib import Path
 
 from .config import Config
-from .script_generator import validate_structure
+from .script_generator import enforce_beats, validate_structure
 
 # Every check the gate runs, in report order. All are required: a single fail
 # fails the stage, and the score is purely informational.
@@ -100,10 +100,11 @@ def validate_stage(cfg: Config, stage: Path, st: dict) -> dict:
         f"narration length ratio {word_ratio:.2f} outside [{min_ratio}, {max_ratio}]",
     )
 
-    # --- four-beat structure (shorts only) ---------------------------------- #
+    # --- four-beat structure (opt-in, shorts only) -------------------------- #
     # Last line of defence: generate_script already retries on a structural
-    # failure, but a script that slipped through must not reach upload.
-    if fmt == "short":
+    # failure, but a script that slipped through must not reach upload. Skipped
+    # entirely on channels that don't set script.enforce_beats.
+    if fmt == "short" and enforce_beats(cfg):
         segments = script.get("segments") or []
         structure_error = validate_structure(
             [str(seg.get("beat", "")).strip().lower() for seg in segments],

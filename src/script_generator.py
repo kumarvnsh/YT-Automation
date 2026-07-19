@@ -152,10 +152,12 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         if series else ""
     )
 
-    # Shorts follow a fixed four-beat structure derived from the only videos on
-    # this channel that broke 100% average view percentage (i.e. looped). The
-    # beats are tagged in the JSON so _validate_structure can enforce them.
-    structure_block = _SHORT_STRUCTURE if fmt == "short" else _LONG_STRUCTURE
+    # The four-beat structure was derived from Histold's retention data and is
+    # opt-in per channel: a channel on a different format (or a shorter word
+    # budget than the beats need) leaves script.enforce_beats off.
+    structure_block = (
+        _SHORT_STRUCTURE if fmt == "short" and enforce_beats(cfg) else _LONG_STRUCTURE
+    )
 
     # Retention feedback: what this channel's audience actually watched through.
     winners, losers = performance_examples()
@@ -277,6 +279,16 @@ _STOPWORDS = frozenset(
     "these they thing think this those three through took under until very "
     "well went were what when which while will with would your years".split()
 )
+
+
+def enforce_beats(cfg) -> bool:
+    """Whether this channel's shorts must follow the four-beat structure.
+
+    Off by default: the beats were derived from Histold's retention data and
+    assume a ~45s history-short format. A channel with a different format or a
+    word budget too small to hold the beats leaves this off and is unaffected.
+    """
+    return bool(cfg.get("script.enforce_beats", False))
 
 
 def _content_words(text: str) -> set[str]:
@@ -576,7 +588,7 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
             validate_structure(
                 [s.beat for s in segments], [s.narration for s in segments]
             )
-            if fmt == "short"
+            if fmt == "short" and enforce_beats(cfg)
             else None
         )
         if structure_error:

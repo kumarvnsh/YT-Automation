@@ -41,6 +41,11 @@ script:
   fallback_provider: "openai"
   anthropic_model: "claude-sonnet-4-6"
   openai_model: "gpt-4o-mini"
+  # Histold's four-beat structure (hook / setup / pivot / fact stack /
+  # callback) is deliberately OFF here: it was derived from history-shorts
+  # retention data and needs ~110 words, which does not fit this 28s budget.
+  # Turning it on requires raising shorts_target_seconds to 45 first.
+  enforce_beats: false
   shorts_target_seconds: 28
   longform_target_seconds: 420
 

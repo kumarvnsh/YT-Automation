@@ -17,7 +17,7 @@ def _quality_cfg() -> Config:
         {
             # 45s at ~150 words/min → 112 words, bounds [84, 151]. The fixture
             # narration is the four-beat reference script at 116 words.
-            "script": {"shorts_target_seconds": 45},
+            "script": {"shorts_target_seconds": 45, "enforce_beats": True},
             "video": {
                 "short": {"width": 1080, "height": 1920},
                 "captions": {"enabled": True},
@@ -161,6 +161,21 @@ class QualityGateTests(unittest.TestCase):
             report = validate_stage(_quality_cfg(), self.stage, state)
 
         self.assertEqual("fail", report["checks"]["structure"])
+
+    def test_opted_out_channel_skips_structure_check(self) -> None:
+        """A channel without script.enforce_beats must not be blocked by it."""
+        cfg = _quality_cfg()
+        cfg.raw["script"]["enforce_beats"] = False
+        state = _valid_state()
+        for segment in state["script"]["segments"]:
+            segment.pop("beat")
+
+        with patch("src.quality_gate.subprocess.run") as ffprobe_run:
+            ffprobe_run.return_value.stdout = _ffprobe_json()
+            report = validate_stage(cfg, self.stage, state)
+
+        self.assertEqual("pass", report["checks"]["structure"])
+        self.assertTrue(report["passed"])
 
     def test_long_form_skips_structure_check(self) -> None:
         state = _valid_state()

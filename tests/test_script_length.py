@@ -51,7 +51,15 @@ LONG_WORDS = _words(LONG)
 
 
 def _cfg() -> Config:
-    return Config({"script": {"provider": "anthropic", "shorts_target_seconds": 45}})
+    return Config(
+        {
+            "script": {
+                "provider": "anthropic",
+                "shorts_target_seconds": 45,
+                "enforce_beats": True,
+            }
+        }
+    )
 
 
 class ScriptLengthTests(unittest.TestCase):
@@ -138,6 +146,47 @@ class ScriptStructureRetryTests(unittest.TestCase):
             ["hook", "setup", "pivot", "fact", "fact", "fact", "callback"],
             [segment.beat for segment in script.segments],
         )
+
+
+class OptOutChannelTests(unittest.TestCase):
+    """Channels that don't set script.enforce_beats are untouched by the
+    structure work — e.g. astrotold, whose 28s budget cannot hold the beats."""
+
+    @staticmethod
+    def _astrotold_cfg() -> Config:
+        return Config(
+            {"script": {"provider": "anthropic", "shorts_target_seconds": 28}}
+        )
+
+    def test_untagged_script_is_accepted_when_beats_not_enforced(self) -> None:
+        plain = json.dumps(
+            {
+                "topic": "number three",
+                "title": "What Your Number Three Means",
+                "description": "A short reading.",
+                "tags": ["numerology"],
+                "segments": [
+                    {
+                        "narration": " ".join(["word"] * 70),
+                        "keywords": ["night sky"],
+                    }
+                ],
+            }
+        )
+        with patch("src.script_generator._call_anthropic", return_value=plain) as call:
+            script = generate_script(
+                self._astrotold_cfg(), "short", topic_override="test topic"
+            )
+
+        self.assertEqual(1, call.call_count)
+        self.assertEqual("", script.segments[0].beat)
+
+    def test_beat_instructions_are_absent_from_the_prompt(self) -> None:
+        from src.script_generator import _build_prompt
+
+        prompt = _build_prompt(self._astrotold_cfg(), "short", topic_override="t")
+        self.assertNotIn("fact stack", prompt)
+        self.assertNotIn("But here's the twist", prompt)
 
 
 if __name__ == "__main__":
