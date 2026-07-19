@@ -205,5 +205,14 @@
     "slot": "evening",
     "date": "2026-07-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260719_153218_short",
+    "title": "The Codebreakers Who Almost Guessed Wrong | History's Almost Moments",
+    "fingerprint": "almost_codebreakers_guessed_history_moments_s_who_wrong",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-19",
+    "status": "reserved"
   }
 ]

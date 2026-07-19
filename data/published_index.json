@@ -421,5 +421,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Cjl2tp-hpqk",
+    "run_id": "29693014116",
+    "stage_dir_name": "20260719_153218_short",
+    "title": "The Codebreakers Who Almost Guessed Wrong | History's Almost Moments",
+    "published_at": "2026-07-19T15:35:59.467929+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
