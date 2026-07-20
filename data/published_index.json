@@ -477,5 +477,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "N3kjaJb7SZk",
+    "run_id": "29716628839",
+    "stage_dir_name": "20260720_042049_short",
+    "title": "Spain Waited 44 Years to Win the World Cup \u2014 Almost Never Did",
+    "published_at": "2026-07-20T04:24:15.541229+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
