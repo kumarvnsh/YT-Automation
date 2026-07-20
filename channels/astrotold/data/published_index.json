@@ -82,5 +82,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "0NtLVM7jEmk",
+    "run_id": "29718159112",
+    "stage_dir_name": "20260720_050142_short",
+    "title": "Your Name Initial Holds a Personality Secret Most People Miss",
+    "published_at": "2026-07-20T05:02:43.466192+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

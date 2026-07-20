@@ -88,5 +88,14 @@
     "slot": "evening",
     "date": "2026-07-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260720_050142_short",
+    "title": "Your Name Initial Holds a Personality Secret Most People Miss",
+    "fingerprint": "holds_initial_miss_most_name_people_personality_secret_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-20",
+    "status": "reserved"
   }
 ]
