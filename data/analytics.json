@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-20T14:05:31.313086+00:00",
+      "updated": "2026-07-20T19:43:57.087934+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "g0VY0bN7TJ8",
+          "title": "The First Ford Ever Shipped Left the Factory With One Huge Problem",
+          "description": "On July 20, 1903, the Ford Motor Company shipped its very first automobile \u2014 but the company behind it was barely holding together. The story of how a broke, almost-bankrupt startup changed the world in a single delivery. Watch to find out what almost stopped it.",
+          "tags": [
+            "1903",
+            "american history",
+            "automotive history",
+            "car history",
+            "did you know",
+            "education",
+            "facts",
+            "first car",
+            "ford",
+            "henry ford",
+            "history",
+            "history facts",
+            "history shorts",
+            "industrial history",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-20T16:04:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/g0VY0bN7TJ8/mqdefault.jpg",
+          "views": 256,
+          "likes": 9,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "N3kjaJb7SZk",
           "title": "How Spain Finally Broke Their World Cup Curse \ud83c\uddea\ud83c\uddf8 #football #worldcup #spain",
           "description": "For 44 years, Spain had the talent to rule world football but never the trophy to prove it. This is the untold story of how the world's biggest underachiever finally broke its curse and won the World Cup.\n\nDiscover the tactical failures, heartbreaks, and turning points that defined Spanish football history \u2014 and the golden generation that changed everything. A deep dive into football history, the World Cup, and one of the sport's strangest unsolved mysteries.\n\n#football #fifaworldcup #footballhistory #spainfootball #worldcuphistory",
@@ -54,7 +86,7 @@
           ],
           "publishedAt": "2026-07-20T04:23:26Z",
           "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 677,
+          "views": 691,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -88,7 +120,7 @@
           ],
           "publishedAt": "2026-07-20T04:04:36Z",
           "thumbnail": "https://i.ytimg.com/vi/z0MJDWH2vsI/mqdefault.jpg",
-          "views": 288,
+          "views": 314,
           "likes": 13,
           "comments": 2,
           "playlist_ids": [],
@@ -120,7 +152,7 @@
           ],
           "publishedAt": "2026-07-19T19:41:29Z",
           "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 850,
+          "views": 854,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -154,9 +186,9 @@
           ],
           "publishedAt": "2026-07-19T17:53:56Z",
           "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
-          "views": 113,
+          "views": 134,
           "likes": 2,
-          "comments": 0,
+          "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -187,8 +219,8 @@
           ],
           "publishedAt": "2026-07-19T15:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Cjl2tp-hpqk/mqdefault.jpg",
-          "views": 547,
-          "likes": 13,
+          "views": 607,
+          "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -218,7 +250,7 @@
           ],
           "publishedAt": "2026-07-19T14:25:04Z",
           "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
-          "views": 363,
+          "views": 381,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -257,7 +289,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 63.6,
+          "subs_gained": 0
         },
         {
           "id": "-qkDx9745Y8",
@@ -284,12 +318,14 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 813,
+          "views": 816,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 66.74,
+          "subs_gained": 0
         },
         {
           "id": "lwlDyo1eJoU",
@@ -316,12 +352,14 @@
           ],
           "publishedAt": "2026-07-18T07:20:28Z",
           "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
-          "views": 620,
+          "views": 621,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 41.49,
+          "subs_gained": 0
         },
         {
           "id": "FDUlF365H28",
@@ -348,14 +386,14 @@
           ],
           "publishedAt": "2026-07-18T05:32:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
-          "views": 939,
+          "views": 940,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 38.36,
-          "subs_gained": 0
+          "avg_view_pct": 45.92,
+          "subs_gained": 1
         },
         {
           "id": "jbs777oROMY",
@@ -388,7 +426,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.53,
+          "avg_view_pct": 55.05,
           "subs_gained": 0
         },
         {
@@ -413,13 +451,13 @@
           ],
           "publishedAt": "2026-07-17T13:04:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 844,
+          "views": 850,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.32999999999999,
+          "avg_view_pct": 58.989999999999995,
           "subs_gained": 0
         },
         {
@@ -448,13 +486,13 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 751,
+          "views": 757,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.3,
+          "avg_view_pct": 75.38,
           "subs_gained": 0
         },
         {
@@ -481,13 +519,13 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 990,
-          "likes": 7,
+          "views": 993,
+          "likes": 6,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.78,
+          "avg_view_pct": 60.35,
           "subs_gained": 0
         },
         {
@@ -520,7 +558,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.849999999999994,
+          "avg_view_pct": 51.71,
           "subs_gained": 0
         },
         {
@@ -586,7 +624,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 74.08,
+          "avg_view_pct": 73.43,
           "subs_gained": 0
         },
         {
@@ -697,7 +735,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.05,
+          "avg_view_pct": 71.99,
           "subs_gained": 0
         },
         {
@@ -1758,41 +1796,6 @@
           "is_unsorted": false,
           "avg_view_pct": 152.02,
           "subs_gained": 0
-        },
-        {
-          "id": "DP8pSiVptwI",
-          "title": "The Night Elvis Played on Radio \u2014 And Nobody Knew What He Was",
-          "description": "On July 7, 1954, a teenage truck driver's voice hit Memphis radio for the first time \u2014 and the switchboard exploded. Elvis Presley's debut on WHBQ was so strange, the DJ called the studio just to find out if the singer was Black or white. That one song launched a cultural earthquake that reshaped music forever.",
-          "tags": [
-            "1950s",
-            "american history",
-            "did you know",
-            "education",
-            "elvis presley",
-            "facts",
-            "history",
-            "history shorts",
-            "memphis",
-            "music history",
-            "on this day",
-            "radio history",
-            "rock and roll",
-            "sun records"
-          ],
-          "publishedAt": "2026-07-07T06:40:49Z",
-          "thumbnail": "https://i.ytimg.com/vi/DP8pSiVptwI/mqdefault.jpg",
-          "views": 670,
-          "likes": 30,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 81.03,
-          "subs_gained": 1
         }
       ]
     }
