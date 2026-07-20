@@ -463,5 +463,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "z0MJDWH2vsI",
+    "run_id": "29715887848",
+    "stage_dir_name": "20260720_040143_short",
+    "title": "One Broken Radio Nearly Handed Japan the Pacific | History's Almost Moments",
+    "published_at": "2026-07-20T04:05:15.352314+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

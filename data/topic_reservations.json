@@ -232,5 +232,14 @@
     "slot": "morning",
     "date": "2026-07-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260720_040143_short",
+    "title": "One Broken Radio Nearly Handed Japan the Pacific | History's Almost Moments",
+    "fingerprint": "almost_broken_handed_history_japan_moments_nearly_one_pacific_radio_s",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-20",
+    "status": "reserved"
   }
 ]
