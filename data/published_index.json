@@ -491,5 +491,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "g0VY0bN7TJ8",
+    "run_id": "29757751323",
+    "stage_dir_name": "20260720_160148_short",
+    "title": "The First Ford Ever Shipped Left the Factory With One Huge Problem",
+    "published_at": "2026-07-20T16:05:09.498493+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
