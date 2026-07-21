@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-21T13:49:41.960068+00:00",
+      "updated": "2026-07-21T19:22:03.518218+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,40 @@
       },
       "videos": [
         {
+          "id": "VtwBol7u2jE",
+          "title": "Everyone Expected a One-Day War \u2014 Then Bull Run Changed Everything",
+          "description": "On July 21, 1861, the first major battle of the American Civil War ended in a shock that nobody in Washington saw coming. What spectators brought picnic baskets to watch became a turning point that redefined the entire conflict. The war nobody thought would last a week dragged on for four brutal years.",
+          "tags": [
+            "1861",
+            "american history",
+            "battle of bull run",
+            "bull run",
+            "civil war",
+            "confederacy",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "july 21",
+            "military history",
+            "short history",
+            "shorts",
+            "trending",
+            "union",
+            "viral"
+          ],
+          "publishedAt": "2026-07-21T16:05:19Z",
+          "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
+          "views": 282,
+          "likes": 12,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "AobKkdjdmnI",
           "title": "Japan Had America Cornered \u2014 Then Changed One Order | History's Almost Moments",
           "description": "In June 1942, a single rearming order aboard a Japanese aircraft carrier shifted the entire Pacific War in four catastrophic minutes. This is the decision that historians still argue over today. Could the Pacific have fallen a different way entirely? #history #WorldWar2 #HistorysAlmostMoments",
@@ -56,7 +90,7 @@
           ],
           "publishedAt": "2026-07-21T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/AobKkdjdmnI/mqdefault.jpg",
-          "views": 586,
+          "views": 592,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -120,12 +154,14 @@
           ],
           "publishedAt": "2026-07-20T04:23:26Z",
           "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 729,
-          "likes": 16,
+          "views": 741,
+          "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 54.43,
+          "subs_gained": 0
         },
         {
           "id": "z0MJDWH2vsI",
@@ -154,12 +190,14 @@
           ],
           "publishedAt": "2026-07-20T04:04:36Z",
           "thumbnail": "https://i.ytimg.com/vi/z0MJDWH2vsI/mqdefault.jpg",
-          "views": 423,
-          "likes": 24,
+          "views": 624,
+          "likes": 29,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 68.77,
+          "subs_gained": 1
         },
         {
           "id": "37MFhW_8TO0",
@@ -186,12 +224,14 @@
           ],
           "publishedAt": "2026-07-19T19:41:29Z",
           "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 859,
+          "views": 861,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 75.41,
+          "subs_gained": 1
         },
         {
           "id": "rRSHVJyCl10",
@@ -220,12 +260,14 @@
           ],
           "publishedAt": "2026-07-19T17:53:56Z",
           "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
-          "views": 221,
+          "views": 281,
           "likes": 5,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 51.12,
+          "subs_gained": 0
         },
         {
           "id": "Cjl2tp-hpqk",
@@ -258,7 +300,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 80.06,
+          "subs_gained": 0
         },
         {
           "id": "K8FtgqilMJ4",
@@ -284,12 +328,14 @@
           ],
           "publishedAt": "2026-07-19T14:25:04Z",
           "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
-          "views": 494,
+          "views": 520,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 135.39,
+          "subs_gained": 0
         },
         {
           "id": "2DFOa3Mj6tA",
@@ -324,7 +370,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.6,
+          "avg_view_pct": 56.11999999999999,
           "subs_gained": 0
         },
         {
@@ -352,13 +398,13 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 843,
+          "views": 852,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.74,
+          "avg_view_pct": 65.64,
           "subs_gained": 0
         },
         {
@@ -392,7 +438,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 41.49,
+          "avg_view_pct": 88.08,
           "subs_gained": 0
         },
         {
@@ -460,7 +506,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.13,
+          "avg_view_pct": 55.47,
           "subs_gained": 0
         },
         {
@@ -491,7 +537,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.07,
+          "avg_view_pct": 59.19,
           "subs_gained": 0
         },
         {
@@ -526,7 +572,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.38,
+          "avg_view_pct": 75.22,
           "subs_gained": 0
         },
         {
@@ -559,7 +605,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.41,
+          "avg_view_pct": 59.81000000000001,
           "subs_gained": 0
         },
         {
@@ -592,7 +638,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.71,
+          "avg_view_pct": 51.59,
           "subs_gained": 0
         },
         {
@@ -625,7 +671,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.48,
+          "avg_view_pct": 57.64,
           "subs_gained": 2
         },
         {
@@ -658,7 +704,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.43,
+          "avg_view_pct": 73.39,
           "subs_gained": 0
         },
         {
@@ -693,7 +739,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.33,
+          "avg_view_pct": 40.43,
           "subs_gained": 0
         },
         {
@@ -731,7 +777,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.11,
+          "avg_view_pct": 54.18999999999999,
           "subs_gained": 1
         },
         {
@@ -845,7 +891,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 114.75999999999999,
+          "avg_view_pct": 114.7,
           "subs_gained": 0
         },
         {
@@ -883,7 +929,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.7,
+          "avg_view_pct": 67.56,
           "subs_gained": 1
         },
         {
@@ -920,7 +966,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.99,
+          "avg_view_pct": 73.26,
           "subs_gained": 0
         },
         {
@@ -996,7 +1042,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.5,
+          "avg_view_pct": 70.44,
           "subs_gained": 0
         },
         {
@@ -1033,7 +1079,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.58,
+          "avg_view_pct": 67.68,
           "subs_gained": 0
         },
         {
@@ -1071,7 +1117,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.11,
+          "avg_view_pct": 63.07000000000001,
           "subs_gained": 0
         },
         {
@@ -1149,7 +1195,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.38,
+          "avg_view_pct": 70.6,
           "subs_gained": 1
         },
         {
@@ -1330,7 +1376,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 97.15,
+          "avg_view_pct": 97.05,
           "subs_gained": 0
         },
         {
@@ -1398,7 +1444,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 112.32,
+          "avg_view_pct": 112.1,
           "subs_gained": 0
         },
         {
@@ -1434,7 +1480,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 53.90999999999999,
+          "avg_view_pct": 54.04,
           "subs_gained": 2
         },
         {
@@ -1469,7 +1515,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 30.829999999999995,
+          "avg_view_pct": 27.85,
           "subs_gained": 0
         },
         {
@@ -1506,7 +1552,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.89999999999999,
+          "avg_view_pct": 55.25,
           "subs_gained": 1
         },
         {
@@ -1542,7 +1588,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.85,
+          "avg_view_pct": 67.92,
           "subs_gained": 2
         },
         {
@@ -1648,7 +1694,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 74.72,
+          "avg_view_pct": 74.6,
           "subs_gained": 1
         },
         {
@@ -1760,42 +1806,6 @@
           "is_unsorted": false,
           "avg_view_pct": 66.03,
           "subs_gained": 2
-        },
-        {
-          "id": "7_G3tHrlWKo",
-          "title": "Sliced Bread Was Invented on the Inventor's Own Birthday",
-          "description": "On July 7, 1928, the Chillicothe Baking Company sold the world's first commercially sliced bread \u2014 and it happened to be inventor Otto Frederick Rohwedder's 48th birthday. The machine he built took 16 years to perfect after a warehouse fire destroyed his original prototype. Next time someone calls something 'the greatest thing since sliced bread,' now you know exactly when that era began.",
-          "tags": [
-            "1928",
-            "american history",
-            "bread",
-            "did you know",
-            "education",
-            "everyday history",
-            "facts",
-            "food history",
-            "history",
-            "history shorts",
-            "inventions",
-            "kitchen history",
-            "on this day",
-            "otto rohwedder",
-            "sliced bread"
-          ],
-          "publishedAt": "2026-07-07T07:09:24Z",
-          "thumbnail": "https://i.ytimg.com/vi/7_G3tHrlWKo/mqdefault.jpg",
-          "views": 741,
-          "likes": 14,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 49.26,
-          "subs_gained": 0
         }
       ]
     }
