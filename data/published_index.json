@@ -505,5 +505,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "AobKkdjdmnI",
+    "run_id": "29800055950",
+    "stage_dir_name": "20260721_040129_short",
+    "title": "Japan Had America Cornered \u2014 Then Changed One Order | History's Almost Moments",
+    "published_at": "2026-07-21T04:04:51.773844+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
