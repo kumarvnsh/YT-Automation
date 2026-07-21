@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-20T19:43:57.087934+00:00",
+      "updated": "2026-07-21T02:40:40.942703+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -54,8 +54,8 @@
           ],
           "publishedAt": "2026-07-20T16:04:50Z",
           "thumbnail": "https://i.ytimg.com/vi/g0VY0bN7TJ8/mqdefault.jpg",
-          "views": 256,
-          "likes": 9,
+          "views": 515,
+          "likes": 12,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -86,7 +86,7 @@
           ],
           "publishedAt": "2026-07-20T04:23:26Z",
           "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 691,
+          "views": 709,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -120,8 +120,8 @@
           ],
           "publishedAt": "2026-07-20T04:04:36Z",
           "thumbnail": "https://i.ytimg.com/vi/z0MJDWH2vsI/mqdefault.jpg",
-          "views": 314,
-          "likes": 13,
+          "views": 343,
+          "likes": 14,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
@@ -152,8 +152,8 @@
           ],
           "publishedAt": "2026-07-19T19:41:29Z",
           "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 854,
-          "likes": 9,
+          "views": 857,
+          "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -186,8 +186,8 @@
           ],
           "publishedAt": "2026-07-19T17:53:56Z",
           "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
-          "views": 134,
-          "likes": 2,
+          "views": 175,
+          "likes": 4,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -219,8 +219,8 @@
           ],
           "publishedAt": "2026-07-19T15:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Cjl2tp-hpqk/mqdefault.jpg",
-          "views": 607,
-          "likes": 14,
+          "views": 627,
+          "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -250,8 +250,8 @@
           ],
           "publishedAt": "2026-07-19T14:25:04Z",
           "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
-          "views": 381,
-          "likes": 3,
+          "views": 423,
+          "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -285,13 +285,11 @@
           "publishedAt": "2026-07-19T06:04:54Z",
           "thumbnail": "https://i.ytimg.com/vi/2DFOa3Mj6tA/mqdefault.jpg",
           "views": 678,
-          "likes": 6,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 63.6,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "-qkDx9745Y8",
@@ -318,14 +316,12 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 816,
+          "views": 833,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 66.74,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "lwlDyo1eJoU",
@@ -357,9 +353,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 41.49,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "FDUlF365H28",
@@ -391,9 +385,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 45.92,
-          "subs_gained": 1
+          "is_unsorted": true
         },
         {
           "id": "jbs777oROMY",
@@ -420,14 +412,12 @@
           ],
           "publishedAt": "2026-07-18T04:03:00Z",
           "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
-          "views": 775,
+          "views": 776,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 55.05,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "Ec6_nSqgo0Q",
@@ -456,9 +446,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 58.989999999999995,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "FQsqfzoQ1Ak",
@@ -486,14 +474,12 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 757,
+          "views": 771,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 75.38,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "9KkikPjPHQc",
@@ -524,9 +510,7 @@
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 60.35,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "twmBUwdHyG0",
@@ -557,9 +541,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 51.71,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "MkleVVyV5zg",
@@ -590,9 +572,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 57.48,
-          "subs_gained": 2
+          "is_unsorted": true
         },
         {
           "id": "nHLzJ1AL_hI",
@@ -623,9 +603,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 73.43,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "wtdl4iJe71Y",
@@ -658,9 +636,7 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 40.33,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "J3N5e4alRYs",
@@ -696,9 +672,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.11,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "cTzCiqFG5yA",
@@ -734,9 +708,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 71.99,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "Ey04v7ot92E",
@@ -772,9 +744,7 @@
           "playlists": [
             "Ancient Mysteries"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 56.37,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "TSfS-PefD2I",
@@ -810,9 +780,7 @@
           "playlists": [
             "Forgotten Ancient Technology"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 114.75999999999999,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "twUMm4KyNiA",
@@ -848,9 +816,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 65.7,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "QYwnxriSAAk",
@@ -885,9 +851,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 72.99,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "xSlT9wViqcU",
@@ -923,9 +887,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 70.83,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "HOzzS9c9bSI",
@@ -961,9 +923,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 70.5,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "hXA0Zta874Q",
@@ -998,9 +958,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 67.58,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "Yw77rxLMmCY",
@@ -1036,9 +994,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 63.11,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "Lpt-QnNWJOg",
@@ -1074,9 +1030,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 41.3,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "mOgSMDUQCp0",
@@ -1114,9 +1068,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 70.38,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "ABSo-s-cQPE",
@@ -1149,9 +1101,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 55.54,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "08B4lsuemvU",
@@ -1183,9 +1133,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 49.27,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "-Bh7FffOJ_k",
@@ -1219,9 +1167,7 @@
           "playlists": [
             "Vanished Civilizations"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 71.72,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "-I3k-5EYohU",
@@ -1255,9 +1201,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 39.26,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "BBibvaSIgLM",
@@ -1295,9 +1239,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 97.15,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "MUp4BtZxwuU",
@@ -1329,9 +1271,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 147.03,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "Yi1mtK9HAHM",
@@ -1363,9 +1303,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 112.32,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "r419ISKWRk0",
@@ -1399,9 +1337,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 53.90999999999999,
-          "subs_gained": 2
+          "is_unsorted": false
         },
         {
           "id": "hI7XI8VcN_g",
@@ -1434,9 +1370,7 @@
           "playlists": [
             "Ancient Mysteries"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 30.829999999999995,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "sZiE8ejUhBo",
@@ -1471,9 +1405,7 @@
           "playlists": [
             "Ancient Mysteries"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.89999999999999,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "gpxm4GYWPuc",
@@ -1507,9 +1439,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 67.85,
-          "subs_gained": 2
+          "is_unsorted": false
         },
         {
           "id": "WC4h4q3-pAo",
@@ -1542,9 +1472,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.37,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "0XfidH7YZzc",
@@ -1578,9 +1506,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 58.269999999999996,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "5xTsaJl1ZoE",
@@ -1613,9 +1539,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 74.72,
-          "subs_gained": 1
+          "is_unsorted": false
         },
         {
           "id": "FMAOcUJ4VNk",
@@ -1649,9 +1573,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 61.73,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "_vPg1nQAlCc",
@@ -1686,9 +1608,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 55.42,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "lgxraDQIeBs",
@@ -1723,9 +1643,7 @@
           "playlists": [
             "Vanished Civilizations"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 66.03,
-          "subs_gained": 2
+          "is_unsorted": false
         },
         {
           "id": "7_G3tHrlWKo",
@@ -1759,9 +1677,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 49.26,
-          "subs_gained": 0
+          "is_unsorted": false
         },
         {
           "id": "gINkHXhoZSc",
@@ -1793,9 +1709,7 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false,
-          "avg_view_pct": 152.02,
-          "subs_gained": 0
+          "is_unsorted": false
         }
       ]
     }
