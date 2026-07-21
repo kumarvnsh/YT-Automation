@@ -268,5 +268,14 @@
     "slot": "morning",
     "date": "2026-07-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260721_160149_short",
+    "title": "Everyone Expected a One-Day War \u2014 Then Bull Run Changed Everything",
+    "fingerprint": "bull_changed_day_everyone_everything_expected_one_run_then_war",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-21",
+    "status": "reserved"
   }
 ]

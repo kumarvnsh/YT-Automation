@@ -519,5 +519,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "VtwBol7u2jE",
+    "run_id": "29846678536",
+    "stage_dir_name": "20260721_160149_short",
+    "title": "Everyone Expected a One-Day War \u2014 Then Bull Run Changed Everything",
+    "published_at": "2026-07-21T16:06:06.194178+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
