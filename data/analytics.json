@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-22T13:53:21.558207+00:00",
+      "updated": "2026-07-22T19:19:11.999970+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -29,6 +29,41 @@
         ]
       },
       "videos": [
+        {
+          "id": "RyQeV4JxwV4",
+          "title": "One Delayed Scout Plane Nearly Lost the Pacific | History's Almost Moments",
+          "description": "At the Battle of Midway in June 1942, a single Japanese scout plane launched thirty minutes late \u2014 and that half-hour gap hid the American fleet just long enough to change the war. Historians have called it one of the narrowest margins in naval history. What would the Pacific have looked like if that plane had launched on schedule? Drop your answer below.",
+          "tags": [
+            "1942",
+            "battle of midway",
+            "close call",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "japanese navy",
+            "military history",
+            "naval history",
+            "near miss",
+            "pacific war",
+            "short history",
+            "shorts",
+            "trending",
+            "us navy",
+            "viral",
+            "world war 2"
+          ],
+          "publishedAt": "2026-07-22T16:05:10Z",
+          "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
+          "views": 115,
+          "likes": 6,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "Q-jrqEeD9jE",
           "title": "How Welsh Longbowmen Turned the Tide of War #medievaltech #history",
@@ -57,7 +92,7 @@
           ],
           "publishedAt": "2026-07-22T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 714,
+          "views": 725,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -91,8 +126,8 @@
           ],
           "publishedAt": "2026-07-21T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 670,
-          "likes": 20,
+          "views": 708,
+          "likes": 21,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -130,7 +165,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 68.2,
+          "subs_gained": 0
         },
         {
           "id": "g0VY0bN7TJ8",
@@ -162,7 +199,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 80.27,
+          "subs_gained": 0
         },
         {
           "id": "N3kjaJb7SZk",
@@ -189,14 +228,14 @@
           ],
           "publishedAt": "2026-07-20T04:23:26Z",
           "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 765,
-          "likes": 17,
+          "views": 767,
+          "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.43,
-          "subs_gained": 0
+          "avg_view_pct": 54.78999999999999,
+          "subs_gained": 1
         },
         {
           "id": "z0MJDWH2vsI",
@@ -225,14 +264,14 @@
           ],
           "publishedAt": "2026-07-20T04:04:36Z",
           "thumbnail": "https://i.ytimg.com/vi/z0MJDWH2vsI/mqdefault.jpg",
-          "views": 635,
+          "views": 637,
           "likes": 29,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.77,
-          "subs_gained": 1
+          "avg_view_pct": 75.51,
+          "subs_gained": 2
         },
         {
           "id": "37MFhW_8TO0",
@@ -265,7 +304,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.41,
+          "avg_view_pct": 74.58,
           "subs_gained": 1
         },
         {
@@ -301,7 +340,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.12,
+          "avg_view_pct": 52.15,
           "subs_gained": 0
         },
         {
@@ -336,7 +375,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.06,
+          "avg_view_pct": 71.0,
           "subs_gained": 0
         },
         {
@@ -363,13 +402,13 @@
           ],
           "publishedAt": "2026-07-19T14:25:04Z",
           "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
-          "views": 534,
+          "views": 535,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 135.39,
+          "avg_view_pct": 111.07000000000001,
           "subs_gained": 0
         },
         {
@@ -433,13 +472,13 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 875,
+          "views": 883,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.64,
+          "avg_view_pct": 66.05,
           "subs_gained": 0
         },
         {
@@ -541,7 +580,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.47,
+          "avg_view_pct": 55.39000000000001,
           "subs_gained": 0
         },
         {
@@ -572,7 +611,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.19,
+          "avg_view_pct": 61.02000000000001,
           "subs_gained": 0
         },
         {
@@ -607,7 +646,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.22,
+          "avg_view_pct": 75.05,
           "subs_gained": 0
         },
         {
@@ -640,7 +679,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.81000000000001,
+          "avg_view_pct": 59.98,
           "subs_gained": 0
         },
         {
@@ -667,7 +706,7 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 802,
+          "views": 803,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -768,7 +807,7 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 925,
+          "views": 927,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -916,7 +955,7 @@
           ],
           "publishedAt": "2026-07-13T04:03:28Z",
           "thumbnail": "https://i.ytimg.com/vi/TSfS-PefD2I/mqdefault.jpg",
-          "views": 805,
+          "views": 806,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -954,7 +993,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1213,
+          "views": 1227,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1077,7 +1116,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.44,
+          "avg_view_pct": 70.56,
           "subs_gained": 0
         },
         {
@@ -1766,43 +1805,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 61.73,
-          "subs_gained": 0
-        },
-        {
-          "id": "_vPg1nQAlCc",
-          "title": "Outnumbered 10-to-1, They Won Anyway \u2014 With One Desperate Charge",
-          "description": "On July 7, 1520, a battered band of Spanish conquistadors and their indigenous allies pulled off one of history's most improbable battlefield reversals against a massive Aztec force at Otumba. The outcome hinged on a single, audacious moment. History rarely rewards the desperate \u2014 but this time it did.",
-          "tags": [
-            "1520",
-            "aztec",
-            "aztec empire",
-            "battle of otumba",
-            "conquistadors",
-            "did you know",
-            "education",
-            "facts",
-            "hernan cortes",
-            "history",
-            "history shorts",
-            "mesoamerica history",
-            "military history",
-            "on this day",
-            "spanish conquest",
-            "underdog battles"
-          ],
-          "publishedAt": "2026-07-07T13:09:38Z",
-          "thumbnail": "https://i.ytimg.com/vi/_vPg1nQAlCc/mqdefault.jpg",
-          "views": 643,
-          "likes": 13,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 55.42,
           "subs_gained": 0
         }
       ]
