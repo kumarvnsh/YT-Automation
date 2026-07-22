@@ -286,5 +286,14 @@
     "slot": "morning",
     "date": "2026-07-22",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260722_160149_short",
+    "title": "One Delayed Scout Plane Nearly Lost the Pacific | History's Almost Moments",
+    "fingerprint": "almost_delayed_history_lost_moments_nearly_one_pacific_plane_s_scout",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-22",
+    "status": "reserved"
   }
 ]

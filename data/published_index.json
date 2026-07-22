@@ -547,5 +547,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "RyQeV4JxwV4",
+    "run_id": "29936085455",
+    "stage_dir_name": "20260722_160149_short",
+    "title": "One Delayed Scout Plane Nearly Lost the Pacific | History's Almost Moments",
+    "published_at": "2026-07-22T16:05:31.809380+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
