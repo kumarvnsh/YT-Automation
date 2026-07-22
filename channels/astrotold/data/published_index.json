@@ -152,5 +152,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "sazGY5DBo4Q",
+    "run_id": "29940518576",
+    "stage_dir_name": "20260722_170139_short",
+    "title": "Your Birthday Is Actually a Code \u2014 Let's Crack It Together",
+    "published_at": "2026-07-22T17:02:25.419728+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

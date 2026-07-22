@@ -133,5 +133,14 @@
     "slot": "morning",
     "date": "2026-07-22",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260722_170139_short",
+    "title": "Your Birthday Is Actually a Code \u2014 Let's Crack It Together",
+    "fingerprint": "actually_birthday_code_crack_is_it_let_s_together_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-22",
+    "status": "reserved"
   }
 ]
