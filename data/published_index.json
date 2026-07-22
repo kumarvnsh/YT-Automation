@@ -533,5 +533,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Q-jrqEeD9jE",
+    "run_id": "29889921225",
+    "stage_dir_name": "20260722_040123_short",
+    "title": "William Wallace Won Every Battle \u2014 Until One Weapon Changed Everything",
+    "published_at": "2026-07-22T04:06:27.145327+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
