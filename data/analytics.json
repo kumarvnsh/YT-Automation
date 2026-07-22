@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-22T08:29:23.135650+00:00",
+      "updated": "2026-07-22T13:53:21.558207+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -31,7 +31,7 @@
       "videos": [
         {
           "id": "Q-jrqEeD9jE",
-          "title": "William Wallace Won Every Battle \u2014 Until One Weapon Changed Everything",
+          "title": "How Welsh Longbowmen Turned the Tide of War #medievaltech #history",
           "description": "William Wallace is famous for defying the English crown, but at the Battle of Falkirk in 1298, one medieval technology ended Scotland's winning streak in under an hour. The story of how a single tactical shift rewrote the rules of medieval warfare. Watch to find out what Wallace never had an answer for.",
           "tags": [
             "1298",
@@ -57,8 +57,8 @@
           ],
           "publishedAt": "2026-07-22T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 629,
-          "likes": 22,
+          "views": 714,
+          "likes": 23,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -91,7 +91,7 @@
           ],
           "publishedAt": "2026-07-21T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 666,
+          "views": 670,
           "likes": 20,
           "comments": 1,
           "playlist_ids": [],
@@ -157,7 +157,7 @@
           ],
           "publishedAt": "2026-07-20T16:04:50Z",
           "thumbnail": "https://i.ytimg.com/vi/g0VY0bN7TJ8/mqdefault.jpg",
-          "views": 554,
+          "views": 559,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -189,7 +189,7 @@
           ],
           "publishedAt": "2026-07-20T04:23:26Z",
           "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 761,
+          "views": 765,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -295,7 +295,7 @@
           ],
           "publishedAt": "2026-07-19T17:53:56Z",
           "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
-          "views": 285,
+          "views": 286,
           "likes": 5,
           "comments": 2,
           "playlist_ids": [],
@@ -433,7 +433,7 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 868,
+          "views": 875,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [],
@@ -954,7 +954,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1207,
+          "views": 1213,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
