@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-23T02:43:48.041352+00:00",
+      "updated": "2026-07-23T08:30:06.902991+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,8 +30,39 @@
       },
       "videos": [
         {
+          "id": "RCbxzl9dRQs",
+          "title": "Austria Sent Serbia a List of Demands \u2014 Knowing One Would Be Refused",
+          "description": "On July 23, 1914, Austria-Hungary handed Serbia an ultimatum so deliberately impossible that war was practically guaranteed before the ink dried. The document that helped ignite World War One was engineered to fail. Discover the single clause Serbia refused \u2014 and why Austria was counting on it.",
+          "tags": [
+            "1914",
+            "austria hungary",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "franz ferdinand",
+            "history",
+            "history shorts",
+            "serbia",
+            "short history",
+            "shorts",
+            "trending",
+            "ultimatum",
+            "viral",
+            "world war one"
+          ],
+          "publishedAt": "2026-07-23T04:03:54Z",
+          "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
+          "views": 107,
+          "likes": 2,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "RyQeV4JxwV4",
-          "title": "One Delayed Scout Plane Nearly Lost the Pacific | History's Almost Moments",
+          "title": "The 30-Minute Delay That Lost Japan the Pacific",
           "description": "At the Battle of Midway in June 1942, a single Japanese scout plane launched thirty minutes late \u2014 and that half-hour gap hid the American fleet just long enough to change the war. Historians have called it one of the narrowest margins in naval history. What would the Pacific have looked like if that plane had launched on schedule? Drop your answer below.",
           "tags": [
             "1942",
@@ -57,8 +88,8 @@
           ],
           "publishedAt": "2026-07-22T16:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 363,
-          "likes": 15,
+          "views": 526,
+          "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -92,7 +123,7 @@
           ],
           "publishedAt": "2026-07-22T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 728,
+          "views": 730,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -126,7 +157,7 @@
           ],
           "publishedAt": "2026-07-21T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 739,
+          "views": 751,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [],
@@ -194,7 +225,7 @@
           ],
           "publishedAt": "2026-07-20T16:04:50Z",
           "thumbnail": "https://i.ytimg.com/vi/g0VY0bN7TJ8/mqdefault.jpg",
-          "views": 561,
+          "views": 564,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -369,7 +400,7 @@
           ],
           "publishedAt": "2026-07-19T15:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Cjl2tp-hpqk/mqdefault.jpg",
-          "views": 638,
+          "views": 661,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -993,7 +1024,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1228,
+          "views": 1229,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1770,42 +1801,6 @@
           "is_unsorted": false,
           "avg_view_pct": 74.6,
           "subs_gained": 1
-        },
-        {
-          "id": "FMAOcUJ4VNk",
-          "title": "4,000 Soldiers Charged at Dawn \u2014 The Pacific's Most Desperate Last Stand",
-          "description": "In July 1944, Japanese forces on Saipan launched the largest banzai charge of the entire Pacific War \u2014 a massive final assault that shocked American defenders but ultimately sealed Japan's fate in the region. The fall of Saipan brought American bombers within striking range of the Japanese home islands, making it one of the most strategically decisive battles of World War II. This is the story of one desperate night that changed the war's direction forever. #WorldWarII #BattleOfSaipan #PacificWar",
-          "tags": [
-            "1944",
-            "banzai charge",
-            "battle of saipan",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "japan",
-            "military history",
-            "pacific war",
-            "saipan",
-            "us marines",
-            "world war 2",
-            "wwii pacific"
-          ],
-          "publishedAt": "2026-07-07T14:50:25Z",
-          "thumbnail": "https://i.ytimg.com/vi/FMAOcUJ4VNk/mqdefault.jpg",
-          "views": 1098,
-          "likes": 24,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 61.73,
-          "subs_gained": 0
         }
       ]
     }
