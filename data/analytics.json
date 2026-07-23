@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-23T13:59:26.341057+00:00",
+      "updated": "2026-07-23T19:17:36.910905+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "_rBVF1AgsVU",
+          "title": "Egypt's King Was Overthrown \u2014 Then Handed a Salute on His Way Out",
+          "description": "On July 23, 1952, Egyptian King Farouk was overthrown in one of history's most polite coups \u2014 his enemies let him leave with full military honours. The Free Officers who toppled him changed the Arab world forever, yet the man behind the whole plan stayed invisible for years. History's strangest revolution ended at the harbour with a handshake. #history #egypt #didyouknow",
+          "tags": [
+            "1952 coup",
+            "arab history",
+            "cold war history",
+            "did you know",
+            "education",
+            "egypt",
+            "facts",
+            "gamal abdel nasser",
+            "history",
+            "history facts",
+            "history shorts",
+            "king farouk",
+            "military coup",
+            "revolution",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-23T16:04:32Z",
+          "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
+          "views": 5,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "RCbxzl9dRQs",
           "title": "Austria Sent Serbia a List of Demands \u2014 Knowing One Would Be Refused",
           "description": "On July 23, 1914, Austria-Hungary handed Serbia an ultimatum so deliberately impossible that war was practically guaranteed before the ink dried. The document that helped ignite World War One was engineered to fail. Discover the single clause Serbia refused \u2014 and why Austria was counting on it.",
@@ -53,8 +85,8 @@
           ],
           "publishedAt": "2026-07-23T04:03:54Z",
           "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 338,
-          "likes": 7,
+          "views": 484,
+          "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -88,7 +120,7 @@
           ],
           "publishedAt": "2026-07-22T16:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 528,
+          "views": 530,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -123,12 +155,14 @@
           ],
           "publishedAt": "2026-07-22T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 731,
-          "likes": 23,
+          "views": 740,
+          "likes": 24,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 73.84,
+          "subs_gained": 1
         },
         {
           "id": "VtwBol7u2jE",
@@ -157,12 +191,14 @@
           ],
           "publishedAt": "2026-07-21T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 754,
+          "views": 764,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 87.74,
+          "subs_gained": 0
         },
         {
           "id": "AobKkdjdmnI",
@@ -191,13 +227,13 @@
           ],
           "publishedAt": "2026-07-21T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/AobKkdjdmnI/mqdefault.jpg",
-          "views": 598,
+          "views": 602,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.2,
+          "avg_view_pct": 98.23,
           "subs_gained": 0
         },
         {
@@ -225,13 +261,13 @@
           ],
           "publishedAt": "2026-07-20T16:04:50Z",
           "thumbnail": "https://i.ytimg.com/vi/g0VY0bN7TJ8/mqdefault.jpg",
-          "views": 566,
+          "views": 569,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.27,
+          "avg_view_pct": 80.11,
           "subs_gained": 0
         },
         {
@@ -265,7 +301,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.78999999999999,
+          "avg_view_pct": 54.78000000000001,
           "subs_gained": 1
         },
         {
@@ -301,8 +337,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.51,
-          "subs_gained": 2
+          "avg_view_pct": 71.55,
+          "subs_gained": 3
         },
         {
           "id": "37MFhW_8TO0",
@@ -329,7 +365,7 @@
           ],
           "publishedAt": "2026-07-19T19:41:29Z",
           "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 859,
+          "views": 862,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -371,7 +407,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 52.15,
+          "avg_view_pct": 58.01,
           "subs_gained": 0
         },
         {
@@ -400,13 +436,13 @@
           ],
           "publishedAt": "2026-07-19T15:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Cjl2tp-hpqk/mqdefault.jpg",
-          "views": 679,
+          "views": 682,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.0,
+          "avg_view_pct": 70.83,
           "subs_gained": 0
         },
         {
@@ -439,7 +475,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 111.07000000000001,
+          "avg_view_pct": 104.71999999999998,
           "subs_gained": 0
         },
         {
@@ -509,7 +545,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.93,
+          "avg_view_pct": 66.55,
           "subs_gained": 0
         },
         {
@@ -611,7 +647,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.39000000000001,
+          "avg_view_pct": 55.03,
           "subs_gained": 0
         },
         {
@@ -642,7 +678,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.77,
+          "avg_view_pct": 60.9,
           "subs_gained": 0
         },
         {
@@ -743,7 +779,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.59,
+          "avg_view_pct": 51.47999999999999,
           "subs_gained": 0
         },
         {
@@ -809,7 +845,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.39,
+          "avg_view_pct": 73.56,
           "subs_gained": 0
         },
         {
@@ -844,7 +880,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.43,
+          "avg_view_pct": 40.54,
           "subs_gained": 0
         },
         {
@@ -882,7 +918,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.18999999999999,
+          "avg_view_pct": 54.31,
           "subs_gained": 1
         },
         {
@@ -920,7 +956,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.99,
+          "avg_view_pct": 72.0,
           "subs_gained": 0
         },
         {
@@ -958,7 +994,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 56.37,
+          "avg_view_pct": 56.47,
           "subs_gained": 0
         },
         {
@@ -1034,7 +1070,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.56,
+          "avg_view_pct": 67.49,
           "subs_gained": 1
         },
         {
@@ -1061,7 +1097,7 @@
           ],
           "publishedAt": "2026-07-12T04:03:31Z",
           "thumbnail": "https://i.ytimg.com/vi/QYwnxriSAAk/mqdefault.jpg",
-          "views": 955,
+          "views": 956,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -1109,7 +1145,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.83,
+          "avg_view_pct": 70.93,
           "subs_gained": 1
         },
         {
@@ -1147,7 +1183,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 70.56,
+          "avg_view_pct": 70.73,
           "subs_gained": 0
         },
         {
@@ -1184,7 +1220,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.68,
+          "avg_view_pct": 67.78,
           "subs_gained": 0
         },
         {
@@ -1222,7 +1258,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.07000000000001,
+          "avg_view_pct": 63.129999999999995,
           "subs_gained": 0
         },
         {
@@ -1764,43 +1800,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 58.269999999999996,
+          "avg_view_pct": 64.4,
           "subs_gained": 0
-        },
-        {
-          "id": "5xTsaJl1ZoE",
-          "title": "She Was Told Law Firms Don't Hire Women \u2014 Then She Ran the Whole Court",
-          "description": "On July 7, 1981, Ronald Reagan nominated Sandra Day O'Connor as the first woman ever appointed to the U.S. Supreme Court \u2014 decades after law firms refused to hire her despite graduating near the top of her Stanford Law class. Her appointment changed American legal history forever. On this anniversary, here's the story they don't teach in school.",
-          "tags": [
-            "american history",
-            "did you know",
-            "education",
-            "facts",
-            "first female justice",
-            "history",
-            "history shorts",
-            "legal history",
-            "on this day",
-            "ronald reagan",
-            "sandra day o'connor",
-            "supreme court",
-            "us history",
-            "women in history"
-          ],
-          "publishedAt": "2026-07-07T16:09:30Z",
-          "thumbnail": "https://i.ytimg.com/vi/5xTsaJl1ZoE/mqdefault.jpg",
-          "views": 1039,
-          "likes": 33,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 74.6,
-          "subs_gained": 1
         }
       ]
     }
