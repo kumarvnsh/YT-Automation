@@ -575,5 +575,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "_rBVF1AgsVU",
+    "run_id": "30023206239",
+    "stage_dir_name": "20260723_160142_short",
+    "title": "Egypt's King Was Overthrown \u2014 Then Handed a Salute on His Way Out",
+    "published_at": "2026-07-23T16:05:07.541658+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
