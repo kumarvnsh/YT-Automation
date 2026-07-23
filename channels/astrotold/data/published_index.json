@@ -166,5 +166,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "v2xYY19UKkQ",
+    "run_id": "29981004919",
+    "stage_dir_name": "20260723_050147_short",
+    "title": "Your Name Initial Reveals More About You Than You Think",
+    "published_at": "2026-07-23T05:02:44.005343+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
