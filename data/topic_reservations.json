@@ -331,5 +331,14 @@
     "slot": "evening",
     "date": "2026-07-24",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260724_160306_short",
+    "title": "Machu Picchu Was 'Lost' \u2014 But the Locals Never Lost It",
+    "fingerprint": "but_it_locals_lost_machu_never_picchu_was",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-24",
+    "status": "reserved"
   }
 ]
