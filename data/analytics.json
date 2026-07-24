@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-24T13:45:22.463181+00:00",
+      "updated": "2026-07-24T19:25:04.570791+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,73 @@
       },
       "videos": [
         {
+          "id": "cyGeMnwwsnM",
+          "title": "Machu Picchu Was 'Lost' \u2014 But the Locals Never Lost It",
+          "description": "On July 24, 1911, Hiram Bingham III was led to Machu Picchu by a local farmer \u2014 and told the world he'd 'discovered' it. The real story is far stranger. Learn the forgotten truth behind one of history's most famous rediscoveries.",
+          "tags": [
+            "ancient ruins",
+            "archaeology",
+            "did you know",
+            "education",
+            "exploration",
+            "facts",
+            "hiram bingham",
+            "history",
+            "history shorts",
+            "inca empire",
+            "lost city",
+            "machu picchu",
+            "peru",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-24T16:05:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
+          "views": 389,
+          "likes": 22,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "89tDVRBaEqQ",
+          "title": "Every Country That Pushed Back on American Tariffs \u2014 and What Happened",
+          "description": "When Trump's 2025 tariffs landed, dozens of countries called them 'completely unjustified' \u2014 but that phrase has been used before, and history shows what usually comes next. This video traces the surprising pattern of global pushback against American trade pressure. A short history lesson hiding inside today's headlines.",
+          "tags": [
+            "america",
+            "did you know",
+            "economic history",
+            "education",
+            "facts",
+            "forced labour",
+            "global economy",
+            "history",
+            "history facts",
+            "history shorts",
+            "retaliatory tariffs",
+            "short history",
+            "shorts",
+            "tariffs",
+            "trade policy",
+            "trade war",
+            "trending",
+            "trump",
+            "viral",
+            "world trade",
+            "wto"
+          ],
+          "publishedAt": "2026-07-24T15:02:08Z",
+          "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
+          "views": 61,
+          "likes": 4,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Z9iVAS72R5o",
           "title": "One Wrong Turn Nearly Prevented World War One | History's Almost Moments",
           "description": "On 28 June 1914, a wrong turn by a driver in Sarajevo placed Archduke Franz Ferdinand directly in front of his assassin \u2014 after the first attempt had already failed. Historians consider it one of the most consequential accidents in modern history. What if the driver had simply kept going? #history #worldwar1 #almostmoments",
@@ -56,7 +123,7 @@
           ],
           "publishedAt": "2026-07-24T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/Z9iVAS72R5o/mqdefault.jpg",
-          "views": 160,
+          "views": 182,
           "likes": 5,
           "comments": 2,
           "playlist_ids": [],
@@ -65,7 +132,7 @@
         },
         {
           "id": "_rBVF1AgsVU",
-          "title": "Egypt's King Was Overthrown \u2014 Then Handed a Salute on His Way Out",
+          "title": "Egypt's King Was Overthrown \u2014 Then Handed a Salute on His Way Out #history #facts #navy",
           "description": "On July 23, 1952, Egyptian King Farouk was overthrown in one of history's most polite coups \u2014 his enemies let him leave with full military honours. The Free Officers who toppled him changed the Arab world forever, yet the man behind the whole plan stayed invisible for years. History's strangest revolution ended at the harbour with a handshake. #history #egypt #didyouknow",
           "tags": [
             "1952 coup",
@@ -88,8 +155,8 @@
           ],
           "publishedAt": "2026-07-23T16:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
-          "views": 23,
-          "likes": 1,
+          "views": 132,
+          "likes": 6,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -119,12 +186,14 @@
           ],
           "publishedAt": "2026-07-23T04:03:54Z",
           "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 560,
+          "views": 564,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 73.0,
+          "subs_gained": 1
         },
         {
           "id": "RyQeV4JxwV4",
@@ -154,12 +223,14 @@
           ],
           "publishedAt": "2026-07-22T16:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 535,
+          "views": 538,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 61.96,
+          "subs_gained": 0
         },
         {
           "id": "Q-jrqEeD9jE",
@@ -189,13 +260,13 @@
           ],
           "publishedAt": "2026-07-22T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 748,
+          "views": 749,
           "likes": 25,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.84,
+          "avg_view_pct": 73.85,
           "subs_gained": 1
         },
         {
@@ -231,7 +302,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 87.74,
+          "avg_view_pct": 85.85,
           "subs_gained": 0
         },
         {
@@ -261,13 +332,13 @@
           ],
           "publishedAt": "2026-07-21T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/AobKkdjdmnI/mqdefault.jpg",
-          "views": 604,
+          "views": 606,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 98.23,
+          "avg_view_pct": 97.95,
           "subs_gained": 0
         },
         {
@@ -301,7 +372,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.11,
+          "avg_view_pct": 79.81,
           "subs_gained": 0
         },
         {
@@ -335,7 +406,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.78000000000001,
+          "avg_view_pct": 54.35,
           "subs_gained": 1
         },
         {
@@ -371,7 +442,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.55,
+          "avg_view_pct": 71.53,
           "subs_gained": 3
         },
         {
@@ -399,7 +470,7 @@
           ],
           "publishedAt": "2026-07-19T19:41:29Z",
           "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 866,
+          "views": 867,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -476,7 +547,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.83,
+          "avg_view_pct": 71.14,
           "subs_gained": 0
         },
         {
@@ -503,13 +574,13 @@
           ],
           "publishedAt": "2026-07-19T14:25:04Z",
           "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
-          "views": 540,
+          "views": 541,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 104.71999999999998,
+          "avg_view_pct": 105.05,
           "subs_gained": 0
         },
         {
@@ -579,7 +650,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.55,
+          "avg_view_pct": 66.51,
           "subs_gained": 0
         },
         {
@@ -675,13 +746,13 @@
           ],
           "publishedAt": "2026-07-18T04:03:00Z",
           "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
-          "views": 784,
+          "views": 785,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.03,
+          "avg_view_pct": 55.02,
           "subs_gained": 0
         },
         {
@@ -712,7 +783,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.9,
+          "avg_view_pct": 61.01,
           "subs_gained": 0
         },
         {
@@ -813,7 +884,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.47999999999999,
+          "avg_view_pct": 51.46000000000001,
           "subs_gained": 0
         },
         {
@@ -914,7 +985,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.54,
+          "avg_view_pct": 40.77,
           "subs_gained": 0
         },
         {
@@ -1066,7 +1137,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 114.7,
+          "avg_view_pct": 114.41,
           "subs_gained": 0
         },
         {
@@ -1094,7 +1165,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1269,
+          "views": 1270,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1104,7 +1175,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.49,
+          "avg_view_pct": 67.41,
           "subs_gained": 1
         },
         {
@@ -1729,77 +1800,6 @@
           "is_unsorted": false,
           "avg_view_pct": 55.25,
           "subs_gained": 1
-        },
-        {
-          "id": "gpxm4GYWPuc",
-          "title": "America Sailed Four Warships to Japan \u2014 and Japan Had No Choice",
-          "description": "On July 8, 1853, Commodore Matthew Perry sailed four steam-powered warships into Edo Bay, Japan, forcing a nation that had been closed to the world for over 200 years to finally open its doors. The Japanese called his black-hulled ships 'black dragons breathing fire' \u2014 and they changed history forever. This is the story of the most dramatic diplomatic ultimatum of the 19th century.",
-          "tags": [
-            "19th century",
-            "american history",
-            "commodore perry",
-            "did you know",
-            "edo period",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "japan history",
-            "japan opening",
-            "meiji era",
-            "naval history",
-            "perry expedition",
-            "samurai"
-          ],
-          "publishedAt": "2026-07-08T13:10:28Z",
-          "thumbnail": "https://i.ytimg.com/vi/gpxm4GYWPuc/mqdefault.jpg",
-          "views": 606,
-          "likes": 19,
-          "comments": 2,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 67.92,
-          "subs_gained": 2
-        },
-        {
-          "id": "WC4h4q3-pAo",
-          "title": "The Day the Stock Market Hit Rock Bottom \u2014 and Nobody Rang a Bell",
-          "description": "On July 8, 1932, the Dow Jones Industrial Average collapsed to just 41.22 \u2014 its lowest point of the entire Great Depression. It had fallen nearly 90% from its 1929 peak, wiping out fortunes and reshaping the global economy forever. This is the story of that forgotten bottom.",
-          "tags": [
-            "1932",
-            "did you know",
-            "dow jones",
-            "economic collapse",
-            "education",
-            "facts",
-            "financial history",
-            "great depression",
-            "history",
-            "history facts",
-            "history shorts",
-            "on this day",
-            "stock market history",
-            "wall street history"
-          ],
-          "publishedAt": "2026-07-08T07:09:43Z",
-          "thumbnail": "https://i.ytimg.com/vi/WC4h4q3-pAo/mqdefault.jpg",
-          "views": 475,
-          "likes": 1,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.37,
-          "subs_gained": 0
         }
       ]
     }
