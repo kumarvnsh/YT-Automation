@@ -194,5 +194,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "W1EZjqyuG7k",
+    "run_id": "30111315963",
+    "stage_dir_name": "20260724_170134_short",
+    "title": "Your Name Initials Are Secretly Telling the World Who You Are",
+    "published_at": "2026-07-24T17:02:21.612417+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
