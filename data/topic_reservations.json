@@ -313,5 +313,14 @@
     "slot": "evening",
     "date": "2026-07-23",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260724_040126_short",
+    "title": "One Wrong Turn Nearly Prevented World War One | History's Almost Moments",
+    "fingerprint": "almost_history_moments_nearly_one_prevented_s_turn_war_world_wrong",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-24",
+    "status": "reserved"
   }
 ]

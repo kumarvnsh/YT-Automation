@@ -589,5 +589,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Z9iVAS72R5o",
+    "run_id": "30065665614",
+    "stage_dir_name": "20260724_040126_short",
+    "title": "One Wrong Turn Nearly Prevented World War One | History's Almost Moments",
+    "published_at": "2026-07-24T04:05:06.397641+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
