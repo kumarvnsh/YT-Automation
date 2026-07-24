@@ -603,5 +603,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "89tDVRBaEqQ",
+    "run_id": "30103262472",
+    "stage_dir_name": "20260724_145919_short",
+    "title": "Every Country That Pushed Back on American Tariffs \u2014 and What Happened",
+    "published_at": "2026-07-24T15:02:47.179806+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
