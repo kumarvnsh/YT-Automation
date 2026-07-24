@@ -151,5 +151,14 @@
     "slot": "morning",
     "date": "2026-07-23",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260724_050125_short",
+    "title": "Today's Date 24 July 2026 Is Hiding Your Lucky Colour, Number & Day",
+    "fingerprint": "2026_24_colour_date_day_hiding_is_july_lucky_number_s_today_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-24",
+    "status": "reserved"
   }
 ]

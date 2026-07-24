@@ -180,5 +180,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "NdaS77YpAUA",
+    "run_id": "30068270036",
+    "stage_dir_name": "20260724_050125_short",
+    "title": "Today's Date 24 July 2026 Is Hiding Your Lucky Colour, Number & Day",
+    "published_at": "2026-07-24T05:02:58.768895+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
