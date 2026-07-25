@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-25T02:38:00.616219+00:00",
+      "updated": "2026-07-25T08:06:09.006030+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,39 @@
       },
       "videos": [
         {
+          "id": "i4lfIhbmGKU",
+          "title": "Three Minutes Decided the Pacific \u2014 By Pure Accident | History's Almost Moments",
+          "description": "At the Battle of Midway in June 1942, the outcome of the entire Pacific War hinged on three unplanned minutes and a navigation mistake that accidentally saved the American fleet. One small change and the most decisive naval battle in modern history reverses completely. What would the Pacific have looked like if those dive bombers arrived on schedule?",
+          "tags": [
+            "1942",
+            "american history",
+            "battle of midway",
+            "close calls history",
+            "did you know",
+            "did you know history",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "military history",
+            "naval history",
+            "pacific war",
+            "shorts",
+            "trending",
+            "viral",
+            "world war two"
+          ],
+          "publishedAt": "2026-07-25T04:04:14Z",
+          "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
+          "views": 161,
+          "likes": 9,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "cyGeMnwwsnM",
           "title": "Machu Picchu Was 'Lost' \u2014 But the Locals Never Lost It",
           "description": "On July 24, 1911, Hiram Bingham III was led to Machu Picchu by a local farmer \u2014 and told the world he'd 'discovered' it. The real story is far stranger. Learn the forgotten truth behind one of history's most famous rediscoveries.",
@@ -53,7 +86,7 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 621,
+          "views": 628,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -89,7 +122,7 @@
           ],
           "publishedAt": "2026-07-24T15:02:08Z",
           "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 104,
+          "views": 118,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -123,8 +156,8 @@
           ],
           "publishedAt": "2026-07-24T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/Z9iVAS72R5o/mqdefault.jpg",
-          "views": 229,
-          "likes": 5,
+          "views": 240,
+          "likes": 6,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
@@ -155,8 +188,8 @@
           ],
           "publishedAt": "2026-07-23T16:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
-          "views": 175,
-          "likes": 6,
+          "views": 180,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -223,7 +256,7 @@
           ],
           "publishedAt": "2026-07-22T16:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 545,
+          "views": 549,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -296,7 +329,7 @@
           ],
           "publishedAt": "2026-07-21T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 792,
+          "views": 796,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [],
@@ -979,7 +1012,7 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 927,
+          "views": 928,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -1763,43 +1796,6 @@
           "is_unsorted": false,
           "avg_view_pct": 27.85,
           "subs_gained": 0
-        },
-        {
-          "id": "sZiE8ejUhBo",
-          "title": "He Sailed Into the Unknown \u2014 and Rewrote the World's Trade Routes",
-          "description": "In 1497, Vasco da Gama did something no European had ever managed \u2014 he sailed directly from Europe to India, bypassing every middleman who had controlled global spice trade for centuries. That single voyage shifted world power, made Portugal fabulously rich, and permanently changed what ended up on your dinner table. This is the story of one of history's most consequential journeys.",
-          "tags": [
-            "1497",
-            "age of exploration",
-            "did you know",
-            "education",
-            "european exploration",
-            "facts",
-            "history",
-            "history shorts",
-            "indian ocean",
-            "maritime history",
-            "portugal",
-            "sea route",
-            "spice trade",
-            "trade routes",
-            "vasco da gama",
-            "world history"
-          ],
-          "publishedAt": "2026-07-08T15:01:17Z",
-          "thumbnail": "https://i.ytimg.com/vi/sZiE8ejUhBo/mqdefault.jpg",
-          "views": 218,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 55.25,
-          "subs_gained": 1
         }
       ]
     }
