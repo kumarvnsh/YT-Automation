@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-25T13:25:30.438658+00:00",
+      "updated": "2026-07-25T19:06:56.387109+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "u04x0bK29io",
+          "title": "She Was Queen of France \u2014 Then Divorced Him and Became Queen of England",
+          "description": "On July 25, 1137, Eleanor of Aquitaine married the future King of France \u2014 beginning one of history's most astonishing royal careers. She ended up ruling two rival kingdoms, commanding crusades, and outliving almost everyone who doubted her. A medieval story that still feels impossible.",
+          "tags": [
+            "did you know",
+            "education",
+            "eleanor of aquitaine",
+            "england history",
+            "facts",
+            "france history",
+            "history",
+            "history facts",
+            "history shorts",
+            "medieval history",
+            "middle ages",
+            "queens of history",
+            "royal history",
+            "shorts",
+            "trending",
+            "viral",
+            "women in history"
+          ],
+          "publishedAt": "2026-07-25T16:04:47Z",
+          "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
+          "views": 2,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "i4lfIhbmGKU",
           "title": "Three Minutes Decided the Pacific \u2014 By Pure Accident | History's Almost Moments",
           "description": "At the Battle of Midway in June 1942, the outcome of the entire Pacific War hinged on three unplanned minutes and a navigation mistake that accidentally saved the American fleet. One small change and the most decisive naval battle in modern history reverses completely. What would the Pacific have looked like if those dive bombers arrived on schedule?",
@@ -55,9 +87,9 @@
           ],
           "publishedAt": "2026-07-25T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
-          "views": 274,
-          "likes": 10,
-          "comments": 0,
+          "views": 379,
+          "likes": 13,
+          "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -86,7 +118,7 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 636,
+          "views": 647,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +154,7 @@
           ],
           "publishedAt": "2026-07-24T15:02:08Z",
           "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 134,
+          "views": 153,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -156,12 +188,14 @@
           ],
           "publishedAt": "2026-07-24T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/Z9iVAS72R5o/mqdefault.jpg",
-          "views": 256,
-          "likes": 6,
+          "views": 271,
+          "likes": 7,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 76.94,
+          "subs_gained": 0
         },
         {
           "id": "_rBVF1AgsVU",
@@ -188,12 +222,14 @@
           ],
           "publishedAt": "2026-07-23T16:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
-          "views": 186,
+          "views": 194,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 55.21,
+          "subs_gained": 0
         },
         {
           "id": "RCbxzl9dRQs",
@@ -219,13 +255,13 @@
           ],
           "publishedAt": "2026-07-23T04:03:54Z",
           "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 568,
+          "views": 569,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.0,
+          "avg_view_pct": 61.85000000000001,
           "subs_gained": 1
         },
         {
@@ -256,13 +292,13 @@
           ],
           "publishedAt": "2026-07-22T16:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 552,
+          "views": 553,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.96,
+          "avg_view_pct": 61.9,
           "subs_gained": 0
         },
         {
@@ -299,7 +335,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.86,
+          "avg_view_pct": 75.05,
           "subs_gained": 1
         },
         {
@@ -335,7 +371,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 85.85,
+          "avg_view_pct": 84.6,
           "subs_gained": 0
         },
         {
@@ -371,7 +407,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 97.95,
+          "avg_view_pct": 97.27,
           "subs_gained": 0
         },
         {
@@ -405,7 +441,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.81,
+          "avg_view_pct": 79.03,
           "subs_gained": 0
         },
         {
@@ -509,7 +545,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 74.58,
+          "avg_view_pct": 74.44,
           "subs_gained": 1
         },
         {
@@ -580,7 +616,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.14,
+          "avg_view_pct": 71.55,
           "subs_gained": 0
         },
         {
@@ -613,7 +649,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 105.05,
+          "avg_view_pct": 105.07,
           "subs_gained": 0
         },
         {
@@ -683,7 +719,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.51,
+          "avg_view_pct": 66.6,
           "subs_gained": 0
         },
         {
@@ -1012,7 +1048,7 @@
           ],
           "publishedAt": "2026-07-14T18:25:50Z",
           "thumbnail": "https://i.ytimg.com/vi/wtdl4iJe71Y/mqdefault.jpg",
-          "views": 928,
+          "views": 927,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -1208,7 +1244,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 67.41,
+          "avg_view_pct": 67.44,
           "subs_gained": 1
         },
         {
@@ -1761,41 +1797,6 @@
           "is_unsorted": false,
           "avg_view_pct": 54.04,
           "subs_gained": 2
-        },
-        {
-          "id": "hI7XI8VcN_g",
-          "title": "Why the Army hid the Roswell truth #history #mystery",
-          "description": "On July 8, 1947, the U.S. Army Air Force announced it had recovered a 'flying disc' near Roswell, New Mexico \u2014 then walked the story back within hours. What really happened became one of the most debated mysteries of the 20th century. The government's two contradictory official explanations only made things stranger.",
-          "tags": [
-            "1947",
-            "american history",
-            "area 51",
-            "cold war",
-            "conspiracy",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "mystery",
-            "on this day",
-            "roswell",
-            "ufo"
-          ],
-          "publishedAt": "2026-07-08T16:09:40Z",
-          "thumbnail": "https://i.ytimg.com/vi/hI7XI8VcN_g/mqdefault.jpg",
-          "views": 8,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 27.85,
-          "subs_gained": 0
         }
       ]
     }
