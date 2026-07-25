@@ -208,5 +208,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "54PV305_tzw",
+    "run_id": "30145005035",
+    "stage_dir_name": "20260725_050128_short",
+    "title": "Born on 6, 15, or 24? Your Birth Number Has a Surprising Story",
+    "published_at": "2026-07-25T05:02:31.408623+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
