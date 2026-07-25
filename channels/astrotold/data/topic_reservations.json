@@ -178,5 +178,14 @@
     "slot": "morning",
     "date": "2026-07-25",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260725_170126_short",
+    "title": "Your Birthday Adds Up to One Powerful Number \u2014 Here's Exactly How",
+    "fingerprint": "adds_birthday_exactly_here_number_one_powerful_s_up_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-25",
+    "status": "reserved"
   }
 ]
