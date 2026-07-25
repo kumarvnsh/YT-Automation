@@ -340,5 +340,14 @@
     "slot": "evening",
     "date": "2026-07-24",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260725_040136_short",
+    "title": "Three Minutes Decided the Pacific \u2014 By Pure Accident | History's Almost Moments",
+    "fingerprint": "accident_almost_by_decided_history_minutes_moments_pacific_pure_s_three",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-25",
+    "status": "reserved"
   }
 ]

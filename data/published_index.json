@@ -631,5 +631,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "i4lfIhbmGKU",
+    "run_id": "30143259335",
+    "stage_dir_name": "20260725_040136_short",
+    "title": "Three Minutes Decided the Pacific \u2014 By Pure Accident | History's Almost Moments",
+    "published_at": "2026-07-25T04:04:50.034010+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
