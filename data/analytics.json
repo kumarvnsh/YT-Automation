@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-26T08:26:21.962943+00:00",
+      "updated": "2026-07-26T13:21:47.653604+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -55,7 +55,7 @@
           ],
           "publishedAt": "2026-07-26T04:03:39Z",
           "thumbnail": "https://i.ytimg.com/vi/cC0nPgxWong/mqdefault.jpg",
-          "views": 235,
+          "views": 393,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -87,8 +87,8 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 190,
-          "likes": 7,
+          "views": 302,
+          "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -120,7 +120,7 @@
           ],
           "publishedAt": "2026-07-25T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
-          "views": 548,
+          "views": 552,
           "likes": 16,
           "comments": 2,
           "playlist_ids": [],
@@ -151,7 +151,7 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 659,
+          "views": 660,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -187,7 +187,7 @@
           ],
           "publishedAt": "2026-07-24T15:02:08Z",
           "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 176,
+          "views": 203,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -255,7 +255,7 @@
           ],
           "publishedAt": "2026-07-23T16:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
-          "views": 194,
+          "views": 195,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -294,7 +294,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.85000000000001,
+          "avg_view_pct": 61.870000000000005,
           "subs_gained": 1
         },
         {
