@@ -367,5 +367,14 @@
     "slot": "morning",
     "date": "2026-07-26",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260726_160156_short",
+    "title": "The Assassin Missed \u2014 Then Got a Second Chance | History's Almost Moments",
+    "fingerprint": "almost_assassin_chance_got_history_missed_moments_s_second_then",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-26",
+    "status": "reserved"
   }
 ]
