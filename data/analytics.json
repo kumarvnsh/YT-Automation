@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-26T13:21:47.653604+00:00",
+      "updated": "2026-07-26T19:09:47.580972+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,39 @@
       },
       "videos": [
         {
+          "id": "S8GJNg0l5vo",
+          "title": "The Assassin Missed \u2014 Then Got a Second Chance | History's Almost Moments",
+          "description": "On 28 June 1914, the assassin who would spark World War One already failed once that morning \u2014 and history nearly moved on without him. One wrong turn by a driver put the target back in range. This is the story of the smallest mistake that changed everything.",
+          "tags": [
+            "1914",
+            "almost moments",
+            "assassination",
+            "close call",
+            "did you know",
+            "education",
+            "europe",
+            "facts",
+            "franz ferdinand",
+            "gavrilo princip",
+            "history",
+            "history facts",
+            "history shorts",
+            "near miss",
+            "shorts",
+            "trending",
+            "viral",
+            "world war one"
+          ],
+          "publishedAt": "2026-07-26T16:04:47Z",
+          "thumbnail": "https://i.ytimg.com/vi/S8GJNg0l5vo/mqdefault.jpg",
+          "views": 316,
+          "likes": 5,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "cC0nPgxWong",
           "title": "The First Postmaster General Was Also a Spy \u2014 Running His Own Mail",
           "description": "On July 26, 1775, Benjamin Franklin became America's first Postmaster General \u2014 but his relationship with the mail was far more complicated than history admits. The same system he built to connect the colonies, he had already used to intercept letters for British intelligence years earlier. Turns out the man who invented the mail network knew exactly how to exploit one.",
@@ -55,7 +88,7 @@
           ],
           "publishedAt": "2026-07-26T04:03:39Z",
           "thumbnail": "https://i.ytimg.com/vi/cC0nPgxWong/mqdefault.jpg",
-          "views": 393,
+          "views": 526,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -87,8 +120,8 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 302,
-          "likes": 14,
+          "views": 462,
+          "likes": 20,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -120,12 +153,14 @@
           ],
           "publishedAt": "2026-07-25T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
-          "views": 552,
+          "views": 556,
           "likes": 16,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 71.52,
+          "subs_gained": 0
         },
         {
           "id": "cyGeMnwwsnM",
@@ -151,12 +186,14 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 660,
+          "views": 659,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 69.34,
+          "subs_gained": 2
         },
         {
           "id": "89tDVRBaEqQ",
@@ -187,12 +224,14 @@
           ],
           "publishedAt": "2026-07-24T15:02:08Z",
           "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 203,
-          "likes": 6,
+          "views": 245,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 67.3,
+          "subs_gained": 0
         },
         {
           "id": "Z9iVAS72R5o",
@@ -227,7 +266,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 76.94,
+          "avg_view_pct": 65.74,
           "subs_gained": 0
         },
         {
@@ -261,7 +300,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.21,
+          "avg_view_pct": 62.51,
           "subs_gained": 0
         },
         {
@@ -288,13 +327,13 @@
           ],
           "publishedAt": "2026-07-23T04:03:54Z",
           "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 569,
+          "views": 572,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.870000000000005,
+          "avg_view_pct": 70.09,
           "subs_gained": 1
         },
         {
@@ -331,7 +370,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.9,
+          "avg_view_pct": 62.33,
           "subs_gained": 0
         },
         {
@@ -368,7 +407,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.05,
+          "avg_view_pct": 75.09,
           "subs_gained": 1
         },
         {
@@ -404,7 +443,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 84.6,
+          "avg_view_pct": 84.21,
           "subs_gained": 0
         },
         {
@@ -440,7 +479,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 97.27,
+          "avg_view_pct": 97.16,
           "subs_gained": 0
         },
         {
@@ -578,7 +617,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 74.44,
+          "avg_view_pct": 74.32,
           "subs_gained": 1
         },
         {
@@ -854,7 +893,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.02,
+          "avg_view_pct": 54.90999999999999,
           "subs_gained": 0
         },
         {
@@ -986,7 +1025,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.46000000000001,
+          "avg_view_pct": 51.28,
           "subs_gained": 0
         },
         {
@@ -1759,40 +1798,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 147.03,
-          "subs_gained": 0
-        },
-        {
-          "id": "Yi1mtK9HAHM",
-          "title": "The Titanic Had a Bakery, a Pool, and a Warning Nobody Listened To",
-          "description": "The Titanic wasn't just a tragic disaster \u2014 it was a floating city packed with jaw-dropping details most people never learn. From an ice warning ignored hours before impact to a survivor dog found aboard a rescue ship, the facts go far beyond what movies show. This video unpacks the most surprising truths about the most famous ship in history. #Titanic #HistoryFacts #DidYouKnow",
-          "tags": [
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "interesting history",
-            "ocean liner history",
-            "rms titanic",
-            "ship history",
-            "titanic",
-            "titanic facts",
-            "titanic stories",
-            "titanic survivors"
-          ],
-          "publishedAt": "2026-07-09T05:16:27Z",
-          "thumbnail": "https://i.ytimg.com/vi/Yi1mtK9HAHM/mqdefault.jpg",
-          "views": 925,
-          "likes": 13,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 62.519999999999996,
           "subs_gained": 0
         }
       ]
