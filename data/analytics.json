@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-26T02:46:33.429727+00:00",
+      "updated": "2026-07-26T08:26:21.962943+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,39 @@
       },
       "videos": [
         {
+          "id": "cC0nPgxWong",
+          "title": "The First Postmaster General Was Also a Spy \u2014 Running His Own Mail",
+          "description": "On July 26, 1775, Benjamin Franklin became America's first Postmaster General \u2014 but his relationship with the mail was far more complicated than history admits. The same system he built to connect the colonies, he had already used to intercept letters for British intelligence years earlier. Turns out the man who invented the mail network knew exactly how to exploit one.",
+          "tags": [
+            "american history",
+            "benjamin franklin",
+            "colonial america",
+            "continental congress",
+            "did you know",
+            "education",
+            "facts",
+            "founding fathers",
+            "history",
+            "history shorts",
+            "july 26",
+            "mail history",
+            "postmaster general",
+            "shorts",
+            "spy history",
+            "trending",
+            "us postal service history",
+            "viral"
+          ],
+          "publishedAt": "2026-07-26T04:03:39Z",
+          "thumbnail": "https://i.ytimg.com/vi/cC0nPgxWong/mqdefault.jpg",
+          "views": 235,
+          "likes": 9,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "u04x0bK29io",
           "title": "She Was Queen of France \u2014 Then Divorced Him and Became Queen of England",
           "description": "On July 25, 1137, Eleanor of Aquitaine married the future King of France \u2014 beginning one of history's most astonishing royal careers. She ended up ruling two rival kingdoms, commanding crusades, and outliving almost everyone who doubted her. A medieval story that still feels impossible.",
@@ -54,8 +87,8 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 142,
-          "likes": 6,
+          "views": 190,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -87,7 +120,7 @@
           ],
           "publishedAt": "2026-07-25T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
-          "views": 503,
+          "views": 548,
           "likes": 16,
           "comments": 2,
           "playlist_ids": [],
@@ -118,7 +151,7 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 658,
+          "views": 659,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -154,7 +187,7 @@
           ],
           "publishedAt": "2026-07-24T15:02:08Z",
           "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 164,
+          "views": 176,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -188,7 +221,7 @@
           ],
           "publishedAt": "2026-07-24T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/Z9iVAS72R5o/mqdefault.jpg",
-          "views": 298,
+          "views": 315,
           "likes": 8,
           "comments": 2,
           "playlist_ids": [],
@@ -1234,7 +1267,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1270,
+          "views": 1271,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1759,44 +1792,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 112.1,
+          "avg_view_pct": 62.519999999999996,
           "subs_gained": 0
-        },
-        {
-          "id": "r419ISKWRk0",
-          "title": "He Ruled Two Kingdoms at Once \u2014 and Almost Nobody Noticed",
-          "description": "In 1859, King Charles XV became one of Europe's most underrated rulers, simultaneously commanding two distinct kingdoms under a single crown. His reign reshaped Scandinavian politics, culture, and the push toward Nordic unity. Discover the surprising story behind this dual monarchy almost lost to history. #KingCharlesXV #ScandinavianHistory #SwedenNorway",
-          "tags": [
-            "1859",
-            "19th century europe",
-            "did you know",
-            "dual monarchy",
-            "education",
-            "european royalty",
-            "facts",
-            "history",
-            "history shorts",
-            "king charles xv",
-            "nordic history",
-            "norway",
-            "scandinavian history",
-            "sweden",
-            "union of kingdoms"
-          ],
-          "publishedAt": "2026-07-08T17:49:04Z",
-          "thumbnail": "https://i.ytimg.com/vi/r419ISKWRk0/mqdefault.jpg",
-          "views": 621,
-          "likes": 13,
-          "comments": 2,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.04,
-          "subs_gained": 2
         }
       ]
     }
