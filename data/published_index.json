@@ -701,5 +701,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Fa_WLGCsgeE",
+    "run_id": "30250522065",
+    "stage_dir_name": "20260727_083714_short",
+    "title": "The Stickman Is 30,000 Years Old \u2014 And Nobody Agreed Who Drew the First One",
+    "published_at": "2026-07-27T08:41:04.528894+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
