@@ -715,5 +715,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "za3H0SOzS_o",
+    "run_id": "30282752634",
+    "stage_dir_name": "20260727_160147_short",
+    "title": "One Vote Chose Panama Over Nicaragua | History's Almost Moments",
+    "published_at": "2026-07-27T16:05:39.289252+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

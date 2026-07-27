@@ -394,5 +394,14 @@
     "slot": "evening",
     "date": "2026-07-27",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260727_160147_short",
+    "title": "One Vote Chose Panama Over Nicaragua | History's Almost Moments",
+    "fingerprint": "almost_chose_history_moments_nicaragua_one_over_panama_s_vote",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-27",
+    "status": "reserved"
   }
 ]
