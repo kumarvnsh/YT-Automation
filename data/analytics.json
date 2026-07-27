@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-27T14:34:00.877363+00:00",
+      "updated": "2026-07-27T19:26:56.467065+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,37 @@
       },
       "videos": [
         {
+          "id": "za3H0SOzS_o",
+          "title": "One Vote Chose Panama Over Nicaragua | History's Almost Moments",
+          "description": "In 1902, the U.S. Congress voted on where to dig the most important canal in modern history \u2014 and the margin was razor-thin. A single volcanic postage stamp may have swung the result. If Nicaragua had won that vote, global shipping lanes would look completely different today.",
+          "tags": [
+            "almost moments",
+            "canal history",
+            "congress vote",
+            "counterfactual history",
+            "did you know",
+            "education",
+            "engineering history",
+            "facts",
+            "history",
+            "history shorts",
+            "nicaragua",
+            "panama canal",
+            "shorts",
+            "trending",
+            "us history",
+            "viral"
+          ],
+          "publishedAt": "2026-07-27T16:04:39Z",
+          "thumbnail": "https://i.ytimg.com/vi/za3H0SOzS_o/mqdefault.jpg",
+          "views": 487,
+          "likes": 16,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Fa_WLGCsgeE",
           "title": "The Stickman Is 30,000 Years Old \u2014 And Nobody Agreed Who Drew the First One",
           "description": "The stickman looks like something a bored child invented \u2014 but its origin stretches back further than writing, farming, or the wheel. This is the surprising history of the world's simplest drawing. #history #didyouknow #art",
@@ -54,7 +85,7 @@
           ],
           "publishedAt": "2026-07-27T08:40:05Z",
           "thumbnail": "https://i.ytimg.com/vi/Fa_WLGCsgeE/mqdefault.jpg",
-          "views": 60,
+          "views": 88,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -86,7 +117,7 @@
           ],
           "publishedAt": "2026-07-27T04:04:33Z",
           "thumbnail": "https://i.ytimg.com/vi/9ymiQRRwskg/mqdefault.jpg",
-          "views": 617,
+          "views": 624,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -152,12 +183,14 @@
           ],
           "publishedAt": "2026-07-26T04:03:39Z",
           "thumbnail": "https://i.ytimg.com/vi/cC0nPgxWong/mqdefault.jpg",
-          "views": 528,
+          "views": 530,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 62.22,
+          "subs_gained": 0
         },
         {
           "id": "u04x0bK29io",
@@ -184,12 +217,14 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 563,
+          "views": 569,
           "likes": 20,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 55.93,
+          "subs_gained": 0
         },
         {
           "id": "i4lfIhbmGKU",
@@ -223,7 +258,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.52,
+          "avg_view_pct": 72.7,
           "subs_gained": 0
         },
         {
@@ -250,13 +285,13 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 668,
+          "views": 669,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 69.34,
+          "avg_view_pct": 68.4,
           "subs_gained": 2
         },
         {
@@ -294,7 +329,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 67.3,
+          "avg_view_pct": 70.0,
           "subs_gained": 0
         },
         {
@@ -330,7 +365,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.74,
+          "avg_view_pct": 64.71,
           "subs_gained": 0
         },
         {
@@ -364,8 +399,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.51,
-          "subs_gained": 0
+          "avg_view_pct": 61.33,
+          "subs_gained": 1
         },
         {
           "id": "RCbxzl9dRQs",
@@ -397,7 +432,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 69.99,
+          "avg_view_pct": 70.12,
           "subs_gained": 1
         },
         {
@@ -434,7 +469,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.33,
+          "avg_view_pct": 62.24000000000001,
           "subs_gained": 0
         },
         {
@@ -471,7 +506,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.09,
+          "avg_view_pct": 75.12,
           "subs_gained": 1
         },
         {
@@ -507,7 +542,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 84.21,
+          "avg_view_pct": 84.05,
           "subs_gained": 0
         },
         {
@@ -1190,7 +1225,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.77,
+          "avg_view_pct": 40.6,
           "subs_gained": 0
         },
         {
@@ -1266,7 +1301,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.0,
+          "avg_view_pct": 72.05,
           "subs_gained": 0
         },
         {
@@ -1304,7 +1339,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 56.47,
+          "avg_view_pct": 56.24,
           "subs_gained": 0
         },
         {
@@ -1342,7 +1377,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 114.41,
+          "avg_view_pct": 114.62999999999998,
           "subs_gained": 0
         },
         {
@@ -1606,7 +1641,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 41.3,
+          "avg_view_pct": 41.25,
           "subs_gained": 1
         },
         {
@@ -1752,42 +1787,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 71.72,
-          "subs_gained": 0
-        },
-        {
-          "id": "-I3k-5EYohU",
-          "title": "Would You Wear This 1949 Radio Hat? \ud83c\udfa9 #retro #tech #fashion",
-          "description": "In 1949, American inventor Victor Hoeflich created the 'Radio Hat' \u2014 a working AM radio built into a straw hat, complete with a small antenna. It sold for around $7.95 and was marketed as the future of personal entertainment. History has a funny way of proving inventors right, just about 50 years too early. #forgotteninventions #retro #history",
-          "tags": [
-            "1940s technology",
-            "did you know",
-            "education",
-            "facts",
-            "forgotten inventions",
-            "history",
-            "history shorts",
-            "ipod history",
-            "portable radio",
-            "radio hat",
-            "retro gadgets",
-            "retro tech",
-            "short history facts",
-            "vintage",
-            "wearable tech"
-          ],
-          "publishedAt": "2026-07-09T10:03:22Z",
-          "thumbnail": "https://i.ytimg.com/vi/-I3k-5EYohU/mqdefault.jpg",
-          "views": 212,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 39.26,
           "subs_gained": 0
         }
       ]
