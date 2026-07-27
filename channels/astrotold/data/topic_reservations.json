@@ -205,5 +205,14 @@
     "slot": "morning",
     "date": "2026-07-27",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260727_170127_short",
+    "title": "Your Birthday Is a Simple Math Problem That Changes Everything",
+    "fingerprint": "birthday_changes_everything_is_math_problem_simple_that_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-27",
+    "status": "reserved"
   }
 ]

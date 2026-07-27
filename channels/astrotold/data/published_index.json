@@ -264,5 +264,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "jEUJUJ92b8M",
+    "run_id": "30287320405",
+    "stage_dir_name": "20260727_170127_short",
+    "title": "Your Birthday Is a Simple Math Problem That Changes Everything",
+    "published_at": "2026-07-27T17:02:26.553511+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
