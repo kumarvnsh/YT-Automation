@@ -687,5 +687,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "9ymiQRRwskg",
+    "run_id": "30235953360",
+    "stage_dir_name": "20260727_040137_short",
+    "title": "The Cable That Connected Two Continents \u2014 On the Third Attempt",
+    "published_at": "2026-07-27T04:05:40.991623+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
