@@ -250,5 +250,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "jXiJPffKLPI",
+    "run_id": "30238582433",
+    "stage_dir_name": "20260727_050125_short",
+    "title": "Your Name Initial Is Quietly Shaping Your Entire Personality",
+    "published_at": "2026-07-27T05:02:24.230442+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
