@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-26T19:09:47.580972+00:00",
+      "updated": "2026-07-27T02:54:38.676271+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -55,8 +55,8 @@
           ],
           "publishedAt": "2026-07-26T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/S8GJNg0l5vo/mqdefault.jpg",
-          "views": 316,
-          "likes": 5,
+          "views": 555,
+          "likes": 4,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -88,7 +88,7 @@
           ],
           "publishedAt": "2026-07-26T04:03:39Z",
           "thumbnail": "https://i.ytimg.com/vi/cC0nPgxWong/mqdefault.jpg",
-          "views": 526,
+          "views": 527,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -120,7 +120,7 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 462,
+          "views": 547,
           "likes": 20,
           "comments": 0,
           "playlist_ids": [],
@@ -186,7 +186,7 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 659,
+          "views": 664,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -327,13 +327,13 @@
           ],
           "publishedAt": "2026-07-23T04:03:54Z",
           "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 572,
+          "views": 573,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.09,
+          "avg_view_pct": 70.07,
           "subs_gained": 1
         },
         {
@@ -1126,7 +1126,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.77,
+          "avg_view_pct": 40.6,
           "subs_gained": 0
         },
         {
@@ -1202,7 +1202,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.0,
+          "avg_view_pct": 72.05,
           "subs_gained": 0
         },
         {
@@ -1240,7 +1240,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 56.47,
+          "avg_view_pct": 56.24,
           "subs_gained": 0
         },
         {
@@ -1278,7 +1278,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 114.41,
+          "avg_view_pct": 114.62999999999998,
           "subs_gained": 0
         },
         {
@@ -1306,7 +1306,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1271,
+          "views": 1272,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
