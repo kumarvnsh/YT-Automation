@@ -757,5 +757,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "J-NeB6kjfa8",
+    "run_id": "30385641106",
+    "stage_dir_name": "20260728_180327_short",
+    "title": "Two Men Rowed Across the Atlantic \u2014 Nobody Believed They'd Survive",
+    "published_at": "2026-07-28T18:06:51.181801+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

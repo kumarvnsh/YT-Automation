@@ -421,5 +421,14 @@
     "slot": "evening",
     "date": "2026-07-28",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260728_180327_short",
+    "title": "Two Men Rowed Across the Atlantic \u2014 Nobody Believed They'd Survive",
+    "fingerprint": "across_atlantic_believed_d_men_nobody_rowed_survive_they_two",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-28",
+    "status": "reserved"
   }
 ]
