@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-28T14:06:50.683493+00:00",
+      "updated": "2026-07-28T19:23:24.005934+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,71 @@
       },
       "videos": [
         {
+          "id": "J-NeB6kjfa8",
+          "title": "Two Men Rowed Across the Atlantic \u2014 Nobody Believed They'd Survive",
+          "description": "In 1896, two Norwegian immigrants rowed a tiny wooden boat from New York to the Scilly Isles in 55 days \u2014 a feat that stunned the world and launched the entire sport of ocean rowing. Their boat was barely 18 feet long and had no motor, no radio, and almost no chance. Every open-ocean rowing record since traces back to this one crossing.",
+          "tags": [
+            "1896",
+            "adventure history",
+            "atlantic rowing",
+            "did you know",
+            "education",
+            "exploration",
+            "facts",
+            "frank samuelsen",
+            "george harbo",
+            "history",
+            "history shorts",
+            "maritime history",
+            "norway",
+            "ocean rowing",
+            "record breaking",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-28T18:06:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/J-NeB6kjfa8/mqdefault.jpg",
+          "views": 4,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "BUHUA5nFKvY",
+          "title": "A Bomber Hit the Empire State Building \u2014 Mid-Morning, on a Saturday",
+          "description": "On July 28, 1945, a U.S. Army bomber flew straight into the 79th floor of the Empire State Building in thick fog. What happened next surprised everyone \u2014 including the building's owners. One detail about that day quietly changed American law forever.",
+          "tags": [
+            "1945",
+            "american history",
+            "aviation accident",
+            "b25 bomber",
+            "did you know",
+            "education",
+            "empire state building",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "new york history",
+            "shorts",
+            "skyscraper",
+            "trending",
+            "viral",
+            "world war 2"
+          ],
+          "publishedAt": "2026-07-28T16:04:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/BUHUA5nFKvY/mqdefault.jpg",
+          "views": 258,
+          "likes": 7,
+          "comments": 2,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "5788gUXN9M0",
           "title": "Austria Sent One Letter on July 28 \u2014 and 20 Million People Died",
           "description": "On July 28, 1914, Austria-Hungary declared war on Serbia with a single telegram \u2014 the first official declaration of World War One. What makes it stranger is how close the whole catastrophe came to being called off. Every time you read about the 'war to end all wars,' this is the letter that started it.",
@@ -54,7 +119,7 @@
           ],
           "publishedAt": "2026-07-28T04:05:00Z",
           "thumbnail": "https://i.ytimg.com/vi/5788gUXN9M0/mqdefault.jpg",
-          "views": 219,
+          "views": 306,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -117,8 +182,8 @@
           ],
           "publishedAt": "2026-07-27T08:40:05Z",
           "thumbnail": "https://i.ytimg.com/vi/Fa_WLGCsgeE/mqdefault.jpg",
-          "views": 332,
-          "likes": 2,
+          "views": 344,
+          "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -149,12 +214,14 @@
           ],
           "publishedAt": "2026-07-27T04:04:33Z",
           "thumbnail": "https://i.ytimg.com/vi/9ymiQRRwskg/mqdefault.jpg",
-          "views": 644,
+          "views": 645,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 88.49,
+          "subs_gained": 0
         },
         {
           "id": "S8GJNg0l5vo",
@@ -182,12 +249,14 @@
           ],
           "publishedAt": "2026-07-26T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/S8GJNg0l5vo/mqdefault.jpg",
-          "views": 563,
+          "views": 564,
           "likes": 4,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 48.71,
+          "subs_gained": 0
         },
         {
           "id": "cC0nPgxWong",
@@ -221,7 +290,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.22,
+          "avg_view_pct": 56.06,
           "subs_gained": 0
         },
         {
@@ -255,7 +324,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.93,
+          "avg_view_pct": 85.05,
           "subs_gained": 0
         },
         {
@@ -290,7 +359,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.7,
+          "avg_view_pct": 73.16,
           "subs_gained": 0
         },
         {
@@ -323,7 +392,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.4,
+          "avg_view_pct": 68.33,
           "subs_gained": 2
         },
         {
@@ -361,7 +430,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.0,
+          "avg_view_pct": 69.37,
           "subs_gained": 0
         },
         {
@@ -431,7 +500,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.33,
+          "avg_view_pct": 60.760000000000005,
           "subs_gained": 1
         },
         {
@@ -464,7 +533,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.12,
+          "avg_view_pct": 69.76,
           "subs_gained": 1
         },
         {
@@ -538,7 +607,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.12,
+          "avg_view_pct": 75.13,
           "subs_gained": 1
         },
         {
@@ -1715,75 +1784,6 @@
           "is_unsorted": false,
           "avg_view_pct": 70.6,
           "subs_gained": 1
-        },
-        {
-          "id": "ABSo-s-cQPE",
-          "title": "The Wildest FIFA World Cup Upsets Since the Very First Tournament",
-          "description": "Since the first FIFA World Cup in 1930, football has delivered jaw-dropping upsets that nobody saw coming. From tiny nations toppling giants to last-minute winners, these moments rewrote what we thought was possible. Discover the most stunning confidence-shattering shocks in World Cup history. #FIFA #WorldCup #FootballHistory",
-          "tags": [
-            "did you know",
-            "education",
-            "facts",
-            "fifa world cup",
-            "football history",
-            "greatest upsets",
-            "history",
-            "history shorts",
-            "international football",
-            "soccer history",
-            "sports history",
-            "world cup moments",
-            "world cup shocks",
-            "world cup upsets"
-          ],
-          "publishedAt": "2026-07-09T19:20:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/ABSo-s-cQPE/mqdefault.jpg",
-          "views": 777,
-          "likes": 6,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 55.54,
-          "subs_gained": 0
-        },
-        {
-          "id": "08B4lsuemvU",
-          "title": "Argentina Declared Independence With a King Already Picked \u2014 Then Changed Its Mind",
-          "description": "On July 9, 1816, Argentina declared independence from Spain \u2014 but the plan behind it was stranger than you'd expect. The founding delegates secretly debated installing a foreign monarch before choosing something radical instead. History's boldest pivots often happen in the rooms nobody remembers. #ArgentinaIndependence #HistoryFacts #DidYouKnow",
-          "tags": [
-            "1816",
-            "argentina",
-            "did you know",
-            "education",
-            "facts",
-            "founding nations",
-            "history",
-            "history shorts",
-            "independence day",
-            "latin america history",
-            "revolution",
-            "south american history",
-            "spanish empire"
-          ],
-          "publishedAt": "2026-07-09T16:09:34Z",
-          "thumbnail": "https://i.ytimg.com/vi/08B4lsuemvU/mqdefault.jpg",
-          "views": 566,
-          "likes": 6,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 49.27,
-          "subs_gained": 0
         }
       ]
     }
