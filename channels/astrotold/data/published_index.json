@@ -278,5 +278,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "DmCKLhWuAj0",
+    "run_id": "30330356033",
+    "stage_dir_name": "20260728_050145_short",
+    "title": "Today 28 July 2026 Reveals Your Lucky Colour, Number & Day",
+    "published_at": "2026-07-28T05:02:41.298991+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
