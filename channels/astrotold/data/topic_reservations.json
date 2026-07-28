@@ -223,5 +223,14 @@
     "slot": "morning",
     "date": "2026-07-28",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260728_170138_short",
+    "title": "What Does Your Name Initial Reveal About Your Personality?",
+    "fingerprint": "about_does_initial_name_personality_reveal_what_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-28",
+    "status": "reserved"
   }
 ]
