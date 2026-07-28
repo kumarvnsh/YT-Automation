@@ -729,5 +729,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "5788gUXN9M0",
+    "run_id": "30327514229",
+    "stage_dir_name": "20260728_040210_short",
+    "title": "Austria Sent One Letter on July 28 \u2014 and 20 Million People Died",
+    "published_at": "2026-07-28T04:05:44.163002+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
