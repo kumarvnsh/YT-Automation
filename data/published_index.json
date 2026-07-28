@@ -743,5 +743,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "BUHUA5nFKvY",
+    "run_id": "30376215641",
+    "stage_dir_name": "20260728_160152_short",
+    "title": "A Bomber Hit the Empire State Building \u2014 Mid-Morning, on a Saturday",
+    "published_at": "2026-07-28T16:05:41.598449+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
