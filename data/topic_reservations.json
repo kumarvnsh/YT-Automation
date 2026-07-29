@@ -439,5 +439,14 @@
     "slot": "morning",
     "date": "2026-07-29",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260729_160202_short",
+    "title": "He Died Losing a Battle \u2014 Then Became a Saint Because of It",
+    "fingerprint": "battle_became_because_died_he_it_losing_saint_then",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-29",
+    "status": "reserved"
   }
 ]
