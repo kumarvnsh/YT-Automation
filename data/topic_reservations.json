@@ -430,5 +430,14 @@
     "slot": "evening",
     "date": "2026-07-28",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260729_040128_short",
+    "title": "700 Million People Watched the Same Wedding \u2014 Then It All Fell Apart",
+    "fingerprint": "700_all_apart_fell_it_million_people_same_then_watched_wedding",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-29",
+    "status": "reserved"
   }
 ]
