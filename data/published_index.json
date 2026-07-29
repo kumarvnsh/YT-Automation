@@ -1239,5 +1239,19 @@
         "status": "inserted"
       }
     ]
+  },
+  {
+    "video_id": "nvYUqrouRgk",
+    "run_id": "30489917195",
+    "stage_dir_name": "20260729_204929_short",
+    "title": "Australia Declared War on Birds in 1932 \u2014 and the Birds Won",
+    "published_at": "2026-07-29T20:54:16.779012+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
