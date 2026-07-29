@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-29T02:36:30.859524+00:00",
+      "updated": "2026-07-29T08:40:20.931527+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -30,6 +30,38 @@
       },
       "videos": [
         {
+          "id": "AaB9i083SUU",
+          "title": "700 Million People Watched the Same Wedding \u2014 Then It All Fell Apart",
+          "description": "On July 29, 1981, the wedding of Prince Charles and Lady Diana Spencer drew the largest television audience in history at that time \u2014 over 700 million viewers across 74 countries. What nobody watching that fairy-tale moment could know was how the story would actually end. History's most-watched wedding became one of its most cautionary tales about the gap between spectacle and reality.",
+          "tags": [
+            "1981",
+            "british history",
+            "charles and diana",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "july 29",
+            "monarchy",
+            "princess diana",
+            "royal wedding",
+            "shorts",
+            "television history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-07-29T04:04:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
+          "views": 475,
+          "likes": 12,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "J-NeB6kjfa8",
           "title": "Two Men Rowed Across the Atlantic \u2014 Nobody Believed They'd Survive",
           "description": "In 1896, two Norwegian immigrants rowed a tiny wooden boat from New York to the Scilly Isles in 55 days \u2014 a feat that stunned the world and launched the entire sport of ocean rowing. Their boat was barely 18 feet long and had no motor, no radio, and almost no chance. Every open-ocean rowing record since traces back to this one crossing.",
@@ -55,7 +87,7 @@
           ],
           "publishedAt": "2026-07-28T18:06:30Z",
           "thumbnail": "https://i.ytimg.com/vi/J-NeB6kjfa8/mqdefault.jpg",
-          "views": 359,
+          "views": 509,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
@@ -87,7 +119,7 @@
           ],
           "publishedAt": "2026-07-28T16:04:49Z",
           "thumbnail": "https://i.ytimg.com/vi/BUHUA5nFKvY/mqdefault.jpg",
-          "views": 575,
+          "views": 576,
           "likes": 11,
           "comments": 2,
           "playlist_ids": [],
@@ -119,7 +151,7 @@
           ],
           "publishedAt": "2026-07-28T04:05:00Z",
           "thumbnail": "https://i.ytimg.com/vi/5788gUXN9M0/mqdefault.jpg",
-          "views": 337,
+          "views": 388,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
@@ -182,8 +214,8 @@
           ],
           "publishedAt": "2026-07-27T08:40:05Z",
           "thumbnail": "https://i.ytimg.com/vi/Fa_WLGCsgeE/mqdefault.jpg",
-          "views": 374,
-          "likes": 3,
+          "views": 396,
+          "likes": 4,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -533,7 +565,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 69.84,
+          "avg_view_pct": 69.76,
           "subs_gained": 1
         },
         {
@@ -607,7 +639,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.12,
+          "avg_view_pct": 75.13,
           "subs_gained": 1
         },
         {
@@ -1743,46 +1775,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 41.25,
-          "subs_gained": 1
-        },
-        {
-          "id": "mOgSMDUQCp0",
-          "title": "France Blew Up a Civilian Ship \u2014 Then Called It a Success",
-          "description": "On July 10, 1985, French secret agents sank the Greenpeace vessel Rainbow Warrior in Auckland harbour, killing a photographer aboard. The agents were caught, convicted \u2014 and later quietly celebrated as heroes back in France. It remains one of the most brazen acts of state-sponsored sabotage in peacetime history. #Greenpeace #RainbowWarrior #HistoryFacts",
-          "tags": [
-            "1985",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "france",
-            "greenpeace",
-            "history",
-            "history facts",
-            "history shorts",
-            "new zealand",
-            "pacific history",
-            "rainbow warrior",
-            "secret agents",
-            "shorts",
-            "spy history",
-            "state sabotage",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-10T09:03:40Z",
-          "thumbnail": "https://i.ytimg.com/vi/mOgSMDUQCp0/mqdefault.jpg",
-          "views": 793,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 70.6,
           "subs_gained": 1
         }
       ]
