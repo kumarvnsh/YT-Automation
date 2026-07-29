@@ -232,5 +232,14 @@
     "slot": "evening",
     "date": "2026-07-28",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260729_050120_short",
+    "title": "July 2026 Is Sending Each Birth Number a Different Signal \u2014 Catch Yours",
+    "fingerprint": "2026_birth_catch_different_each_is_july_number_sending_signal_yours",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-29",
+    "status": "reserved"
   }
 ]
