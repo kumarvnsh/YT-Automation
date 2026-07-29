@@ -927,7 +927,18 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "playlist_ids": [
+      "PLTVmpSWS_A5g"
+    ],
+    "playlist_assignments": [
+      {
+        "playlist_id": "PLTVmpSWS_A5g",
+        "playlist_title": "Lost Cities",
+        "assigned_at": "2026-07-29T20:48:38.572490+00:00",
+        "status": "inserted"
+      }
+    ]
   },
   {
     "video_id": "i4lfIhbmGKU",
