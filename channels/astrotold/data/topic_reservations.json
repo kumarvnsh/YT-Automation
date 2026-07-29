@@ -241,5 +241,14 @@
     "slot": "morning",
     "date": "2026-07-29",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260729_170137_short",
+    "title": "Born on 6, 15, or 24? Numerology Just Revealed Something About You",
+    "fingerprint": "15_24_6_about_born_just_numerology_on_or_revealed_something_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-29",
+    "status": "reserved"
   }
 ]
