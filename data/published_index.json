@@ -1253,5 +1253,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Mq-S2Pjs4mk",
+    "run_id": "30512693466",
+    "stage_dir_name": "20260730_040119_short",
+    "title": "The Navy Didn't Know 900 Men Were in the Water \u2014 For Four Days",
+    "published_at": "2026-07-30T04:05:47.845149+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
