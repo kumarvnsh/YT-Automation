@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-30T14:01:00.155774+00:00",
+      "updated": "2026-07-30T19:26:12.252254+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "QBt8HqmBeQw",
+          "title": "883 Men Were in the Shark-Filled Ocean \u2014 The Navy Didn't File a Report",
+          "description": "On July 30, 1945, the USS Indianapolis was sunk by a Japanese submarine \u2014 and the U.S. Navy didn't notice for four days. This is the story of the worst naval disaster in American history, and the clerical gap that made it so deadly. The ship had just delivered the parts for the atomic bomb dropped on Hiroshima.",
+          "tags": [
+            "1945",
+            "atomic bomb",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "july 30",
+            "military history",
+            "naval disaster",
+            "navy history",
+            "pacific war",
+            "shark attack history",
+            "shorts",
+            "trending",
+            "uss indianapolis",
+            "viral",
+            "world war 2"
+          ],
+          "publishedAt": "2026-07-30T16:04:51Z",
+          "thumbnail": "https://i.ytimg.com/vi/QBt8HqmBeQw/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Mq-S2Pjs4mk",
           "title": "The Navy Didn't Know 900 Men Were in the Water \u2014 For Four Days",
           "description": "On July 30, 1945, the USS Indianapolis sank in the Pacific \u2014 and the U.S. Navy didn't realise for four days. The reason why is one of the strangest oversights in military history. This is what actually happened.",
@@ -60,7 +93,7 @@
           ],
           "publishedAt": "2026-07-30T04:04:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 616,
+          "views": 623,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
@@ -92,7 +125,7 @@
           ],
           "publishedAt": "2026-07-29T20:52:19Z",
           "thumbnail": "https://i.ytimg.com/vi/nvYUqrouRgk/mqdefault.jpg",
-          "views": 590,
+          "views": 648,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -160,7 +193,7 @@
           ],
           "publishedAt": "2026-07-29T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 674,
+          "views": 676,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -169,7 +202,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 62.07,
+          "subs_gained": 0
         },
         {
           "id": "J-NeB6kjfa8",
@@ -197,7 +232,7 @@
           ],
           "publishedAt": "2026-07-28T18:06:30Z",
           "thumbnail": "https://i.ytimg.com/vi/J-NeB6kjfa8/mqdefault.jpg",
-          "views": 534,
+          "views": 538,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [
@@ -206,7 +241,9 @@
           "playlists": [
             "Erased From History"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 76.24,
+          "subs_gained": 1
         },
         {
           "id": "BUHUA5nFKvY",
@@ -242,7 +279,9 @@
           "playlists": [
             "Vanished Civilizations"
           ],
-          "is_unsorted": false
+          "is_unsorted": false,
+          "avg_view_pct": 56.04,
+          "subs_gained": 0
         },
         {
           "id": "5788gUXN9M0",
@@ -279,7 +318,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 77.09,
+          "avg_view_pct": 66.61,
           "subs_gained": 0
         },
         {
@@ -354,7 +393,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 120.81,
+          "avg_view_pct": 103.95999999999998,
           "subs_gained": 0
         },
         {
@@ -392,7 +431,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 89.01,
+          "avg_view_pct": 88.81,
           "subs_gained": 0
         },
         {
@@ -431,7 +470,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 48.64,
+          "avg_view_pct": 48.77,
           "subs_gained": 0
         },
         {
@@ -508,7 +547,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 82.72,
+          "avg_view_pct": 82.52,
           "subs_gained": 0
         },
         {
@@ -903,7 +942,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 97.16,
+          "avg_view_pct": 96.91,
           "subs_gained": 0
         },
         {
@@ -1893,44 +1932,6 @@
           "is_unsorted": false,
           "avg_view_pct": 70.93,
           "subs_gained": 1
-        },
-        {
-          "id": "HOzzS9c9bSI",
-          "title": "Britain Refused To Join FIFA \u2014 Here's Why That's Insane",
-          "description": "FIFA is the most powerful body in world football, but its origin story is surprisingly humble. When it was founded in 1904, Britain \u2014 the nation that invented the sport \u2014 refused to participate. It's one of history's great ironies that the game's creator nearly missed running it entirely. #FIFA #footballhistory #soccerfacts",
-          "tags": [
-            "1904",
-            "did you know",
-            "education",
-            "facts",
-            "fifa",
-            "football facts",
-            "football history",
-            "history",
-            "history facts",
-            "history shorts",
-            "shorts",
-            "soccer",
-            "sports history",
-            "surprising history",
-            "trending",
-            "viral",
-            "world cup"
-          ],
-          "publishedAt": "2026-07-11T07:42:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/HOzzS9c9bSI/mqdefault.jpg",
-          "views": 748,
-          "likes": 5,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 70.73,
-          "subs_gained": 0
         }
       ]
     }
