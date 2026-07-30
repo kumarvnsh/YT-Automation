@@ -334,5 +334,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "BjrmqoGoCWc",
+    "run_id": "30515419722",
+    "stage_dir_name": "20260730_050142_short",
+    "title": "Your First Initial Is a Tiny Code With a Big Personality Secret",
+    "published_at": "2026-07-30T05:02:34.719543+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
