@@ -259,5 +259,14 @@
     "slot": "morning",
     "date": "2026-07-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260730_170143_short",
+    "title": "Born on 6, 15, or 24? Numerology Reveals Your Hidden Superpower",
+    "fingerprint": "15_24_6_born_hidden_numerology_on_or_reveals_superpower_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-30",
+    "status": "reserved"
   }
 ]
