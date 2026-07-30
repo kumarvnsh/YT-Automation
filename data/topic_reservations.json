@@ -466,5 +466,14 @@
     "slot": "morning",
     "date": "2026-07-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260730_160151_short",
+    "title": "883 Men Were in the Shark-Filled Ocean \u2014 The Navy Didn't File a Report",
+    "fingerprint": "883_didn_file_filled_men_navy_ocean_report_shark_t_were",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-30",
+    "status": "reserved"
   }
 ]
