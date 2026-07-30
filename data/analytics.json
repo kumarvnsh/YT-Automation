@@ -2,14 +2,14 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-07-29T20:46:02.910433+00:00",
+      "updated": "2026-07-30T02:23:56.837520+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
           {
             "id": "PLTVmpSWS_A5g",
             "title": "Lost Cities",
-            "video_count": 0
+            "video_count": 1
           },
           {
             "id": "PLKz3dl1lEDLM",
@@ -34,6 +34,38 @@
         ]
       },
       "videos": [
+        {
+          "id": "nvYUqrouRgk",
+          "title": "Australia Declared War on Birds in 1932 \u2014 and the Birds Won",
+          "description": "In 1932, the Australian military deployed soldiers and machine guns against a flock of emus. What happened next became one of history's most embarrassing military defeats. The birds didn't surrender \u2014 they adapted. #history #didyouknow #australia",
+          "tags": [
+            "1932",
+            "animals vs humans",
+            "australia history",
+            "did you know",
+            "education",
+            "emu war",
+            "emus",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "military history",
+            "shorts",
+            "strange history",
+            "trending",
+            "viral",
+            "weird history"
+          ],
+          "publishedAt": "2026-07-29T20:52:19Z",
+          "thumbnail": "https://i.ytimg.com/vi/nvYUqrouRgk/mqdefault.jpg",
+          "views": 186,
+          "likes": 9,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "cI78ylaKXZM",
           "title": "He Died Losing a Battle \u2014 Then Became a Saint Because of It",
@@ -95,7 +127,7 @@
           ],
           "publishedAt": "2026-07-29T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 642,
+          "views": 652,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [
@@ -132,7 +164,7 @@
           ],
           "publishedAt": "2026-07-28T18:06:30Z",
           "thumbnail": "https://i.ytimg.com/vi/J-NeB6kjfa8/mqdefault.jpg",
-          "views": 531,
+          "views": 533,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [
@@ -168,7 +200,7 @@
           ],
           "publishedAt": "2026-07-28T16:04:49Z",
           "thumbnail": "https://i.ytimg.com/vi/BUHUA5nFKvY/mqdefault.jpg",
-          "views": 577,
+          "views": 578,
           "likes": 11,
           "comments": 2,
           "playlist_ids": [
@@ -204,7 +236,7 @@
           ],
           "publishedAt": "2026-07-28T04:05:00Z",
           "thumbnail": "https://i.ytimg.com/vi/5788gUXN9M0/mqdefault.jpg",
-          "views": 460,
+          "views": 491,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [
@@ -241,7 +273,7 @@
           ],
           "publishedAt": "2026-07-27T16:04:39Z",
           "thumbnail": "https://i.ytimg.com/vi/za3H0SOzS_o/mqdefault.jpg",
-          "views": 678,
+          "views": 680,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [
@@ -317,7 +349,7 @@
           ],
           "publishedAt": "2026-07-27T04:04:33Z",
           "thumbnail": "https://i.ytimg.com/vi/9ymiQRRwskg/mqdefault.jpg",
-          "views": 646,
+          "views": 647,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -356,7 +388,7 @@
           ],
           "publishedAt": "2026-07-26T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/S8GJNg0l5vo/mqdefault.jpg",
-          "views": 569,
+          "views": 571,
           "likes": 4,
           "comments": 1,
           "playlist_ids": [
@@ -433,7 +465,7 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 582,
+          "views": 584,
           "likes": 20,
           "comments": 0,
           "playlist_ids": [
@@ -512,9 +544,13 @@
           "views": 671,
           "likes": 23,
           "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
+          "playlist_ids": [
+            "PLTVmpSWS_A5g"
+          ],
+          "playlists": [
+            "Lost Cities"
+          ],
+          "is_unsorted": false,
           "avg_view_pct": 68.31,
           "subs_gained": 2
         },
@@ -1737,7 +1773,7 @@
           ],
           "publishedAt": "2026-07-12T13:03:19Z",
           "thumbnail": "https://i.ytimg.com/vi/twUMm4KyNiA/mqdefault.jpg",
-          "views": 1277,
+          "views": 1278,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1898,44 +1934,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 67.83,
-          "subs_gained": 0
-        },
-        {
-          "id": "Yw77rxLMmCY",
-          "title": "Erling Haaland Is Literally Finishing What His Father Started",
-          "description": "Erling Haaland and his father Alfie both wore the number nine shirt for Manchester City \u2014 separated by over two decades. It's one of football's most remarkable father-son stories, written across the same pitch. Watch to see how history repeated itself at the Etihad.",
-          "tags": [
-            "alfie haaland",
-            "did you know",
-            "education",
-            "erling haaland",
-            "etihad stadium",
-            "facts",
-            "father son",
-            "football history",
-            "history",
-            "history shorts",
-            "manchester city",
-            "norway football",
-            "premier league",
-            "shorts",
-            "sports legacy",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-10T16:16:25Z",
-          "thumbnail": "https://i.ytimg.com/vi/Yw77rxLMmCY/mqdefault.jpg",
-          "views": 1303,
-          "likes": 8,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 63.129999999999995,
           "subs_gained": 0
         }
       ]
