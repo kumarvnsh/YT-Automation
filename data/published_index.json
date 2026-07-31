@@ -1295,5 +1295,19 @@
     "retitled_at": null,
     "republished_from": "cI78ylaKXZM",
     "republished_as": null
+  },
+  {
+    "video_id": "amMgq4voErU",
+    "run_id": "30603022275",
+    "stage_dir_name": "20260731_040116_short",
+    "title": "France Almost Finished the Panama Canal First | History's Almost Moments",
+    "published_at": "2026-07-31T04:05:14.166092+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
