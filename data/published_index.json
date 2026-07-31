@@ -1227,7 +1227,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "Q3QOhpdSJuM",
     "playlist_ids": [
       "PLZPTJFrAwVuA"
     ],
@@ -1281,6 +1281,19 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
+    "republished_as": null
+  },
+  {
+    "video_id": "Q3QOhpdSJuM",
+    "run_id": "30599967647",
+    "stage_dir_name": "20260729_160202_short",
+    "title": "Norway's King Lost His Throne, His Life \u2014 Then Won Forever",
+    "published_at": "2026-07-31T02:49:44.577072+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "cI78ylaKXZM",
     "republished_as": null
   }
 ]
