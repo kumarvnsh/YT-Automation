@@ -484,5 +484,14 @@
     "slot": "morning",
     "date": "2026-07-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260731_160204_short",
+    "title": "11 Ships Left Havana With a King's Fortune \u2014 None of Them Made It",
+    "fingerprint": "11_fortune_havana_it_king_left_made_none_s_ships_them_with",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-31",
+    "status": "reserved"
   }
 ]
