@@ -277,5 +277,14 @@
     "slot": "morning",
     "date": "2026-07-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260731_170311_short",
+    "title": "Your Birth Number Is Just Simple Addition \u2014 Most People Get It Wrong",
+    "fingerprint": "addition_birth_get_is_it_just_most_number_people_simple_wrong_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-07-31",
+    "status": "reserved"
   }
 ]
