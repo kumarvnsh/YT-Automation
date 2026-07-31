@@ -268,5 +268,14 @@
     "slot": "evening",
     "date": "2026-07-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260731_050124_short",
+    "title": "August 2026 Has a Unique Energy Gift for Every Birth Number",
+    "fingerprint": "2026_august_birth_energy_every_for_gift_has_number_unique",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-07-31",
+    "status": "reserved"
   }
 ]
