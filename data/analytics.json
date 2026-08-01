@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-01T13:20:07.912309+00:00",
+      "updated": "2026-08-01T19:07:34.436202+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "xa76heKmX34",
+          "title": "One Muddy Morning Almost Saved Napoleon | History's Almost Moments",
+          "description": "On June 18, 1815, Napoleon had Wellington cornered \u2014 until the ground itself intervened. A single decision made at dawn may have cost France its last emperor and redrawn the map of Europe. Was Waterloo inevitable, or was it lost before the first shot was fired? #history #Napoleon #Waterloo",
+          "tags": [
+            "1815",
+            "almost moments",
+            "battle of waterloo",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "french history",
+            "history",
+            "history facts",
+            "history shorts",
+            "napoleon",
+            "near miss",
+            "shorts",
+            "trending",
+            "viral",
+            "waterloo",
+            "wellington"
+          ],
+          "publishedAt": "2026-08-01T16:04:24Z",
+          "thumbnail": "https://i.ytimg.com/vi/xa76heKmX34/mqdefault.jpg",
+          "views": 135,
+          "likes": 3,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "JNyLre5ZXgA",
           "title": "Three Villages Signed One Document \u2014 and Built Europe's Oldest Democracy",
           "description": "On August 1, 1291, three tiny Alpine communities signed a pact that no one took seriously \u2014 and accidentally created a country that has outlasted every empire around it. Switzerland's founding story is stranger and more surprising than any national myth. This is how a single handshake on a meadow became 735 years of unbroken democracy.",
@@ -60,7 +93,7 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 600,
+          "views": 649,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -91,7 +124,7 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 694,
+          "views": 696,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -131,7 +164,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 60.480000000000004,
+          "subs_gained": 0
         },
         {
           "id": "Q3QOhpdSJuM",
@@ -158,12 +193,14 @@
           ],
           "publishedAt": "2026-07-31T02:49:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Q3QOhpdSJuM/mqdefault.jpg",
-          "views": 559,
+          "views": 560,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 63.57000000000001,
+          "subs_gained": 1
         },
         {
           "id": "QBt8HqmBeQw",
@@ -196,7 +233,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 61.04999999999999,
+          "subs_gained": 1
         },
         {
           "id": "Mq-S2Pjs4mk",
@@ -224,13 +263,13 @@
           ],
           "publishedAt": "2026-07-30T04:04:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 664,
+          "views": 665,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.91,
+          "avg_view_pct": 58.93000000000001,
           "subs_gained": 0
         },
         {
@@ -264,7 +303,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 53.13,
+          "avg_view_pct": 67.38,
           "subs_gained": 0
         },
         {
@@ -330,7 +369,7 @@
           ],
           "publishedAt": "2026-07-29T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 738,
+          "views": 752,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -340,7 +379,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 64.81,
+          "avg_view_pct": 64.59,
           "subs_gained": 0
         },
         {
@@ -379,7 +418,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 76.42,
+          "avg_view_pct": 75.64,
           "subs_gained": 1
         },
         {
@@ -417,7 +456,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.89999999999999,
+          "avg_view_pct": 55.87,
           "subs_gained": 0
         },
         {
@@ -1878,45 +1917,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 72.05,
-          "subs_gained": 0
-        },
-        {
-          "id": "Ey04v7ot92E",
-          "title": "The Staffer's Tip That Ended a U.S. Presidency",
-          "description": "On July 13, 1973, a single question during a Senate hearing accidentally exposed secret recordings that would end Richard Nixon's presidency. Alexander Butterfield's revelation about the White House taping system changed American political history forever. One offhand answer unraveled the most powerful office on earth.",
-          "tags": [
-            "1970s",
-            "american history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "nixon",
-            "political scandal",
-            "senate",
-            "shorts",
-            "trending",
-            "us presidents",
-            "viral",
-            "watergate",
-            "white house"
-          ],
-          "publishedAt": "2026-07-13T13:03:23Z",
-          "thumbnail": "https://i.ytimg.com/vi/Ey04v7ot92E/mqdefault.jpg",
-          "views": 665,
-          "likes": 7,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 56.24,
+          "avg_view_pct": 60.33,
           "subs_gained": 0
         }
       ]
