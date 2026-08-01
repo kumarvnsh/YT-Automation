@@ -1337,5 +1337,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "xa76heKmX34",
+    "run_id": "30707199606",
+    "stage_dir_name": "20260801_160156_short",
+    "title": "One Muddy Morning Almost Saved Napoleon | History's Almost Moments",
+    "published_at": "2026-08-01T16:05:15.072851+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
