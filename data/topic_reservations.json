@@ -493,5 +493,14 @@
     "slot": "evening",
     "date": "2026-07-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260801_040129_short",
+    "title": "Three Villages Signed One Document \u2014 and Built Europe's Oldest Democracy",
+    "fingerprint": "built_democracy_document_europe_oldest_one_s_signed_three_villages",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-01",
+    "status": "reserved"
   }
 ]
