@@ -161,8 +161,13 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     st["script_provider"] = script.provider
     st["script_fallback_used"] = script.fallback_used
     # Countdown days produce distinct-by-design titles that read as near-dupes
-    # to the fingerprint check, so skip uniqueness enforcement for them.
-    is_countdown = topics.monthly_prediction_direction(cfg, slot=st.get("slot")) is not None
+    # to the fingerprint check, so skip uniqueness enforcement for them. A manual
+    # --topic override wins over the countdown (mirroring generate_script), so its
+    # title still gets normal dedup protection.
+    is_countdown = (
+        not overrides.get("topic")
+        and topics.monthly_prediction_direction(cfg, slot=st.get("slot")) is not None
+    )
     st["topic_reservation"] = topics.reserve_topic(
         script.title,
         st["fmt"],
