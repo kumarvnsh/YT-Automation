@@ -6,7 +6,9 @@ list of recently-used topics so it does not repeat itself.
 """
 from __future__ import annotations
 
+import calendar
 import json
+import os
 import random
 import re
 from datetime import date
@@ -69,6 +71,59 @@ def pick_angle(cfg=None) -> str:
     return random.choice(angles if angles else SEED_ANGLES)
 
 
+# Numerology birth-number -> the birth dates that reduce to it. Same grouping
+# as the astrotold config angles; kept here so the monthly countdown and the
+# angle bank share one source of truth.
+_BIRTH_NUMBER_DATES = {
+    1: "1, 10, 19, and 28",
+    2: "2, 11, 20, and 29",
+    3: "3, 12, 21, and 30",
+    4: "4, 13, 22, and 31",
+    5: "5, 14, and 23",
+    6: "6, 15, and 24",
+    7: "7, 16, and 25",
+    8: "8, 17, and 26",
+    9: "9, 18, and 27",
+}
+
+
+def monthly_prediction_direction(cfg, today: date | None = None, slot: str | None = None) -> str | None:
+    """Forced next-month prediction topic for the last-9-days morning countdown.
+
+    Returns a REQUIRED-topic direction string when ALL hold, else None:
+      - channel opted in via `channel.monthly_prediction`
+      - this run is the morning slot (PUBLISH_SLOT, or the passed `slot`)
+      - today is within the last 9 calendar days of the month
+
+    Birth number advances one per day: the first window day is BN1 and the last
+    day of the month is BN9. December rolls the prediction to January next year.
+    `today`/`slot` are injectable for tests.
+    """
+    if cfg is None or not cfg.get("channel.monthly_prediction", False):
+        return None
+    if slot is None:
+        slot = os.getenv("PUBLISH_SLOT")
+    if slot != "morning":
+        return None
+    today = today or date.today()
+    days_in_month = calendar.monthrange(today.year, today.month)[1]
+    if today.day < days_in_month - 8:
+        return None
+    birth_number = today.day - days_in_month + 9  # 1..9
+    dates = _BIRTH_NUMBER_DATES[birth_number]
+    if today.month == 12:
+        next_year, next_month = today.year + 1, 1
+    else:
+        next_year, next_month = today.year, today.month + 1
+    month_name = calendar.month_name[next_month]
+    return (
+        f"Today's REQUIRED topic (do not deviate): A playful {month_name} {next_year} "
+        f"numerology prediction ONLY for birth number {birth_number} (people born on "
+        f"{dates}). The title must name {month_name} and birth number {birth_number} "
+        f"so it is distinct from other days."
+    )
+
+
 def topic_fingerprint(title: str) -> str:
     """Normalize a title into an order-insensitive keyword fingerprint."""
     words = re.findall(r"[a-z0-9]+", title.lower())
@@ -96,21 +151,28 @@ def _fingerprint_is_near(left: str, right: str) -> bool:
     return SequenceMatcher(None, left, right).ratio() >= 0.82
 
 
-def reserve_topic(title: str, fmt: str, slot: str, job_id: str) -> dict:
+def reserve_topic(title: str, fmt: str, slot: str, job_id: str, enforce_unique: bool = True) -> dict:
     """Reserve a topic for one job, rejecting near-duplicates across slots.
 
     Idempotent per job_id: a retry after a partial run returns the original
     reservation instead of tripping the duplicate check against itself.
+
+    `enforce_unique=False` records the reservation without the near-duplicate
+    check. Used for the monthly prediction countdown, whose 9 daily topics are
+    distinct by design (one birth number each) but read as near-duplicates to
+    the title fingerprint. The reservation is still written so runs after the
+    countdown continue to dedupe against it.
     """
     entries = _load_reservations()
     existing = next((item for item in entries if item["job_id"] == job_id), None)
     if existing:
         return existing
     fingerprint = topic_fingerprint(title)
-    recent = [item["fingerprint"] for item in entries[-60:]]
-    recent += [topic_fingerprint(t) for t in recent_titles(60)]
-    if any(_fingerprint_is_near(fingerprint, other) for other in recent):
-        raise ValueError(f"duplicate topic rejected: {title}")
+    if enforce_unique:
+        recent = [item["fingerprint"] for item in entries[-60:]]
+        recent += [topic_fingerprint(t) for t in recent_titles(60)]
+        if any(_fingerprint_is_near(fingerprint, other) for other in recent):
+            raise ValueError(f"duplicate topic rejected: {title}")
     reservation = {
         "job_id": job_id,
         "title": title,

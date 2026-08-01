@@ -18,7 +18,13 @@ from dataclasses import dataclass, field, asdict
 from datetime import date
 
 from .config import Config, base_dir, env
-from .topics import recent_titles, pick_angle, performance_examples, series_turn
+from .topics import (
+    recent_titles,
+    pick_angle,
+    performance_examples,
+    series_turn,
+    monthly_prediction_direction,
+)
 
 
 @dataclass
@@ -148,9 +154,14 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
 
     # Topic direction: an explicit override wins, then a series episode when
     # one is due, then trend-aware signals or the curated angle bank.
-    series = None if topic_override else series_turn(cfg)
+    # Last-9-days monthly prediction countdown (astrotold morning slot). Returns
+    # None off-window / evening / when the channel has not opted in.
+    countdown = None if topic_override else monthly_prediction_direction(cfg)
+    series = None if (topic_override or countdown) else series_turn(cfg)
     if topic_override:
         direction = f"Today's REQUIRED topic (do not deviate): {topic_override}"
+    elif countdown:
+        direction = countdown
     elif series:
         direction = _series_direction(cfg, series)
     else:
