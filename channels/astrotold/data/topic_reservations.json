@@ -286,5 +286,14 @@
     "slot": "evening",
     "date": "2026-07-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260801_050128_short",
+    "title": "Your Birthday Math Is Simpler Than You Think \u2014 Try It Now",
+    "fingerprint": "birthday_is_it_math_now_simpler_than_think_try_you_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-01",
+    "status": "reserved"
   }
 ]

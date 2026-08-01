@@ -390,5 +390,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "1p6-t0PMnUY",
+    "run_id": "30685013295",
+    "stage_dir_name": "20260801_050128_short",
+    "title": "Your Birthday Math Is Simpler Than You Think \u2014 Try It Now",
+    "published_at": "2026-08-01T05:02:19.947254+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
