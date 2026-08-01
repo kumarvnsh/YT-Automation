@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-01T02:47:05.840217+00:00",
+      "updated": "2026-08-01T08:20:29.383911+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "JNyLre5ZXgA",
+          "title": "Three Villages Signed One Document \u2014 and Built Europe's Oldest Democracy",
+          "description": "On August 1, 1291, three tiny Alpine communities signed a pact that no one took seriously \u2014 and accidentally created a country that has outlasted every empire around it. Switzerland's founding story is stranger and more surprising than any national myth. This is how a single handshake on a meadow became 735 years of unbroken democracy.",
+          "tags": [
+            "1291",
+            "alpine history",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "federal charter",
+            "history",
+            "history facts",
+            "history shorts",
+            "medieval history",
+            "oldest democracy",
+            "short history",
+            "shorts",
+            "swiss history",
+            "switzerland",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-01T04:04:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
+          "views": 486,
+          "likes": 12,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "qc9p5IbgmfA",
           "title": "11 Ships Left Havana With a King's Fortune \u2014 None of Them Made It",
           "description": "On July 31, 1715, one of the richest fleets ever assembled vanished in a single night off the coast of Florida. What sank them, what they carried, and why people are still pulling gold from the seabed today. Watch to find out what 300 years of ocean couldn't fully bury.",
@@ -58,7 +91,7 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 685,
+          "views": 693,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -93,8 +126,8 @@
           ],
           "publishedAt": "2026-07-31T04:03:52Z",
           "thumbnail": "https://i.ytimg.com/vi/amMgq4voErU/mqdefault.jpg",
-          "views": 651,
-          "likes": 6,
+          "views": 653,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -191,7 +224,7 @@
           ],
           "publishedAt": "2026-07-30T04:04:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 650,
+          "views": 655,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
@@ -225,7 +258,7 @@
           ],
           "publishedAt": "2026-07-29T20:52:19Z",
           "thumbnail": "https://i.ytimg.com/vi/nvYUqrouRgk/mqdefault.jpg",
-          "views": 659,
+          "views": 661,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -297,7 +330,7 @@
           ],
           "publishedAt": "2026-07-29T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 709,
+          "views": 720,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -412,7 +445,7 @@
           ],
           "publishedAt": "2026-07-28T04:05:00Z",
           "thumbnail": "https://i.ytimg.com/vi/5788gUXN9M0/mqdefault.jpg",
-          "views": 511,
+          "views": 512,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -1646,7 +1679,7 @@
           ],
           "publishedAt": "2026-07-16T04:03:09Z",
           "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 805,
+          "views": 807,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -1884,44 +1917,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 56.24,
-          "subs_gained": 0
-        },
-        {
-          "id": "TSfS-PefD2I",
-          "title": "The Word 'Artificial Intelligence' Was Invented at a Summer Retreat",
-          "description": "Before ChatGPT, before Siri, before any AI you've ever used \u2014 four scientists coined the term 'Artificial Intelligence' at a quiet college in 1956. The word that now shapes the entire modern world was born in a summer workshop most people have never heard of. This is where it all started.",
-          "tags": [
-            "artificial intelligence",
-            "claude shannon",
-            "dartmouth",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history of ai",
-            "history shorts",
-            "invention",
-            "john mccarthy",
-            "marvin minsky",
-            "science history",
-            "shorts",
-            "technology history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-13T04:03:28Z",
-          "thumbnail": "https://i.ytimg.com/vi/TSfS-PefD2I/mqdefault.jpg",
-          "views": 806,
-          "likes": 7,
-          "comments": 0,
-          "playlist_ids": [
-            "PLKz3dl1lEDLM"
-          ],
-          "playlists": [
-            "Forgotten Ancient Technology"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 47.74,
           "subs_gained": 0
         }
       ]
