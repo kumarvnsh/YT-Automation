@@ -6,7 +6,9 @@ list of recently-used topics so it does not repeat itself.
 """
 from __future__ import annotations
 
+import calendar
 import json
+import os
 import random
 import re
 from datetime import date
@@ -67,6 +69,59 @@ def pick_angle(cfg=None) -> str:
     """
     angles = cfg.get("channel.angles") if cfg is not None else None
     return random.choice(angles if angles else SEED_ANGLES)
+
+
+# Numerology birth-number -> the birth dates that reduce to it. Same grouping
+# as the astrotold config angles; kept here so the monthly countdown and the
+# angle bank share one source of truth.
+_BIRTH_NUMBER_DATES = {
+    1: "1, 10, 19, and 28",
+    2: "2, 11, 20, and 29",
+    3: "3, 12, 21, and 30",
+    4: "4, 13, 22, and 31",
+    5: "5, 14, and 23",
+    6: "6, 15, and 24",
+    7: "7, 16, and 25",
+    8: "8, 17, and 26",
+    9: "9, 18, and 27",
+}
+
+
+def monthly_prediction_direction(cfg, today: date | None = None, slot: str | None = None) -> str | None:
+    """Forced next-month prediction topic for the last-9-days morning countdown.
+
+    Returns a REQUIRED-topic direction string when ALL hold, else None:
+      - channel opted in via `channel.monthly_prediction`
+      - this run is the morning slot (PUBLISH_SLOT, or the passed `slot`)
+      - today is within the last 9 calendar days of the month
+
+    Birth number advances one per day: the first window day is BN1 and the last
+    day of the month is BN9. December rolls the prediction to January next year.
+    `today`/`slot` are injectable for tests.
+    """
+    if cfg is None or not cfg.get("channel.monthly_prediction", False):
+        return None
+    if slot is None:
+        slot = os.getenv("PUBLISH_SLOT")
+    if slot != "morning":
+        return None
+    today = today or date.today()
+    days_in_month = calendar.monthrange(today.year, today.month)[1]
+    if today.day < days_in_month - 8:
+        return None
+    birth_number = today.day - days_in_month + 9  # 1..9
+    dates = _BIRTH_NUMBER_DATES[birth_number]
+    if today.month == 12:
+        next_year, next_month = today.year + 1, 1
+    else:
+        next_year, next_month = today.year, today.month + 1
+    month_name = calendar.month_name[next_month]
+    return (
+        f"Today's REQUIRED topic (do not deviate): A playful {month_name} {next_year} "
+        f"numerology prediction ONLY for birth number {birth_number} (people born on "
+        f"{dates}). The title must name {month_name} and birth number {birth_number} "
+        f"so it is distinct from other days."
+    )
 
 
 def topic_fingerprint(title: str) -> str:
