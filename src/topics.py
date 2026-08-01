@@ -151,21 +151,28 @@ def _fingerprint_is_near(left: str, right: str) -> bool:
     return SequenceMatcher(None, left, right).ratio() >= 0.82
 
 
-def reserve_topic(title: str, fmt: str, slot: str, job_id: str) -> dict:
+def reserve_topic(title: str, fmt: str, slot: str, job_id: str, enforce_unique: bool = True) -> dict:
     """Reserve a topic for one job, rejecting near-duplicates across slots.
 
     Idempotent per job_id: a retry after a partial run returns the original
     reservation instead of tripping the duplicate check against itself.
+
+    `enforce_unique=False` records the reservation without the near-duplicate
+    check. Used for the monthly prediction countdown, whose 9 daily topics are
+    distinct by design (one birth number each) but read as near-duplicates to
+    the title fingerprint. The reservation is still written so runs after the
+    countdown continue to dedupe against it.
     """
     entries = _load_reservations()
     existing = next((item for item in entries if item["job_id"] == job_id), None)
     if existing:
         return existing
     fingerprint = topic_fingerprint(title)
-    recent = [item["fingerprint"] for item in entries[-60:]]
-    recent += [topic_fingerprint(t) for t in recent_titles(60)]
-    if any(_fingerprint_is_near(fingerprint, other) for other in recent):
-        raise ValueError(f"duplicate topic rejected: {title}")
+    if enforce_unique:
+        recent = [item["fingerprint"] for item in entries[-60:]]
+        recent += [topic_fingerprint(t) for t in recent_titles(60)]
+        if any(_fingerprint_is_near(fingerprint, other) for other in recent):
+            raise ValueError(f"duplicate topic rejected: {title}")
     reservation = {
         "job_id": job_id,
         "title": title,
