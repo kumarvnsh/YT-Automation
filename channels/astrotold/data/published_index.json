@@ -404,5 +404,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "EO40CZujuf8",
+    "run_id": "30709392473",
+    "stage_dir_name": "20260801_170123_short",
+    "title": "Born on 6, 15, or 24? August 2026 Has a Special Message for You",
+    "published_at": "2026-08-01T17:02:18.930849+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
