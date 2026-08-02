@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-02T02:46:01.783585+00:00",
+      "updated": "2026-08-02T08:23:52.775255+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "ofO7AeH1siQ",
+          "title": "She Sold Everything She Owned \u2014 Then Became France's Most Feared Pirate",
+          "description": "In 1343, a French noblewoman lost her husband to an execution she believed was unjust \u2014 so she built a fleet and hunted the king's ships for thirteen years. Jeanne de Clisson's story is one of history's most jaw-dropping acts of personal revenge. The French crown never saw her coming. #history #didyouknow #pirates",
+          "tags": [
+            "14th century",
+            "did you know",
+            "education",
+            "facts",
+            "french history",
+            "history",
+            "history facts",
+            "history shorts",
+            "hundred years war",
+            "jeanne de clisson",
+            "medieval history",
+            "pirates",
+            "revenge",
+            "shorts",
+            "trending",
+            "viral",
+            "women in history"
+          ],
+          "publishedAt": "2026-08-02T04:04:05Z",
+          "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
+          "views": 458,
+          "likes": 16,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "xa76heKmX34",
           "title": "One Muddy Morning Almost Saved Napoleon | History's Almost Moments",
           "description": "On June 18, 1815, Napoleon had Wellington cornered \u2014 until the ground itself intervened. A single decision made at dawn may have cost France its last emperor and redrawn the map of Europe. Was Waterloo inevitable, or was it lost before the first shot was fired? #history #Napoleon #Waterloo",
@@ -60,7 +92,7 @@
           ],
           "publishedAt": "2026-08-01T16:04:24Z",
           "thumbnail": "https://i.ytimg.com/vi/xa76heKmX34/mqdefault.jpg",
-          "views": 180,
+          "views": 181,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -93,7 +125,7 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 650,
+          "views": 652,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -124,7 +156,7 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 705,
+          "views": 708,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -159,7 +191,7 @@
           ],
           "publishedAt": "2026-07-31T04:03:52Z",
           "thumbnail": "https://i.ytimg.com/vi/amMgq4voErU/mqdefault.jpg",
-          "views": 653,
+          "views": 654,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -263,7 +295,7 @@
           ],
           "publishedAt": "2026-07-30T04:04:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 673,
+          "views": 676,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
@@ -1881,44 +1913,6 @@
           "is_unsorted": false,
           "avg_view_pct": 54.31,
           "subs_gained": 1
-        },
-        {
-          "id": "cTzCiqFG5yA",
-          "title": "France's Most Infamous Prison Held Only 7 #history #france #revolution",
-          "description": "On July 14, 1789, ordinary Parisians stormed the Bastille fortress, a symbol of royal tyranny, and sparked the French Revolution. The prison held only seven prisoners that day \u2014 but what it represented changed the world forever. France still celebrates this moment every July 14th as Bastille Day.",
-          "tags": [
-            "1789",
-            "bastille day",
-            "did you know",
-            "education",
-            "facts",
-            "france",
-            "french revolution",
-            "history",
-            "history facts",
-            "history shorts",
-            "july 14",
-            "paris history",
-            "revolution",
-            "shorts",
-            "trending",
-            "viral",
-            "world history"
-          ],
-          "publishedAt": "2026-07-14T04:03:38Z",
-          "thumbnail": "https://i.ytimg.com/vi/cTzCiqFG5yA/mqdefault.jpg",
-          "views": 754,
-          "likes": 12,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 60.33,
-          "subs_gained": 0
         }
       ]
     }
