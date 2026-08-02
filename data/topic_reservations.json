@@ -511,5 +511,14 @@
     "slot": "evening",
     "date": "2026-08-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260802_040121_short",
+    "title": "She Sold Everything She Owned \u2014 Then Became France's Most Feared Pirate",
+    "fingerprint": "became_everything_feared_france_most_owned_pirate_s_she_sold_then",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-02",
+    "status": "reserved"
   }
 ]

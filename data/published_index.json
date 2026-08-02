@@ -1351,5 +1351,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "ofO7AeH1siQ",
+    "run_id": "30731608758",
+    "stage_dir_name": "20260802_040121_short",
+    "title": "She Sold Everything She Owned \u2014 Then Became France's Most Feared Pirate",
+    "published_at": "2026-08-02T04:05:17.554160+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
