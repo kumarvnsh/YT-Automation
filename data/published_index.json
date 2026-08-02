@@ -1365,5 +1365,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "deZBlqBc1VI",
+    "run_id": "30755671692",
+    "stage_dir_name": "20260802_160203_short",
+    "title": "He Was Looking for Asia \u2014 and Found Something Far Stranger",
+    "published_at": "2026-08-02T16:05:38.514766+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
