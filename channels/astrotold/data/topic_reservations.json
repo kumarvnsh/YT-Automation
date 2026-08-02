@@ -304,5 +304,14 @@
     "slot": "evening",
     "date": "2026-08-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260802_050148_short",
+    "title": "Born on 7, 16, or 25? Numerology Says You Think Differently",
+    "fingerprint": "16_25_7_born_differently_numerology_on_or_says_think_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-02",
+    "status": "reserved"
   }
 ]

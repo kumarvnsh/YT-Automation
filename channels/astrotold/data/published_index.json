@@ -418,5 +418,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Myf1_xTjer0",
+    "run_id": "30733349840",
+    "stage_dir_name": "20260802_050148_short",
+    "title": "Born on 7, 16, or 25? Numerology Says You Think Differently",
+    "published_at": "2026-08-02T05:02:43.130850+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
