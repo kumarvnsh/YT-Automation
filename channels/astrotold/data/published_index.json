@@ -432,5 +432,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "OIRmTZC5vME",
+    "run_id": "30757918357",
+    "stage_dir_name": "20260802_170124_short",
+    "title": "Born on 6, 15, or 24? August 2026 Is Quietly Rewarding You",
+    "published_at": "2026-08-02T17:02:19.884045+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
