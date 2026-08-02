@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-02T13:20:15.335511+00:00",
+      "updated": "2026-08-02T19:09:31.048562+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "deZBlqBc1VI",
+          "title": "He Was Looking for Asia \u2014 and Found Something Far Stranger",
+          "description": "On August 2, 1610, Henry Hudson sailed into the massive bay that now bears his name \u2014 convinced he had finally found the Pacific. He hadn't. What happened next ended his life and accidentally mapped half a continent. History's most expensive wrong turn had some very surprising consequences.",
+          "tags": [
+            "1610",
+            "age of exploration",
+            "arctic exploration",
+            "canada history",
+            "did you know",
+            "education",
+            "exploration history",
+            "facts",
+            "henry hudson",
+            "history",
+            "history shorts",
+            "hudson bay",
+            "navigation history",
+            "new world",
+            "northwest passage",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-02T16:05:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/deZBlqBc1VI/mqdefault.jpg",
+          "views": 519,
+          "likes": 11,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "ofO7AeH1siQ",
           "title": "She Sold Everything She Owned \u2014 Then Became France's Most Feared Pirate",
           "description": "In 1343, a French noblewoman lost her husband to an execution she believed was unjust \u2014 so she built a fleet and hunted the king's ships for thirteen years. Jeanne de Clisson's story is one of history's most jaw-dropping acts of personal revenge. The French crown never saw her coming. #history #didyouknow #pirates",
@@ -59,7 +92,7 @@
           ],
           "publishedAt": "2026-08-02T04:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
-          "views": 603,
+          "views": 608,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -92,8 +125,8 @@
           ],
           "publishedAt": "2026-08-01T16:04:24Z",
           "thumbnail": "https://i.ytimg.com/vi/xa76heKmX34/mqdefault.jpg",
-          "views": 202,
-          "likes": 6,
+          "views": 221,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -125,12 +158,14 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 653,
+          "views": 661,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 121.83,
+          "subs_gained": 1
         },
         {
           "id": "qc9p5IbgmfA",
@@ -156,12 +191,14 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 713,
+          "views": 715,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 73.58,
+          "subs_gained": 2
         },
         {
           "id": "amMgq4voErU",
@@ -197,7 +234,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.480000000000004,
+          "avg_view_pct": 59.61,
           "subs_gained": 0
         },
         {
@@ -225,13 +262,13 @@
           ],
           "publishedAt": "2026-07-31T02:49:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Q3QOhpdSJuM/mqdefault.jpg",
-          "views": 561,
+          "views": 560,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.57000000000001,
+          "avg_view_pct": 63.38,
           "subs_gained": 1
         },
         {
@@ -266,7 +303,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.04999999999999,
+          "avg_view_pct": 59.46,
           "subs_gained": 1
         },
         {
@@ -295,13 +332,13 @@
           ],
           "publishedAt": "2026-07-30T04:04:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 681,
+          "views": 685,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.93000000000001,
+          "avg_view_pct": 58.79,
           "subs_gained": 0
         },
         {
@@ -335,7 +372,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 67.38,
+          "avg_view_pct": 67.28,
           "subs_gained": 0
         },
         {
@@ -411,7 +448,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 64.59,
+          "avg_view_pct": 65.19,
           "subs_gained": 0
         },
         {
@@ -488,7 +525,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.87,
+          "avg_view_pct": 55.77000000000001,
           "subs_gained": 0
         },
         {
@@ -526,7 +563,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 117.23000000000002,
+          "avg_view_pct": 115.96,
           "subs_gained": 0
         },
         {
@@ -563,7 +600,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.519999999999996,
+          "avg_view_pct": 63.35999999999999,
           "subs_gained": 0
         },
         {
@@ -639,7 +676,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.81,
+          "avg_view_pct": 88.59,
           "subs_gained": 0
         },
         {
@@ -717,7 +754,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.89999999999999,
+          "avg_view_pct": 55.92,
           "subs_gained": 0
         },
         {
@@ -1676,7 +1713,7 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 773,
+          "views": 774,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -1875,44 +1912,6 @@
           "is_unsorted": false,
           "avg_view_pct": 40.6,
           "subs_gained": 0
-        },
-        {
-          "id": "J3N5e4alRYs",
-          "title": "A Sniper Fired at the French President \u2014 During the National Parade",
-          "description": "On July 14, 2002, a gunman concealed a rifle in a guitar case and opened fire on President Jacques Chirac during France's Bastille Day parade in Paris. The shot missed, and Chirac calmly continued the ceremony. It remains one of the most brazen assassination attempts against a sitting head of state in modern European history. #BastilleDay #FrenchHistory #DidYouKnow",
-          "tags": [
-            "assassination attempt",
-            "bastille day",
-            "did you know",
-            "education",
-            "facts",
-            "france",
-            "french history",
-            "history",
-            "history shorts",
-            "jacques chirac",
-            "july 14",
-            "modern history",
-            "paris parade",
-            "presidential security",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-14T13:03:51Z",
-          "thumbnail": "https://i.ytimg.com/vi/J3N5e4alRYs/mqdefault.jpg",
-          "views": 631,
-          "likes": 8,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.31,
-          "subs_gained": 1
         }
       ]
     }
