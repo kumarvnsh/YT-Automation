@@ -547,5 +547,14 @@
     "slot": "morning",
     "date": "2026-08-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260803_160210_short",
+    "title": "Eight Players Were Found Not Guilty \u2014 Then Banned From Baseball Forever",
+    "fingerprint": "banned_baseball_eight_forever_found_from_guilty_not_players_then_were",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-03",
+    "status": "reserved"
   }
 ]

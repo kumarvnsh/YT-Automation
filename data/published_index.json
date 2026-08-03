@@ -1407,5 +1407,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "-mCjql4lHLA",
+    "run_id": "30830204110",
+    "stage_dir_name": "20260803_160210_short",
+    "title": "Eight Players Were Found Not Guilty \u2014 Then Banned From Baseball Forever",
+    "published_at": "2026-08-03T16:06:13.850677+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
