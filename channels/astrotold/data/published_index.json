@@ -460,5 +460,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "dElVEd7SOUQ",
+    "run_id": "30834787047",
+    "stage_dir_name": "20260803_170147_short",
+    "title": "Born on 5, 14, or 23? Numerology Just Unlocked Something About You",
+    "published_at": "2026-08-03T17:02:43.946400+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

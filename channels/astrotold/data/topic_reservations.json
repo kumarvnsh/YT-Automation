@@ -331,5 +331,14 @@
     "slot": "morning",
     "date": "2026-08-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260803_170147_short",
+    "title": "Born on 5, 14, or 23? Numerology Just Unlocked Something About You",
+    "fingerprint": "14_23_5_about_born_just_numerology_on_or_something_unlocked_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-03",
+    "status": "reserved"
   }
 ]
