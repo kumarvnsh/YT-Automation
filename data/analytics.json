@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-03T09:44:00.869799+00:00",
+      "updated": "2026-08-03T14:38:23.918400+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -63,8 +63,8 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 20,
-          "likes": 0,
+          "views": 81,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -96,7 +96,7 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 557,
+          "views": 733,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -131,7 +131,7 @@
           ],
           "publishedAt": "2026-08-02T16:05:12Z",
           "thumbnail": "https://i.ytimg.com/vi/deZBlqBc1VI/mqdefault.jpg",
-          "views": 702,
+          "views": 703,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -195,8 +195,8 @@
           ],
           "publishedAt": "2026-08-01T16:04:24Z",
           "thumbnail": "https://i.ytimg.com/vi/xa76heKmX34/mqdefault.jpg",
-          "views": 495,
-          "likes": 15,
+          "views": 526,
+          "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -224,7 +224,7 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 676,
+          "views": 677,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -256,7 +256,7 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 748,
+          "views": 753,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -653,7 +653,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.35999999999999,
+          "avg_view_pct": 63.470000000000006,
           "subs_gained": 0
         },
         {
@@ -729,7 +729,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.59,
+          "avg_view_pct": 88.81,
           "subs_gained": 0
         },
         {
