@@ -1379,5 +1379,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "MNp6ZE9ALgg",
+    "run_id": "30783229833",
+    "stage_dir_name": "20260803_040141_short",
+    "title": "One Woman's Brother Almost Ended the Expedition | History's Almost Moments",
+    "published_at": "2026-08-03T04:05:02.553370+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
