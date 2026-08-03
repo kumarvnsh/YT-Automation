@@ -322,5 +322,14 @@
     "slot": "evening",
     "date": "2026-08-02",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260803_080631_short",
+    "title": "Born on 5, 14, or 23? Your Birth Number 5 Energy Is Seriously Wild",
+    "fingerprint": "14_23_5_birth_born_energy_is_number_on_or_seriously_wild_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-03",
+    "status": "reserved"
   }
 ]

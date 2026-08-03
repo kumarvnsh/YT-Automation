@@ -446,5 +446,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "HLPPK0hQip8",
+    "run_id": "30785948276",
+    "stage_dir_name": "20260803_080631_short",
+    "title": "Born on 5, 14, or 23? Your Birth Number 5 Energy Is Seriously Wild",
+    "published_at": "2026-08-03T08:07:27.336595+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
