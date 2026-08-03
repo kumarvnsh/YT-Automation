@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-03T14:38:23.918400+00:00",
+      "updated": "2026-08-03T19:36:27.580260+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "-mCjql4lHLA",
+          "title": "Eight Players Were Found Not Guilty \u2014 Then Banned From Baseball Forever",
+          "description": "On August 3, 1921, Commissioner Kenesaw Mountain Landis banned the eight Chicago Black Sox from professional baseball for life \u2014 the day after a jury found them not guilty. It remains one of the strangest legal paradoxes in sports history. The verdict meant nothing; one man's authority meant everything. #mlb #baseballhistory #blacksox",
+          "tags": [
+            "1921",
+            "baseball history",
+            "black sox",
+            "chicago white sox",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "kenesaw mountain landis",
+            "mlb history",
+            "shorts",
+            "sports scandal",
+            "trending",
+            "viral",
+            "world series fix"
+          ],
+          "publishedAt": "2026-08-03T16:05:04Z",
+          "thumbnail": "https://i.ytimg.com/vi/-mCjql4lHLA/mqdefault.jpg",
+          "views": 132,
+          "likes": 3,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "NBhrsGmvMWc",
           "title": "The SCP Foundation: A Miracle of the Internet",
           "description": "In 2007, a single anonymous forum post launched what became one of the largest collaborative fiction universes in internet history. The SCP Foundation grew from one weird document into thousands of entries written by contributors across every continent. This is how a containment breach nobody planned ended up containing millions of imaginations.",
@@ -63,7 +94,7 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 81,
+          "views": 105,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -96,7 +127,7 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 733,
+          "views": 742,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -163,12 +194,14 @@
           ],
           "publishedAt": "2026-08-02T04:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
-          "views": 603,
+          "views": 611,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 54.14,
+          "subs_gained": 1
         },
         {
           "id": "xa76heKmX34",
@@ -195,12 +228,14 @@
           ],
           "publishedAt": "2026-08-01T16:04:24Z",
           "thumbnail": "https://i.ytimg.com/vi/xa76heKmX34/mqdefault.jpg",
-          "views": 526,
+          "views": 666,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 63.96999999999999,
+          "subs_gained": 0
         },
         {
           "id": "JNyLre5ZXgA",
@@ -224,13 +259,13 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 677,
+          "views": 685,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 121.83,
+          "avg_view_pct": 120.17999999999999,
           "subs_gained": 1
         },
         {
@@ -256,13 +291,13 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 753,
+          "views": 761,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.58,
+          "avg_view_pct": 73.23,
           "subs_gained": 2
         },
         {
@@ -292,7 +327,7 @@
           ],
           "publishedAt": "2026-07-31T04:03:52Z",
           "thumbnail": "https://i.ytimg.com/vi/amMgq4voErU/mqdefault.jpg",
-          "views": 655,
+          "views": 656,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -365,7 +400,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.46,
+          "avg_view_pct": 59.85,
           "subs_gained": 1
         },
         {
@@ -401,7 +436,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.79,
+          "avg_view_pct": 61.25000000000001,
           "subs_gained": 0
         },
         {
@@ -433,7 +468,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 67.28,
+          "avg_view_pct": 67.12,
           "subs_gained": 0
         },
         {
@@ -501,7 +536,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.19,
+          "avg_view_pct": 64.93,
           "subs_gained": 0
         },
         {
@@ -578,7 +613,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.77000000000001,
+          "avg_view_pct": 55.91,
           "subs_gained": 0
         },
         {
@@ -1850,45 +1885,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 51.28,
+          "avg_view_pct": 50.85000000000001,
           "subs_gained": 0
-        },
-        {
-          "id": "MkleVVyV5zg",
-          "title": "The Handshake that Stopped a War in Space",
-          "description": "On July 15, 1975, American and Soviet spacecraft launched simultaneously, docked in orbit, and astronauts shook hands 140 miles above Earth. It was the last Apollo flight ever \u2014 and arguably the most symbolic mission of the entire Space Race. History's greatest rivalry ended with a handshake nobody saw coming.\n#SpaceRace #ApolloSoyuz #ColdWarHistory",
-          "tags": [
-            "1975",
-            "apollo soyuz",
-            "astronauts",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "nasa history",
-            "shorts",
-            "soviet space program",
-            "space history",
-            "space race",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-15T13:04:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/MkleVVyV5zg/mqdefault.jpg",
-          "views": 863,
-          "likes": 10,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 57.64,
-          "subs_gained": 2
         }
       ]
     }
