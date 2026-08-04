@@ -340,5 +340,14 @@
     "slot": "evening",
     "date": "2026-08-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260804_050131_short",
+    "title": "Your Name Initial Drops a Personality Clue Most People Walk Right Past",
+    "fingerprint": "clue_drops_initial_most_name_past_people_personality_right_walk_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-04",
+    "status": "reserved"
   }
 ]
