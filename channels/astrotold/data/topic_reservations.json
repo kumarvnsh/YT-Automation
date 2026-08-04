@@ -349,5 +349,14 @@
     "slot": "morning",
     "date": "2026-08-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260804_170129_short",
+    "title": "Born on 9, 18, or 27? Numerology Says You Carry Something Rare",
+    "fingerprint": "18_27_9_born_carry_numerology_on_or_rare_says_something_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-04",
+    "status": "reserved"
   }
 ]

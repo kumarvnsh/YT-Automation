@@ -488,5 +488,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "l9tr4hprRtM",
+    "run_id": "30931877108",
+    "stage_dir_name": "20260804_170129_short",
+    "title": "Born on 9, 18, or 27? Numerology Says You Carry Something Rare",
+    "published_at": "2026-08-04T17:02:39.763866+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
