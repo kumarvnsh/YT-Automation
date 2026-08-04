@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-04T02:30:43.710582+00:00",
+      "updated": "2026-08-04T08:35:59.460239+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,31 +35,62 @@
       },
       "videos": [
         {
+          "id": "mJ4pZ16viGY",
+          "title": "How a single chain almost saved Byzantium #history #shorts",
+          "description": "In 1453, a single iron chain stretched across a harbour stood between the Ottoman fleet and the fall of Constantinople. What happened next reshaped three continents. Could one engineering decision really have kept the Byzantine Empire alive? Watch and decide for yourself. #history #byzantineempire #ottomanempire",
+          "tags": [
+            "1453",
+            "ancient engineering",
+            "byzantine empire",
+            "constantinople",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "medieval history",
+            "mehmed ii",
+            "military history",
+            "ottoman empire",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-04T04:04:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
+          "views": 487,
+          "likes": 13,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "-mCjql4lHLA",
-          "title": "Eight Players Were Found Not Guilty \u2014 Then Banned From Baseball Forever",
+          "title": "How 8 Players Lost Everything After Winning in Court #baseball #mlb",
           "description": "On August 3, 1921, Commissioner Kenesaw Mountain Landis banned the eight Chicago Black Sox from professional baseball for life \u2014 the day after a jury found them not guilty. It remains one of the strangest legal paradoxes in sports history. The verdict meant nothing; one man's authority meant everything. #mlb #baseballhistory #blacksox",
           "tags": [
-            "1921",
+            "baseball facts",
             "baseball history",
-            "black sox",
             "chicago white sox",
             "did you know",
             "education",
             "facts",
             "history",
+            "history facts",
             "history shorts",
-            "kenesaw mountain landis",
             "mlb history",
             "shorts",
-            "sports scandal",
             "trending",
+            "truth revealed",
             "viral",
-            "world series fix"
+            "white sox"
           ],
           "publishedAt": "2026-08-03T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/-mCjql4lHLA/mqdefault.jpg",
-          "views": 171,
-          "likes": 3,
+          "views": 521,
+          "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -67,7 +98,7 @@
         },
         {
           "id": "NBhrsGmvMWc",
-          "title": "The SCP Foundation: A Miracle of the Internet",
+          "title": "Who Actually Owns The SCP Foundation?",
           "description": "In 2007, a single anonymous forum post launched what became one of the largest collaborative fiction universes in internet history. The SCP Foundation grew from one weird document into thousands of entries written by contributors across every continent. This is how a containment breach nobody planned ended up containing millions of imaginations.",
           "tags": [
             "creative writing",
@@ -79,10 +110,12 @@
             "fiction writing",
             "history",
             "history bytes",
+            "history facts",
             "history shorts",
             "internet history",
             "mythology",
             "online communities",
+            "online lore",
             "scp",
             "scp foundation",
             "short history",
@@ -94,9 +127,9 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 105,
-          "likes": 2,
-          "comments": 0,
+          "views": 212,
+          "likes": 9,
+          "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -127,7 +160,7 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 744,
+          "views": 746,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -162,7 +195,7 @@
           ],
           "publishedAt": "2026-08-02T16:05:12Z",
           "thumbnail": "https://i.ytimg.com/vi/deZBlqBc1VI/mqdefault.jpg",
-          "views": 703,
+          "views": 705,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -194,7 +227,7 @@
           ],
           "publishedAt": "2026-08-02T04:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
-          "views": 615,
+          "views": 618,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -228,7 +261,7 @@
           ],
           "publishedAt": "2026-08-01T16:04:24Z",
           "thumbnail": "https://i.ytimg.com/vi/xa76heKmX34/mqdefault.jpg",
-          "views": 666,
+          "views": 669,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -259,7 +292,7 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 689,
+          "views": 690,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -291,7 +324,7 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 767,
+          "views": 790,
           "likes": 22,
           "comments": 0,
           "playlist_ids": [],
@@ -327,7 +360,7 @@
           ],
           "publishedAt": "2026-07-31T04:03:52Z",
           "thumbnail": "https://i.ytimg.com/vi/amMgq4voErU/mqdefault.jpg",
-          "views": 658,
+          "views": 659,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -361,7 +394,7 @@
           ],
           "publishedAt": "2026-07-31T02:49:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Q3QOhpdSJuM/mqdefault.jpg",
-          "views": 563,
+          "views": 564,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -394,7 +427,7 @@
           ],
           "publishedAt": "2026-07-30T16:04:51Z",
           "thumbnail": "https://i.ytimg.com/vi/QBt8HqmBeQw/mqdefault.jpg",
-          "views": 150,
+          "views": 151,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -430,7 +463,7 @@
           ],
           "publishedAt": "2026-07-30T04:04:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 719,
+          "views": 720,
           "likes": 18,
           "comments": 3,
           "playlist_ids": [],
@@ -462,7 +495,7 @@
           ],
           "publishedAt": "2026-07-29T20:52:19Z",
           "thumbnail": "https://i.ytimg.com/vi/nvYUqrouRgk/mqdefault.jpg",
-          "views": 664,
+          "views": 667,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -492,7 +525,7 @@
           ],
           "publishedAt": "2026-07-29T16:04:59Z",
           "thumbnail": "https://i.ytimg.com/vi/cI78ylaKXZM/mqdefault.jpg",
-          "views": 3,
+          "views": 4,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [
@@ -526,7 +559,7 @@
           ],
           "publishedAt": "2026-07-29T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 756,
+          "views": 758,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -565,7 +598,7 @@
           ],
           "publishedAt": "2026-07-28T18:06:30Z",
           "thumbnail": "https://i.ytimg.com/vi/J-NeB6kjfa8/mqdefault.jpg",
-          "views": 541,
+          "views": 542,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [
@@ -603,7 +636,7 @@
           ],
           "publishedAt": "2026-07-28T16:04:49Z",
           "thumbnail": "https://i.ytimg.com/vi/BUHUA5nFKvY/mqdefault.jpg",
-          "views": 584,
+          "views": 586,
           "likes": 11,
           "comments": 2,
           "playlist_ids": [
@@ -641,7 +674,7 @@
           ],
           "publishedAt": "2026-07-28T04:05:00Z",
           "thumbnail": "https://i.ytimg.com/vi/5788gUXN9M0/mqdefault.jpg",
-          "views": 512,
+          "views": 514,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -678,7 +711,7 @@
           ],
           "publishedAt": "2026-07-27T16:04:39Z",
           "thumbnail": "https://i.ytimg.com/vi/za3H0SOzS_o/mqdefault.jpg",
-          "views": 684,
+          "views": 685,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [
@@ -688,7 +721,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.35999999999999,
+          "avg_view_pct": 63.470000000000006,
           "subs_gained": 0
         },
         {
@@ -716,7 +749,7 @@
           ],
           "publishedAt": "2026-07-27T08:40:05Z",
           "thumbnail": "https://i.ytimg.com/vi/Fa_WLGCsgeE/mqdefault.jpg",
-          "views": 405,
+          "views": 406,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [
@@ -754,7 +787,7 @@
           ],
           "publishedAt": "2026-07-27T04:04:33Z",
           "thumbnail": "https://i.ytimg.com/vi/9ymiQRRwskg/mqdefault.jpg",
-          "views": 646,
+          "views": 648,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [
@@ -764,7 +797,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.59,
+          "avg_view_pct": 88.81,
           "subs_gained": 0
         },
         {
@@ -793,7 +826,7 @@
           ],
           "publishedAt": "2026-07-26T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/S8GJNg0l5vo/mqdefault.jpg",
-          "views": 571,
+          "views": 572,
           "likes": 4,
           "comments": 1,
           "playlist_ids": [
@@ -832,7 +865,7 @@
           ],
           "publishedAt": "2026-07-26T04:03:39Z",
           "thumbnail": "https://i.ytimg.com/vi/cC0nPgxWong/mqdefault.jpg",
-          "views": 530,
+          "views": 532,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -870,7 +903,7 @@
           ],
           "publishedAt": "2026-07-25T16:04:47Z",
           "thumbnail": "https://i.ytimg.com/vi/u04x0bK29io/mqdefault.jpg",
-          "views": 584,
+          "views": 585,
           "likes": 20,
           "comments": 0,
           "playlist_ids": [
@@ -909,7 +942,7 @@
           ],
           "publishedAt": "2026-07-25T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
-          "views": 559,
+          "views": 560,
           "likes": 17,
           "comments": 2,
           "playlist_ids": [
@@ -946,7 +979,7 @@
           ],
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
-          "views": 671,
+          "views": 673,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [
@@ -988,7 +1021,7 @@
           ],
           "publishedAt": "2026-07-24T15:02:08Z",
           "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 246,
+          "views": 248,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -1028,7 +1061,7 @@
           ],
           "publishedAt": "2026-07-24T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/Z9iVAS72R5o/mqdefault.jpg",
-          "views": 315,
+          "views": 316,
           "likes": 8,
           "comments": 2,
           "playlist_ids": [
@@ -1066,7 +1099,7 @@
           ],
           "publishedAt": "2026-07-23T16:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
-          "views": 195,
+          "views": 197,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -1103,7 +1136,7 @@
           ],
           "publishedAt": "2026-07-23T04:03:54Z",
           "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 573,
+          "views": 574,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [
@@ -1144,7 +1177,7 @@
           ],
           "publishedAt": "2026-07-22T16:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 553,
+          "views": 555,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [
@@ -1185,7 +1218,7 @@
           ],
           "publishedAt": "2026-07-22T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 753,
+          "views": 757,
           "likes": 25,
           "comments": 0,
           "playlist_ids": [
@@ -1225,7 +1258,7 @@
           ],
           "publishedAt": "2026-07-21T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 797,
+          "views": 798,
           "likes": 21,
           "comments": 1,
           "playlist_ids": [
@@ -1265,7 +1298,7 @@
           ],
           "publishedAt": "2026-07-21T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/AobKkdjdmnI/mqdefault.jpg",
-          "views": 607,
+          "views": 609,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [
@@ -1341,7 +1374,7 @@
           ],
           "publishedAt": "2026-07-20T04:23:26Z",
           "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 774,
+          "views": 775,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [
@@ -1381,7 +1414,7 @@
           ],
           "publishedAt": "2026-07-20T04:04:36Z",
           "thumbnail": "https://i.ytimg.com/vi/z0MJDWH2vsI/mqdefault.jpg",
-          "views": 643,
+          "views": 644,
           "likes": 30,
           "comments": 2,
           "playlist_ids": [
@@ -1419,7 +1452,7 @@
           ],
           "publishedAt": "2026-07-19T19:41:29Z",
           "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 867,
+          "views": 868,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [
@@ -1498,7 +1531,7 @@
           ],
           "publishedAt": "2026-07-19T15:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/Cjl2tp-hpqk/mqdefault.jpg",
-          "views": 682,
+          "views": 683,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [
@@ -1535,7 +1568,7 @@
           ],
           "publishedAt": "2026-07-19T14:25:04Z",
           "thumbnail": "https://i.ytimg.com/vi/K8FtgqilMJ4/mqdefault.jpg",
-          "views": 542,
+          "views": 543,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [
@@ -1575,7 +1608,7 @@
           ],
           "publishedAt": "2026-07-19T06:04:54Z",
           "thumbnail": "https://i.ytimg.com/vi/2DFOa3Mj6tA/mqdefault.jpg",
-          "views": 678,
+          "views": 679,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [
@@ -1613,7 +1646,7 @@
           ],
           "publishedAt": "2026-07-18T16:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 885,
+          "views": 887,
           "likes": 12,
           "comments": 4,
           "playlist_ids": [
@@ -1651,7 +1684,7 @@
           ],
           "publishedAt": "2026-07-18T07:20:28Z",
           "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
-          "views": 620,
+          "views": 621,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [
@@ -1689,7 +1722,7 @@
           ],
           "publishedAt": "2026-07-18T05:32:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
-          "views": 937,
+          "views": 938,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [
@@ -1727,7 +1760,7 @@
           ],
           "publishedAt": "2026-07-18T04:03:00Z",
           "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
-          "views": 785,
+          "views": 786,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [
@@ -1762,7 +1795,7 @@
           ],
           "publishedAt": "2026-07-17T13:04:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 865,
+          "views": 866,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [
@@ -1801,7 +1834,7 @@
           ],
           "publishedAt": "2026-07-17T04:03:15Z",
           "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 774,
+          "views": 775,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [
@@ -1838,7 +1871,7 @@
           ],
           "publishedAt": "2026-07-16T13:03:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 993,
+          "views": 994,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [
@@ -1849,43 +1882,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 59.91,
-          "subs_gained": 0
-        },
-        {
-          "id": "twmBUwdHyG0",
-          "title": "The First European Banknotes Were Completely Fake #history #money",
-          "description": "On July 16, 1661, Sweden's Stockholms Banco issued the first banknotes in European history \u2014 and accidentally invented a financial crisis. The idea of trusting paper instead of gold coins seemed absurd, yet it rewired how the entire world handles money. Every bill in your wallet traces back to that one Swedish gamble.",
-          "tags": [
-            "banking",
-            "currency",
-            "did you know",
-            "economics",
-            "education",
-            "european history",
-            "facts",
-            "finance history",
-            "history",
-            "history shorts",
-            "money",
-            "paper money",
-            "shorts",
-            "sweden",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-16T04:03:09Z",
-          "thumbnail": "https://i.ytimg.com/vi/twmBUwdHyG0/mqdefault.jpg",
-          "views": 805,
-          "likes": 10,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 50.85000000000001,
           "subs_gained": 0
         }
       ]
