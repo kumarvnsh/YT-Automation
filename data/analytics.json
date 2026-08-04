@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-04T14:10:39.959174+00:00",
+      "updated": "2026-08-04T19:37:23.044118+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "GtD8FD9kqac",
+          "title": "40 Nations Signed One Peace Deal \u2014 Then Buried It for 200 Years",
+          "description": "On August 4, 1701, France and forty Indigenous nations signed the Great Peace of Montreal \u2014 one of the most ambitious diplomatic agreements in North American history. It ended decades of devastating conflict, yet most history books barely mention it. Discover why this treaty disappeared from memory and why historians now call it a masterpiece of diplomacy.",
+          "tags": [
+            "1701",
+            "did you know",
+            "diplomacy",
+            "education",
+            "facts",
+            "forgotten history",
+            "great peace of montreal",
+            "history",
+            "history shorts",
+            "indigenous history",
+            "new france",
+            "north america",
+            "peace treaty",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-04T16:08:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/GtD8FD9kqac/mqdefault.jpg",
+          "views": 84,
+          "likes": 4,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "mJ4pZ16viGY",
           "title": "How a single chain almost saved Byzantium #history #shorts",
           "description": "In 1453, a single iron chain stretched across a harbour stood between the Ottoman fleet and the fall of Constantinople. What happened next reshaped three continents. Could one engineering decision really have kept the Byzantine Empire alive? Watch and decide for yourself. #history #byzantineempire #ottomanempire",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 648,
+          "views": 651,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
@@ -89,7 +120,7 @@
           ],
           "publishedAt": "2026-08-03T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/-mCjql4lHLA/mqdefault.jpg",
-          "views": 664,
+          "views": 669,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -127,7 +158,7 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 564,
+          "views": 612,
           "likes": 14,
           "comments": 1,
           "playlist_ids": [],
@@ -165,7 +196,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 80.52,
+          "subs_gained": 0
         },
         {
           "id": "deZBlqBc1VI",
@@ -200,7 +233,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 56.2,
+          "subs_gained": 0
         },
         {
           "id": "ofO7AeH1siQ",
@@ -227,13 +262,13 @@
           ],
           "publishedAt": "2026-08-02T04:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
-          "views": 620,
+          "views": 622,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.14,
+          "avg_view_pct": 54.24,
           "subs_gained": 1
         },
         {
@@ -267,7 +302,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.96999999999999,
+          "avg_view_pct": 68.62,
           "subs_gained": 0
         },
         {
@@ -298,7 +333,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 120.17999999999999,
+          "avg_view_pct": 117.32000000000001,
           "subs_gained": 1
         },
         {
@@ -324,13 +359,13 @@
           ],
           "publishedAt": "2026-07-31T16:04:52Z",
           "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 807,
+          "views": 811,
           "likes": 22,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.23,
+          "avg_view_pct": 73.28,
           "subs_gained": 2
         },
         {
@@ -366,7 +401,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.61,
+          "avg_view_pct": 59.75,
           "subs_gained": 0
         },
         {
@@ -400,7 +435,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.38,
+          "avg_view_pct": 63.55,
           "subs_gained": 1
         },
         {
@@ -469,7 +504,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.25000000000001,
+          "avg_view_pct": 60.75000000000001,
           "subs_gained": 0
         },
         {
@@ -721,7 +756,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.470000000000006,
+          "avg_view_pct": 63.35999999999999,
           "subs_gained": 0
         },
         {
@@ -797,7 +832,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.81,
+          "avg_view_pct": 88.59,
           "subs_gained": 0
         },
         {
@@ -1844,44 +1879,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 75.05,
-          "subs_gained": 0
-        },
-        {
-          "id": "9KkikPjPHQc",
-          "title": "He Was America's Most Watched Man \u2014 Then Vanished Without a Trace",
-          "description": "On July 16, 1999, John F. Kennedy Jr.'s plane disappeared over the Atlantic, stunning the world. Three days of searching ended in tragedy off Martha's Vineyard. The son of a president became one of America's most heartbreaking losses. #JFKJr #OnThisDay #HistoryShorts",
-          "tags": [
-            "1999",
-            "american history",
-            "celebrity history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "jfk jr",
-            "kennedy",
-            "martha's vineyard",
-            "on this day",
-            "plane crash",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-16T13:03:49Z",
-          "thumbnail": "https://i.ytimg.com/vi/9KkikPjPHQc/mqdefault.jpg",
-          "views": 994,
-          "likes": 6,
-          "comments": 2,
-          "playlist_ids": [
-            "PLY6ySex-tqTQ"
-          ],
-          "playlists": [
-            "Vanished Civilizations"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 59.91,
+          "avg_view_pct": 82.57,
           "subs_gained": 0
         }
       ]
