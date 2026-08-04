@@ -556,5 +556,14 @@
     "slot": "evening",
     "date": "2026-08-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260804_040127_short",
+    "title": "One Chain Almost Saved an Empire | History's Almost Moments",
+    "fingerprint": "almost_chain_empire_history_moments_one_s_saved",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-04",
+    "status": "reserved"
   }
 ]
