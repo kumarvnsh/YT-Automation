@@ -565,5 +565,14 @@
     "slot": "morning",
     "date": "2026-08-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260804_160232_short",
+    "title": "40 Nations Signed One Peace Deal \u2014 Then Buried It for 200 Years",
+    "fingerprint": "200_40_buried_deal_for_it_nations_one_peace_signed_then_years",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-04",
+    "status": "reserved"
   }
 ]
