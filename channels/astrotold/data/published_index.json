@@ -516,5 +516,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "SQ6af5dwROs",
+    "run_id": "31027994306",
+    "stage_dir_name": "20260805_174851_short",
+    "title": "Born on 1, 10, 19, or 28? Numerology Reveals Your Bold Inner Leader",
+    "published_at": "2026-08-05T17:49:51.943981+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
