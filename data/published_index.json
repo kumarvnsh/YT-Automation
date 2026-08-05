@@ -1449,5 +1449,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "ykWTCrVoyN0",
+    "run_id": "30973884629",
+    "stage_dir_name": "20260805_040131_short",
+    "title": "The Message That Connected Two Continents \u2014 Then Went Silent Forever",
+    "published_at": "2026-08-05T04:04:31.060650+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
