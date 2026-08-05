@@ -1463,5 +1463,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "1W-iqbBk9Rg",
+    "run_id": "30974274625",
+    "stage_dir_name": "20260805_040924_short",
+    "title": "America's Greatest Heroes Were Real \u2014 But Not How You Think",
+    "published_at": "2026-08-05T04:12:31.304191+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
