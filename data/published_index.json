@@ -1477,5 +1477,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "zYe3LOseaFU",
+    "run_id": "31023213897",
+    "stage_dir_name": "20260805_160201_short",
+    "title": "Reagan Fired 11,000 Workers in One Morning \u2014 They Never Got Their Jobs Back",
+    "published_at": "2026-08-05T16:06:41.578189+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
