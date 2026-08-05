@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-05T14:08:37.836769+00:00",
+      "updated": "2026-08-05T19:31:25.430163+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "zYe3LOseaFU",
+          "title": "Reagan Fired 11,000 Workers in One Morning \u2014 They Never Got Their Jobs Back",
+          "description": "On August 5, 1981, President Ronald Reagan fired over 11,000 striking air traffic controllers in a single morning \u2014 a decision that reshaped labor relations across America forever. The union thought he was bluffing. He wasn't. Discover the story behind one of the most consequential ultimatums in American political history.",
+          "tags": [
+            "1981",
+            "air traffic controllers",
+            "american history",
+            "cold war era",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "labor history",
+            "patco strike",
+            "reagan",
+            "shorts",
+            "trending",
+            "unions",
+            "viral"
+          ],
+          "publishedAt": "2026-08-05T16:05:11Z",
+          "thumbnail": "https://i.ytimg.com/vi/zYe3LOseaFU/mqdefault.jpg",
+          "views": 8,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "1W-iqbBk9Rg",
           "title": "America's Greatest Heroes Were Real \u2014 But Not How You Think",
           "description": "The legends that built American identity \u2014 Davy Crockett, Paul Bunyan, John Henry \u2014 didn't emerge from campfires the way history books imply. Their stories were engineered, borrowed, and sometimes invented wholesale for very specific reasons. Every myth has a blueprint, and America's are no exception. #history #americanhistory #didyouknow",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-08-05T04:11:50Z",
           "thumbnail": "https://i.ytimg.com/vi/1W-iqbBk9Rg/mqdefault.jpg",
-          "views": 647,
+          "views": 653,
           "likes": 17,
           "comments": 3,
           "playlist_ids": [],
@@ -92,7 +123,7 @@
           ],
           "publishedAt": "2026-08-05T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/ykWTCrVoyN0/mqdefault.jpg",
-          "views": 670,
+          "views": 683,
           "likes": 8,
           "comments": 2,
           "playlist_ids": [],
@@ -123,8 +154,8 @@
           ],
           "publishedAt": "2026-08-04T16:08:30Z",
           "thumbnail": "https://i.ytimg.com/vi/GtD8FD9kqac/mqdefault.jpg",
-          "views": 170,
-          "likes": 7,
+          "views": 174,
+          "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -155,12 +186,14 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 654,
+          "views": 655,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 76.49,
+          "subs_gained": 1
         },
         {
           "id": "-mCjql4lHLA",
@@ -190,7 +223,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 56.45,
+          "subs_gained": 1
         },
         {
           "id": "NBhrsGmvMWc",
@@ -228,7 +263,9 @@
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 54.85,
+          "subs_gained": 0
         },
         {
           "id": "MNp6ZE9ALgg",
@@ -256,13 +293,13 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 738,
+          "views": 743,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.52,
+          "avg_view_pct": 80.8,
           "subs_gained": 0
         },
         {
@@ -299,7 +336,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.2,
+          "avg_view_pct": 56.35,
           "subs_gained": 0
         },
         {
@@ -327,13 +364,13 @@
           ],
           "publishedAt": "2026-08-02T04:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
-          "views": 625,
+          "views": 624,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.24,
+          "avg_view_pct": 57.85,
           "subs_gained": 1
         },
         {
@@ -367,7 +404,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.62,
+          "avg_view_pct": 69.57,
           "subs_gained": 0
         },
         {
@@ -398,7 +435,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 117.32000000000001,
+          "avg_view_pct": 116.95,
           "subs_gained": 1
         },
         {
@@ -430,7 +467,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.28,
+          "avg_view_pct": 72.95,
           "subs_gained": 2
         },
         {
@@ -461,12 +498,12 @@
           "publishedAt": "2026-07-31T04:03:52Z",
           "thumbnail": "https://i.ytimg.com/vi/amMgq4voErU/mqdefault.jpg",
           "views": 664,
-          "likes": 7,
+          "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.75,
+          "avg_view_pct": 59.79,
           "subs_gained": 0
         },
         {
@@ -500,7 +537,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.55,
+          "avg_view_pct": 63.45,
           "subs_gained": 1
         },
         {
@@ -528,12 +565,12 @@
           "publishedAt": "2026-07-30T16:04:51Z",
           "thumbnail": "https://i.ytimg.com/vi/QBt8HqmBeQw/mqdefault.jpg",
           "views": 152,
-          "likes": 1,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.85,
+          "avg_view_pct": 60.650000000000006,
           "subs_gained": 1
         },
         {
@@ -569,7 +606,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.75000000000001,
+          "avg_view_pct": 60.51,
           "subs_gained": 0
         },
         {
@@ -601,7 +638,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 67.12,
+          "avg_view_pct": 67.54,
           "subs_gained": 0
         },
         {
@@ -635,7 +672,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 17.91,
+          "avg_view_pct": 16.31,
           "subs_gained": 0
         },
         {
@@ -669,7 +706,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 64.93,
+          "avg_view_pct": 65.09,
           "subs_gained": 0
         },
         {
@@ -708,7 +745,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 75.64,
+          "avg_view_pct": 75.48,
           "subs_gained": 1
         },
         {
@@ -746,7 +783,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.92,
+          "avg_view_pct": 56.05,
           "subs_gained": 0
         },
         {
@@ -784,7 +821,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 116.04999999999998,
+          "avg_view_pct": 115.92,
           "subs_gained": 0
         },
         {
@@ -821,7 +858,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.35999999999999,
+          "avg_view_pct": 63.5,
           "subs_gained": 0
         },
         {
@@ -859,7 +896,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 103.82000000000001,
+          "avg_view_pct": 103.46,
           "subs_gained": 0
         },
         {
@@ -897,7 +934,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.59,
+          "avg_view_pct": 88.87,
           "subs_gained": 0
         },
         {
@@ -936,7 +973,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 48.68,
+          "avg_view_pct": 48.82,
           "subs_gained": 0
         },
         {
@@ -975,7 +1012,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.92,
+          "avg_view_pct": 56.16,
           "subs_gained": 0
         },
         {
@@ -1013,7 +1050,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 82.36,
+          "avg_view_pct": 82.18,
           "subs_gained": 0
         },
         {
@@ -1089,7 +1126,7 @@
             "Lost Cities"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 68.31,
+          "avg_view_pct": 68.45,
           "subs_gained": 2
         },
         {
@@ -1131,7 +1168,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 69.37,
+          "avg_view_pct": 70.13,
           "subs_gained": 0
         },
         {
@@ -1209,7 +1246,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 60.760000000000005,
+          "avg_view_pct": 61.64999999999999,
           "subs_gained": 1
         },
         {
@@ -1246,7 +1283,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 69.76,
+          "avg_view_pct": 69.57,
           "subs_gained": 1
         },
         {
@@ -1287,7 +1324,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 62.24000000000001,
+          "avg_view_pct": 62.36999999999999,
           "subs_gained": 0
         },
         {
@@ -1328,7 +1365,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 75.13,
+          "avg_view_pct": 75.62,
           "subs_gained": 1
         },
         {
@@ -1368,7 +1405,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 84.05,
+          "avg_view_pct": 84.09,
           "subs_gained": 0
         },
         {
@@ -1408,7 +1445,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 96.91,
+          "avg_view_pct": 97.0,
           "subs_gained": 0
         },
         {
@@ -1484,7 +1521,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.35,
+          "avg_view_pct": 54.28000000000001,
           "subs_gained": 1
         },
         {
@@ -1562,7 +1599,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 74.32,
+          "avg_view_pct": 74.18,
           "subs_gained": 1
         },
         {
@@ -1602,7 +1639,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 58.01,
+          "avg_view_pct": 57.81,
           "subs_gained": 0
         },
         {
@@ -1641,7 +1678,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.55,
+          "avg_view_pct": 71.36,
           "subs_gained": 0
         },
         {
@@ -1718,7 +1755,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 56.05,
+          "avg_view_pct": 55.99000000000001,
           "subs_gained": 0
         },
         {
@@ -1756,7 +1793,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 66.6,
+          "avg_view_pct": 66.73,
           "subs_gained": 0
         },
         {
@@ -1834,44 +1871,6 @@
           "is_unsorted": false,
           "avg_view_pct": 54.18999999999999,
           "subs_gained": 1
-        },
-        {
-          "id": "jbs777oROMY",
-          "title": "The Trojan War Was Retold for 400 Years Before Anyone Wrote It Down",
-          "description": "With AI and Hollywood both racing to tell the Odyssey, it's worth remembering the original story survived centuries without a single written word. Homer's epics were memorized and performed live \u2014 then finally written down around 700 BC. The story outlasted empires before ink ever touched it.",
-          "tags": [
-            "ancient greece",
-            "ancient history",
-            "did you know",
-            "education",
-            "facts",
-            "greek mythology",
-            "history",
-            "history facts",
-            "history shorts",
-            "homer",
-            "iliad",
-            "odyssey",
-            "oral tradition",
-            "shorts",
-            "trending",
-            "trojan war",
-            "viral"
-          ],
-          "publishedAt": "2026-07-18T04:03:00Z",
-          "thumbnail": "https://i.ytimg.com/vi/jbs777oROMY/mqdefault.jpg",
-          "views": 786,
-          "likes": 14,
-          "comments": 0,
-          "playlist_ids": [
-            "PLY6ySex-tqTQ"
-          ],
-          "playlists": [
-            "Vanished Civilizations"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 48.44,
-          "subs_gained": 0
         }
       ]
     }
