@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-05T02:29:58.228759+00:00",
+      "updated": "2026-08-05T08:35:33.876759+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,71 @@
       },
       "videos": [
         {
+          "id": "1W-iqbBk9Rg",
+          "title": "America's Greatest Heroes Were Real \u2014 But Not How You Think",
+          "description": "The legends that built American identity \u2014 Davy Crockett, Paul Bunyan, John Henry \u2014 didn't emerge from campfires the way history books imply. Their stories were engineered, borrowed, and sometimes invented wholesale for very specific reasons. Every myth has a blueprint, and America's are no exception. #history #americanhistory #didyouknow",
+          "tags": [
+            "american history",
+            "american legends",
+            "davy crockett",
+            "did you know",
+            "education",
+            "facts",
+            "folk heroes",
+            "history",
+            "history facts",
+            "history shorts",
+            "john henry",
+            "mythology",
+            "paul bunyan",
+            "shorts",
+            "tall tales",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-05T04:11:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/1W-iqbBk9Rg/mqdefault.jpg",
+          "views": 452,
+          "likes": 16,
+          "comments": 2,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "ykWTCrVoyN0",
+          "title": "The Message That Connected Two Continents \u2014 Then Went Silent Forever",
+          "description": "In 1858, the first transatlantic telegraph cable was celebrated as the greatest achievement in human communication \u2014 then it died in under a month. Here's the bizarre, overlooked reason why. The partial solar eclipse passing over Europe right now isn't the first time the Atlantic skies have witnessed something spectacular that didn't quite last.",
+          "tags": [
+            "1858",
+            "cable",
+            "communication",
+            "cyrus field",
+            "did you know",
+            "education",
+            "engineering",
+            "facts",
+            "history",
+            "history shorts",
+            "invention",
+            "short history",
+            "shorts",
+            "telegraph",
+            "transatlantic",
+            "trending",
+            "victorian",
+            "viral"
+          ],
+          "publishedAt": "2026-08-05T04:04:16Z",
+          "thumbnail": "https://i.ytimg.com/vi/ykWTCrVoyN0/mqdefault.jpg",
+          "views": 512,
+          "likes": 7,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "GtD8FD9kqac",
           "title": "40 Nations Signed One Peace Deal \u2014 Then Buried It for 200 Years",
           "description": "On August 4, 1701, France and forty Indigenous nations signed the Great Peace of Montreal \u2014 one of the most ambitious diplomatic agreements in North American history. It ended decades of devastating conflict, yet most history books barely mention it. Discover why this treaty disappeared from memory and why historians now call it a masterpiece of diplomacy.",
@@ -58,7 +123,7 @@
           ],
           "publishedAt": "2026-08-04T16:08:30Z",
           "thumbnail": "https://i.ytimg.com/vi/GtD8FD9kqac/mqdefault.jpg",
-          "views": 140,
+          "views": 147,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -90,8 +155,8 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 649,
-          "likes": 13,
+          "views": 652,
+          "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -158,7 +223,7 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 612,
+          "views": 603,
           "likes": 14,
           "comments": 1,
           "playlist_ids": [],
@@ -262,7 +327,7 @@
           ],
           "publishedAt": "2026-08-02T04:04:05Z",
           "thumbnail": "https://i.ytimg.com/vi/ofO7AeH1siQ/mqdefault.jpg",
-          "views": 623,
+          "views": 624,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -327,13 +392,13 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 694,
+          "views": 695,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 118.30000000000001,
+          "avg_view_pct": 117.32000000000001,
           "subs_gained": 1
         },
         {
@@ -401,7 +466,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.89,
+          "avg_view_pct": 59.75,
           "subs_gained": 0
         },
         {
@@ -435,7 +500,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.470000000000006,
+          "avg_view_pct": 63.55,
           "subs_gained": 1
         },
         {
@@ -462,13 +527,13 @@
           ],
           "publishedAt": "2026-07-30T16:04:51Z",
           "thumbnail": "https://i.ytimg.com/vi/QBt8HqmBeQw/mqdefault.jpg",
-          "views": 151,
+          "views": 152,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.34,
+          "avg_view_pct": 59.85,
           "subs_gained": 1
         },
         {
@@ -504,7 +569,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.64000000000001,
+          "avg_view_pct": 60.75000000000001,
           "subs_gained": 0
         },
         {
@@ -681,7 +746,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.91,
+          "avg_view_pct": 55.92,
           "subs_gained": 0
         },
         {
@@ -719,7 +784,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 115.96,
+          "avg_view_pct": 116.04999999999998,
           "subs_gained": 0
         },
         {
@@ -756,7 +821,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.470000000000006,
+          "avg_view_pct": 63.35999999999999,
           "subs_gained": 0
         },
         {
@@ -794,7 +859,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 103.51000000000002,
+          "avg_view_pct": 103.82000000000001,
           "subs_gained": 0
         },
         {
@@ -832,7 +897,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.81,
+          "avg_view_pct": 88.59,
           "subs_gained": 0
         },
         {
@@ -1527,7 +1592,7 @@
           ],
           "publishedAt": "2026-07-19T17:53:56Z",
           "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
-          "views": 288,
+          "views": 289,
           "likes": 5,
           "comments": 2,
           "playlist_ids": [
@@ -1767,7 +1832,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 46.04,
+          "avg_view_pct": 54.18999999999999,
           "subs_gained": 1
         },
         {
@@ -1805,81 +1870,7 @@
             "Vanished Civilizations"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.90999999999999,
-          "subs_gained": 0
-        },
-        {
-          "id": "Ec6_nSqgo0Q",
-          "title": "Disneyland's Opening Day Was an Absolute Disaster \u2014 Walt Didn't Care",
-          "description": "On July 17, 1955, Disneyland opened to the public \u2014 and nearly everything went wrong. Counterfeit tickets flooded the gates, rides broke down, and the asphalt melted in the heat. Yet within a year, it became the most visited theme park on Earth. History's biggest wins often start as spectacular messes.",
-          "tags": [
-            "1955",
-            "american history",
-            "did you know",
-            "disneyland",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "opening day disasters",
-            "shorts",
-            "theme park history",
-            "trending",
-            "viral",
-            "walt disney"
-          ],
-          "publishedAt": "2026-07-17T13:04:07Z",
-          "thumbnail": "https://i.ytimg.com/vi/Ec6_nSqgo0Q/mqdefault.jpg",
-          "views": 866,
-          "likes": 15,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 61.01,
-          "subs_gained": 0
-        },
-        {
-          "id": "FQsqfzoQ1Ak",
-          "title": "The King Who Threw a Concert on a River\u2014and Rewrote Music History",
-          "description": "In 1717, King George I of Britain turned the River Thames into the world's most spectacular concert hall. Handel's Water Music was born from a royal river party \u2014 and it's still performed 300 years later. One night on the water created one of classical music's most enduring masterpieces.",
-          "tags": [
-            "1717",
-            "baroque music",
-            "british history",
-            "classical music",
-            "did you know",
-            "education",
-            "facts",
-            "handel",
-            "history",
-            "history shorts",
-            "king george",
-            "music history",
-            "river thames",
-            "royal history",
-            "shorts",
-            "trending",
-            "viral",
-            "water music"
-          ],
-          "publishedAt": "2026-07-17T04:03:15Z",
-          "thumbnail": "https://i.ytimg.com/vi/FQsqfzoQ1Ak/mqdefault.jpg",
-          "views": 775,
-          "likes": 9,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 82.57,
+          "avg_view_pct": 48.44,
           "subs_gained": 0
         }
       ]
