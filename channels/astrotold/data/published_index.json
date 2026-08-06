@@ -530,5 +530,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "zbShpnwRudI",
+    "run_id": "31072854872",
+    "stage_dir_name": "20260806_050202_short",
+    "title": "Your Name Initials Are Holding a Playful August 2026 Clue for You",
+    "published_at": "2026-08-06T05:02:51.667733+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
