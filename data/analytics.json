@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-06T14:09:15.934558+00:00",
+      "updated": "2026-08-06T23:58:22.135941+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,40 @@
       },
       "videos": [
         {
+          "id": "mDQFPz0g5Cg",
+          "title": "One Absent Vote Nearly Killed Europe's Oldest Constitution | History's Almost Moments",
+          "description": "In 1809, Sweden rewrote its entire government in weeks \u2014 and the vote that locked it in place almost never happened. One procedural near-miss separated a constitutional monarchy from potential chaos. Drop your take in the comments: would Europe look different today?\n\n#history #didyouknow #Historysalmostmoments",
+          "tags": [
+            "1809 constitution",
+            "constitutional monarchy",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "government history",
+            "history",
+            "history facts",
+            "history shorts",
+            "history's almost moments",
+            "near miss history",
+            "political history",
+            "scandinavian history",
+            "short history",
+            "shorts",
+            "swedish history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-06T16:11:10Z",
+          "thumbnail": "https://i.ytimg.com/vi/mDQFPz0g5Cg/mqdefault.jpg",
+          "views": 41,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "VmN_SWsAOxA",
           "title": "Jamaica Won Independence in 1962 \u2014 With a Vote Against Itself",
           "description": "On August 6, 1962, Jamaica became independent \u2014 but the path there started with a referendum where Jamaicans voted to leave their own federation. The story of how a 'no' vote became the foundation of a nation is one of history's strangest democratic moments. Drop a \ud83c\uddef\ud83c\uddf2 if you knew this one.",
@@ -58,7 +92,7 @@
           ],
           "publishedAt": "2026-08-06T04:03:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
-          "views": 680,
+          "views": 699,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -89,7 +123,7 @@
           ],
           "publishedAt": "2026-08-05T16:05:11Z",
           "thumbnail": "https://i.ytimg.com/vi/zYe3LOseaFU/mqdefault.jpg",
-          "views": 425,
+          "views": 595,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -121,12 +155,14 @@
           ],
           "publishedAt": "2026-08-05T04:11:50Z",
           "thumbnail": "https://i.ytimg.com/vi/1W-iqbBk9Rg/mqdefault.jpg",
-          "views": 642,
+          "views": 641,
           "likes": 17,
           "comments": 3,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 55.31,
+          "subs_gained": 3
         },
         {
           "id": "ykWTCrVoyN0",
@@ -154,12 +190,14 @@
           ],
           "publishedAt": "2026-08-05T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/ykWTCrVoyN0/mqdefault.jpg",
-          "views": 667,
+          "views": 666,
           "likes": 8,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 71.88,
+          "subs_gained": 1
         },
         {
           "id": "GtD8FD9kqac",
@@ -185,12 +223,14 @@
           ],
           "publishedAt": "2026-08-04T16:08:30Z",
           "thumbnail": "https://i.ytimg.com/vi/GtD8FD9kqac/mqdefault.jpg",
-          "views": 219,
+          "views": 228,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 65.37,
+          "subs_gained": 0
         },
         {
           "id": "mJ4pZ16viGY",
@@ -217,13 +257,13 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 681,
+          "views": 685,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 76.49,
+          "avg_view_pct": 76.65,
           "subs_gained": 1
         },
         {
@@ -255,7 +295,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.45,
+          "avg_view_pct": 56.8,
           "subs_gained": 1
         },
         {
@@ -295,8 +335,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.85,
-          "subs_gained": 0
+          "avg_view_pct": 40.51,
+          "subs_gained": 2
         },
         {
           "id": "MNp6ZE9ALgg",
@@ -324,13 +364,13 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 743,
+          "views": 744,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.8,
+          "avg_view_pct": 80.76,
           "subs_gained": 0
         },
         {
@@ -401,7 +441,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.85,
+          "avg_view_pct": 57.59000000000001,
           "subs_gained": 1
         },
         {
@@ -460,13 +500,13 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 698,
+          "views": 710,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 116.95,
+          "avg_view_pct": 116.18000000000002,
           "subs_gained": 1
         },
         {
@@ -498,7 +538,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.95,
+          "avg_view_pct": 73.21,
           "subs_gained": 2
         },
         {
@@ -534,7 +574,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.79,
+          "avg_view_pct": 59.91,
           "subs_gained": 0
         },
         {
@@ -727,7 +767,7 @@
           ],
           "publishedAt": "2026-07-29T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 758,
+          "views": 759,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [
@@ -1670,7 +1710,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 57.81,
+          "avg_view_pct": 57.79,
           "subs_gained": 0
         },
         {
@@ -1825,44 +1865,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 66.73,
-          "subs_gained": 0
-        },
-        {
-          "id": "lwlDyo1eJoU",
-          "title": "They Banned This Book to Survive. It Didn't Work.",
-          "description": "Enron was worth $70 billion \u2014 until one quiet accountant noticed a hidden set of books that made it all a lie. The dark ledger revealed billions in fake profits, wiping out thousands of workers' retirement savings overnight. It remains the most stunning accounting fraud in American corporate history. #Enron #corporatefraud #historyfacts",
-          "tags": [
-            "accounting fraud",
-            "american history",
-            "business history",
-            "corporate scandal",
-            "dark ledger",
-            "did you know",
-            "education",
-            "enron",
-            "facts",
-            "financial crime",
-            "hidden books",
-            "history",
-            "history shorts",
-            "shorts",
-            "trending",
-            "viral",
-            "whistleblower"
-          ],
-          "publishedAt": "2026-07-18T07:20:28Z",
-          "thumbnail": "https://i.ytimg.com/vi/lwlDyo1eJoU/mqdefault.jpg",
-          "views": 622,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 88.08,
           "subs_gained": 0
         }
       ]
