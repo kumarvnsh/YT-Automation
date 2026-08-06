@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-06T02:32:36.185726+00:00",
+      "updated": "2026-08-06T08:35:38.319857+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "VmN_SWsAOxA",
+          "title": "Jamaica Won Independence in 1962 \u2014 With a Vote Against Itself",
+          "description": "On August 6, 1962, Jamaica became independent \u2014 but the path there started with a referendum where Jamaicans voted to leave their own federation. The story of how a 'no' vote became the foundation of a nation is one of history's strangest democratic moments. Drop a \ud83c\uddef\ud83c\uddf2 if you knew this one.",
+          "tags": [
+            "1962",
+            "british empire",
+            "caribbean history",
+            "decolonization",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "independence",
+            "jamaica",
+            "shorts",
+            "trending",
+            "viral",
+            "west indies federation"
+          ],
+          "publishedAt": "2026-08-06T04:03:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
+          "views": 510,
+          "likes": 12,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "zYe3LOseaFU",
           "title": "Reagan Fired 11,000 Workers in One Morning \u2014 They Never Got Their Jobs Back",
           "description": "On August 5, 1981, President Ronald Reagan fired over 11,000 striking air traffic controllers in a single morning \u2014 a decision that reshaped labor relations across America forever. The union thought he was bluffing. He wasn't. Discover the story behind one of the most consequential ultimatums in American political history.",
@@ -58,8 +89,8 @@
           ],
           "publishedAt": "2026-08-05T16:05:11Z",
           "thumbnail": "https://i.ytimg.com/vi/zYe3LOseaFU/mqdefault.jpg",
-          "views": 92,
-          "likes": 3,
+          "views": 309,
+          "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -154,8 +185,8 @@
           ],
           "publishedAt": "2026-08-04T16:08:30Z",
           "thumbnail": "https://i.ytimg.com/vi/GtD8FD9kqac/mqdefault.jpg",
-          "views": 178,
-          "likes": 8,
+          "views": 193,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -186,7 +217,7 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 660,
+          "views": 673,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -218,7 +249,7 @@
           ],
           "publishedAt": "2026-08-03T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/-mCjql4lHLA/mqdefault.jpg",
-          "views": 664,
+          "views": 663,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -258,7 +289,7 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 608,
+          "views": 609,
           "likes": 13,
           "comments": 1,
           "playlist_ids": [],
@@ -293,7 +324,7 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 744,
+          "views": 743,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -370,7 +401,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.85,
+          "avg_view_pct": 57.97,
           "subs_gained": 1
         },
         {
@@ -429,13 +460,13 @@
           ],
           "publishedAt": "2026-08-01T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/JNyLre5ZXgA/mqdefault.jpg",
-          "views": 694,
+          "views": 695,
           "likes": 13,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 116.95,
+          "avg_view_pct": 115.99999999999999,
           "subs_gained": 1
         },
         {
@@ -503,7 +534,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.79,
+          "avg_view_pct": 59.64,
           "subs_gained": 0
         },
         {
@@ -537,7 +568,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.45,
+          "avg_view_pct": 63.519999999999996,
           "subs_gained": 1
         },
         {
@@ -570,7 +601,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.650000000000006,
+          "avg_view_pct": 60.15999999999999,
           "subs_gained": 1
         },
         {
@@ -606,7 +637,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.51,
+          "avg_view_pct": 60.62,
           "subs_gained": 0
         },
         {
@@ -821,7 +852,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 115.92,
+          "avg_view_pct": 115.99999999999999,
           "subs_gained": 0
         },
         {
@@ -858,7 +889,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.5,
+          "avg_view_pct": 63.39,
           "subs_gained": 0
         },
         {
@@ -896,7 +927,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 103.46,
+          "avg_view_pct": 103.77000000000001,
           "subs_gained": 0
         },
         {
@@ -934,7 +965,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.87,
+          "avg_view_pct": 88.65,
           "subs_gained": 0
         },
         {
@@ -1833,44 +1864,6 @@
           "is_unsorted": false,
           "avg_view_pct": 88.08,
           "subs_gained": 0
-        },
-        {
-          "id": "FDUlF365H28",
-          "title": "One Weather Report Nearly Cancelled D-Day | History's Almost Moments",
-          "description": "The largest invasion in history almost didn't happen \u2014 because of rain. Eisenhower's meteorologist spotted a narrow gap in the storm that changed everything. Would D-Day have succeeded if they'd waited even one more day?\n\n#history #dday #wwii",
-          "tags": [
-            "almost moments",
-            "close call",
-            "d-day",
-            "did you know",
-            "education",
-            "eisenhower",
-            "facts",
-            "history",
-            "history shorts",
-            "military history",
-            "normandy",
-            "shorts",
-            "trending",
-            "viral",
-            "weather",
-            "world war ii",
-            "wwii"
-          ],
-          "publishedAt": "2026-07-18T05:32:13Z",
-          "thumbnail": "https://i.ytimg.com/vi/FDUlF365H28/mqdefault.jpg",
-          "views": 938,
-          "likes": 19,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 54.18999999999999,
-          "subs_gained": 1
         }
       ]
     }
