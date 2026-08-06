@@ -1491,5 +1491,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "VmN_SWsAOxA",
+    "run_id": "31070024434",
+    "stage_dir_name": "20260806_040126_short",
+    "title": "Jamaica Won Independence in 1962 \u2014 With a Vote Against Itself",
+    "published_at": "2026-08-06T04:04:40.817210+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

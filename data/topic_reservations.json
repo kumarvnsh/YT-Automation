@@ -601,5 +601,14 @@
     "slot": "evening",
     "date": "2026-08-05",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260806_040126_short",
+    "title": "Jamaica Won Independence in 1962 \u2014 With a Vote Against Itself",
+    "fingerprint": "1962_against_independence_itself_jamaica_vote_with_won",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-06",
+    "status": "reserved"
   }
 ]
