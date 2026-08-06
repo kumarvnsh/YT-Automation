@@ -1505,5 +1505,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "mDQFPz0g5Cg",
+    "run_id": "31118295622",
+    "stage_dir_name": "20260806_160840_short",
+    "title": "One Absent Vote Nearly Killed Europe's Oldest Constitution | History's Almost Moments",
+    "published_at": "2026-08-06T16:11:51.179671+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

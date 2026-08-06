@@ -610,5 +610,14 @@
     "slot": "morning",
     "date": "2026-08-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260806_160840_short",
+    "title": "One Absent Vote Nearly Killed Europe's Oldest Constitution | History's Almost Moments",
+    "fingerprint": "absent_almost_constitution_europe_history_killed_moments_nearly_oldest_one_s_vote",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-06",
+    "status": "reserved"
   }
 ]
