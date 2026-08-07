@@ -558,5 +558,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "aXRDReLYfQs",
+    "run_id": "31200294327",
+    "stage_dir_name": "20260807_170121_short",
+    "title": "Your Name Initials Are Secretly Whispering Your August 2026 Personality",
+    "published_at": "2026-08-07T17:02:20.240091+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
