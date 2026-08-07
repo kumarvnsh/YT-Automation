@@ -619,5 +619,14 @@
     "slot": "evening",
     "date": "2026-08-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260807_040127_short",
+    "title": "A Man Walked Illegally Between the Twin Towers \u2014 Nobody Stopped Him",
+    "fingerprint": "between_him_illegally_man_nobody_stopped_towers_twin_walked",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-07",
+    "status": "reserved"
   }
 ]

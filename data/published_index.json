@@ -1519,5 +1519,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "RGjfZW2OUZg",
+    "run_id": "31146077775",
+    "stage_dir_name": "20260807_040127_short",
+    "title": "A Man Walked Illegally Between the Twin Towers \u2014 Nobody Stopped Him",
+    "published_at": "2026-08-07T04:05:38.681664+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
