@@ -544,5 +544,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "tTjn35I-qHw",
+    "run_id": "31149201328",
+    "stage_dir_name": "20260807_050136_short",
+    "title": "Your Name Initials Are Dropping Personality Clues You Can't Ignore",
+    "published_at": "2026-08-07T05:02:42.072360+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
