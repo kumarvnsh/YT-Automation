@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-07T03:10:33.889080+00:00",
+      "updated": "2026-08-07T07:14:48.219475+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "RGjfZW2OUZg",
+          "title": "A Man Walked Illegally Between the Twin Towers \u2014 Nobody Stopped Him",
+          "description": "On August 7, 1974, Philippe Petit spent 45 minutes performing an illegal high-wire act between the Twin Towers \u2014 and when police ordered him down, he danced instead. It remains one of the most audacious acts of public art in history. The charges were dropped in the most unexpected way possible. #history #didyouknow #shorts",
+          "tags": [
+            "1974",
+            "daredevil",
+            "did you know",
+            "education",
+            "facts",
+            "high wire",
+            "history",
+            "history shorts",
+            "illegal art",
+            "new york history",
+            "philippe petit",
+            "short history",
+            "shorts",
+            "trending",
+            "twin towers",
+            "viral",
+            "world trade center",
+            "world trade center history"
+          ],
+          "publishedAt": "2026-08-07T04:04:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
+          "views": 523,
+          "likes": 17,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "mDQFPz0g5Cg",
           "title": "One Absent Vote Nearly Killed Europe's Oldest Constitution | History's Almost Moments",
           "description": "In 1809, Sweden rewrote its entire government in weeks \u2014 and the vote that locked it in place almost never happened. One procedural near-miss separated a constitutional monarchy from potential chaos. Drop your take in the comments: would Europe look different today?\n\n#history #didyouknow #Historysalmostmoments",
@@ -61,7 +94,7 @@
           ],
           "publishedAt": "2026-08-06T16:11:10Z",
           "thumbnail": "https://i.ytimg.com/vi/mDQFPz0g5Cg/mqdefault.jpg",
-          "views": 43,
+          "views": 52,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -92,7 +125,7 @@
           ],
           "publishedAt": "2026-08-06T04:03:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
-          "views": 700,
+          "views": 708,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -257,7 +290,7 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 685,
+          "views": 679,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -289,7 +322,7 @@
           ],
           "publishedAt": "2026-08-03T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/-mCjql4lHLA/mqdefault.jpg",
-          "views": 665,
+          "views": 663,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -329,7 +362,7 @@
           ],
           "publishedAt": "2026-08-03T08:02:30Z",
           "thumbnail": "https://i.ytimg.com/vi/NBhrsGmvMWc/mqdefault.jpg",
-          "views": 603,
+          "views": 602,
           "likes": 13,
           "comments": 1,
           "playlist_ids": [],
@@ -370,7 +403,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.76,
+          "avg_view_pct": 80.63,
           "subs_gained": 0
         },
         {
@@ -441,7 +474,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.59000000000001,
+          "avg_view_pct": 57.70000000000001,
           "subs_gained": 1
         },
         {
@@ -506,7 +539,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 116.18000000000002,
+          "avg_view_pct": 115.25000000000001,
           "subs_gained": 1
         },
         {
@@ -574,7 +607,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.91,
+          "avg_view_pct": 59.77,
           "subs_gained": 0
         },
         {
@@ -608,7 +641,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.45,
+          "avg_view_pct": 63.519999999999996,
           "subs_gained": 1
         },
         {
@@ -641,7 +674,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.650000000000006,
+          "avg_view_pct": 60.15999999999999,
           "subs_gained": 1
         },
         {
@@ -677,7 +710,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.51,
+          "avg_view_pct": 60.62,
           "subs_gained": 0
         },
         {
@@ -892,7 +925,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 115.92,
+          "avg_view_pct": 115.99999999999999,
           "subs_gained": 0
         },
         {
@@ -929,7 +962,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 63.5,
+          "avg_view_pct": 63.39,
           "subs_gained": 0
         },
         {
@@ -967,7 +1000,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 103.46,
+          "avg_view_pct": 103.77000000000001,
           "subs_gained": 0
         },
         {
@@ -1005,7 +1038,7 @@
             "Forgotten Ancient Technology"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 88.87,
+          "avg_view_pct": 88.65,
           "subs_gained": 0
         },
         {
@@ -1826,45 +1859,7 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 55.99000000000001,
-          "subs_gained": 0
-        },
-        {
-          "id": "-qkDx9745Y8",
-          "title": "England Expelled Every Jewish Person \u2014 On the Most Haunting Day Possible #england #jews #bannedff",
-          "description": "In 1290, King Edward I signed an order banishing all Jews from England \u2014 and the date was no accident. It fell on Tisha B'Av, the ancient day of mourning already tied to centuries of Jewish catastrophe. The exiles weren't allowed to return for 365 years. #history #didyouknow #medievalhistory",
-          "tags": [
-            "did you know",
-            "edict of expulsion",
-            "education",
-            "edward i",
-            "england history",
-            "exile",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "jewish history",
-            "medieval england",
-            "religious history",
-            "shorts",
-            "tisha bav",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-18T16:04:05Z",
-          "thumbnail": "https://i.ytimg.com/vi/-qkDx9745Y8/mqdefault.jpg",
-          "views": 887,
-          "likes": 12,
-          "comments": 4,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 66.73,
+          "avg_view_pct": 48.07,
           "subs_gained": 0
         }
       ]
