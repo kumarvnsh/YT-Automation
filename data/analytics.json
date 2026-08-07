@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-07T13:02:34.112922+00:00",
+      "updated": "2026-08-07T18:56:22.666526+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "q550KzfcooM",
+          "title": "She Drove Across America in 1909 \u2014 With No Roads, No Maps, No Men",
+          "description": "In 1909, Alice Huyler Ramsey became the first woman to drive across the United States, navigating 3,800 miles of mud, ruts, and unmarked trails. She didn't just survive the trip \u2014 she made it look routine. The story of how one journey quietly rewrote what women were allowed to attempt.",
+          "tags": [
+            "1909",
+            "alice ramsey",
+            "american history",
+            "automotive history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "pioneering women",
+            "road trip history",
+            "shorts",
+            "transcontinental",
+            "trending",
+            "viral",
+            "women in history"
+          ],
+          "publishedAt": "2026-08-07T16:05:40Z",
+          "thumbnail": "https://i.ytimg.com/vi/q550KzfcooM/mqdefault.jpg",
+          "views": 404,
+          "likes": 29,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "RGjfZW2OUZg",
           "title": "A Man Walked Illegally Between the Twin Towers \u2014 Nobody Stopped Him",
           "description": "On August 7, 1974, Philippe Petit spent 45 minutes performing an illegal high-wire act between the Twin Towers \u2014 and when police ordered him down, he danced instead. It remains one of the most audacious acts of public art in history. The charges were dropped in the most unexpected way possible. #history #didyouknow #shorts",
@@ -60,7 +91,7 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 709,
+          "views": 715,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -156,7 +187,7 @@
           ],
           "publishedAt": "2026-08-05T16:05:11Z",
           "thumbnail": "https://i.ytimg.com/vi/zYe3LOseaFU/mqdefault.jpg",
-          "views": 595,
+          "views": 597,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -256,7 +287,7 @@
           ],
           "publishedAt": "2026-08-04T16:08:30Z",
           "thumbnail": "https://i.ytimg.com/vi/GtD8FD9kqac/mqdefault.jpg",
-          "views": 228,
+          "views": 227,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -290,7 +321,7 @@
           ],
           "publishedAt": "2026-08-04T04:04:31Z",
           "thumbnail": "https://i.ytimg.com/vi/mJ4pZ16viGY/mqdefault.jpg",
-          "views": 680,
+          "views": 684,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -601,7 +632,7 @@
           ],
           "publishedAt": "2026-07-31T04:03:52Z",
           "thumbnail": "https://i.ytimg.com/vi/amMgq4voErU/mqdefault.jpg",
-          "views": 666,
+          "views": 667,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -1820,46 +1851,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 105.07,
-          "subs_gained": 0
-        },
-        {
-          "id": "2DFOa3Mj6tA",
-          "title": "He Almost Threw It in the Bin \u2014 Then Saved 200 Million Lives | History's Almost Moments",
-          "description": "In 1928, Alexander Fleming nearly discarded a contaminated petri dish \u2014 the one that contained penicillin. He almost missed the mould entirely. Would antibiotics have been discovered without him, or would millions more have died from treatable infections? Watch to find out how close we came to losing it all. #history #didyouknow #historysfacts",
-          "tags": [
-            "1928 discovery",
-            "alexander fleming",
-            "antibiotics",
-            "close call history",
-            "did you know",
-            "education",
-            "facts",
-            "historical turning points",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "medical history",
-            "near miss history",
-            "penicillin discovery",
-            "science history",
-            "shorts",
-            "trending",
-            "viral",
-            "youtube history"
-          ],
-          "publishedAt": "2026-07-19T06:04:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/2DFOa3Mj6tA/mqdefault.jpg",
-          "views": 679,
-          "likes": 7,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 48.07,
           "subs_gained": 0
         }
       ]
