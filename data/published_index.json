@@ -1533,5 +1533,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "q550KzfcooM",
+    "run_id": "31195515093",
+    "stage_dir_name": "20260807_160223_short",
+    "title": "She Drove Across America in 1909 \u2014 With No Roads, No Maps, No Men",
+    "published_at": "2026-08-07T16:07:02.005572+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
