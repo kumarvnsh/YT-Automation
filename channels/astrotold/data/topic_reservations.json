@@ -421,5 +421,14 @@
     "slot": "evening",
     "date": "2026-08-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260808_201435_short",
+    "title": "What Is Your Name Initial Actually Saying About You?",
+    "fingerprint": "about_actually_initial_is_name_saying_what_you_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-08",
+    "status": "reserved"
   }
 ]

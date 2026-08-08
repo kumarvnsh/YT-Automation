@@ -600,5 +600,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "oV351wV1KAA",
+    "run_id": "31276391450",
+    "stage_dir_name": "20260808_201435_short",
+    "title": "What Is Your Name Initial Actually Saying About You?",
+    "published_at": "2026-08-08T20:17:27.604910+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
