@@ -430,5 +430,14 @@
     "slot": "morning",
     "date": "2026-08-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260808_203346_short",
+    "title": "Born on 2, 11, 20, or 29? Numerology Has a Quiet Secret for You",
+    "fingerprint": "11_2_20_29_born_for_has_numerology_on_or_quiet_secret_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-08",
+    "status": "reserved"
   }
 ]
