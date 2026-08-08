@@ -41,6 +41,8 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}   # same System User token as Histold
+      GITHUB_TOKEN: ${{ github.token }}   # hosts the mp4 as a public release asset for Meta to pull
       ASTROTOLD_YT_CLIENT_SECRET_JSON_B64: ${{ secrets.ASTROTOLD_YT_CLIENT_SECRET_JSON_B64 }}
       ASTROTOLD_YT_TOKEN_JSON_B64: ${{ secrets.ASTROTOLD_YT_TOKEN_JSON_B64 }}
       YOUTUBE_CLIENT_SECRET_FILE: channels/astrotold/secrets/client_secret.json

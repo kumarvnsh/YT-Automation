@@ -150,9 +150,15 @@ republish:
   mode: "repost"
 
 meta:
-  enabled: false
-  post_to_facebook: false
-  post_to_instagram: false
+  # Cross-post rendered shorts to Facebook + Instagram Reels via the Graph API.
+  # Reuses the same non-expiring System User token as Histold (META_ACCESS_TOKEN);
+  # the System User has been granted access to the Astrotold Page + IG. Best-effort:
+  # a Meta failure never blocks the YouTube upload.
+  enabled: true
+  post_to_facebook: true
+  post_to_instagram: true
+  page_id: "1313250538528344"          # Astrotold Facebook Page
+  ig_user_id: "17841440359647108"      # Astrotold Instagram business account
   api_version: "v21.0"
   hashtags: ["#numerology", "#birthnumber", "#luckynumber", "#shorts"]
 
