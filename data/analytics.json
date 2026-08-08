@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-08T12:47:05.496597+00:00",
+      "updated": "2026-08-08T18:36:41.452310+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "Z-kbw3KQ3Pc",
+          "title": "The Tallest Structure Ever Built Stood for 16 Years \u2014 Then Vanished in Seconds",
+          "description": "On August 8, 1991, the Warsaw Radio Mast collapsed \u2014 and with it went the record for the tallest structure humanity had ever built. It was taller than any skyscraper, held up by invisible wires, and nobody saw it coming. A fascinating slice of Cold War engineering history you won't forget. #history #didyouknow #engineering",
+          "tags": [
+            "1991",
+            "architecture history",
+            "cold war history",
+            "did you know",
+            "education",
+            "engineering history",
+            "facts",
+            "history",
+            "history shorts",
+            "poland history",
+            "shorts",
+            "tallest structure",
+            "trending",
+            "viral",
+            "warsaw radio mast",
+            "world records"
+          ],
+          "publishedAt": "2026-08-08T16:05:03Z",
+          "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
+          "views": 557,
+          "likes": 14,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "7d_sZ-5X5uk",
           "title": "One Phone Call Nearly Stopped Munich in 1938 | History's Almost Moments",
           "description": "In September 1938, the world came within hours of a very different war \u2014 one that historians argue might have stopped Hitler far earlier. A single phone call between Chamberlain and Prague nearly collapsed the entire Munich Agreement before the ink dried. Could one refused signature have changed everything? #history #ww2 #historysalmostmoments",
@@ -61,7 +92,7 @@
           ],
           "publishedAt": "2026-08-08T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/7d_sZ-5X5uk/mqdefault.jpg",
-          "views": 622,
+          "views": 624,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -95,7 +126,7 @@
           ],
           "publishedAt": "2026-08-08T01:39:59Z",
           "thumbnail": "https://i.ytimg.com/vi/e_bcugW8TFk/mqdefault.jpg",
-          "views": 405,
+          "views": 409,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -159,7 +190,7 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 722,
+          "views": 723,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -193,7 +224,7 @@
           ],
           "publishedAt": "2026-08-06T16:11:10Z",
           "thumbnail": "https://i.ytimg.com/vi/mDQFPz0g5Cg/mqdefault.jpg",
-          "views": 82,
+          "views": 90,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -224,7 +255,7 @@
           ],
           "publishedAt": "2026-08-06T04:03:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
-          "views": 714,
+          "views": 718,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -297,7 +328,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.13,
+          "avg_view_pct": 56.09,
           "subs_gained": 3
         },
         {
@@ -326,13 +357,13 @@
           ],
           "publishedAt": "2026-08-05T04:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/ykWTCrVoyN0/mqdefault.jpg",
-          "views": 667,
+          "views": 668,
           "likes": 8,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.37,
+          "avg_view_pct": 75.23,
           "subs_gained": 1
         },
         {
@@ -425,7 +456,7 @@
           ],
           "publishedAt": "2026-08-03T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/-mCjql4lHLA/mqdefault.jpg",
-          "views": 663,
+          "views": 681,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -471,7 +502,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.29,
+          "avg_view_pct": 40.08,
           "subs_gained": 2
         },
         {
@@ -500,13 +531,13 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 748,
+          "views": 769,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.7,
+          "avg_view_pct": 80.58,
           "subs_gained": 0
         },
         {
@@ -738,7 +769,7 @@
           ],
           "publishedAt": "2026-07-31T02:49:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Q3QOhpdSJuM/mqdefault.jpg",
-          "views": 565,
+          "views": 564,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -1808,46 +1839,6 @@
           "is_unsorted": false,
           "avg_view_pct": 74.18,
           "subs_gained": 1
-        },
-        {
-          "id": "rRSHVJyCl10",
-          "title": "The First Tour de France Winner Was Disqualified \u2014 A Year After He Won",
-          "description": "The very first Tour de France was won in 1903, but the story didn't end there. Maurice Garin's victory unravelled in ways nobody expected \u2014 and changed cycling forever. A wild piece of history hiding behind one of sport's biggest annual events.",
-          "tags": [
-            "1903",
-            "bizarre history",
-            "cycling",
-            "cycling history",
-            "did you know",
-            "disqualified",
-            "education",
-            "facts",
-            "first tour de france",
-            "french history",
-            "history",
-            "history facts",
-            "history shorts",
-            "maurice garin",
-            "shorts",
-            "sports history",
-            "tour de france",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-19T17:53:56Z",
-          "thumbnail": "https://i.ytimg.com/vi/rRSHVJyCl10/mqdefault.jpg",
-          "views": 289,
-          "likes": 5,
-          "comments": 2,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 57.79,
-          "subs_gained": 0
         }
       ]
     }
