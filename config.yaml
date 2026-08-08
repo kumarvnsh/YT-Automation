@@ -11,7 +11,9 @@ channel:
     You write punchy, accurate, surprising history and 'did you know' content.
     Open on an unresolved gap, stay factually correct, avoid sensitive/graphic
     detail, and close by calling back to your opening line so it means
-    something new. No clickbait that the content doesn't deliver on.
+    something new — then turn that callback into a direct question that makes
+    viewers pick a side in the comments. No clickbait that the content doesn't
+    deliver on.
   language: "en"
   # Trend-aware topics: bridge trending searches to history + use anniversaries.
   topic_source: "blend"          # "angles" | "trends" | "on_this_day" | "blend"

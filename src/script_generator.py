@@ -97,12 +97,15 @@ STRUCTURE — every segment carries a "beat" tag, in this exact order:
    Keep them tight — this is the beat that most often runs long.
 
 5. "callback" (exactly one, LAST) — ~20 words. Reuse a distinctive noun or
-   phrase from the hook and change what it means:
+   phrase from the hook, change what it means, THEN end on a direct question
+   that forces the viewer to pick a side and answer in the comments:
      hook "the alphabet you're reading right now"
-     -> callback "every time you write a single letter, you're carrying forward
-        a gift from a civilization history tried its best to forget."
-   A generic uplifting summary is a FAILURE. If the closer would work on any
-   other video in this niche, rewrite it.
+     -> callback "every letter you write carries a gift from a civilization
+        history tried to forget. So should we still call it a dead language?"
+   HARD RULES: the callback MUST reuse a hook noun/phrase, and its LAST sentence
+   MUST be a real opinion/verdict question ending in "?" (not a generic "comment
+   below" tag). A generic uplifting summary is a FAILURE. If the closer would
+   work on any other video in this niche, rewrite it.
 
 BUDGET CHECK — the beats above are sized to land inside the total word limit
 given under Constraints (roughly: hook 18 + setup 22 + pivot 18 + facts 3x15
@@ -118,6 +121,15 @@ _LEGACY_HOOK = """- The FIRST segment is the hook and MUST be 8-15 words. It mus
   the consequence, twist, or stakes, e.g. "She cured leprosy. Then a man stole
   her credit." or "This law could send you to prison for reading it." Bury the
   date/setup (if any) in segment 2, never segment 1.
+"""
+
+# Closing-question rule for shorts that do NOT use the four-beat structure
+# (the beats path carries the question inside the "callback" beat instead).
+# Ends every short on a comment-driving opinion question.
+_CLOSING_QUESTION = """- The FINAL segment MUST end on a direct question that asks the viewer for their
+  opinion or verdict and invites them to answer in the comments (e.g. "Which
+  number would you trust more — and why? Tell me below."). Make it a real
+  question about the content, not a generic "comment below" tag.
 """
 
 
@@ -184,6 +196,8 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     # original position inside Constraints, so their prompts do not drift.
     structure_block = _SHORT_STRUCTURE if beats_on else ""
     hook_rule = "" if beats_on else _LEGACY_HOOK
+    # Beats path carries the closing question inside the callback beat already.
+    closing_rule = _CLOSING_QUESTION if (fmt == "short" and not beats_on) else ""
     segment_schema = (
         '{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}'
         if beats_on
@@ -214,10 +228,14 @@ Constraints:
 - For EACH segment provide 2-4 visual search keywords describing concrete,
   filmable imagery (e.g. "ancient roman ruins", "old library books", "stormy ocean").
   Avoid abstract keywords. These drive stock-footage search.
-{hook_rule}- Be factually accurate. Do NOT invent dates, names, or statistics.
+{hook_rule}{closing_rule}- Be factually accurate. Do NOT invent dates, names, or statistics.
 - Avoid graphic, violent, or sensitive detail (keep it advertiser-friendly).
-- The title must be specific and curiosity-driven, <= 80 characters, and must
-  NOT contain hashtags (#).{series_title_rule}
+- The title MUST be curiosity-driven, not descriptive: open a gap the viewer
+  needs the video to close — do NOT state the payoff or answer in the title.
+  Descriptive (WEAK): "Eight Players Found Not Guilty — Then Banned Forever"
+  Curiosity (STRONG): "The Greatest Baseball Betrayal Ever?"
+  Keep it <= 80 characters, NO hashtags (#), and the video MUST deliver on the
+  gap — no clickbait the content doesn't pay off.{series_title_rule}
 - Provide 8-15 lowercase tags.
 - The description: 2-3 sentences + 3 relevant hashtags on the last line.
 
@@ -380,6 +398,14 @@ def validate_structure(beats: list[str], narrations: list[str]) -> str | None:
         return (
             "callback shares no distinctive word with the hook — it must reuse "
             "a noun or phrase from the opening line and change what it means"
+        )
+
+    # The callback must end on a comment-driving opinion question. Proxy: it
+    # contains a question mark. Loose on purpose, like the shared-word check.
+    if "?" not in callback:
+        return (
+            "callback has no question — it must end on a direct opinion/verdict "
+            "question that invites viewers to answer in the comments"
         )
     return None
 
@@ -558,7 +584,10 @@ Video content (the new title must stay factually consistent with this):
 {context_text[:2000]}
 
 Requirements:
-- ONE new title, specific and curiosity-driven, <= 80 characters.
+- ONE new title, curiosity-driven not descriptive: open a gap the viewer needs
+  the video to close — do NOT state the payoff/answer. E.g. WEAK "Eight Players
+  Found Not Guilty — Then Banned Forever" -> STRONG "The Greatest Baseball
+  Betrayal Ever?". <= 80 characters.
 - NO hashtags (#).
 - Clearly distinct from the old title: different hook, angle, or framing.
 - Do not invent facts not present in the content above.

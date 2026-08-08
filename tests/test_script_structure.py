@@ -31,8 +31,8 @@ FACTS = [
     "mere traders.",
 ]
 CALLBACK = (
-    "Every time you write a single letter you carry forward a gift from a "
-    "civilization history tried to forget."
+    "Every time you write a single letter you carry forward a gift from this "
+    "forgotten civilization. So should we still call it a dead alphabet?"
 )
 
 
@@ -134,8 +134,13 @@ class CallbackLoopTests(unittest.TestCase):
 
     def test_closer_reusing_a_hook_noun_passes(self) -> None:
         beats, narrations = valid_script()
-        narrations[-1] = "That forgotten civilization is still in your hands today."
+        narrations[-1] = "That forgotten civilization is in your hands — but do we owe it anything?"
         self.assertIsNone(validate_structure(beats, narrations))
+
+    def test_callback_without_a_question_is_rejected(self) -> None:
+        beats, narrations = valid_script()
+        narrations[-1] = "That forgotten civilization is still in your hands today."
+        self.assertIn("no question", validate_structure(beats, narrations))
 
     def test_shared_stopword_does_not_count_as_a_loop(self) -> None:
         beats, narrations = valid_script()
