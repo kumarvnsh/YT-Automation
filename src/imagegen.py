@@ -41,6 +41,78 @@ STYLE_PRESETS = {
     # content" box on every upload, and depicts real people/events that were
     # never photographed this way. Not the default, deliberately.
     "photoreal": "a photorealistic cinematic still, shallow depth of field",
+    # Histold house blend: painterly brushwork + propaganda-poster composition
+    # + graphic-novel ink drama. One cohesive look (holds across a video far
+    # better than rotating styles beat-to-beat). Obviously non-photographic.
+    "histold_hybrid": (
+        "a dramatic history illustration blending three styles: the visible "
+        "oil-painting brushwork, canvas texture and rich muted palette of a "
+        "museum painting; the bold heroic diagonal composition and limited "
+        "punchy colour of a vintage propaganda poster; and the heavy inked "
+        "shadows, high contrast and cinematic tension of a graphic novel. "
+        "Painterly texture with strong graphic shapes and deep chiaroscuro, "
+        "one warm accent colour, clearly a hand-made illustration and "
+        "obviously not a photograph"
+    ),
+    # --- History-leaning illustration styles (all obviously non-photographic,
+    # so none carry a synthetic-media disclosure obligation). ---
+    "graphic_novel": (
+        "a dramatic graphic-novel illustration: bold black ink linework, heavy "
+        "shadows, halftone dot shading, cinematic high-contrast comic-book "
+        "panel style, muted spot colour, clearly a hand-inked illustration and "
+        "obviously not a photograph"
+    ),
+    "propaganda_poster": (
+        "a bold mid-century propaganda / WPA travel-poster illustration: flat "
+        "screen-printed colour, strong diagonal composition, limited heroic "
+        "palette, crisp geometric shapes and dramatic light, vintage poster art, "
+        "clearly a designed poster illustration and obviously not a photograph"
+    ),
+    "woodcut": (
+        "a stark black-and-white woodcut / linocut print: bold carved lines, "
+        "high contrast, visible gouge texture, antique printmaking aesthetic, "
+        "clearly a hand-carved print and obviously not a photograph"
+    ),
+    "watercolor": (
+        "a soft watercolour storybook illustration: loose wet-on-wet washes, "
+        "gentle bleeding edges, warm muted palette, visible paper texture, "
+        "documentary picture-book mood, clearly a painting and obviously not a "
+        "photograph"
+    ),
+    "noir": (
+        "a moody noir illustration: dramatic chiaroscuro lighting, deep inky "
+        "shadows and hard rim light, desaturated palette with one accent colour, "
+        "cinematic period atmosphere, clearly a stylised illustration and "
+        "obviously not a photograph"
+    ),
+    # Flat editorial "explainer" look (Vox / kurzgesagt family). Clearly a
+    # graphic illustration → no synthetic-media disclosure obligation.
+    "vox": (
+        "a flat-design editorial vector illustration in the style of a modern "
+        "explainer video: bold simple geometric shapes, a limited punchy colour "
+        "palette of 4-5 flat colours, clean flat fills with minimal shading, "
+        "thick confident outlines, simplified stylised figures and objects, "
+        "infographic aesthetic with generous negative space, crisp and graphic, "
+        "clearly a designed illustration and obviously not a photograph"
+    ),
+    # 2D animated cartoon look. Clearly an illustration → no synthetic-media
+    # disclosure obligation (same footing as `illustrative`).
+    "animated": (
+        "a vibrant 2D animated cartoon still from a modern animated film: "
+        "clean bold outlines, smooth cel shading, bright saturated colours, "
+        "expressive stylised characters, soft painted backgrounds with gentle "
+        "depth, whimsical storybook mood, clearly a hand-drawn animation frame "
+        "and obviously not a photograph"
+    ),
+    # Stop-motion look. Obviously a physical miniature model, so carries NO
+    # synthetic-media disclosure obligation (same footing as `illustrative`).
+    "claymation": (
+        "a handmade claymation still: characters and props sculpted from "
+        "plasticine with visible fingerprints and tool marks, a tactile "
+        "miniature diorama set, soft warm studio lighting, gentle shallow "
+        "depth of field, stop-motion film aesthetic, clearly a physical clay "
+        "model and obviously not a photograph of real people or events"
+    ),
 }
 DEFAULT_STYLE = "illustrative"
 

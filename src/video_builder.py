@@ -85,6 +85,8 @@ def _build_segment_clip(
     dest: Path,
     preset: str = "veryfast",
     grade_filter: str = "",
+    motion: str = "kenburns",
+    variant: int = 0,
 ) -> Path:
     """Produce a silent, normalized clip of exactly `duration` seconds."""
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -102,6 +104,59 @@ def _build_segment_clip(
             "-an", "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
+    elif motion == "stopmotion":
+        # Image -> stop-motion wobble. The look is choppy handmade motion, not
+        # smooth zoom: floor(on/4) holds each pose for 4 frames (≈6 poses/sec),
+        # and the sin/cos offsets jitter the subject like a hand-placed clay
+        # puppet. No extra image cost — all of the "animation" is this filter.
+        frames = max(int(duration * fps), 1)
+        zoom = (
+            "zoompan=z='1.05+0.012*sin(floor(on/8))'"
+            ":x='iw/2-(iw/zoom/2)+7*sin(floor(on/4)*1.7)'"
+            ":y='ih/2-(ih/zoom/2)+7*cos(floor(on/4)*2.3)'"
+            ":d={d}:s={w}x{h}:fps={fps}"
+        ).format(d=frames, w=w, h=h, fps=fps)
+        vf = (
+            f"scale={w*2}:{h*2}:force_original_aspect_ratio=increase,"
+            f"crop={w*2}:{h*2},{zoom},setsar=1"
+        )
+        image_filter = ",".join(part for part in [vf, grade_filter] if part)
+        cmd = [
+            "ffmpeg", "-y", "-loop", "1", "-i", str(asset.path),
+            "-t", f"{duration:.3f}",
+            "-vf", image_filter,
+            "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+            str(dest),
+        ]
+        _run(cmd)
+        return dest
+    elif motion == "pan":
+        # Image -> smooth animated motion: a slow zoom plus a gentle directional
+        # drift (pan). Direction alternates per clip so consecutive beats don't
+        # all glide the same way. Crossfades between beats are added at concat.
+        frames = max(int(duration * fps), 1)
+        dx = 170 * (1 if variant % 2 == 0 else -1)
+        dy = 90 * (1 if variant % 4 < 2 else -1)
+        pan = (
+            "zoompan=z='min(zoom+0.0011,1.16)'"
+            ":x='iw/2-(iw/zoom/2)+{dx}*(on/{d}-0.5)'"
+            ":y='ih/2-(ih/zoom/2)+{dy}*(on/{d}-0.5)'"
+            ":d={d}:s={w}x{h}:fps={fps}"
+        ).format(dx=dx, dy=dy, d=frames, w=w, h=h, fps=fps)
+        vf = (
+            f"scale={w*2}:{h*2}:force_original_aspect_ratio=increase,"
+            f"crop={w*2}:{h*2},{pan},setsar=1"
+        )
+        image_filter = ",".join(part for part in [vf, grade_filter] if part)
+        cmd = [
+            "ffmpeg", "-y", "-loop", "1", "-i", str(asset.path),
+            "-t", f"{duration:.3f}",
+            "-vf", image_filter,
+            "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+            str(dest),
+        ]
+        _run(cmd)
+        return dest
     else:
         # Image -> Ken Burns slow zoom.
         frames = max(int(duration * fps), 1)
@@ -132,6 +187,53 @@ def _concat(clips: list[Path], dest: Path) -> Path:
     _run([
         "ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(listfile),
         "-c", "copy", str(dest),
+    ])
+    return dest
+
+
+def _xfade_offsets(durations: list[float], fade: float) -> list[float]:
+    """Start time of each crossfade when clips are chained left-to-right.
+
+    Each xfade begins `fade`s before the running accumulator ends, and every
+    fade consumes `fade`s of overlap, so offsets accumulate as
+    sum(d[0..j-1]) - j*fade. Pure math — unit-tested without ffmpeg.
+    """
+    offsets, acc = [], 0.0
+    for j in range(1, len(durations)):
+        acc += durations[j - 1] - fade
+        offsets.append(acc)
+    return offsets
+
+
+def _concat_xfade(
+    clips: list[Path], durations: list[float], dest: Path,
+    preset: str, fps: int, fade: float = 0.4, transition: str = "fade",
+) -> Path:
+    """Concat clips with a crossfade between each. Clips overlap by `fade`s, so
+    the finished video is (n-1)*fade shorter than a hard-cut concat — the caller
+    pads segment durations to compensate. Single clip → plain copy."""
+    if len(clips) < 2:
+        return _concat(clips, dest)
+    inputs: list[str] = []
+    for c in clips:
+        inputs += ["-i", str(c.resolve())]
+    # xfade needs a single continuous timebase; chain each clip onto the accumulator.
+    offsets = _xfade_offsets(durations, fade)
+    steps = []
+    prev = "[0:v]"
+    for j in range(1, len(clips)):
+        label = f"[vx{j}]" if j < len(clips) - 1 else "[vout]"
+        steps.append(
+            f"{prev}[{j}:v]xfade=transition={transition}:duration={fade:.3f}"
+            f":offset={offsets[j - 1]:.3f}{label}"
+        )
+        prev = label
+    _run([
+        "ffmpeg", "-y", *inputs,
+        "-filter_complex", ";".join(steps),
+        "-map", "[vout]",
+        "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+        str(dest),
     ])
     return dest
 
@@ -173,11 +275,25 @@ def build_broll_silent(
     """Build a silent background video by concatenating per-segment b-roll clips."""
     w, h, fps = _dims(cfg, fmt)
     preset, _ = _encode_settings(cfg)
+    # Motion: explicit video.motion wins; else stop-motion mode implies wobble,
+    # everything else the default Ken Burns zoom. ("pan" = zoom + gentle drift.)
+    motion = cfg.get("video.motion") or (
+        "stopmotion" if cfg.get("video.mode") == "stopmotion" else "kenburns"
+    )
+    transition = str(cfg.get("video.transition", "") or "").strip()
+    fade = float(cfg.get("video.transition_seconds", 0.4))
     grade_filter = ""
     if cfg.get("video.color_grade.enabled", True):
         grade_filter = str(cfg.get("video.color_grade.filter", "") or "").strip()
-    durations = _segment_durations(voiceover_duration + 0.5, len(assets), word_times)
+
+    n_clips = sum(1 for a in assets if a)
+    # Crossfades overlap clips, shortening the result by (n-1)*fade. Pad the
+    # budget so the finished video still covers the voiceover.
+    pad = (n_clips - 1) * fade if (transition and n_clips > 1) else 0.0
+    durations = _segment_durations(voiceover_duration + 0.5 + pad, len(assets), word_times)
     clips: list[Path] = []
+    clip_durs: list[float] = []
+    variant = 0
     for i, (segment_assets, dur) in enumerate(zip(assets, durations)):
         usable_assets = segment_assets or []
         if not usable_assets:
@@ -193,8 +309,15 @@ def build_broll_silent(
                 work_dir / "clips" / f"clip_{i:02d}_{j:02d}.mp4",
                 preset,
                 grade_filter,
+                motion,
+                variant,
             )
             clips.append(clip)
+            clip_durs.append(sub_duration)
+            variant += 1
+    if transition and len(clips) > 1:
+        return _concat_xfade(clips, clip_durs, work_dir / out_name, preset, fps,
+                             fade=fade, transition=transition)
     return _concat(clips, work_dir / out_name)
 
 

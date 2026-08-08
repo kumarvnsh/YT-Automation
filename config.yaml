@@ -68,21 +68,21 @@ assets:
     # a fabricated image as evidence of a real person or event.
     # "photoreal" gives up both protections: if you switch to it you must tick
     # "altered or synthetic content" on every upload.
-    style: "illustrative"
+    style: "histold_hybrid"    # painterly + propaganda-poster + graphic-novel blend
     # Which beats get a generated still; every other beat keeps moving stock
     # footage. A short built entirely from stills reads as a slideshow, so
     # images are spent where specificity pays — the pivot and the fact stack,
     # which make concrete claims — while hook/setup/callback keep motion.
     # Set to [] to generate an image for every segment instead.
-    beats: ["pivot", "fact"]
+    beats: []                  # every beat — fully generated look, no stock
     # Hard cap on generated images per video. When fewer than the eligible
     # beats, the survivors are spread evenly across them (the pivot is always
     # kept) so the stills don't bunch up in one stretch of the short.
     # 0 = no cap. At 2 this is the pivot and the final, strongest fact.
-    max_images: 2
+    max_images: 8              # budget cap: ~8 low-quality stills ≈ $0.08-0.16/short
     model: "gpt-image-1"       # uses the existing OPENAI_API_KEY
     size: "1024x1536"          # portrait, matches the 1080x1920 short
-    quality: "medium"          # "low" | "medium" | "high" — cost scales with this
+    quality: "low"             # "low" | "medium" | "high" — cost scales with this
     # Per-image hard timeout. A hung request falls back to stock footage
     # instead of stalling a time-budgeted run.
     timeout_seconds: 90
@@ -105,6 +105,10 @@ video:
   # Visual mode for SHORTS: "mascot" (talking owl on branded bg) or "broll" (stock footage).
   # Long-form always uses b-roll (mascot full-frame render is too heavy for 7-min videos).
   mode: "broll"               # topic-matched stock footage + captions, no mascot
+  # Image motion + transitions (applies to the broll/AI-image render path).
+  motion: "pan"               # "pan" (zoom + drift) | "kenburns" (zoom) | "stopmotion" (wobble)
+  transition: "fade"          # crossfade between beats; "" = hard cuts
+  transition_seconds: 0.4
   color_grade:
     enabled: true
     filter: "eq=contrast=1.05:saturation=0.9:gamma=0.95"

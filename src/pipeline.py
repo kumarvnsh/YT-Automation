@@ -148,7 +148,7 @@ def _effective_mode(cfg: Config, fmt: str) -> str:
     if fmt != "short":
         return "broll"
     mode = cfg.get("video.mode", "broll")
-    return mode if mode in ("broll", "mascot", "captions_only", "motion_graphics") else "broll"
+    return mode if mode in ("broll", "mascot", "captions_only", "motion_graphics", "stopmotion") else "broll"
 
 
 def _step_script(cfg: Config, stage: Path, st: dict) -> None:
