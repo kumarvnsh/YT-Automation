@@ -646,5 +646,14 @@
     "slot": "morning",
     "date": "2026-08-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260808_160154_short",
+    "title": "The Tallest Structure Ever Built Stood for 16 Years \u2014 Then Vanished in Seconds",
+    "fingerprint": "16_built_ever_for_seconds_stood_structure_tallest_then_vanished_years",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-08",
+    "status": "reserved"
   }
 ]
