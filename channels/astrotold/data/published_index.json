@@ -586,5 +586,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "xrJBc6xbxtU",
+    "run_id": "31268362753",
+    "stage_dir_name": "20260808_170116_short",
+    "title": "Born on 2, 11, 20, or 29? Numerology Says You're Quietly Powerful",
+    "published_at": "2026-08-08T17:02:07.972432+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
