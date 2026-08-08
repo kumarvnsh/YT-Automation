@@ -16,9 +16,9 @@ class _Cfg:
 
 class VisualStylesTest(unittest.TestCase):
     def test_new_style_presets_exist(self):
-        for name in ("histold_hybrid", "animated", "vox", "claymation",
-                     "graphic_novel", "propaganda_poster", "woodcut",
-                     "watercolor", "noir"):
+        for name in ("histold_hybrid", "whiteboard_vox", "animated", "vox",
+                     "claymation", "graphic_novel", "propaganda_poster",
+                     "woodcut", "watercolor", "noir"):
             self.assertIn(name, imagegen.STYLE_PRESETS, name)
 
     def test_build_prompt_uses_selected_style(self):

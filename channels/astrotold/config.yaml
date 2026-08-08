@@ -70,9 +70,26 @@ assets:
   prefer_video: true
   orientation_short: "portrait"
   orientation_long: "landscape"
+  # Whiteboard + Vox explainer look: every beat is a generated marker/flat-vector
+  # still (shorts only). Any failure falls back to the Pexels stock chain above,
+  # so this can never break a run. All styles here are obviously non-photographic,
+  # so no YouTube synthetic-media disclosure is required.
+  ai_images:
+    enabled: true
+    style: "whiteboard_vox"    # marker line-art on white + Vox flat accents
+    beats: []                  # every beat — fully drawn look, no stock
+    max_images: 8              # budget cap: ~8 low-quality stills ≈ $0.08-0.16/short
+    model: "gpt-image-1"       # uses the existing OPENAI_API_KEY
+    size: "1024x1536"          # portrait, matches the 1080x1920 short
+    quality: "low"             # "low" | "medium" | "high" — cost scales with this
+    timeout_seconds: 90
 
 video:
   mode: "broll"
+  # Whiteboard draw-on feel: wipe transitions reveal each beat like it's drawn.
+  motion: "pan"               # "pan" (zoom + drift) | "kenburns" | "stopmotion"
+  transition: "wiperight"     # wipe reveal; "" = hard cuts, "fade" = crossfade
+  transition_seconds: 0.4
   short:
     width: 1080
     height: 1920

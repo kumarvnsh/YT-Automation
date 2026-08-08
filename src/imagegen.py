@@ -41,6 +41,18 @@ STYLE_PRESETS = {
     # content" box on every upload, and depicts real people/events that were
     # never photographed this way. Not the default, deliberately.
     "photoreal": "a photorealistic cinematic still, shallow depth of field",
+    # Astrotold house blend: whiteboard marker line-art + Vox flat-explainer.
+    # Clean sketch on white with a couple of bold flat accent colours. Pair with
+    # a wipe transition to fake the "hand draws it on" reveal. Obviously
+    # non-photographic → no synthetic-media disclosure obligation.
+    "whiteboard_vox": (
+        "a whiteboard-animation explainer illustration: clean hand-drawn black "
+        "marker line art on a plain white background, simple confident sketch "
+        "strokes, combined with a modern flat-vector explainer aesthetic — one "
+        "or two bold flat accent colours, simplified iconographic shapes, "
+        "infographic clarity with generous white space, clearly a hand-drawn "
+        "explainer illustration and obviously not a photograph"
+    ),
     # Histold house blend: painterly brushwork + propaganda-poster composition
     # + graphic-novel ink drama. One cohesive look (holds across a video far
     # better than rotating styles beat-to-beat). Obviously non-photographic.
