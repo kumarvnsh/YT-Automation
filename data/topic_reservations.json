@@ -637,5 +637,14 @@
     "slot": "evening",
     "date": "2026-08-07",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260808_040120_short",
+    "title": "One Phone Call Nearly Stopped Munich in 1938 | History's Almost Moments",
+    "fingerprint": "1938_almost_call_history_moments_munich_nearly_one_phone_s_stopped",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-08",
+    "status": "reserved"
   }
 ]

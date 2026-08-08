@@ -1548,5 +1548,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "7d_sZ-5X5uk",
+    "run_id": "31238478547",
+    "stage_dir_name": "20260808_040120_short",
+    "title": "One Phone Call Nearly Stopped Munich in 1938 | History's Almost Moments",
+    "published_at": "2026-08-08T04:05:29.058542+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
