@@ -448,5 +448,14 @@
     "slot": "morning",
     "date": "2026-08-09",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260809_170126_short",
+    "title": "Born on 6, 15, or 24? Numerology Is Hiding Something From You",
+    "fingerprint": "15_24_6_born_from_hiding_is_numerology_on_or_something_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-09",
+    "status": "reserved"
   }
 ]

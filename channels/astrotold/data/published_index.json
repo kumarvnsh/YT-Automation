@@ -642,5 +642,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "B9YxgjHa2kA",
+    "run_id": "31325279037",
+    "stage_dir_name": "20260809_170126_short",
+    "title": "Born on 6, 15, or 24? Numerology Is Hiding Something From You",
+    "published_at": "2026-08-09T17:05:04.706475+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
