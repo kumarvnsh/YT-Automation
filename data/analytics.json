@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-09T01:43:08.289700+00:00",
+      "updated": "2026-08-09T06:55:58.850106+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "qXo-JyzZsCQ",
+          "title": "The Only Country That Was Forced Into Existence Against Its Will",
+          "description": "On August 9, 1965, Singapore didn't choose independence \u2014 it was handed independence and told to figure it out. What happened next shocked every political expert who said it couldn't survive. This is the strangest birth of a nation in modern history. #history #singapore #didyouknow",
+          "tags": [
+            "1965",
+            "cold war history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "independence",
+            "malaysia",
+            "nation building",
+            "shorts",
+            "singapore",
+            "southeast asia",
+            "surprising history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-09T04:05:34Z",
+          "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
+          "views": 482,
+          "likes": 14,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Z-kbw3KQ3Pc",
           "title": "The Tallest Structure Ever Built Stood for 16 Years \u2014 Then Vanished in Seconds",
           "description": "On August 8, 1991, the Warsaw Radio Mast collapsed \u2014 and with it went the record for the tallest structure humanity had ever built. It was taller than any skyscraper, held up by invisible wires, and nobody saw it coming. A fascinating slice of Cold War engineering history you won't forget. #history #didyouknow #engineering",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 856,
+          "views": 893,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -126,7 +157,7 @@
           ],
           "publishedAt": "2026-08-08T01:39:59Z",
           "thumbnail": "https://i.ytimg.com/vi/e_bcugW8TFk/mqdefault.jpg",
-          "views": 416,
+          "views": 425,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -157,7 +188,7 @@
           ],
           "publishedAt": "2026-08-07T16:05:40Z",
           "thumbnail": "https://i.ytimg.com/vi/q550KzfcooM/mqdefault.jpg",
-          "views": 592,
+          "views": 616,
           "likes": 31,
           "comments": 0,
           "playlist_ids": [],
@@ -190,7 +221,7 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 725,
+          "views": 727,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -259,7 +290,7 @@
           ],
           "publishedAt": "2026-08-06T04:03:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
-          "views": 718,
+          "views": 719,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -535,7 +566,7 @@
           ],
           "publishedAt": "2026-08-03T04:04:17Z",
           "thumbnail": "https://i.ytimg.com/vi/MNp6ZE9ALgg/mqdefault.jpg",
-          "views": 769,
+          "views": 749,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -1763,7 +1794,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 54.28000000000001,
+          "avg_view_pct": 53.63,
           "subs_gained": 1
         },
         {
@@ -1803,46 +1834,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 71.31,
-          "subs_gained": 3
-        },
-        {
-          "id": "37MFhW_8TO0",
-          "title": "The Haaland Family Has Been Chasing One Record for 25 Years",
-          "description": "Erling Haaland isn't just breaking records \u2014 he's finishing a story his father started a quarter-century ago. The Haaland family's football journey spans two generations, two clubs, and one number that keeps appearing. Watch to find out what connects them across 25 years of football history. #Haaland #FootballHistory #DidYouKnow",
-          "tags": [
-            "alfie haaland",
-            "did you know",
-            "education",
-            "erling haaland",
-            "facts",
-            "football history",
-            "generational athletes",
-            "haaland",
-            "history",
-            "history shorts",
-            "manchester city",
-            "norway football",
-            "premier league records",
-            "shorts",
-            "sports history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-19T19:41:29Z",
-          "thumbnail": "https://i.ytimg.com/vi/37MFhW_8TO0/mqdefault.jpg",
-          "views": 868,
-          "likes": 10,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 74.18,
-          "subs_gained": 1
+          "avg_view_pct": 72.06,
+          "subs_gained": 2
         }
       ]
     }
