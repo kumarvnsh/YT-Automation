@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-09T12:49:31.309778+00:00",
+      "updated": "2026-08-09T18:39:56.353246+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "FfUT19yYZSA",
+          "title": "One Contract Nearly Kept the Lights Off Forever | History's Almost Moments",
+          "description": "In 1893, the decision of how to power Niagara Falls came down to a single contract \u2014 and the wrong choice nearly won. This is the story of the moment that almost froze the electrical future in place. One small shift and the modern world runs on a completely different system.",
+          "tags": [
+            "ac power",
+            "almost moments",
+            "did you know",
+            "edison",
+            "education",
+            "electricity",
+            "facts",
+            "historical near miss",
+            "history",
+            "history shorts",
+            "invention history",
+            "niagara falls",
+            "science history",
+            "shorts",
+            "tesla",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-09T16:06:13Z",
+          "thumbnail": "https://i.ytimg.com/vi/FfUT19yYZSA/mqdefault.jpg",
+          "views": 9,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "qXo-JyzZsCQ",
           "title": "The Only Country That Was Forced Into Existence Against Its Will",
           "description": "On August 9, 1965, Singapore didn't choose independence \u2014 it was handed independence and told to figure it out. What happened next shocked every political expert who said it couldn't survive. This is the strangest birth of a nation in modern history. #history #singapore #didyouknow",
@@ -58,7 +90,7 @@
           ],
           "publishedAt": "2026-08-09T04:05:34Z",
           "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 598,
+          "views": 613,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -89,8 +121,8 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 953,
-          "likes": 16,
+          "views": 1067,
+          "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -188,7 +220,7 @@
           ],
           "publishedAt": "2026-08-07T16:05:40Z",
           "thumbnail": "https://i.ytimg.com/vi/q550KzfcooM/mqdefault.jpg",
-          "views": 637,
+          "views": 659,
           "likes": 32,
           "comments": 0,
           "playlist_ids": [],
@@ -221,7 +253,7 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 729,
+          "views": 731,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -296,7 +328,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.19,
+          "avg_view_pct": 60.3,
           "subs_gained": 1
         },
         {
@@ -1796,46 +1828,6 @@
           "is_unsorted": false,
           "avg_view_pct": 53.63,
           "subs_gained": 1
-        },
-        {
-          "id": "z0MJDWH2vsI",
-          "title": "The Broken Radio That Almost Won Japan the Pacific War #history #facts",
-          "description": "In June 1942, the entire Battle of Midway almost turned on a single garbled transmission. One small change in communication could have rewritten the Pacific War entirely. Would it have mattered in the end \u2014 or was American victory inevitable? Watch and decide.",
-          "tags": [
-            "1942",
-            "almost moments",
-            "battle of midway",
-            "close call",
-            "counterfactual history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "japan",
-            "naval history",
-            "pacific war",
-            "shorts",
-            "trending",
-            "us navy",
-            "viral",
-            "world war 2"
-          ],
-          "publishedAt": "2026-07-20T04:04:36Z",
-          "thumbnail": "https://i.ytimg.com/vi/z0MJDWH2vsI/mqdefault.jpg",
-          "views": 644,
-          "likes": 30,
-          "comments": 2,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 72.06,
-          "subs_gained": 2
         }
       ]
     }
