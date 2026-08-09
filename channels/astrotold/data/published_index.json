@@ -628,5 +628,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "drFPtHFeU3Y",
+    "run_id": "31295768863",
+    "stage_dir_name": "20260809_050126_short",
+    "title": "You've Been Adding Your Birthday Wrong This Whole Time?",
+    "published_at": "2026-08-09T05:04:15.355915+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
