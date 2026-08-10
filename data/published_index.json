@@ -1604,5 +1604,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "bPZUZUf7YvM",
+    "run_id": "31354198322",
+    "stage_dir_name": "20260810_040133_short",
+    "title": "The Battle That Ended a European Empire \u2014 Nobody Talks About It",
+    "published_at": "2026-08-10T04:06:24.676358+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
