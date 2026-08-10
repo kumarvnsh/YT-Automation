@@ -457,5 +457,14 @@
     "slot": "evening",
     "date": "2026-08-09",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260810_050151_short",
+    "title": "What Happens When Both Your Initials Share a Number?",
+    "fingerprint": "both_happens_initials_number_share_what_when_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-10",
+    "status": "reserved"
   }
 ]
