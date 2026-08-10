@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-10T01:46:29.529536+00:00",
+      "updated": "2026-08-10T07:40:49.420661+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,37 @@
         ]
       },
       "videos": [
+        {
+          "id": "bPZUZUf7YvM",
+          "title": "The Battle That Ended a European Empire \u2014 Nobody Talks About It",
+          "description": "On August 10, 1741, a small Indian kingdom defeated the Dutch East India Company so decisively it ended Dutch colonial ambitions in Asia forever. The Battle of Colachel is one of history's most consequential forgotten victories. Drop your take below \u2014 why did this get left out of the history books? #history #didyouknow #shorts",
+          "tags": [
+            "asian history",
+            "battle of colachel",
+            "colonial history",
+            "did you know",
+            "dutch east india company",
+            "education",
+            "facts",
+            "forgotten history",
+            "history",
+            "history shorts",
+            "indian history",
+            "marthanda varma",
+            "shorts",
+            "travancore history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-10T04:05:58Z",
+          "thumbnail": "https://i.ytimg.com/vi/bPZUZUf7YvM/mqdefault.jpg",
+          "views": 1,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "FfUT19yYZSA",
           "title": "One Contract Nearly Kept the Lights Off Forever | History's Almost Moments",
@@ -90,7 +121,7 @@
           ],
           "publishedAt": "2026-08-09T04:05:34Z",
           "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 614,
+          "views": 618,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -121,7 +152,7 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1143,
+          "views": 1193,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -155,7 +186,7 @@
           ],
           "publishedAt": "2026-08-08T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/7d_sZ-5X5uk/mqdefault.jpg",
-          "views": 627,
+          "views": 629,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -191,7 +222,7 @@
           ],
           "publishedAt": "2026-08-08T01:39:59Z",
           "thumbnail": "https://i.ytimg.com/vi/e_bcugW8TFk/mqdefault.jpg",
-          "views": 447,
+          "views": 451,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -224,7 +255,7 @@
           ],
           "publishedAt": "2026-08-07T16:05:40Z",
           "thumbnail": "https://i.ytimg.com/vi/q550KzfcooM/mqdefault.jpg",
-          "views": 683,
+          "views": 690,
           "likes": 32,
           "comments": 0,
           "playlist_ids": [],
@@ -259,7 +290,7 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 736,
+          "views": 740,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -334,7 +365,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.42000000000001,
+          "avg_view_pct": 60.3,
           "subs_gained": 1
         },
         {
@@ -361,7 +392,7 @@
           ],
           "publishedAt": "2026-08-05T16:05:11Z",
           "thumbnail": "https://i.ytimg.com/vi/zYe3LOseaFU/mqdefault.jpg",
-          "views": 600,
+          "views": 598,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -610,7 +641,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.75,
+          "avg_view_pct": 80.88,
           "subs_gained": 0
         },
         {
@@ -681,7 +712,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.550000000000004,
+          "avg_view_pct": 57.440000000000005,
           "subs_gained": 1
         },
         {
@@ -746,7 +777,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 113.71,
+          "avg_view_pct": 114.6,
           "subs_gained": 1
         },
         {
@@ -814,7 +845,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.56,
+          "avg_view_pct": 59.709999999999994,
           "subs_gained": 0
         },
         {
@@ -848,7 +879,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.34000000000001,
+          "avg_view_pct": 63.27,
           "subs_gained": 1
         },
         {
@@ -881,7 +912,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.15999999999999,
+          "avg_view_pct": 60.650000000000006,
           "subs_gained": 1
         },
         {
@@ -917,7 +948,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.62,
+          "avg_view_pct": 60.51,
           "subs_gained": 0
         },
         {
@@ -1796,44 +1827,6 @@
           "is_unsorted": false,
           "avg_view_pct": 79.03,
           "subs_gained": 0
-        },
-        {
-          "id": "N3kjaJb7SZk",
-          "title": "How Spain Finally Broke Their World Cup Curse \ud83c\uddea\ud83c\uddf8 #football #worldcup #spain",
-          "description": "For 44 years, Spain had the talent to rule world football but never the trophy to prove it. This is the untold story of how the world's biggest underachiever finally broke its curse and won the World Cup.\n\nDiscover the tactical failures, heartbreaks, and turning points that defined Spanish football history \u2014 and the golden generation that changed everything. A deep dive into football history, the World Cup, and one of the sport's strangest unsolved mysteries.\n\n#football #fifaworldcup #footballhistory #spainfootball #worldcuphistory",
-          "tags": [
-            "did you know",
-            "education",
-            "facts",
-            "fifa world cup",
-            "football history",
-            "history",
-            "history shorts",
-            "la roja",
-            "shorts",
-            "spain 2010",
-            "spain football",
-            "sports history",
-            "tiki taka",
-            "trending",
-            "viral",
-            "world cup facts",
-            "world cup history"
-          ],
-          "publishedAt": "2026-07-20T04:23:26Z",
-          "thumbnail": "https://i.ytimg.com/vi/N3kjaJb7SZk/mqdefault.jpg",
-          "views": 775,
-          "likes": 18,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 53.63,
-          "subs_gained": 1
         }
       ]
     }
