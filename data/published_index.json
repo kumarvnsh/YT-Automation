@@ -1647,5 +1647,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "sZbWq3lZ-eI",
+    "run_id": "31510170646",
+    "stage_dir_name": "20260811_160204_short",
+    "title": "The Prison Nobody Was Supposed to Know Existed",
+    "published_at": "2026-08-11T16:07:53.182064+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
