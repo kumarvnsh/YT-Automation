@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-11T13:04:32.670793+00:00",
+      "updated": "2026-08-11T19:01:43.658815+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,68 @@
       },
       "videos": [
         {
+          "id": "sZbWq3lZ-eI",
+          "title": "The Prison Nobody Was Supposed to Know Existed",
+          "description": "On August 11, 1934, the first civilian prisoners arrived at Alcatraz \u2014 and the government went to extraordinary lengths to keep the whole operation quiet. The island that became America's most famous prison was designed, above all, to be forgotten. Did the secrecy make it more powerful, or just more mythologized?",
+          "tags": [
+            "1934",
+            "alcatraz",
+            "alcatraz island",
+            "american history",
+            "crime history",
+            "did you know",
+            "education",
+            "facts",
+            "federal prison",
+            "history",
+            "history shorts",
+            "prison history",
+            "san francisco bay",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-11T16:06:58Z",
+          "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
+          "views": 40,
+          "likes": 0,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "1qwaKKY9MkY",
+          "title": "Why Did This 1741 Battle Terrify Every European Empire?",
+          "description": "On August 10, 1741, a small Indian kingdom defeated the Dutch East India Company so decisively it ended Dutch colonial ambitions in Asia forever. The Battle of Colachel is one of history's most consequential forgotten victories. Drop your take below \u2014 why did this get left out of the history books? #history #didyouknow #shorts",
+          "tags": [
+            "asian history",
+            "battle of colachel",
+            "colonial history",
+            "did you know",
+            "dutch east india company",
+            "education",
+            "facts",
+            "forgotten history",
+            "history",
+            "history shorts",
+            "indian history",
+            "marthanda varma",
+            "shorts",
+            "travancore history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-11T13:06:48Z",
+          "thumbnail": "https://i.ytimg.com/vi/1qwaKKY9MkY/mqdefault.jpg",
+          "views": 8,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "g6VRyIyElxs",
           "title": "One Soldier Almost Kept Fighting for 30 Years \u2014 Nobody Told Him | History's Almost Moments",
           "description": "In 1945, World War Two ended \u2014 but one Japanese soldier in the Philippine jungle never received the order to stop. A single undelivered message kept a war alive for nearly three decades. This is the story of how close history came to avoiding Hiroo Onoda's impossible 29-year mission.",
@@ -61,7 +123,7 @@
           ],
           "publishedAt": "2026-08-11T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 530,
+          "views": 537,
           "likes": 26,
           "comments": 0,
           "playlist_ids": [],
@@ -92,7 +154,7 @@
           ],
           "publishedAt": "2026-08-10T16:07:48Z",
           "thumbnail": "https://i.ytimg.com/vi/N0KjMDnve38/mqdefault.jpg",
-          "views": 26,
+          "views": 30,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -124,12 +186,14 @@
           ],
           "publishedAt": "2026-08-10T04:05:58Z",
           "thumbnail": "https://i.ytimg.com/vi/bPZUZUf7YvM/mqdefault.jpg",
-          "views": 12,
+          "views": 13,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "FfUT19yYZSA",
@@ -156,12 +220,14 @@
           ],
           "publishedAt": "2026-08-09T16:06:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FfUT19yYZSA/mqdefault.jpg",
-          "views": 332,
+          "views": 341,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 45.72,
+          "subs_gained": 0
         },
         {
           "id": "qXo-JyzZsCQ",
@@ -193,7 +259,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.47,
+          "avg_view_pct": 71.69,
           "subs_gained": 0
         },
         {
@@ -220,13 +286,13 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1304,
-          "likes": 16,
+          "views": 1309,
+          "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.39,
+          "avg_view_pct": 72.65,
           "subs_gained": 1
         },
         {
@@ -262,7 +328,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 83.18,
+          "avg_view_pct": 82.95,
           "subs_gained": 0
         },
         {
@@ -298,7 +364,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.52,
+          "avg_view_pct": 48.81,
           "subs_gained": 0
         },
         {
@@ -325,13 +391,13 @@
           ],
           "publishedAt": "2026-08-07T16:05:40Z",
           "thumbnail": "https://i.ytimg.com/vi/q550KzfcooM/mqdefault.jpg",
-          "views": 725,
+          "views": 737,
           "likes": 32,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.87,
+          "avg_view_pct": 61.03000000000001,
           "subs_gained": 3
         },
         {
@@ -360,13 +426,13 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 766,
+          "views": 772,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.63000000000001,
+          "avg_view_pct": 61.58,
           "subs_gained": 1
         },
         {
@@ -435,7 +501,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.45,
+          "avg_view_pct": 60.31999999999999,
           "subs_gained": 1
         },
         {
@@ -604,7 +670,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 74.42,
+          "avg_view_pct": 74.38,
           "subs_gained": 1
         },
         {
@@ -949,7 +1015,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.27,
+          "avg_view_pct": 63.21,
           "subs_gained": 1
         },
         {
@@ -1737,87 +1803,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 62.36999999999999,
-          "subs_gained": 0
-        },
-        {
-          "id": "Q-jrqEeD9jE",
-          "title": "How Welsh Longbowmen Turned the Tide of War #medievaltech #history",
-          "description": "William Wallace is famous for defying the English crown, but at the Battle of Falkirk in 1298, one medieval technology ended Scotland's winning streak in under an hour. The story of how a single tactical shift rewrote the rules of medieval warfare. Watch to find out what Wallace never had an answer for.",
-          "tags": [
-            "1298",
-            "battle of falkirk",
-            "did you know",
-            "education",
-            "edward i",
-            "english longbow",
-            "facts",
-            "forgotten history",
-            "history",
-            "history shorts",
-            "longbow history",
-            "medieval battle",
-            "medieval warfare",
-            "scotland",
-            "scottish history",
-            "shorts",
-            "trending",
-            "viral",
-            "wars of scottish independence",
-            "william wallace"
-          ],
-          "publishedAt": "2026-07-22T04:05:13Z",
-          "thumbnail": "https://i.ytimg.com/vi/Q-jrqEeD9jE/mqdefault.jpg",
-          "views": 757,
-          "likes": 25,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 75.62,
-          "subs_gained": 1
-        },
-        {
-          "id": "VtwBol7u2jE",
-          "title": "Everyone Expected a One-Day War \u2014 Then Bull Run Changed Everything",
-          "description": "On July 21, 1861, the first major battle of the American Civil War ended in a shock that nobody in Washington saw coming. What spectators brought picnic baskets to watch became a turning point that redefined the entire conflict. The war nobody thought would last a week dragged on for four brutal years.",
-          "tags": [
-            "1861",
-            "american history",
-            "battle of bull run",
-            "bull run",
-            "civil war",
-            "confederacy",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "july 21",
-            "military history",
-            "short history",
-            "shorts",
-            "trending",
-            "union",
-            "viral"
-          ],
-          "publishedAt": "2026-07-21T16:05:19Z",
-          "thumbnail": "https://i.ytimg.com/vi/VtwBol7u2jE/mqdefault.jpg",
-          "views": 798,
-          "likes": 21,
-          "comments": 1,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 84.09,
           "subs_gained": 0
         }
       ]
