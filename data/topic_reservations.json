@@ -718,5 +718,14 @@
     "slot": "morning",
     "date": "2026-08-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260812_160230_short",
+    "title": "One Storm Nearly Cancelled the Invasion | History's Almost Moments",
+    "fingerprint": "almost_cancelled_history_invasion_moments_nearly_one_s_storm",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-12",
+    "status": "reserved"
   }
 ]

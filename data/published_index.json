@@ -1676,5 +1676,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "rfDEVU-Yy4Y",
+    "run_id": "31615445470",
+    "stage_dir_name": "20260812_160230_short",
+    "title": "One Storm Nearly Cancelled the Invasion | History's Almost Moments",
+    "published_at": "2026-08-12T16:08:47.976733+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
