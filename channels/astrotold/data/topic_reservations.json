@@ -493,5 +493,14 @@
     "slot": "morning",
     "date": "2026-08-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260812_170127_short",
+    "title": "Born on 9, 18, or 27? Numerology Is Sitting With a Secret About You",
+    "fingerprint": "18_27_9_about_born_is_numerology_on_or_secret_sitting_with_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-12",
+    "status": "reserved"
   }
 ]
