@@ -1662,5 +1662,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Pq_ui3DHi4U",
+    "run_id": "31561869611",
+    "stage_dir_name": "20260812_040133_short",
+    "title": "Baseball Cancelled Its Own Championship \u2014 And Nobody Could Stop It",
+    "published_at": "2026-08-12T04:06:38.590039+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
