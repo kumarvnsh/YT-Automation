@@ -698,5 +698,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "eCY2Fgz_CIU",
+    "run_id": "31565118536",
+    "stage_dir_name": "20260812_050124_short",
+    "title": "Born on 5, 14, or 23? Numerology Is Hiding a Twist About You",
+    "published_at": "2026-08-12T05:04:27.083353+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
