@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-12T13:08:01.041822+00:00",
+      "updated": "2026-08-12T19:01:28.120088+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "rfDEVU-Yy4Y",
+          "title": "One Storm Nearly Cancelled the Invasion | History's Almost Moments",
+          "description": "On June 5, 1944, the largest amphibious invasion in history was hours from being called off \u2014 and almost nobody knew how close it came. A single meteorologist's forecast was the only thing standing between D-Day and a delay that historians believe could have changed the war. Find out what Eisenhower actually said in the room that night. #DDay #WWII #HistorysAlmostMoments",
+          "tags": [
+            "close call",
+            "dday",
+            "did you know",
+            "education",
+            "eisenhower",
+            "facts",
+            "history",
+            "history shorts",
+            "military history",
+            "normandy",
+            "operation overlord",
+            "shorts",
+            "trending",
+            "viral",
+            "weather history",
+            "world war 2"
+          ],
+          "publishedAt": "2026-08-12T16:07:20Z",
+          "thumbnail": "https://i.ytimg.com/vi/rfDEVU-Yy4Y/mqdefault.jpg",
+          "views": 39,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Pq_ui3DHi4U",
           "title": "Baseball Cancelled Its Own Championship \u2014 And Nobody Could Stop It",
           "description": "In 1994, Major League Baseball did something no war, no depression, and no pandemic had managed to do in 90 years. The players walked out, and the World Series simply didn't happen. The story of how the richest game in America shut itself down is stranger than any scorecard.",
@@ -58,8 +89,8 @@
           ],
           "publishedAt": "2026-08-12T04:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 270,
-          "likes": 6,
+          "views": 364,
+          "likes": 7,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
@@ -89,7 +120,7 @@
           ],
           "publishedAt": "2026-08-12T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/es480dZ-Sv8/mqdefault.jpg",
-          "views": 407,
+          "views": 408,
           "likes": 5,
           "comments": 1,
           "playlist_ids": [],
@@ -120,8 +151,8 @@
           ],
           "publishedAt": "2026-08-11T16:06:58Z",
           "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
-          "views": 181,
-          "likes": 2,
+          "views": 213,
+          "likes": 3,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -151,7 +182,7 @@
           ],
           "publishedAt": "2026-08-11T13:06:48Z",
           "thumbnail": "https://i.ytimg.com/vi/1qwaKKY9MkY/mqdefault.jpg",
-          "views": 11,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -185,12 +216,14 @@
           ],
           "publishedAt": "2026-08-11T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 583,
+          "views": 593,
           "likes": 28,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 56.35,
+          "subs_gained": 1
         },
         {
           "id": "N0KjMDnve38",
@@ -221,7 +254,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 48.41,
+          "subs_gained": 0
         },
         {
           "id": "bPZUZUf7YvM",
@@ -254,7 +289,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 33.33,
           "subs_gained": 0
         },
         {
@@ -288,8 +323,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 45.72,
-          "subs_gained": 0
+          "avg_view_pct": 79.49,
+          "subs_gained": 1
         },
         {
           "id": "qXo-JyzZsCQ",
@@ -321,7 +356,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.69,
+          "avg_view_pct": 71.53,
           "subs_gained": 0
         },
         {
@@ -348,13 +383,13 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1335,
+          "views": 1337,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.65,
+          "avg_view_pct": 80.07,
           "subs_gained": 1
         },
         {
@@ -390,7 +425,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 82.95,
+          "avg_view_pct": 82.76,
           "subs_gained": 0
         },
         {
@@ -426,7 +461,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.81,
+          "avg_view_pct": 48.69,
           "subs_gained": 0
         },
         {
@@ -459,7 +494,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.03000000000001,
+          "avg_view_pct": 60.5,
           "subs_gained": 3
         },
         {
@@ -488,13 +523,13 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 778,
+          "views": 779,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.73,
+          "avg_view_pct": 61.419999999999995,
           "subs_gained": 1
         },
         {
@@ -563,7 +598,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.47,
+          "avg_view_pct": 60.53000000000001,
           "subs_gained": 1
         },
         {
@@ -1071,7 +1106,7 @@
           ],
           "publishedAt": "2026-07-31T02:49:57Z",
           "thumbnail": "https://i.ytimg.com/vi/Q3QOhpdSJuM/mqdefault.jpg",
-          "views": 565,
+          "views": 566,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -1748,46 +1783,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 64.71,
+          "avg_view_pct": 59.25,
           "subs_gained": 0
-        },
-        {
-          "id": "_rBVF1AgsVU",
-          "title": "Egypt's King Was Overthrown \u2014 Then Handed a Salute on His Way Out #history #facts #navy",
-          "description": "On July 23, 1952, Egyptian King Farouk was overthrown in one of history's most polite coups \u2014 his enemies let him leave with full military honours. The Free Officers who toppled him changed the Arab world forever, yet the man behind the whole plan stayed invisible for years. History's strangest revolution ended at the harbour with a handshake. #history #egypt #didyouknow",
-          "tags": [
-            "1952 coup",
-            "arab history",
-            "cold war history",
-            "did you know",
-            "education",
-            "egypt",
-            "facts",
-            "gamal abdel nasser",
-            "history",
-            "history facts",
-            "history shorts",
-            "king farouk",
-            "military coup",
-            "revolution",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-23T16:04:32Z",
-          "thumbnail": "https://i.ytimg.com/vi/_rBVF1AgsVU/mqdefault.jpg",
-          "views": 197,
-          "likes": 7,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 61.64999999999999,
-          "subs_gained": 1
         }
       ]
     }
