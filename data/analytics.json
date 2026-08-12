@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-12T01:55:07.756922+00:00",
+      "updated": "2026-08-12T07:24:25.176974+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,68 @@
       },
       "videos": [
         {
+          "id": "Pq_ui3DHi4U",
+          "title": "Baseball Cancelled Its Own Championship \u2014 And Nobody Could Stop It",
+          "description": "In 1994, Major League Baseball did something no war, no depression, and no pandemic had managed to do in 90 years. The players walked out, and the World Series simply didn't happen. The story of how the richest game in America shut itself down is stranger than any scorecard.",
+          "tags": [
+            "1994 mlb strike",
+            "american sports",
+            "baseball facts",
+            "baseball history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "labor strike history",
+            "mlb history",
+            "shorts",
+            "sports history",
+            "trending",
+            "viral",
+            "world series"
+          ],
+          "publishedAt": "2026-08-12T04:05:41Z",
+          "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
+          "views": 186,
+          "likes": 4,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "es480dZ-Sv8",
+          "title": "How One Indian King Ended the World's Richest Company",
+          "description": "In 1741, a small Indian kingdom pulled off something no Asian power had done in centuries \u2014 and the Dutch never recovered. The story of the Battle of Colachel is one of history's most overlooked turning points. #history #didyouknow #india",
+          "tags": [
+            "1741",
+            "battle of colachel",
+            "colonial history",
+            "did you know",
+            "dutch east india company",
+            "education",
+            "european empires",
+            "facts",
+            "history",
+            "history shorts",
+            "indian history",
+            "marthanda varma",
+            "shorts",
+            "travancore",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-12T01:56:07Z",
+          "thumbnail": "https://i.ytimg.com/vi/es480dZ-Sv8/mqdefault.jpg",
+          "views": 297,
+          "likes": 6,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "sZbWq3lZ-eI",
           "title": "The Prison Nobody Was Supposed to Know Existed",
           "description": "On August 11, 1934, the first civilian prisoners arrived at Alcatraz \u2014 and the government went to extraordinary lengths to keep the whole operation quiet. The island that became America's most famous prison was designed, above all, to be forgotten. Did the secrecy make it more powerful, or just more mythologized?",
@@ -58,7 +120,7 @@
           ],
           "publishedAt": "2026-08-11T16:06:58Z",
           "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
-          "views": 124,
+          "views": 166,
           "likes": 2,
           "comments": 1,
           "playlist_ids": [],
@@ -123,8 +185,8 @@
           ],
           "publishedAt": "2026-08-11T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 549,
-          "likes": 26,
+          "views": 570,
+          "likes": 28,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -286,7 +348,7 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1323,
+          "views": 1333,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -426,13 +488,13 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 773,
+          "views": 778,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.73,
+          "avg_view_pct": 61.58,
           "subs_gained": 1
         },
         {
@@ -495,13 +557,13 @@
           ],
           "publishedAt": "2026-08-06T04:03:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
-          "views": 725,
+          "views": 727,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.47,
+          "avg_view_pct": 60.31999999999999,
           "subs_gained": 1
         },
         {
@@ -534,7 +596,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.45,
+          "avg_view_pct": 78.37,
           "subs_gained": 3
         },
         {
@@ -1726,84 +1788,6 @@
           "is_unsorted": false,
           "avg_view_pct": 61.64999999999999,
           "subs_gained": 1
-        },
-        {
-          "id": "RCbxzl9dRQs",
-          "title": "Austria Sent Serbia a List of Demands \u2014 Knowing One Would Be Refused",
-          "description": "On July 23, 1914, Austria-Hungary handed Serbia an ultimatum so deliberately impossible that war was practically guaranteed before the ink dried. The document that helped ignite World War One was engineered to fail. Discover the single clause Serbia refused \u2014 and why Austria was counting on it.",
-          "tags": [
-            "1914",
-            "austria hungary",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "franz ferdinand",
-            "history",
-            "history shorts",
-            "serbia",
-            "short history",
-            "shorts",
-            "trending",
-            "ultimatum",
-            "viral",
-            "world war one"
-          ],
-          "publishedAt": "2026-07-23T04:03:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/RCbxzl9dRQs/mqdefault.jpg",
-          "views": 574,
-          "likes": 11,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 69.57,
-          "subs_gained": 1
-        },
-        {
-          "id": "RyQeV4JxwV4",
-          "title": "The 30-Minute Delay That Lost Japan the Pacific",
-          "description": "At the Battle of Midway in June 1942, a single Japanese scout plane launched thirty minutes late \u2014 and that half-hour gap hid the American fleet just long enough to change the war. Historians have called it one of the narrowest margins in naval history. What would the Pacific have looked like if that plane had launched on schedule? Drop your answer below.",
-          "tags": [
-            "1942",
-            "battle of midway",
-            "close call",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "japanese navy",
-            "military history",
-            "naval history",
-            "near miss",
-            "pacific war",
-            "short history",
-            "shorts",
-            "trending",
-            "us navy",
-            "viral",
-            "world war 2"
-          ],
-          "publishedAt": "2026-07-22T16:05:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/RyQeV4JxwV4/mqdefault.jpg",
-          "views": 555,
-          "likes": 16,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 62.36999999999999,
-          "subs_gained": 0
         }
       ]
     }
