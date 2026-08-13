@@ -726,5 +726,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "lZiuZ4BnJBk",
+    "run_id": "31723563224",
+    "stage_dir_name": "20260813_170146_short",
+    "title": "Born on 8, 17, or 26? Numerology Is Keeping a Big Secret From You",
+    "published_at": "2026-08-13T17:05:33.235087+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
