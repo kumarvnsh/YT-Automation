@@ -1704,5 +1704,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "ju6nq3IFf68",
+    "run_id": "31718513269",
+    "stage_dir_name": "20260813_160156_short",
+    "title": "The City Beneath Mexico City \u2014 Nobody Was Supposed to Find It",
+    "published_at": "2026-08-13T16:08:09.478769+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
