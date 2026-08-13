@@ -1690,5 +1690,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "wQHF8ZD9lNg",
+    "run_id": "31665652070",
+    "stage_dir_name": "20260813_040120_short",
+    "title": "They Built It in One Night \u2014 and Nobody Stopped Them",
+    "published_at": "2026-08-13T04:05:37.010892+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
