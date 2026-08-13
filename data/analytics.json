@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-13T13:09:30.186141+00:00",
+      "updated": "2026-08-13T19:02:22.407379+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "ju6nq3IFf68",
+          "title": "The City Beneath Mexico City \u2014 Nobody Was Supposed to Find It",
+          "description": "In 1521, Hern\u00e1n Cort\u00e9s conquered the Aztec capital of Tenochtitlan and built Mexico City directly on top of it. What he couldn't bury stayed buried \u2014 until the earth started shaking. Every major earthquake in Mexico City keeps uncovering the empire that was never really gone.",
+          "tags": [
+            "1521",
+            "ancient civilizations",
+            "archaeology",
+            "aztec",
+            "did you know",
+            "earthquake history",
+            "education",
+            "facts",
+            "hern\u00e1n cort\u00e9s",
+            "history",
+            "history shorts",
+            "mexico city",
+            "shorts",
+            "tenochtitlan",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-13T16:07:19Z",
+          "thumbnail": "https://i.ytimg.com/vi/ju6nq3IFf68/mqdefault.jpg",
+          "views": 24,
+          "likes": 2,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "wQHF8ZD9lNg",
           "title": "They Built It in One Night \u2014 and Nobody Stopped Them",
           "description": "On August 13, 1961, East Germany began building the Berlin Wall overnight \u2014 and the Western powers who could have stopped it simply watched. The wall that divided a city for 28 years started as a single roll of barbed wire. Drop your verdict in the comments.",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-08-13T04:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/wQHF8ZD9lNg/mqdefault.jpg",
-          "views": 581,
+          "views": 584,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -89,7 +120,7 @@
           ],
           "publishedAt": "2026-08-12T16:07:20Z",
           "thumbnail": "https://i.ytimg.com/vi/rfDEVU-Yy4Y/mqdefault.jpg",
-          "views": 93,
+          "views": 96,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -120,12 +151,14 @@
           ],
           "publishedAt": "2026-08-12T04:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 536,
+          "views": 549,
           "likes": 14,
           "comments": 6,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 249.16,
+          "subs_gained": 0
         },
         {
           "id": "es480dZ-Sv8",
@@ -151,12 +184,14 @@
           ],
           "publishedAt": "2026-08-12T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/es480dZ-Sv8/mqdefault.jpg",
-          "views": 446,
-          "likes": 7,
+          "views": 459,
+          "likes": 9,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 90.46,
+          "subs_gained": 0
         },
         {
           "id": "sZbWq3lZ-eI",
@@ -182,12 +217,14 @@
           ],
           "publishedAt": "2026-08-11T16:06:58Z",
           "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
-          "views": 272,
+          "views": 310,
           "likes": 3,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 58.71999999999999,
+          "subs_gained": 0
         },
         {
           "id": "1qwaKKY9MkY",
@@ -213,12 +250,14 @@
           ],
           "publishedAt": "2026-08-11T13:06:48Z",
           "thumbnail": "https://i.ytimg.com/vi/1qwaKKY9MkY/mqdefault.jpg",
-          "views": 16,
+          "views": 18,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 32.64,
+          "subs_gained": 1
         },
         {
           "id": "g6VRyIyElxs",
@@ -247,14 +286,14 @@
           ],
           "publishedAt": "2026-08-11T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 617,
+          "views": 623,
           "likes": 28,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.35,
-          "subs_gained": 1
+          "avg_view_pct": 56.720000000000006,
+          "subs_gained": 2
         },
         {
           "id": "N0KjMDnve38",
@@ -286,7 +325,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.41,
+          "avg_view_pct": 44.79,
           "subs_gained": 0
         },
         {
@@ -320,7 +359,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 33.33,
+          "avg_view_pct": 37.13,
           "subs_gained": 0
         },
         {
@@ -354,7 +393,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.49,
+          "avg_view_pct": 153.46,
           "subs_gained": 1
         },
         {
@@ -381,7 +420,7 @@
           ],
           "publishedAt": "2026-08-09T04:05:34Z",
           "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 639,
+          "views": 650,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -420,7 +459,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.07,
+          "avg_view_pct": 79.46,
           "subs_gained": 1
         },
         {
@@ -525,7 +564,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.5,
+          "avg_view_pct": 60.61,
           "subs_gained": 3
         },
         {
@@ -554,13 +593,13 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 782,
+          "views": 783,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.28,
+          "avg_view_pct": 61.22,
           "subs_gained": 1
         },
         {
@@ -629,7 +668,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.370000000000005,
+          "avg_view_pct": 60.47,
           "subs_gained": 1
         },
         {
@@ -1734,48 +1773,6 @@
           "is_unsorted": false,
           "avg_view_pct": 68.45,
           "subs_gained": 2
-        },
-        {
-          "id": "89tDVRBaEqQ",
-          "title": "Every Country That Pushed Back on American Tariffs \u2014 and What Happened",
-          "description": "When Trump's 2025 tariffs landed, dozens of countries called them 'completely unjustified' \u2014 but that phrase has been used before, and history shows what usually comes next. This video traces the surprising pattern of global pushback against American trade pressure. A short history lesson hiding inside today's headlines.",
-          "tags": [
-            "america",
-            "did you know",
-            "economic history",
-            "education",
-            "facts",
-            "forced labour",
-            "global economy",
-            "history",
-            "history facts",
-            "history shorts",
-            "retaliatory tariffs",
-            "short history",
-            "shorts",
-            "tariffs",
-            "trade policy",
-            "trade war",
-            "trending",
-            "trump",
-            "viral",
-            "world trade",
-            "wto"
-          ],
-          "publishedAt": "2026-07-24T15:02:08Z",
-          "thumbnail": "https://i.ytimg.com/vi/89tDVRBaEqQ/mqdefault.jpg",
-          "views": 248,
-          "likes": 7,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 70.13,
-          "subs_gained": 0
         }
       ]
     }
