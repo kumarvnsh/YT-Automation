@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-13T01:57:11.519969+00:00",
+      "updated": "2026-08-13T07:26:29.411917+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "wQHF8ZD9lNg",
+          "title": "They Built It in One Night \u2014 and Nobody Stopped Them",
+          "description": "On August 13, 1961, East Germany began building the Berlin Wall overnight \u2014 and the Western powers who could have stopped it simply watched. The wall that divided a city for 28 years started as a single roll of barbed wire. Drop your verdict in the comments.",
+          "tags": [
+            "1961",
+            "barbed wire",
+            "berlin wall",
+            "cold war history",
+            "did you know",
+            "divided berlin",
+            "east germany",
+            "education",
+            "facts",
+            "german history",
+            "history",
+            "history shorts",
+            "iron curtain",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-13T04:05:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/wQHF8ZD9lNg/mqdefault.jpg",
+          "views": 458,
+          "likes": 11,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "rfDEVU-Yy4Y",
           "title": "One Storm Nearly Cancelled the Invasion | History's Almost Moments",
           "description": "On June 5, 1944, the largest amphibious invasion in history was hours from being called off \u2014 and almost nobody knew how close it came. A single meteorologist's forecast was the only thing standing between D-Day and a delay that historians believe could have changed the war. Find out what Eisenhower actually said in the room that night. #DDay #WWII #HistorysAlmostMoments",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-08-12T16:07:20Z",
           "thumbnail": "https://i.ytimg.com/vi/rfDEVU-Yy4Y/mqdefault.jpg",
-          "views": 69,
+          "views": 88,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -89,9 +120,9 @@
           ],
           "publishedAt": "2026-08-12T04:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 430,
+          "views": 482,
           "likes": 14,
-          "comments": 5,
+          "comments": 6,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -120,7 +151,7 @@
           ],
           "publishedAt": "2026-08-12T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/es480dZ-Sv8/mqdefault.jpg",
-          "views": 419,
+          "views": 437,
           "likes": 6,
           "comments": 2,
           "playlist_ids": [],
@@ -151,7 +182,7 @@
           ],
           "publishedAt": "2026-08-11T16:06:58Z",
           "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
-          "views": 235,
+          "views": 247,
           "likes": 3,
           "comments": 1,
           "playlist_ids": [],
@@ -182,7 +213,7 @@
           ],
           "publishedAt": "2026-08-11T13:06:48Z",
           "thumbnail": "https://i.ytimg.com/vi/1qwaKKY9MkY/mqdefault.jpg",
-          "views": 15,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -216,7 +247,7 @@
           ],
           "publishedAt": "2026-08-11T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 604,
+          "views": 613,
           "likes": 28,
           "comments": 0,
           "playlist_ids": [],
@@ -350,7 +381,7 @@
           ],
           "publishedAt": "2026-08-09T04:05:34Z",
           "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 622,
+          "views": 626,
           "likes": 14,
           "comments": 0,
           "playlist_ids": [],
@@ -523,13 +554,13 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 780,
+          "views": 782,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.28,
+          "avg_view_pct": 61.419999999999995,
           "subs_gained": 1
         },
         {
@@ -598,7 +629,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.370000000000005,
+          "avg_view_pct": 60.53000000000001,
           "subs_gained": 1
         },
         {
@@ -631,7 +662,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.37,
+          "avg_view_pct": 78.45,
           "subs_gained": 3
         },
         {
@@ -1744,46 +1775,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 70.13,
-          "subs_gained": 0
-        },
-        {
-          "id": "Z9iVAS72R5o",
-          "title": "One Wrong Turn Nearly Prevented World War One | History's Almost Moments",
-          "description": "On 28 June 1914, a wrong turn by a driver in Sarajevo placed Archduke Franz Ferdinand directly in front of his assassin \u2014 after the first attempt had already failed. Historians consider it one of the most consequential accidents in modern history. What if the driver had simply kept going? #history #worldwar1 #almostmoments",
-          "tags": [
-            "archduke assassination",
-            "close call history",
-            "did you know",
-            "did you know history",
-            "education",
-            "facts",
-            "franz ferdinand",
-            "gavrilo princip",
-            "history",
-            "history almost moments",
-            "history facts",
-            "history shorts",
-            "near miss history",
-            "sarajevo 1914",
-            "shorts",
-            "trending",
-            "viral",
-            "world war one",
-            "wwi origins"
-          ],
-          "publishedAt": "2026-07-24T04:04:14Z",
-          "thumbnail": "https://i.ytimg.com/vi/Z9iVAS72R5o/mqdefault.jpg",
-          "views": 316,
-          "likes": 8,
-          "comments": 2,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 59.25,
           "subs_gained": 0
         }
       ]
