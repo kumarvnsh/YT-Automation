@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-13T19:02:22.407379+00:00",
+      "updated": "2026-08-14T01:54:38.084000+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -58,7 +58,7 @@
           ],
           "publishedAt": "2026-08-13T16:07:19Z",
           "thumbnail": "https://i.ytimg.com/vi/ju6nq3IFf68/mqdefault.jpg",
-          "views": 24,
+          "views": 48,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -89,7 +89,7 @@
           ],
           "publishedAt": "2026-08-13T04:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/wQHF8ZD9lNg/mqdefault.jpg",
-          "views": 584,
+          "views": 585,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -120,7 +120,7 @@
           ],
           "publishedAt": "2026-08-12T16:07:20Z",
           "thumbnail": "https://i.ytimg.com/vi/rfDEVU-Yy4Y/mqdefault.jpg",
-          "views": 96,
+          "views": 98,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -151,8 +151,8 @@
           ],
           "publishedAt": "2026-08-12T04:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 549,
-          "likes": 14,
+          "views": 566,
+          "likes": 15,
           "comments": 6,
           "playlist_ids": [],
           "playlists": [],
@@ -217,7 +217,7 @@
           ],
           "publishedAt": "2026-08-11T16:06:58Z",
           "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
-          "views": 310,
+          "views": 315,
           "likes": 3,
           "comments": 1,
           "playlist_ids": [],
@@ -286,7 +286,7 @@
           ],
           "publishedAt": "2026-08-11T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 623,
+          "views": 627,
           "likes": 28,
           "comments": 0,
           "playlist_ids": [],
@@ -453,7 +453,7 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1341,
+          "views": 1340,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -525,7 +525,7 @@
           ],
           "publishedAt": "2026-08-08T01:39:59Z",
           "thumbnail": "https://i.ytimg.com/vi/e_bcugW8TFk/mqdefault.jpg",
-          "views": 452,
+          "views": 451,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -594,12 +594,12 @@
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
           "views": 783,
-          "likes": 18,
+          "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.22,
+          "avg_view_pct": 61.36000000000001,
           "subs_gained": 1
         },
         {
@@ -668,7 +668,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.47,
+          "avg_view_pct": 60.62,
           "subs_gained": 1
         },
         {
@@ -701,7 +701,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.37,
+          "avg_view_pct": 78.45,
           "subs_gained": 3
         },
         {
@@ -1725,7 +1725,7 @@
           "publishedAt": "2026-07-25T04:04:14Z",
           "thumbnail": "https://i.ytimg.com/vi/i4lfIhbmGKU/mqdefault.jpg",
           "views": 560,
-          "likes": 17,
+          "likes": 16,
           "comments": 2,
           "playlist_ids": [
             "PLTrU7sep9IQc"
@@ -1762,7 +1762,7 @@
           "publishedAt": "2026-07-24T16:05:30Z",
           "thumbnail": "https://i.ytimg.com/vi/cyGeMnwwsnM/mqdefault.jpg",
           "views": 673,
-          "likes": 23,
+          "likes": 22,
           "comments": 0,
           "playlist_ids": [
             "PLTVmpSWS_A5g"
