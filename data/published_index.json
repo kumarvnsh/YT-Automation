@@ -1733,5 +1733,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "UxTyGb1xrHA",
+    "run_id": "31817306384",
+    "stage_dir_name": "20260814_160138_short",
+    "title": "The Film That Flopped on Opening Night \u2014 Then Ran for 50 Years",
+    "published_at": "2026-08-14T16:06:57.870977+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

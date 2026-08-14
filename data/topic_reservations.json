@@ -754,5 +754,14 @@
     "slot": "morning",
     "date": "2026-08-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260814_160138_short",
+    "title": "The Film That Flopped on Opening Night \u2014 Then Ran for 50 Years",
+    "fingerprint": "50_film_flopped_for_night_on_opening_ran_that_then_years",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-14",
+    "status": "reserved"
   }
 ]
