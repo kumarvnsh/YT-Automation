@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-14T07:23:54.712338+00:00",
+      "updated": "2026-08-14T13:05:00.472175+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -59,8 +59,8 @@
           ],
           "publishedAt": "2026-08-14T04:05:44Z",
           "thumbnail": "https://i.ytimg.com/vi/QZVYfuLrq5A/mqdefault.jpg",
-          "views": 194,
-          "likes": 7,
+          "views": 468,
+          "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -90,7 +90,7 @@
           ],
           "publishedAt": "2026-08-14T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/mF8I22HWIJ4/mqdefault.jpg",
-          "views": 560,
+          "views": 569,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -183,7 +183,7 @@
           ],
           "publishedAt": "2026-08-12T16:07:20Z",
           "thumbnail": "https://i.ytimg.com/vi/rfDEVU-Yy4Y/mqdefault.jpg",
-          "views": 98,
+          "views": 115,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -247,7 +247,7 @@
           ],
           "publishedAt": "2026-08-12T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/es480dZ-Sv8/mqdefault.jpg",
-          "views": 460,
+          "views": 461,
           "likes": 9,
           "comments": 2,
           "playlist_ids": [],
@@ -483,8 +483,8 @@
           ],
           "publishedAt": "2026-08-09T04:05:34Z",
           "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 657,
-          "likes": 14,
+          "views": 670,
+          "likes": 15,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -656,13 +656,13 @@
           ],
           "publishedAt": "2026-08-07T04:04:28Z",
           "thumbnail": "https://i.ytimg.com/vi/RGjfZW2OUZg/mqdefault.jpg",
-          "views": 788,
+          "views": 789,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.36000000000001,
+          "avg_view_pct": 61.22,
           "subs_gained": 1
         },
         {
@@ -731,7 +731,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.62,
+          "avg_view_pct": 60.47,
           "subs_gained": 1
         },
         {
@@ -764,7 +764,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.45,
+          "avg_view_pct": 78.37,
           "subs_gained": 3
         },
         {
