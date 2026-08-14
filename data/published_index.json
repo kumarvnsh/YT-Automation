@@ -1719,5 +1719,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "QZVYfuLrq5A",
+    "run_id": "31768525932",
+    "stage_dir_name": "20260814_040127_short",
+    "title": "One City Burned Itself Down \u2014 and Saved a Nation | History's Almost Moments",
+    "published_at": "2026-08-14T04:06:06.967001+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
