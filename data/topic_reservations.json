@@ -763,5 +763,14 @@
     "slot": "evening",
     "date": "2026-08-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260815_040138_short",
+    "title": "The First Allied Victory of World War I: How Did It Change Everything?",
+    "fingerprint": "allied_change_did_everything_first_i_it_victory_war_world",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-15",
+    "status": "reserved"
   }
 ]

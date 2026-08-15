@@ -1748,5 +1748,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "UQD_i7yt16s",
+    "run_id": "31863310277",
+    "stage_dir_name": "20260815_040138_short",
+    "title": "The First Allied Victory of World War I: How Did It Change Everything?",
+    "published_at": "2026-08-15T04:06:54.842207+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
