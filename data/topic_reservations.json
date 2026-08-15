@@ -772,5 +772,14 @@
     "slot": "morning",
     "date": "2026-08-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260815_160137_short",
+    "title": "One Scattered Drop Nearly Unraveled D-Day | History's Almost Moments",
+    "fingerprint": "almost_d_day_drop_history_moments_nearly_one_s_scattered_unraveled",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-15",
+    "status": "reserved"
   }
 ]

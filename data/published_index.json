@@ -1762,5 +1762,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "rmWj7s9x4ZU",
+    "run_id": "31894335596",
+    "stage_dir_name": "20260815_160137_short",
+    "title": "One Scattered Drop Nearly Unraveled D-Day | History's Almost Moments",
+    "published_at": "2026-08-15T16:06:31.922517+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
