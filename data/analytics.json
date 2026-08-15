@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-15T12:36:08.527026+00:00",
+      "updated": "2026-08-15T18:29:06.645802+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,40 @@
       },
       "videos": [
         {
+          "id": "rmWj7s9x4ZU",
+          "title": "One Scattered Drop Nearly Unraveled D-Day | History's Almost Moments",
+          "description": "On June 6, 1944, thousands of Allied paratroopers landed miles from their targets \u2014 and that accident may have accidentally saved the invasion. This is the near-miss that almost rewrote the 20th century. Subscribe for more History's Almost Moments every week.",
+          "tags": [
+            "1944",
+            "allied invasion",
+            "almost moments",
+            "close call",
+            "d-day",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "military history",
+            "normandy",
+            "operation overlord",
+            "paratroopers",
+            "shorts",
+            "trending",
+            "viral",
+            "world war 2",
+            "wwii"
+          ],
+          "publishedAt": "2026-08-15T16:05:35Z",
+          "thumbnail": "https://i.ytimg.com/vi/rmWj7s9x4ZU/mqdefault.jpg",
+          "views": 397,
+          "likes": 15,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "UQD_i7yt16s",
           "title": "The First Allied Victory of World War I: How Did It Change Everything?",
           "description": "On this day in history, the Battle of Cer marked the first significant Allied victory of World War I. Discover how this battle shifted the tides of the war and its long-term impact on military strategies. #history #WWI #BattleOfCer",
@@ -57,7 +91,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 625,
+          "views": 642,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -88,7 +122,7 @@
           ],
           "publishedAt": "2026-08-15T01:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/ZQbhTyJHUlc/mqdefault.jpg",
-          "views": 530,
+          "views": 552,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -120,7 +154,7 @@
           ],
           "publishedAt": "2026-08-14T16:06:15Z",
           "thumbnail": "https://i.ytimg.com/vi/UxTyGb1xrHA/mqdefault.jpg",
-          "views": 214,
+          "views": 225,
           "likes": 15,
           "comments": 1,
           "playlist_ids": [],
@@ -152,7 +186,7 @@
           ],
           "publishedAt": "2026-08-14T04:05:44Z",
           "thumbnail": "https://i.ytimg.com/vi/QZVYfuLrq5A/mqdefault.jpg",
-          "views": 534,
+          "views": 561,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -183,7 +217,7 @@
           ],
           "publishedAt": "2026-08-14T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/mF8I22HWIJ4/mqdefault.jpg",
-          "views": 592,
+          "views": 594,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -214,7 +248,7 @@
           ],
           "publishedAt": "2026-08-13T16:07:19Z",
           "thumbnail": "https://i.ytimg.com/vi/ju6nq3IFf68/mqdefault.jpg",
-          "views": 49,
+          "views": 52,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -245,7 +279,7 @@
           ],
           "publishedAt": "2026-08-13T04:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/wQHF8ZD9lNg/mqdefault.jpg",
-          "views": 587,
+          "views": 590,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -311,7 +345,7 @@
           ],
           "publishedAt": "2026-08-12T04:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 565,
+          "views": 563,
           "likes": 15,
           "comments": 6,
           "playlist_ids": [],
@@ -344,7 +378,7 @@
           ],
           "publishedAt": "2026-08-12T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/es480dZ-Sv8/mqdefault.jpg",
-          "views": 462,
+          "views": 457,
           "likes": 9,
           "comments": 2,
           "playlist_ids": [],
@@ -547,7 +581,7 @@
           ],
           "publishedAt": "2026-08-09T16:06:13Z",
           "thumbnail": "https://i.ytimg.com/vi/FfUT19yYZSA/mqdefault.jpg",
-          "views": 344,
+          "views": 339,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
@@ -580,7 +614,7 @@
           ],
           "publishedAt": "2026-08-09T04:05:34Z",
           "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 677,
+          "views": 680,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -655,7 +689,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 82.76,
+          "avg_view_pct": 82.77,
           "subs_gained": 0
         },
         {
@@ -691,7 +725,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.69,
+          "avg_view_pct": 48.55,
           "subs_gained": 0
         },
         {
@@ -759,7 +793,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.97,
+          "avg_view_pct": 61.11,
           "subs_gained": 1
         },
         {
@@ -828,7 +862,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.47,
+          "avg_view_pct": 60.62,
           "subs_gained": 1
         },
         {
@@ -861,7 +895,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.37,
+          "avg_view_pct": 78.45,
           "subs_gained": 3
         },
         {
@@ -1702,44 +1736,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 103.77000000000001,
-          "subs_gained": 0
-        },
-        {
-          "id": "9ymiQRRwskg",
-          "title": "The Cable That Connected Two Continents \u2014 On the Third Attempt",
-          "description": "On July 27, 1866, the first permanent transatlantic telegraph cable was completed, stretching nearly 2,000 miles under the Atlantic Ocean. What most people don't know is that it took a decade of catastrophic failures \u2014 and one of the biggest ships ever built \u2014 to pull it off. The moment it worked, a message crossed the Atlantic in minutes instead of weeks. #history #didyouknow #telegraph",
-          "tags": [
-            "1866",
-            "atlantic ocean",
-            "communication history",
-            "did you know",
-            "education",
-            "engineering history",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "shorts",
-            "telegraph history",
-            "transatlantic cable",
-            "trending",
-            "undersea cable",
-            "victorian technology",
-            "viral"
-          ],
-          "publishedAt": "2026-07-27T04:04:33Z",
-          "thumbnail": "https://i.ytimg.com/vi/9ymiQRRwskg/mqdefault.jpg",
-          "views": 648,
-          "likes": 13,
-          "comments": 0,
-          "playlist_ids": [
-            "PLKz3dl1lEDLM"
-          ],
-          "playlists": [
-            "Forgotten Ancient Technology"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 95.03,
           "subs_gained": 0
         }
       ]
