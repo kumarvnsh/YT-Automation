@@ -781,5 +781,14 @@
     "slot": "evening",
     "date": "2026-08-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260816_040117_short",
+    "title": "Three Men Found Something That Triggered the Last Great Gold Rush",
+    "fingerprint": "found_gold_great_last_men_rush_something_that_three_triggered",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-16",
+    "status": "reserved"
   }
 ]

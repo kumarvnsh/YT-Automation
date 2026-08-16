@@ -1776,5 +1776,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "rta-HZR0E6g",
+    "run_id": "31925597437",
+    "stage_dir_name": "20260816_040117_short",
+    "title": "Three Men Found Something That Triggered the Last Great Gold Rush",
+    "published_at": "2026-08-16T04:05:45.182807+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
