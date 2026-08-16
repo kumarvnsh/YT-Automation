@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-16T12:37:39.707931+00:00",
+      "updated": "2026-08-16T18:28:28.664031+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "RnZCSKn610s",
+          "title": "60,000 People Gathered Peacefully \u2014 Then the Cavalry Charged",
+          "description": "On August 16, 1819, a crowd of 60,000 gathered in Manchester to demand the right to vote \u2014 and within minutes, cavalry rode straight into them. The day that followed changed British law forever, though not in the way the government intended. The name they gave it tells you everything about how ordinary people saw their rulers. #history #didyouknow #britishhistory",
+          "tags": [
+            "1819",
+            "british history",
+            "cavalry charge",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "manchester history",
+            "peterloo massacre",
+            "reform act",
+            "shorts",
+            "trending",
+            "viral",
+            "voting rights",
+            "working class history"
+          ],
+          "publishedAt": "2026-08-16T16:06:26Z",
+          "thumbnail": "https://i.ytimg.com/vi/RnZCSKn610s/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "rta-HZR0E6g",
           "title": "Three Men Found Something That Triggered the Last Great Gold Rush",
           "description": "On August 16, 1896, three men wading a creek in Canada's Yukon triggered one of history's wildest mass migrations \u2014 and almost none of them profited. The Klondike Gold Rush reshaped an entire continent in under three years. Did the people who started it deserve what happened next?",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-08-16T04:05:06Z",
           "thumbnail": "https://i.ytimg.com/vi/rta-HZR0E6g/mqdefault.jpg",
-          "views": 639,
+          "views": 659,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -123,7 +154,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 676,
+          "views": 678,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -154,7 +185,7 @@
           ],
           "publishedAt": "2026-08-15T01:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/ZQbhTyJHUlc/mqdefault.jpg",
-          "views": 573,
+          "views": 574,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -186,8 +217,8 @@
           ],
           "publishedAt": "2026-08-14T16:06:15Z",
           "thumbnail": "https://i.ytimg.com/vi/UxTyGb1xrHA/mqdefault.jpg",
-          "views": 323,
-          "likes": 16,
+          "views": 347,
+          "likes": 18,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -218,7 +249,7 @@
           ],
           "publishedAt": "2026-08-14T04:05:44Z",
           "thumbnail": "https://i.ytimg.com/vi/QZVYfuLrq5A/mqdefault.jpg",
-          "views": 564,
+          "views": 567,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -251,7 +282,7 @@
           ],
           "publishedAt": "2026-08-14T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/mF8I22HWIJ4/mqdefault.jpg",
-          "views": 599,
+          "views": 600,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -389,7 +420,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 172.95,
+          "avg_view_pct": 172.64,
           "subs_gained": 1
         },
         {
@@ -524,7 +555,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.08,
+          "avg_view_pct": 58.20000000000001,
           "subs_gained": 2
         },
         {
@@ -625,7 +656,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.79,
+          "avg_view_pct": 153.46,
           "subs_gained": 1
         },
         {
@@ -685,13 +716,13 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1346,
+          "views": 1347,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.03,
+          "avg_view_pct": 79.33,
           "subs_gained": 1
         },
         {
@@ -727,7 +758,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 82.76,
+          "avg_view_pct": 82.77,
           "subs_gained": 0
         },
         {
@@ -763,7 +794,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.69,
+          "avg_view_pct": 48.55,
           "subs_gained": 0
         },
         {
@@ -831,7 +862,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.919999999999995,
+          "avg_view_pct": 61.04999999999999,
           "subs_gained": 1
         },
         {
@@ -900,7 +931,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.47,
+          "avg_view_pct": 60.62,
           "subs_gained": 1
         },
         {
@@ -933,7 +964,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.37,
+          "avg_view_pct": 78.45,
           "subs_gained": 3
         },
         {
@@ -1698,44 +1729,7 @@
             "Ancient Mysteries"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 115.99999999999999,
-          "subs_gained": 0
-        },
-        {
-          "id": "za3H0SOzS_o",
-          "title": "One Vote Chose Panama Over Nicaragua | History's Almost Moments",
-          "description": "In 1902, the U.S. Congress voted on where to dig the most important canal in modern history \u2014 and the margin was razor-thin. A single volcanic postage stamp may have swung the result. If Nicaragua had won that vote, global shipping lanes would look completely different today.",
-          "tags": [
-            "almost moments",
-            "canal history",
-            "congress vote",
-            "counterfactual history",
-            "did you know",
-            "education",
-            "engineering history",
-            "facts",
-            "history",
-            "history shorts",
-            "nicaragua",
-            "panama canal",
-            "shorts",
-            "trending",
-            "us history",
-            "viral"
-          ],
-          "publishedAt": "2026-07-27T16:04:39Z",
-          "thumbnail": "https://i.ytimg.com/vi/za3H0SOzS_o/mqdefault.jpg",
-          "views": 685,
-          "likes": 16,
-          "comments": 0,
-          "playlist_ids": [
-            "PLKz3dl1lEDLM"
-          ],
-          "playlists": [
-            "Forgotten Ancient Technology"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 63.39,
+          "avg_view_pct": 123.16,
           "subs_gained": 0
         }
       ]
