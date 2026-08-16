@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-15T18:29:06.645802+00:00",
+      "updated": "2026-08-16T01:16:50.033471+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -61,7 +61,7 @@
           ],
           "publishedAt": "2026-08-15T16:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/rmWj7s9x4ZU/mqdefault.jpg",
-          "views": 397,
+          "views": 561,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -91,7 +91,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 642,
+          "views": 668,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -122,8 +122,8 @@
           ],
           "publishedAt": "2026-08-15T01:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/ZQbhTyJHUlc/mqdefault.jpg",
-          "views": 552,
-          "likes": 19,
+          "views": 571,
+          "likes": 21,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -154,7 +154,7 @@
           ],
           "publishedAt": "2026-08-14T16:06:15Z",
           "thumbnail": "https://i.ytimg.com/vi/UxTyGb1xrHA/mqdefault.jpg",
-          "views": 225,
+          "views": 247,
           "likes": 15,
           "comments": 1,
           "playlist_ids": [],
@@ -186,12 +186,14 @@
           ],
           "publishedAt": "2026-08-14T04:05:44Z",
           "thumbnail": "https://i.ytimg.com/vi/QZVYfuLrq5A/mqdefault.jpg",
-          "views": 561,
+          "views": 564,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 83.96,
+          "subs_gained": 0
         },
         {
           "id": "mF8I22HWIJ4",
@@ -217,12 +219,14 @@
           ],
           "publishedAt": "2026-08-14T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/mF8I22HWIJ4/mqdefault.jpg",
-          "views": 594,
+          "views": 598,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 69.77,
+          "subs_gained": 2
         },
         {
           "id": "ju6nq3IFf68",
@@ -253,7 +257,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 104.03999999999999,
+          "subs_gained": 0
         },
         {
           "id": "wQHF8ZD9lNg",
@@ -279,13 +285,13 @@
           ],
           "publishedAt": "2026-08-13T04:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/wQHF8ZD9lNg/mqdefault.jpg",
-          "views": 590,
+          "views": 593,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.65,
+          "avg_view_pct": 68.16,
           "subs_gained": 0
         },
         {
@@ -318,7 +324,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 124.48000000000002,
+          "avg_view_pct": 117.58999999999999,
           "subs_gained": 0
         },
         {
@@ -351,7 +357,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 179.08,
+          "avg_view_pct": 172.64,
           "subs_gained": 1
         },
         {
@@ -384,7 +390,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 95.69,
+          "avg_view_pct": 95.02,
           "subs_gained": 0
         },
         {
@@ -417,7 +423,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.86,
+          "avg_view_pct": 62.99,
           "subs_gained": 1
         },
         {
@@ -450,7 +456,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.44,
+          "avg_view_pct": 37.56,
           "subs_gained": 1
         },
         {
@@ -486,7 +492,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.60999999999999,
+          "avg_view_pct": 58.20000000000001,
           "subs_gained": 2
         },
         {
@@ -547,7 +553,7 @@
           ],
           "publishedAt": "2026-08-10T04:05:58Z",
           "thumbnail": "https://i.ytimg.com/vi/bPZUZUf7YvM/mqdefault.jpg",
-          "views": 18,
+          "views": 19,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -620,7 +626,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.7,
+          "avg_view_pct": 71.23,
           "subs_gained": 0
         },
         {
@@ -647,7 +653,7 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1343,
+          "views": 1345,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -793,7 +799,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.11,
+          "avg_view_pct": 61.04999999999999,
           "subs_gained": 1
         },
         {
