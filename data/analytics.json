@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-16T01:16:50.033471+00:00",
+      "updated": "2026-08-16T06:38:40.499787+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "rta-HZR0E6g",
+          "title": "Three Men Found Something That Triggered the Last Great Gold Rush",
+          "description": "On August 16, 1896, three men wading a creek in Canada's Yukon triggered one of history's wildest mass migrations \u2014 and almost none of them profited. The Klondike Gold Rush reshaped an entire continent in under three years. Did the people who started it deserve what happened next?",
+          "tags": [
+            "1896",
+            "canadian history",
+            "did you know",
+            "education",
+            "facts",
+            "george carmack",
+            "gold rush history",
+            "history",
+            "history facts",
+            "history shorts",
+            "klondike gold rush",
+            "short history",
+            "shorts",
+            "skookum jim",
+            "trending",
+            "viral",
+            "yukon history"
+          ],
+          "publishedAt": "2026-08-16T04:05:06Z",
+          "thumbnail": "https://i.ytimg.com/vi/rta-HZR0E6g/mqdefault.jpg",
+          "views": 403,
+          "likes": 16,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "rmWj7s9x4ZU",
           "title": "One Scattered Drop Nearly Unraveled D-Day | History's Almost Moments",
           "description": "On June 6, 1944, thousands of Allied paratroopers landed miles from their targets \u2014 and that accident may have accidentally saved the invasion. This is the near-miss that almost rewrote the 20th century. Subscribe for more History's Almost Moments every week.",
@@ -61,8 +93,8 @@
           ],
           "publishedAt": "2026-08-15T16:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/rmWj7s9x4ZU/mqdefault.jpg",
-          "views": 561,
-          "likes": 15,
+          "views": 566,
+          "likes": 16,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -91,7 +123,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 668,
+          "views": 671,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +154,7 @@
           ],
           "publishedAt": "2026-08-15T01:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/ZQbhTyJHUlc/mqdefault.jpg",
-          "views": 571,
+          "views": 572,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -154,8 +186,8 @@
           ],
           "publishedAt": "2026-08-14T16:06:15Z",
           "thumbnail": "https://i.ytimg.com/vi/UxTyGb1xrHA/mqdefault.jpg",
-          "views": 247,
-          "likes": 15,
+          "views": 272,
+          "likes": 16,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -219,7 +251,7 @@
           ],
           "publishedAt": "2026-08-14T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/mF8I22HWIJ4/mqdefault.jpg",
-          "views": 598,
+          "views": 599,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -653,7 +685,7 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1345,
+          "views": 1346,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -1704,44 +1736,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 63.39,
-          "subs_gained": 0
-        },
-        {
-          "id": "Fa_WLGCsgeE",
-          "title": "The Stickman Is 30,000 Years Old \u2014 And Nobody Agreed Who Drew the First One",
-          "description": "The stickman looks like something a bored child invented \u2014 but its origin stretches back further than writing, farming, or the wheel. This is the surprising history of the world's simplest drawing. #history #didyouknow #art",
-          "tags": [
-            "ancient history",
-            "art history",
-            "cave paintings",
-            "did you know",
-            "drawing history",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "prehistoric art",
-            "short history",
-            "shorts",
-            "stickman",
-            "surprising history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-27T08:40:05Z",
-          "thumbnail": "https://i.ytimg.com/vi/Fa_WLGCsgeE/mqdefault.jpg",
-          "views": 406,
-          "likes": 4,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 103.77000000000001,
           "subs_gained": 0
         }
       ]
