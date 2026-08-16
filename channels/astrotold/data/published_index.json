@@ -782,5 +782,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "a7-g2uNwOzw",
+    "run_id": "31927986884",
+    "stage_dir_name": "20260816_050114_short",
+    "title": "Born on 8, 17, or 26? Your Number Has a Surprising Double Side",
+    "published_at": "2026-08-16T05:04:06.933917+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
