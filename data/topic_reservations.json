@@ -790,5 +790,14 @@
     "slot": "morning",
     "date": "2026-08-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260816_160146_short",
+    "title": "60,000 People Gathered Peacefully \u2014 Then the Cavalry Charged",
+    "fingerprint": "000_60_cavalry_charged_gathered_peacefully_people_then",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-16",
+    "status": "reserved"
   }
 ]

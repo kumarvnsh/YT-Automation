@@ -1790,5 +1790,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "RnZCSKn610s",
+    "run_id": "31957359588",
+    "stage_dir_name": "20260816_160146_short",
+    "title": "60,000 People Gathered Peacefully \u2014 Then the Cavalry Charged",
+    "published_at": "2026-08-16T16:07:09.589737+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
