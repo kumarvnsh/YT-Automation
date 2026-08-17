@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-17T12:42:05.236467+00:00",
+      "updated": "2026-08-17T18:38:52.371525+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "NDTNvq6kW78",
+          "title": "The Spacecraft That Sent a Signal From Hell \u2014 And Nobody Expected It",
+          "description": "On August 17, 1970, the Soviet Union launched a probe toward the most hostile planet in the solar system \u2014 and what it found rewrote everything we thought we knew about our nearest neighbour. Venera 7 became the first spacecraft to transmit data from the surface of another planet, surviving conditions that should have destroyed it instantly. The mission changed space exploration forever in just 23 minutes.",
+          "tags": [
+            "cold war space race",
+            "did you know",
+            "education",
+            "facts",
+            "first in space",
+            "history",
+            "history shorts",
+            "planetary science",
+            "shorts",
+            "soviet space program",
+            "space history",
+            "trending",
+            "ussr",
+            "venera 7",
+            "venus exploration",
+            "viral"
+          ],
+          "publishedAt": "2026-08-17T16:07:48Z",
+          "thumbnail": "https://i.ytimg.com/vi/NDTNvq6kW78/mqdefault.jpg",
+          "views": 61,
+          "likes": 4,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "z1EVwGHiZl0",
           "title": "One Man Chose Not to Report It \u2014 Then Waited | History's Almost Moments",
           "description": "On September 26, 1983, a Soviet early-warning system reported five incoming American missiles \u2014 and one officer had minutes to decide whether to escalate. His choice that night never appeared in official records for years. This is the story of the closest call nobody was allowed to talk about.",
@@ -59,8 +90,8 @@
           ],
           "publishedAt": "2026-08-17T04:07:02Z",
           "thumbnail": "https://i.ytimg.com/vi/z1EVwGHiZl0/mqdefault.jpg",
-          "views": 668,
-          "likes": 18,
+          "views": 670,
+          "likes": 19,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -90,8 +121,8 @@
           ],
           "publishedAt": "2026-08-16T16:06:26Z",
           "thumbnail": "https://i.ytimg.com/vi/RnZCSKn610s/mqdefault.jpg",
-          "views": 514,
-          "likes": 10,
+          "views": 515,
+          "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -186,7 +217,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 684,
+          "views": 686,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -1693,44 +1724,6 @@
           "is_unsorted": false,
           "avg_view_pct": 75.48,
           "subs_gained": 1
-        },
-        {
-          "id": "BUHUA5nFKvY",
-          "title": "A Bomber Hit the Empire State Building \u2014 Mid-Morning, on a Saturday",
-          "description": "On July 28, 1945, a U.S. Army bomber flew straight into the 79th floor of the Empire State Building in thick fog. What happened next surprised everyone \u2014 including the building's owners. One detail about that day quietly changed American law forever.",
-          "tags": [
-            "1945",
-            "american history",
-            "aviation accident",
-            "b25 bomber",
-            "did you know",
-            "education",
-            "empire state building",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "new york history",
-            "shorts",
-            "skyscraper",
-            "trending",
-            "viral",
-            "world war 2"
-          ],
-          "publishedAt": "2026-07-28T16:04:49Z",
-          "thumbnail": "https://i.ytimg.com/vi/BUHUA5nFKvY/mqdefault.jpg",
-          "views": 586,
-          "likes": 11,
-          "comments": 2,
-          "playlist_ids": [
-            "PLY6ySex-tqTQ"
-          ],
-          "playlists": [
-            "Vanished Civilizations"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 56.05,
-          "subs_gained": 0
         }
       ]
     }
