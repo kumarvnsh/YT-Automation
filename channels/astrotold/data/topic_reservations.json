@@ -556,5 +556,14 @@
     "slot": "evening",
     "date": "2026-08-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260817_050113_short",
+    "title": "Born on 8, 17, or 26? Numerology Just Caught You Off Guard",
+    "fingerprint": "17_26_8_born_caught_guard_just_numerology_off_on_or_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-17",
+    "status": "reserved"
   }
 ]

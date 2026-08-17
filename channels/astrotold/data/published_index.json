@@ -810,5 +810,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "QmpKHcFmwDU",
+    "run_id": "31996393878",
+    "stage_dir_name": "20260817_050113_short",
+    "title": "Born on 8, 17, or 26? Numerology Just Caught You Off Guard",
+    "published_at": "2026-08-17T05:04:45.390861+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
