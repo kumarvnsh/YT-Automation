@@ -1804,5 +1804,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "z1EVwGHiZl0",
+    "run_id": "31992981835",
+    "stage_dir_name": "20260817_040208_short",
+    "title": "One Man Chose Not to Report It \u2014 Then Waited | History's Almost Moments",
+    "published_at": "2026-08-17T04:07:33.530275+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
