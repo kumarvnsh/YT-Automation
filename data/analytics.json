@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-17T01:14:08.601759+00:00",
+      "updated": "2026-08-17T06:54:24.630398+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "z1EVwGHiZl0",
+          "title": "One Man Chose Not to Report It \u2014 Then Waited | History's Almost Moments",
+          "description": "On September 26, 1983, a Soviet early-warning system reported five incoming American missiles \u2014 and one officer had minutes to decide whether to escalate. His choice that night never appeared in official records for years. This is the story of the closest call nobody was allowed to talk about.",
+          "tags": [
+            "1983",
+            "close calls",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history facts",
+            "history shorts",
+            "near miss history",
+            "nuclear history",
+            "shorts",
+            "soviet union",
+            "stanislav petrov",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-17T04:07:02Z",
+          "thumbnail": "https://i.ytimg.com/vi/z1EVwGHiZl0/mqdefault.jpg",
+          "views": 479,
+          "likes": 19,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "RnZCSKn610s",
           "title": "60,000 People Gathered Peacefully \u2014 Then the Cavalry Charged",
           "description": "On August 16, 1819, a crowd of 60,000 gathered in Manchester to demand the right to vote \u2014 and within minutes, cavalry rode straight into them. The day that followed changed British law forever, though not in the way the government intended. The name they gave it tells you everything about how ordinary people saw their rulers. #history #didyouknow #britishhistory",
@@ -58,7 +90,7 @@
           ],
           "publishedAt": "2026-08-16T16:06:26Z",
           "thumbnail": "https://i.ytimg.com/vi/RnZCSKn610s/mqdefault.jpg",
-          "views": 490,
+          "views": 511,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -90,7 +122,7 @@
           ],
           "publishedAt": "2026-08-16T04:05:06Z",
           "thumbnail": "https://i.ytimg.com/vi/rta-HZR0E6g/mqdefault.jpg",
-          "views": 663,
+          "views": 666,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
@@ -154,7 +186,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 680,
+          "views": 682,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -255,7 +287,7 @@
           ],
           "publishedAt": "2026-08-14T04:05:44Z",
           "thumbnail": "https://i.ytimg.com/vi/QZVYfuLrq5A/mqdefault.jpg",
-          "views": 567,
+          "views": 566,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -288,7 +320,7 @@
           ],
           "publishedAt": "2026-08-14T01:56:07Z",
           "thumbnail": "https://i.ytimg.com/vi/mF8I22HWIJ4/mqdefault.jpg",
-          "views": 600,
+          "views": 612,
           "likes": 23,
           "comments": 0,
           "playlist_ids": [],
@@ -1698,44 +1730,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 56.05,
-          "subs_gained": 0
-        },
-        {
-          "id": "5788gUXN9M0",
-          "title": "Austria Sent One Letter on July 28 \u2014 and 20 Million People Died",
-          "description": "On July 28, 1914, Austria-Hungary declared war on Serbia with a single telegram \u2014 the first official declaration of World War One. What makes it stranger is how close the whole catastrophe came to being called off. Every time you read about the 'war to end all wars,' this is the letter that started it.",
-          "tags": [
-            "assassination franz ferdinand",
-            "austria hungary",
-            "did you know",
-            "did you know history",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "july 28 history",
-            "july crisis 1914",
-            "serbia 1914",
-            "shorts",
-            "telegram history",
-            "trending",
-            "viral",
-            "world war one",
-            "ww1 origins"
-          ],
-          "publishedAt": "2026-07-28T04:05:00Z",
-          "thumbnail": "https://i.ytimg.com/vi/5788gUXN9M0/mqdefault.jpg",
-          "views": 514,
-          "likes": 7,
-          "comments": 0,
-          "playlist_ids": [
-            "PLZPTJFrAwVuA"
-          ],
-          "playlists": [
-            "Ancient Mysteries"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 123.16,
           "subs_gained": 0
         }
       ]
