@@ -808,5 +808,14 @@
     "slot": "morning",
     "date": "2026-08-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260817_160159_short",
+    "title": "The Spacecraft That Sent a Signal From Hell \u2014 And Nobody Expected It",
+    "fingerprint": "expected_from_hell_it_nobody_sent_signal_spacecraft_that",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-17",
+    "status": "reserved"
   }
 ]

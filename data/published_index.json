@@ -1818,5 +1818,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "NDTNvq6kW78",
+    "run_id": "32044083957",
+    "stage_dir_name": "20260817_160159_short",
+    "title": "The Spacecraft That Sent a Signal From Hell \u2014 And Nobody Expected It",
+    "published_at": "2026-08-17T16:09:02.398400+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
