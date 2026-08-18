@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-18T01:12:03.857426+00:00",
+      "updated": "2026-08-18T06:41:38.642192+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "4S-pFayDnhY",
+          "title": "108 Soldiers Held Off an Army \u2014 Nobody Believed the Report",
+          "description": "On August 18, 1966, a small Australian patrol walked into a rubber plantation in Vietnam and stumbled into one of the most lopsided battles of the war. What happened next rewrote what anyone thought a handful of soldiers could survive. The odds were almost impossible \u2014 and that's exactly why it's still argued about today. #history #vietnam #australianhistory",
+          "tags": [
+            "1966",
+            "australian military history",
+            "battle of long tan",
+            "cold war era",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "military history",
+            "royal australian regiment",
+            "shorts",
+            "trending",
+            "underdog battles",
+            "vietnam war",
+            "viral"
+          ],
+          "publishedAt": "2026-08-18T04:07:03Z",
+          "thumbnail": "https://i.ytimg.com/vi/4S-pFayDnhY/mqdefault.jpg",
+          "views": 79,
+          "likes": 8,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "NDTNvq6kW78",
           "title": "The Spacecraft That Sent a Signal From Hell \u2014 And Nobody Expected It",
           "description": "On August 17, 1970, the Soviet Union launched a probe toward the most hostile planet in the solar system \u2014 and what it found rewrote everything we thought we knew about our nearest neighbour. Venera 7 became the first spacecraft to transmit data from the surface of another planet, surviving conditions that should have destroyed it instantly. The mission changed space exploration forever in just 23 minutes.",
@@ -58,8 +89,8 @@
           ],
           "publishedAt": "2026-08-17T16:07:48Z",
           "thumbnail": "https://i.ytimg.com/vi/NDTNvq6kW78/mqdefault.jpg",
-          "views": 232,
-          "likes": 5,
+          "views": 252,
+          "likes": 6,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
@@ -121,7 +152,7 @@
           ],
           "publishedAt": "2026-08-16T16:06:26Z",
           "thumbnail": "https://i.ytimg.com/vi/RnZCSKn610s/mqdefault.jpg",
-          "views": 517,
+          "views": 518,
           "likes": 11,
           "comments": 0,
           "playlist_ids": [],
@@ -189,7 +220,7 @@
           ],
           "publishedAt": "2026-08-15T16:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/rmWj7s9x4ZU/mqdefault.jpg",
-          "views": 567,
+          "views": 568,
           "likes": 16,
           "comments": 0,
           "playlist_ids": [],
@@ -221,7 +252,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 687,
+          "views": 694,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -361,7 +392,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.45,
+          "avg_view_pct": 70.62,
           "subs_gained": 2
         },
         {
@@ -427,7 +458,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.9,
+          "avg_view_pct": 68.86,
           "subs_gained": 0
         },
         {
@@ -493,7 +524,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 172.95,
+          "avg_view_pct": 172.64,
           "subs_gained": 1
         },
         {
@@ -628,7 +659,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.08,
+          "avg_view_pct": 58.20000000000001,
           "subs_gained": 2
         },
         {
@@ -729,7 +760,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.79,
+          "avg_view_pct": 153.46,
           "subs_gained": 1
         },
         {
@@ -795,7 +826,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.88,
+          "avg_view_pct": 79.21,
           "subs_gained": 1
         },
         {
@@ -900,7 +931,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.699999999999996,
+          "avg_view_pct": 60.61,
           "subs_gained": 3
         },
         {
@@ -1687,47 +1718,8 @@
             "Erased From History"
           ],
           "is_unsorted": false,
-          "avg_view_pct": 65.09,
+          "avg_view_pct": 69.29,
           "subs_gained": 0
-        },
-        {
-          "id": "J-NeB6kjfa8",
-          "title": "Two Men Rowed Across the Atlantic \u2014 Nobody Believed They'd Survive",
-          "description": "In 1896, two Norwegian immigrants rowed a tiny wooden boat from New York to the Scilly Isles in 55 days \u2014 a feat that stunned the world and launched the entire sport of ocean rowing. Their boat was barely 18 feet long and had no motor, no radio, and almost no chance. Every open-ocean rowing record since traces back to this one crossing.",
-          "tags": [
-            "1896",
-            "adventure history",
-            "atlantic rowing",
-            "did you know",
-            "education",
-            "exploration",
-            "facts",
-            "frank samuelsen",
-            "george harbo",
-            "history",
-            "history shorts",
-            "maritime history",
-            "norway",
-            "ocean rowing",
-            "record breaking",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-28T18:06:30Z",
-          "thumbnail": "https://i.ytimg.com/vi/J-NeB6kjfa8/mqdefault.jpg",
-          "views": 542,
-          "likes": 18,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 75.48,
-          "subs_gained": 1
         }
       ]
     }
