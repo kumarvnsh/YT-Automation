@@ -1832,5 +1832,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "4S-pFayDnhY",
+    "run_id": "32097541563",
+    "stage_dir_name": "20260818_040235_short",
+    "title": "108 Soldiers Held Off an Army \u2014 Nobody Believed the Report",
+    "published_at": "2026-08-18T04:07:19.658199+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

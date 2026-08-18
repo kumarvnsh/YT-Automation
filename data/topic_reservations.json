@@ -817,5 +817,14 @@
     "slot": "evening",
     "date": "2026-08-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260818_040235_short",
+    "title": "108 Soldiers Held Off an Army \u2014 Nobody Believed the Report",
+    "fingerprint": "108_army_believed_held_nobody_off_report_soldiers",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-18",
+    "status": "reserved"
   }
 ]
