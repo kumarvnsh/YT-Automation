@@ -852,5 +852,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "E6sWLu9axaM",
+    "run_id": "32163332120",
+    "stage_dir_name": "20260818_170159_short",
+    "title": "Born on 9, 18, or 27? Numerology Just Found Something Wild",
+    "published_at": "2026-08-18T17:05:31.142999+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
