@@ -838,5 +838,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "LGywc6xeSEk",
+    "run_id": "32101237404",
+    "stage_dir_name": "20260818_050130_short",
+    "title": "What Is Your First Initial Actually Hiding About You?",
+    "published_at": "2026-08-18T05:04:55.014179+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
