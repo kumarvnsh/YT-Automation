@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-18T12:44:01.384407+00:00",
+      "updated": "2026-08-18T18:37:43.734959+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "dw7mm6BqLbc",
+          "title": "One Foggy Morning Nearly Ended America | History's Almost Moments",
+          "description": "In August 1776, George Washington's entire Continental Army was trapped on Brooklyn's shore with the British closing in \u2014 and only one thing stood between them and total defeat. This episode of History's Almost Moments breaks down the night that nearly ended the American Revolution before it had any chance. What do you think would have happened if the fog hadn't come?  \n#AmericanRevolution #history #HistorysAlmostMoments",
+          "tags": [
+            "1776",
+            "american revolution",
+            "battle of brooklyn",
+            "british army",
+            "close call history",
+            "continental army",
+            "did you know",
+            "education",
+            "facts",
+            "george washington",
+            "history",
+            "history facts",
+            "history shorts",
+            "near miss history",
+            "revolutionary war",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-18T16:07:26Z",
+          "thumbnail": "https://i.ytimg.com/vi/dw7mm6BqLbc/mqdefault.jpg",
+          "views": 12,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "4S-pFayDnhY",
           "title": "108 Soldiers Held Off an Army \u2014 Nobody Believed the Report",
           "description": "On August 18, 1966, a small Australian patrol walked into a rubber plantation in Vietnam and stumbled into one of the most lopsided battles of the war. What happened next rewrote what anyone thought a handful of soldiers could survive. The odds were almost impossible \u2014 and that's exactly why it's still argued about today. #history #vietnam #australianhistory",
@@ -58,7 +91,7 @@
           ],
           "publishedAt": "2026-08-18T04:07:03Z",
           "thumbnail": "https://i.ytimg.com/vi/4S-pFayDnhY/mqdefault.jpg",
-          "views": 228,
+          "views": 235,
           "likes": 18,
           "comments": 0,
           "playlist_ids": [],
@@ -89,8 +122,8 @@
           ],
           "publishedAt": "2026-08-17T16:07:48Z",
           "thumbnail": "https://i.ytimg.com/vi/NDTNvq6kW78/mqdefault.jpg",
-          "views": 266,
-          "likes": 6,
+          "views": 270,
+          "likes": 7,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
@@ -252,7 +285,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 694,
+          "views": 695,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -1685,40 +1718,6 @@
           ],
           "is_unsorted": false,
           "avg_view_pct": 16.31,
-          "subs_gained": 0
-        },
-        {
-          "id": "AaB9i083SUU",
-          "title": "The Wedding That Fooled the World #diana #history",
-          "description": "On July 29, 1981, the wedding of Prince Charles and Lady Diana Spencer drew the largest television audience in history at that time \u2014 over 700 million viewers across 74 countries. What nobody watching that fairy-tale moment could know was how the story would actually end. History's most-watched wedding became one of its most cautionary tales about the gap between spectacle and reality.",
-          "tags": [
-            "british history",
-            "did you know",
-            "did you know facts",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "princess diana",
-            "royal family",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-29T04:04:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/AaB9i083SUU/mqdefault.jpg",
-          "views": 759,
-          "likes": 12,
-          "comments": 0,
-          "playlist_ids": [
-            "PLTrU7sep9IQc"
-          ],
-          "playlists": [
-            "Erased From History"
-          ],
-          "is_unsorted": false,
-          "avg_view_pct": 69.29,
           "subs_gained": 0
         }
       ]
