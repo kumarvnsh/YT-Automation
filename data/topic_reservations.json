@@ -835,5 +835,14 @@
     "slot": "evening",
     "date": "2026-08-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260819_040144_short",
+    "title": "The Ship That Should Have Sunk \u2014 But Nobody Could Explain Why",
+    "fingerprint": "but_could_explain_have_nobody_ship_should_sunk_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-19",
+    "status": "reserved"
   }
 ]

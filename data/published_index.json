@@ -1860,5 +1860,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "SucQiKEOTtM",
+    "run_id": "32214178579",
+    "stage_dir_name": "20260819_040144_short",
+    "title": "The Ship That Should Have Sunk \u2014 But Nobody Could Explain Why",
+    "published_at": "2026-08-19T04:06:26.886927+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
