@@ -866,5 +866,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "lmYKCHkRVSI",
+    "run_id": "32217824612",
+    "stage_dir_name": "20260819_050427_short",
+    "title": "Born on 8, 17, or 26? What Is Your Number Actually Building?",
+    "published_at": "2026-08-19T05:07:16.154504+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
