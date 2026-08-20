@@ -853,5 +853,14 @@
     "slot": "morning",
     "date": "2026-08-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260820_160200_short",
+    "title": "One Reunion Nearly Wrecked the Expedition | History's Almost Moments",
+    "fingerprint": "almost_expedition_history_moments_nearly_one_reunion_s_wrecked",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-20",
+    "status": "reserved"
   }
 ]
