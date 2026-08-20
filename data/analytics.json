@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-20T01:12:27.242053+00:00",
+      "updated": "2026-08-20T06:44:05.262678+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,71 @@
       },
       "videos": [
         {
+          "id": "M8drNJGC2_0",
+          "title": "The Maple Syrup Heist Nobody Saw Coming",
+          "description": "Fake maple syrup is making headlines again \u2014 but the world's most audacious maple syrup crime happened years before anyone was looking. The Federation of Quebec Maple Syrup Producers once controlled a strategic reserve so massive it changed how the world thought about food supply. How does a condiment become a global commodity with its own heist story?",
+          "tags": [
+            "canadian history",
+            "commodity",
+            "did you know",
+            "education",
+            "facts",
+            "food fraud",
+            "food history",
+            "heist",
+            "history",
+            "history facts",
+            "history shorts",
+            "maple syrup",
+            "quebec",
+            "shorts",
+            "surprising history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-20T04:05:56Z",
+          "thumbnail": "https://i.ytimg.com/vi/M8drNJGC2_0/mqdefault.jpg",
+          "views": 3,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "IRqKkn3HjnQ",
+          "title": "How Did 9,000 Soldiers Disappear Right Under Britain's Nose?",
+          "description": "In August 1776, George Washington's entire Continental Army was trapped on Brooklyn's shore with the British closing in \u2014 and only one thing stood between them and total defeat. This episode of History's Almost Moments breaks down the night that nearly ended the American Revolution before it had any chance. What do you think would have happened if the fog hadn't come?  \n#AmericanRevolution #history #HistorysAlmostMoments",
+          "tags": [
+            "1776",
+            "american revolution",
+            "battle of brooklyn",
+            "british army",
+            "close call history",
+            "continental army",
+            "did you know",
+            "education",
+            "facts",
+            "george washington",
+            "history",
+            "history facts",
+            "history shorts",
+            "near miss history",
+            "revolutionary war",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-20T01:13:53Z",
+          "thumbnail": "https://i.ytimg.com/vi/IRqKkn3HjnQ/mqdefault.jpg",
+          "views": 65,
+          "likes": 6,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "SucQiKEOTtM",
           "title": "The Ship That Should Have Sunk \u2014 But Nobody Could Explain Why",
           "description": "On August 19, 1812, a single naval battle gave the young United States something it desperately needed \u2014 and terrified the most powerful navy on earth. The legend of Old Ironsides was born in under an hour, and the truth behind it is stranger than the nickname. Drop your verdict in the comments.",
@@ -58,7 +123,7 @@
           ],
           "publishedAt": "2026-08-19T04:05:50Z",
           "thumbnail": "https://i.ytimg.com/vi/SucQiKEOTtM/mqdefault.jpg",
-          "views": 554,
+          "views": 559,
           "likes": 12,
           "comments": 0,
           "playlist_ids": [],
@@ -91,7 +156,7 @@
           ],
           "publishedAt": "2026-08-18T16:07:26Z",
           "thumbnail": "https://i.ytimg.com/vi/dw7mm6BqLbc/mqdefault.jpg",
-          "views": 63,
+          "views": 65,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +187,7 @@
           ],
           "publishedAt": "2026-08-18T04:07:03Z",
           "thumbnail": "https://i.ytimg.com/vi/4S-pFayDnhY/mqdefault.jpg",
-          "views": 250,
+          "views": 251,
           "likes": 20,
           "comments": 0,
           "playlist_ids": [],
@@ -155,7 +220,7 @@
           ],
           "publishedAt": "2026-08-17T16:07:48Z",
           "thumbnail": "https://i.ytimg.com/vi/NDTNvq6kW78/mqdefault.jpg",
-          "views": 327,
+          "views": 328,
           "likes": 8,
           "comments": 2,
           "playlist_ids": [],
@@ -324,7 +389,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 711,
+          "views": 712,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -530,7 +595,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.78,
+          "avg_view_pct": 68.82,
           "subs_gained": 0
         },
         {
@@ -596,7 +661,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 171.51,
+          "avg_view_pct": 171.81,
           "subs_gained": 1
         },
         {
@@ -731,7 +796,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.20000000000001,
+          "avg_view_pct": 58.08,
           "subs_gained": 2
         },
         {
@@ -832,7 +897,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 153.46,
+          "avg_view_pct": 79.79,
           "subs_gained": 1
         },
         {
@@ -898,7 +963,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.19,
+          "avg_view_pct": 78.86,
           "subs_gained": 1
         },
         {
@@ -1003,7 +1068,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.61,
+          "avg_view_pct": 60.699999999999996,
           "subs_gained": 3
         },
         {
@@ -1656,74 +1721,6 @@
           "is_unsorted": true,
           "avg_view_pct": 60.650000000000006,
           "subs_gained": 1
-        },
-        {
-          "id": "Mq-S2Pjs4mk",
-          "title": "They Didn't Know 900 Men Were Dying #shorts #ww2",
-          "description": "On July 30, 1945, the USS Indianapolis sank in the Pacific \u2014 and the U.S. Navy didn't realise for four days. The reason why is one of the strangest oversights in military history. This is what actually happened.",
-          "tags": [
-            "1945",
-            "did you know",
-            "education",
-            "facts",
-            "forgotten history",
-            "history",
-            "history facts",
-            "history shorts",
-            "military history",
-            "naval history",
-            "rescue",
-            "shark attack",
-            "shorts",
-            "trending",
-            "untold stories",
-            "us navy",
-            "viral",
-            "world war 2",
-            "ww2"
-          ],
-          "publishedAt": "2026-07-30T04:04:15Z",
-          "thumbnail": "https://i.ytimg.com/vi/Mq-S2Pjs4mk/mqdefault.jpg",
-          "views": 720,
-          "likes": 18,
-          "comments": 3,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 60.51,
-          "subs_gained": 0
-        },
-        {
-          "id": "nvYUqrouRgk",
-          "title": "How emus outsmarted the Australian army in 1932 #history #facts",
-          "description": "In 1932, the Australian military deployed soldiers and machine guns against a flock of emus. What happened next became one of history's most embarrassing military defeats. The birds didn't surrender \u2014 they adapted. #history #didyouknow #australia",
-          "tags": [
-            "australia history",
-            "australian history",
-            "did you know",
-            "education",
-            "emu war",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "military history",
-            "shorts",
-            "strange history",
-            "trending",
-            "viral",
-            "weird history"
-          ],
-          "publishedAt": "2026-07-29T20:52:19Z",
-          "thumbnail": "https://i.ytimg.com/vi/nvYUqrouRgk/mqdefault.jpg",
-          "views": 667,
-          "likes": 12,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 67.54,
-          "subs_gained": 0
         }
       ]
     }
