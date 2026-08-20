@@ -619,5 +619,14 @@
     "slot": "morning",
     "date": "2026-08-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260820_170136_short",
+    "title": "Born on 8, 17, or 26? Numerology Has Been Watching You",
+    "fingerprint": "17_26_8_been_born_has_numerology_on_or_watching_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-20",
+    "status": "reserved"
   }
 ]
