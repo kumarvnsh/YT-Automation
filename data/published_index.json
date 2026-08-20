@@ -1875,5 +1875,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "M8drNJGC2_0",
+    "run_id": "32330289101",
+    "stage_dir_name": "20260820_040158_short",
+    "title": "The Maple Syrup Heist Nobody Saw Coming",
+    "published_at": "2026-08-20T04:06:20.992036+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
