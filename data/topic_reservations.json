@@ -862,5 +862,14 @@
     "slot": "evening",
     "date": "2026-08-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260821_160225_short",
+    "title": "The Lake That Exhaled \u2014 And Nobody Understood Why",
+    "fingerprint": "exhaled_lake_nobody_that_understood",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-21",
+    "status": "reserved"
   }
 ]

@@ -1904,5 +1904,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "q34Zq77-oRA",
+    "run_id": "32500712546",
+    "stage_dir_name": "20260821_160225_short",
+    "title": "The Lake That Exhaled \u2014 And Nobody Understood Why",
+    "published_at": "2026-08-21T16:08:14.210126+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
