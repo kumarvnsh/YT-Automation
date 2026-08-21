@@ -936,5 +936,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "qSYb9DIJuuQ",
+    "run_id": "32505896136",
+    "stage_dir_name": "20260821_170120_short",
+    "title": "Born on 8, 17, or 26? Numerology Finally Explains Your Power",
+    "published_at": "2026-08-21T17:04:10.914562+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
