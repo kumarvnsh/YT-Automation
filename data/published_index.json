@@ -1932,5 +1932,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "vz14OtRoDNM",
+    "run_id": "32583434109",
+    "stage_dir_name": "20260822_160137_short",
+    "title": "One Man Almost Launched the Missiles | History's Almost Moments",
+    "published_at": "2026-08-22T16:06:38.137868+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
