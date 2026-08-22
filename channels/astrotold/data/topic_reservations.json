@@ -646,5 +646,14 @@
     "slot": "evening",
     "date": "2026-08-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260822_050201_short",
+    "title": "What Happens When Your Two Initials Share the Same Vibe?",
+    "fingerprint": "happens_initials_same_share_two_vibe_what_when_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-22",
+    "status": "reserved"
   }
 ]

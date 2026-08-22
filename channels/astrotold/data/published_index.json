@@ -950,5 +950,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "NBpwTyKi-CY",
+    "run_id": "32553214410",
+    "stage_dir_name": "20260822_050201_short",
+    "title": "What Happens When Your Two Initials Share the Same Vibe?",
+    "published_at": "2026-08-22T05:05:31.458305+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
