@@ -871,5 +871,14 @@
     "slot": "evening",
     "date": "2026-08-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260822_040117_short",
+    "title": "The Yacht Race That Changed the Rules \u2014 Before It Even Finished",
+    "fingerprint": "before_changed_even_finished_it_race_rules_that_yacht",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-22",
+    "status": "reserved"
   }
 ]

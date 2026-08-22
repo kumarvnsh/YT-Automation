@@ -1918,5 +1918,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "d6ngviLffE4",
+    "run_id": "32550538929",
+    "stage_dir_name": "20260822_040117_short",
+    "title": "The Yacht Race That Changed the Rules \u2014 Before It Even Finished",
+    "published_at": "2026-08-22T04:05:13.525121+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
