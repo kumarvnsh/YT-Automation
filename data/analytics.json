@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-22T01:12:02.169906+00:00",
+      "updated": "2026-08-22T06:39:00.786732+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,37 @@
         ]
       },
       "videos": [
+        {
+          "id": "d6ngviLffE4",
+          "title": "The Yacht Race That Changed the Rules \u2014 Before It Even Finished",
+          "description": "In 1851, a single American yacht showed up uninvited to Britain's biggest race \u2014 and nobody ever forgot what happened next. The America's Cup is now the oldest international sporting trophy in the world, and it started with one very uncomfortable afternoon for the Royal Yacht Squadron. Drop a comment if you think the trophy should ever go back to Britain.",
+          "tags": [
+            "1851",
+            "americas cup",
+            "british history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "sailing history",
+            "shorts",
+            "sports history",
+            "trending",
+            "trophy history",
+            "victorian era",
+            "viral",
+            "yacht racing"
+          ],
+          "publishedAt": "2026-08-22T04:04:42Z",
+          "thumbnail": "https://i.ytimg.com/vi/d6ngviLffE4/mqdefault.jpg",
+          "views": 101,
+          "likes": 3,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "q34Zq77-oRA",
           "title": "The Lake That Exhaled \u2014 And Nobody Understood Why",
@@ -118,8 +149,8 @@
           ],
           "publishedAt": "2026-08-20T16:06:58Z",
           "thumbnail": "https://i.ytimg.com/vi/YuLQF_5A2p0/mqdefault.jpg",
-          "views": 136,
-          "likes": 6,
+          "views": 140,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -149,7 +180,7 @@
           ],
           "publishedAt": "2026-08-20T04:05:56Z",
           "thumbnail": "https://i.ytimg.com/vi/M8drNJGC2_0/mqdefault.jpg",
-          "views": 33,
+          "views": 35,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -1686,40 +1717,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 114.6,
-          "subs_gained": 1
-        },
-        {
-          "id": "qc9p5IbgmfA",
-          "title": "300 Years Later, Gold Still Rises From This Wreck #treasurehunt",
-          "description": "On July 31, 1715, one of the richest fleets ever assembled vanished in a single night off the coast of Florida. What sank them, what they carried, and why people are still pulling gold from the seabed today. Watch to find out what 300 years of ocean couldn't fully bury.",
-          "tags": [
-            "did you know",
-            "did you know facts",
-            "education",
-            "facts",
-            "florida",
-            "gold",
-            "historical facts",
-            "history",
-            "history shorts",
-            "hurricane",
-            "shipwreck",
-            "shorts",
-            "spanish empire",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-07-31T16:04:52Z",
-          "thumbnail": "https://i.ytimg.com/vi/qc9p5IbgmfA/mqdefault.jpg",
-          "views": 814,
-          "likes": 22,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 73.21,
-          "subs_gained": 2
+          "avg_view_pct": 58.26,
+          "subs_gained": 0
         }
       ]
     }
