@@ -673,5 +673,14 @@
     "slot": "morning",
     "date": "2026-08-23",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260823_170123_short",
+    "title": "What Happens When Your Initial Is a Vowel vs a Consonant?",
+    "fingerprint": "consonant_happens_initial_is_vowel_vs_what_when_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-23",
+    "status": "reserved"
   }
 ]
