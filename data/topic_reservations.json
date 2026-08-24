@@ -907,5 +907,14 @@
     "slot": "evening",
     "date": "2026-08-23",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260824_040128_short",
+    "title": "One Flag Almost Didn't Make It Through | History's Almost Moments",
+    "fingerprint": "almost_didn_flag_history_it_make_moments_one_s_t_through",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-24",
+    "status": "reserved"
   }
 ]
