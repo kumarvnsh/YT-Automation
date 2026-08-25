@@ -2019,5 +2019,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "JQ_AfuHf-og",
+    "run_id": "32869367836",
+    "stage_dir_name": "20260825_160300_short",
+    "title": "One Scrambled Code Nearly Won the Pacific | History's Almost Moments",
+    "published_at": "2026-08-25T16:09:30.843201+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
