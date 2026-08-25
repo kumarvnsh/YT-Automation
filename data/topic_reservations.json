@@ -925,5 +925,14 @@
     "slot": "evening",
     "date": "2026-08-24",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260825_040130_short",
+    "title": "A Newspaper Convinced the World the Moon Had People On It",
+    "fingerprint": "convinced_had_it_moon_newspaper_on_people_world",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-25",
+    "status": "reserved"
   }
 ]

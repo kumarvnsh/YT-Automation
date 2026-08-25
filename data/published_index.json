@@ -2005,5 +2005,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "9sV-HJpY9KY",
+    "run_id": "32807306094",
+    "stage_dir_name": "20260825_040130_short",
+    "title": "A Newspaper Convinced the World the Moon Had People On It",
+    "published_at": "2026-08-25T04:05:34.631625+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
