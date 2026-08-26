@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-26T12:51:24.280463+00:00",
+      "updated": "2026-08-26T19:46:30.355575+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "FVAuS3z-gCU",
+          "title": "The Amendment Passed \u2014 But Half the Women Still Couldn't Use It",
+          "description": "On August 26, 1920, the 19th Amendment officially took effect \u2014 but the story of who it actually protected is far more complicated than the history books admit. The gap between the law and reality took decades to close, and some would argue it never fully did. Drop your take in the comments.",
+          "tags": [
+            "19th amendment",
+            "american history",
+            "civil rights",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "on this day",
+            "shorts",
+            "trending",
+            "viral",
+            "voting rights",
+            "women's history",
+            "women's suffrage"
+          ],
+          "publishedAt": "2026-08-26T16:06:34Z",
+          "thumbnail": "https://i.ytimg.com/vi/FVAuS3z-gCU/mqdefault.jpg",
+          "views": 15,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "qt7Q7YqbjcQ",
           "title": "The Amendment That Passed \u2014 But Still Didn't Apply to Everyone",
           "description": "On August 26, 1920, the 19th Amendment officially took effect, granting American women the right to vote. But the full story is more complicated \u2014 and more surprising \u2014 than most history books admit. Drop your take in the comments: was this a finish line or just a checkpoint?  \n#WomensHistory #19thAmendment #DidYouKnow",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-08-26T04:04:55Z",
           "thumbnail": "https://i.ytimg.com/vi/qt7Q7YqbjcQ/mqdefault.jpg",
-          "views": 49,
+          "views": 48,
           "likes": 1,
           "comments": 1,
           "playlist_ids": [],
@@ -157,11 +188,13 @@
           "publishedAt": "2026-08-25T04:05:05Z",
           "thumbnail": "https://i.ytimg.com/vi/9sV-HJpY9KY/mqdefault.jpg",
           "views": 133,
-          "likes": 3,
+          "likes": 4,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 43.07,
+          "subs_gained": 0
         },
         {
           "id": "75il-Ov_y5U",
@@ -187,12 +220,14 @@
           ],
           "publishedAt": "2026-08-25T01:15:37Z",
           "thumbnail": "https://i.ytimg.com/vi/75il-Ov_y5U/mqdefault.jpg",
-          "views": 36,
+          "views": 37,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 60.33,
+          "subs_gained": 0
         },
         {
           "id": "_6U0pVeAjjA",
@@ -224,7 +259,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 73.39,
+          "subs_gained": 0
         },
         {
           "id": "iD0yNfsfbWM",
@@ -258,7 +295,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.58,
+          "avg_view_pct": 86.11,
           "subs_gained": 0
         },
         {
@@ -292,7 +329,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.75,
+          "avg_view_pct": 49.39,
           "subs_gained": 0
         },
         {
@@ -325,7 +362,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.67,
+          "avg_view_pct": 68.43,
           "subs_gained": 0
         },
         {
@@ -359,7 +396,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.32,
+          "avg_view_pct": 64.77,
           "subs_gained": 0
         },
         {
@@ -392,7 +429,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.16,
+          "avg_view_pct": 80.21,
           "subs_gained": 0
         },
         {
@@ -453,13 +490,13 @@
           ],
           "publishedAt": "2026-08-22T04:04:42Z",
           "thumbnail": "https://i.ytimg.com/vi/d6ngviLffE4/mqdefault.jpg",
-          "views": 203,
+          "views": 205,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.35,
+          "avg_view_pct": 71.74,
           "subs_gained": 0
         },
         {
@@ -927,7 +964,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 135.36,
+          "avg_view_pct": 135.06,
           "subs_gained": 0
         },
         {
@@ -1493,13 +1530,13 @@
           ],
           "publishedAt": "2026-08-08T16:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1356,
+          "views": 1360,
           "likes": 17,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.72,
+          "avg_view_pct": 78.75,
           "subs_gained": 1
         },
         {
@@ -1677,39 +1714,6 @@
           "is_unsorted": true,
           "avg_view_pct": 56.50999999999999,
           "subs_gained": 0
-        },
-        {
-          "id": "VmN_SWsAOxA",
-          "title": "Jamaica Won Independence in 1962 \u2014 With a Vote Against Itself",
-          "description": "On August 6, 1962, Jamaica became independent \u2014 but the path there started with a referendum where Jamaicans voted to leave their own federation. The story of how a 'no' vote became the foundation of a nation is one of history's strangest democratic moments. Drop a \ud83c\uddef\ud83c\uddf2 if you knew this one.",
-          "tags": [
-            "1962",
-            "british empire",
-            "caribbean history",
-            "decolonization",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "independence",
-            "jamaica",
-            "shorts",
-            "trending",
-            "viral",
-            "west indies federation"
-          ],
-          "publishedAt": "2026-08-06T04:03:50Z",
-          "thumbnail": "https://i.ytimg.com/vi/VmN_SWsAOxA/mqdefault.jpg",
-          "views": 727,
-          "likes": 14,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 66.4,
-          "subs_gained": 1
         }
       ]
     }
