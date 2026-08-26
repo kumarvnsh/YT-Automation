@@ -2034,5 +2034,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "qt7Q7YqbjcQ",
+    "run_id": "32928584219",
+    "stage_dir_name": "20260826_040116_short",
+    "title": "The Amendment That Passed \u2014 But Still Didn't Apply to Everyone",
+    "published_at": "2026-08-26T04:05:31.400354+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
