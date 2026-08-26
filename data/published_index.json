@@ -2048,5 +2048,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "FVAuS3z-gCU",
+    "run_id": "32986590615",
+    "stage_dir_name": "20260826_160214_short",
+    "title": "The Amendment Passed \u2014 But Half the Women Still Couldn't Use It",
+    "published_at": "2026-08-26T16:07:00.741298+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

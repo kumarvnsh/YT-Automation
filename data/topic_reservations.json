@@ -952,5 +952,14 @@
     "slot": "morning",
     "date": "2026-08-26",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260826_160214_short",
+    "title": "The Amendment Passed \u2014 But Half the Women Still Couldn't Use It",
+    "fingerprint": "amendment_but_couldn_half_it_passed_still_t_use_women",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-26",
+    "status": "reserved"
   }
 ]
