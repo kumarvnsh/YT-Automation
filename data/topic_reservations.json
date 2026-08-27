@@ -970,5 +970,14 @@
     "slot": "morning",
     "date": "2026-08-27",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260827_160312_short",
+    "title": "Five Women Asked One Question \u2014 Canada Didn't Have an Answer",
+    "fingerprint": "answer_asked_canada_didn_five_have_one_question_t_women",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-08-27",
+    "status": "reserved"
   }
 ]
