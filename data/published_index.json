@@ -2107,5 +2107,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "ADwVT_TtUug",
+    "run_id": "33187933797",
+    "stage_dir_name": "20260828_160146_short",
+    "title": "One Army Defeated Itself Before the Enemy Arrived | History's Almost Moments",
+    "published_at": "2026-08-28T16:07:23.491062+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
