@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-28T09:52:36.146696+00:00",
+      "updated": "2026-08-28T21:45:15.422210+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,69 @@
       },
       "videos": [
         {
+          "id": "ADwVT_TtUug",
+          "title": "One Army Defeated Itself Before the Enemy Arrived | History's Almost Moments",
+          "description": "In 1788, the Austrian army routed itself in the dark \u2014 no enemy required. A single misunderstanding cascaded into full retreat before the Ottomans even showed up. This is the story of how one night almost handed an empire to its enemies. #history #didyouknow #historysalmostmoments",
+          "tags": [
+            "18th century",
+            "austrian empire",
+            "battle of karansebes",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "friendly fire",
+            "historical blunders",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "military history",
+            "ottoman wars",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-28T16:06:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/ADwVT_TtUug/mqdefault.jpg",
+          "views": 124,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "OA6aNhFOjyA",
+          "title": "Why Millions of Women Still Couldn't Vote After Winning the Vote",
+          "description": "On August 26, 1920, the 19th Amendment officially took effect \u2014 but the story of who it actually protected is far more complicated than the history books admit. The gap between the law and reality took decades to close, and some would argue it never fully did. Drop your take in the comments.",
+          "tags": [
+            "19th amendment",
+            "american history",
+            "civil rights",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "on this day",
+            "shorts",
+            "trending",
+            "viral",
+            "voting rights",
+            "women's history",
+            "women's suffrage"
+          ],
+          "publishedAt": "2026-08-28T09:54:04Z",
+          "thumbnail": "https://i.ytimg.com/vi/OA6aNhFOjyA/mqdefault.jpg",
+          "views": 206,
+          "likes": 7,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "4bFZaqtHiZU",
           "title": "The Storm That Shut Down the Internet \u2014 160 Years Too Early",
           "description": "On August 28, 1859, the sky lit up worldwide and telegraph systems across America and Europe collapsed \u2014 from a storm nobody saw coming. The Carrington Event remains the most powerful geomagnetic storm ever recorded, and scientists say the next one could be far worse. If it hit today, the damage could exceed ten trillion dollars in a single day.",
@@ -59,7 +122,7 @@
           ],
           "publishedAt": "2026-08-28T04:04:45Z",
           "thumbnail": "https://i.ytimg.com/vi/4bFZaqtHiZU/mqdefault.jpg",
-          "views": 104,
+          "views": 143,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -121,7 +184,7 @@
           ],
           "publishedAt": "2026-08-27T16:07:03Z",
           "thumbnail": "https://i.ytimg.com/vi/LMSyNnz9jeM/mqdefault.jpg",
-          "views": 57,
+          "views": 62,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -156,7 +219,7 @@
           ],
           "publishedAt": "2026-08-27T07:49:10Z",
           "thumbnail": "https://i.ytimg.com/vi/IoahdTE4Lqk/mqdefault.jpg",
-          "views": 30,
+          "views": 80,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -221,12 +284,14 @@
           ],
           "publishedAt": "2026-08-26T16:06:34Z",
           "thumbnail": "https://i.ytimg.com/vi/FVAuS3z-gCU/mqdefault.jpg",
-          "views": 34,
+          "views": 48,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 49.18,
+          "subs_gained": 0
         },
         {
           "id": "qt7Q7YqbjcQ",
@@ -258,7 +323,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 115.34,
+          "avg_view_pct": 106.76,
           "subs_gained": 0
         },
         {
@@ -329,7 +394,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.19,
+          "avg_view_pct": 54.89999999999999,
           "subs_gained": 0
         },
         {
@@ -362,7 +427,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 50.36999999999999,
+          "avg_view_pct": 51.12,
           "subs_gained": 0
         },
         {
@@ -395,7 +460,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.25,
+          "avg_view_pct": 58.11999999999999,
           "subs_gained": 0
         },
         {
@@ -665,7 +730,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.74,
+          "avg_view_pct": 71.42,
           "subs_gained": 0
         },
         {
@@ -726,7 +791,7 @@
           ],
           "publishedAt": "2026-08-21T12:47:25Z",
           "thumbnail": "https://i.ytimg.com/vi/KHt3L6nBSjA/mqdefault.jpg",
-          "views": 4,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1133,7 +1198,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 135.06,
+          "avg_view_pct": 134.94,
           "subs_gained": 0
         },
         {
@@ -1395,7 +1460,7 @@
           ],
           "publishedAt": "2026-08-12T04:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 565,
+          "views": 566,
           "likes": 15,
           "comments": 6,
           "playlist_ids": [],
@@ -1640,72 +1705,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 79.45,
-          "subs_gained": 1
-        },
-        {
-          "id": "qXo-JyzZsCQ",
-          "title": "The Only Country That Was Forced Into Existence Against Its Will",
-          "description": "On August 9, 1965, Singapore didn't choose independence \u2014 it was handed independence and told to figure it out. What happened next shocked every political expert who said it couldn't survive. This is the strangest birth of a nation in modern history. #history #singapore #didyouknow",
-          "tags": [
-            "1965",
-            "cold war history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "independence",
-            "malaysia",
-            "nation building",
-            "shorts",
-            "singapore",
-            "southeast asia",
-            "surprising history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-09T04:05:34Z",
-          "thumbnail": "https://i.ytimg.com/vi/qXo-JyzZsCQ/mqdefault.jpg",
-          "views": 680,
-          "likes": 15,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 70.55,
-          "subs_gained": 0
-        },
-        {
-          "id": "Z-kbw3KQ3Pc",
-          "title": "A Maintenance Mistake Took Down the World's Tallest Mast #shorts #engineering",
-          "description": "On August 8, 1991, the Warsaw Radio Mast collapsed \u2014 and with it went the record for the tallest structure humanity had ever built. It was taller than any skyscraper, held up by invisible wires, and nobody saw it coming. A fascinating slice of Cold War engineering history you won't forget. #history #didyouknow #engineering",
-          "tags": [
-            "1991",
-            "architecture history",
-            "cold war history",
-            "did you know",
-            "education",
-            "engineering history",
-            "facts",
-            "history",
-            "history shorts",
-            "poland history",
-            "shorts",
-            "tallest structure",
-            "trending",
-            "viral",
-            "warsaw radio mast",
-            "world records"
-          ],
-          "publishedAt": "2026-08-08T16:05:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/Z-kbw3KQ3Pc/mqdefault.jpg",
-          "views": 1361,
-          "likes": 17,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 78.7,
           "subs_gained": 1
         }
       ]
