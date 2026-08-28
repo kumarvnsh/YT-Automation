@@ -2063,7 +2063,8 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "auto_dispatched_at": "2026-08-28T09:53:07.466039+00:00"
   },
   {
     "video_id": "97IGGS86SQo",
