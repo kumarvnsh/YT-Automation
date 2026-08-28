@@ -979,5 +979,14 @@
     "slot": "evening",
     "date": "2026-08-27",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260828_040122_short",
+    "title": "The Storm That Shut Down the Internet \u2014 160 Years Too Early",
+    "fingerprint": "160_down_early_internet_shut_storm_that_too_years",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-28",
+    "status": "reserved"
   }
 ]

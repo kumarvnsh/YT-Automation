@@ -2092,5 +2092,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "4bFZaqtHiZU",
+    "run_id": "33140551442",
+    "stage_dir_name": "20260828_040122_short",
+    "title": "The Storm That Shut Down the Internet \u2014 160 Years Too Early",
+    "published_at": "2026-08-28T04:05:10.853578+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
