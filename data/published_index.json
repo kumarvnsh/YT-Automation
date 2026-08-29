@@ -2137,5 +2137,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "zaTlG-Waibc",
+    "run_id": "33261804611",
+    "stage_dir_name": "20260829_160146_short",
+    "title": "The Discovery That Powers Everything \u2014 Made With a Coil and a Candle",
+    "published_at": "2026-08-29T16:06:58.061617+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
