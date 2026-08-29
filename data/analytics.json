@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-29T12:23:24.912098+00:00",
+      "updated": "2026-08-29T20:29:14.525384+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "zaTlG-Waibc",
+          "title": "The Discovery That Powers Everything \u2014 Made With a Coil and a Candle",
+          "description": "On August 29, 1831, Michael Faraday made a discovery in a basement laboratory that every power station on Earth still runs on today \u2014 yet almost nobody knows his name. This is the gap nobody taught you. What if the device powering your screen right now traces back to one accidental afternoon? #historyofscience #michaelfaraday #didyouknow",
+          "tags": [
+            "1831",
+            "did you know",
+            "education",
+            "electromagnetic induction",
+            "facts",
+            "history",
+            "history of electricity",
+            "history shorts",
+            "industrial revolution",
+            "invention history",
+            "michael faraday",
+            "physics history",
+            "science history",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-08-29T16:05:27Z",
+          "thumbnail": "https://i.ytimg.com/vi/zaTlG-Waibc/mqdefault.jpg",
+          "views": 152,
+          "likes": 3,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "pNISJmO9mWU",
           "title": "Canada's Constitution Had a Hidden Flaw Nobody Questioned",
           "description": "On August 27, 1927, five Canadian women filed a legal petition asking whether the word 'Persons' in Canada's constitution included women. The answer that came back changed the country forever. This is the gap nobody talks about.",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-08-29T05:53:59Z",
           "thumbnail": "https://i.ytimg.com/vi/pNISJmO9mWU/mqdefault.jpg",
-          "views": 124,
+          "views": 148,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -90,7 +121,7 @@
           ],
           "publishedAt": "2026-08-29T04:05:22Z",
           "thumbnail": "https://i.ytimg.com/vi/0CZlxxFShrA/mqdefault.jpg",
-          "views": 711,
+          "views": 981,
           "likes": 5,
           "comments": 1,
           "playlist_ids": [],
@@ -124,7 +155,7 @@
           ],
           "publishedAt": "2026-08-28T21:46:42Z",
           "thumbnail": "https://i.ytimg.com/vi/hfUz7CUPiZk/mqdefault.jpg",
-          "views": 718,
+          "views": 912,
           "likes": 19,
           "comments": 0,
           "playlist_ids": [],
@@ -156,7 +187,7 @@
           ],
           "publishedAt": "2026-08-28T16:06:50Z",
           "thumbnail": "https://i.ytimg.com/vi/ADwVT_TtUug/mqdefault.jpg",
-          "views": 376,
+          "views": 451,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -219,12 +250,14 @@
           ],
           "publishedAt": "2026-08-28T04:04:45Z",
           "thumbnail": "https://i.ytimg.com/vi/4bFZaqtHiZU/mqdefault.jpg",
-          "views": 145,
+          "views": 147,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 246.74,
+          "subs_gained": 0
         },
         {
           "id": "APBZmjOZx4c",
@@ -250,12 +283,14 @@
           ],
           "publishedAt": "2026-08-27T21:53:02Z",
           "thumbnail": "https://i.ytimg.com/vi/APBZmjOZx4c/mqdefault.jpg",
-          "views": 65,
+          "views": 66,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 52.62,
+          "subs_gained": 0
         },
         {
           "id": "LMSyNnz9jeM",
@@ -281,12 +316,14 @@
           ],
           "publishedAt": "2026-08-27T16:07:03Z",
           "thumbnail": "https://i.ytimg.com/vi/LMSyNnz9jeM/mqdefault.jpg",
-          "views": 65,
+          "views": 74,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 31.629999999999995,
+          "subs_gained": 0
         },
         {
           "id": "IoahdTE4Lqk",
@@ -321,7 +358,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 73.63,
+          "subs_gained": 0
         },
         {
           "id": "97IGGS86SQo",
@@ -387,7 +426,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 49.18,
+          "avg_view_pct": 58.19,
           "subs_gained": 0
         },
         {
@@ -827,7 +866,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.42,
+          "avg_view_pct": 71.65,
           "subs_gained": 0
         },
         {
@@ -1362,7 +1401,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 76.74,
+          "avg_view_pct": 76.87,
           "subs_gained": 0
         },
         {
@@ -1665,42 +1704,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 33.74,
-          "subs_gained": 1
-        },
-        {
-          "id": "g6VRyIyElxs",
-          "title": "One Soldier Almost Kept Fighting for 30 Years \u2014 Nobody Told Him | History's Almost Moments",
-          "description": "In 1945, World War Two ended \u2014 but one Japanese soldier in the Philippine jungle never received the order to stop. A single undelivered message kept a war alive for nearly three decades. This is the story of how close history came to avoiding Hiroo Onoda's impossible 29-year mission.",
-          "tags": [
-            "1945",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "hiroo onoda",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "japanese soldier",
-            "lubang island",
-            "military history",
-            "near miss history",
-            "philippines",
-            "shorts",
-            "shorts history",
-            "trending",
-            "viral",
-            "world war two"
-          ],
-          "publishedAt": "2026-08-11T04:06:05Z",
-          "thumbnail": "https://i.ytimg.com/vi/g6VRyIyElxs/mqdefault.jpg",
-          "views": 628,
-          "likes": 28,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 59.11,
           "subs_gained": 1
         }
       ]
