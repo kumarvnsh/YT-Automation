@@ -997,5 +997,14 @@
     "slot": "evening",
     "date": "2026-08-28",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260829_040128_short",
+    "title": "60,000 Soldiers Switched Sides \u2014 But History Forgot Why",
+    "fingerprint": "000_60_but_forgot_history_sides_soldiers_switched",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-08-29",
+    "status": "reserved"
   }
 ]

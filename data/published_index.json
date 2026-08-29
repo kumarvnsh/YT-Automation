@@ -2122,5 +2122,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "0CZlxxFShrA",
+    "run_id": "33232772758",
+    "stage_dir_name": "20260829_040128_short",
+    "title": "60,000 Soldiers Switched Sides \u2014 But History Forgot Why",
+    "published_at": "2026-08-29T04:05:58.579546+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
