@@ -2165,5 +2165,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "QfXXcgt_OLk",
+    "run_id": "33321243821",
+    "stage_dir_name": "20260830_160138_short",
+    "title": "The Kids' Tournament Nobody Thought Would Last a Summer",
+    "published_at": "2026-08-30T16:05:55.350276+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
