@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-30T11:22:08.452012+00:00",
+      "updated": "2026-08-30T16:08:59.955129+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "QfXXcgt_OLk",
+          "title": "The Kids' Tournament Nobody Thought Would Last a Summer",
+          "description": "The Little League World Series is one of the most-watched youth sports events on the planet \u2014 but it nearly didn't survive its first year. The story behind how twelve kids from a Pennsylvania coal town accidentally built a global institution is wilder than any championship game. Watch to find out what almost stopped it before it started.",
+          "tags": [
+            "americana",
+            "baseball history",
+            "baseball origins",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "little league world series",
+            "shorts",
+            "sports history",
+            "trending",
+            "unexpected history",
+            "viral",
+            "williamsport",
+            "youth sports"
+          ],
+          "publishedAt": "2026-08-30T16:05:22Z",
+          "thumbnail": "https://i.ytimg.com/vi/QfXXcgt_OLk/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "uQg4uglQ0IE",
           "title": "One Wrong Turn Nearly Lost the Pacific | History's Almost Moments",
           "description": "In June 1942, the entire American dive-bomber strike at Midway nearly missed the Japanese fleet by flying the wrong direction. One squadron's solo gamble changed everything. The Pacific War almost ended very differently \u2014 and historians still argue about how close it really was.",
@@ -60,7 +91,7 @@
           ],
           "publishedAt": "2026-08-30T04:04:40Z",
           "thumbnail": "https://i.ytimg.com/vi/uQg4uglQ0IE/mqdefault.jpg",
-          "views": 97,
+          "views": 116,
           "likes": 3,
           "comments": 1,
           "playlist_ids": [],
@@ -91,7 +122,7 @@
           ],
           "publishedAt": "2026-08-29T16:05:27Z",
           "thumbnail": "https://i.ytimg.com/vi/zaTlG-Waibc/mqdefault.jpg",
-          "views": 347,
+          "views": 374,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +153,7 @@
           ],
           "publishedAt": "2026-08-29T05:53:59Z",
           "thumbnail": "https://i.ytimg.com/vi/pNISJmO9mWU/mqdefault.jpg",
-          "views": 174,
+          "views": 176,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -220,8 +251,8 @@
           ],
           "publishedAt": "2026-08-28T16:06:50Z",
           "thumbnail": "https://i.ytimg.com/vi/ADwVT_TtUug/mqdefault.jpg",
-          "views": 539,
-          "likes": 8,
+          "views": 573,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -386,7 +417,7 @@
           ],
           "publishedAt": "2026-08-27T07:49:10Z",
           "thumbnail": "https://i.ytimg.com/vi/IoahdTE4Lqk/mqdefault.jpg",
-          "views": 126,
+          "views": 127,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -1635,7 +1666,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 171.81,
+          "avg_view_pct": 140.16,
           "subs_gained": 1
         },
         {
@@ -1668,41 +1699,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 95.02,
+          "avg_view_pct": 117.21,
           "subs_gained": 0
-        },
-        {
-          "id": "sZbWq3lZ-eI",
-          "title": "The Prison Nobody Was Supposed to Know Existed",
-          "description": "On August 11, 1934, the first civilian prisoners arrived at Alcatraz \u2014 and the government went to extraordinary lengths to keep the whole operation quiet. The island that became America's most famous prison was designed, above all, to be forgotten. Did the secrecy make it more powerful, or just more mythologized?",
-          "tags": [
-            "1934",
-            "alcatraz",
-            "alcatraz island",
-            "american history",
-            "crime history",
-            "did you know",
-            "education",
-            "facts",
-            "federal prison",
-            "history",
-            "history shorts",
-            "prison history",
-            "san francisco bay",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-11T16:06:58Z",
-          "thumbnail": "https://i.ytimg.com/vi/sZbWq3lZ-eI/mqdefault.jpg",
-          "views": 308,
-          "likes": 3,
-          "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 62.99,
-          "subs_gained": 1
         }
       ]
     }
