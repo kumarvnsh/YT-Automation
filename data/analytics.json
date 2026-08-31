@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-08-31T12:51:09.855966+00:00",
+      "updated": "2026-08-31T22:32:30.913971+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "jI59a3dXE8s",
+          "title": "One Man Almost Reported It \u2014 Then Didn't | History's Almost Moments",
+          "description": "On September 26, 1983, a Soviet officer watched his early-warning system scream that five American missiles were inbound \u2014 and decided, alone, not to report it. That single choice may be the most consequential non-event in modern history. What would you have done with 23 minutes on the clock and the fate of millions in your hands?  #coldwar #historyshorts #historysalmostmoments",
+          "tags": [
+            "1983",
+            "close calls",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "near miss",
+            "nuclear history",
+            "shorts",
+            "soviet union",
+            "stanislav petrov",
+            "trending",
+            "viral",
+            "world history"
+          ],
+          "publishedAt": "2026-08-31T16:05:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/jI59a3dXE8s/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "hql8PZAGHi0",
           "title": "America Tried to Sit Out the War \u2014 But One Law Backfired",
           "description": "On August 31, 1935, America passed its first Neutrality Act, convinced it could legally stay out of any European war. What followed proved that neutrality on paper and neutrality in practice are very different things. The gap between those two ideas helped reshape the entire 20th century.",
@@ -58,8 +90,8 @@
           ],
           "publishedAt": "2026-08-31T04:04:51Z",
           "thumbnail": "https://i.ytimg.com/vi/hql8PZAGHi0/mqdefault.jpg",
-          "views": 196,
-          "likes": 1,
+          "views": 275,
+          "likes": 5,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -89,7 +121,7 @@
           ],
           "publishedAt": "2026-08-30T16:05:22Z",
           "thumbnail": "https://i.ytimg.com/vi/QfXXcgt_OLk/mqdefault.jpg",
-          "views": 118,
+          "views": 126,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -122,12 +154,14 @@
           ],
           "publishedAt": "2026-08-30T04:04:40Z",
           "thumbnail": "https://i.ytimg.com/vi/uQg4uglQ0IE/mqdefault.jpg",
-          "views": 269,
+          "views": 305,
           "likes": 10,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 59.39,
+          "subs_gained": 0
         },
         {
           "id": "zaTlG-Waibc",
@@ -153,12 +187,14 @@
           ],
           "publishedAt": "2026-08-29T16:05:27Z",
           "thumbnail": "https://i.ytimg.com/vi/zaTlG-Waibc/mqdefault.jpg",
-          "views": 451,
+          "views": 467,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 109.50999999999999,
+          "subs_gained": 2
         },
         {
           "id": "pNISJmO9mWU",
@@ -184,13 +220,13 @@
           ],
           "publishedAt": "2026-08-29T05:53:59Z",
           "thumbnail": "https://i.ytimg.com/vi/pNISJmO9mWU/mqdefault.jpg",
-          "views": 205,
+          "views": 206,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 38.89,
+          "avg_view_pct": 39.79,
           "subs_gained": 0
         },
         {
@@ -218,14 +254,14 @@
           ],
           "publishedAt": "2026-08-29T04:05:22Z",
           "thumbnail": "https://i.ytimg.com/vi/0CZlxxFShrA/mqdefault.jpg",
-          "views": 1003,
+          "views": 1004,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 43.43,
-          "subs_gained": 0
+          "avg_view_pct": 40.82,
+          "subs_gained": 1
         },
         {
           "id": "hfUz7CUPiZk",
@@ -254,13 +290,13 @@
           ],
           "publishedAt": "2026-08-28T21:46:42Z",
           "thumbnail": "https://i.ytimg.com/vi/hfUz7CUPiZk/mqdefault.jpg",
-          "views": 983,
+          "views": 984,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 79.69,
+          "avg_view_pct": 72.61,
           "subs_gained": 0
         },
         {
@@ -294,7 +330,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.28,
+          "avg_view_pct": 61.9,
           "subs_gained": 0
         },
         {
@@ -327,7 +363,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 53.03,
+          "avg_view_pct": 52.410000000000004,
           "subs_gained": 1
         },
         {
@@ -361,7 +397,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 188.43,
+          "avg_view_pct": 185.06,
           "subs_gained": 0
         },
         {
@@ -427,7 +463,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 32.96,
+          "avg_view_pct": 31.739999999999995,
           "subs_gained": 0
         },
         {
@@ -464,7 +500,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.15,
+          "avg_view_pct": 69.2,
           "subs_gained": 1
         },
         {
@@ -1433,7 +1469,7 @@
           ],
           "publishedAt": "2026-08-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/UQD_i7yt16s/mqdefault.jpg",
-          "views": 718,
+          "views": 719,
           "likes": 15,
           "comments": 0,
           "playlist_ids": [],
@@ -1676,39 +1712,6 @@
           "is_unsorted": true,
           "avg_view_pct": 113.23,
           "subs_gained": 0
-        },
-        {
-          "id": "Pq_ui3DHi4U",
-          "title": "Baseball Cancelled Its Own Championship \u2014 And Nobody Could Stop It",
-          "description": "In 1994, Major League Baseball did something no war, no depression, and no pandemic had managed to do in 90 years. The players walked out, and the World Series simply didn't happen. The story of how the richest game in America shut itself down is stranger than any scorecard.",
-          "tags": [
-            "1994 mlb strike",
-            "american sports",
-            "baseball facts",
-            "baseball history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "labor strike history",
-            "mlb history",
-            "shorts",
-            "sports history",
-            "trending",
-            "viral",
-            "world series"
-          ],
-          "publishedAt": "2026-08-12T04:05:41Z",
-          "thumbnail": "https://i.ytimg.com/vi/Pq_ui3DHi4U/mqdefault.jpg",
-          "views": 566,
-          "likes": 15,
-          "comments": 6,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 140.16,
-          "subs_gained": 1
         }
       ]
     }
