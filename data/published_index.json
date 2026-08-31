@@ -2179,5 +2179,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "hql8PZAGHi0",
+    "run_id": "33355639822",
+    "stage_dir_name": "20260831_040123_short",
+    "title": "America Tried to Sit Out the War \u2014 But One Law Backfired",
+    "published_at": "2026-08-31T04:05:29.391135+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
