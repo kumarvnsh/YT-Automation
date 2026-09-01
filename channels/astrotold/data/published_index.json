@@ -1174,5 +1174,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "gNYb0V4x3o4",
+    "run_id": "33472058545",
+    "stage_dir_name": "20260901_050304_short",
+    "title": "What Are Your Name Initials Actually Hiding Together?",
+    "published_at": "2026-09-01T05:05:52.826514+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
