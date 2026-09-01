@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-01T11:11:25.193668+00:00",
+      "updated": "2026-09-01T16:08:52.650381+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "F0Q5evro62E",
+          "title": "It Crossed the Atlantic Before Your Lunch Break \u2014 How?",
+          "description": "On September 1, 1974, the SR-71 Blackbird flew from New York to London in under two hours \u2014 a record that still stands today. Find out how a spy plane accidentally rewrote aviation history. Drop your take in the comments: should this record ever be broken?",
+          "tags": [
+            "1974",
+            "aviation history",
+            "cold war aircraft",
+            "concorde",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "shorts",
+            "speed record",
+            "spy plane",
+            "sr-71 blackbird",
+            "transatlantic flight",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-01T16:06:38Z",
+          "thumbnail": "https://i.ytimg.com/vi/F0Q5evro62E/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "PaLBFB3-c0M",
           "title": "The Plane That Made Concorde Look Slow \u2014 Nobody Talks About It",
           "description": "On September 1, 1974, a military jet crossed the Atlantic in under two hours \u2014 a record that still stands today. It wasn't a passenger plane, it wasn't a rocket, and no aircraft has come close since. The story behind the flight is stranger than the number itself. #history #aviation #didyouknow",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-09-01T04:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/PaLBFB3-c0M/mqdefault.jpg",
-          "views": 146,
+          "views": 157,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +153,7 @@
           ],
           "publishedAt": "2026-08-31T04:04:51Z",
           "thumbnail": "https://i.ytimg.com/vi/hql8PZAGHi0/mqdefault.jpg",
-          "views": 323,
+          "views": 329,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [],
@@ -153,7 +184,7 @@
           ],
           "publishedAt": "2026-08-30T16:05:22Z",
           "thumbnail": "https://i.ytimg.com/vi/QfXXcgt_OLk/mqdefault.jpg",
-          "views": 136,
+          "views": 145,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -286,7 +317,7 @@
           ],
           "publishedAt": "2026-08-29T04:05:22Z",
           "thumbnail": "https://i.ytimg.com/vi/0CZlxxFShrA/mqdefault.jpg",
-          "views": 1008,
+          "views": 1009,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [],
@@ -1677,39 +1708,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 86.85,
-          "subs_gained": 0
-        },
-        {
-          "id": "wQHF8ZD9lNg",
-          "title": "They Built It in One Night \u2014 and Nobody Stopped Them",
-          "description": "On August 13, 1961, East Germany began building the Berlin Wall overnight \u2014 and the Western powers who could have stopped it simply watched. The wall that divided a city for 28 years started as a single roll of barbed wire. Drop your verdict in the comments.",
-          "tags": [
-            "1961",
-            "barbed wire",
-            "berlin wall",
-            "cold war history",
-            "did you know",
-            "divided berlin",
-            "east germany",
-            "education",
-            "facts",
-            "german history",
-            "history",
-            "history shorts",
-            "iron curtain",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-13T04:05:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/wQHF8ZD9lNg/mqdefault.jpg",
-          "views": 598,
-          "likes": 11,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 107.69,
           "subs_gained": 0
         }
       ]
