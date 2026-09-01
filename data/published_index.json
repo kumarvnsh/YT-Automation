@@ -2221,5 +2221,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "F0Q5evro62E",
+    "run_id": "33529285188",
+    "stage_dir_name": "20260901_160159_short",
+    "title": "It Crossed the Atlantic Before Your Lunch Break \u2014 How?",
+    "published_at": "2026-09-01T16:08:04.286768+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
