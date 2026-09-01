@@ -2207,5 +2207,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "PaLBFB3-c0M",
+    "run_id": "33468257047",
+    "stage_dir_name": "20260901_040135_short",
+    "title": "The Plane That Made Concorde Look Slow \u2014 Nobody Talks About It",
+    "published_at": "2026-09-01T04:06:03.712508+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
