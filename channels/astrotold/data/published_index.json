@@ -1188,5 +1188,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "shLZPzr1GUI",
+    "run_id": "33535255906",
+    "stage_dir_name": "20260901_170136_short",
+    "title": "Born on 9, 18, or 27? Numerology Just Exposed Your Biggest Trait",
+    "published_at": "2026-09-01T17:04:19.005469+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

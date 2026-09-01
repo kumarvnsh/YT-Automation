@@ -799,5 +799,14 @@
     "slot": "morning",
     "date": "2026-09-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260901_170136_short",
+    "title": "Born on 9, 18, or 27? Numerology Just Exposed Your Biggest Trait",
+    "fingerprint": "18_27_9_biggest_born_exposed_just_numerology_on_or_trait_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-01",
+    "status": "reserved"
   }
 ]
