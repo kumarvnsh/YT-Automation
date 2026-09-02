@@ -1202,5 +1202,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "U0Lwjbppa7o",
+    "run_id": "33592986057",
+    "stage_dir_name": "20260902_050201_short",
+    "title": "What Is Your Last Initial Actually Keeping From You?",
+    "published_at": "2026-09-02T05:04:44.529068+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
