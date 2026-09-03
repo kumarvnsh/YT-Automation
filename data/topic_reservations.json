@@ -1078,5 +1078,14 @@
     "slot": "morning",
     "date": "2026-09-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260903_160155_short",
+    "title": "The Army That Never Lost \u2014 Until One September Morning",
+    "fingerprint": "army_lost_morning_never_one_september_that_until",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-03",
+    "status": "reserved"
   }
 ]

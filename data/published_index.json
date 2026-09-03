@@ -2251,5 +2251,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "PfZm8D0EveE",
+    "run_id": "33776074751",
+    "stage_dir_name": "20260903_160155_short",
+    "title": "The Army That Never Lost \u2014 Until One September Morning",
+    "published_at": "2026-09-03T16:06:59.218126+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
