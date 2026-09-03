@@ -2235,6 +2235,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "auto_dispatched_at": "2026-09-03T03:12:37.612039+00:00"
   }
 ]
