@@ -826,5 +826,14 @@
     "slot": "morning",
     "date": "2026-09-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260903_170213_short",
+    "title": "Born on 9, 18, or 27? Your Number Hides a Surprising Contradiction",
+    "fingerprint": "18_27_9_born_contradiction_hides_number_on_or_surprising_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-03",
+    "status": "reserved"
   }
 ]
