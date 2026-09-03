@@ -1216,5 +1216,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "IEJkMaJDx1M",
+    "run_id": "33717147345",
+    "stage_dir_name": "20260903_050146_short",
+    "title": "What Is September 2026 Hiding for Every Birth Number?",
+    "published_at": "2026-09-03T05:04:51.307204+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
