@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-04T15:51:00.085691+00:00",
+      "updated": "2026-09-04T20:21:06.324867+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,40 @@
       },
       "videos": [
         {
+          "id": "nmrE0HhTIww",
+          "title": "One Delayed Report Nearly Handed Japan the Pacific | History's Almost Moments",
+          "description": "In June 1942, a single Japanese scout plane's two-hour reporting delay changed the entire course of the Battle of Midway \u2014 and historians still argue about what those two hours cost Japan. This episode of History's Almost Moments unpacks the closest call of the Pacific War. Could Japan have actually won at Midway? #HistoryAlmostMoments #BattleOfMidway #WWII",
+          "tags": [
+            "1942",
+            "battle of midway",
+            "close call history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "japanese navy",
+            "midway 1942",
+            "naval history",
+            "near miss history",
+            "pacific war",
+            "shorts",
+            "trending",
+            "us navy",
+            "viral",
+            "world war ii"
+          ],
+          "publishedAt": "2026-09-04T16:05:59Z",
+          "thumbnail": "https://i.ytimg.com/vi/nmrE0HhTIww/mqdefault.jpg",
+          "views": 8,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "uQsQN9t1m7g",
           "title": "Every Man Voted Wrong \u2014 And Nobody Knew It Yet",
           "description": "In August 1805, the Lewis and Clark Expedition stood at a fork in the Missouri River with no map, no guide, and one wrong choice away from total failure. The decision they made in the next 48 hours shouldn't have worked \u2014 but it did. What would America look like if they'd turned back?",
@@ -59,7 +93,7 @@
           ],
           "publishedAt": "2026-09-04T10:44:42Z",
           "thumbnail": "https://i.ytimg.com/vi/uQsQN9t1m7g/mqdefault.jpg",
-          "views": 25,
+          "views": 32,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -90,7 +124,7 @@
           ],
           "publishedAt": "2026-09-04T04:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/F8YlGU691JM/mqdefault.jpg",
-          "views": 57,
+          "views": 70,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +156,7 @@
           ],
           "publishedAt": "2026-09-03T16:06:10Z",
           "thumbnail": "https://i.ytimg.com/vi/PfZm8D0EveE/mqdefault.jpg",
-          "views": 348,
+          "views": 385,
           "likes": 7,
           "comments": 0,
           "playlist_ids": [],
@@ -154,12 +188,14 @@
           ],
           "publishedAt": "2026-09-03T04:05:00Z",
           "thumbnail": "https://i.ytimg.com/vi/IDotffp3Zf8/mqdefault.jpg",
-          "views": 56,
+          "views": 67,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 72.77,
+          "subs_gained": 0
         },
         {
           "id": "rOJ7yaHwgEo",
@@ -185,12 +221,14 @@
           ],
           "publishedAt": "2026-09-03T03:13:32Z",
           "thumbnail": "https://i.ytimg.com/vi/rOJ7yaHwgEo/mqdefault.jpg",
-          "views": 202,
-          "likes": 7,
+          "views": 228,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 97.59,
+          "subs_gained": 0
         },
         {
           "id": "ahZznWZwgx4",
@@ -217,13 +255,13 @@
           ],
           "publishedAt": "2026-09-02T03:11:03Z",
           "thumbnail": "https://i.ytimg.com/vi/ahZznWZwgx4/mqdefault.jpg",
-          "views": 126,
+          "views": 127,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.540000000000006,
+          "avg_view_pct": 55.88000000000001,
           "subs_gained": 0
         },
         {
@@ -256,7 +294,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 149.89,
+          "avg_view_pct": 142.44,
           "subs_gained": 1
         },
         {
@@ -290,7 +328,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 151.54,
+          "avg_view_pct": 144.13,
           "subs_gained": 1
         },
         {
@@ -318,7 +356,7 @@
           ],
           "publishedAt": "2026-08-31T16:05:50Z",
           "thumbnail": "https://i.ytimg.com/vi/jI59a3dXE8s/mqdefault.jpg",
-          "views": 1,
+          "views": 0,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -456,8 +494,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 103.81,
-          "subs_gained": 2
+          "avg_view_pct": 103.47,
+          "subs_gained": 3
         },
         {
           "id": "pNISJmO9mWU",
@@ -553,7 +591,7 @@
           ],
           "publishedAt": "2026-08-28T21:46:42Z",
           "thumbnail": "https://i.ytimg.com/vi/hfUz7CUPiZk/mqdefault.jpg",
-          "views": 991,
+          "views": 992,
           "likes": 21,
           "comments": 0,
           "playlist_ids": [],
@@ -1670,44 +1708,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.26,
-          "subs_gained": 2
-        },
-        {
-          "id": "rmWj7s9x4ZU",
-          "title": "One Scattered Drop Nearly Unraveled D-Day | History's Almost Moments",
-          "description": "On June 6, 1944, thousands of Allied paratroopers landed miles from their targets \u2014 and that accident may have accidentally saved the invasion. This is the near-miss that almost rewrote the 20th century. Subscribe for more History's Almost Moments every week.",
-          "tags": [
-            "1944",
-            "allied invasion",
-            "almost moments",
-            "close call",
-            "d-day",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "military history",
-            "normandy",
-            "operation overlord",
-            "paratroopers",
-            "shorts",
-            "trending",
-            "viral",
-            "world war 2",
-            "wwii"
-          ],
-          "publishedAt": "2026-08-15T16:05:35Z",
-          "thumbnail": "https://i.ytimg.com/vi/rmWj7s9x4ZU/mqdefault.jpg",
-          "views": 576,
-          "likes": 16,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 80.87,
-          "subs_gained": 1
+          "avg_view_pct": 115.19,
+          "subs_gained": 0
         }
       ]
     }
