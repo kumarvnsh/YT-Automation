@@ -2265,5 +2265,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "F8YlGU691JM",
+    "run_id": "33835244939",
+    "stage_dir_name": "20260904_040139_short",
+    "title": "The Broadcast Nobody Thought Was Possible \u2014 Until It Happened Live",
+    "published_at": "2026-09-04T04:06:41.555391+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

@@ -1087,5 +1087,14 @@
     "slot": "evening",
     "date": "2026-09-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260904_040139_short",
+    "title": "The Broadcast Nobody Thought Was Possible \u2014 Until It Happened Live",
+    "fingerprint": "broadcast_happened_it_live_nobody_possible_thought_until_was",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-04",
+    "status": "reserved"
   }
 ]
