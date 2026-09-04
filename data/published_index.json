@@ -2280,5 +2280,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "nmrE0HhTIww",
+    "run_id": "33892758085",
+    "stage_dir_name": "20260904_160140_short",
+    "title": "One Delayed Report Nearly Handed Japan the Pacific | History's Almost Moments",
+    "published_at": "2026-09-04T16:07:22.230797+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
