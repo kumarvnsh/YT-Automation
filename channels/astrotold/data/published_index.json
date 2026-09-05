@@ -1272,5 +1272,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "X5-IJnm6MMs",
+    "run_id": "33979622838",
+    "stage_dir_name": "20260905_170156_short",
+    "title": "What Is Birth Number 1 Actually Afraid Of?",
+    "published_at": "2026-09-05T17:04:33.339011+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
