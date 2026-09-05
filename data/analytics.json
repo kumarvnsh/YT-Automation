@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-05T14:41:35.200454+00:00",
+      "updated": "2026-09-05T19:59:11.921810+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,69 @@
       },
       "videos": [
         {
+          "id": "hT6XGiuPAzA",
+          "title": "The Club That Started Under a Street Lamp \u2014 With No Ground",
+          "description": "On September 5, 1882, a group of schoolboys founded what would become one of England's most famous football clubs \u2014 with nothing but a lamp post and a handshake. The origin story of Tottenham Hotspur is stranger than any match result. How did a street corner gang become a Premier League giant?",
+          "tags": [
+            "1882",
+            "did you know",
+            "education",
+            "english football origins",
+            "facts",
+            "football history",
+            "history",
+            "history shorts",
+            "hotspur fc",
+            "premier league history",
+            "shorts",
+            "sports history",
+            "spurs founding",
+            "tottenham hotspur",
+            "trending",
+            "victorian football",
+            "viral"
+          ],
+          "publishedAt": "2026-09-05T16:05:08Z",
+          "thumbnail": "https://i.ytimg.com/vi/hT6XGiuPAzA/mqdefault.jpg",
+          "views": 13,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "gDda78l3lTo",
+          "title": "What Were Americans Actually Seeing on September 4, 1951?",
+          "description": "On September 4, 1951, something happened on live television that engineers said couldn't be done yet \u2014 and it changed what Americans expected from the world. The story behind the first coast-to-coast live TV broadcast is wilder than the textbooks admit. Drop your reaction in the comments. #historyshorts #didyouknow #televisionhistory",
+          "tags": [
+            "1950s america",
+            "cold war era",
+            "did you know",
+            "education",
+            "facts",
+            "first in history",
+            "history",
+            "history shorts",
+            "japanese peace treaty",
+            "live broadcast",
+            "media history",
+            "san francisco history",
+            "shorts",
+            "television history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-05T14:42:57Z",
+          "thumbnail": "https://i.ytimg.com/vi/gDda78l3lTo/mqdefault.jpg",
+          "views": 16,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "gHlLYzXFTsQ",
           "title": "The Clerk Who Started the Cold War \u2014 With a Coat Full of Papers",
           "description": "On September 5, 1945, a Soviet embassy clerk walked out of his Ottawa office with stolen documents hidden under his coat \u2014 and accidentally ignited the Cold War. His name was Igor Gouzenko, and almost nobody wanted to hear what he had to say. This is the gap between one man's desperate act and the world it created.",
@@ -59,8 +122,8 @@
           ],
           "publishedAt": "2026-09-05T04:05:32Z",
           "thumbnail": "https://i.ytimg.com/vi/gHlLYzXFTsQ/mqdefault.jpg",
-          "views": 57,
-          "likes": 1,
+          "views": 74,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -93,9 +156,9 @@
           ],
           "publishedAt": "2026-09-04T16:05:59Z",
           "thumbnail": "https://i.ytimg.com/vi/nmrE0HhTIww/mqdefault.jpg",
-          "views": 104,
-          "likes": 1,
-          "comments": 0,
+          "views": 123,
+          "likes": 2,
+          "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -125,7 +188,7 @@
           ],
           "publishedAt": "2026-09-04T10:44:42Z",
           "thumbnail": "https://i.ytimg.com/vi/uQsQN9t1m7g/mqdefault.jpg",
-          "views": 63,
+          "views": 77,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -156,12 +219,14 @@
           ],
           "publishedAt": "2026-09-04T04:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/F8YlGU691JM/mqdefault.jpg",
-          "views": 86,
+          "views": 94,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 80.08,
+          "subs_gained": 0
         },
         {
           "id": "PfZm8D0EveE",
@@ -188,12 +253,14 @@
           ],
           "publishedAt": "2026-09-03T16:06:10Z",
           "thumbnail": "https://i.ytimg.com/vi/PfZm8D0EveE/mqdefault.jpg",
-          "views": 448,
+          "views": 451,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 160.54,
+          "subs_gained": 0
         },
         {
           "id": "IDotffp3Zf8",
@@ -226,7 +293,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.77,
+          "avg_view_pct": 159.89,
           "subs_gained": 0
         },
         {
@@ -259,8 +326,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 97.59,
-          "subs_gained": 0
+          "avg_view_pct": 136.22,
+          "subs_gained": 1
         },
         {
           "id": "ahZznWZwgx4",
@@ -293,7 +360,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.88000000000001,
+          "avg_view_pct": 57.09000000000001,
           "subs_gained": 0
         },
         {
@@ -326,7 +393,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 142.44,
+          "avg_view_pct": 140.2,
           "subs_gained": 1
         },
         {
@@ -393,7 +460,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "hql8PZAGHi0",
@@ -425,7 +494,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.57,
+          "avg_view_pct": 58.84,
           "subs_gained": 1
         },
         {
@@ -663,7 +732,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.24,
+          "avg_view_pct": 60.260000000000005,
           "subs_gained": 0
         },
         {
@@ -1641,73 +1710,6 @@
           "is_unsorted": true,
           "avg_view_pct": 90.87,
           "subs_gained": 1
-        },
-        {
-          "id": "z1EVwGHiZl0",
-          "title": "One Man Chose Not to Report It \u2014 Then Waited | History's Almost Moments",
-          "description": "On September 26, 1983, a Soviet early-warning system reported five incoming American missiles \u2014 and one officer had minutes to decide whether to escalate. His choice that night never appeared in official records for years. This is the story of the closest call nobody was allowed to talk about.",
-          "tags": [
-            "1983",
-            "close calls",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history facts",
-            "history shorts",
-            "near miss history",
-            "nuclear history",
-            "shorts",
-            "soviet union",
-            "stanislav petrov",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-17T04:07:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/z1EVwGHiZl0/mqdefault.jpg",
-          "views": 679,
-          "likes": 19,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 135.83,
-          "subs_gained": 0
-        },
-        {
-          "id": "RnZCSKn610s",
-          "title": "60,000 People Gathered Peacefully \u2014 Then the Cavalry Charged",
-          "description": "On August 16, 1819, a crowd of 60,000 gathered in Manchester to demand the right to vote \u2014 and within minutes, cavalry rode straight into them. The day that followed changed British law forever, though not in the way the government intended. The name they gave it tells you everything about how ordinary people saw their rulers. #history #didyouknow #britishhistory",
-          "tags": [
-            "1819",
-            "british history",
-            "cavalry charge",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "manchester history",
-            "peterloo massacre",
-            "reform act",
-            "shorts",
-            "trending",
-            "viral",
-            "voting rights",
-            "working class history"
-          ],
-          "publishedAt": "2026-08-16T16:06:26Z",
-          "thumbnail": "https://i.ytimg.com/vi/RnZCSKn610s/mqdefault.jpg",
-          "views": 534,
-          "likes": 11,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 63.23,
-          "subs_gained": 2
         }
       ]
     }
