@@ -844,5 +844,14 @@
     "slot": "morning",
     "date": "2026-09-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260905_050128_short",
+    "title": "What Makes Birth Number 1 So Hard to Ignore?",
+    "fingerprint": "1_birth_hard_ignore_makes_number_so_what",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-05",
+    "status": "reserved"
   }
 ]

@@ -1258,5 +1258,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "-5ewc88P31Y",
+    "run_id": "33946073749",
+    "stage_dir_name": "20260905_050128_short",
+    "title": "What Makes Birth Number 1 So Hard to Ignore?",
+    "published_at": "2026-09-05T05:04:14.328500+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
