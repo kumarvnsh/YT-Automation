@@ -2309,5 +2309,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "hT6XGiuPAzA",
+    "run_id": "33976538657",
+    "stage_dir_name": "20260905_160135_short",
+    "title": "The Club That Started Under a Street Lamp \u2014 With No Ground",
+    "published_at": "2026-09-05T16:05:59.342511+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
