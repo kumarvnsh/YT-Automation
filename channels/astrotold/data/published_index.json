@@ -1286,5 +1286,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "d4jyXPuIwYY",
+    "run_id": "34012913316",
+    "stage_dir_name": "20260906_050131_short",
+    "title": "What Makes Birth Number 6 So Quietly Irresistible?",
+    "published_at": "2026-09-06T05:04:39.292603+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
