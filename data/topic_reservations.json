@@ -1123,5 +1123,14 @@
     "slot": "evening",
     "date": "2026-09-05",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260906_040147_short",
+    "title": "One Deck Change Nearly Won Japan the Pacific | History's Almost Moments",
+    "fingerprint": "almost_change_deck_history_japan_moments_nearly_one_pacific_s_won",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-06",
+    "status": "reserved"
   }
 ]

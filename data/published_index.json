@@ -2323,5 +2323,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "KvaMhK0DWTw",
+    "run_id": "34010415260",
+    "stage_dir_name": "20260906_040147_short",
+    "title": "One Deck Change Nearly Won Japan the Pacific | History's Almost Moments",
+    "published_at": "2026-09-06T04:05:39.560332+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
