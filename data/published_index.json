@@ -2338,5 +2338,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "SOWvh1Xyf7o",
+    "run_id": "34044091782",
+    "stage_dir_name": "20260906_160152_short",
+    "title": "The Record Nobody Thought Could Be Broken \u2014 Then He Broke It Twice",
+    "published_at": "2026-09-06T16:06:33.424061+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
