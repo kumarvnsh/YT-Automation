@@ -871,5 +871,14 @@
     "slot": "morning",
     "date": "2026-09-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260907_170134_short",
+    "title": "What Makes Birth Number 9 So Impossible to Forget?",
+    "fingerprint": "9_birth_forget_impossible_makes_number_so_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-07",
+    "status": "reserved"
   }
 ]
