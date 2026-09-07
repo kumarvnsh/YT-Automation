@@ -2352,5 +2352,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "xtGZ2i8NAWM",
+    "run_id": "34081570162",
+    "stage_dir_name": "20260907_040131_short",
+    "title": "The Pirate Who Nearly Ended Britain's Entire Empire",
+    "published_at": "2026-09-07T04:05:33.096041+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

@@ -1141,5 +1141,14 @@
     "slot": "evening",
     "date": "2026-09-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260907_040131_short",
+    "title": "The Pirate Who Nearly Ended Britain's Entire Empire",
+    "fingerprint": "britain_empire_ended_entire_nearly_pirate_s_who",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-07",
+    "status": "reserved"
   }
 ]
