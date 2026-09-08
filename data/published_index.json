@@ -2394,5 +2394,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "OWwMdcA67A0",
+    "run_id": "34248442787",
+    "stage_dir_name": "20260908_160152_short",
+    "title": "The Ship That Burned in Full View of a Beach \u2014 and Nobody Stopped It",
+    "published_at": "2026-09-08T16:11:37.039157+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
