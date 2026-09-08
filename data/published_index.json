@@ -2380,5 +2380,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "ZlC4hcvRnS0",
+    "run_id": "34185472537",
+    "stage_dir_name": "20260908_040135_short",
+    "title": "The Peace Treaty Nobody Was Allowed to Question",
+    "published_at": "2026-09-08T04:06:29.342363+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
