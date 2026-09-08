@@ -889,5 +889,14 @@
     "slot": "morning",
     "date": "2026-09-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260908_170140_short",
+    "title": "What Makes Birth Number 2 So Secretly Magnetic?",
+    "fingerprint": "2_birth_magnetic_makes_number_secretly_so_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-08",
+    "status": "reserved"
   }
 ]

@@ -1328,5 +1328,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "bqLCLS4F2rc",
+    "run_id": "34254541588",
+    "stage_dir_name": "20260908_170140_short",
+    "title": "What Makes Birth Number 2 So Secretly Magnetic?",
+    "published_at": "2026-09-08T17:05:06.972264+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
