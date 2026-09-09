@@ -2422,5 +2422,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "jv49QedSFkA",
+    "run_id": "34374030654",
+    "stage_dir_name": "20260909_160256_short",
+    "title": "The Camera Was Ordered to Cut Away \u2014 But Nobody Said Why",
+    "published_at": "2026-09-09T16:07:52.301379+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
