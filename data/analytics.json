@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-09T16:00:23.848656+00:00",
+      "updated": "2026-09-09T20:31:12.427564+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "jv49QedSFkA",
+          "title": "The Camera Was Ordered to Cut Away \u2014 But Nobody Said Why",
+          "description": "On September 9, 1956, Elvis Presley performed on The Ed Sullivan Show and broke television history \u2014 but one bizarre producer's order changed what America was allowed to see. This is the story of the performance that made censorship accidentally famous. #history #didyouknow #elvis",
+          "tags": [
+            "1950s television",
+            "censorship",
+            "did you know",
+            "ed sullivan show",
+            "education",
+            "elvis presley",
+            "facts",
+            "history",
+            "history shorts",
+            "music history",
+            "on this day",
+            "rock and roll history",
+            "shorts",
+            "trending",
+            "vintage tv",
+            "viral"
+          ],
+          "publishedAt": "2026-09-09T16:07:21Z",
+          "thumbnail": "https://i.ytimg.com/vi/jv49QedSFkA/mqdefault.jpg",
+          "views": 16,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "THKWaUn_SEs",
           "title": "One Abdication Nearly Ended the War Two Days Early | History's Almost Moments",
           "description": "On November 9, 1918, a single miscommunication almost reshaped the final hours of World War I \u2014 and the armistice that followed. The gap between what nearly happened and what did could have saved thousands of lives in the war's last days. Discover the close call that historians still argue about today. #WWI #historyalmostmoments #historyfacts",
@@ -60,7 +91,7 @@
           ],
           "publishedAt": "2026-09-09T04:05:21Z",
           "thumbnail": "https://i.ytimg.com/vi/THKWaUn_SEs/mqdefault.jpg",
-          "views": 82,
+          "views": 96,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -90,7 +121,7 @@
           ],
           "publishedAt": "2026-09-08T16:11:12Z",
           "thumbnail": "https://i.ytimg.com/vi/OWwMdcA67A0/mqdefault.jpg",
-          "views": 137,
+          "views": 147,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -123,12 +154,14 @@
           ],
           "publishedAt": "2026-09-08T04:05:55Z",
           "thumbnail": "https://i.ytimg.com/vi/ZlC4hcvRnS0/mqdefault.jpg",
-          "views": 237,
+          "views": 242,
           "likes": 6,
           "comments": 7,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 71.61,
+          "subs_gained": 0
         },
         {
           "id": "nXO1gIrefv4",
@@ -154,12 +187,14 @@
           ],
           "publishedAt": "2026-09-07T16:06:25Z",
           "thumbnail": "https://i.ytimg.com/vi/nXO1gIrefv4/mqdefault.jpg",
-          "views": 287,
+          "views": 291,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 202.33000000000004,
+          "subs_gained": 0
         },
         {
           "id": "xtGZ2i8NAWM",
@@ -192,7 +227,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.36000000000001,
+          "avg_view_pct": 76.07,
           "subs_gained": 0
         },
         {
@@ -226,7 +261,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.05,
+          "avg_view_pct": 60.69,
           "subs_gained": 0
         },
         {
@@ -295,7 +330,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.309999999999995,
+          "avg_view_pct": 72.45,
           "subs_gained": 0
         },
         {
@@ -329,7 +364,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 99.02,
+          "avg_view_pct": 96.89,
           "subs_gained": 0
         },
         {
@@ -362,7 +397,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 43.35,
+          "avg_view_pct": 45.92,
           "subs_gained": 0
         },
         {
@@ -432,7 +467,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 53.1,
+          "avg_view_pct": 52.71,
           "subs_gained": 0
         },
         {
@@ -533,7 +568,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 150.64,
+          "avg_view_pct": 150.37,
           "subs_gained": 0
         },
         {
@@ -768,7 +803,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.87,
+          "avg_view_pct": 59.03,
           "subs_gained": 1
         },
         {
@@ -1683,40 +1718,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.65,
-          "subs_gained": 0
-        },
-        {
-          "id": "q34Zq77-oRA",
-          "title": "The Lake That Exhaled \u2014 And Nobody Understood Why",
-          "description": "On August 21, 1986, a quiet lake in Cameroon released a silent, invisible wave that reached villages nearly 20 kilometers away \u2014 and scientists had never seen anything like it before. The event rewrote what volcanologists thought lakes were capable of. This is the story of Lake Nyos, and the mystery that still sits beneath its surface.",
-          "tags": [
-            "1986",
-            "cameroon",
-            "did you know",
-            "education",
-            "facts",
-            "geology",
-            "history",
-            "history shorts",
-            "lake nyos",
-            "limnic eruption",
-            "natural disaster history",
-            "science history",
-            "shorts",
-            "trending",
-            "viral",
-            "volcanic lake"
-          ],
-          "publishedAt": "2026-08-21T16:07:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/q34Zq77-oRA/mqdefault.jpg",
-          "views": 50,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 47.41,
+          "avg_view_pct": 61.260000000000005,
           "subs_gained": 0
         }
       ]
