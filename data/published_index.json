@@ -2408,5 +2408,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "THKWaUn_SEs",
+    "run_id": "34309311248",
+    "stage_dir_name": "20260909_040138_short",
+    "title": "One Abdication Nearly Ended the War Two Days Early | History's Almost Moments",
+    "published_at": "2026-09-09T04:05:52.284970+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
