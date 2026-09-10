@@ -2436,5 +2436,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "nmD1SGQG3LM",
+    "run_id": "34435510684",
+    "stage_dir_name": "20260910_040149_short",
+    "title": "He Won the Biggest Race in the World \u2014 Without Shoes",
+    "published_at": "2026-09-10T04:05:35.721844+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
