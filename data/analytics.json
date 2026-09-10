@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-10T15:54:59.007380+00:00",
+      "updated": "2026-09-10T20:28:51.523280+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "_HnIGDG8LV8",
+          "title": "One Delayed Order Nearly Gave Xerxes Greece | History's Almost Moments",
+          "description": "In 480 BC, the Greek fleet was one argument away from abandoning the straits of Salamis and scattering \u2014 handing Xerxes the entire Aegean. A single forged message changed the outcome. What really held the alliance together when it was already falling apart? #history #didyouknow #ancientgreece",
+          "tags": [
+            "480 bc",
+            "almost moments",
+            "ancient greece",
+            "battle of salamis",
+            "close call history",
+            "did you know",
+            "education",
+            "facts",
+            "greek history",
+            "history",
+            "history shorts",
+            "naval history",
+            "persian wars",
+            "shorts",
+            "themistocles",
+            "trending",
+            "viral",
+            "xerxes"
+          ],
+          "publishedAt": "2026-09-10T16:05:41Z",
+          "thumbnail": "https://i.ytimg.com/vi/_HnIGDG8LV8/mqdefault.jpg",
+          "views": 26,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "nmD1SGQG3LM",
           "title": "He Won the Biggest Race in the World \u2014 Without Shoes",
           "description": "On September 10, 1960, Abebe Bikila ran the Olympic marathon through the streets of Rome and crossed the finish line barefoot \u2014 setting a world record nobody saw coming. He wasn't just the first sub-Saharan African to win Olympic gold; he did it in a way no coach would ever recommend. How does a man outrun the entire world in bare feet?",
@@ -59,7 +92,7 @@
           ],
           "publishedAt": "2026-09-10T04:05:42Z",
           "thumbnail": "https://i.ytimg.com/vi/nmD1SGQG3LM/mqdefault.jpg",
-          "views": 25,
+          "views": 30,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -90,8 +123,8 @@
           ],
           "publishedAt": "2026-09-09T16:07:21Z",
           "thumbnail": "https://i.ytimg.com/vi/jv49QedSFkA/mqdefault.jpg",
-          "views": 59,
-          "likes": 1,
+          "views": 74,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -123,12 +156,14 @@
           ],
           "publishedAt": "2026-09-09T04:05:21Z",
           "thumbnail": "https://i.ytimg.com/vi/THKWaUn_SEs/mqdefault.jpg",
-          "views": 158,
+          "views": 165,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 152.23,
+          "subs_gained": 0
         },
         {
           "id": "OWwMdcA67A0",
@@ -153,12 +188,14 @@
           ],
           "publishedAt": "2026-09-08T16:11:12Z",
           "thumbnail": "https://i.ytimg.com/vi/OWwMdcA67A0/mqdefault.jpg",
-          "views": 179,
+          "views": 187,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 61.3,
+          "subs_gained": 0
         },
         {
           "id": "ZlC4hcvRnS0",
@@ -192,8 +229,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.61,
-          "subs_gained": 0
+          "avg_view_pct": 73.52,
+          "subs_gained": 1
         },
         {
           "id": "nXO1gIrefv4",
@@ -219,13 +256,13 @@
           ],
           "publishedAt": "2026-09-07T16:06:25Z",
           "thumbnail": "https://i.ytimg.com/vi/nXO1gIrefv4/mqdefault.jpg",
-          "views": 292,
+          "views": 295,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 202.33000000000004,
+          "avg_view_pct": 173.96,
           "subs_gained": 0
         },
         {
@@ -259,7 +296,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 76.07,
+          "avg_view_pct": 75.4,
           "subs_gained": 0
         },
         {
@@ -293,7 +330,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.69,
+          "avg_view_pct": 59.52,
           "subs_gained": 0
         },
         {
@@ -327,7 +364,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.28,
+          "avg_view_pct": 46.69,
           "subs_gained": 0
         },
         {
@@ -429,7 +466,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 45.92,
+          "avg_view_pct": 44.91,
           "subs_gained": 0
         },
         {
@@ -1039,7 +1076,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.97,
+          "avg_view_pct": 71.83,
           "subs_gained": 1
         },
         {
@@ -1650,7 +1687,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 64.77,
+          "avg_view_pct": 53.79999999999999,
           "subs_gained": 0
         },
         {
@@ -1683,41 +1720,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 80.21,
-          "subs_gained": 0
-        },
-        {
-          "id": "vz14OtRoDNM",
-          "title": "One Man Almost Launched the Missiles | History's Almost Moments",
-          "description": "In September 1983, a Soviet officer sat alone in a bunker watching a screen tell him nuclear war had begun \u2014 and he had minutes to decide. His choice that night never made the official record. This episode of History's Almost Moments breaks down the closest call you've probably never heard of. #historyalmostmoments #coldwarhistory #didyouknow",
-          "tags": [
-            "1983",
-            "close calls",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history facts",
-            "history shorts",
-            "near miss history",
-            "nuclear history",
-            "shorts",
-            "soviet union",
-            "stanislav petrov",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-22T16:05:38Z",
-          "thumbnail": "https://i.ytimg.com/vi/vz14OtRoDNM/mqdefault.jpg",
-          "views": 87,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 50.55,
+          "avg_view_pct": 65.46,
           "subs_gained": 0
         }
       ]
