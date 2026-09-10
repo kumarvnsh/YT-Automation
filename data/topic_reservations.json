@@ -1204,5 +1204,14 @@
     "slot": "morning",
     "date": "2026-09-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260910_160151_short",
+    "title": "One Delayed Order Nearly Gave Xerxes Greece | History's Almost Moments",
+    "fingerprint": "almost_delayed_gave_greece_history_moments_nearly_one_order_s_xerxes",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-10",
+    "status": "reserved"
   }
 ]
