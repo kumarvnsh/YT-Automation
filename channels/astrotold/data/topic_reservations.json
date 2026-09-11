@@ -916,5 +916,14 @@
     "slot": "morning",
     "date": "2026-09-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260911_170156_short",
+    "title": "The One Number Hidden Inside Your Birthday \u2014 Did You Miss It?",
+    "fingerprint": "birthday_did_hidden_inside_it_miss_number_one_you_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-11",
+    "status": "reserved"
   }
 ]
