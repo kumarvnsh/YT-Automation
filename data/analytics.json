@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-11T15:57:56.881133+00:00",
+      "updated": "2026-09-11T20:32:29.062336+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,38 @@
         ]
       },
       "videos": [
+        {
+          "id": "LMolflyIetg",
+          "title": "The Jewel That Vanished \u2014 and Came Back Cursed",
+          "description": "On September 11, 1792, thieves broke into a Paris storehouse and walked off with the French crown jewels \u2014 including one stone that would resurface decades later wearing a completely different identity. What happened to it in between is one of history's strangest cold cases. Follow along for more history you never knew you were missing. #historyshorts #didyouknow #HopeDiamond",
+          "tags": [
+            "cursed diamond",
+            "did you know",
+            "education",
+            "facts",
+            "famous heist",
+            "french crown jewels",
+            "gemstone history",
+            "history",
+            "history mystery",
+            "history shorts",
+            "hope diamond",
+            "louis xvi",
+            "on this day",
+            "paris history",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-11T16:05:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/LMolflyIetg/mqdefault.jpg",
+          "views": 44,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "gNSZAASFoy4",
           "title": "Why Did He Throw Away His Shoes Before the Olympic Marathon?",
@@ -91,7 +123,7 @@
           ],
           "publishedAt": "2026-09-11T04:04:46Z",
           "thumbnail": "https://i.ytimg.com/vi/RaF-4rWx6Dg/mqdefault.jpg",
-          "views": 458,
+          "views": 519,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
@@ -155,7 +187,7 @@
           ],
           "publishedAt": "2026-09-10T16:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/_HnIGDG8LV8/mqdefault.jpg",
-          "views": 74,
+          "views": 78,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -192,7 +224,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 38.99,
+          "subs_gained": 0
         },
         {
           "id": "jv49QedSFkA",
@@ -218,12 +252,14 @@
           ],
           "publishedAt": "2026-09-09T16:07:21Z",
           "thumbnail": "https://i.ytimg.com/vi/jv49QedSFkA/mqdefault.jpg",
-          "views": 97,
+          "views": 107,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 60.11,
+          "subs_gained": 0
         },
         {
           "id": "THKWaUn_SEs",
@@ -257,7 +293,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 152.23,
+          "avg_view_pct": 89.0,
           "subs_gained": 0
         },
         {
@@ -289,7 +325,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 61.3,
+          "avg_view_pct": 56.08,
           "subs_gained": 0
         },
         {
@@ -324,7 +360,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 73.52,
+          "avg_view_pct": 77.61,
           "subs_gained": 1
         },
         {
@@ -357,7 +393,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 173.96,
+          "avg_view_pct": 171.27,
           "subs_gained": 0
         },
         {
@@ -385,7 +421,7 @@
           ],
           "publishedAt": "2026-09-07T04:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/xtGZ2i8NAWM/mqdefault.jpg",
-          "views": 170,
+          "views": 169,
           "likes": 4,
           "comments": 1,
           "playlist_ids": [],
@@ -561,7 +597,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 44.91,
+          "avg_view_pct": 43.33,
           "subs_gained": 0
         },
         {
@@ -766,7 +802,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 139.98,
+          "avg_view_pct": 136.03,
           "subs_gained": 0
         },
         {
@@ -1129,7 +1165,7 @@
           ],
           "publishedAt": "2026-08-29T04:05:22Z",
           "thumbnail": "https://i.ytimg.com/vi/0CZlxxFShrA/mqdefault.jpg",
-          "views": 1014,
+          "views": 1015,
           "likes": 7,
           "comments": 1,
           "playlist_ids": [],
@@ -1682,40 +1718,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 104.76,
-          "subs_gained": 0
-        },
-        {
-          "id": "P4kNkv3Cl3I",
-          "title": "The Night One Man's Gut Feeling Saved the World",
-          "description": "In September 1983, a Soviet officer sat alone in a bunker watching a screen tell him nuclear war had begun \u2014 and he had minutes to decide. His choice that night never made the official record. This episode of History's Almost Moments breaks down the closest call you've probably never heard of. #historyalmostmoments #coldwarhistory #didyouknow",
-          "tags": [
-            "1983",
-            "close calls",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history facts",
-            "history shorts",
-            "near miss history",
-            "nuclear history",
-            "shorts",
-            "soviet union",
-            "stanislav petrov",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-24T01:17:42Z",
-          "thumbnail": "https://i.ytimg.com/vi/P4kNkv3Cl3I/mqdefault.jpg",
-          "views": 133,
-          "likes": 6,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 49.81,
           "subs_gained": 0
         }
       ]
