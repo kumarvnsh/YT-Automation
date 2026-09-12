@@ -1240,5 +1240,14 @@
     "slot": "morning",
     "date": "2026-09-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260912_160140_short",
+    "title": "The Tiny Chip That Nobody Believed Would Work",
+    "fingerprint": "believed_chip_nobody_that_tiny_work_would",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-12",
+    "status": "reserved"
   }
 ]
