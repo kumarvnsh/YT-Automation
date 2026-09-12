@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-12T15:05:41.437966+00:00",
+      "updated": "2026-09-12T20:14:52.557880+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "xrXeyVpwHGs",
+          "title": "The Tiny Chip That Nobody Believed Would Work",
+          "description": "On September 12, 1958, one engineer demonstrated something so small it looked like a mistake \u2014 and it quietly rewired civilization. Jack Kilby's first working integrated circuit changed every device you'll touch today. Did the wrong man get the credit for inventing it?",
+          "tags": [
+            "1958",
+            "did you know",
+            "education",
+            "engineering history",
+            "facts",
+            "history",
+            "history shorts",
+            "integrated circuit",
+            "invention history",
+            "jack kilby",
+            "semiconductor",
+            "shorts",
+            "tech history",
+            "texas instruments",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-12T16:05:41Z",
+          "thumbnail": "https://i.ytimg.com/vi/xrXeyVpwHGs/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "kqUSjQLimDA",
           "title": "One Wind Shift Almost Saved Napoleon's Navy | History's Almost Moments",
           "description": "On October 21, 1805, Nelson's fleet faced a combined French and Spanish armada off Cape Trafalgar \u2014 and the entire battle nearly didn't happen the way history remembers it. A single shift in wind speed almost let Villeneuve's fleet escape back to port before a shot was fired. If the breeze had held, Napoleon's naval ambitions might have survived \u2014 and Britain's command of the seas with them.",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-09-12T04:05:27Z",
           "thumbnail": "https://i.ytimg.com/vi/kqUSjQLimDA/mqdefault.jpg",
-          "views": 97,
+          "views": 109,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -124,7 +155,7 @@
           ],
           "publishedAt": "2026-09-11T16:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/LMolflyIetg/mqdefault.jpg",
-          "views": 72,
+          "views": 74,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -188,12 +219,14 @@
           ],
           "publishedAt": "2026-09-11T04:04:46Z",
           "thumbnail": "https://i.ytimg.com/vi/RaF-4rWx6Dg/mqdefault.jpg",
-          "views": 745,
-          "likes": 10,
+          "views": 756,
+          "likes": 11,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 66.0,
+          "subs_gained": 1
         },
         {
           "id": "IqPmZtSPv0c",
@@ -219,7 +252,7 @@
           ],
           "publishedAt": "2026-09-11T03:19:01Z",
           "thumbnail": "https://i.ytimg.com/vi/IqPmZtSPv0c/mqdefault.jpg",
-          "views": 6,
+          "views": 7,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -252,12 +285,14 @@
           ],
           "publishedAt": "2026-09-10T16:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/_HnIGDG8LV8/mqdefault.jpg",
-          "views": 88,
+          "views": 95,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 71.3,
+          "subs_gained": 0
         },
         {
           "id": "nmD1SGQG3LM",
@@ -290,7 +325,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 38.99,
+          "avg_view_pct": 62.11,
           "subs_gained": 0
         },
         {
@@ -323,7 +358,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.11,
+          "avg_view_pct": 57.48,
           "subs_gained": 0
         },
         {
@@ -358,7 +393,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 89.0,
+          "avg_view_pct": 72.48,
           "subs_gained": 0
         },
         {
@@ -390,7 +425,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.08,
+          "avg_view_pct": 53.97,
           "subs_gained": 0
         },
         {
@@ -458,7 +493,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 171.27,
+          "avg_view_pct": 170.44,
           "subs_gained": 0
         },
         {
@@ -1196,7 +1231,7 @@
           ],
           "publishedAt": "2026-08-29T05:53:59Z",
           "thumbnail": "https://i.ytimg.com/vi/pNISJmO9mWU/mqdefault.jpg",
-          "views": 208,
+          "views": 212,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -1681,39 +1716,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 55.95,
-          "subs_gained": 0
-        },
-        {
-          "id": "75il-Ov_y5U",
-          "title": "The Hostage Who Called the Prime Minister to Defend Her Captor",
-          "description": "On August 23, 1973, a bank robbery in Stockholm went wrong \u2014 and what happened next baffled the entire world. The hostages didn't just survive; they stood up for their captors. This is the story behind one of psychology's most debated terms. #historyshorts #didyouknow #stockholmsyndrome",
-          "tags": [
-            "1973 bank robbery",
-            "cold war era",
-            "crime history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "hostage history",
-            "psychology history",
-            "shorts",
-            "stockholm syndrome",
-            "surprising history",
-            "swedish history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-25T01:15:37Z",
-          "thumbnail": "https://i.ytimg.com/vi/75il-Ov_y5U/mqdefault.jpg",
-          "views": 37,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 49.28,
           "subs_gained": 0
         }
       ]
