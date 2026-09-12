@@ -2495,5 +2495,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "kqUSjQLimDA",
+    "run_id": "34671879765",
+    "stage_dir_name": "20260912_040139_short",
+    "title": "One Wind Shift Almost Saved Napoleon's Navy | History's Almost Moments",
+    "published_at": "2026-09-12T04:05:52.999028+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
