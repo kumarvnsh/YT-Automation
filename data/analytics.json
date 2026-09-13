@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-13T11:11:10.685818+00:00",
+      "updated": "2026-09-13T15:42:20.441879+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -59,8 +59,8 @@
           ],
           "publishedAt": "2026-09-13T04:04:41Z",
           "thumbnail": "https://i.ytimg.com/vi/nouWaL192YU/mqdefault.jpg",
-          "views": 55,
-          "likes": 2,
+          "views": 73,
+          "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -122,7 +122,7 @@
           ],
           "publishedAt": "2026-09-12T16:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/xrXeyVpwHGs/mqdefault.jpg",
-          "views": 13,
+          "views": 17,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -154,7 +154,7 @@
           ],
           "publishedAt": "2026-09-12T04:05:27Z",
           "thumbnail": "https://i.ytimg.com/vi/kqUSjQLimDA/mqdefault.jpg",
-          "views": 145,
+          "views": 157,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -219,8 +219,8 @@
           ],
           "publishedAt": "2026-09-11T16:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/LMolflyIetg/mqdefault.jpg",
-          "views": 96,
-          "likes": 1,
+          "views": 113,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -251,7 +251,7 @@
           ],
           "publishedAt": "2026-09-11T10:44:51Z",
           "thumbnail": "https://i.ytimg.com/vi/gNSZAASFoy4/mqdefault.jpg",
-          "views": 2,
+          "views": 3,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -933,7 +933,7 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 150.37,
-          "subs_gained": 1
+          "subs_gained": 0
         },
         {
           "id": "IDotffp3Zf8",
