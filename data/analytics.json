@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-13T15:42:20.441879+00:00",
+      "updated": "2026-09-13T20:24:16.244988+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,40 @@
       },
       "videos": [
         {
+          "id": "aRxunfbv5t8",
+          "title": "One Late Cavalry Charge Almost Handed Europe to the Ottomans | History's Almost Moments",
+          "description": "In September 1683, the largest cavalry charge in recorded history saved Vienna \u2014 but it nearly never happened. A single day's delay, and the outcome flips entirely. Discover the razor-thin margin that kept Ottoman forces from marching deeper into Europe.",
+          "tags": [
+            "1683",
+            "battle of vienna",
+            "cavalry charge",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "history's almost moments",
+            "jan sobieski",
+            "medieval siege",
+            "near miss history",
+            "ottoman empire",
+            "polish hussar",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-13T16:05:04Z",
+          "thumbnail": "https://i.ytimg.com/vi/aRxunfbv5t8/mqdefault.jpg",
+          "views": 74,
+          "likes": 9,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "nouWaL192YU",
           "title": "The Poem Written Under Enemy Fire \u2014 Nobody Knew It Would Last",
           "description": "On September 13, 1814, a lawyer watched a battle he couldn't escape \u2014 and wrote the words every American now sings. The real story behind the Star-Spangled Banner is stranger than any legend. Drop your take in the comments. #history #didyouknow #usfacts",
@@ -59,7 +93,7 @@
           ],
           "publishedAt": "2026-09-13T04:04:41Z",
           "thumbnail": "https://i.ytimg.com/vi/nouWaL192YU/mqdefault.jpg",
-          "views": 73,
+          "views": 82,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +156,7 @@
           ],
           "publishedAt": "2026-09-12T16:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/xrXeyVpwHGs/mqdefault.jpg",
-          "views": 17,
+          "views": 21,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -154,12 +188,14 @@
           ],
           "publishedAt": "2026-09-12T04:05:27Z",
           "thumbnail": "https://i.ytimg.com/vi/kqUSjQLimDA/mqdefault.jpg",
-          "views": 157,
+          "views": 158,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 84.22,
+          "subs_gained": 0
         },
         {
           "id": "RYGxS2k_ry8",
@@ -219,12 +255,14 @@
           ],
           "publishedAt": "2026-09-11T16:05:31Z",
           "thumbnail": "https://i.ytimg.com/vi/LMolflyIetg/mqdefault.jpg",
-          "views": 113,
-          "likes": 2,
+          "views": 152,
+          "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 64.77,
+          "subs_gained": 0
         },
         {
           "id": "gNSZAASFoy4",
@@ -289,7 +327,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.0,
+          "avg_view_pct": 105.81,
           "subs_gained": 1
         },
         {
@@ -321,7 +359,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "_HnIGDG8LV8",
@@ -355,7 +395,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 71.3,
+          "avg_view_pct": 65.54,
           "subs_gained": 0
         },
         {
@@ -389,7 +429,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.11,
+          "avg_view_pct": 63.61,
           "subs_gained": 0
         },
         {
@@ -416,13 +456,13 @@
           ],
           "publishedAt": "2026-09-09T16:07:21Z",
           "thumbnail": "https://i.ytimg.com/vi/jv49QedSFkA/mqdefault.jpg",
-          "views": 107,
+          "views": 108,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 57.48,
+          "avg_view_pct": 58.21999999999999,
           "subs_gained": 0
         },
         {
@@ -457,7 +497,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.48,
+          "avg_view_pct": 72.9,
           "subs_gained": 0
         },
         {
@@ -518,7 +558,7 @@
           ],
           "publishedAt": "2026-09-08T04:05:55Z",
           "thumbnail": "https://i.ytimg.com/vi/ZlC4hcvRnS0/mqdefault.jpg",
-          "views": 253,
+          "views": 254,
           "likes": 6,
           "comments": 7,
           "playlist_ids": [],
@@ -761,7 +801,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 43.33,
+          "avg_view_pct": 44.22,
           "subs_gained": 0
         },
         {
@@ -1335,7 +1375,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 40.53,
+          "avg_view_pct": 40.52,
           "subs_gained": 1
         },
         {
@@ -1676,40 +1716,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 29.520000000000003,
-          "subs_gained": 0
-        },
-        {
-          "id": "2YZs2yNH7MY",
-          "title": "What Actually Stopped Wall Street Cold in 1967?",
-          "description": "On August 24, 1967, a handful of protesters threw cash from the gallery of the New York Stock Exchange \u2014 and briefly stopped trading on one of the world's most powerful financial floors. What they did next made it even stranger. A wild true story from the era of radical disruption.",
-          "tags": [
-            "1960s",
-            "abbie hoffman",
-            "american history",
-            "counterculture",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "money protest",
-            "protest history",
-            "shorts",
-            "stock exchange",
-            "trending",
-            "viral",
-            "wall street",
-            "yippies"
-          ],
-          "publishedAt": "2026-08-26T01:18:07Z",
-          "thumbnail": "https://i.ytimg.com/vi/2YZs2yNH7MY/mqdefault.jpg",
-          "views": 14,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
           "subs_gained": 0
         }
       ]
