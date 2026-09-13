@@ -2538,5 +2538,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "aRxunfbv5t8",
+    "run_id": "34767305850",
+    "stage_dir_name": "20260913_160140_short",
+    "title": "One Late Cavalry Charge Almost Handed Europe to the Ottomans | History's Almost Moments",
+    "published_at": "2026-09-13T16:05:22.578237+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
