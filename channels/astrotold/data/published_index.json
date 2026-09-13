@@ -1398,5 +1398,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "qPhjAPS9r-8",
+    "run_id": "34770293868",
+    "stage_dir_name": "20260913_170149_short",
+    "title": "What Is Your Name Initial Actually Plotting Behind Your Back?",
+    "published_at": "2026-09-13T17:05:29.805665+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
