@@ -2524,5 +2524,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "nouWaL192YU",
+    "run_id": "34736873165",
+    "stage_dir_name": "20260913_040131_short",
+    "title": "The Poem Written Under Enemy Fire \u2014 Nobody Knew It Would Last",
+    "published_at": "2026-09-13T04:05:21.971626+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
