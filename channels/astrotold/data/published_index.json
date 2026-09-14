@@ -1426,5 +1426,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "FEwSTSKIJZ8",
+    "run_id": "34872141587",
+    "stage_dir_name": "20260914_170142_short",
+    "title": "What Is Your First Initial Actually Afraid to Admit?",
+    "published_at": "2026-09-14T17:04:31.656908+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
