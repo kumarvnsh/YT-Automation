@@ -1276,5 +1276,14 @@
     "slot": "morning",
     "date": "2026-09-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260914_160203_short",
+    "title": "They Went to Sleep on September 2 \u2014 and Woke Up on the 14th",
+    "fingerprint": "14th_2_on_september_sleep_they_up_went_woke",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-14",
+    "status": "reserved"
   }
 ]

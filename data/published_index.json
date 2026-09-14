@@ -2567,5 +2567,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "B1Xo-voyh2g",
+    "run_id": "34865925580",
+    "stage_dir_name": "20260914_160203_short",
+    "title": "They Went to Sleep on September 2 \u2014 and Woke Up on the 14th",
+    "published_at": "2026-09-14T16:06:23.665343+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
