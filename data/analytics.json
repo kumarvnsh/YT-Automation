@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-14T11:57:32.442682+00:00",
+      "updated": "2026-09-14T17:58:41.550399+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "B1Xo-voyh2g",
+          "title": "They Went to Sleep on September 2 \u2014 and Woke Up on the 14th",
+          "description": "In 1752, the British Empire deleted eleven days from the calendar overnight \u2014 and not everyone took it quietly. The riots, the rent disputes, and the strangest September in history are worth knowing about. This happened on exactly this date, 274 years ago today.",
+          "tags": [
+            "1752",
+            "british history",
+            "calendar history",
+            "did you know",
+            "education",
+            "facts",
+            "gregorian calendar",
+            "history",
+            "history shorts",
+            "lost days",
+            "september",
+            "short history",
+            "shorts",
+            "time",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-14T16:05:26Z",
+          "thumbnail": "https://i.ytimg.com/vi/B1Xo-voyh2g/mqdefault.jpg",
+          "views": 16,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "sZLTkKrf-VM",
           "title": "The Nobles Who Vanished Overnight \u2014 and Never Came Back",
           "description": "On September 14, 1607, Ireland's most powerful Gaelic lords quietly boarded a ship and disappeared from history \u2014 taking an entire way of life with them. What they left behind changed Ireland forever. Drop your take in the comments.",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-09-14T04:05:23Z",
           "thumbnail": "https://i.ytimg.com/vi/sZLTkKrf-VM/mqdefault.jpg",
-          "views": 186,
+          "views": 244,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -123,7 +154,7 @@
           ],
           "publishedAt": "2026-09-13T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/aRxunfbv5t8/mqdefault.jpg",
-          "views": 218,
+          "views": 249,
           "likes": 12,
           "comments": 1,
           "playlist_ids": [],
@@ -155,7 +186,7 @@
           ],
           "publishedAt": "2026-09-13T04:04:41Z",
           "thumbnail": "https://i.ytimg.com/vi/nouWaL192YU/mqdefault.jpg",
-          "views": 116,
+          "views": 119,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -187,7 +218,7 @@
           ],
           "publishedAt": "2026-09-13T03:29:33Z",
           "thumbnail": "https://i.ytimg.com/vi/w1qsuKNXuQk/mqdefault.jpg",
-          "views": 1,
+          "views": 7,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1679,40 +1710,6 @@
           "is_unsorted": true,
           "avg_view_pct": 69.13,
           "subs_gained": 1
-        },
-        {
-          "id": "97IGGS86SQo",
-          "title": "One Wrong Date Nearly Spoiled Everything | History's Almost Moments",
-          "description": "In 1968, the Viet Cong launched the largest coordinated offensive of the Vietnam War \u2014 but a printing error nearly collapsed the entire plan before a single shot was fired. This is the story of how one bureaucratic mistake almost changed the outcome of Vietnam. Was the Tet Offensive actually a military failure dressed up as a psychological victory?  #vietnamwar #history #historysalmostmoments",
-          "tags": [
-            "1968",
-            "almost moments",
-            "cold war history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "military history",
-            "near miss history",
-            "short history",
-            "shorts",
-            "tet offensive",
-            "trending",
-            "us military",
-            "viet cong",
-            "vietnam war",
-            "viral"
-          ],
-          "publishedAt": "2026-08-27T04:05:17Z",
-          "thumbnail": "https://i.ytimg.com/vi/97IGGS86SQo/mqdefault.jpg",
-          "views": 0,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
         }
       ]
     }
