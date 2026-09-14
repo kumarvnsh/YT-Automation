@@ -2523,7 +2523,8 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "auto_dispatched_at": "2026-09-14T03:39:35.928653+00:00"
   },
   {
     "video_id": "nouWaL192YU",
