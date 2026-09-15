@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-15T03:40:01.899911+00:00",
+      "updated": "2026-09-15T11:12:55.452322+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "Zj1x25E4Kz0",
+          "title": "One Bombing Almost Ended It Before It Worked | History's Almost Moments",
+          "description": "In January 1956, a single act of violence came within days of collapsing the Montgomery Bus Boycott before it achieved anything \u2014 and almost nobody remembers how close it came. The movement survived on a margin of hours and one unplanned speech. Could history's most disciplined protest have unravelled in a single night?",
+          "tags": [
+            "1956",
+            "almost moments",
+            "american history",
+            "civil rights history",
+            "close call history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "martin luther king jr",
+            "montgomery bus boycott",
+            "protest history",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-15T04:04:59Z",
+          "thumbnail": "https://i.ytimg.com/vi/Zj1x25E4Kz0/mqdefault.jpg",
+          "views": 49,
+          "likes": 2,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "B1Xo-voyh2g",
           "title": "They Went to Sleep on September 2 \u2014 and Woke Up on the 14th",
           "description": "In 1752, the British Empire deleted eleven days from the calendar overnight \u2014 and not everyone took it quietly. The riots, the rent disputes, and the strangest September in history are worth knowing about. This happened on exactly this date, 274 years ago today.",
@@ -58,7 +90,7 @@
           ],
           "publishedAt": "2026-09-14T16:05:26Z",
           "thumbnail": "https://i.ytimg.com/vi/B1Xo-voyh2g/mqdefault.jpg",
-          "views": 95,
+          "views": 141,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -89,7 +121,7 @@
           ],
           "publishedAt": "2026-09-14T04:05:23Z",
           "thumbnail": "https://i.ytimg.com/vi/sZLTkKrf-VM/mqdefault.jpg",
-          "views": 272,
+          "views": 282,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -154,7 +186,7 @@
           ],
           "publishedAt": "2026-09-13T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/aRxunfbv5t8/mqdefault.jpg",
-          "views": 278,
+          "views": 283,
           "likes": 12,
           "comments": 1,
           "playlist_ids": [],
@@ -186,7 +218,7 @@
           ],
           "publishedAt": "2026-09-13T04:04:41Z",
           "thumbnail": "https://i.ytimg.com/vi/nouWaL192YU/mqdefault.jpg",
-          "views": 130,
+          "views": 135,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -488,7 +520,7 @@
           ],
           "publishedAt": "2026-09-10T16:05:41Z",
           "thumbnail": "https://i.ytimg.com/vi/_HnIGDG8LV8/mqdefault.jpg",
-          "views": 95,
+          "views": 94,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -622,7 +654,7 @@
           ],
           "publishedAt": "2026-09-08T16:11:12Z",
           "thumbnail": "https://i.ytimg.com/vi/OWwMdcA67A0/mqdefault.jpg",
-          "views": 185,
+          "views": 184,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -1072,7 +1104,7 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 150.37,
-          "subs_gained": 0
+          "subs_gained": 1
         },
         {
           "id": "IDotffp3Zf8",
@@ -1679,43 +1711,6 @@
           "is_unsorted": true,
           "avg_view_pct": 31.069999999999997,
           "subs_gained": 0
-        },
-        {
-          "id": "IoahdTE4Lqk",
-          "title": "The Fake Message That Broke Japan's Navy?",
-          "description": "In June 1942, the U.S. Navy pulled off a deception so simple it seems impossible \u2014 and it handed them the most decisive naval victory of the Pacific War. One radio message changed everything, but almost nobody knew it existed. Did American codebreakers win the Pacific, or did Japan simply hand it to them?",
-          "tags": [
-            "1942",
-            "close call",
-            "codebreakers",
-            "did you know",
-            "education",
-            "facts",
-            "historical near miss",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "japan",
-            "midway",
-            "naval history",
-            "pacific war",
-            "short history",
-            "shorts",
-            "trending",
-            "us navy",
-            "viral",
-            "world war ii"
-          ],
-          "publishedAt": "2026-08-27T07:49:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/IoahdTE4Lqk/mqdefault.jpg",
-          "views": 127,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 69.13,
-          "subs_gained": 1
         }
       ]
     }
