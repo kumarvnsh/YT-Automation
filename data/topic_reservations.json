@@ -1294,5 +1294,14 @@
     "slot": "morning",
     "date": "2026-09-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260915_160154_short",
+    "title": "The Railway's First Passenger Killed Its Biggest Champion",
+    "fingerprint": "biggest_champion_first_its_killed_passenger_railway_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-15",
+    "status": "reserved"
   }
 ]
