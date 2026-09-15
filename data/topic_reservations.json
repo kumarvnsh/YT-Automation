@@ -1285,5 +1285,14 @@
     "slot": "evening",
     "date": "2026-09-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260915_040130_short",
+    "title": "One Bombing Almost Ended It Before It Worked | History's Almost Moments",
+    "fingerprint": "almost_before_bombing_ended_history_it_moments_one_s_worked",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-15",
+    "status": "reserved"
   }
 ]

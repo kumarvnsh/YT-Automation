@@ -2581,5 +2581,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Zj1x25E4Kz0",
+    "run_id": "34927162788",
+    "stage_dir_name": "20260915_040130_short",
+    "title": "One Bombing Almost Ended It Before It Worked | History's Almost Moments",
+    "published_at": "2026-09-15T04:06:32.610514+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
