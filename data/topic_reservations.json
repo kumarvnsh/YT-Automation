@@ -1312,5 +1312,14 @@
     "slot": "morning",
     "date": "2026-09-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260916_160158_short",
+    "title": "One Warning Light Almost Ended Everything | History's Almost Moments",
+    "fingerprint": "almost_ended_everything_history_light_moments_one_s_warning",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-16",
+    "status": "reserved"
   }
 ]

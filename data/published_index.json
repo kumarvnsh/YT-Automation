@@ -2624,5 +2624,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "YANJDlRKx9c",
+    "run_id": "35119162238",
+    "stage_dir_name": "20260916_160158_short",
+    "title": "One Warning Light Almost Ended Everything | History's Almost Moments",
+    "published_at": "2026-09-16T16:06:14.498208+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
