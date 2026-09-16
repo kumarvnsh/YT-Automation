@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-16T03:36:36.689637+00:00",
+      "updated": "2026-09-16T10:56:04.574555+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "auhAF_UQ138",
+          "title": "Scientists Tried to Tame a Hurricane \u2014 Did It Actually Work?",
+          "description": "On September 16, 1961, U.S. researchers dropped silver iodide into the eye of Hurricane Esther and watched its winds drop by 10%. It launched one of the most ambitious weather experiments in history \u2014 and the results were stranger than anyone expected. Did humanity briefly control a hurricane, or did the storm do it on its own?",
+          "tags": [
+            "cold war science",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "hurricane",
+            "hurricane esther",
+            "project stormfury",
+            "science history",
+            "shorts",
+            "storm chasing history",
+            "trending",
+            "viral",
+            "weather history",
+            "weather modification"
+          ],
+          "publishedAt": "2026-09-16T04:05:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/auhAF_UQ138/mqdefault.jpg",
+          "views": 433,
+          "likes": 17,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "d5aqUc5Lm14",
           "title": "The Railway's First Passenger Killed Its Biggest Champion",
           "description": "On September 15, 1830, the world's first intercity passenger railway opened \u2014 and within hours, it claimed a victim nobody expected. The man who died had championed the very line that killed him. History's most ironic opening day is stranger than any fiction.",
@@ -58,7 +90,7 @@
           ],
           "publishedAt": "2026-09-15T16:05:43Z",
           "thumbnail": "https://i.ytimg.com/vi/d5aqUc5Lm14/mqdefault.jpg",
-          "views": 39,
+          "views": 46,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -121,7 +153,7 @@
           ],
           "publishedAt": "2026-09-14T16:05:26Z",
           "thumbnail": "https://i.ytimg.com/vi/B1Xo-voyh2g/mqdefault.jpg",
-          "views": 142,
+          "views": 145,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -221,7 +253,7 @@
           ],
           "publishedAt": "2026-09-13T16:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/aRxunfbv5t8/mqdefault.jpg",
-          "views": 286,
+          "views": 287,
           "likes": 12,
           "comments": 1,
           "playlist_ids": [],
@@ -1682,40 +1714,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 185.06,
-          "subs_gained": 0
-        },
-        {
-          "id": "APBZmjOZx4c",
-          "title": "Why Did Millions of Women Still Can't Vote After 1920?",
-          "description": "On August 26, 1920, the 19th Amendment officially took effect, granting American women the right to vote. But the full story is more complicated \u2014 and more surprising \u2014 than most history books admit. Drop your take in the comments: was this a finish line or just a checkpoint?  \n#WomensHistory #19thAmendment #DidYouKnow",
-          "tags": [
-            "1920s",
-            "19th amendment",
-            "american history",
-            "august 26",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "shorts",
-            "trending",
-            "us history",
-            "viral",
-            "voting rights",
-            "women's rights",
-            "women's suffrage"
-          ],
-          "publishedAt": "2026-08-27T21:53:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/APBZmjOZx4c/mqdefault.jpg",
-          "views": 67,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 63.12,
+          "avg_view_pct": 74.03,
           "subs_gained": 0
         }
       ]
