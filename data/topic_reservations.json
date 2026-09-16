@@ -1303,5 +1303,14 @@
     "slot": "evening",
     "date": "2026-09-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260916_040156_short",
+    "title": "Scientists Tried to Tame a Hurricane \u2014 Did It Actually Work?",
+    "fingerprint": "actually_did_hurricane_it_scientists_tame_tried_work",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-16",
+    "status": "reserved"
   }
 ]
