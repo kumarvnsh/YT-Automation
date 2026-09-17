@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-17T11:04:41.021293+00:00",
+      "updated": "2026-09-17T16:21:48.811298+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "yrS1kwWRo0Y",
+          "title": "The Accident That Created One of History's Greatest Artists",
+          "description": "On September 17, 1925, a single catastrophic moment redirected Frida Kahlo's entire life \u2014 and the world of art was never the same. What she built from that wreckage is one of history's most unlikely origin stories. Drop your take in the comments.",
+          "tags": [
+            "1920s",
+            "art history",
+            "biography",
+            "did you know",
+            "education",
+            "facts",
+            "famous artists",
+            "frida kahlo",
+            "history",
+            "history shorts",
+            "mexico",
+            "origin stories",
+            "shorts",
+            "trending",
+            "unexpected history",
+            "viral"
+          ],
+          "publishedAt": "2026-09-17T16:05:52Z",
+          "thumbnail": "https://i.ytimg.com/vi/yrS1kwWRo0Y/mqdefault.jpg",
+          "views": 15,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "jaHcUnpm798",
           "title": "The First Deal America Ever Made \u2014 Nobody Talks About What Happened Next",
           "description": "On September 17, 1778, the United States signed its very first formal treaty \u2014 and the story of what happened to it reveals something uncomfortable about how the nation began. This is the deal that set the template for everything that followed. Did the first treaty ever have a real chance of lasting?",
@@ -58,7 +89,7 @@
           ],
           "publishedAt": "2026-09-17T04:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/jaHcUnpm798/mqdefault.jpg",
-          "views": 241,
+          "views": 313,
           "likes": 8,
           "comments": 1,
           "playlist_ids": [],
@@ -89,7 +120,7 @@
           ],
           "publishedAt": "2026-09-17T03:43:14Z",
           "thumbnail": "https://i.ytimg.com/vi/O_aXuS4ehVU/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +153,7 @@
           ],
           "publishedAt": "2026-09-16T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/YANJDlRKx9c/mqdefault.jpg",
-          "views": 88,
+          "views": 128,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -217,7 +248,7 @@
           ],
           "publishedAt": "2026-09-15T16:05:43Z",
           "thumbnail": "https://i.ytimg.com/vi/d5aqUc5Lm14/mqdefault.jpg",
-          "views": 54,
+          "views": 55,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -1676,40 +1707,6 @@
           "is_unsorted": true,
           "avg_view_pct": 50.07,
           "subs_gained": 0
-        },
-        {
-          "id": "0CZlxxFShrA",
-          "title": "60,000 Soldiers Switched Sides \u2014 But History Forgot Why",
-          "description": "On August 29, 1944, something extraordinary happened inside Nazi-occupied Europe that most history classes never mention. The Slovak National Uprising was one of the largest armed resistances of WWII \u2014 and it started from the inside. Drop your take in the comments.",
-          "tags": [
-            "1944",
-            "axis defection",
-            "did you know",
-            "did you know history",
-            "education",
-            "european history",
-            "facts",
-            "history",
-            "history shorts",
-            "nazi occupation",
-            "on this day",
-            "shorts",
-            "slovak national uprising",
-            "trending",
-            "viral",
-            "world war 2",
-            "ww2 resistance"
-          ],
-          "publishedAt": "2026-08-29T04:05:22Z",
-          "thumbnail": "https://i.ytimg.com/vi/0CZlxxFShrA/mqdefault.jpg",
-          "views": 1017,
-          "likes": 7,
-          "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 40.1,
-          "subs_gained": 1
         }
       ]
     }
