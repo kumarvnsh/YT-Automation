@@ -2639,5 +2639,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "jaHcUnpm798",
+    "run_id": "35180310263",
+    "stage_dir_name": "20260917_040146_short",
+    "title": "The First Deal America Ever Made \u2014 Nobody Talks About What Happened Next",
+    "published_at": "2026-09-17T04:06:06.144178+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
