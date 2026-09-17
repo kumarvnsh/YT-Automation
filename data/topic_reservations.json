@@ -1330,5 +1330,14 @@
     "slot": "morning",
     "date": "2026-09-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260917_160221_short",
+    "title": "The Accident That Created One of History's Greatest Artists",
+    "fingerprint": "accident_artists_created_greatest_history_one_s_that",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-17",
+    "status": "reserved"
   }
 ]

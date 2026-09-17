@@ -2653,5 +2653,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "yrS1kwWRo0Y",
+    "run_id": "35243944233",
+    "stage_dir_name": "20260917_160221_short",
+    "title": "The Accident That Created One of History's Greatest Artists",
+    "published_at": "2026-09-17T16:08:30.862284+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
