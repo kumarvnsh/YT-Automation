@@ -2609,7 +2609,8 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "auto_dispatched_at": "2026-09-17T03:42:18.855619+00:00"
   },
   {
     "video_id": "auhAF_UQ138",
