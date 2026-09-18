@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-18T03:27:43.196435+00:00",
+      "updated": "2026-09-18T10:40:03.728305+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "vjMs0V77AjU",
+          "title": "One Forecast Almost Cancelled D-Day | History's Almost Moments",
+          "description": "On June 5, 1944, one man's weather forecast stood between the largest seaborne invasion in history and total cancellation. A 24-hour delay sat on a knife's edge \u2014 and almost went the other way. This is the near-miss that shaped the modern world.",
+          "tags": [
+            "close call history",
+            "d-day",
+            "did you know",
+            "did you know history",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "james stagg",
+            "military history",
+            "normandy invasion",
+            "operation overlord",
+            "shorts",
+            "trending",
+            "viral",
+            "world war 2",
+            "wwii weather"
+          ],
+          "publishedAt": "2026-09-18T04:05:15Z",
+          "thumbnail": "https://i.ytimg.com/vi/vjMs0V77AjU/mqdefault.jpg",
+          "views": 9,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "yrS1kwWRo0Y",
           "title": "The Accident That Created One of History's Greatest Artists",
           "description": "On September 17, 1925, a single catastrophic moment redirected Frida Kahlo's entire life \u2014 and the world of art was never the same. What she built from that wreckage is one of history's most unlikely origin stories. Drop your take in the comments.",
@@ -58,7 +91,7 @@
           ],
           "publishedAt": "2026-09-17T16:05:52Z",
           "thumbnail": "https://i.ytimg.com/vi/yrS1kwWRo0Y/mqdefault.jpg",
-          "views": 105,
+          "views": 131,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -89,8 +122,8 @@
           ],
           "publishedAt": "2026-09-17T04:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/jaHcUnpm798/mqdefault.jpg",
-          "views": 338,
-          "likes": 11,
+          "views": 432,
+          "likes": 9,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -153,8 +186,8 @@
           ],
           "publishedAt": "2026-09-16T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/YANJDlRKx9c/mqdefault.jpg",
-          "views": 296,
-          "likes": 6,
+          "views": 488,
+          "likes": 7,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -217,7 +250,7 @@
           ],
           "publishedAt": "2026-09-16T04:05:12Z",
           "thumbnail": "https://i.ytimg.com/vi/auhAF_UQ138/mqdefault.jpg",
-          "views": 693,
+          "views": 707,
           "likes": 18,
           "comments": 1,
           "playlist_ids": [],
@@ -1678,39 +1711,6 @@
           "is_unsorted": true,
           "avg_view_pct": 103.47,
           "subs_gained": 3
-        },
-        {
-          "id": "pNISJmO9mWU",
-          "title": "Canada's Constitution Had a Hidden Flaw Nobody Questioned",
-          "description": "On August 27, 1927, five Canadian women filed a legal petition asking whether the word 'Persons' in Canada's constitution included women. The answer that came back changed the country forever. This is the gap nobody talks about.",
-          "tags": [
-            "british north america act",
-            "canadian history",
-            "constitutional law",
-            "did you know",
-            "education",
-            "emily murphy",
-            "facts",
-            "famous five",
-            "history",
-            "history shorts",
-            "legal history",
-            "persons case",
-            "shorts",
-            "trending",
-            "viral",
-            "womens rights"
-          ],
-          "publishedAt": "2026-08-29T05:53:59Z",
-          "thumbnail": "https://i.ytimg.com/vi/pNISJmO9mWU/mqdefault.jpg",
-          "views": 212,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 50.07,
-          "subs_gained": 0
         }
       ]
     }
