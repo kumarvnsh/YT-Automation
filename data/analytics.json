@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-18T15:55:53.752804+00:00",
+      "updated": "2026-09-18T20:28:59.568436+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "hvOr6c6xLp0",
+          "title": "The Secret Agency Nobody Trusted \u2014 Until It Was Too Late",
+          "description": "On September 18, 1947, the CIA was officially born \u2014 but the men who created it were convinced it would be shut down within a year. The story of how America's most powerful intelligence agency nearly strangled itself before it ever ran a single operation is wilder than any reality show. Drop your take in the comments. #history #didyouknow #CIA",
+          "tags": [
+            "1947",
+            "cia history",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "national security act",
+            "secret agencies",
+            "short history",
+            "shorts",
+            "spy history",
+            "trending",
+            "us intelligence",
+            "viral"
+          ],
+          "publishedAt": "2026-09-18T16:04:56Z",
+          "thumbnail": "https://i.ytimg.com/vi/hvOr6c6xLp0/mqdefault.jpg",
+          "views": 20,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "vjMs0V77AjU",
           "title": "One Forecast Almost Cancelled D-Day | History's Almost Moments",
           "description": "On June 5, 1944, one man's weather forecast stood between the largest seaborne invasion in history and total cancellation. A 24-hour delay sat on a knife's edge \u2014 and almost went the other way. This is the near-miss that shaped the modern world.",
@@ -60,7 +92,7 @@
           ],
           "publishedAt": "2026-09-18T04:05:15Z",
           "thumbnail": "https://i.ytimg.com/vi/vjMs0V77AjU/mqdefault.jpg",
-          "views": 36,
+          "views": 48,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -91,7 +123,7 @@
           ],
           "publishedAt": "2026-09-17T16:05:52Z",
           "thumbnail": "https://i.ytimg.com/vi/yrS1kwWRo0Y/mqdefault.jpg",
-          "views": 131,
+          "views": 142,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -122,12 +154,14 @@
           ],
           "publishedAt": "2026-09-17T04:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/jaHcUnpm798/mqdefault.jpg",
-          "views": 448,
-          "likes": 14,
+          "views": 500,
+          "likes": 15,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 68.0,
+          "subs_gained": 0
         },
         {
           "id": "O_aXuS4ehVU",
@@ -158,7 +192,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "YANJDlRKx9c",
@@ -186,12 +222,14 @@
           ],
           "publishedAt": "2026-09-16T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/YANJDlRKx9c/mqdefault.jpg",
-          "views": 579,
+          "views": 616,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 77.8,
+          "subs_gained": 1
         },
         {
           "id": "uhybJ5JnHlQ",
@@ -251,12 +289,12 @@
           "publishedAt": "2026-09-16T04:05:12Z",
           "thumbnail": "https://i.ytimg.com/vi/auhAF_UQ138/mqdefault.jpg",
           "views": 708,
-          "likes": 18,
+          "likes": 17,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 77.24,
+          "avg_view_pct": 109.81,
           "subs_gained": 0
         },
         {
@@ -289,7 +327,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 91.46,
+          "avg_view_pct": 88.36,
           "subs_gained": 0
         },
         {
@@ -323,7 +361,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 62.86999999999999,
+          "avg_view_pct": 64.39,
           "subs_gained": 0
         },
         {
@@ -486,7 +524,7 @@
           ],
           "publishedAt": "2026-09-13T04:04:41Z",
           "thumbnail": "https://i.ytimg.com/vi/nouWaL192YU/mqdefault.jpg",
-          "views": 134,
+          "views": 135,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -694,7 +732,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 50.28,
+          "avg_view_pct": 36.78,
           "subs_gained": 0
         },
         {
@@ -1032,7 +1070,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.4,
+          "avg_view_pct": 75.74,
           "subs_gained": 0
         },
         {
@@ -1676,41 +1714,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.62,
+          "avg_view_pct": 58.440000000000005,
           "subs_gained": 0
-        },
-        {
-          "id": "zaTlG-Waibc",
-          "title": "The Discovery That Powers Everything \u2014 Made With a Coil and a Candle",
-          "description": "On August 29, 1831, Michael Faraday made a discovery in a basement laboratory that every power station on Earth still runs on today \u2014 yet almost nobody knows his name. This is the gap nobody taught you. What if the device powering your screen right now traces back to one accidental afternoon? #historyofscience #michaelfaraday #didyouknow",
-          "tags": [
-            "1831",
-            "did you know",
-            "education",
-            "electromagnetic induction",
-            "facts",
-            "history",
-            "history of electricity",
-            "history shorts",
-            "industrial revolution",
-            "invention history",
-            "michael faraday",
-            "physics history",
-            "science history",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-08-29T16:05:27Z",
-          "thumbnail": "https://i.ytimg.com/vi/zaTlG-Waibc/mqdefault.jpg",
-          "views": 484,
-          "likes": 10,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 103.47,
-          "subs_gained": 3
         }
       ]
     }
