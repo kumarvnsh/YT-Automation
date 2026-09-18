@@ -970,5 +970,14 @@
     "slot": "evening",
     "date": "2026-09-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260918_170144_short",
+    "title": "The Single Number Hidden Inside Every Birthday \u2014 Found It?",
+    "fingerprint": "birthday_every_found_hidden_inside_it_number_single",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-18",
+    "status": "reserved"
   }
 ]
