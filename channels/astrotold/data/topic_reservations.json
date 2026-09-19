@@ -979,5 +979,14 @@
     "slot": "evening",
     "date": "2026-09-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260919_170149_short",
+    "title": "Born on 7, 16, or 25? Numerology Is Hiding a Wild Contradiction",
+    "fingerprint": "16_25_7_born_contradiction_hiding_is_numerology_on_or_wild",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-19",
+    "status": "reserved"
   }
 ]

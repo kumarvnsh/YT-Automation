@@ -1468,5 +1468,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Z_JGDYm8WYo",
+    "run_id": "35456743176",
+    "stage_dir_name": "20260919_170149_short",
+    "title": "Born on 7, 16, or 25? Numerology Is Hiding a Wild Contradiction",
+    "published_at": "2026-09-19T17:05:05.282055+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
