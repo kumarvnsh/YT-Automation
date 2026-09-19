@@ -1366,5 +1366,14 @@
     "slot": "morning",
     "date": "2026-09-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260919_160141_short",
+    "title": "One Late Alliance Almost Fell Apart at the Gates | History's Almost Moments",
+    "fingerprint": "alliance_almost_apart_at_fell_gates_history_late_moments_one_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-19",
+    "status": "reserved"
   }
 ]

@@ -2710,5 +2710,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "HbI1JedJj2Y",
+    "run_id": "35453596933",
+    "stage_dir_name": "20260919_160141_short",
+    "title": "One Late Alliance Almost Fell Apart at the Gates | History's Almost Moments",
+    "published_at": "2026-09-19T16:06:12.941895+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
