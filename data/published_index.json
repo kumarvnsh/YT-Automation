@@ -2695,5 +2695,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "w0I33EudYtY",
+    "run_id": "35420140605",
+    "stage_dir_name": "20260919_040133_short",
+    "title": "Two Fighter Jets Chased It \u2014 Then Completely Lost Control",
+    "published_at": "2026-09-19T04:05:39.960083+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

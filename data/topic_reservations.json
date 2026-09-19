@@ -1357,5 +1357,14 @@
     "slot": "evening",
     "date": "2026-09-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260919_040133_short",
+    "title": "Two Fighter Jets Chased It \u2014 Then Completely Lost Control",
+    "fingerprint": "chased_completely_control_fighter_it_jets_lost_then_two",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-19",
+    "status": "reserved"
   }
 ]
