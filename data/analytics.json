@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-20T15:32:52.287011+00:00",
+      "updated": "2026-09-20T20:24:21.100890+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,37 @@
         ]
       },
       "videos": [
+        {
+          "id": "p5N1GRrqmp8",
+          "title": "The Cannonade That Should Have Failed \u2014 But Saved a Revolution",
+          "description": "On September 20, 1792, a ragged French revolutionary army faced the finest professional soldiers in Europe \u2014 and did something nobody predicted. This is the single afternoon that decided whether the French Revolution would survive. Drop your verdict in the comments.",
+          "tags": [
+            "18th century history",
+            "battle of valmy",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "french revolution",
+            "history",
+            "history facts",
+            "history shorts",
+            "military history",
+            "napoleon",
+            "revolutionary war",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-20T16:05:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/p5N1GRrqmp8/mqdefault.jpg",
+          "views": 28,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "UubvgXwNzfQ",
           "title": "Why Did Two Fighter Jets Lose All Power Over Tehran?",
@@ -92,7 +123,7 @@
           ],
           "publishedAt": "2026-09-20T04:05:33Z",
           "thumbnail": "https://i.ytimg.com/vi/L1H1zOBi83g/mqdefault.jpg",
-          "views": 84,
+          "views": 97,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -157,7 +188,7 @@
           ],
           "publishedAt": "2026-09-19T16:05:08Z",
           "thumbnail": "https://i.ytimg.com/vi/HbI1JedJj2Y/mqdefault.jpg",
-          "views": 105,
+          "views": 131,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -223,7 +254,7 @@
           ],
           "publishedAt": "2026-09-19T04:05:05Z",
           "thumbnail": "https://i.ytimg.com/vi/w0I33EudYtY/mqdefault.jpg",
-          "views": 15,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -260,7 +291,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 193.66,
+          "subs_gained": 0
         },
         {
           "id": "vjMs0V77AjU",
@@ -294,8 +327,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 19.43,
-          "subs_gained": 0
+          "avg_view_pct": 96.31,
+          "subs_gained": 1
         },
         {
           "id": "yrS1kwWRo0Y",
@@ -327,7 +360,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 75.73,
+          "avg_view_pct": 65.51,
           "subs_gained": 0
         },
         {
@@ -360,8 +393,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.19,
-          "subs_gained": 1
+          "avg_view_pct": 71.42,
+          "subs_gained": 2
         },
         {
           "id": "O_aXuS4ehVU",
@@ -428,7 +461,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 52.65,
+          "avg_view_pct": 59.46,
           "subs_gained": 1
         },
         {
@@ -461,7 +494,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "auhAF_UQ138",
@@ -494,7 +529,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 107.96999999999998,
+          "avg_view_pct": 108.34000000000002,
           "subs_gained": 0
         },
         {
@@ -527,7 +562,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 88.36,
+          "avg_view_pct": 86.04,
           "subs_gained": 0
         },
         {
@@ -594,7 +629,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.65,
+          "avg_view_pct": 65.98,
           "subs_gained": 0
         },
         {
@@ -1645,7 +1680,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 136.03,
+          "avg_view_pct": 169.04,
           "subs_gained": 0
         },
         {
@@ -1678,42 +1713,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 116.26,
+          "avg_view_pct": 128.53,
           "subs_gained": 2
-        },
-        {
-          "id": "ahZznWZwgx4",
-          "title": "He Had 23 Minutes to Decide the Fate of Millions",
-          "description": "On September 26, 1983, a Soviet officer watched his early-warning system scream that five American missiles were inbound \u2014 and decided, alone, not to report it. That single choice may be the most consequential non-event in modern history. What would you have done with 23 minutes on the clock and the fate of millions in your hands?  #coldwar #historyshorts #historysalmostmoments",
-          "tags": [
-            "1983",
-            "close calls",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "near miss",
-            "nuclear history",
-            "shorts",
-            "soviet union",
-            "stanislav petrov",
-            "trending",
-            "viral",
-            "world history"
-          ],
-          "publishedAt": "2026-09-02T03:11:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/ahZznWZwgx4/mqdefault.jpg",
-          "views": 127,
-          "likes": 1,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 53.949999999999996,
-          "subs_gained": 0
         }
       ]
     }
