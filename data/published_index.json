@@ -2740,5 +2740,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "p5N1GRrqmp8",
+    "run_id": "35521364134",
+    "stage_dir_name": "20260920_160148_short",
+    "title": "The Cannonade That Should Have Failed \u2014 But Saved a Revolution",
+    "published_at": "2026-09-20T16:06:28.732072+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
