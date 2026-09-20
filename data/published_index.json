@@ -2725,5 +2725,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "L1H1zOBi83g",
+    "run_id": "35488044220",
+    "stage_dir_name": "20260920_040144_short",
+    "title": "The Buddha That Lost Its House \u2014 and Nobody Ever Rebuilt It",
+    "published_at": "2026-09-20T04:06:01.676692+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

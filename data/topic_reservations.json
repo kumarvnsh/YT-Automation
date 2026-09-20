@@ -1375,5 +1375,14 @@
     "slot": "evening",
     "date": "2026-09-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260920_040144_short",
+    "title": "The Buddha That Lost Its House \u2014 and Nobody Ever Rebuilt It",
+    "fingerprint": "buddha_ever_house_it_its_lost_nobody_rebuilt_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-20",
+    "status": "reserved"
   }
 ]
