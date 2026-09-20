@@ -1482,5 +1482,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "KFXTxX_SE2M",
+    "run_id": "35490580264",
+    "stage_dir_name": "20260920_050137_short",
+    "title": "What Does Your Last Initial Actually Know About You?",
+    "published_at": "2026-09-20T05:04:15.086821+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
