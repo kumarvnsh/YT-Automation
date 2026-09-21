@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-21T12:08:14.183224+00:00",
+      "updated": "2026-09-21T21:44:34.039173+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,36 @@
       },
       "videos": [
         {
+          "id": "N0wXiE3zAVw",
+          "title": "She Was Rejected Before She Could Change Everything \u2014 Why?",
+          "description": "On September 21, 1981, Sandra Day O'Connor was unanimously confirmed as the first female Supreme Court justice \u2014 but her path there almost didn't happen. Decades earlier, not a single law firm would hire her despite graduating near the top of her Stanford class. One unanimous vote reshaped American history forever.",
+          "tags": [
+            "1981 history",
+            "american history",
+            "did you know",
+            "education",
+            "facts",
+            "first female justice",
+            "history",
+            "history shorts",
+            "sandra day o'connor",
+            "shorts",
+            "supreme court history",
+            "trending",
+            "us law history",
+            "viral",
+            "women in history"
+          ],
+          "publishedAt": "2026-09-21T16:05:48Z",
+          "thumbnail": "https://i.ytimg.com/vi/N0wXiE3zAVw/mqdefault.jpg",
+          "views": 22,
+          "likes": 4,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Axd50qfEsU8",
           "title": "One Charge Almost Came Too Late | History's Almost Moments",
           "description": "In September 1683, the largest cavalry charge in history saved Vienna from Ottoman siege \u2014 but the decision to launch it nearly never came. One hesitation could have changed the map of Europe forever. Watch to find out how close it actually was.",
@@ -59,7 +89,7 @@
           ],
           "publishedAt": "2026-09-21T04:04:59Z",
           "thumbnail": "https://i.ytimg.com/vi/Axd50qfEsU8/mqdefault.jpg",
-          "views": 85,
+          "views": 126,
           "likes": 1,
           "comments": 1,
           "playlist_ids": [],
@@ -90,7 +120,7 @@
           ],
           "publishedAt": "2026-09-20T16:05:49Z",
           "thumbnail": "https://i.ytimg.com/vi/p5N1GRrqmp8/mqdefault.jpg",
-          "views": 59,
+          "views": 77,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -155,12 +185,14 @@
           ],
           "publishedAt": "2026-09-20T04:05:33Z",
           "thumbnail": "https://i.ytimg.com/vi/L1H1zOBi83g/mqdefault.jpg",
-          "views": 110,
+          "views": 115,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 82.38,
+          "subs_gained": 1
         },
         {
           "id": "CYkoTn1kIuk",
@@ -220,12 +252,14 @@
           ],
           "publishedAt": "2026-09-19T16:05:08Z",
           "thumbnail": "https://i.ytimg.com/vi/HbI1JedJj2Y/mqdefault.jpg",
-          "views": 188,
+          "views": 208,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 64.32,
+          "subs_gained": 0
         },
         {
           "id": "uAaHUsbvsas",
@@ -291,7 +325,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 40.43,
+          "subs_gained": 0
         },
         {
           "id": "hvOr6c6xLp0",
@@ -318,13 +354,13 @@
           ],
           "publishedAt": "2026-09-18T16:04:56Z",
           "thumbnail": "https://i.ytimg.com/vi/hvOr6c6xLp0/mqdefault.jpg",
-          "views": 41,
+          "views": 42,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 193.66,
+          "avg_view_pct": 132.67,
           "subs_gained": 0
         },
         {
@@ -359,7 +395,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 96.31,
+          "avg_view_pct": 85.33,
           "subs_gained": 1
         },
         {
@@ -392,7 +428,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.51,
+          "avg_view_pct": 65.57,
           "subs_gained": 0
         },
         {
@@ -458,7 +494,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 108.06,
           "subs_gained": 0
         },
         {
@@ -493,7 +529,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.46,
+          "avg_view_pct": 59.589999999999996,
           "subs_gained": 1
         },
         {
@@ -594,7 +630,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 86.04,
+          "avg_view_pct": 84.7,
           "subs_gained": 0
         },
         {
@@ -655,13 +691,13 @@
           ],
           "publishedAt": "2026-09-14T16:05:26Z",
           "thumbnail": "https://i.ytimg.com/vi/B1Xo-voyh2g/mqdefault.jpg",
-          "views": 148,
+          "views": 149,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.98,
+          "avg_view_pct": 64.58,
           "subs_gained": 0
         },
         {
@@ -1680,40 +1716,6 @@
           "is_unsorted": true,
           "avg_view_pct": 149.91,
           "subs_gained": 1
-        },
-        {
-          "id": "IDotffp3Zf8",
-          "title": "One River Almost Turned Them Back Forever | History's Almost Moments",
-          "description": "In August 1805, the Lewis and Clark Expedition stood at a fork in the Missouri River with no map, no guide, and one wrong choice away from total failure. The decision they made in the next 48 hours shouldn't have worked \u2014 but it did. What would America look like if they'd turned back?",
-          "tags": [
-            "1805",
-            "almost moments",
-            "american history",
-            "corps of discovery",
-            "did you know",
-            "education",
-            "exploration",
-            "facts",
-            "historical near miss",
-            "history",
-            "history facts",
-            "history shorts",
-            "lewis and clark",
-            "shorts",
-            "trending",
-            "viral",
-            "westward expansion"
-          ],
-          "publishedAt": "2026-09-03T04:05:00Z",
-          "thumbnail": "https://i.ytimg.com/vi/IDotffp3Zf8/mqdefault.jpg",
-          "views": 76,
-          "likes": 1,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 169.04,
-          "subs_gained": 0
         }
       ]
     }
