@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-21T03:36:17.472737+00:00",
+      "updated": "2026-09-21T12:08:14.183224+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "Axd50qfEsU8",
+          "title": "One Charge Almost Came Too Late | History's Almost Moments",
+          "description": "In September 1683, the largest cavalry charge in history saved Vienna from Ottoman siege \u2014 but the decision to launch it nearly never came. One hesitation could have changed the map of Europe forever. Watch to find out how close it actually was.",
+          "tags": [
+            "1683",
+            "almost moments",
+            "battle of vienna",
+            "close call",
+            "did you know",
+            "education",
+            "europe history",
+            "facts",
+            "history",
+            "history shorts",
+            "military history",
+            "near miss history",
+            "ottoman empire",
+            "shorts",
+            "trending",
+            "viral",
+            "winged hussars"
+          ],
+          "publishedAt": "2026-09-21T04:04:59Z",
+          "thumbnail": "https://i.ytimg.com/vi/Axd50qfEsU8/mqdefault.jpg",
+          "views": 85,
+          "likes": 1,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "p5N1GRrqmp8",
           "title": "The Cannonade That Should Have Failed \u2014 But Saved a Revolution",
           "description": "On September 20, 1792, a ragged French revolutionary army faced the finest professional soldiers in Europe \u2014 and did something nobody predicted. This is the single afternoon that decided whether the French Revolution would survive. Drop your verdict in the comments.",
@@ -58,7 +90,7 @@
           ],
           "publishedAt": "2026-09-20T16:05:49Z",
           "thumbnail": "https://i.ytimg.com/vi/p5N1GRrqmp8/mqdefault.jpg",
-          "views": 46,
+          "views": 59,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -91,7 +123,7 @@
           ],
           "publishedAt": "2026-09-20T10:47:48Z",
           "thumbnail": "https://i.ytimg.com/vi/UubvgXwNzfQ/mqdefault.jpg",
-          "views": 1,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -123,7 +155,7 @@
           ],
           "publishedAt": "2026-09-20T04:05:33Z",
           "thumbnail": "https://i.ytimg.com/vi/L1H1zOBi83g/mqdefault.jpg",
-          "views": 105,
+          "views": 110,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -188,7 +220,7 @@
           ],
           "publishedAt": "2026-09-19T16:05:08Z",
           "thumbnail": "https://i.ytimg.com/vi/HbI1JedJj2Y/mqdefault.jpg",
-          "views": 170,
+          "views": 188,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
@@ -354,7 +386,7 @@
           ],
           "publishedAt": "2026-09-17T16:05:52Z",
           "thumbnail": "https://i.ytimg.com/vi/yrS1kwWRo0Y/mqdefault.jpg",
-          "views": 217,
+          "views": 207,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -387,7 +419,7 @@
           ],
           "publishedAt": "2026-09-17T04:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/jaHcUnpm798/mqdefault.jpg",
-          "views": 562,
+          "views": 550,
           "likes": 16,
           "comments": 1,
           "playlist_ids": [],
@@ -455,7 +487,7 @@
           ],
           "publishedAt": "2026-09-16T16:05:19Z",
           "thumbnail": "https://i.ytimg.com/vi/YANJDlRKx9c/mqdefault.jpg",
-          "views": 648,
+          "views": 609,
           "likes": 10,
           "comments": 0,
           "playlist_ids": [],
@@ -1136,7 +1168,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.21999999999999,
+          "avg_view_pct": 58.26,
           "subs_gained": 0
         },
         {
@@ -1203,7 +1235,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 53.97,
+          "avg_view_pct": 54.89999999999999,
           "subs_gained": 0
         },
         {
@@ -1238,7 +1270,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 77.51,
+          "avg_view_pct": 77.87,
           "subs_gained": 1
         },
         {
@@ -1408,7 +1440,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.45,
+          "avg_view_pct": 72.31,
           "subs_gained": 0
         },
         {
@@ -1475,7 +1507,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 44.22,
+          "avg_view_pct": 43.0,
           "subs_gained": 0
         },
         {
@@ -1545,7 +1577,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 52.71,
+          "avg_view_pct": 51.94,
           "subs_gained": 0
         },
         {
@@ -1647,7 +1679,7 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 149.91,
-          "subs_gained": 0
+          "subs_gained": 1
         },
         {
           "id": "IDotffp3Zf8",
@@ -1682,39 +1714,6 @@
           "is_unsorted": true,
           "avg_view_pct": 169.04,
           "subs_gained": 0
-        },
-        {
-          "id": "rOJ7yaHwgEo",
-          "title": "Why Can't We Beat a 50-Year-Old Spy Plane Record?",
-          "description": "On September 1, 1974, the SR-71 Blackbird flew from New York to London in under two hours \u2014 a record that still stands today. Find out how a spy plane accidentally rewrote aviation history. Drop your take in the comments: should this record ever be broken?",
-          "tags": [
-            "1974",
-            "aviation history",
-            "cold war aircraft",
-            "concorde",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "shorts",
-            "speed record",
-            "spy plane",
-            "sr-71 blackbird",
-            "transatlantic flight",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-03T03:13:32Z",
-          "thumbnail": "https://i.ytimg.com/vi/rOJ7yaHwgEo/mqdefault.jpg",
-          "views": 244,
-          "likes": 9,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 128.53,
-          "subs_gained": 2
         }
       ]
     }
