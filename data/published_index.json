@@ -2754,5 +2754,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Axd50qfEsU8",
+    "run_id": "35559449519",
+    "stage_dir_name": "20260921_040132_short",
+    "title": "One Charge Almost Came Too Late | History's Almost Moments",
+    "published_at": "2026-09-21T04:05:29.813104+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
