@@ -1510,5 +1510,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "pZmz5FZk880",
+    "run_id": "35629278810",
+    "stage_dir_name": "20260921_170139_short",
+    "title": "What Is the Number Inside Your Name Initial Actually Worth?",
+    "published_at": "2026-09-21T17:05:24.744576+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

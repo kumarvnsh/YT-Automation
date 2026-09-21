@@ -1006,5 +1006,14 @@
     "slot": "evening",
     "date": "2026-09-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260921_170139_short",
+    "title": "What Is the Number Inside Your Name Initial Actually Worth?",
+    "fingerprint": "actually_initial_inside_is_name_number_what_worth_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-21",
+    "status": "reserved"
   }
 ]
