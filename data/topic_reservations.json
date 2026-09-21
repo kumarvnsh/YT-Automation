@@ -1402,5 +1402,14 @@
     "slot": "morning",
     "date": "2026-09-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260921_160158_short",
+    "title": "She Was Rejected Before She Could Change Everything \u2014 Why?",
+    "fingerprint": "before_change_could_everything_rejected_she_was",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-21",
+    "status": "reserved"
   }
 ]

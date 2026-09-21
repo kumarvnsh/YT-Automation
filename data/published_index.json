@@ -2768,5 +2768,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "N0wXiE3zAVw",
+    "run_id": "35622838675",
+    "stage_dir_name": "20260921_160158_short",
+    "title": "She Was Rejected Before She Could Change Everything \u2014 Why?",
+    "published_at": "2026-09-21T16:06:41.637329+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
