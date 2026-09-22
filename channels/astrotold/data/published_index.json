@@ -1538,5 +1538,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Jt6_Ypy-rWQ",
+    "run_id": "35757904631",
+    "stage_dir_name": "20260922_170233_short",
+    "title": "What Is Your First Initial Actually Plotting For You?",
+    "published_at": "2026-09-22T17:05:23.163877+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
