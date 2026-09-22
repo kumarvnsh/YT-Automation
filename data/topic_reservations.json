@@ -1411,5 +1411,14 @@
     "slot": "evening",
     "date": "2026-09-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260922_040145_short",
+    "title": "They Hid the Most Important Scrolls for 40 Years \u2014 Why?",
+    "fingerprint": "40_for_hid_important_most_scrolls_they_years",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-22",
+    "status": "reserved"
   }
 ]
