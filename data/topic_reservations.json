@@ -1420,5 +1420,14 @@
     "slot": "morning",
     "date": "2026-09-22",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260922_160151_short",
+    "title": "One Insurance Policy Almost Ended It Early | History's Almost Moments",
+    "fingerprint": "almost_early_ended_history_insurance_it_moments_one_policy_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-22",
+    "status": "reserved"
   }
 ]

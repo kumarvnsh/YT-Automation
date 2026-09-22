@@ -2797,5 +2797,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "NA_7q2ZKYrw",
+    "run_id": "35751262953",
+    "stage_dir_name": "20260922_160151_short",
+    "title": "One Insurance Policy Almost Ended It Early | History's Almost Moments",
+    "published_at": "2026-09-22T16:06:28.890592+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
