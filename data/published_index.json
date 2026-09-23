@@ -2826,5 +2826,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "9yzpDdZSEHE",
+    "run_id": "35885767655",
+    "stage_dir_name": "20260923_160236_short",
+    "title": "The Richest Ship Ever Lost \u2014 And Nobody Agrees Where It Is",
+    "published_at": "2026-09-23T16:06:43.700948+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

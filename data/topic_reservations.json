@@ -1438,5 +1438,14 @@
     "slot": "morning",
     "date": "2026-09-23",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260923_160236_short",
+    "title": "The Richest Ship Ever Lost \u2014 And Nobody Agrees Where It Is",
+    "fingerprint": "agrees_ever_is_it_lost_nobody_richest_ship_where",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-23",
+    "status": "reserved"
   }
 ]
