@@ -2782,7 +2782,8 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "auto_dispatched_at": "2026-09-23T03:35:10.734683+00:00"
   },
   {
     "video_id": "MDbbFl431Ow",
