@@ -2812,5 +2812,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "oXIr_LuFxps",
+    "run_id": "35816593543",
+    "stage_dir_name": "20260923_040130_short",
+    "title": "The Richest Shipwreck Ever \u2014 Nobody's Found It Yet",
+    "published_at": "2026-09-23T04:06:22.379676+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
