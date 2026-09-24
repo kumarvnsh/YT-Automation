@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-24T11:12:50.102893+00:00",
+      "updated": "2026-09-24T16:36:14.018090+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "wPR3Nh_Kdzc",
+          "title": "The Ship That Ran on Almost Nothing \u2014 For Years",
+          "description": "On September 24, 1960, the USS Enterprise was launched \u2014 the world's first nuclear-powered aircraft carrier, and a machine that rewrote what a warship could do. It carried enough fuel to circle the Earth multiple times without stopping, yet its most surprising feature had nothing to do with weapons. A wild piece of Cold War engineering history you probably never learned in school.",
+          "tags": [
+            "1960s history",
+            "aircraft carrier",
+            "cold war history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "military history",
+            "naval history",
+            "nuclear carrier",
+            "on this day",
+            "shorts",
+            "trending",
+            "uss enterprise",
+            "viral"
+          ],
+          "publishedAt": "2026-09-24T16:05:53Z",
+          "thumbnail": "https://i.ytimg.com/vi/wPR3Nh_Kdzc/mqdefault.jpg",
+          "views": 6,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "tOzc51fYaac",
           "title": "One Man Almost Let It Fly | History's Almost Moments",
           "description": "On September 26, 1983, a Soviet early-warning computer reported five incoming American missiles \u2014 and one duty officer had minutes to decide whether to trust it. His hesitation that night may be the closest the Cold War ever came to going nuclear. Should one person ever hold that much weight alone?",
@@ -59,7 +91,7 @@
           ],
           "publishedAt": "2026-09-24T04:05:29Z",
           "thumbnail": "https://i.ytimg.com/vi/tOzc51fYaac/mqdefault.jpg",
-          "views": 12,
+          "views": 23,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -91,7 +123,7 @@
           ],
           "publishedAt": "2026-09-24T03:27:13Z",
           "thumbnail": "https://i.ytimg.com/vi/6RwTWeQHXao/mqdefault.jpg",
-          "views": 1,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -153,7 +185,7 @@
           ],
           "publishedAt": "2026-09-23T04:05:13Z",
           "thumbnail": "https://i.ytimg.com/vi/oXIr_LuFxps/mqdefault.jpg",
-          "views": 315,
+          "views": 339,
           "likes": 9,
           "comments": 0,
           "playlist_ids": [],
@@ -791,7 +823,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.589999999999996,
+          "avg_view_pct": 59.45,
           "subs_gained": 1
         },
         {
@@ -859,7 +891,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 107.96999999999998,
+          "avg_view_pct": 108.67,
           "subs_gained": 0
         },
         {
@@ -1670,40 +1702,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 59.52,
-          "subs_gained": 0
-        },
-        {
-          "id": "cD9kUyFFXMk",
-          "title": "Why Did Canada Refuse the Man Who Could Stop the Cold War?",
-          "description": "On September 5, 1945, a Soviet embassy clerk walked out of his Ottawa office with stolen documents hidden under his coat \u2014 and accidentally ignited the Cold War. His name was Igor Gouzenko, and almost nobody wanted to hear what he had to say. This is the gap between one man's desperate act and the world it created.",
-          "tags": [
-            "1945",
-            "canada history",
-            "cold war",
-            "defector",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "igor gouzenko",
-            "shorts",
-            "soviet espionage",
-            "spy history",
-            "trending",
-            "viral",
-            "world war 2 aftermath"
-          ],
-          "publishedAt": "2026-09-06T10:23:18Z",
-          "thumbnail": "https://i.ytimg.com/vi/cD9kUyFFXMk/mqdefault.jpg",
-          "views": 90,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 46.69,
           "subs_gained": 0
         }
       ]
