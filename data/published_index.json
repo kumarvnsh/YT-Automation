@@ -2855,5 +2855,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "wPR3Nh_Kdzc",
+    "run_id": "36024380691",
+    "stage_dir_name": "20260924_160205_short",
+    "title": "The Ship That Ran on Almost Nothing \u2014 For Years",
+    "published_at": "2026-09-24T16:06:31.055270+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
