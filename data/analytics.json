@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-25T11:17:10.864899+00:00",
+      "updated": "2026-09-25T16:41:00.713980+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,38 @@
         ]
       },
       "videos": [
+        {
+          "id": "a6qrq6ArCPo",
+          "title": "The Night One Man's Gut Overruled Soviet Nuclear Protocol",
+          "description": "On September 26, 1983, a Soviet early-warning computer reported five incoming American missiles \u2014 and one duty officer had minutes to decide whether to trust it. His hesitation that night may be the closest the Cold War ever came to going nuclear. Should one person ever hold that much weight alone?",
+          "tags": [
+            "1983",
+            "close call",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "near miss",
+            "nuclear history",
+            "shorts",
+            "soviet union",
+            "stanislav petrov",
+            "trending",
+            "viral",
+            "world history"
+          ],
+          "publishedAt": "2026-09-25T11:18:34Z",
+          "thumbnail": "https://i.ytimg.com/vi/a6qrq6ArCPo/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "eDfSc03n31w",
           "title": "Why Can't Anyone Agree On Who Owns This Billion-Pound Wreck?",
@@ -90,7 +122,7 @@
           ],
           "publishedAt": "2026-09-24T16:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/wPR3Nh_Kdzc/mqdefault.jpg",
-          "views": 71,
+          "views": 78,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -1671,40 +1703,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 170.44,
-          "subs_gained": 0
-        },
-        {
-          "id": "xtGZ2i8NAWM",
-          "title": "The Pirate Who Nearly Ended Britain's Entire Empire",
-          "description": "In 1695, one pirate pulled off the most profitable raid in history \u2014 and almost got Britain permanently expelled from India. The shockwaves reached every corner of the globe. Subscribe for more history you never learned in school. #history #pirates #didyouknow",
-          "tags": [
-            "1695",
-            "british east india company",
-            "did you know",
-            "education",
-            "facts",
-            "ganj-i-sawai",
-            "henry every",
-            "history",
-            "history facts",
-            "history shorts",
-            "mughal empire",
-            "piracy",
-            "pirate history",
-            "short history",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-07T04:05:04Z",
-          "thumbnail": "https://i.ytimg.com/vi/xtGZ2i8NAWM/mqdefault.jpg",
-          "views": 170,
-          "likes": 4,
-          "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 80.93,
           "subs_gained": 0
         }
       ]
