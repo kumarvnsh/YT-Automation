@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-25T16:41:00.713980+00:00",
+      "updated": "2026-09-25T21:09:40.442306+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,37 @@
         ]
       },
       "videos": [
+        {
+          "id": "0r0zWV2JGZY",
+          "title": "The Surgery That Should Have Ended His Career \u2014 But Didn't",
+          "description": "On September 25, 1974, a pitcher with a torn elbow ligament agreed to an experimental surgery nobody had ever survived professionally. What happened next quietly changed every sport on the planet. Drop your take in the comments \u2014 was Tommy John the bravest or the most desperate athlete in history?",
+          "tags": [
+            "1974",
+            "baseball history",
+            "did you know",
+            "education",
+            "elbow surgery",
+            "facts",
+            "history",
+            "history shorts",
+            "mlb history",
+            "shorts",
+            "sports medicine history",
+            "sports science",
+            "surprising history",
+            "tommy john surgery",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-25T18:51:36Z",
+          "thumbnail": "https://i.ytimg.com/vi/0r0zWV2JGZY/mqdefault.jpg",
+          "views": 12,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "a6qrq6ArCPo",
           "title": "The Night One Man's Gut Overruled Soviet Nuclear Protocol",
@@ -90,7 +121,7 @@
           ],
           "publishedAt": "2026-09-25T03:44:03Z",
           "thumbnail": "https://i.ytimg.com/vi/eDfSc03n31w/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -122,7 +153,7 @@
           ],
           "publishedAt": "2026-09-24T16:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/wPR3Nh_Kdzc/mqdefault.jpg",
-          "views": 78,
+          "views": 96,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -154,12 +185,14 @@
           ],
           "publishedAt": "2026-09-24T04:05:29Z",
           "thumbnail": "https://i.ytimg.com/vi/tOzc51fYaac/mqdefault.jpg",
-          "views": 37,
+          "views": 40,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 41.29,
+          "subs_gained": 0
         },
         {
           "id": "6RwTWeQHXao",
@@ -191,7 +224,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "9yzpDdZSEHE",
@@ -217,12 +252,14 @@
           ],
           "publishedAt": "2026-09-23T16:05:49Z",
           "thumbnail": "https://i.ytimg.com/vi/9yzpDdZSEHE/mqdefault.jpg",
-          "views": 36,
+          "views": 39,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 65.39,
+          "subs_gained": 0
         },
         {
           "id": "oXIr_LuFxps",
@@ -254,7 +291,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.65,
+          "avg_view_pct": 81.64,
           "subs_gained": 0
         },
         {
@@ -285,7 +322,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 11.63,
+          "subs_gained": 0
         },
         {
           "id": "NA_7q2ZKYrw",
@@ -318,7 +357,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 66.0,
+          "avg_view_pct": 92.37,
           "subs_gained": 0
         },
         {
@@ -351,7 +390,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 143.98,
+          "avg_view_pct": 147.4,
           "subs_gained": 1
         },
         {
@@ -384,7 +423,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.800000000000004,
+          "avg_view_pct": 42.38,
           "subs_gained": 0
         },
         {
@@ -585,7 +624,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "HbI1JedJj2Y",
@@ -1669,41 +1710,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.04,
+          "avg_view_pct": 80.91,
           "subs_gained": 1
-        },
-        {
-          "id": "nXO1gIrefv4",
-          "title": "One Wrong Heading Almost Handed Midway Away | History's Almost Moments",
-          "description": "In June 1942, the entire Pacific War balanced on a single navigational error \u2014 and almost nobody survived to explain how close it really was. The American dive bombers that turned the tide found their targets almost by accident, and the Japanese fleet never saw them coming. Could the war in the Pacific have ended differently if one pilot had held his heading?",
-          "tags": [
-            "1942",
-            "battle of midway",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "history's almost moments",
-            "military history",
-            "naval history",
-            "near miss",
-            "pacific war",
-            "shorts",
-            "trending",
-            "viral",
-            "world war 2"
-          ],
-          "publishedAt": "2026-09-07T16:06:25Z",
-          "thumbnail": "https://i.ytimg.com/vi/nXO1gIrefv4/mqdefault.jpg",
-          "views": 296,
-          "likes": 6,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 170.44,
-          "subs_gained": 0
         }
       ]
     }
