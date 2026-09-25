@@ -2871,5 +2871,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "0r0zWV2JGZY",
+    "run_id": "36175658191",
+    "stage_dir_name": "20260925_184822_short",
+    "title": "The Surgery That Should Have Ended His Career \u2014 But Didn't",
+    "published_at": "2026-09-25T18:52:11.215049+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
