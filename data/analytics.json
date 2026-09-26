@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-26T03:48:43.883882+00:00",
+      "updated": "2026-09-26T10:54:03.550439+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "UPjC9CZW1Ic",
+          "title": "One Man Almost Ended the World \u2014 By Following Orders | History's Almost Moments",
+          "description": "In 1983, a Soviet officer saw five nuclear missiles on his screen \u2014 and had minutes to decide whether to report them. What he did next changed everything. This is the closest the Cold War ever came to going hot in a single room.",
+          "tags": [
+            "1983",
+            "close call",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history almost moments",
+            "history facts",
+            "history shorts",
+            "near miss",
+            "nuclear history",
+            "shorts",
+            "soviet union",
+            "stanislav petrov",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-26T04:04:44Z",
+          "thumbnail": "https://i.ytimg.com/vi/UPjC9CZW1Ic/mqdefault.jpg",
+          "views": 10,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "0r0zWV2JGZY",
           "title": "The Surgery That Should Have Ended His Career \u2014 But Didn't",
           "description": "On September 25, 1974, a pitcher with a torn elbow ligament agreed to an experimental surgery nobody had ever survived professionally. What happened next quietly changed every sport on the planet. Drop your take in the comments \u2014 was Tommy John the bravest or the most desperate athlete in history?",
@@ -58,8 +90,8 @@
           ],
           "publishedAt": "2026-09-25T18:51:36Z",
           "thumbnail": "https://i.ytimg.com/vi/0r0zWV2JGZY/mqdefault.jpg",
-          "views": 35,
-          "likes": 1,
+          "views": 65,
+          "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -153,9 +185,9 @@
           ],
           "publishedAt": "2026-09-24T16:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/wPR3Nh_Kdzc/mqdefault.jpg",
-          "views": 111,
+          "views": 137,
           "likes": 2,
-          "comments": 0,
+          "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true
@@ -1677,41 +1709,6 @@
           "is_unsorted": true,
           "avg_view_pct": 54.89999999999999,
           "subs_gained": 0
-        },
-        {
-          "id": "ZlC4hcvRnS0",
-          "title": "The Peace Treaty Nobody Was Allowed to Question",
-          "description": "On September 8, 1951, 48 nations signed a peace treaty with Japan \u2014 but the country most affected by the Pacific War wasn't in the room. The Treaty of San Francisco officially ended World War II in the Pacific, yet its terms sparked disputes that still shape Asian geopolitics today. Drop your take in the comments \u2014 was this the right call?",
-          "tags": [
-            "allied powers",
-            "asia history",
-            "cold war diplomacy",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history did you know",
-            "history shorts",
-            "japan peace treaty 1951",
-            "postwar japan",
-            "september 8 history",
-            "short history facts",
-            "shorts",
-            "treaty of san francisco",
-            "trending",
-            "viral",
-            "world war two pacific"
-          ],
-          "publishedAt": "2026-09-08T04:05:55Z",
-          "thumbnail": "https://i.ytimg.com/vi/ZlC4hcvRnS0/mqdefault.jpg",
-          "views": 260,
-          "likes": 6,
-          "comments": 7,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 80.91,
-          "subs_gained": 1
         }
       ]
     }
