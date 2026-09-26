@@ -1483,5 +1483,14 @@
     "slot": "morning",
     "date": "2026-09-26",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260926_160138_short",
+    "title": "The Gangster Who Accidentally Named the FBI",
+    "fingerprint": "accidentally_fbi_gangster_named_who",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-26",
+    "status": "reserved"
   }
 ]

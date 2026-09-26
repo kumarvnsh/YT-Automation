@@ -2899,5 +2899,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "8ppsZ4vAGsc",
+    "run_id": "36253938822",
+    "stage_dir_name": "20260926_160138_short",
+    "title": "The Gangster Who Accidentally Named the FBI",
+    "published_at": "2026-09-26T16:06:06.048402+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
