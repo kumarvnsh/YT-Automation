@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-26T15:54:22.263639+00:00",
+      "updated": "2026-09-26T20:42:14.502672+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "8ppsZ4vAGsc",
+          "title": "The Gangster Who Accidentally Named the FBI",
+          "description": "On September 26, 1933, one desperate surrender changed American law enforcement forever \u2014 and the man responsible didn't even know what he'd started. Discover how a single shouted phrase stuck to the FBI for generations. Drop your take in the comments.",
+          "tags": [
+            "1930s gangsters",
+            "american history",
+            "crime history",
+            "did you know",
+            "education",
+            "facts",
+            "fbi history",
+            "g-men origin",
+            "history",
+            "history facts",
+            "history shorts",
+            "machine gun kelly",
+            "prohibition era",
+            "short history",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-26T16:04:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/8ppsZ4vAGsc/mqdefault.jpg",
+          "views": 16,
+          "likes": 2,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "UPjC9CZW1Ic",
           "title": "One Man Almost Ended the World \u2014 By Following Orders | History's Almost Moments",
           "description": "In 1983, a Soviet officer saw five nuclear missiles on his screen \u2014 and had minutes to decide whether to report them. What he did next changed everything. This is the closest the Cold War ever came to going hot in a single room.",
@@ -59,7 +91,7 @@
           ],
           "publishedAt": "2026-09-26T04:04:44Z",
           "thumbnail": "https://i.ytimg.com/vi/UPjC9CZW1Ic/mqdefault.jpg",
-          "views": 16,
+          "views": 19,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -90,7 +122,7 @@
           ],
           "publishedAt": "2026-09-25T18:51:36Z",
           "thumbnail": "https://i.ytimg.com/vi/0r0zWV2JGZY/mqdefault.jpg",
-          "views": 84,
+          "views": 107,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -185,12 +217,14 @@
           ],
           "publishedAt": "2026-09-24T16:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/wPR3Nh_Kdzc/mqdefault.jpg",
-          "views": 157,
+          "views": 177,
           "likes": 4,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 81.31,
+          "subs_gained": 0
         },
         {
           "id": "tOzc51fYaac",
@@ -223,7 +257,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 41.29,
+          "avg_view_pct": 57.00999999999999,
           "subs_gained": 0
         },
         {
@@ -257,7 +291,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 37.13,
           "subs_gained": 0
         },
         {
@@ -290,7 +324,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 65.39,
+          "avg_view_pct": 69.22,
           "subs_gained": 0
         },
         {
@@ -323,7 +357,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 81.64,
+          "avg_view_pct": 78.08,
           "subs_gained": 0
         },
         {
@@ -422,7 +456,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 147.4,
+          "avg_view_pct": 145.25,
           "subs_gained": 1
         },
         {
@@ -487,7 +521,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 24.74,
+          "avg_view_pct": 28.550000000000004,
           "subs_gained": 0
         },
         {
@@ -1675,39 +1709,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.9,
-          "subs_gained": 0
-        },
-        {
-          "id": "OWwMdcA67A0",
-          "title": "The Ship That Burned in Full View of a Beach \u2014 and Nobody Stopped It",
-          "description": "On September 8, 1934, the SS Morro Castle caught fire off the New Jersey coast \u2014 close enough that thousands of beachgoers watched it burn. What happened next is one of the strangest disasters in maritime history. The full story is far weirder than the headline.",
-          "tags": [
-            "1934",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "maritime disaster",
-            "new jersey",
-            "ship fire",
-            "shipwreck",
-            "shorts",
-            "ss morro castle",
-            "strange history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-08T16:11:12Z",
-          "thumbnail": "https://i.ytimg.com/vi/OWwMdcA67A0/mqdefault.jpg",
-          "views": 185,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 54.89999999999999,
+          "avg_view_pct": 47.31,
           "subs_gained": 0
         }
       ]
