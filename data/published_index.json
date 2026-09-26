@@ -2885,5 +2885,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "UPjC9CZW1Ic",
+    "run_id": "36216551747",
+    "stage_dir_name": "20260926_040144_short",
+    "title": "One Man Almost Ended the World \u2014 By Following Orders | History's Almost Moments",
+    "published_at": "2026-09-26T04:05:17.728785+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

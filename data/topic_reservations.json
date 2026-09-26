@@ -1474,5 +1474,14 @@
     "slot": "morning",
     "date": "2026-09-25",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260926_040144_short",
+    "title": "One Man Almost Ended the World \u2014 By Following Orders | History's Almost Moments",
+    "fingerprint": "almost_by_ended_following_history_man_moments_one_orders_s_world",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-26",
+    "status": "reserved"
   }
 ]
