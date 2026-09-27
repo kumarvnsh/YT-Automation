@@ -2913,5 +2913,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "pLVRFOMLw_I",
+    "run_id": "36293071693",
+    "stage_dir_name": "20260927_040145_short",
+    "title": "The Stone That Sat in Plain Sight \u2014 And Nobody Could Read It",
+    "published_at": "2026-09-27T04:05:45.512465+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

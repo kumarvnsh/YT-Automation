@@ -1492,5 +1492,14 @@
     "slot": "evening",
     "date": "2026-09-26",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260927_040145_short",
+    "title": "The Stone That Sat in Plain Sight \u2014 And Nobody Could Read It",
+    "fingerprint": "could_it_nobody_plain_read_sat_sight_stone_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-27",
+    "status": "reserved"
   }
 ]
