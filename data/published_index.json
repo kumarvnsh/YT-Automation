@@ -2928,5 +2928,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "_dM9eXl4ruU",
+    "run_id": "36331655354",
+    "stage_dir_name": "20260927_160155_short",
+    "title": "One Day Late Would Have Ended Christian Europe | History's Almost Moments",
+    "published_at": "2026-09-27T16:06:36.765386+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
