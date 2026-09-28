@@ -2943,5 +2943,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "o9A_aQoM7uE",
+    "run_id": "36375944183",
+    "stage_dir_name": "20260928_040156_short",
+    "title": "The Sea Battle That Should Have Stopped an Empire \u2014 But Didn't",
+    "published_at": "2026-09-28T04:05:26.964193+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

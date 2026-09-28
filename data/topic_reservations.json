@@ -1510,5 +1510,14 @@
     "slot": "evening",
     "date": "2026-09-27",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260928_040156_short",
+    "title": "The Sea Battle That Should Have Stopped an Empire \u2014 But Didn't",
+    "fingerprint": "battle_but_didn_empire_have_sea_should_stopped_t_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-09-28",
+    "status": "reserved"
   }
 ]
