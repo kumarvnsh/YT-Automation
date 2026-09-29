@@ -1528,5 +1528,14 @@
     "slot": "morning",
     "date": "2026-09-29",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260929_160216_short",
+    "title": "One Hour Almost Handed Vienna to the Ottomans | History's Almost Moments",
+    "fingerprint": "almost_handed_history_hour_moments_one_ottomans_s_vienna",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-29",
+    "status": "reserved"
   }
 ]

@@ -2973,5 +2973,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "-zutmzfWgA0",
+    "run_id": "36594604006",
+    "stage_dir_name": "20260929_160216_short",
+    "title": "One Hour Almost Handed Vienna to the Ottomans | History's Almost Moments",
+    "published_at": "2026-09-29T16:06:31.883125+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
