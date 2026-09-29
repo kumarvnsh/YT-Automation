@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-29T12:14:11.623496+00:00",
+      "updated": "2026-09-29T21:56:27.694710+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,71 @@
       },
       "videos": [
         {
+          "id": "-zutmzfWgA0",
+          "title": "One Hour Almost Handed Vienna to the Ottomans | History's Almost Moments",
+          "description": "In September 1683, the Ottoman Empire had Vienna surrounded \u2014 and the city was hours from collapse. One commander's late arrival nearly ended Christian Europe as a political force forever. The margin between the world we know and the one that almost happened was smaller than anyone remembers. #history #didyouknow #HistorysAlmostMoments",
+          "tags": [
+            "1683",
+            "battle of vienna",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "history",
+            "history almost moments",
+            "history shorts",
+            "holy roman empire",
+            "military history",
+            "near miss history",
+            "ottoman empire",
+            "polish hussars",
+            "shorts",
+            "siege of vienna",
+            "sobieski",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-29T16:05:36Z",
+          "thumbnail": "https://i.ytimg.com/vi/-zutmzfWgA0/mqdefault.jpg",
+          "views": 32,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "8kWLCoAYcN4",
+          "title": "300 Ships Showed Up to Sink an Empire \u2014 What Went Wrong?",
+          "description": "On September 28, 1538, one of history's most lopsided naval clashes rewrote the balance of power across the Mediterranean \u2014 and almost nobody in the West remembers it happened. The Battle of Preveza wasn't just a defeat; it was a decision that locked Europe out of the sea for decades. Drop your verdict in the comments.",
+          "tags": [
+            "16th century",
+            "barbarossa",
+            "battle of preveza",
+            "did you know",
+            "education",
+            "european history",
+            "facts",
+            "history",
+            "history shorts",
+            "holy league",
+            "mediterranean history",
+            "naval history",
+            "ottoman empire",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-09-29T12:15:36Z",
+          "thumbnail": "https://i.ytimg.com/vi/8kWLCoAYcN4/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "BWGmTU1QXv8",
           "title": "The Cathedral They Kept Building \u2014 Even When Nobody Asked Why",
           "description": "On September 29, 1990, Washington National Cathedral was finally completed \u2014 83 years after its cornerstone was laid. The story of why it took so long is stranger than the building itself. Drop your take in the comments.",
@@ -57,8 +122,8 @@
           ],
           "publishedAt": "2026-09-29T04:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/BWGmTU1QXv8/mqdefault.jpg",
-          "views": 70,
-          "likes": 1,
+          "views": 106,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -88,7 +153,7 @@
           ],
           "publishedAt": "2026-09-28T13:04:35Z",
           "thumbnail": "https://i.ytimg.com/vi/bB_xroIeF9c/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -119,12 +184,14 @@
           ],
           "publishedAt": "2026-09-28T04:04:55Z",
           "thumbnail": "https://i.ytimg.com/vi/o9A_aQoM7uE/mqdefault.jpg",
-          "views": 93,
+          "views": 113,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 76.82,
+          "subs_gained": 0
         },
         {
           "id": "s_wyz5kwcB8",
@@ -184,12 +251,14 @@
           ],
           "publishedAt": "2026-09-27T16:05:47Z",
           "thumbnail": "https://i.ytimg.com/vi/_dM9eXl4ruU/mqdefault.jpg",
-          "views": 259,
+          "views": 281,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 74.43,
+          "subs_gained": 0
         },
         {
           "id": "saM1J2fri3A",
@@ -253,7 +322,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 77.12,
+          "avg_view_pct": 99.97,
           "subs_gained": 0
         },
         {
@@ -287,7 +356,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 96.34,
+          "avg_view_pct": 88.5,
           "subs_gained": 2
         },
         {
@@ -321,7 +390,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 142.83,
+          "avg_view_pct": 133.9,
           "subs_gained": 0
         },
         {
@@ -354,7 +423,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.79,
+          "avg_view_pct": 59.06,
           "subs_gained": 0
         },
         {
@@ -589,7 +658,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 78.08,
+          "avg_view_pct": 78.21,
           "subs_gained": 1
         },
         {
@@ -1157,7 +1226,7 @@
           ],
           "publishedAt": "2026-09-17T04:05:35Z",
           "thumbnail": "https://i.ytimg.com/vi/jaHcUnpm798/mqdefault.jpg",
-          "views": 550,
+          "views": 551,
           "likes": 16,
           "comments": 1,
           "playlist_ids": [],
@@ -1293,7 +1362,7 @@
           ],
           "publishedAt": "2026-09-16T04:05:12Z",
           "thumbnail": "https://i.ytimg.com/vi/auhAF_UQ138/mqdefault.jpg",
-          "views": 694,
+          "views": 695,
           "likes": 17,
           "comments": 1,
           "playlist_ids": [],
@@ -1636,75 +1705,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 110.2,
+          "avg_view_pct": 123.19,
           "subs_gained": 1
-        },
-        {
-          "id": "RYGxS2k_ry8",
-          "title": "The Forged Message That May Have Saved Western Civilisation",
-          "description": "In 480 BC, the Greek fleet was one argument away from abandoning the straits of Salamis and scattering \u2014 handing Xerxes the entire Aegean. A single forged message changed the outcome. What really held the alliance together when it was already falling apart? #history #didyouknow #ancientgreece",
-          "tags": [
-            "480 bc",
-            "almost moments",
-            "ancient greece",
-            "battle of salamis",
-            "close call history",
-            "did you know",
-            "education",
-            "facts",
-            "greek history",
-            "history",
-            "history shorts",
-            "naval history",
-            "persian wars",
-            "shorts",
-            "themistocles",
-            "trending",
-            "viral",
-            "xerxes"
-          ],
-          "publishedAt": "2026-09-12T03:24:14Z",
-          "thumbnail": "https://i.ytimg.com/vi/RYGxS2k_ry8/mqdefault.jpg",
-          "views": 0,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
-        },
-        {
-          "id": "LMolflyIetg",
-          "title": "The Jewel That Vanished \u2014 and Came Back Cursed",
-          "description": "On September 11, 1792, thieves broke into a Paris storehouse and walked off with the French crown jewels \u2014 including one stone that would resurface decades later wearing a completely different identity. What happened to it in between is one of history's strangest cold cases. Follow along for more history you never knew you were missing. #historyshorts #didyouknow #HopeDiamond",
-          "tags": [
-            "cursed diamond",
-            "did you know",
-            "education",
-            "facts",
-            "famous heist",
-            "french crown jewels",
-            "gemstone history",
-            "history",
-            "history mystery",
-            "history shorts",
-            "hope diamond",
-            "louis xvi",
-            "on this day",
-            "paris history",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-11T16:05:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/LMolflyIetg/mqdefault.jpg",
-          "views": 158,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 60.370000000000005,
-          "subs_gained": 0
         }
       ]
     }
