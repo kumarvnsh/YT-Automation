@@ -1114,5 +1114,14 @@
     "slot": "morning",
     "date": "2026-09-29",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260929_170146_short",
+    "title": "The Simple Math Trick That Reveals Your Hidden Birth Number?",
+    "fingerprint": "birth_hidden_math_number_reveals_simple_that_trick_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-29",
+    "status": "reserved"
   }
 ]
