@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-28T22:58:46.793764+00:00",
+      "updated": "2026-09-29T04:32:01.245991+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,36 @@
         ]
       },
       "videos": [
+        {
+          "id": "BWGmTU1QXv8",
+          "title": "The Cathedral They Kept Building \u2014 Even When Nobody Asked Why",
+          "description": "On September 29, 1990, Washington National Cathedral was finally completed \u2014 83 years after its cornerstone was laid. The story of why it took so long is stranger than the building itself. Drop your take in the comments.",
+          "tags": [
+            "american history",
+            "architecture",
+            "cathedral construction",
+            "did you know",
+            "education",
+            "facts",
+            "hidden history",
+            "history",
+            "history shorts",
+            "on this day",
+            "shorts",
+            "surprising facts",
+            "trending",
+            "viral",
+            "washington national cathedral"
+          ],
+          "publishedAt": "2026-09-29T04:05:03Z",
+          "thumbnail": "https://i.ytimg.com/vi/BWGmTU1QXv8/mqdefault.jpg",
+          "views": 13,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "bB_xroIeF9c",
           "title": "Why Did Europe's Smartest Scholars All Get This Wrong?",
@@ -89,8 +119,8 @@
           ],
           "publishedAt": "2026-09-28T04:04:55Z",
           "thumbnail": "https://i.ytimg.com/vi/o9A_aQoM7uE/mqdefault.jpg",
-          "views": 58,
-          "likes": 0,
+          "views": 73,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -154,7 +184,7 @@
           ],
           "publishedAt": "2026-09-27T16:05:47Z",
           "thumbnail": "https://i.ytimg.com/vi/_dM9eXl4ruU/mqdefault.jpg",
-          "views": 190,
+          "views": 223,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -217,7 +247,7 @@
           ],
           "publishedAt": "2026-09-27T04:05:10Z",
           "thumbnail": "https://i.ytimg.com/vi/pLVRFOMLw_I/mqdefault.jpg",
-          "views": 70,
+          "views": 72,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -560,7 +590,7 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 78.08,
-          "subs_gained": 0
+          "subs_gained": 1
         },
         {
           "id": "KTnJnIEmswU",
@@ -1674,40 +1704,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 60.370000000000005,
-          "subs_gained": 0
-        },
-        {
-          "id": "gNSZAASFoy4",
-          "title": "Why Did He Throw Away His Shoes Before the Olympic Marathon?",
-          "description": "On September 10, 1960, Abebe Bikila ran the Olympic marathon through the streets of Rome and crossed the finish line barefoot \u2014 setting a world record nobody saw coming. He wasn't just the first sub-Saharan African to win Olympic gold; he did it in a way no coach would ever recommend. How does a man outrun the entire world in bare feet?",
-          "tags": [
-            "1960 olympics",
-            "abebe bikila",
-            "african history",
-            "barefoot running",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "marathon history",
-            "olympic gold medal",
-            "olympic records",
-            "rome olympics",
-            "shorts",
-            "sports history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-11T10:44:51Z",
-          "thumbnail": "https://i.ytimg.com/vi/gNSZAASFoy4/mqdefault.jpg",
-          "views": 5,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 36.78,
           "subs_gained": 0
         }
       ]
