@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-09-30T12:00:17.633332+00:00",
+      "updated": "2026-09-30T17:57:41.509544+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "X422M57wr1Y",
+          "title": "The Day Canada Admitted What It Hid for Over a Century",
+          "description": "Every September 30th, Canada marks National Truth and Reconciliation Day \u2014 but the story of how that day came to exist stretches back over a century of buried records and silenced survivors. This is what was hidden, and why it took so long to surface. History doesn't always stay buried.",
+          "tags": [
+            "canada",
+            "canadian history",
+            "did you know",
+            "education",
+            "facts",
+            "hidden history",
+            "history",
+            "history shorts",
+            "indigenous history",
+            "residential schools",
+            "september 30",
+            "short history facts",
+            "shorts",
+            "trending",
+            "truth and reconciliation",
+            "viral"
+          ],
+          "publishedAt": "2026-09-30T16:05:54Z",
+          "thumbnail": "https://i.ytimg.com/vi/X422M57wr1Y/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "h4niHEuxvuw",
           "title": "The Hit That Should Have Made Him a Legend \u2014 It Did Something Bigger",
           "description": "On September 30, 1972, Roberto Clemente collected his 3,000th career hit \u2014 a milestone that became the final chapter of one of baseball's most extraordinary stories. What happened next changed how the sport honours its greatest players forever. Drop your take in the comments.",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-09-30T04:04:56Z",
           "thumbnail": "https://i.ytimg.com/vi/h4niHEuxvuw/mqdefault.jpg",
-          "views": 46,
+          "views": 62,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -93,7 +124,7 @@
           ],
           "publishedAt": "2026-09-29T16:05:36Z",
           "thumbnail": "https://i.ytimg.com/vi/-zutmzfWgA0/mqdefault.jpg",
-          "views": 98,
+          "views": 103,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -154,7 +185,7 @@
           ],
           "publishedAt": "2026-09-29T04:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/BWGmTU1QXv8/mqdefault.jpg",
-          "views": 123,
+          "views": 133,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -185,7 +216,7 @@
           ],
           "publishedAt": "2026-09-28T13:04:35Z",
           "thumbnail": "https://i.ytimg.com/vi/bB_xroIeF9c/mqdefault.jpg",
-          "views": 1,
+          "views": 3,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1636,7 +1667,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 101.69,
+          "avg_view_pct": 55.75,
           "subs_gained": 1
         },
         {
@@ -1671,39 +1702,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 53.900000000000006,
-          "subs_gained": 0
-        },
-        {
-          "id": "xrXeyVpwHGs",
-          "title": "The Tiny Chip That Nobody Believed Would Work",
-          "description": "On September 12, 1958, one engineer demonstrated something so small it looked like a mistake \u2014 and it quietly rewired civilization. Jack Kilby's first working integrated circuit changed every device you'll touch today. Did the wrong man get the credit for inventing it?",
-          "tags": [
-            "1958",
-            "did you know",
-            "education",
-            "engineering history",
-            "facts",
-            "history",
-            "history shorts",
-            "integrated circuit",
-            "invention history",
-            "jack kilby",
-            "semiconductor",
-            "shorts",
-            "tech history",
-            "texas instruments",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-12T16:05:41Z",
-          "thumbnail": "https://i.ytimg.com/vi/xrXeyVpwHGs/mqdefault.jpg",
-          "views": 35,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 67.47,
           "subs_gained": 0
         }
       ]
