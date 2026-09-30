@@ -3001,5 +3001,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "X422M57wr1Y",
+    "run_id": "36741111599",
+    "stage_dir_name": "20260930_160207_short",
+    "title": "The Day Canada Admitted What It Hid for Over a Century",
+    "published_at": "2026-09-30T16:06:45.760476+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

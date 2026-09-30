@@ -1546,5 +1546,14 @@
     "slot": "morning",
     "date": "2026-09-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20260930_160207_short",
+    "title": "The Day Canada Admitted What It Hid for Over a Century",
+    "fingerprint": "admitted_canada_century_day_for_hid_it_over_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-09-30",
+    "status": "reserved"
   }
 ]
