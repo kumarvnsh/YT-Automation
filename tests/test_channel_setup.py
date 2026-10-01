@@ -85,7 +85,15 @@ class AstrotoldConfigTests(unittest.TestCase):
         self.assertEqual(token_file(), config_path.parent.resolve() / "secrets/token.json")
         self.assertFalse(cfg.get("output.delete_after_upload"))
         self.assertEqual(cfg.get("output.keep_days"), 7)
-        self.assertFalse(cfg.get("meta.enabled"))
+        # Meta cross-posting was enabled on purpose (a7fd6e9); what must hold
+        # is that Astrotold posts to its own Page/IG account, never Histold's.
+        if cfg.get("meta.enabled"):
+            import yaml
+
+            histold = yaml.safe_load((config_path.parents[2] / "config.yaml").read_text())["meta"]
+            for key in ("page_id", "ig_user_id"):
+                self.assertTrue(str(cfg.get(f"meta.{key}") or "").strip(), key)
+                self.assertNotEqual(str(cfg.get(f"meta.{key}")), str(histold[key]), key)
 
         env_example = config_path.parent / ".env.example"
         self.assertTrue(env_example.is_file())
