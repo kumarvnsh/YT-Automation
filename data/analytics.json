@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-01T12:33:03.016781+00:00",
+      "updated": "2026-10-01T22:23:50.087912+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "mBzNQd2JMK0",
+          "title": "The Car That Was Never Supposed to Be Affordable",
+          "description": "On October 1, 1908, Ford put the Model T on sale for $825 \u2014 and what happened next reshaped every road, city, and economy on Earth. The gap between who cars were built for and who actually bought them closed faster than anyone predicted. Drop your take below.",
+          "tags": [
+            "1908",
+            "american history",
+            "automotive history",
+            "car history",
+            "did you know",
+            "education",
+            "facts",
+            "ford model t",
+            "henry ford",
+            "history",
+            "history shorts",
+            "industrial revolution",
+            "invention history",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-01T16:11:10Z",
+          "thumbnail": "https://i.ytimg.com/vi/mBzNQd2JMK0/mqdefault.jpg",
+          "views": 30,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "L7htqeY05W8",
           "title": "Why you should fear your morning brew \u2615\ufe0f\ud83d\udc40 #CoffeeFacts #Shorts",
           "description": "International Coffee Day is more than just a morning ritual; it marks a volatile journey through history.\n\nFrom bans in the streets of Mecca to the political fires stoked in 17th-century European coffee houses, the bean has fueled both commerce and conflict. We explore how a simple drink became a global commodity that shaped empires and trade wars.\n\nDrop your take on the history of your daily cup in the comments.",
@@ -61,7 +92,7 @@
           ],
           "publishedAt": "2026-10-01T05:54:19Z",
           "thumbnail": "https://i.ytimg.com/vi/L7htqeY05W8/mqdefault.jpg",
-          "views": 2,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -92,8 +123,8 @@
           ],
           "publishedAt": "2026-10-01T05:47:33Z",
           "thumbnail": "https://i.ytimg.com/vi/H6Gl7WU53Gc/mqdefault.jpg",
-          "views": 165,
-          "likes": 1,
+          "views": 252,
+          "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -123,8 +154,8 @@
           ],
           "publishedAt": "2026-10-01T04:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/adn78l6heVU/mqdefault.jpg",
-          "views": 130,
-          "likes": 3,
+          "views": 313,
+          "likes": 6,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -154,7 +185,7 @@
           ],
           "publishedAt": "2026-09-30T16:05:54Z",
           "thumbnail": "https://i.ytimg.com/vi/X422M57wr1Y/mqdefault.jpg",
-          "views": 34,
+          "views": 37,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -186,12 +217,14 @@
           ],
           "publishedAt": "2026-09-30T04:04:56Z",
           "thumbnail": "https://i.ytimg.com/vi/h4niHEuxvuw/mqdefault.jpg",
-          "views": 123,
+          "views": 138,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 102.66999999999999,
+          "subs_gained": 0
         },
         {
           "id": "-zutmzfWgA0",
@@ -220,12 +253,14 @@
           ],
           "publishedAt": "2026-09-29T16:05:36Z",
           "thumbnail": "https://i.ytimg.com/vi/-zutmzfWgA0/mqdefault.jpg",
-          "views": 164,
+          "views": 175,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 91.44,
+          "subs_gained": 1
         },
         {
           "id": "8kWLCoAYcN4",
@@ -281,14 +316,14 @@
           ],
           "publishedAt": "2026-09-29T04:05:03Z",
           "thumbnail": "https://i.ytimg.com/vi/BWGmTU1QXv8/mqdefault.jpg",
-          "views": 167,
+          "views": 171,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 49.68,
-          "subs_gained": 0
+          "avg_view_pct": 63.07000000000001,
+          "subs_gained": 1
         },
         {
           "id": "bB_xroIeF9c",
@@ -319,7 +354,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "o9A_aQoM7uE",
@@ -351,7 +388,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 83.94,
+          "avg_view_pct": 78.63,
           "subs_gained": 0
         },
         {
@@ -418,7 +455,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 81.93,
+          "avg_view_pct": 78.65,
           "subs_gained": 0
         },
         {
@@ -451,7 +488,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "pLVRFOMLw_I",
@@ -679,7 +718,7 @@
           ],
           "publishedAt": "2026-09-24T16:05:53Z",
           "thumbnail": "https://i.ytimg.com/vi/wPR3Nh_Kdzc/mqdefault.jpg",
-          "views": 178,
+          "views": 179,
           "likes": 4,
           "comments": 1,
           "playlist_ids": [],
@@ -1529,7 +1568,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 108.46000000000001,
+          "avg_view_pct": 108.20999999999998,
           "subs_gained": 0
         },
         {
@@ -1663,39 +1702,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 90.62,
-          "subs_gained": 0
-        },
-        {
-          "id": "5bvAyBhh3TE",
-          "title": "He Built It Alone \u2014 But Did He Deserve the Credit?",
-          "description": "On September 12, 1958, one engineer demonstrated something so small it looked like a mistake \u2014 and it quietly rewired civilization. Jack Kilby's first working integrated circuit changed every device you'll touch today. Did the wrong man get the credit for inventing it?",
-          "tags": [
-            "1958",
-            "did you know",
-            "education",
-            "engineering history",
-            "facts",
-            "history",
-            "history shorts",
-            "integrated circuit",
-            "invention history",
-            "jack kilby",
-            "semiconductor",
-            "shorts",
-            "tech history",
-            "texas instruments",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-14T03:40:27Z",
-          "thumbnail": "https://i.ytimg.com/vi/5bvAyBhh3TE/mqdefault.jpg",
-          "views": 2,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
           "subs_gained": 0
         }
       ]
