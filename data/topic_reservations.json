@@ -1582,5 +1582,14 @@
     "slot": "morning",
     "date": "2026-10-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261001_061313_short",
+    "title": "One Message Almost Handed Persia the World | History's Almost Moments",
+    "fingerprint": "almost_handed_history_message_moments_one_persia_s_world",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-01",
+    "status": "reserved"
   }
 ]
