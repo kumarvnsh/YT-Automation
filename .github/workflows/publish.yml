@@ -131,6 +131,12 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: Install Chromium (claude_motion mode only)
+        run: |
+          if grep -q 'mode: "claude_motion"' config.yaml || [ "${VIDEO_MODE:-}" = claude_motion ]; then
+            python -m playwright install --with-deps chromium
+          fi
+
       - name: Reconstruct YouTube credentials
         env:
           YT_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_CLIENT_SECRET_JSON_B64 }}

@@ -6,6 +6,8 @@ python-dotenv>=1.0.0      # load API keys from .env
 Pillow>=10.0.0            # mascot compositing (owl frames + background)
 numpy>=1.24.0             # mascot voiceover amplitude analysis (lip-sync)
 
+playwright>=1.45.0        # headless Chromium for video.mode=claude_motion
+
 # --- Script generation (pick ONE provider; both optional) ---
 anthropic>=0.39.0         # Claude (default script writer)
 openai>=1.40.0            # OpenAI alternative (script writer and/or TTS)

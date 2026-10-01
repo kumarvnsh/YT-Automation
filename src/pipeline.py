@@ -147,8 +147,10 @@ def _effective_mode(cfg: Config, fmt: str) -> str:
     """
     if fmt != "short":
         return "broll"
-    mode = cfg.get("video.mode", "broll")
-    return mode if mode in ("broll", "mascot", "captions_only", "motion_graphics", "stopmotion") else "broll"
+    # VIDEO_MODE env overrides config so a single run can A/B a mode.
+    mode = env("VIDEO_MODE") or cfg.get("video.mode", "broll")
+    return mode if mode in ("broll", "mascot", "captions_only", "motion_graphics",
+                            "stopmotion", "claude_motion") else "broll"
 
 
 def _step_script(cfg: Config, stage: Path, st: dict) -> None:
@@ -228,8 +230,9 @@ def _step_captions(cfg: Config, stage: Path, st: dict) -> None:
 
 
 def _step_assets(cfg: Config, stage: Path, st: dict) -> None:
-    # captions_only / motion_graphics need no footage; broll & mascot fetch b-roll.
-    if _effective_mode(cfg, st["fmt"]) in ("captions_only", "motion_graphics"):
+    # captions_only / motion_graphics need no footage; claude_motion fetches
+    # stock only for segments whose scene fails, at render time.
+    if _effective_mode(cfg, st["fmt"]) in ("captions_only", "motion_graphics", "claude_motion"):
         st["assets"] = []
         return
     from .assets import fetch_for_segments
@@ -267,6 +270,10 @@ def _step_render(cfg: Config, stage: Path, st: dict) -> None:
         from .motion import render_motion_video
 
         render_motion_video(cfg, duration, st["fmt"], stage / "silent.mp4")
+    elif mode == "claude_motion":
+        from .claude_motion import render_motion_video as render_claude_motion
+
+        render_claude_motion(cfg, st, stage, words, duration)
     else:
         vb.build_broll_silent(cfg, assets, duration, words, st["fmt"], stage, "silent.mp4")
 

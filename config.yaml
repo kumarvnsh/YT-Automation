@@ -106,7 +106,15 @@ video:
     crf: 23                    # 18-28; lower = higher quality/larger. 23 is a good balance
   # Visual mode for SHORTS: "mascot" (talking owl on branded bg) or "broll" (stock footage).
   # Long-form always uses b-roll (mascot full-frame render is too heavy for 7-min videos).
-  mode: "broll"               # topic-matched stock footage + captions, no mascot
+  # "claude_motion": Claude writes an animated HTML scene per segment, rendered
+  # frame-by-frame in headless Chromium (~$0.07/short on Sonnet 5.5 medium).
+  # Failed scenes fall back to stock. "broll" = previous stock/AI-image look.
+  # VIDEO_MODE env overrides this for a single run.
+  mode: "claude_motion"
+  claude_motion:
+    model: "claude-sonnet-5-5"
+    effort: "medium"           # "low" came out bare (~$0.05); "high" thinks far past the budget
+    max_tokens: 30000          # hard cost cap (~$0.30 on Sonnet 5.5); cut-off scenes fall back to stock
   # Image motion + transitions (applies to the broll/AI-image render path).
   motion: "pan"               # "pan" (zoom + drift) | "kenburns" (zoom) | "stopmotion" (wobble)
   transition: "fade"          # crossfade between beats; "" = hard cuts
