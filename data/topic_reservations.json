@@ -1555,5 +1555,14 @@
     "slot": "evening",
     "date": "2026-09-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261001_040141_short",
+    "title": "One Phone Call Almost Ended the Soviet Union | History's Almost Moments",
+    "fingerprint": "almost_call_ended_history_moments_one_phone_s_soviet_union",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-01",
+    "status": "reserved"
   }
 ]

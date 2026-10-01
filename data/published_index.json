@@ -3015,5 +3015,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "adn78l6heVU",
+    "run_id": "36813139000",
+    "stage_dir_name": "20261001_040141_short",
+    "title": "One Phone Call Almost Ended the Soviet Union | History's Almost Moments",
+    "published_at": "2026-10-01T04:05:40.275514+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
