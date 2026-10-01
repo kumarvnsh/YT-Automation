@@ -3029,5 +3029,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "H6Gl7WU53Gc",
+    "run_id": "",
+    "stage_dir_name": "20261001_100917_short",
+    "title": "The Train That Ran Before Anyone Believed It Could",
+    "published_at": "2026-10-01T05:47:01.932452+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
