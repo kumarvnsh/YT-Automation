@@ -220,12 +220,39 @@ def upload_video(
     video_id = response["id"]
     print(f"  uploaded: https://youtu.be/{video_id}")
 
-    if thumbnail_path and thumbnail_path.exists():
-        try:
-            youtube.thumbnails().set(
-                videoId=video_id, media_body=MediaFileUpload(str(thumbnail_path))
-            ).execute()
-        except Exception as exc:  # noqa: BLE001
-            print(f"  ! thumbnail upload skipped: {exc}")
+    if thumbnail_path:
+        set_thumbnail(youtube, video_id, Path(thumbnail_path))
 
     return video_id
+
+
+def set_thumbnail(youtube, video_id: str, path: Path, attempts: int = 3) -> bool:
+    """Upload a custom thumbnail. Never raises: the video is already live.
+
+    Re-validates the file first (a corrupt upload shows as a broken tile in
+    Studio), and retries because a just-inserted video can briefly reject it.
+    """
+    import time
+
+    from googleapiclient.http import MediaFileUpload
+
+    from .thumbnail import is_valid_jpeg
+
+    if not is_valid_jpeg(path):
+        print(f"  ! thumbnail {path} missing/corrupt/over 2MB — keeping YouTube's default.")
+        return False
+    for i in range(attempts):
+        try:
+            resp = youtube.thumbnails().set(
+                videoId=video_id,
+                media_body=MediaFileUpload(str(path), mimetype="image/jpeg"),
+            ).execute()
+            sizes = (resp.get("items") or [{}])[0]
+            best = sizes.get("maxres") or sizes.get("high") or sizes.get("default") or {}
+            print(f"  ✓ custom thumbnail set ({path.name}): {best.get('url', 'ok')}")
+            return True
+        except Exception as exc:  # noqa: BLE001
+            print(f"  ! thumbnail attempt {i + 1}/{attempts} failed: {exc}")
+            if i + 1 < attempts:
+                time.sleep(10 * (i + 1))
+    return False

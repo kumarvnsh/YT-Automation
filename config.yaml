@@ -145,11 +145,11 @@ video:
 
 thumbnails:
   # Custom thumbnail per video (Shorts support these since Jul 2026, YPP only;
-  # one per Short, no Test & Compare). Two candidates are generated — text-led
-  # and image-led — and Claude picks one; the other stays in the stage dir.
+  # one per Short, no Test & Compare). Two compositions are generated in the
+  # house style and Claude picks one; the other stays in the stage dir.
   enabled: true
-  model: "gpt-image-1"         # OPENAI_API_KEY; style follows assets.ai_images.style
-  quality: "medium"            # ~2 x $0.06 per video at medium portrait
+  model: "gpt-image-1"         # uses OPENAI_API_KEY
+  quality: "medium"            # ~2 x $0.06 per video at medium portrait; style is in src/thumbnail.py
   judge_model: "claude-sonnet-5-5"
 
 quality:
