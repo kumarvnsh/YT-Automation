@@ -135,6 +135,7 @@ def do_repost(cfg, video_id: str, stage_dir_name: str) -> None:
     # Upload FIRST so a failure never loses the video.
     new_id = upload_video(
         cfg, video_path, new_title, meta.get("description", ""), meta.get("tags", []),
+        thumbnail_path=stage / "thumbnail.jpg" if (stage / "thumbnail.jpg").exists() else None,
         privacy_override=meta.get("privacy_status"),
     )
 

@@ -21,7 +21,7 @@ from . import topics
 
 STEP_ORDER = [
     "script", "voiceover", "captions", "assets", "render", "compose",
-    "quality", "upload",
+    "quality", "thumbnail", "upload",
 ]
 
 
@@ -311,6 +311,15 @@ def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
         raise RuntimeError(f"quality gate failed: {failed}")
 
 
+def _step_thumbnail(cfg: Config, stage: Path, st: dict) -> None:
+    if not cfg.get("thumbnails.enabled", False):
+        st["thumbnail"] = None
+        return
+    from .thumbnail import make_thumbnail
+
+    st["thumbnail"] = make_thumbnail(cfg, st, stage)
+
+
 def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
     # Stages created before the quality step have no "quality" field and keep
     # their legacy resume/approval contract; a new stage cannot skip a failure.
@@ -325,6 +334,7 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         privacy_override = st.get("overrides", {}).get("privacy")
         vid = upload_video(
             cfg, stage / "video.mp4", sc["title"], sc["description"], sc["tags"],
+            thumbnail_path=stage / st["thumbnail"] if st.get("thumbnail") else None,
             privacy_override=privacy_override,
         )
         st["youtube_id"] = vid
@@ -354,6 +364,7 @@ STEP_FUNCS = {
     "render": _step_render,
     "compose": _step_compose,
     "quality": _step_quality,
+    "thumbnail": _step_thumbnail,
     "upload": _step_upload,
 }
 

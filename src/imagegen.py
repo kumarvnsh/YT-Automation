@@ -244,16 +244,26 @@ def generate(
         print("  ! ai images: OPENAI_API_KEY missing — falling back to stock.")
         return None
 
-    prompt = build_prompt(cfg, narration, keywords, variant)
-    model = str(cfg.get("assets.ai_images.model", "gpt-image-1"))
-    size = str(cfg.get("assets.ai_images.size", "1024x1536"))
-    quality = str(cfg.get("assets.ai_images.quality", "medium"))
+    return render_prompt(
+        build_prompt(cfg, narration, keywords, variant), dest,
+        model=str(cfg.get("assets.ai_images.model", "gpt-image-1")),
+        size=str(cfg.get("assets.ai_images.size", "1024x1536")),
+        quality=str(cfg.get("assets.ai_images.quality", "medium")),
+        # Hard timeout: image requests occasionally hang, and an unbounded call
+        # would stall the whole time-budgeted pipeline run rather than falling
+        # back to stock footage.
+        timeout=float(cfg.get("assets.ai_images.timeout_seconds", 90)),
+    )
 
-    # Hard timeout: image requests occasionally hang, and an unbounded call
-    # would stall the whole time-budgeted pipeline run rather than falling
-    # back to stock footage.
-    timeout = float(cfg.get("assets.ai_images.timeout_seconds", 90))
 
+def render_prompt(
+    prompt: str, dest: Path, *, model: str, size: str, quality: str, timeout: float
+) -> Path | None:
+    """One OpenAI image request written to dest. Returns None on any failure."""
+    key = env("OPENAI_API_KEY")
+    if not key:
+        print("  ! ai images: OPENAI_API_KEY missing.")
+        return None
     try:
         from openai import OpenAI
 
@@ -281,5 +291,5 @@ def generate(
             raise RuntimeError("wrote an empty file")
         return dest
     except Exception as exc:  # noqa: BLE001 - never break a run over an image
-        print(f"  ! ai image generation failed ({exc}) — falling back to stock.")
+        print(f"  ! ai image generation failed ({exc}).")
         return None
