@@ -3043,5 +3043,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "L7htqeY05W8",
+    "run_id": "36821615975",
+    "stage_dir_name": "20261001_055049_short",
+    "title": "The Coffee Day Tradition You Didn't Know About?",
+    "published_at": "2026-10-01T05:54:43.425927+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

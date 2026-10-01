@@ -1573,5 +1573,14 @@
     "slot": "manual",
     "date": "2026-10-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261001_055049_short",
+    "title": "The Coffee Day Tradition You Didn't Know About?",
+    "fingerprint": "about_coffee_day_didn_know_t_tradition_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-01",
+    "status": "reserved"
   }
 ]
