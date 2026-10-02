@@ -3057,7 +3057,8 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null
+    "republished_as": null,
+    "auto_dispatched_at": "2026-10-02T11:58:56.504286+00:00"
   },
   {
     "video_id": "mBzNQd2JMK0",
