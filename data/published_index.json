@@ -3087,5 +3087,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "JuHI4A4EJTU",
+    "run_id": "37031034746",
+    "stage_dir_name": "20261002_160218_short",
+    "title": "One Empty Bus Almost Ended It All | History's Almost Moments",
+    "published_at": "2026-10-02T16:07:23.099952+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
