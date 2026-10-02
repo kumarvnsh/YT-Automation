@@ -3072,5 +3072,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Sr12Lx6gr8w",
+    "run_id": "36962674212",
+    "stage_dir_name": "20261002_040159_short",
+    "title": "The Ship That Accidentally Sank Its Own Bodyguard",
+    "published_at": "2026-10-02T04:06:47.198364+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
