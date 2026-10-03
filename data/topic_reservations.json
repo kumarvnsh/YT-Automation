@@ -1618,5 +1618,14 @@
     "slot": "evening",
     "date": "2026-10-02",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261003_160201_short",
+    "title": "The Radio Station Nobody Thought Would Last a Week",
+    "fingerprint": "last_nobody_radio_station_thought_week_would",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-03",
+    "status": "reserved"
   }
 ]
