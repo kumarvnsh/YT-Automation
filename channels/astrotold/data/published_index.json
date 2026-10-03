@@ -1748,5 +1748,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "BSirZkdOgII",
+    "run_id": "37138960250",
+    "stage_dir_name": "20261003_170137_short",
+    "title": "What Is the Hidden Number Inside Your Initials Telling You?",
+    "published_at": "2026-10-03T17:04:24.142429+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

@@ -1159,5 +1159,14 @@
     "slot": "morning",
     "date": "2026-10-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261003_170137_short",
+    "title": "What Is the Hidden Number Inside Your Initials Telling You?",
+    "fingerprint": "hidden_initials_inside_is_number_telling_what_you_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-03",
+    "status": "reserved"
   }
 ]
