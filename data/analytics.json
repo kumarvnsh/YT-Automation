@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-03T15:48:38.719415+00:00",
+      "updated": "2026-10-03T20:39:39.483582+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,38 @@
         ]
       },
       "videos": [
+        {
+          "id": "GgtBI61C7rU",
+          "title": "The Radio Station Nobody Thought Would Last a Week",
+          "description": "On October 3, 1949, a single radio station in Atlanta quietly changed American broadcasting forever \u2014 and almost nobody noticed. WERD became the first Black-owned radio station in the United States, and the story of how it survived is wilder than you'd expect. Drop your take in the comments.",
+          "tags": [
+            "1949",
+            "american history",
+            "atlanta history",
+            "black history",
+            "broadcasting",
+            "civil rights era",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "radio history",
+            "short history",
+            "shorts",
+            "trending",
+            "viral",
+            "werd atlanta"
+          ],
+          "publishedAt": "2026-10-03T16:06:06Z",
+          "thumbnail": "https://i.ytimg.com/vi/GgtBI61C7rU/mqdefault.jpg",
+          "views": 8,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "JuHI4A4EJTU",
           "title": "One Empty Bus Almost Ended It All | History's Almost Moments",
@@ -122,12 +154,14 @@
           ],
           "publishedAt": "2026-10-02T04:06:16Z",
           "thumbnail": "https://i.ytimg.com/vi/Sr12Lx6gr8w/mqdefault.jpg",
-          "views": 234,
+          "views": 265,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 62.41,
+          "subs_gained": 0
         },
         {
           "id": "TtdAn5vI96g",
@@ -184,12 +218,14 @@
           ],
           "publishedAt": "2026-10-01T16:11:10Z",
           "thumbnail": "https://i.ytimg.com/vi/mBzNQd2JMK0/mqdefault.jpg",
-          "views": 163,
+          "views": 173,
           "likes": 2,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 61.19,
+          "subs_gained": 0
         },
         {
           "id": "L7htqeY05W8",
@@ -223,7 +259,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 11.31,
+          "subs_gained": 0
         },
         {
           "id": "H6Gl7WU53Gc",
@@ -249,13 +287,13 @@
           ],
           "publishedAt": "2026-10-01T05:47:33Z",
           "thumbnail": "https://i.ytimg.com/vi/H6Gl7WU53Gc/mqdefault.jpg",
-          "views": 507,
+          "views": 510,
           "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.0,
+          "avg_view_pct": 69.85,
           "subs_gained": 0
         },
         {
@@ -282,14 +320,14 @@
           ],
           "publishedAt": "2026-10-01T04:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/adn78l6heVU/mqdefault.jpg",
-          "views": 661,
+          "views": 663,
           "likes": 8,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.55,
-          "subs_gained": 0
+          "avg_view_pct": 66.1,
+          "subs_gained": 2
         },
         {
           "id": "X422M57wr1Y",
@@ -321,7 +359,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 52.44,
+          "avg_view_pct": 47.37,
           "subs_gained": 0
         },
         {
@@ -355,7 +393,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 93.95,
+          "avg_view_pct": 86.35,
           "subs_gained": 0
         },
         {
@@ -391,7 +429,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 81.08,
+          "avg_view_pct": 77.93,
           "subs_gained": 1
         },
         {
@@ -454,7 +492,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.53999999999999,
+          "avg_view_pct": 60.040000000000006,
           "subs_gained": 1
         },
         {
@@ -1667,40 +1705,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 0.0,
-          "subs_gained": 0
-        },
-        {
-          "id": "auhAF_UQ138",
-          "title": "Scientists Tried to Tame a Hurricane \u2014 Did It Actually Work?",
-          "description": "On September 16, 1961, U.S. researchers dropped silver iodide into the eye of Hurricane Esther and watched its winds drop by 10%. It launched one of the most ambitious weather experiments in history \u2014 and the results were stranger than anyone expected. Did humanity briefly control a hurricane, or did the storm do it on its own?",
-          "tags": [
-            "cold war science",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "hurricane",
-            "hurricane esther",
-            "project stormfury",
-            "science history",
-            "shorts",
-            "storm chasing history",
-            "trending",
-            "viral",
-            "weather history",
-            "weather modification"
-          ],
-          "publishedAt": "2026-09-16T04:05:12Z",
-          "thumbnail": "https://i.ytimg.com/vi/auhAF_UQ138/mqdefault.jpg",
-          "views": 696,
-          "likes": 17,
-          "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 126.63,
           "subs_gained": 0
         }
       ]
