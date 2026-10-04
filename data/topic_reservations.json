@@ -1627,5 +1627,14 @@
     "slot": "evening",
     "date": "2026-10-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261004_040157_short",
+    "title": "The Satellite Nobody Believed Could Actually Orbit",
+    "fingerprint": "actually_believed_could_nobody_orbit_satellite",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-04",
+    "status": "reserved"
   }
 ]
