@@ -1195,5 +1195,14 @@
     "slot": "morning",
     "date": "2026-10-05",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261005_170200_short",
+    "title": "The Number Hidden Inside Every Birthday \u2014 Can You Find Yours?",
+    "fingerprint": "birthday_can_every_find_hidden_inside_number_you_yours",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-05",
+    "status": "reserved"
   }
 ]
