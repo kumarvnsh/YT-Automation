@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-05T13:45:37.963150+00:00",
+      "updated": "2026-10-05T23:48:03.456370+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,37 @@
         ]
       },
       "videos": [
+        {
+          "id": "Bn0dk-bFQ10",
+          "title": "The City That Fell Without a Single Battle",
+          "description": "On October 5, 539 BC, Cyrus the Great took the most powerful city on earth \u2014 and almost nobody fought back. The real reason why rewrites everything you thought about ancient conquest. Drop your take in the comments. #ancienthistory #didyouknow #historyshorts",
+          "tags": [
+            "539 bc",
+            "ancient history",
+            "ancient persia",
+            "babylon",
+            "cyrus the great",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "mesopotamia",
+            "persian empire",
+            "shorts",
+            "trending",
+            "viral",
+            "world history"
+          ],
+          "publishedAt": "2026-10-05T16:06:51Z",
+          "thumbnail": "https://i.ytimg.com/vi/Bn0dk-bFQ10/mqdefault.jpg",
+          "views": 32,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "CND8Vi1N0G8",
           "title": "Why Was This Radio Station Hidden Inside a Segregated Building?",
@@ -91,7 +122,7 @@
           ],
           "publishedAt": "2026-10-05T04:05:48Z",
           "thumbnail": "https://i.ytimg.com/vi/GPmVjxFBJ3k/mqdefault.jpg",
-          "views": 16,
+          "views": 21,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -125,7 +156,7 @@
           ],
           "publishedAt": "2026-10-04T16:06:14Z",
           "thumbnail": "https://i.ytimg.com/vi/FmO3_-HBDxE/mqdefault.jpg",
-          "views": 46,
+          "views": 52,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -189,12 +220,14 @@
           ],
           "publishedAt": "2026-10-04T04:05:54Z",
           "thumbnail": "https://i.ytimg.com/vi/REFodewrbUA/mqdefault.jpg",
-          "views": 217,
+          "views": 246,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 44.96,
+          "subs_gained": 0
         },
         {
           "id": "GgtBI61C7rU",
@@ -226,7 +259,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 59.699999999999996,
+          "subs_gained": 0
         },
         {
           "id": "JuHI4A4EJTU",
@@ -260,7 +295,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 93.83,
+          "avg_view_pct": 84.31,
           "subs_gained": 0
         },
         {
@@ -324,7 +359,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 50.03999999999999,
+          "avg_view_pct": 56.63,
           "subs_gained": 0
         },
         {
@@ -390,7 +425,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.019999999999996,
+          "avg_view_pct": 54.16,
           "subs_gained": 0
         },
         {
@@ -426,7 +461,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 11.31,
+          "avg_view_pct": 42.49,
           "subs_gained": 0
         },
         {
@@ -459,7 +494,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.99,
+          "avg_view_pct": 72.63,
           "subs_gained": 1
         },
         {
@@ -492,7 +527,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.7,
+          "avg_view_pct": 63.84000000000001,
           "subs_gained": 2
         },
         {
@@ -519,7 +554,7 @@
           ],
           "publishedAt": "2026-09-30T16:05:54Z",
           "thumbnail": "https://i.ytimg.com/vi/X422M57wr1Y/mqdefault.jpg",
-          "views": 41,
+          "views": 42,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -627,7 +662,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "BWGmTU1QXv8",
@@ -658,7 +695,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.11,
+          "avg_view_pct": 59.81000000000001,
           "subs_gained": 1
         },
         {
@@ -1020,14 +1057,12 @@
           ],
           "publishedAt": "2026-09-25T03:44:03Z",
           "thumbnail": "https://i.ytimg.com/vi/eDfSc03n31w/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0
+          "is_unsorted": true
         },
         {
           "id": "wPR3Nh_Kdzc",
@@ -1627,7 +1662,7 @@
           ],
           "publishedAt": "2026-09-19T04:05:05Z",
           "thumbnail": "https://i.ytimg.com/vi/w0I33EudYtY/mqdefault.jpg",
-          "views": 17,
+          "views": 18,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1669,41 +1704,6 @@
           "is_unsorted": true,
           "avg_view_pct": 127.32999999999998,
           "subs_gained": 0
-        },
-        {
-          "id": "vjMs0V77AjU",
-          "title": "One Forecast Almost Cancelled D-Day | History's Almost Moments",
-          "description": "On June 5, 1944, one man's weather forecast stood between the largest seaborne invasion in history and total cancellation. A 24-hour delay sat on a knife's edge \u2014 and almost went the other way. This is the near-miss that shaped the modern world.",
-          "tags": [
-            "close call history",
-            "d-day",
-            "did you know",
-            "did you know history",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "james stagg",
-            "military history",
-            "normandy invasion",
-            "operation overlord",
-            "shorts",
-            "trending",
-            "viral",
-            "world war 2",
-            "wwii weather"
-          ],
-          "publishedAt": "2026-09-18T04:05:15Z",
-          "thumbnail": "https://i.ytimg.com/vi/vjMs0V77AjU/mqdefault.jpg",
-          "views": 125,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 86.59,
-          "subs_gained": 1
         }
       ]
     }
