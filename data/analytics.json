@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-05T04:21:36.936486+00:00",
+      "updated": "2026-10-05T13:45:37.963150+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "CND8Vi1N0G8",
+          "title": "Why Was This Radio Station Hidden Inside a Segregated Building?",
+          "description": "On October 3, 1949, a single radio station in Atlanta quietly changed American broadcasting forever \u2014 and almost nobody noticed. WERD became the first Black-owned radio station in the United States, and the story of how it survived is wilder than you'd expect. Drop your take in the comments.",
+          "tags": [
+            "1949",
+            "american history",
+            "atlanta history",
+            "black history",
+            "broadcasting",
+            "civil rights era",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "radio history",
+            "short history",
+            "shorts",
+            "trending",
+            "viral",
+            "werd atlanta"
+          ],
+          "publishedAt": "2026-10-05T04:22:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/CND8Vi1N0G8/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "GPmVjxFBJ3k",
           "title": "The Speech That Changed Power Forever \u2014 Nobody Saw It Coming",
           "description": "On October 5, 1947, Harry Truman walked up to a camera and quietly rewired how leaders rule. What he did that night still shapes every election you've ever watched. The moment was smaller than you'd expect \u2014 and more powerful than anyone admitted at the time. #history #didyouknow #americanhistory",
@@ -59,7 +91,7 @@
           ],
           "publishedAt": "2026-10-05T04:05:48Z",
           "thumbnail": "https://i.ytimg.com/vi/GPmVjxFBJ3k/mqdefault.jpg",
-          "views": 2,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -93,7 +125,7 @@
           ],
           "publishedAt": "2026-10-04T16:06:14Z",
           "thumbnail": "https://i.ytimg.com/vi/FmO3_-HBDxE/mqdefault.jpg",
-          "views": 41,
+          "views": 46,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -157,7 +189,7 @@
           ],
           "publishedAt": "2026-10-04T04:05:54Z",
           "thumbnail": "https://i.ytimg.com/vi/REFodewrbUA/mqdefault.jpg",
-          "views": 184,
+          "views": 217,
           "likes": 3,
           "comments": 0,
           "playlist_ids": [],
@@ -189,7 +221,7 @@
           ],
           "publishedAt": "2026-10-03T16:06:06Z",
           "thumbnail": "https://i.ytimg.com/vi/GgtBI61C7rU/mqdefault.jpg",
-          "views": 27,
+          "views": 31,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -421,7 +453,7 @@
           ],
           "publishedAt": "2026-10-01T05:47:33Z",
           "thumbnail": "https://i.ytimg.com/vi/H6Gl7WU53Gc/mqdefault.jpg",
-          "views": 516,
+          "views": 517,
           "likes": 6,
           "comments": 0,
           "playlist_ids": [],
@@ -460,7 +492,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.59,
+          "avg_view_pct": 63.7,
           "subs_gained": 2
         },
         {
@@ -1670,41 +1702,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 85.33,
+          "avg_view_pct": 86.59,
           "subs_gained": 1
-        },
-        {
-          "id": "yrS1kwWRo0Y",
-          "title": "The Accident That Created One of History's Greatest Artists",
-          "description": "On September 17, 1925, a single catastrophic moment redirected Frida Kahlo's entire life \u2014 and the world of art was never the same. What she built from that wreckage is one of history's most unlikely origin stories. Drop your take in the comments.",
-          "tags": [
-            "1920s",
-            "art history",
-            "biography",
-            "did you know",
-            "education",
-            "facts",
-            "famous artists",
-            "frida kahlo",
-            "history",
-            "history shorts",
-            "mexico",
-            "origin stories",
-            "shorts",
-            "trending",
-            "unexpected history",
-            "viral"
-          ],
-          "publishedAt": "2026-09-17T16:05:52Z",
-          "thumbnail": "https://i.ytimg.com/vi/yrS1kwWRo0Y/mqdefault.jpg",
-          "views": 206,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 65.57,
-          "subs_gained": 0
         }
       ]
     }
