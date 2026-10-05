@@ -3159,5 +3159,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Bn0dk-bFQ10",
+    "run_id": "37337510444",
+    "stage_dir_name": "20261005_160219_short",
+    "title": "The City That Fell Without a Single Battle",
+    "published_at": "2026-10-05T16:07:53.075713+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
