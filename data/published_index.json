@@ -3144,5 +3144,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "GPmVjxFBJ3k",
+    "run_id": "37261706684",
+    "stage_dir_name": "20261005_040153_short",
+    "title": "The Speech That Changed Power Forever \u2014 Nobody Saw It Coming",
+    "published_at": "2026-10-05T04:06:25.610954+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
