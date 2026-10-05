@@ -1186,5 +1186,14 @@
     "slot": "evening",
     "date": "2026-10-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261005_050139_short",
+    "title": "What Are Dates 5, 14, and 23 Actually Hiding From You?",
+    "fingerprint": "14_23_5_actually_are_dates_from_hiding_what_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-05",
+    "status": "reserved"
   }
 ]
