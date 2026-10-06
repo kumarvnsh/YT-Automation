@@ -3174,5 +3174,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "a377NfQSi7U",
+    "run_id": "37411687448",
+    "stage_dir_name": "20261006_040208_short",
+    "title": "One Signature Almost Never Happened | History's Almost Moments",
+    "published_at": "2026-10-06T04:07:22.386705+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
