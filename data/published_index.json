@@ -3189,5 +3189,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "KkaN5QafNWA",
+    "run_id": "37492344890",
+    "stage_dir_name": "20261006_160226_short",
+    "title": "He Arrived Broke, Hungry, and Completely Unknown \u2014 Then What?",
+    "published_at": "2026-10-06T16:07:41.539525+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
