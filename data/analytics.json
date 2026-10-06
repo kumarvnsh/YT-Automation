@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-06T12:51:29.939908+00:00",
+      "updated": "2026-10-06T22:23:43.533214+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,69 @@
       },
       "videos": [
         {
+          "id": "KkaN5QafNWA",
+          "title": "He Arrived Broke, Hungry, and Completely Unknown \u2014 Then What?",
+          "description": "On October 6, 1723, a 17-year-old runaway stepped off a boat in Philadelphia with almost nothing. What happened next quietly shaped the modern world. This is the gap nobody talks about. #history #didyouknow #benjaminfrankl",
+          "tags": [
+            "1700s america",
+            "american history",
+            "benjamin franklin",
+            "colonial america",
+            "did you know",
+            "education",
+            "facts",
+            "founding fathers",
+            "history",
+            "history shorts",
+            "philadelphia history",
+            "short history",
+            "shorts",
+            "surprising history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-06T16:06:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/KkaN5QafNWA/mqdefault.jpg",
+          "views": 3,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "p-_Jfdvmwr0",
+          "title": "Truman Asked America to Eat Less Bread \u2014 Then Something Weird Happened",
+          "description": "On October 5, 1947, Harry Truman walked up to a camera and quietly rewired how leaders rule. What he did that night still shapes every election you've ever watched. The moment was smaller than you'd expect \u2014 and more powerful than anyone admitted at the time. #history #didyouknow #americanhistory",
+          "tags": [
+            "1947",
+            "american politics",
+            "cold war",
+            "did you know",
+            "education",
+            "facts",
+            "harry truman",
+            "history",
+            "history facts",
+            "history shorts",
+            "media history",
+            "presidential history",
+            "shorts",
+            "television history",
+            "trending",
+            "viral",
+            "white house history"
+          ],
+          "publishedAt": "2026-10-06T12:52:59Z",
+          "thumbnail": "https://i.ytimg.com/vi/p-_Jfdvmwr0/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "a377NfQSi7U",
           "title": "One Signature Almost Never Happened | History's Almost Moments",
           "description": "In 1683, the entire fate of Europe rested on a single ruler's willingness to sign a treaty he had every reason to refuse. One hesitation could have left Vienna \u2014 and the continent \u2014 wide open. This is the close call that textbooks skip over. #history #historicalfacts #almostmoments",
@@ -58,7 +121,7 @@
           ],
           "publishedAt": "2026-10-06T04:06:51Z",
           "thumbnail": "https://i.ytimg.com/vi/a377NfQSi7U/mqdefault.jpg",
-          "views": 32,
+          "views": 34,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -192,7 +255,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 50.54,
+          "subs_gained": 0
         },
         {
           "id": "FmO3_-HBDxE",
@@ -226,7 +291,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 78.37,
+          "subs_gained": 0
         },
         {
           "id": "bBo6oS17qSs",
@@ -291,7 +358,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 44.96,
+          "avg_view_pct": 122.18,
           "subs_gained": 0
         },
         {
@@ -325,7 +392,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 59.699999999999996,
+          "avg_view_pct": 221.73,
           "subs_gained": 0
         },
         {
@@ -354,7 +421,7 @@
           ],
           "publishedAt": "2026-10-02T16:06:31Z",
           "thumbnail": "https://i.ytimg.com/vi/JuHI4A4EJTU/mqdefault.jpg",
-          "views": 24,
+          "views": 23,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -391,7 +458,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "Sr12Lx6gr8w",
@@ -424,7 +493,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 56.63,
+          "avg_view_pct": 56.42,
           "subs_gained": 0
         },
         {
@@ -559,7 +628,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.63,
+          "avg_view_pct": 72.65,
           "subs_gained": 1
         },
         {
@@ -592,7 +661,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.84000000000001,
+          "avg_view_pct": 63.91,
           "subs_gained": 2
         },
         {
@@ -1594,8 +1663,8 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 68.53,
-          "subs_gained": 1
+          "avg_view_pct": 57.37,
+          "subs_gained": 0
         },
         {
           "id": "CYkoTn1kIuk",
@@ -1622,76 +1691,6 @@
           ],
           "publishedAt": "2026-09-20T03:42:30Z",
           "thumbnail": "https://i.ytimg.com/vi/CYkoTn1kIuk/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0
-        },
-        {
-          "id": "HbI1JedJj2Y",
-          "title": "One Late Alliance Almost Fell Apart at the Gates | History's Almost Moments",
-          "description": "In September 1683, the Ottoman Empire stood at the walls of Vienna with 140,000 troops \u2014 and the alliance that stopped them nearly collapsed before it arrived. One king's hesitation almost handed Europe its most consequential defeat. This is how close it actually came.",
-          "tags": [
-            "battle of vienna",
-            "close call",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "military history",
-            "near miss",
-            "ottoman empire",
-            "short history",
-            "shorts",
-            "sobieski",
-            "trending",
-            "vienna 1683",
-            "viral"
-          ],
-          "publishedAt": "2026-09-19T16:05:08Z",
-          "thumbnail": "https://i.ytimg.com/vi/HbI1JedJj2Y/mqdefault.jpg",
-          "views": 207,
-          "likes": 5,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 63.470000000000006,
-          "subs_gained": 0
-        },
-        {
-          "id": "uAaHUsbvsas",
-          "title": "Rommel Left France to Buy His Wife Shoes. Then This Happened.",
-          "description": "On June 5, 1944, one man's weather forecast stood between the largest seaborne invasion in history and total cancellation. A 24-hour delay sat on a knife's edge \u2014 and almost went the other way. This is the near-miss that shaped the modern world.",
-          "tags": [
-            "close call history",
-            "d-day",
-            "did you know",
-            "did you know history",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "james stagg",
-            "military history",
-            "normandy invasion",
-            "operation overlord",
-            "shorts",
-            "trending",
-            "viral",
-            "world war 2",
-            "wwii weather"
-          ],
-          "publishedAt": "2026-09-19T10:26:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/uAaHUsbvsas/mqdefault.jpg",
           "views": 1,
           "likes": 0,
           "comments": 0,
