@@ -3204,5 +3204,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "LSt8hNGmxuI",
+    "run_id": "37569419348",
+    "stage_dir_name": "20261007_040201_short",
+    "title": "The Rock Nobody Thought Would Actually Hit",
+    "published_at": "2026-10-07T04:06:34.598259+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

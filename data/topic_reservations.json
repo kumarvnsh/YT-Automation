@@ -1681,5 +1681,14 @@
     "slot": "evening",
     "date": "2026-10-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261007_040201_short",
+    "title": "The Rock Nobody Thought Would Actually Hit",
+    "fingerprint": "actually_hit_nobody_rock_thought_would",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-07",
+    "status": "reserved"
   }
 ]
