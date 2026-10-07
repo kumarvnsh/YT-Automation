@@ -1818,5 +1818,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "6-dAA6nn3Oo",
+    "run_id": "37574228335",
+    "stage_dir_name": "20261007_050141_short",
+    "title": "What Happens When Both Your Initials Share the Same Number?",
+    "published_at": "2026-10-07T05:04:48.640837+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
