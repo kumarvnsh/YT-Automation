@@ -3219,5 +3219,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "gTlsjP-w5ec",
+    "run_id": "37648697206",
+    "stage_dir_name": "20261007_160218_short",
+    "title": "One Muddy Morning Almost Made Napoleon Emperor Again | History's Almost Moments",
+    "published_at": "2026-10-07T16:06:20.795530+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

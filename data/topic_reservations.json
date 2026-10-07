@@ -1690,5 +1690,14 @@
     "slot": "morning",
     "date": "2026-10-07",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261007_160218_short",
+    "title": "One Muddy Morning Almost Made Napoleon Emperor Again | History's Almost Moments",
+    "fingerprint": "again_almost_emperor_history_made_moments_morning_muddy_napoleon_one_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-07",
+    "status": "reserved"
   }
 ]
