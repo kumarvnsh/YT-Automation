@@ -3234,5 +3234,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "7kDODOw-WuA",
+    "run_id": "37725445442",
+    "stage_dir_name": "20261008_040205_short",
+    "title": "Millions Went to Sleep \u2014 and Lost 10 Days Forever",
+    "published_at": "2026-10-08T04:06:50.192324+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
