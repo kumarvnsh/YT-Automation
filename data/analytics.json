@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-08T12:54:25.898976+00:00",
+      "updated": "2026-10-08T22:59:28.224054+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "WBmM1Unw1ro",
+          "title": "The Fire That Killed 2,000 People \u2014 Nobody Remembers It",
+          "description": "On October 8, 1871, the Great Chicago Fire stole every headline \u2014 but the same night, a deadlier disaster was already erasing entire towns from the map. The story of why one fire was forgotten is more revealing than the fire itself. History doesn't always remember what was biggest \u2014 it remembers what had the best address.",
+          "tags": [
+            "1871",
+            "american history",
+            "did you know",
+            "disaster history",
+            "education",
+            "facts",
+            "forgotten history",
+            "great chicago fire",
+            "history",
+            "history facts",
+            "history shorts",
+            "october 8",
+            "peshtigo fire",
+            "shorts",
+            "trending",
+            "viral",
+            "wisconsin history"
+          ],
+          "publishedAt": "2026-10-08T16:06:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/WBmM1Unw1ro/mqdefault.jpg",
+          "views": 23,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "7kDODOw-WuA",
           "title": "Millions Went to Sleep \u2014 and Lost 10 Days Forever",
           "description": "In October 1582, four countries deleted ten days from existence overnight \u2014 and almost nobody saw it coming. The Gregorian calendar reform is one of history's strangest and most overlooked events. Drop your reaction below. #history #didyouknow #calendar",
@@ -59,8 +91,8 @@
           ],
           "publishedAt": "2026-10-08T04:06:28Z",
           "thumbnail": "https://i.ytimg.com/vi/7kDODOw-WuA/mqdefault.jpg",
-          "views": 18,
-          "likes": 0,
+          "views": 41,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -122,7 +154,7 @@
           ],
           "publishedAt": "2026-10-07T16:06:03Z",
           "thumbnail": "https://i.ytimg.com/vi/gTlsjP-w5ec/mqdefault.jpg",
-          "views": 5,
+          "views": 7,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -189,7 +221,9 @@
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 54.92,
+          "subs_gained": 0
         },
         {
           "id": "YtsObdQQPuI",
@@ -251,7 +285,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 10.7,
+          "subs_gained": 0
         },
         {
           "id": "p-_Jfdvmwr0",
@@ -283,7 +319,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "a377NfQSi7U",
@@ -315,7 +353,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.3,
+          "avg_view_pct": 45.08,
           "subs_gained": 0
         },
         {
@@ -415,7 +453,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 96.44,
+          "subs_gained": 0
         },
         {
           "id": "GPmVjxFBJ3k",
@@ -550,7 +590,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 106.13999999999999,
+          "avg_view_pct": 105.86,
           "subs_gained": 0
         },
         {
@@ -1658,39 +1698,6 @@
           "is_unsorted": true,
           "avg_view_pct": 151.71,
           "subs_gained": 1
-        },
-        {
-          "id": "5FQegdPES8o",
-          "title": "Why Did Europe's Best Army Turn Around and Walk Away?",
-          "description": "On September 20, 1792, a ragged French revolutionary army faced the finest professional soldiers in Europe \u2014 and did something nobody predicted. This is the single afternoon that decided whether the French Revolution would survive. Drop your verdict in the comments.",
-          "tags": [
-            "18th century history",
-            "battle of valmy",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "french revolution",
-            "history",
-            "history facts",
-            "history shorts",
-            "military history",
-            "napoleon",
-            "revolutionary war",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-22T03:36:36Z",
-          "thumbnail": "https://i.ytimg.com/vi/5FQegdPES8o/mqdefault.jpg",
-          "views": 11,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 42.38,
-          "subs_gained": 0
         }
       ]
     }
