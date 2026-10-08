@@ -1846,5 +1846,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "821egFgb6SU",
+    "run_id": "37730260590",
+    "stage_dir_name": "20261008_050141_short",
+    "title": "What Is Today's Lucky Trio Actually Hiding for You?",
+    "published_at": "2026-10-08T05:04:57.045289+00:00",
+    "channel": "astrotold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
