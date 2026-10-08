@@ -3248,5 +3248,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "WBmM1Unw1ro",
+    "run_id": "37805482616",
+    "stage_dir_name": "20261008_160240_short",
+    "title": "The Fire That Killed 2,000 People \u2014 Nobody Remembers It",
+    "published_at": "2026-10-08T16:07:50.621001+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
