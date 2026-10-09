@@ -3263,5 +3263,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Iayzxos778M",
+    "run_id": "37881898909",
+    "stage_dir_name": "20261009_040149_short",
+    "title": "One Ride Almost Kept America British | History's Almost Moments",
+    "published_at": "2026-10-09T04:07:35.453441+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
