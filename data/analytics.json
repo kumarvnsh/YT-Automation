@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-09T12:40:06.502144+00:00",
+      "updated": "2026-10-09T22:20:29.359913+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,70 @@
       },
       "videos": [
         {
+          "id": "VqBozML4s6k",
+          "title": "The Last Star to Explode in Our Galaxy \u2014 Nobody Knows Why It Stopped",
+          "description": "On October 9, 1604, a new star blazed into the night sky so bright it was visible in daylight \u2014 and it rewrote everything astronomers thought they knew. It was the last supernova ever observed inside the Milky Way, and over 400 years later, scientists still can't explain why none have appeared since. Drop your theory below.",
+          "tags": [
+            "1604",
+            "astronomy history",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "kepler supernova",
+            "milky way",
+            "shorts",
+            "space history",
+            "stars",
+            "supernova",
+            "trending",
+            "universe mysteries",
+            "viral"
+          ],
+          "publishedAt": "2026-10-09T16:06:33Z",
+          "thumbnail": "https://i.ytimg.com/vi/VqBozML4s6k/mqdefault.jpg",
+          "views": 276,
+          "likes": 8,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
+          "id": "1lIfc_aOGvI",
+          "title": "Why Did the Church Delete 10 Days From History?",
+          "description": "In October 1582, four countries deleted ten days from existence overnight \u2014 and almost nobody saw it coming. The Gregorian calendar reform is one of history's strangest and most overlooked events. Drop your reaction below. #history #didyouknow #calendar",
+          "tags": [
+            "calendar history",
+            "did you know",
+            "education",
+            "facts",
+            "gregorian calendar",
+            "history",
+            "history facts",
+            "history shorts",
+            "julian calendar",
+            "lost days 1582",
+            "october history",
+            "pope gregory",
+            "reformation",
+            "shorts",
+            "time history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-09T12:41:26Z",
+          "thumbnail": "https://i.ytimg.com/vi/1lIfc_aOGvI/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Iayzxos778M",
           "title": "One Ride Almost Kept America British | History's Almost Moments",
           "description": "On July 1, 1776, the vote for American independence nearly deadlocked \u2014 and one exhausted delegate riding through a storm was the only thing standing between a united declaration and a catastrophic delay. This is the near-miss that almost kept the colonies British. What would the world look like if Caesar Rodney hadn't made it in time? #AmericanHistory #HistorysAlmostMoments #DidYouKnow",
@@ -62,7 +126,7 @@
           ],
           "publishedAt": "2026-10-09T04:06:04Z",
           "thumbnail": "https://i.ytimg.com/vi/Iayzxos778M/mqdefault.jpg",
-          "views": 61,
+          "views": 82,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -126,7 +190,7 @@
           ],
           "publishedAt": "2026-10-08T16:06:49Z",
           "thumbnail": "https://i.ytimg.com/vi/WBmM1Unw1ro/mqdefault.jpg",
-          "views": 33,
+          "views": 35,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -158,12 +222,14 @@
           ],
           "publishedAt": "2026-10-08T04:06:28Z",
           "thumbnail": "https://i.ytimg.com/vi/7kDODOw-WuA/mqdefault.jpg",
-          "views": 42,
-          "likes": 1,
+          "views": 43,
+          "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 47.47,
+          "subs_gained": 0
         },
         {
           "id": "5XRQNe4ajk8",
@@ -221,12 +287,14 @@
           ],
           "publishedAt": "2026-10-07T16:06:03Z",
           "thumbnail": "https://i.ytimg.com/vi/gTlsjP-w5ec/mqdefault.jpg",
-          "views": 8,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 84.34,
+          "subs_gained": 0
         },
         {
           "id": "cZXd1oj5rgQ",
@@ -257,7 +325,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 35.17,
+          "subs_gained": 0
         },
         {
           "id": "LSt8hNGmxuI",
@@ -283,13 +353,13 @@
           ],
           "publishedAt": "2026-10-07T04:06:05Z",
           "thumbnail": "https://i.ytimg.com/vi/LSt8hNGmxuI/mqdefault.jpg",
-          "views": 913,
+          "views": 914,
           "likes": 6,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.92,
+          "avg_view_pct": 54.77000000000001,
           "subs_gained": 0
         },
         {
@@ -321,7 +391,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "KkaN5QafNWA",
@@ -353,7 +425,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 10.7,
+          "avg_view_pct": 45.82,
           "subs_gained": 0
         },
         {
@@ -455,7 +527,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "Bn0dk-bFQ10",
@@ -819,7 +893,7 @@
           ],
           "publishedAt": "2026-10-01T22:25:06Z",
           "thumbnail": "https://i.ytimg.com/vi/TtdAn5vI96g/mqdefault.jpg",
-          "views": 1,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -858,7 +932,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.16,
+          "avg_view_pct": 54.33,
           "subs_gained": 0
         },
         {
@@ -1632,71 +1706,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 65.45,
-          "subs_gained": 0
-        },
-        {
-          "id": "oXIr_LuFxps",
-          "title": "The Richest Shipwreck Ever \u2014 Nobody's Found It Yet",
-          "description": "On September 23, 1641, a Spanish treasure ship carrying over 100,000 pounds of gold vanished off England's coast \u2014 and the wreck has never been found. This is the story of the richest lost cargo in history and why it still matters. Every expedition that's searched has come back empty-handed.",
-          "tags": [
-            "17th century",
-            "did you know",
-            "education",
-            "england",
-            "facts",
-            "gold",
-            "history",
-            "history shorts",
-            "lost treasure",
-            "maritime mystery",
-            "merchant royal",
-            "shipwreck",
-            "shorts",
-            "trending",
-            "unsolved history",
-            "viral"
-          ],
-          "publishedAt": "2026-09-23T04:05:13Z",
-          "thumbnail": "https://i.ytimg.com/vi/oXIr_LuFxps/mqdefault.jpg",
-          "views": 388,
-          "likes": 9,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 80.37,
-          "subs_gained": 1
-        },
-        {
-          "id": "KTnJnIEmswU",
-          "title": "They Offered Her a Secretary Job \u2014 Then Voted 99-0",
-          "description": "On September 21, 1981, Sandra Day O'Connor was unanimously confirmed as the first female Supreme Court justice \u2014 but her path there almost didn't happen. Decades earlier, not a single law firm would hire her despite graduating near the top of her Stanford class. One unanimous vote reshaped American history forever.",
-          "tags": [
-            "1981 history",
-            "american history",
-            "did you know",
-            "education",
-            "facts",
-            "first female justice",
-            "history",
-            "history shorts",
-            "sandra day o'connor",
-            "shorts",
-            "supreme court history",
-            "trending",
-            "us law history",
-            "viral",
-            "women in history"
-          ],
-          "publishedAt": "2026-09-23T03:36:00Z",
-          "thumbnail": "https://i.ytimg.com/vi/KTnJnIEmswU/mqdefault.jpg",
-          "views": 4,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 11.63,
           "subs_gained": 0
         }
       ]
