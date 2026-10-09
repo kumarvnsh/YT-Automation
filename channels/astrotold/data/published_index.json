@@ -1874,5 +1874,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "-r58HeUq_cM",
+    "run_id": "37963244126",
+    "stage_dir_name": "20261009_170150_short",
+    "title": "One Simple Step Reveals Your Secret Birth Number \u2014 Ready?",
+    "published_at": "2026-10-09T17:05:12.499069+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
