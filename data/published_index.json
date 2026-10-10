@@ -3293,5 +3293,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "eVggAuM4z70",
+    "run_id": "38022572579",
+    "stage_dir_name": "20261010_040200_short",
+    "title": "The Nuclear Fire They Tried to Erase From History",
+    "published_at": "2026-10-10T04:06:37.710758+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

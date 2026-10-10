@@ -1735,5 +1735,14 @@
     "slot": "evening",
     "date": "2026-10-09",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261010_040200_short",
+    "title": "The Nuclear Fire They Tried to Erase From History",
+    "fingerprint": "erase_fire_from_history_nuclear_they_tried",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-10",
+    "status": "reserved"
   }
 ]
