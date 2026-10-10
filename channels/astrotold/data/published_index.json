@@ -1902,5 +1902,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "-UloCZfWLuU",
+    "run_id": "38069999392",
+    "stage_dir_name": "20261010_170141_short",
+    "title": "What If Today's Numbers Already Picked Your Lucky Day?",
+    "published_at": "2026-10-10T17:05:09.778455+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

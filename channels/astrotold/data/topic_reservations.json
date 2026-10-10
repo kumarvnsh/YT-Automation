@@ -1258,5 +1258,14 @@
     "slot": "morning",
     "date": "2026-10-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261010_170141_short",
+    "title": "What If Today's Numbers Already Picked Your Lucky Day?",
+    "fingerprint": "already_day_if_lucky_numbers_picked_s_today_what_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-10",
+    "status": "reserved"
   }
 ]
