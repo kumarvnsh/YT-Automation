@@ -3307,5 +3307,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "eE7Rc8c3XOA",
+    "run_id": "38065954847",
+    "stage_dir_name": "20261010_160236_short",
+    "title": "One Late Scout Report Almost Handed the Pacific Away | History's Almost Moments",
+    "published_at": "2026-10-10T16:09:27.060271+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
