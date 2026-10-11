@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-11T12:12:11.525444+00:00",
+      "updated": "2026-10-11T21:34:02.984806+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,38 @@
       },
       "videos": [
         {
+          "id": "Pmjt688h0tU",
+          "title": "The Line That Was Supposed to End a War \u2014 But Started a Bigger One",
+          "description": "The Mason-Dixon Line is famous for dividing North from South, but the surveyors who drew it in 1767 were actually solving a completely different problem \u2014 one that had nothing to do with slavery. The real story behind history's most symbolic boundary is stranger than most textbooks admit. Drop your take in the comments. #history #didyouknow #americanhistory",
+          "tags": [
+            "american history",
+            "boundary disputes",
+            "civil war history",
+            "colonial america",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "mason dixon line",
+            "pennsylvania maryland",
+            "short history",
+            "shorts",
+            "surveying history",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-11T16:06:36Z",
+          "thumbnail": "https://i.ytimg.com/vi/Pmjt688h0tU/mqdefault.jpg",
+          "views": 64,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "saA2DMLYLoQ",
           "title": "The Mission NASA Almost Cancelled Before It Left the Ground",
           "description": "Apollo 7 was NASA's first successful crewed Apollo flight \u2014 but the story of how it almost never happened is stranger than the mission itself. Launched on October 11, 1968, it saved the entire Moon program. Did the crew's mutiny in orbit make them heroes or villains?",
@@ -58,7 +90,7 @@
           ],
           "publishedAt": "2026-10-11T04:06:03Z",
           "thumbnail": "https://i.ytimg.com/vi/saA2DMLYLoQ/mqdefault.jpg",
-          "views": 61,
+          "views": 82,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -93,8 +125,8 @@
           ],
           "publishedAt": "2026-10-10T16:08:51Z",
           "thumbnail": "https://i.ytimg.com/vi/eE7Rc8c3XOA/mqdefault.jpg",
-          "views": 284,
-          "likes": 7,
+          "views": 400,
+          "likes": 8,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
@@ -125,12 +157,14 @@
           ],
           "publishedAt": "2026-10-10T04:05:58Z",
           "thumbnail": "https://i.ytimg.com/vi/eVggAuM4z70/mqdefault.jpg",
-          "views": 122,
+          "views": 149,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 51.25999999999999,
+          "subs_gained": 0
         },
         {
           "id": "6OlXXJhr5xQ",
@@ -157,12 +191,14 @@
           ],
           "publishedAt": "2026-10-09T22:21:40Z",
           "thumbnail": "https://i.ytimg.com/vi/6OlXXJhr5xQ/mqdefault.jpg",
-          "views": 47,
+          "views": 49,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 58.26,
+          "subs_gained": 0
         },
         {
           "id": "VqBozML4s6k",
@@ -189,12 +225,14 @@
           ],
           "publishedAt": "2026-10-09T16:06:33Z",
           "thumbnail": "https://i.ytimg.com/vi/VqBozML4s6k/mqdefault.jpg",
-          "views": 958,
+          "views": 990,
           "likes": 16,
           "comments": 3,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 100.97,
+          "subs_gained": 0
         },
         {
           "id": "1lIfc_aOGvI",
@@ -226,7 +264,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "Iayzxos778M",
@@ -262,7 +302,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 60.5,
+          "avg_view_pct": 64.45,
           "subs_gained": 0
         },
         {
@@ -296,7 +336,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 73.0,
           "subs_gained": 0
         },
         {
@@ -330,7 +370,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 32.32,
+          "avg_view_pct": 35.57,
           "subs_gained": 0
         },
         {
@@ -364,7 +404,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 39.63,
+          "avg_view_pct": 35.77,
           "subs_gained": 0
         },
         {
@@ -429,7 +469,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 86.12,
+          "avg_view_pct": 57.8,
           "subs_gained": 0
         },
         {
@@ -1035,7 +1075,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 4.04,
           "subs_gained": 0
         },
         {
@@ -1170,7 +1210,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 63.91,
+          "avg_view_pct": 63.61,
           "subs_gained": 2
         },
         {
@@ -1668,39 +1708,6 @@
           "publishedAt": "2026-09-25T11:18:34Z",
           "thumbnail": "https://i.ytimg.com/vi/a6qrq6ArCPo/mqdefault.jpg",
           "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0
-        },
-        {
-          "id": "eDfSc03n31w",
-          "title": "Why Can't Anyone Agree On Who Owns This Billion-Pound Wreck?",
-          "description": "On September 23, 1641, the Merchant Royal sank off Land's End carrying a fortune so vast it still hasn't been fully recovered. The wreck has never been conclusively found, making it one of history's greatest unsolved treasure mysteries. Drop your theory on where the gold is hiding.",
-          "tags": [
-            "17th century",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "land's end",
-            "lost treasure",
-            "maritime history",
-            "merchant royal",
-            "shipwreck",
-            "shorts",
-            "sunken gold",
-            "treasure hunt",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-25T03:44:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/eDfSc03n31w/mqdefault.jpg",
-          "views": 0,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
