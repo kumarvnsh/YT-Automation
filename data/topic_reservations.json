@@ -1762,5 +1762,14 @@
     "slot": "morning",
     "date": "2026-10-11",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261011_160215_short",
+    "title": "The Line That Was Supposed to End a War \u2014 But Started a Bigger One",
+    "fingerprint": "bigger_but_end_line_one_started_supposed_that_war_was",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-11",
+    "status": "reserved"
   }
 ]

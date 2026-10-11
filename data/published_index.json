@@ -3335,5 +3335,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "Pmjt688h0tU",
+    "run_id": "38153704277",
+    "stage_dir_name": "20261011_160215_short",
+    "title": "The Line That Was Supposed to End a War \u2014 But Started a Bigger One",
+    "published_at": "2026-10-11T16:07:18.188890+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
