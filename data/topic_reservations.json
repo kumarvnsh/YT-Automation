@@ -1753,5 +1753,14 @@
     "slot": "evening",
     "date": "2026-10-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261011_040205_short",
+    "title": "The Mission NASA Almost Cancelled Before It Left the Ground",
+    "fingerprint": "almost_before_cancelled_ground_it_left_mission_nasa",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-11",
+    "status": "reserved"
   }
 ]

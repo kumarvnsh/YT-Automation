@@ -3321,5 +3321,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "saA2DMLYLoQ",
+    "run_id": "38110226751",
+    "stage_dir_name": "20261011_040205_short",
+    "title": "The Mission NASA Almost Cancelled Before It Left the Ground",
+    "published_at": "2026-10-11T04:06:35.880420+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
