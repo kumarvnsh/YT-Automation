@@ -1267,5 +1267,14 @@
     "slot": "evening",
     "date": "2026-10-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261012_170152_short",
+    "title": "Why Does Birth Number 7 Always Feel Like the Odd One Out?",
+    "fingerprint": "7_always_birth_does_feel_like_number_odd_one_out",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-12",
+    "status": "reserved"
   }
 ]
