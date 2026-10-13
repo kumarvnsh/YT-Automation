@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-13T13:40:08.675266+00:00",
+      "updated": "2026-10-13T22:20:46.358392+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,37 @@
         ]
       },
       "videos": [
+        {
+          "id": "yu0qs7qMAcs",
+          "title": "One Decoded Message Almost Never Got Through | History's Almost Moments",
+          "description": "In June 1942, a single intelligence gamble at Midway turned the entire Pacific War \u2014 but it nearly didn't happen. One analyst's fight to be believed changed everything. Did America win Midway, or did Japan lose it? Drop your verdict below.",
+          "tags": [
+            "almost moments",
+            "code breaking",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "joseph rochefort",
+            "midway",
+            "naval history",
+            "pacific war",
+            "shorts",
+            "trending",
+            "turning points",
+            "viral",
+            "world war 2"
+          ],
+          "publishedAt": "2026-10-13T16:06:53Z",
+          "thumbnail": "https://i.ytimg.com/vi/yu0qs7qMAcs/mqdefault.jpg",
+          "views": 35,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "CFyo3YjUWQ4",
           "title": "The Astronauts Who Saved Apollo \u2014 Then Lost Everything",
@@ -90,12 +121,14 @@
           ],
           "publishedAt": "2026-10-11T16:06:36Z",
           "thumbnail": "https://i.ytimg.com/vi/Pmjt688h0tU/mqdefault.jpg",
-          "views": 113,
+          "views": 115,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 54.89999999999999,
+          "subs_gained": 0
         },
         {
           "id": "saA2DMLYLoQ",
@@ -127,7 +160,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.13,
+          "avg_view_pct": 60.53000000000001,
           "subs_gained": 0
         },
         {
@@ -164,7 +197,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 100.64999999999999,
+          "avg_view_pct": 106.42,
           "subs_gained": 1
         },
         {
@@ -198,7 +231,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.44,
+          "avg_view_pct": 56.43,
           "subs_gained": 0
         },
         {
@@ -232,7 +265,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.559999999999995,
+          "avg_view_pct": 55.7,
           "subs_gained": 0
         },
         {
@@ -266,7 +299,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 89.92,
+          "avg_view_pct": 89.82,
           "subs_gained": 2
         },
         {
@@ -300,7 +333,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 67.92,
           "subs_gained": 0
         },
         {
@@ -697,7 +730,7 @@
           ],
           "publishedAt": "2026-10-06T04:06:51Z",
           "thumbnail": "https://i.ytimg.com/vi/a377NfQSi7U/mqdefault.jpg",
-          "views": 32,
+          "views": 36,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1681,40 +1714,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 133.9,
-          "subs_gained": 0
-        },
-        {
-          "id": "0r0zWV2JGZY",
-          "title": "The Surgery That Should Have Ended His Career \u2014 But Didn't",
-          "description": "On September 25, 1974, a pitcher with a torn elbow ligament agreed to an experimental surgery nobody had ever survived professionally. What happened next quietly changed every sport on the planet. Drop your take in the comments \u2014 was Tommy John the bravest or the most desperate athlete in history?",
-          "tags": [
-            "1974",
-            "baseball history",
-            "did you know",
-            "education",
-            "elbow surgery",
-            "facts",
-            "history",
-            "history shorts",
-            "mlb history",
-            "shorts",
-            "sports medicine history",
-            "sports science",
-            "surprising history",
-            "tommy john surgery",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-25T18:51:36Z",
-          "thumbnail": "https://i.ytimg.com/vi/0r0zWV2JGZY/mqdefault.jpg",
-          "views": 179,
-          "likes": 4,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 59.06,
+          "avg_view_pct": 183.12,
           "subs_gained": 0
         }
       ]
