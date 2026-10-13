@@ -1798,5 +1798,14 @@
     "slot": "morning",
     "date": "2026-10-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261013_160230_short",
+    "title": "One Decoded Message Almost Never Got Through | History's Almost Moments",
+    "fingerprint": "almost_decoded_got_history_message_moments_never_one_s_through",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-13",
+    "status": "reserved"
   }
 ]
