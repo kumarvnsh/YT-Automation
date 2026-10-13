@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-12T14:34:16.531702+00:00",
+      "updated": "2026-10-13T00:12:35.378537+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "CFyo3YjUWQ4",
+          "title": "The Astronauts Who Saved Apollo \u2014 Then Lost Everything",
+          "description": "Apollo 7 was NASA's first successful crewed Apollo flight \u2014 but the story of how it almost never happened is stranger than the mission itself. Launched on October 11, 1968, it saved the entire Moon program. Did the crew's mutiny in orbit make them heroes or villains?",
+          "tags": [
+            "1968 space mission",
+            "apollo 7",
+            "apollo program",
+            "cold war space",
+            "did you know",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "moon program",
+            "nasa history",
+            "shorts",
+            "space race",
+            "trending",
+            "viral",
+            "wally schirra"
+          ],
+          "publishedAt": "2026-10-12T14:35:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/CFyo3YjUWQ4/mqdefault.jpg",
+          "views": 9,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "Pmjt688h0tU",
           "title": "The Line That Was Supposed to End a War \u2014 But Started a Bigger One",
           "description": "The Mason-Dixon Line is famous for dividing North from South, but the surveyors who drew it in 1767 were actually solving a completely different problem \u2014 one that had nothing to do with slavery. The real story behind history's most symbolic boundary is stranger than most textbooks admit. Drop your take in the comments. #history #didyouknow #americanhistory",
@@ -59,7 +90,7 @@
           ],
           "publishedAt": "2026-10-11T16:06:36Z",
           "thumbnail": "https://i.ytimg.com/vi/Pmjt688h0tU/mqdefault.jpg",
-          "views": 106,
+          "views": 107,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -90,12 +121,14 @@
           ],
           "publishedAt": "2026-10-11T04:06:03Z",
           "thumbnail": "https://i.ytimg.com/vi/saA2DMLYLoQ/mqdefault.jpg",
-          "views": 99,
+          "views": 116,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 55.13,
+          "subs_gained": 0
         },
         {
           "id": "eE7Rc8c3XOA",
@@ -125,12 +158,14 @@
           ],
           "publishedAt": "2026-10-10T16:08:51Z",
           "thumbnail": "https://i.ytimg.com/vi/eE7Rc8c3XOA/mqdefault.jpg",
-          "views": 544,
+          "views": 564,
           "likes": 11,
           "comments": 2,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 100.64999999999999,
+          "subs_gained": 1
         },
         {
           "id": "eVggAuM4z70",
@@ -163,7 +198,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.25999999999999,
+          "avg_view_pct": 48.44,
           "subs_gained": 0
         },
         {
@@ -191,13 +226,13 @@
           ],
           "publishedAt": "2026-10-09T22:21:40Z",
           "thumbnail": "https://i.ytimg.com/vi/6OlXXJhr5xQ/mqdefault.jpg",
-          "views": 51,
+          "views": 53,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 58.26,
+          "avg_view_pct": 55.559999999999995,
           "subs_gained": 0
         },
         {
@@ -225,14 +260,14 @@
           ],
           "publishedAt": "2026-10-09T16:06:33Z",
           "thumbnail": "https://i.ytimg.com/vi/VqBozML4s6k/mqdefault.jpg",
-          "views": 997,
+          "views": 1000,
           "likes": 16,
           "comments": 3,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 100.97,
-          "subs_gained": 0
+          "avg_view_pct": 89.92,
+          "subs_gained": 2
         },
         {
           "id": "1lIfc_aOGvI",
@@ -302,7 +337,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 64.45,
+          "avg_view_pct": 60.57,
           "subs_gained": 0
         },
         {
@@ -535,7 +570,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 54.71,
+          "avg_view_pct": 54.76,
           "subs_gained": 0
         },
         {
@@ -1002,7 +1037,7 @@
           ],
           "publishedAt": "2026-10-02T11:59:49Z",
           "thumbnail": "https://i.ytimg.com/vi/rHvMAK_Da1M/mqdefault.jpg",
-          "views": 1,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1680,40 +1715,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 59.06,
-          "subs_gained": 0
-        },
-        {
-          "id": "a6qrq6ArCPo",
-          "title": "The Night One Man's Gut Overruled Soviet Nuclear Protocol",
-          "description": "On September 26, 1983, a Soviet early-warning computer reported five incoming American missiles \u2014 and one duty officer had minutes to decide whether to trust it. His hesitation that night may be the closest the Cold War ever came to going nuclear. Should one person ever hold that much weight alone?",
-          "tags": [
-            "1983",
-            "close call",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "near miss",
-            "nuclear history",
-            "shorts",
-            "soviet union",
-            "stanislav petrov",
-            "trending",
-            "viral",
-            "world history"
-          ],
-          "publishedAt": "2026-09-25T11:18:34Z",
-          "thumbnail": "https://i.ytimg.com/vi/a6qrq6ArCPo/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
           "subs_gained": 0
         }
       ]
