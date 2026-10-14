@@ -1944,5 +1944,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "E0V_GtOK9vQ",
+    "run_id": "38603014040",
+    "stage_dir_name": "20261014_170157_short",
+    "title": "October 2026 Has a Secret Message \u2014 Does Your Number Know?",
+    "published_at": "2026-10-14T17:04:37.070799+00:00",
+    "channel": "astrotold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
