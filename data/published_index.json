@@ -3378,5 +3378,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "5GHxOKaePMQ",
+    "run_id": "38594462706",
+    "stage_dir_name": "20261014_160223_short",
+    "title": "The Champions Who Vanished for 108 Years \u2014 What Did They Know?",
+    "published_at": "2026-10-14T16:07:30.863692+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
