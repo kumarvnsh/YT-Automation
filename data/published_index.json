@@ -3364,5 +3364,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "dEg83M82xa8",
+    "run_id": "38509211363",
+    "stage_dir_name": "20261014_040146_short",
+    "title": "The Battle That Ended in 13 Minutes \u2014 Or Did It?",
+    "published_at": "2026-10-14T04:06:29.038645+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
