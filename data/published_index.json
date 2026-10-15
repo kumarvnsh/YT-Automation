@@ -3408,5 +3408,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "6PGbkEOLcPc",
+    "run_id": "38765431958",
+    "stage_dir_name": "20261015_160219_short",
+    "title": "The Submarine That Killed Its Own Inventor \u2014 Twice",
+    "published_at": "2026-10-15T16:07:01.906392+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
