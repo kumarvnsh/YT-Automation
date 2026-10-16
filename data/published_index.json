@@ -3437,5 +3437,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "oyGoej3tthA",
+    "run_id": "38928615237",
+    "stage_dir_name": "20261016_160221_short",
+    "title": "One Weather System Almost Starved a City | History's Almost Moments",
+    "published_at": "2026-10-16T16:07:23.304860+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]

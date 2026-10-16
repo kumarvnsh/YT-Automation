@@ -1852,5 +1852,14 @@
     "slot": "morning",
     "date": "2026-10-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261016_160221_short",
+    "title": "One Weather System Almost Starved a City | History's Almost Moments",
+    "fingerprint": "almost_city_history_moments_one_s_starved_system_weather",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-16",
+    "status": "reserved"
   }
 ]
