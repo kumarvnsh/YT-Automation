@@ -3423,5 +3423,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "UXKvTz-F7Og",
+    "run_id": "38848400886",
+    "stage_dir_name": "20261016_040208_short",
+    "title": "The March That Should Have Destroyed Him \u2014 It Made Him Untouchable",
+    "published_at": "2026-10-16T04:06:10.977302+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
