@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-17T15:03:21.314669+00:00",
+      "updated": "2026-10-17T20:12:33.560895+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,39 @@
       },
       "videos": [
         {
+          "id": "0qpOhzctlvA",
+          "title": "Why Did a 13-Year-Old Throw Away His Queen?",
+          "description": "On October 17, 1956, thirteen-year-old Bobby Fischer beat Donald Byrne in a game later nicknamed the Game of the Century. Here is why that queen sacrifice still gets studied today. Do you think it is the greatest game ever?\n#chess #bobbyfischer #onthisday",
+          "tags": [
+            "bobby fischer",
+            "boris spassky",
+            "brilliancy prize",
+            "chess",
+            "chess history",
+            "did you know",
+            "donald byrne",
+            "education",
+            "facts",
+            "game of the century",
+            "history",
+            "history shorts",
+            "october 17",
+            "on this day",
+            "queen sacrifice",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-17T16:06:09Z",
+          "thumbnail": "https://i.ytimg.com/vi/0qpOhzctlvA/mqdefault.jpg",
+          "views": 16,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "wXgJBZTcd1g",
           "title": "80,000 Started Walking. Why Did Only a Fraction Make It?",
           "description": "On October 16, 1934, Mao Zedong began one of history's most punishing retreats \u2014 and somehow turned total defeat into total power. The Long March covered 6,000 miles, cost tens of thousands of lives, and yet became the founding myth of modern China. How does a desperate escape become a legend that still shapes a superpower today? #history #didyouknow #china",
@@ -59,7 +92,7 @@
           ],
           "publishedAt": "2026-10-17T10:15:24Z",
           "thumbnail": "https://i.ytimg.com/vi/wXgJBZTcd1g/mqdefault.jpg",
-          "views": 0,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -90,7 +123,7 @@
           ],
           "publishedAt": "2026-10-17T04:04:50Z",
           "thumbnail": "https://i.ytimg.com/vi/1JEaFyDDJAU/mqdefault.jpg",
-          "views": 22,
+          "views": 25,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -123,7 +156,7 @@
           ],
           "publishedAt": "2026-10-16T16:06:49Z",
           "thumbnail": "https://i.ytimg.com/vi/oyGoej3tthA/mqdefault.jpg",
-          "views": 44,
+          "views": 49,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -160,7 +193,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 38.07,
+          "subs_gained": 0
         },
         {
           "id": "OkQ1Z60Owgc",
@@ -218,12 +253,14 @@
           ],
           "publishedAt": "2026-10-15T16:05:21Z",
           "thumbnail": "https://i.ytimg.com/vi/6PGbkEOLcPc/mqdefault.jpg",
-          "views": 152,
+          "views": 167,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 39.62,
+          "subs_gained": 0
         },
         {
           "id": "X135OtgqjA8",
@@ -290,7 +327,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 45.71,
+          "avg_view_pct": 51.47999999999999,
           "subs_gained": 0
         },
         {
@@ -322,7 +359,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0
         },
         {
           "id": "5GHxOKaePMQ",
@@ -355,7 +394,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 52.959999999999994,
+          "avg_view_pct": 52.31,
           "subs_gained": 0
         },
         {
@@ -389,7 +428,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 64.28,
+          "avg_view_pct": 60.14000000000001,
           "subs_gained": 0
         },
         {
@@ -422,7 +461,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 70.82,
+          "avg_view_pct": 67.8,
           "subs_gained": 0
         },
         {
@@ -553,7 +592,7 @@
           ],
           "publishedAt": "2026-10-10T16:08:51Z",
           "thumbnail": "https://i.ytimg.com/vi/eE7Rc8c3XOA/mqdefault.jpg",
-          "views": 564,
+          "views": 568,
           "likes": 11,
           "comments": 2,
           "playlist_ids": [],
@@ -593,7 +632,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.67999999999999,
+          "avg_view_pct": 56.220000000000006,
           "subs_gained": 0
         },
         {
@@ -1614,11 +1653,28 @@
           "id": "adn78l6heVU",
           "title": "One Phone Call Almost Ended the Soviet Union | History's Almost Moments",
           "description": "In October 1941, with German tanks thirty miles from Moscow, Stalin nearly sued for peace \u2014 and one conversation may have stopped him. This episode of History's Almost Moments breaks down the closest call you've never heard of. How different would the world look if that call had gone the other way?",
-          "tags": [],
+          "tags": [
+            "alternate history",
+            "close call",
+            "did you know",
+            "eastern front",
+            "education",
+            "facts",
+            "history",
+            "history shorts",
+            "moscow 1941",
+            "shorts",
+            "soviet union",
+            "stalin",
+            "trending",
+            "viral",
+            "world war 2",
+            "ww2 facts"
+          ],
           "publishedAt": "2026-10-01T04:05:04Z",
           "thumbnail": "https://i.ytimg.com/vi/adn78l6heVU/mqdefault.jpg",
           "views": 670,
-          "likes": 0,
+          "likes": 9,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -1657,40 +1713,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 46.24,
-          "subs_gained": 0
-        },
-        {
-          "id": "h4niHEuxvuw",
-          "title": "The Hit That Should Have Made Him a Legend \u2014 It Did Something Bigger",
-          "description": "On September 30, 1972, Roberto Clemente collected his 3,000th career hit \u2014 a milestone that became the final chapter of one of baseball's most extraordinary stories. What happened next changed how the sport honours its greatest players forever. Drop your take in the comments.",
-          "tags": [
-            "1972",
-            "3000 hits",
-            "baseball history",
-            "did you know",
-            "education",
-            "facts",
-            "hall of fame",
-            "history",
-            "history shorts",
-            "mlb history",
-            "on this day",
-            "puerto rico",
-            "roberto clemente",
-            "shorts",
-            "sports history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-30T04:04:56Z",
-          "thumbnail": "https://i.ytimg.com/vi/h4niHEuxvuw/mqdefault.jpg",
-          "views": 145,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 80.99,
           "subs_gained": 0
         }
       ]
