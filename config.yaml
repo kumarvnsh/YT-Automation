@@ -15,6 +15,13 @@ channel:
     viewers pick a side in the comments. No clickbait that the content doesn't
     deliver on.
   language: "en"
+  # Extra script rules (appended to the task context).
+  content_rules: >
+    Every number and claim must be one you are confident is true; if unsure,
+    cut it. The hook must be literally true, not a dramatisation ("engineers
+    feared it couldn't stop" only if engineers really said so). Write for the
+    ear: short sentences, one idea each, no parentheses or lists. Each segment
+    is shown as its own on-screen scene, so it must make sense on its own.
   # Trend-aware topics: bridge trending searches to history + use anniversaries.
   topic_source: "blend"          # "angles" | "trends" | "on_this_day" | "blend"
   trend_region: "global"
@@ -32,7 +39,8 @@ script:
   provider: "anthropic"        # primary provider: "anthropic" | "openai"
   routing: "fallback"          # "fallback" | "random" | "round_robin"
   fallback_provider: "openai"
-  anthropic_model: "claude-sonnet-4-6"
+  anthropic_model: "claude-sonnet-5-5"   # cheaper per token than 4.6
+  anthropic_effort: "low"      # thinking on, so word budgets land first try; unset = old no-thinking call
   openai_model: "gpt-4o-mini"
   # Require the four-beat looping structure (hook / setup / pivot / fact stack
   # / callback) on every short, enforced at generation and again at the quality

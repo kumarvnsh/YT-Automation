@@ -203,5 +203,31 @@ class ScriptProviderRoutingTests(unittest.TestCase):
         self.assertEqual("A Different Hook", title)
 
 
+
+class AnthropicCallTests(unittest.TestCase):
+    def _call(self, cfg):
+        from types import SimpleNamespace
+        from src.script_generator import _call_anthropic
+        msg = SimpleNamespace(content=[SimpleNamespace(type="thinking"), SimpleNamespace(type="text", text="{}")],
+                              stop_reason="end_turn", usage=SimpleNamespace(input_tokens=1, output_tokens=1))
+        with patch("anthropic.Anthropic") as client:
+            client.return_value.messages.create.return_value = msg
+            client.return_value.beta.messages.create.return_value = msg
+            self.assertEqual(_call_anthropic(cfg, "p"), "{}")
+        return client.return_value
+
+    def test_effort_set_uses_thinking_with_that_effort(self):
+        c = self._call(Config({"script": {"anthropic_model": "claude-sonnet-5-5", "anthropic_effort": "low"}}))
+        kw = c.beta.messages.create.call_args.kwargs
+        self.assertEqual(kw["output_config"], {"effort": "low"})
+        self.assertEqual(kw["thinking"], {"type": "adaptive"})
+        c.messages.create.assert_not_called()
+
+    def test_no_effort_keeps_plain_call(self):
+        c = self._call(Config({"script": {"anthropic_model": "claude-sonnet-4-6"}}))
+        self.assertNotIn("thinking", c.messages.create.call_args.kwargs)
+        c.beta.messages.create.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()

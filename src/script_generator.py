@@ -430,12 +430,30 @@ def _call_anthropic(cfg: Config, prompt: str) -> str:
 
     client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"))
     model = cfg.get("script.anthropic_model", "claude-sonnet-4-6")
-    msg = client.messages.create(
-        model=model,
-        max_tokens=4000,
-        system=_SYSTEM,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    effort = cfg.get("script.anthropic_effort")
+    if effort:
+        # Thinking lets the model add up its beats before answering, which is
+        # what the no-thinking path kept getting wrong (word-count retries).
+        msg = client.beta.messages.create(
+            model=model,
+            max_tokens=16000,
+            thinking={"type": "adaptive"},
+            output_config={"effort": effort},
+            betas=["server-side-fallback-2026-07-01"],
+            extra_body={"fallbacks": "default"},
+            system=_SYSTEM,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        if msg.stop_reason == "refusal":
+            raise RuntimeError(f"refused: {msg.stop_details}")
+    else:
+        msg = client.messages.create(
+            model=model,
+            max_tokens=4000,
+            system=_SYSTEM,
+            messages=[{"role": "user", "content": prompt}],
+        )
+    print(f"  script: {model} in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
     return "".join(block.text for block in msg.content if block.type == "text")
 
 
@@ -624,10 +642,17 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
         attempt_prompt = prompt
         if word_count is not None:
             print(f"  ! narration was {word_count} words (need {lo}-{hi}) — regenerating.")
+            # Show the draft and ask for an edit: a blind regeneration tends to
+            # overshoot by the same margin again.
+            draft = json.dumps([s.narration for s in segments], ensure_ascii=False, indent=1)
             attempt_prompt += (
                 f"\n\nIMPORTANT: your previous draft was {word_count} words. "
                 f"The total narration across all segments MUST be between {lo} "
-                f"and {hi} words. Rewrite the script to fit that budget."
+                f"and {hi} words (aim for {(lo + hi) // 2}). Here is that draft's "
+                f"narration, one string per segment:\n{draft}\n"
+                "Return the same script with the narration edited to fit: keep the "
+                "topic, beats, hook and callback, and tighten or cut sentences "
+                "(drop the weakest fact first if over). Count the words before answering."
             )
         if structure_error is not None:
             print(f"  ! structure: {structure_error} — regenerating.")

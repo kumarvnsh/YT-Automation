@@ -94,7 +94,15 @@ The narration is already captioned, so do not repeat it.
 - Only state facts that appear in the narration. Never invent dates, numbers \
 or quotes. Draw people as simple silhouettes or icons, never realistic faces.
 - Be economical: no comments, compact CSS, no unused rules. Keep each scene under ~6,000 characters.
-- Every element must sit fully inside the frame; nothing clipped at the edges.
+- LAYOUT (each scene is measured automatically; overlaps and clipping get flagged):
+  * Put ALL text inside .k-stage, in normal flex flow, so it stacks without \
+overlapping. Absolute positioning is for decorative, text-free layers in .k-bg only.
+  * No text element wider than {w_text}px. A .k-huge number of 5+ characters \
+needs a smaller font-size; .k-title lines max ~14 characters at 64px.
+  * Keep tall or busy .k-bg art out from behind text: put it below the text \
+block (y 440-{cap_y}px) or along the edges, never across a title or number.
+  * Every element sits fully inside the frame with a 24px margin; nothing \
+clipped at the edges, nothing in the caption band.
 
 OUTPUT FORMAT: for every segment, emit exactly
 <scene index="N">
@@ -141,7 +149,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         output_config={"effort": cfg.get("video.claude_motion.effort", "medium")},
         betas=["server-side-fallback-2026-07-01"],
         extra_body={"fallbacks": "default"},
-        system=_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), example=_EXAMPLE.strip()),
+        system=_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), w_text=w - 72, example=_EXAMPLE.strip()),
         messages=[{"role": "user", "content": "\n".join(lines)}],
     ) as stream:
         msg = stream.get_final_message()
@@ -152,6 +160,129 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     print(f"  claude_motion: {len(scenes)}/{len(segs)} scenes, stop={msg.stop_reason}, "
           f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
     return scenes
+
+
+# Layout check run on each scene's final frame (ambient kit drift at rest).
+# Text boxes are inset vertically to the glyph core so tight-but-clean
+# stacks (big number over a label) don't count as overlap.
+_LINT_JS = """() => {
+  const W = innerWidth, H = innerHeight, CAP = H * 0.7, M = 8;
+  const seen = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05) return false; } return true; };
+  const boxes = [];
+  for (const e of document.body.querySelectorAll('*')) {
+    const tag = e.tagName.toLowerCase();
+    if (e.closest('svg') && tag !== 'text' && tag !== 'tspan') continue;
+    const counter = e.classList.contains('k-count');
+    if (!counter && ![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+    if (!seen(e)) continue;
+    let r = e.getBoundingClientRect();
+    if (!counter) { const rg = document.createRange(); rg.selectNodeContents(e); r = rg.getBoundingClientRect(); }
+    if (r.width < 2 || r.height < 2) continue;
+    const pad = r.height * 0.2;
+    boxes.push({ e, l: r.left, r: r.right, t: r.top + pad, b: r.bottom - pad,
+                 txt: counter ? 'the counter' : '"' + e.textContent.trim().slice(0, 30) + '"' });
+  }
+  const out = [];
+  for (const x of boxes) {
+    if (x.l < M || x.r > W - M || x.t < M) out.push(x.txt + ' is cut off at the frame edge');
+    if (x.b > CAP) out.push(x.txt + ' sits in the caption band (y > ' + Math.round(CAP) + 'px)');
+  }
+  for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+    const a = boxes[i], b = boxes[j];
+    if (a.e.contains(b.e) || b.e.contains(a.e)) continue;
+    const w = Math.min(a.r, b.r) - Math.max(a.l, b.l), h = Math.min(a.b, b.b) - Math.max(a.t, b.t);
+    if (w > 0 && h > 0 && w * h > 0.1 * Math.min((a.r - a.l) * (a.b - a.t), (b.r - b.l) * (b.b - b.t)))
+      out.push(a.txt + ' overlaps ' + b.txt);
+  }
+  return [...new Set(out)];
+}"""
+
+_SEEK_END_JS = """() => document.getAnimations().forEach(a => {
+  a.pause();
+  const end = a.effect.getComputedTiming().endTime;
+  a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : (isFinite(end) ? end : 6000);
+})"""
+
+_REPAIR_SYSTEM = """You fix layout bugs in animated HTML scenes for a vertical video \
+({w}x{h} CSS px). Classes starting with k- and CSS variables like --accent come \
+from a shared stylesheet that is injected later; keep using them.
+
+For each scene you get the HTML and a list of problems measured on its final \
+frame. Fix ONLY those problems: move, resize, re-flow or shorten-to-fit the \
+offending elements. Keep the content, wording, animations, timing and style. \
+Text must stay inside the frame (8px margin) and above y={cap_y}px. Prefer \
+putting text in the .k-stage flex flow over absolute positioning.
+
+Return every scene you were given, complete, as
+<scene index="N">
+<!doctype html>...full document...
+</scene>"""
+
+
+def _lint(page, html: str) -> list[str]:
+    page.set_content(html, wait_until="load")
+    page.evaluate("async () => { await document.fonts.ready; }")
+    page.evaluate(_SEEK_END_JS)
+    return page.evaluate(_LINT_JS)
+
+
+def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]],
+                   w: int, h: int) -> dict[int, str]:
+    """One cheap call that fixes only the flagged scenes. Failure = keep originals."""
+    import anthropic
+
+    parts = []
+    for i, probs in issues.items():
+        parts.append(f'Scene {i} problems:\n- ' + "\n- ".join(probs)
+                     + f'\n<scene index="{i}">\n{raw[i]}\n</scene>\n')
+    client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), max_retries=1)
+    msg = client.messages.create(
+        model=cfg.get("video.claude_motion.repair_model", "claude-haiku-5-5"),
+        max_tokens=16000,
+        output_config={"effort": cfg.get("video.claude_motion.repair_effort", "low")},
+        system=_REPAIR_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7)),
+        messages=[{"role": "user", "content": "\n".join(parts)}],
+    )
+    text = "".join(b.text for b in msg.content if b.type == "text")
+    fixed = {int(i): html for i, html in _SCENE_RE.findall(text) if int(i) in issues}
+    print(f"  claude_motion repair: {len(fixed)}/{len(issues)} scenes returned, "
+          f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
+    return fixed
+
+
+def _check_and_repair(cfg: Config, page, raw: dict[int, str], w: int, h: int) -> dict[int, str]:
+    """Lint every scene; repair flagged ones; keep whichever version lints cleaner."""
+    issues = {}
+    for i, html in raw.items():
+        try:
+            found = _lint(page, inject_kit(html))
+        except Exception as exc:  # noqa: BLE001 - a lint failure must not cost the scene
+            print(f"  ! scene {i} lint failed ({exc})")
+            continue
+        if found:
+            issues[i] = found
+            print(f"  ~ scene {i} layout: " + "; ".join(found))
+    if not issues or not cfg.get("video.claude_motion.repair", True):
+        return raw
+    try:
+        fixed = _repair_scenes(cfg, raw, issues, w, h)
+    except Exception as exc:  # noqa: BLE001
+        print(f"  ! claude_motion repair failed ({exc}) — keeping originals.")
+        return raw
+    out = dict(raw)
+    for i, html in fixed.items():
+        try:
+            after = _lint(page, inject_kit(html))
+        except Exception:  # noqa: BLE001
+            continue
+        if len(after) < len(issues[i]):
+            out[i] = html
+            print(f"  ✓ scene {i} repaired ({len(issues[i])} → {len(after)} issues)")
+        else:
+            print(f"  ~ scene {i} repair not better ({len(after)} issues) — kept original")
+    return out
 
 
 def _render_scene(page, html: str, duration: float, fps: int, dest: Path, preset: str) -> Path:
@@ -197,9 +328,6 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         scenes = {}
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
-    scenes = {i: inject_kit(html) for i, html in scenes.items()}
-    for i, html in scenes.items():
-        (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
 
     clips: list[Path | None] = [None] * len(segs)
     if scenes:
@@ -208,6 +336,10 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page(viewport={"width": cw, "height": ch}, device_scale_factor=_SCALE)
+            scenes = _check_and_repair(cfg, page, scenes, cw, ch)
+            scenes = {i: inject_kit(html) for i, html in scenes.items()}
+            for i, html in scenes.items():
+                (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
             for i, (s, e) in enumerate(windows):
                 if i not in scenes:
                     continue
