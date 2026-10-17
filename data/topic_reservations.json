@@ -1870,5 +1870,14 @@
     "slot": "morning",
     "date": "2026-10-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261017_160202_short",
+    "title": "Why Did a 13-Year-Old Throw Away His Queen?",
+    "fingerprint": "13_away_did_his_old_queen_throw_year",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-17",
+    "status": "reserved"
   }
 ]
