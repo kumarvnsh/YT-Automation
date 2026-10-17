@@ -1321,5 +1321,14 @@
     "slot": "evening",
     "date": "2026-10-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261017_050137_short",
+    "title": "What If Your Lucky Colour Already Chose You This Week?",
+    "fingerprint": "already_chose_colour_if_lucky_this_week_what_you_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-17",
+    "status": "reserved"
   }
 ]
