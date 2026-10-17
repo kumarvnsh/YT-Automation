@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-17T03:13:44.039104+00:00",
+      "updated": "2026-10-17T10:14:10.067166+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "1JEaFyDDJAU",
+          "title": "The Flood That Killed Eight People \u2014 Nobody Believed the Survivors",
+          "description": "On October 17, 1814, a London brewery unleashed a wave so bizarre that eyewitnesses were laughed out of court \u2014 and the victims were charged admission. One of history's strangest disasters hid an even stranger aftermath. #history #didyouknow #londonhistory",
+          "tags": [
+            "1814",
+            "bizarre history",
+            "british history",
+            "did you know",
+            "education",
+            "facts",
+            "forgotten history",
+            "history",
+            "history shorts",
+            "london beer flood",
+            "meux brewery",
+            "shorts",
+            "strange disasters",
+            "trending",
+            "true history",
+            "viral"
+          ],
+          "publishedAt": "2026-10-17T04:04:50Z",
+          "thumbnail": "https://i.ytimg.com/vi/1JEaFyDDJAU/mqdefault.jpg",
+          "views": 13,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "oyGoej3tthA",
           "title": "One Weather System Almost Starved a City | History's Almost Moments",
           "description": "In 1948, two million Berliners survived on airlifted supplies \u2014 but one brutal winter nearly ended it before spring arrived. This is how close the Berlin Airlift came to total collapse. The gap between success and catastrophe was smaller than anyone admitted at the time. #BerlinAirlift #ColdWarHistory #HistorysAlmostMoments",
@@ -60,7 +91,7 @@
           ],
           "publishedAt": "2026-10-16T16:06:49Z",
           "thumbnail": "https://i.ytimg.com/vi/oyGoej3tthA/mqdefault.jpg",
-          "views": 25,
+          "views": 41,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -92,7 +123,7 @@
           ],
           "publishedAt": "2026-10-16T04:05:57Z",
           "thumbnail": "https://i.ytimg.com/vi/UXKvTz-F7Og/mqdefault.jpg",
-          "views": 31,
+          "views": 35,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -155,7 +186,7 @@
           ],
           "publishedAt": "2026-10-15T16:05:21Z",
           "thumbnail": "https://i.ytimg.com/vi/6PGbkEOLcPc/mqdefault.jpg",
-          "views": 131,
+          "views": 133,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
@@ -221,7 +252,7 @@
           ],
           "publishedAt": "2026-10-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/uhmMe1J1wKk/mqdefault.jpg",
-          "views": 410,
+          "views": 413,
           "likes": 2,
           "comments": 1,
           "playlist_ids": [],
@@ -1682,39 +1713,6 @@
           "is_unsorted": true,
           "avg_view_pct": 77.93,
           "subs_gained": 1
-        },
-        {
-          "id": "8kWLCoAYcN4",
-          "title": "300 Ships Showed Up to Sink an Empire \u2014 What Went Wrong?",
-          "description": "On September 28, 1538, one of history's most lopsided naval clashes rewrote the balance of power across the Mediterranean \u2014 and almost nobody in the West remembers it happened. The Battle of Preveza wasn't just a defeat; it was a decision that locked Europe out of the sea for decades. Drop your verdict in the comments.",
-          "tags": [
-            "16th century",
-            "barbarossa",
-            "battle of preveza",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "history",
-            "history shorts",
-            "holy league",
-            "mediterranean history",
-            "naval history",
-            "ottoman empire",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-09-29T12:15:36Z",
-          "thumbnail": "https://i.ytimg.com/vi/8kWLCoAYcN4/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0
         }
       ]
     }
