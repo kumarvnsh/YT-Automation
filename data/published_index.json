@@ -3451,5 +3451,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "1JEaFyDDJAU",
+    "run_id": "39000962467",
+    "stage_dir_name": "20261017_040158_short",
+    "title": "The Flood That Killed Eight People \u2014 Nobody Believed the Survivors",
+    "published_at": "2026-10-17T04:05:30.887830+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
