@@ -1636,5 +1636,239 @@
     "slot": "morning",
     "date": "2026-10-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261004_160208_short",
+    "title": "One Wrong Turn Almost Changed Nothing | History's Almost Moments",
+    "fingerprint": "almost_changed_history_moments_nothing_one_s_turn_wrong",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-04",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261005_040153_short",
+    "title": "The Speech That Changed Power Forever \u2014 Nobody Saw It Coming",
+    "fingerprint": "changed_coming_forever_it_nobody_power_saw_speech_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-05",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261005_160219_short",
+    "title": "The City That Fell Without a Single Battle",
+    "fingerprint": "battle_city_fell_single_that_without",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-05",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261006_040208_short",
+    "title": "One Signature Almost Never Happened | History's Almost Moments",
+    "fingerprint": "almost_happened_history_moments_never_one_s_signature",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-06",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261006_160226_short",
+    "title": "He Arrived Broke, Hungry, and Completely Unknown \u2014 Then What?",
+    "fingerprint": "arrived_broke_completely_he_hungry_then_unknown_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-06",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261007_040201_short",
+    "title": "The Rock Nobody Thought Would Actually Hit",
+    "fingerprint": "actually_hit_nobody_rock_thought_would",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-07",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261007_160218_short",
+    "title": "One Muddy Morning Almost Made Napoleon Emperor Again | History's Almost Moments",
+    "fingerprint": "again_almost_emperor_history_made_moments_morning_muddy_napoleon_one_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-07",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261008_040205_short",
+    "title": "Millions Went to Sleep \u2014 and Lost 10 Days Forever",
+    "fingerprint": "10_days_forever_lost_millions_sleep_went",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-08",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261008_160240_short",
+    "title": "The Fire That Killed 2,000 People \u2014 Nobody Remembers It",
+    "fingerprint": "000_2_fire_it_killed_nobody_people_remembers_that",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-08",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261009_040149_short",
+    "title": "One Ride Almost Kept America British | History's Almost Moments",
+    "fingerprint": "almost_america_british_history_kept_moments_one_ride_s",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-09",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261009_160209_short",
+    "title": "The Last Star to Explode in Our Galaxy \u2014 Nobody Knows Why It Stopped",
+    "fingerprint": "explode_galaxy_it_knows_last_nobody_our_star_stopped",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-09",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261010_040200_short",
+    "title": "The Nuclear Fire They Tried to Erase From History",
+    "fingerprint": "erase_fire_from_history_nuclear_they_tried",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-10",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261010_160236_short",
+    "title": "One Late Scout Report Almost Handed the Pacific Away | History's Almost Moments",
+    "fingerprint": "almost_away_handed_history_late_moments_one_pacific_report_s_scout",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-10",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261011_040205_short",
+    "title": "The Mission NASA Almost Cancelled Before It Left the Ground",
+    "fingerprint": "almost_before_cancelled_ground_it_left_mission_nasa",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-11",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261011_160215_short",
+    "title": "The Line That Was Supposed to End a War \u2014 But Started a Bigger One",
+    "fingerprint": "bigger_but_end_line_one_started_supposed_that_war_was",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-11",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261012_040215_short",
+    "title": "One Order Almost Handed the Pacific to Japan | History's Almost Moments",
+    "fingerprint": "almost_handed_history_japan_moments_one_order_pacific_s",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-12",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261012_160233_short",
+    "title": "One Recalled Strike Almost Handed Japan the Pacific | History's Almost Moments",
+    "fingerprint": "almost_handed_history_japan_moments_one_pacific_recalled_s_strike",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-12",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261013_040155_short",
+    "title": "One Order Change Almost Handed Midway to Japan | History's Almost Moments",
+    "fingerprint": "almost_change_handed_history_japan_midway_moments_one_order_s",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-13",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261013_160230_short",
+    "title": "One Decoded Message Almost Never Got Through | History's Almost Moments",
+    "fingerprint": "almost_decoded_got_history_message_moments_never_one_s_through",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-13",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261014_040146_short",
+    "title": "The Battle That Ended in 13 Minutes \u2014 Or Did It?",
+    "fingerprint": "13_battle_did_ended_it_minutes_or_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-14",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261014_160223_short",
+    "title": "The Champions Who Vanished for 108 Years \u2014 What Did They Know?",
+    "fingerprint": "108_champions_did_for_know_they_vanished_what_who_years",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-14",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261015_040159_short",
+    "title": "One Calculation Almost Left Them Stranded | History's Almost Moments",
+    "fingerprint": "almost_calculation_history_left_moments_one_s_stranded_them",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-15",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261015_160219_short",
+    "title": "The Submarine That Killed Its Own Inventor \u2014 Twice",
+    "fingerprint": "inventor_its_killed_own_submarine_that_twice",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-15",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261016_040208_short",
+    "title": "The March That Should Have Destroyed Him \u2014 It Made Him Untouchable",
+    "fingerprint": "destroyed_have_him_it_made_march_should_that_untouchable",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-16",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261016_160221_short",
+    "title": "One Weather System Almost Starved a City | History's Almost Moments",
+    "fingerprint": "almost_city_history_moments_one_s_starved_system_weather",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-16",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261017_040158_short",
+    "title": "The Flood That Killed Eight People \u2014 Nobody Believed the Survivors",
+    "fingerprint": "believed_eight_flood_killed_nobody_people_survivors_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-17",
+    "status": "reserved"
   }
 ]

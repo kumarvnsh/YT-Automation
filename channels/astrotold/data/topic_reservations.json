@@ -1177,5 +1177,158 @@
     "slot": "morning",
     "date": "2026-10-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261004_170203_short",
+    "title": "What Are Dates 1, 10, 19, and 28 Actually Hiding About You?",
+    "fingerprint": "1_10_19_28_about_actually_are_dates_hiding_what_you",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-04",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261005_050139_short",
+    "title": "What Are Dates 5, 14, and 23 Actually Hiding From You?",
+    "fingerprint": "14_23_5_actually_are_dates_from_hiding_what_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-05",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261005_170200_short",
+    "title": "The Number Hidden Inside Every Birthday \u2014 Can You Find Yours?",
+    "fingerprint": "birthday_can_every_find_hidden_inside_number_you_yours",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-05",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261007_050141_short",
+    "title": "What Happens When Both Your Initials Share the Same Number?",
+    "fingerprint": "both_happens_initials_number_same_share_what_when_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-07",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261007_170138_short",
+    "title": "Why Does Birth Number 1 Always End Up Leading?",
+    "fingerprint": "1_always_birth_does_end_leading_number_up",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-07",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261008_050141_short",
+    "title": "What Is Today's Lucky Trio Actually Hiding for You?",
+    "fingerprint": "actually_for_hiding_is_lucky_s_today_trio_what_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-08",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261009_050217_short",
+    "title": "What Is Your First Initial Actually Hiding About Your Personality?",
+    "fingerprint": "about_actually_first_hiding_initial_is_personality_what_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-09",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261009_170150_short",
+    "title": "One Simple Step Reveals Your Secret Birth Number \u2014 Ready?",
+    "fingerprint": "birth_number_one_ready_reveals_secret_simple_step_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-09",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261010_050137_short",
+    "title": "October 2026 Has a Different Message for Every Birth Number",
+    "fingerprint": "2026_birth_different_every_for_has_message_number_october",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-10",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261010_170141_short",
+    "title": "What If Today's Numbers Already Picked Your Lucky Day?",
+    "fingerprint": "already_day_if_lucky_numbers_picked_s_today_what_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-10",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261012_170152_short",
+    "title": "Why Does Birth Number 7 Always Feel Like the Odd One Out?",
+    "fingerprint": "7_always_birth_does_feel_like_number_odd_one_out",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-12",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261013_050142_short",
+    "title": "Nobody Told You This About the Number Inside Your Birthday?",
+    "fingerprint": "about_birthday_inside_nobody_number_this_told_you_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-13",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261013_170155_short",
+    "title": "What Is Birth Number 9 Actually Made Of?",
+    "fingerprint": "9_actually_birth_is_made_number_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-13",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261014_050153_short",
+    "title": "What Are Dates 7, 16, and 25 Actually Afraid to Show You?",
+    "fingerprint": "16_25_7_actually_afraid_are_dates_show_what_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-14",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261014_170157_short",
+    "title": "October 2026 Has a Secret Message \u2014 Does Your Number Know?",
+    "fingerprint": "2026_does_has_know_message_number_october_secret_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-14",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261015_170140_short",
+    "title": "Your Birthday Has Been Hiding a Secret Number All Along?",
+    "fingerprint": "all_along_been_birthday_has_hiding_number_secret_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-15",
+    "status": "reserved"
+  },
+  {
+    "job_id": "20261017_050137_short",
+    "title": "What If Your Lucky Colour Already Chose You This Week?",
+    "fingerprint": "already_chose_colour_if_lucky_this_week_what_you_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-17",
+    "status": "reserved"
   }
 ]
