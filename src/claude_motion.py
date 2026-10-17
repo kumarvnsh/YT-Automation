@@ -23,6 +23,22 @@ from .config import Config, env
 _SCALE = 2
 
 _SCENE_RE = re.compile(r'<scene index="(\d+)">\s*(.*?)\s*</scene>', re.DOTALL)
+_HEAD_RE = re.compile(r"<head[^>]*>", re.IGNORECASE)
+
+# Shared look (fonts, palette, grain, vignette, drift, motion utilities) is
+# injected by us, so Claude's tokens go into composition instead of boilerplate.
+_KIT_CSS = Path(__file__).with_name("motion_kit.css").read_text(encoding="utf-8")
+_KIT = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700'
+        '&family=Cormorant+Garamond:ital,wght@1,500&display=block">\n<style>' + _KIT_CSS + "</style>\n")
+_EXAMPLE = Path(__file__).with_name("motion_example.html").read_text(encoding="utf-8")
+
+
+def inject_kit(html: str) -> str:
+    """Put the kit first in <head> so the scene's own CSS overrides it."""
+    m = _HEAD_RE.search(html)
+    if m:
+        return html[:m.end()] + _KIT + html[m.end():]
+    return "<!doctype html><html><head>" + _KIT + "</head>" + re.sub(r"(?i)<!doctype[^>]*>", "", html, count=1)
 
 _SYSTEM = """You are a senior motion designer making the visuals for a narrated \
 vertical YouTube Short on a history channel called Histold. The voiceover and \
@@ -30,33 +46,55 @@ captions are added later; you design one animated scene per narration segment.
 
 HARD TECHNICAL RULES (scenes that break these are thrown away):
 - Each scene is ONE complete, self-contained HTML document.
-- Viewport is exactly {w}x{h} CSS px. html/body: margin 0, overflow hidden, \
-fixed {w}x{h} size, opaque background.
+- Viewport is exactly {w}x{h} CSS px.
 - Animate ONLY with CSS @keyframes animations, or element.animate() called \
 synchronously in an inline <script> at load. No CSS transitions, no \
 setTimeout/setInterval/requestAnimationFrame, no canvas, no video, no audio.
 - Every animation starts at t=0 (use animation-delay to stage beats) and the \
 scene must look finished and intentional at its stated duration. Use \
 animation-fill-mode: both.
-- No external images or scripts. Inline SVG is encouraged. Google Fonts via \
-<link> is allowed.
+- No external images or scripts. Inline SVG is encouraged.
 - The bottom 30% of the frame (y > {cap_y}px) is reserved for burned-in \
 captions: keep it free of text and important detail (background texture only).
 
+HOUSE KIT (already injected into every scene's <head> — do NOT redefine fonts, \
+page size, background, grain or vignette; just use it and add scene-specific CSS):
+- Vars: --ink --char --soot (darks), --parch --bone --dim (lights), --amber \
+--verm, --accent (amber by default; set --accent:var(--verm) for danger/death), \
+--display (Oswald), --serif (Cormorant italic).
+- Layout: .k-stage = the safe area above captions (flex column, centered, gap). \
+.k-bg = full-frame layer behind it; .k-grid = faint grid texture.
+- Type: .k-kicker (small amber label with rules), .k-title (64px condensed caps), \
+.k-huge (132px accent number), .k-serif (italic aside), .k-label, .k-accent.
+- Objects: .k-card (parchment card), .k-stamp (rotated red stamp), .k-rule, \
+.k-dot, .k-ring, .k-sil (silhouette fill for SVG).
+- Counter: <span class="k-count" style="--to:515"></span> counts 0→515.
+- Motion classes (stagger with style="--d:.4s", length with --t): k-rise, \
+k-fade, k-pop, k-wipe, k-slam (stamp; tilt via --r), k-draw (SVG stroke with \
+pathLength="1"), k-grow (bar scaleX), k-count, k-pan (slow camera move: \
+--x0 --y0 --s0 → --x1 --y1 --s1), k-pulse, k-spin, k-ringout (loops). \
+One element = one motion class; nest wrappers to combine.
+
+EXAMPLE of the quality bar — narration "In four days in 1666, the Great Fire \
+of London destroyed 13,200 houses." (3.5s):
+<example>
+{example}
+</example>
+
 CREATIVE DIRECTION:
-- One visual system across all scenes: dark ink/charcoal background, \
-parchment and bone tones, one warm accent (amber or vermilion), bold \
-condensed display type. Editorial, documentary feel, like a premium history explainer.
-- Open each scene on its payoff. No intros. Movement starts in the first 0.3s.
+- Editorial documentary feel, like a premium history explainer. Every scene \
+needs depth: a background layer (silhouette, map, diagram, grid) with slow \
+motion, plus a foreground payoff (number, date, name, stamp).
+- Open each scene on its payoff. No intros. Movement starts in the first 0.3s, \
+and something keeps moving until the end.
 - Show, don't transcribe: maps, timelines, counters, silhouettes, diagrams, \
-dates, names and numbers. On-screen text should be short (max ~6 words per \
-element). The narration is already captioned, so do not repeat it.
+dates, names and numbers. On-screen text is short (max ~6 words per element). \
+The narration is already captioned, so do not repeat it.
+- Vary the composition from scene to scene; don't reuse one layout.
 - Only state facts that appear in the narration. Never invent dates, numbers \
 or quotes. Draw people as simple silhouettes or icons, never realistic faces.
-- Keep the energy up: something should move at all times.
-- Be economical: no comments, compact CSS, no unused rules. Keep each scene under ~9,000 characters.
-- Every element must sit fully inside the frame; nothing clipped at the edges. \
-Fill the upper 70% with layered detail (texture, grid, secondary motion).
+- Be economical: no comments, compact CSS, no unused rules. Keep each scene under ~6,000 characters.
+- Every element must sit fully inside the frame; nothing clipped at the edges.
 
 OUTPUT FORMAT: for every segment, emit exactly
 <scene index="N">
@@ -103,7 +141,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         output_config={"effort": cfg.get("video.claude_motion.effort", "medium")},
         betas=["server-side-fallback-2026-07-01"],
         extra_body={"fallbacks": "default"},
-        system=_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7)),
+        system=_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), example=_EXAMPLE.strip()),
         messages=[{"role": "user", "content": "\n".join(lines)}],
     ) as stream:
         msg = stream.get_final_message()
@@ -119,7 +157,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
 def _render_scene(page, html: str, duration: float, fps: int, dest: Path, preset: str) -> Path:
     page.set_content(html, wait_until="load")
     page.evaluate("async () => { await document.fonts.ready; document.getAnimations().forEach(a => a.pause()); }")
-    if not page.evaluate("document.getAnimations().length"):
+    if not page.evaluate("document.getAnimations().filter(a => !(a.animationName || '').startsWith('kit-fx-')).length"):
         raise RuntimeError("scene has no animations")
     ff = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(fps),
@@ -159,6 +197,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         scenes = {}
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
+    scenes = {i: inject_kit(html) for i, html in scenes.items()}
     for i, html in scenes.items():
         (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
 

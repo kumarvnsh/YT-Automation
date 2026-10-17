@@ -1,0 +1,91 @@
+/* Histold motion kit — injected at the top of every claude_motion scene.
+   Scene CSS comes after it, so scenes can override anything here.
+   Animations named kit-fx-* are ambient (grain, drift) and don't count as
+   scene motion; everything else (k-*) is a building block for the scene. */
+@property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
+
+:root {
+  --ink: #0e0d10; --char: #1b191d; --soot: #2a2629;
+  --parch: #ecdfc2; --bone: #c9bb9c; --dim: #8a7f6a;
+  --amber: #e39a2d; --verm: #c8432b; --accent: var(--amber);
+  --display: 'Oswald', 'Arial Narrow', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+}
+html, body { margin: 0; width: 540px; height: 960px; overflow: hidden; }
+body {
+  background: radial-gradient(120% 80% at 50% 30%, var(--soot) 0%, var(--char) 45%, var(--ink) 100%);
+  color: var(--parch); font-family: var(--display);
+  animation: kit-fx-drift 14s linear both;
+}
+/* film grain + vignette over everything (captions are burned in later, on top) */
+html::before, html::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+html::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  opacity: .13; mix-blend-mode: overlay;
+  animation: kit-fx-grain .5s steps(5) infinite;
+}
+html::after { background: radial-gradient(ellipse at 50% 40%, transparent 55%, rgba(0,0,0,.6) 100%); }
+@keyframes kit-fx-grain { 0%{background-position:0 0} 20%{background-position:-40px 25px} 40%{background-position:30px -50px} 60%{background-position:-60px -15px} 80%{background-position:45px 60px} }
+@keyframes kit-fx-drift { from{transform:scale(1)} to{transform:scale(1.045)} }
+
+/* layout: the safe area above the caption band */
+.k-stage { position: absolute; left: 0; top: 0; width: 540px; height: 672px; box-sizing: border-box;
+  padding: 48px 36px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; }
+.k-bg { position: absolute; inset: 0; z-index: 0; }
+.k-grid { position: absolute; inset: 0; opacity: .08;
+  background-image: linear-gradient(var(--bone) 1px, transparent 1px), linear-gradient(90deg, var(--bone) 1px, transparent 1px);
+  background-size: 36px 36px; }
+.k-stage > * { position: relative; z-index: 1; }
+
+/* type */
+.k-kicker { font: 500 15px/1 var(--display); letter-spacing: .32em; text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 12px; }
+.k-kicker::before, .k-kicker::after { content: ''; width: 28px; height: 2px; background: currentColor; }
+.k-title { font: 700 64px/.95 var(--display); text-transform: uppercase; letter-spacing: .01em; text-align: center;
+  color: var(--parch); text-shadow: 0 4px 24px rgba(0,0,0,.6); }
+.k-huge { font: 700 132px/.85 var(--display); color: var(--accent); text-align: center; letter-spacing: -.02em;
+  text-shadow: 0 0 40px color-mix(in srgb, var(--accent) 35%, transparent); }
+.k-serif { font: italic 500 30px/1.15 var(--serif); color: var(--bone); text-align: center; }
+.k-label { font: 500 14px/1.2 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+.k-accent { color: var(--accent); }
+
+/* objects */
+.k-card { background: var(--parch); color: var(--ink); padding: 18px 22px; border-radius: 3px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.55), inset 0 0 40px rgba(120,90,40,.25); }
+.k-stamp { display: inline-block; border: 4px solid var(--verm); color: var(--verm); padding: 6px 14px;
+  font: 700 30px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-8deg); }
+.k-rule { width: 100%; height: 3px; background: var(--accent); transform-origin: left; }
+.k-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
+.k-ring { position: absolute; inset: -10px; border: 2px solid var(--accent); border-radius: 50%; }
+.k-sil { fill: var(--bone); }
+.k-count { counter-reset: n var(--n); }
+.k-count::after { content: counter(n); }
+
+/* motion — stagger with style="--d:.6s", change length with --t */
+.k-rise, .k-fade, .k-pop, .k-wipe, .k-slam, .k-draw, .k-grow, .k-count, .k-pan, .k-pulse, .k-spin, .k-ringout {
+  animation-duration: var(--t, .7s); animation-delay: var(--d, 0s); animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.2,.8,.2,1); }
+.k-rise   { animation-name: k-rise; }
+.k-fade   { animation-name: k-fade; }
+.k-pop    { animation-name: k-pop; animation-timing-function: cubic-bezier(.3,1.6,.5,1); }
+.k-wipe   { animation-name: k-wipe; }
+.k-slam   { animation-name: k-slam; animation-timing-function: cubic-bezier(.5,0,.6,1.4); }
+.k-draw   { stroke-dasharray: 1; animation-name: k-draw; animation-duration: var(--t, 1.4s); }
+.k-grow   { animation-name: k-grow; transform-origin: left; }
+.k-count  { animation-name: k-count; animation-duration: var(--t, 1.6s); animation-timing-function: cubic-bezier(.1,.7,.2,1); }
+.k-pan    { animation-name: k-pan; animation-duration: var(--t, 10s); animation-timing-function: linear; }
+.k-pulse  { animation-name: k-pulse; animation-duration: var(--t, 1.6s); animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+.k-spin   { animation-name: k-spin; animation-duration: var(--t, 12s); animation-iteration-count: infinite; animation-timing-function: linear; }
+.k-ringout{ animation-name: k-ringout; animation-duration: var(--t, 1.8s); animation-iteration-count: infinite; animation-timing-function: ease-out; }
+@keyframes k-rise   { from { opacity: 0; transform: translateY(40px); } }
+@keyframes k-fade   { from { opacity: 0; } }
+@keyframes k-pop    { from { opacity: 0; transform: scale(.4); } }
+@keyframes k-wipe   { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes k-slam   { from { opacity: 0; transform: scale(2.4) rotate(var(--r, -8deg)); } to { transform: scale(1) rotate(var(--r, -8deg)); } }
+@keyframes k-draw   { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes k-grow   { from { transform: scaleX(0); } }
+@keyframes k-count  { to { --n: var(--to); } }
+@keyframes k-pan    { from { transform: translate(var(--x0, 0), var(--y0, 0)) scale(var(--s0, 1.08)); } to { transform: translate(var(--x1, 0), var(--y1, 0)) scale(var(--s1, 1)); } }
+@keyframes k-pulse  { 50% { opacity: .45; transform: scale(1.08); } }
+@keyframes k-spin   { to { transform: rotate(360deg); } }
+@keyframes k-ringout{ from { opacity: .9; transform: scale(.6); } to { opacity: 0; transform: scale(2.2); } }
