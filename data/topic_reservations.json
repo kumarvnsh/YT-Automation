@@ -1879,5 +1879,14 @@
     "slot": "evening",
     "date": "2026-10-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261018_040205_short",
+    "title": "One Vote Aboard a Submarine Almost Changed Everything | History's Almost Moments",
+    "fingerprint": "aboard_almost_changed_everything_history_moments_one_s_submarine_vote",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-18",
+    "status": "reserved"
   }
 ]

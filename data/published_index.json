@@ -3481,5 +3481,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "P5pwEH0ZXlk",
+    "run_id": "39095618512",
+    "stage_dir_name": "20261018_040205_short",
+    "title": "One Vote Aboard a Submarine Almost Changed Everything | History's Almost Moments",
+    "published_at": "2026-10-18T04:08:41.166765+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
