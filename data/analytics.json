@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-18T15:27:44.081815+00:00",
+      "updated": "2026-10-18T20:10:21.736130+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,39 @@
         ]
       },
       "videos": [
+        {
+          "id": "PVPglgVMHfk",
+          "title": "The Stray Cat That Left Earth \u2014 and Nobody Remembers Her Name",
+          "description": "On October 18, 1963, a Parisian stray named F\u00e9licette became the first cat launched into space. Here is what she actually did up there, and why her name faded from memory. Do you rank her with the famous space dogs?\n#history #space #didyouknow",
+          "tags": [
+            "1963",
+            "animals in space",
+            "cnes",
+            "did you know",
+            "education",
+            "facts",
+            "felicette",
+            "first cat in space",
+            "french space program",
+            "history",
+            "history facts",
+            "history shorts",
+            "october 18",
+            "shorts",
+            "space history",
+            "space race",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-18T16:06:32Z",
+          "thumbnail": "https://i.ytimg.com/vi/PVPglgVMHfk/mqdefault.jpg",
+          "views": 17,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
         {
           "id": "bCnqFyEomPE",
           "title": "A London Brewery Made a Mistake. The Court Blamed God.",
@@ -91,8 +124,8 @@
           ],
           "publishedAt": "2026-10-18T04:07:26Z",
           "thumbnail": "https://i.ytimg.com/vi/P5pwEH0ZXlk/mqdefault.jpg",
-          "views": 14,
-          "likes": 0,
+          "views": 16,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -157,7 +190,7 @@
           ],
           "publishedAt": "2026-10-17T16:06:09Z",
           "thumbnail": "https://i.ytimg.com/vi/0qpOhzctlvA/mqdefault.jpg",
-          "views": 44,
+          "views": 47,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -225,7 +258,9 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 48.38,
+          "subs_gained": 0
         },
         {
           "id": "oyGoej3tthA",
@@ -253,12 +288,14 @@
           ],
           "publishedAt": "2026-10-16T16:06:49Z",
           "thumbnail": "https://i.ytimg.com/vi/oyGoej3tthA/mqdefault.jpg",
-          "views": 47,
+          "views": 49,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 14.37,
+          "subs_gained": 0
         },
         {
           "id": "UXKvTz-F7Og",
@@ -291,7 +328,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 38.07,
+          "avg_view_pct": 40.75,
           "subs_gained": 0
         },
         {
@@ -356,7 +393,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 39.62,
+          "avg_view_pct": 38.28,
           "subs_gained": 0
         },
         {
@@ -418,13 +455,13 @@
           ],
           "publishedAt": "2026-10-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/uhmMe1J1wKk/mqdefault.jpg",
-          "views": 415,
+          "views": 416,
           "likes": 2,
           "comments": 1,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.47999999999999,
+          "avg_view_pct": 51.07000000000001,
           "subs_gained": 0
         },
         {
@@ -491,7 +528,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 52.31,
+          "avg_view_pct": 49.71,
           "subs_gained": 0
         },
         {
@@ -1675,42 +1712,6 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 54.33,
-          "subs_gained": 0
-        },
-        {
-          "id": "L7htqeY05W8",
-          "title": "Why you should fear your morning brew \u2615\ufe0f\ud83d\udc40 #CoffeeFacts #Shorts",
-          "description": "International Coffee Day is more than just a morning ritual; it marks a volatile journey through history.\n\nFrom bans in the streets of Mecca to the political fires stoked in 17th-century European coffee houses, the bean has fueled both commerce and conflict. We explore how a simple drink became a global commodity that shaped empires and trade wars.\n\nDrop your take on the history of your daily cup in the comments.",
-          "tags": [
-            "celebrations",
-            "coffee",
-            "coffee origins",
-            "cultural history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "interesting facts",
-            "international coffee day",
-            "shorts",
-            "tradition",
-            "trending",
-            "viral",
-            "International Coffee Day",
-            "coffee history",
-            "coffee trade",
-            "global commodity"
-          ],
-          "publishedAt": "2026-10-01T05:54:19Z",
-          "thumbnail": "https://i.ytimg.com/vi/L7htqeY05W8/mqdefault.jpg",
-          "views": 8,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 42.49,
           "subs_gained": 0
         }
       ]
