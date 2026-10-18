@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-18T10:29:16.711327+00:00",
+      "updated": "2026-10-18T15:27:44.081815+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,37 @@
       },
       "videos": [
         {
+          "id": "bCnqFyEomPE",
+          "title": "A London Brewery Made a Mistake. The Court Blamed God.",
+          "description": "On October 17, 1814, a London brewery unleashed a wave so bizarre that eyewitnesses were laughed out of court \u2014 and the victims were charged admission. One of history's strangest disasters hid an even stranger aftermath. #history #didyouknow #londonhistory",
+          "tags": [
+            "1814",
+            "bizarre history",
+            "british history",
+            "did you know",
+            "education",
+            "facts",
+            "forgotten history",
+            "history",
+            "history shorts",
+            "london beer flood",
+            "meux brewery",
+            "shorts",
+            "strange disasters",
+            "trending",
+            "true history",
+            "viral"
+          ],
+          "publishedAt": "2026-10-18T10:30:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/bCnqFyEomPE/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true
+        },
+        {
           "id": "P5pwEH0ZXlk",
           "title": "One Vote Aboard a Submarine Almost Changed Everything | History's Almost Moments",
           "description": "In October 1962, a Soviet submarine hiding near Cuba came under pressure from US Navy depth charges, and the decision on board came down to three officers. Here is the close call historians still debate. Which one mattered more, the man or the luck?\n#history #coldwar #didyouknow",
@@ -60,7 +91,7 @@
           ],
           "publishedAt": "2026-10-18T04:07:26Z",
           "thumbnail": "https://i.ytimg.com/vi/P5pwEH0ZXlk/mqdefault.jpg",
-          "views": 12,
+          "views": 14,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -126,7 +157,7 @@
           ],
           "publishedAt": "2026-10-17T16:06:09Z",
           "thumbnail": "https://i.ytimg.com/vi/0qpOhzctlvA/mqdefault.jpg",
-          "views": 38,
+          "views": 44,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -387,7 +418,7 @@
           ],
           "publishedAt": "2026-10-15T04:06:08Z",
           "thumbnail": "https://i.ytimg.com/vi/uhmMe1J1wKk/mqdefault.jpg",
-          "views": 414,
+          "views": 415,
           "likes": 2,
           "comments": 1,
           "playlist_ids": [],
@@ -1681,39 +1712,6 @@
           "is_unsorted": true,
           "avg_view_pct": 42.49,
           "subs_gained": 0
-        },
-        {
-          "id": "H6Gl7WU53Gc",
-          "title": "The Train That Ran Before Anyone Believed It Could",
-          "description": "On October 1, 1964, Japan launched a train so fast the world called it impossible \u2014 and it changed what speed meant forever. The story behind the Shinkansen is stranger and more surprising than the headlines ever admitted. Drop your take in the comments.",
-          "tags": [
-            "1964 tokyo olympics",
-            "bullet train",
-            "did you know",
-            "education",
-            "engineering history",
-            "facts",
-            "high speed rail",
-            "history",
-            "history shorts",
-            "japan history",
-            "japanese innovation",
-            "shinkansen",
-            "shorts",
-            "trending",
-            "viral",
-            "world records"
-          ],
-          "publishedAt": "2026-10-01T05:47:33Z",
-          "thumbnail": "https://i.ytimg.com/vi/H6Gl7WU53Gc/mqdefault.jpg",
-          "views": 519,
-          "likes": 6,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 72.65,
-          "subs_gained": 1
         }
       ]
     }
