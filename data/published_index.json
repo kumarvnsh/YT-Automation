@@ -3496,5 +3496,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "PVPglgVMHfk",
+    "run_id": "39143091758",
+    "stage_dir_name": "20261018_160211_short",
+    "title": "The Stray Cat That Left Earth \u2014 and Nobody Remembers Her Name",
+    "published_at": "2026-10-18T16:07:13.605974+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
