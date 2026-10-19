@@ -3511,5 +3511,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "VOk6bVxqF9o",
+    "run_id": "39197385021",
+    "stage_dir_name": "20261019_040159_short",
+    "title": "The Church Feud That Accidentally Built a University",
+    "published_at": "2026-10-19T04:09:14.115003+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
