@@ -1915,5 +1915,14 @@
     "slot": "evening",
     "date": "2026-10-19",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261019_172958_short",
+    "title": "The Surrender That Had No Loser \u2014 and a Sword Nobody Wanted",
+    "fingerprint": "had_loser_no_nobody_surrender_sword_that_wanted",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-19",
+    "status": "reserved"
   }
 ]

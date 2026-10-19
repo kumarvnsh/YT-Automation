@@ -3540,5 +3540,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "vl3sGqYflTQ",
+    "run_id": "39294448014",
+    "stage_dir_name": "20261019_172958_short",
+    "title": "The Surrender That Had No Loser \u2014 and a Sword Nobody Wanted",
+    "published_at": "2026-10-19T17:36:11.036616+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
