@@ -3526,5 +3526,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "9z3194GpZb8",
+    "run_id": "39282238004",
+    "stage_dir_name": "20261019_160238_short",
+    "title": "One Alarm Almost Cancelled the Moon Landing | History's Almost Moments",
+    "published_at": "2026-10-19T16:09:59.945374+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
