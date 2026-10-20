@@ -1951,5 +1951,14 @@
     "slot": "morning",
     "date": "2026-10-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261020_070645_146415_short",
+    "title": "The Town You Can Only Drive To Through Another Country",
+    "fingerprint": "another_can_country_drive_only_through_town_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-20",
+    "status": "reserved"
   }
 ]
