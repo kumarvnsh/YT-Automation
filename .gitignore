@@ -26,3 +26,7 @@ venv/
 
 # Local tooling state
 .claude/
+
+# Local dashboard earnings imports
+data/private/
+**/data/private/

@@ -76,6 +76,28 @@ finished historical Reel. To generate a real unpublished Short use
 and may send configured notifications. Failed evidence stays in `research.json`
 and `verification.json`; fix the support problem rather than bypassing the gate.
 
+## Facebook Content Monetization and Stars tracking
+
+Import per-Reel dashboard figures with `python scripts/import_facebook_monetization.py /path/to/export.csv`.
+Use `assets/templates/facebook-monetization.csv` for the supported normalized headers;
+this is a Histold import format, not an assumed native Meta export format. Dates are
+inclusive `YYYY-MM-DD`, IDs must be Facebook Reel IDs, currency is the exported
+three-letter code, and numbers use decimal points without grouping/currency symbols.
+Leave unavailable values blank; a real reported zero can be entered as `0`.
+
+For different dashboard headers, pass `--mapping /path/to/mapping.json`, a JSON object
+mapping canonical names to actual headers, for example `{"media_id":"Post ID"}`.
+Map earnings only when the column's meaning and reporting period match. Use one row
+per Reel/period/currency. Reimporting the same key updates it; overlapping periods
+are rejected to prevent double counting. Page-level earnings cannot be attributed
+to individual Reels by this importer.
+
+The ledger and report stay in git-ignored `data/private/`. The report joins known
+Reel IDs to titles, categories and experiment IDs, keeps Stars separate, and derives
+Content Monetization earnings per 1,000 qualified views only from the same row.
+No earnings are inferred from total views or Stars counts. No API permissions or
+automatic financial exports are assumed; importing new dashboard data is manual.
+
 ## One-time setup
 
 1. **System dependency — ffmpeg** (required):
