@@ -1942,5 +1942,14 @@
     "slot": "morning",
     "date": "2026-10-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261020_064559_584105_short",
+    "title": "The American Town You Can Only Drive To Through Canada",
+    "fingerprint": "american_can_canada_drive_only_through_town_you",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-20",
+    "status": "reserved"
   }
 ]
