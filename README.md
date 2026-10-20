@@ -21,14 +21,14 @@ Each run writes everything to `output/<timestamp>_<format>_<slug>/` (script.json
 New Histold Shorts use the versioned production profile in root `config.yaml`:
 
 ```
-research → script → verify → voiceover → align → audio_check
+research → script → voiceover → align → audio_check
   → captions → assets → render → compose → quality → thumbnail → upload
 ```
 
 Research uses Anthropic's runtime web search and retains citation excerpts from
-approved institutions. Script assessment checks each segment against that
-evidence; unsupported claims or unresolved material disputes stop the job before
-narration. This is evidence-backed model assessment, not a guarantee of truth.
+approved institutions. The script uses that research directly; there is no separate
+post-script factual verification stage. Unsupported research or unresolved material
+disputes still stop the job before script generation.
 Broaden `research.authoritative_domains` deliberately for new historical topics.
 When search citations omit a core source, one bounded repair pass retrieves the
 approved source pages directly (including checked redirects), then searches for
@@ -40,7 +40,7 @@ Workflow failures identify the affected claim and source IDs.
 Edge supplies native word boundaries. If these are absent/inconsistent,
 `tts.alignment_provider: openai` enables measured Whisper transcription timestamps
 and validates text agreement; estimated timing cannot pass strict production.
-Web research, assessment and optional transcription add API cost.
+Web research and optional transcription add API cost.
 
 Conservative silence diagnostics warn without trimming audio. Exact intentional
 pause windows can be recorded in the storyboard's `allowed_pauses`; rerun the
@@ -78,8 +78,8 @@ python scripts/report_experiment.py      # Reads existing exports, no API calls
 The render fixture uses synthetic tone audio and is a technical check, not a
 finished historical Reel. To generate a real unpublished Short use
 `python -m src.main --format short --no-upload`; this makes configured API calls
-and may send configured notifications. Failed evidence stays in `research.json`
-and `verification.json`; fix the support problem rather than bypassing the gate.
+and may send configured notifications. Failed evidence stays in `research.json`;
+fix the research support problem before retrying.
 
 ## Facebook Content Monetization and Stars tracking
 

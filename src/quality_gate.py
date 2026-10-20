@@ -24,7 +24,7 @@ CHECK_NAMES = [
 
 def production_checks(cfg: Config, stage: Path, st: dict) -> tuple[dict, list, list]:
     """Offline checks bind evidence, timing and actual composition to this stage."""
-    from .research import script_hash, validate_research
+    from .research import validate_research
     from .alignment import narration_hash, build_storyboard
     from .tts import WordTiming
     from .map_assets import required_maps
@@ -36,9 +36,6 @@ def production_checks(cfg: Config, stage: Path, st: dict) -> tuple[dict, list, l
         if not ok:
             errors.append(message)
 
-    verification = st.get('verification', {})
-    check('verification', verification.get('status') == 'supported' and
-          verification.get('script_hash') == script_hash(script), 'Missing or stale historical verification')
     evidence_errors = validate_research(cfg, st.get('research', {}))
     check('research_evidence', st.get('research', {}).get('status') == 'supported' and not evidence_errors,
           '; '.join(evidence_errors) or 'Research is not supported')

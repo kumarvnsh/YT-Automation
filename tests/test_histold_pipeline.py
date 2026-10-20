@@ -26,14 +26,15 @@ class HistoldPipelineTests(unittest.TestCase):
             self.assertEqual(pipeline.load_state(first)['experiment_slot'],1)
             self.assertEqual(pipeline.load_state(second)['experiment_slot'],2)
 
-    def test_new_profile_has_verified_and_aligned_steps_and_snapshot(self):
+    def test_new_profile_skips_verification_and_has_aligned_steps(self):
         cfg = Config({'production': {'enabled': True}, 'script': {'story_profile': 'consequence_first'}})
         with tempfile.TemporaryDirectory() as tmp, patch.object(pipeline, '_out_root', return_value=Path(tmp)):
             stage = pipeline.new_stage(cfg, 'short', no_upload=True, dry_run=False)
             state = pipeline.load_state(stage)
         steps = state['target_steps']
         self.assertLess(steps.index('research'), steps.index('script'))
-        self.assertLess(steps.index('verify'), steps.index('voiceover'))
+        self.assertNotIn('verify', steps)
+        self.assertLess(steps.index('script'), steps.index('voiceover'))
         self.assertLess(steps.index('align'), steps.index('captions'))
         self.assertIn('production_config', state)
 
@@ -42,15 +43,24 @@ class HistoldPipelineTests(unittest.TestCase):
         effective = pipeline.stage_config(cfg, {'target_steps': ['script']})
         self.assertFalse(effective.get('production.enabled'))
 
-    def test_unverified_script_stops_before_voice_generation(self):
-        cfg = Config({'production': {'enabled': True}})
+    def test_old_failed_verification_stage_resumes_at_voiceover(self):
+        state = {'target_steps':['research','script','verify','voiceover'], 'done':['research','script']}
+        self.assertEqual(pipeline._pending_steps(state), ['voiceover'])
+
+    def test_resumed_job_migrates_removed_step_and_keeps_map_metadata(self):
+        state = {'production_config': {'production': {'enabled': True}}, 'fmt':'short',
+                 'target_steps':['research','script','verify','voiceover','captions'],
+                 'done':['research','script'], 'research': {'status':'supported','locations':[]},
+                 'complete':False, 'error':'Historical verification failed'}
         with tempfile.TemporaryDirectory() as tmp:
             stage = Path(tmp)
-            state = {'script': {'segments': [{'narration': 'A claim.'}]}, 'research': {}}
-            with patch('src.research.verify_script', return_value={'status': 'unsupported'}):
-                with self.assertRaisesRegex(RuntimeError, 'verif'):
-                    pipeline._step_verify(cfg, stage, state)
-            self.assertTrue((stage/'verification.json').exists())
+            pipeline.save_state(stage, state)
+            with patch.dict(pipeline.STEP_FUNCS, {'voiceover': lambda *_: None}):
+                result = pipeline.run_stage(Config({}), stage, one_step=True)
+            self.assertNotIn('verify', result['target_steps'])
+            self.assertIn('voiceover', result['done'])
+            self.assertEqual(result['maps'], [])
+            self.assertIsNone(result['error'])
 
     def test_upload_rechecks_strict_artifacts_even_without_quality_step(self):
         cfg = Config({'production': {'enabled': True}})

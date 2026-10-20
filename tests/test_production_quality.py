@@ -81,15 +81,15 @@ class ProductionQualityTests(unittest.TestCase):
         self.state['audio_quality']['audio_sha256'] = 'old-audio'
         self.assertEqual(self.checks()[0]['audio_diagnostics'], 'fail')
 
-    def test_changed_narration_invalidates_verification_and_alignment(self):
+    def test_changed_narration_invalidates_alignment(self):
         self.script['segments'][0]['narration'] = 'Different words.'
         checks, _, _ = self.checks()
-        self.assertEqual(checks['verification'], 'fail')
         self.assertEqual(checks['alignment'], 'fail')
 
-    def test_unsupported_verification_fails(self):
+    def test_old_verification_result_does_not_block_upload(self):
         self.state['verification']['status'] = 'unsupported'
-        self.assertEqual(self.checks()[0]['verification'], 'fail')
+        self.assertNotIn('verification', self.checks()[0])
+        self.assertEqual(self.checks()[1], [])
 
     def test_missing_evidence_fails(self):
         with patch('src.research.validate_research', return_value=['Missing directly cited support']):

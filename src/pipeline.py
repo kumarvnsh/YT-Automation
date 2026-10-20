@@ -24,7 +24,7 @@ STEP_ORDER = [
     "script", "voiceover", "captions", "assets", "render", "compose",
     "quality", "thumbnail", "upload",
 ]
-PRODUCTION_STEPS = ['research', 'script', 'verify', 'voiceover', 'align', 'audio_check',
+PRODUCTION_STEPS = ['research', 'script', 'voiceover', 'align', 'audio_check',
                     'captions', 'assets', 'render', 'compose', 'quality', 'thumbnail', 'upload']
 
 
@@ -91,7 +91,7 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
     if cfg.get('production.enabled', False) and fmt == 'short':
         state['pipeline_version'] = 2
         state['production_config'] = copy.deepcopy(cfg.raw)
-        state['target_steps'] = ['research', 'script', 'verify'] if dry_run else list(PRODUCTION_STEPS)
+        state['target_steps'] = ['research', 'script'] if dry_run else list(PRODUCTION_STEPS)
         if cfg.get('production.experiment', False):
             from .experiments import select_slot
             manifest_path = base_dir() / 'data/experiments/histold-six-reels.json'
@@ -261,15 +261,7 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
     if st['research'].get('status') != 'supported':
         details = st['research'].get('error') or '; '.join(st['research'].get('errors', [])) or st['research'].get('status')
         raise RuntimeError(f'Historical research failed: {details}; see research.json')
-
-
-def _step_verify(cfg: Config, stage: Path, st: dict) -> None:
-    from .research import verify_script
     from .map_assets import required_maps
-    st['verification'] = verify_script(cfg, st['script'], st['research'])
-    _write_report(stage, 'verification', st['verification'])
-    if st['verification'].get('status') != 'supported':
-        raise RuntimeError('Historical verification failed; see verification.json')
     st['maps'] = [{k: v for k, v in asset.items() if k != 'svg'} for asset in required_maps(st['research'])]
 
 
@@ -426,7 +418,7 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         from .quality_gate import validate_stage
         report = validate_stage(cfg, stage, st)
         if not report['passed'] or not st.get('quality', {}).get('passed'):
-            raise RuntimeError('Production upload blocked: verification or quality artifacts are missing/stale')
+            raise RuntimeError('Production upload blocked: research or quality artifacts are missing/stale')
     # Stages created before the quality step have no "quality" field and keep
     # their legacy resume/approval contract; a new stage cannot skip a failure.
     if "quality" in st and not st["quality"].get("passed", False):
@@ -464,7 +456,6 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
 
 STEP_FUNCS = {
     'research': _step_research,
-    'verify': _step_verify,
     'align': _step_align,
     'audio_check': _step_audio_check,
     "script": _step_script,
@@ -488,12 +479,12 @@ def _skip_upload(st: dict) -> bool:
 
 def _pending_steps(st: dict) -> list[str]:
     skip = _skip_upload(st)
-    return [s for s in st["target_steps"] if s not in st["done"] and not (s == "upload" and skip)]
+    return [s for s in st["target_steps"] if s != 'verify' and s not in st["done"] and not (s == "upload" and skip)]
 
 
 def _is_satisfied(st: dict) -> bool:
     skip = _skip_upload(st)
-    return all(s in st["done"] for s in st["target_steps"] if not (s == "upload" and skip))
+    return all(s in st["done"] for s in st["target_steps"] if s != 'verify' and not (s == "upload" and skip))
 
 
 def run_stage(
@@ -517,6 +508,13 @@ def run_stage(
     st = load_state(stage)
     cfg = stage_config(cfg, st)
     dirty = False
+    if 'verify' in st['target_steps']:
+        st['target_steps'] = [step for step in st['target_steps'] if step != 'verify']
+        # The removed stage used to populate map metadata, including on resumed jobs.
+        if st.get('research', {}).get('status') == 'supported':
+            from .map_assets import required_maps
+            st['maps'] = [{k: v for k, v in asset.items() if k != 'svg'} for asset in required_maps(st['research'])]
+        dirty = True
     if force_upload and st.get("no_upload"):
         st["no_upload"] = False
         st["complete"] = False
