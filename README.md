@@ -30,6 +30,11 @@ approved institutions. Script assessment checks each segment against that
 evidence; unsupported claims or unresolved material disputes stop the job before
 narration. This is evidence-backed model assessment, not a guarantee of truth.
 Broaden `research.authoritative_domains` deliberately for new historical topics.
+When search citations omit a core source, one bounded repair pass retrieves the
+approved source pages directly (including checked redirects), then searches for
+remaining evidence if necessary. Fetched text, response hashes, and both attempts
+remain in `research.json`; claims are not dropped or relabeled to make a job pass.
+Workflow failures identify the affected claim and source IDs.
 
 `storyboard.json` records measured word timing, frame boundaries and reveal cues.
 Edge supplies native word boundaries. If these are absent/inconsistent,

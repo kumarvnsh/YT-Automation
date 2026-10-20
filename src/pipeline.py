@@ -259,7 +259,8 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
     st['research'] = research_topic(cfg, topic)
     _write_report(stage, 'research', st['research'])
     if st['research'].get('status') != 'supported':
-        raise RuntimeError('Historical research failed or has unsupported claims; see research.json')
+        details = st['research'].get('error') or '; '.join(st['research'].get('errors', [])) or st['research'].get('status')
+        raise RuntimeError(f'Historical research failed: {details}; see research.json')
 
 
 def _step_verify(cfg: Config, stage: Path, st: dict) -> None:

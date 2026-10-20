@@ -3,7 +3,81 @@ from unittest.mock import patch
 from src.config import Config
 from src import research
 
+FETCH_PAGE = research._fetch_page
+
 class ResearchTests(unittest.TestCase):
+    def setUp(self):
+        offline = patch.object(research, '_fetch_page', side_effect=RuntimeError('offline test boundary'))
+        offline.start()
+        self.addCleanup(offline.stop)
+
+    def test_direct_page_text_repairs_missing_citation_without_model_claim_changes(self):
+        packet = self.packet()
+        citation = {'url': packet['sources'][0]['url'], 'cited_text': 'The border was agreed in 1818.', 'type': 'retrieved_page'}
+        with patch.object(research, '_retrieve', return_value=(packet, [])) as retrieve, \
+                patch.object(research, '_fetch_page', return_value=citation):
+            result = research.research_topic(Config({}), 'border')
+        self.assertEqual(result['status'], 'supported')
+        self.assertEqual(result['claims'], packet['claims'])
+        self.assertEqual(retrieve.call_count, 1)
+        self.assertEqual(result['retrieval_citations'][0]['type'], 'retrieved_page')
+
+    def test_unapproved_page_is_never_fetched(self):
+        with patch('requests.get') as request:
+            with self.assertRaises(ValueError):
+                FETCH_PAGE(Config({}), 'https://untrusted.example/fact')
+        request.assert_not_called()
+
+    def test_page_parser_ignores_scripts_and_navigation(self):
+        parser = research._ArticleText()
+        parser.feed('<html><nav>Menu</nav><script>not evidence</script><main><h1>History</h1><p>Border in 1818.</p></main></html>')
+        self.assertEqual(' '.join(parser.parts), 'History Border in 1818.')
+
+    def test_model_context_keeps_evidence_without_duplicate_fetch_logs(self):
+        packet = {**self.packet(), 'retrieval_citations': [{'cited_text': 'duplicate'}], 'evidence_attempts': ['old evidence']}
+        context = research.evidence_for_model(packet)
+        self.assertEqual(context['claims'], packet['claims'])
+        self.assertEqual(context['sources'], packet['sources'])
+        self.assertNotIn('retrieval_citations', context)
+        self.assertNotIn('evidence_attempts', context)
+
+    def test_missing_core_citation_is_researched_once_without_changing_claim(self):
+        packet = self.packet()
+        repaired = {'sources': [dict(packet['sources'][0], url='https://www.loc.gov/item/verified')]}
+        citation = {'url': repaired['sources'][0]['url'], 'cited_text': 'The border was agreed in 1818.'}
+        with patch.object(research, '_retrieve', side_effect=[(packet, []), (repaired, [citation])]) as retrieve:
+            result = research.research_topic(Config({}), 'border')
+        self.assertEqual(result['status'], 'supported')
+        self.assertEqual(result['claims'], packet['claims'])
+        self.assertEqual(retrieve.call_count, 2)
+        self.assertEqual(len(result['evidence_attempts']), 2)
+
+    def test_failed_repair_retains_original_evidence_and_actionable_claim_error(self):
+        packet = self.packet()
+        with patch.object(research, '_retrieve', side_effect=[(packet, []), RuntimeError('search unavailable')]):
+            result = research.research_topic(Config({}), 'border')
+        self.assertEqual(result['status'], 'unsupported')
+        self.assertEqual(result['claims'], packet['claims'])
+        self.assertTrue(any('c1' in error for error in result['errors']))
+        self.assertIn('search unavailable', result['evidence_attempts'][-1]['error'])
+
+    def test_fragment_link_matches_actual_page_citation_without_network(self):
+        packet = self.packet()
+        packet['sources'][0]['url'] += '#history'
+        citation = {'url': 'https://www.loc.gov/item/1', 'cited_text': 'The border was agreed in 1818.'}
+        with patch.object(research, '_retrieve', return_value=(packet, [citation])) as retrieve:
+            result = research.research_topic(Config({}), 'border')
+        self.assertEqual(result['status'], 'supported')
+        self.assertEqual(retrieve.call_count, 1)
+
+    def test_multiple_sections_of_same_page_validate_consistently(self):
+        packet = self.packet()
+        citations = [{'url': packet['sources'][0]['url'] + fragment, 'cited_text': text}
+                     for fragment, text in [('#first', 'The border was agreed'), ('#second', 'in 1818.')]]
+        with patch.object(research, '_retrieve', return_value=(packet, citations)):
+            result = research.research_topic(Config({}), 'border')
+        self.assertEqual(result['status'], 'supported')
+
     def packet(self):
         return {'sources':[{'id':'s1','url':'https://www.loc.gov/item/1','title':'Record','publisher':'Library of Congress','excerpt':'The border was agreed in 1818.'}], 'claims':[{'id':'c1','text':'The border was agreed in 1818.','source_ids':['s1'],'status':'supported'}], 'locations':[], 'dates':['1818']}
     def test_hash_changes_when_narration_changes(self):
