@@ -1,0 +1,15 @@
+{
+  "id": "histold-six-reels",
+  "target_duration_seconds": 45,
+  "observation_hours": [24, 72, 168],
+  "window_tolerance_hours": 1,
+  "interpretation": "Exploratory six-Reel comparison; two examples per category cannot establish statistical winners. Compare only the same platform and observation window, inspecting actual age and late flags. Keep template, voice, target duration, and publication time consistent.",
+  "slots": [
+    {"slot": 1, "category": "strange_geography", "hook": "Why is this American town only accessible by road through Canada?"},
+    {"slot": 2, "category": "historical_disasters", "hook": "A deadly disaster happened because of one unexpected failure."},
+    {"slot": 3, "category": "unbelievable_true_history", "hook": "This sounds invented, but historical records confirm it."},
+    {"slot": 4, "category": "strange_geography", "hook": "Open with a surprising geographic consequence."},
+    {"slot": 5, "category": "historical_disasters", "hook": "Open with a verified, unexpected failure and its consequence."},
+    {"slot": 6, "category": "unbelievable_true_history", "hook": "Open with a surprising claim supported by historical records."}
+  ]
+}

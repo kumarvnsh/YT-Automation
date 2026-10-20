@@ -97,11 +97,15 @@ def main() -> None:
     candidates = []
     for v in videos:
         age_h = _hours_ago(v.get("publishedAt", ""))
-        if age_h < min_age_h or (v.get("views") or 0) >= threshold:
+        if v.get("views") is None:
+            continue  # absent statistics cannot establish underperformance
+        if age_h < min_age_h or v["views"] >= threshold:
             continue
         entry = by_id.get(v.get("id"))
         if entry is None:
             continue  # pre-index video: no artifact mapping, leave to manual retitle
+        if entry.get("experiment") or entry.get("experiment_id"):
+            continue  # preserve experiment exposure, hook, and publication age
         if entry.get("republished_as") or entry.get("republished_from"):
             continue
         if entry.get("auto_dispatched_at"):

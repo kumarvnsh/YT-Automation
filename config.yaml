@@ -35,7 +35,24 @@ series:
   every: 3                       # 1 = every video, 3 = every third
   direction: ""                  # blank = built-in counterfactual brief
 
+production:
+  enabled: true              # New Histold shorts only; settings snapshotted per stage
+  strict_timing: true
+  experiment: true            # Six alternating category slots, then regular topic selection
+
+research:
+  max_searches: 5
+  model: "claude-sonnet-4-6"
+  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk"]
+
+audio_quality:
+  silence_db: -40
+  silence_duration: 0.8
+  endpoint_tolerance: 0.15
+  max_edge_silence: 0.8
+
 script:
+  story_profile: "consequence_first"
   provider: "anthropic"        # primary provider: "anthropic" | "openai"
   routing: "fallback"          # "fallback" | "random" | "round_robin"
   fallback_provider: "openai"
@@ -55,6 +72,7 @@ script:
   longform_target_seconds: 420   # 7 minutes
 
 tts:
+  alignment_provider: "openai" # Used only if measured native timing is absent/inconsistent
   provider: "edge"             # "edge" (free) | "elevenlabs" | "openai"
   edge_voice: "en-US-GuyNeural"        # try en-US-AriaNeural, en-GB-RyanNeural
   edge_rate: "+8%"
@@ -101,6 +119,8 @@ assets:
     # and check current per-image pricing before raising it.
 
 video:
+  branding:
+    enabled: true
   short:
     width: 1080
     height: 1920

@@ -13,6 +13,7 @@ the quality step keep their original target_steps and remain resumable.
 from __future__ import annotations
 
 import json
+import copy
 from datetime import datetime
 from pathlib import Path
 
@@ -23,6 +24,20 @@ STEP_ORDER = [
     "script", "voiceover", "captions", "assets", "render", "compose",
     "quality", "thumbnail", "upload",
 ]
+PRODUCTION_STEPS = ['research', 'script', 'verify', 'voiceover', 'align', 'audio_check',
+                    'captions', 'assets', 'render', 'compose', 'quality', 'thumbnail', 'upload']
+
+
+def stage_config(cfg: Config, st: dict) -> Config:
+    if st.get('production_config'):
+        return Config(copy.deepcopy(st['production_config']))
+    data = copy.deepcopy(cfg.raw)
+    data.setdefault('production', {})['enabled'] = False
+    data['production']['strict_timing'] = False
+    data.setdefault('video', {}).setdefault('branding', {})['enabled'] = False
+    if data.get('script', {}).get('story_profile') == 'consequence_first':
+        data['script'].pop('story_profile')
+    return Config(data)
 
 
 # --------------------------------------------------------------------------- #
@@ -46,9 +61,20 @@ def new_stage(
     topic: str | None = None,
     privacy: str | None = None,
 ) -> Path:
-    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # Scheduled jobs are serialized; local callers also need atomic slot reservation.
+    import fcntl
+    root = _out_root(cfg)
+    root.mkdir(parents=True, exist_ok=True)
+    with (root / '.stage-creation.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _new_stage(cfg, fmt, no_upload=no_upload, dry_run=dry_run, topic=topic, privacy=privacy)
+
+
+def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
+               topic: str | None = None, privacy: str | None = None) -> Path:
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     stage = _out_root(cfg) / f"{ts}_{fmt}"
-    stage.mkdir(parents=True, exist_ok=True)
+    stage.mkdir(parents=True, exist_ok=False)
     target = ["script"] if dry_run else list(STEP_ORDER)
     state = {
         "fmt": fmt,
@@ -62,6 +88,28 @@ def new_stage(
         "no_upload": no_upload,
         "overrides": {"topic": topic, "privacy": privacy},
     }
+    if cfg.get('production.enabled', False) and fmt == 'short':
+        state['pipeline_version'] = 2
+        state['production_config'] = copy.deepcopy(cfg.raw)
+        state['target_steps'] = ['research', 'script', 'verify'] if dry_run else list(PRODUCTION_STEPS)
+        if cfg.get('production.experiment', False):
+            from .experiments import select_slot
+            manifest_path = base_dir() / 'data/experiments/histold-six-reels.json'
+            manifest = json.loads(manifest_path.read_text())
+            index_path = base_dir() / 'data/published_index.json'
+            entries = json.loads(index_path.read_text()) if index_path.exists() else []
+            # In-flight stages reserve experiment slots as well as published posts.
+            for previous in _out_root(cfg).glob('*/state.json'):
+                try:
+                    old = json.loads(previous.read_text())
+                except (OSError, ValueError):
+                    continue
+                if isinstance(old, dict) and old.get('experiment') and not old.get('complete'):
+                    entries.append(old)
+            slot = select_slot(entries, manifest)
+            if slot:
+                state.update(experiment=manifest['id'], experiment_slot=slot['slot'], category=slot['category'])
+                state['experiment_hook'] = slot['hook']
     save_state(stage, state)
     return stage
 
@@ -80,7 +128,9 @@ def load_state(stage: Path) -> dict:
 
 
 def save_state(stage: Path, state: dict) -> None:
-    state_path(stage).write_text(json.dumps(state, indent=2), encoding="utf-8")
+    temporary = stage / 'state.json.tmp'
+    temporary.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    temporary.replace(state_path(stage))
 
 
 def active_stage(cfg: Config, fmt: str | None = None) -> Path | None:
@@ -117,7 +167,7 @@ def _rebuild_segments(state: dict):
     # The beat tag must survive the round-trip: the assets step uses it to
     # decide which segments get a generated illustration instead of stock.
     return [
-        Segment(s["narration"], s.get("keywords", []), s.get("beat", ""))
+        Segment(s["narration"], s.get("keywords", []), s.get("beat", ""), s.get('claim_ids', []))
         for s in state["script"]["segments"]
     ]
 
@@ -157,7 +207,11 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     from .script_generator import generate_script
 
     overrides = st.get("overrides", {})
-    script = generate_script(cfg, st["fmt"], topic_override=overrides.get("topic"))
+    if st.get('research'):
+        cfg = Config(copy.deepcopy(cfg.raw))
+        cfg.raw.setdefault('production', {})['research_context'] = st['research']
+        cfg.raw['production']['category'] = st.get('category', '')
+    script = generate_script(cfg, st["fmt"], topic_override=overrides.get("topic") or st.get('research', {}).get('topic'))
     st["script"] = script.to_dict()
     st["title"] = script.title
     st["script_provider"] = script.provider
@@ -170,6 +224,7 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
         not overrides.get("topic")
         and topics.monthly_prediction_direction(cfg, slot=st.get("slot")) is not None
     )
+
     st["topic_reservation"] = topics.reserve_topic(
         script.title,
         st["fmt"],
@@ -193,6 +248,50 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
     )
 
 
+def _write_report(stage: Path, name: str, report: dict) -> None:
+    (stage / f'{name}.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+
+
+def _step_research(cfg: Config, stage: Path, st: dict) -> None:
+    from .research import research_topic
+    topic = st.get('overrides', {}).get('topic') or (
+        f"{st['category']}: {st.get('experiment_hook', '')}" if st.get('category') else topics.pick_angle(cfg))
+    st['research'] = research_topic(cfg, topic)
+    _write_report(stage, 'research', st['research'])
+    if st['research'].get('status') != 'supported':
+        raise RuntimeError('Historical research failed or has unsupported claims; see research.json')
+
+
+def _step_verify(cfg: Config, stage: Path, st: dict) -> None:
+    from .research import verify_script
+    from .map_assets import required_maps
+    st['verification'] = verify_script(cfg, st['script'], st['research'])
+    _write_report(stage, 'verification', st['verification'])
+    if st['verification'].get('status') != 'supported':
+        raise RuntimeError('Historical verification failed; see verification.json')
+    st['maps'] = [{k: v for k, v in asset.items() if k != 'svg'} for asset in required_maps(st['research'])]
+
+
+def _step_align(cfg: Config, stage: Path, st: dict) -> None:
+    from .alignment import build_storyboard
+    from .tts import WordTiming
+    vo = st['voiceover']
+    st['storyboard'] = build_storyboard(st['script']['segments'], [WordTiming(*w) for w in vo['words']],
+        vo['duration'], int(cfg.get(f"video.{st['fmt']}.fps", 30)), vo.get('timing_source', 'estimated'), strict=True)
+    from .quality_gate import file_hash
+    st['storyboard']['audio_sha256'] = file_hash(stage / vo['path'])
+    _write_report(stage, 'storyboard', st['storyboard'])
+
+
+def _step_audio_check(cfg: Config, stage: Path, st: dict) -> None:
+    from .audio_quality import analyze_audio
+    st['audio_quality'] = analyze_audio(cfg, stage / st['voiceover']['path'], st['storyboard'])
+    st['audio_quality']['audio_sha256'] = st['storyboard']['audio_sha256']
+    _write_report(stage, 'audio_quality', st['audio_quality'])
+    if st['audio_quality'].get('errors'):
+        raise RuntimeError('Narration audio failed quality checks; see audio_quality.json')
+
+
 def _step_voiceover(cfg: Config, stage: Path, st: dict) -> None:
     from .tts import synthesize
     from .script_generator import Script
@@ -204,6 +303,7 @@ def _step_voiceover(cfg: Config, stage: Path, st: dict) -> None:
         "path": "voiceover.mp3",
         "duration": vo.duration,
         "words": [[w.word, w.start, w.end] for w in vo.words],
+        "timing_source": vo.timing_source,
     }
 
 
@@ -296,7 +396,7 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
 def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
     from .quality_gate import validate_stage
 
-    if not cfg.get("quality.enabled", True):
+    if not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
         st["quality"] = {"passed": True, "skipped": True, "score": 100, "checks": {}, "errors": []}
         return
     report = validate_stage(cfg, stage, st)
@@ -321,6 +421,11 @@ def _step_thumbnail(cfg: Config, stage: Path, st: dict) -> None:
 
 
 def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
+    if cfg.get('production.enabled', False):
+        from .quality_gate import validate_stage
+        report = validate_stage(cfg, stage, st)
+        if not report['passed'] or not st.get('quality', {}).get('passed'):
+            raise RuntimeError('Production upload blocked: verification or quality artifacts are missing/stale')
     # Stages created before the quality step have no "quality" field and keep
     # their legacy resume/approval contract; a new stage cannot skip a failure.
     if "quality" in st and not st["quality"].get("passed", False):
@@ -357,6 +462,10 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
 
 
 STEP_FUNCS = {
+    'research': _step_research,
+    'verify': _step_verify,
+    'align': _step_align,
+    'audio_check': _step_audio_check,
     "script": _step_script,
     "voiceover": _step_voiceover,
     "captions": _step_captions,
@@ -405,6 +514,7 @@ def run_stage(
     Returns the (updated) state dict. Sends notifications on terminal events.
     """
     st = load_state(stage)
+    cfg = stage_config(cfg, st)
     dirty = False
     if force_upload and st.get("no_upload"):
         st["no_upload"] = False
@@ -481,6 +591,14 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             "retitled_at": None,
             "republished_from": None,
             "republished_as": None,
+            'experiment': st.get('experiment'),
+            'experiment_slot': st.get('experiment_slot'),
+            'category': st.get('category'),
+            'hook': (st.get('script', {}).get('segments') or [{}])[0].get('narration'),
+            'duration': st.get('voiceover', {}).get('duration'),
+            'production_profile': st.get('pipeline_version', 1),
+            'facebook_id': st.get('meta', {}).get('facebook'),
+            'instagram_id': st.get('meta', {}).get('instagram'),
         })
         path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
         print(f"  ✓ recorded {st['youtube_id']} in {path.name}")

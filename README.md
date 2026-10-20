@@ -16,6 +16,66 @@ topic (angle + dedupe)
 
 Each run writes everything to `output/<timestamp>_<format>_<slug>/` (script.json, voiceover.mp3, captions.ass, video.mp4, metadata.json).
 
+## Histold production profile
+
+New Histold Shorts use the versioned production profile in root `config.yaml`:
+
+```
+research → script → verify → voiceover → align → audio_check
+  → captions → assets → render → compose → quality → thumbnail → upload
+```
+
+Research uses Anthropic's runtime web search and retains citation excerpts from
+approved institutions. Script assessment checks each segment against that
+evidence; unsupported claims or unresolved material disputes stop the job before
+narration. This is evidence-backed model assessment, not a guarantee of truth.
+Broaden `research.authoritative_domains` deliberately for new historical topics.
+
+`storyboard.json` records measured word timing, frame boundaries and reveal cues.
+Edge supplies native word boundaries. If these are absent/inconsistent,
+`tts.alignment_provider: openai` enables measured Whisper transcription timestamps
+and validates text agreement; estimated timing cannot pass strict production.
+Web research, assessment and optional transcription add API cost.
+
+Conservative silence diagnostics warn without trimming audio. Exact intentional
+pause windows can be recorded in the storyboard's `allowed_pauses`; rerun the
+audio check afterward. Required maps use pinned Natural Earth outlines; initially
+United States, Canada, Minnesota and Washington are supported. Other essential
+geography and historical boundary overlays stop the job until vetted assets are
+added. These maps establish present-day context and do not resolve local roads.
+
+Final composition adds HISTOLD and captions. Missing libass, stale evidence or
+timing, changed media, narration truncation, and blocking frame defects prevent
+upload. Static-scene detection and pauses remain warning heuristics. Stock
+fallback requires visual review before production publishing.
+
+Every new job snapshots its production settings; older jobs retain legacy
+behavior, and Astrotold does not opt into the new profile. Set
+`production.enabled: false` to use the legacy profile for future jobs. Existing
+production jobs keep their recorded rules.
+
+The first six new Shorts reserve alternating categories from
+`data/experiments/histold-six-reels.json`. Published records retain category,
+hook, duration, profile and platform IDs. The analytics workflow captures
+24/72/168-hour observations with actual age and late flags, and excludes these
+posts from automatic reposting. YouTube rates use compatible Analytics report
+views; unavailable Meta watch-time, retention, shares or attributed followers
+remain null with reasons. Two examples per category are exploratory.
+
+Local verification commands (no publishing or notifications):
+
+```bash
+python -m unittest discover -s tests -t . -v
+python scripts/validate_histold_render.py  # Chromium + FFmpeg synthetic fixtures, no AI calls
+python scripts/report_experiment.py      # Reads existing exports, no API calls
+```
+
+The render fixture uses synthetic tone audio and is a technical check, not a
+finished historical Reel. To generate a real unpublished Short use
+`python -m src.main --format short --no-upload`; this makes configured API calls
+and may send configured notifications. Failed evidence stays in `research.json`
+and `verification.json`; fix the support problem rather than bypassing the gate.
+
 ## One-time setup
 
 1. **System dependency — ffmpeg** (required):

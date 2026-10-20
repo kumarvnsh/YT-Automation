@@ -13,6 +13,7 @@ this mode can never break a run.
 from __future__ import annotations
 
 import re
+import json
 import subprocess
 from pathlib import Path
 
@@ -129,10 +130,121 @@ def segment_windows(segments: list[str], words: list, total: float) -> list[tupl
     return [(s, max(e, s + 0.5)) for s, e in zip(starts, ends)]
 
 
+def sample_times(duration: float, fps: int, cues: list[dict]) -> list[float]:
+    final = max(0, (round(duration * fps) - 1) / fps)
+    return sorted({0.0, min(final, duration / 2), final,
+                   *[min(final, max(0, float(c['time']))) for c in cues],
+                   *[min(final, float(t)) for t in range(2, int(duration), 2)]})
+
+
+def summarize_motion(differences: list[float], times: list[float]) -> list[str]:
+    idle = 0.0
+    for difference, start, end in zip(differences, times, times[1:]):
+        idle = idle + end - start if difference < .002 else 0
+        if idle >= 4:
+            return ['static_foreground']
+    return []
+
+
+def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], branding: bool) -> dict:
+    """Inspect actual timeline samples; ambient film effects cannot satisfy motion checks."""
+    import io
+    import numpy as np
+    from PIL import Image
+    page.set_content(html, wait_until='load')
+    page.evaluate('async () => { await document.fonts.ready; document.getAnimations().forEach(a => a.pause()); }')
+    page.add_style_tag(content='html::before,html::after{visibility:hidden!important}')
+    errors, differences, previous = [], [], None
+    visible_samples = []
+    times = sample_times(duration, fps, cues)
+    for time in times:
+        page.evaluate("t => document.getAnimations().forEach(a => {a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", time * 1000)
+        errors.extend(f'{time:.2f}s: {e}' for e in page.evaluate(_LINT_JS))
+        if branding:
+            collisions = page.evaluate("""() => [...document.querySelectorAll('.k-stage *')].filter(e => {
+              const r=e.getBoundingClientRect(),s=getComputedStyle(e);
+              return s.visibility!=='hidden' && +s.opacity>0.05 && e.textContent.trim() && r.left<innerWidth*.17 && r.right>innerWidth*.045 && r.top<innerHeight*.12 && r.bottom>innerHeight*.045;
+            }).length""")
+            if collisions:
+                errors.append(f'{time:.2f}s: text overlaps HISTOLD safe area')
+        frame = np.asarray(Image.open(io.BytesIO(page.screenshot(type='png'))).convert('L').resize((108, 192)), dtype=float) / 255
+        if previous is not None:
+            differences.append(float(np.mean(np.abs(frame - previous))))
+        previous = frame
+        visible_samples.append(page.evaluate("""() => [...document.querySelectorAll('.k-stage *, svg path')].some(e => {
+          const r=e.getBoundingClientRect(); let visible=true;
+          for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.05)visible=false;}
+          return visible && r.width>2 && r.height>2 && r.right>0 && r.left<innerWidth && r.bottom>0 && r.top<innerHeight*.7 &&
+            (e.tagName.toLowerCase()==='path'||[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
+        })"""))
+    # An opening reveal may begin invisible, but later blank samples are defects.
+    for time, visible in zip(times, visible_samples):
+        if time >= .3 and not visible:
+            errors.append(f'{time:.2f}s: Scene has no visible foreground content')
+    if not any(visible_samples):
+        errors.append('Scene has no visible foreground content')
+    if 'data-map-id=' in html:
+        # Independently sample the establishing labels; a hidden placeholder is not a map.
+        held = 0.0
+        for tick in range(int(min(duration, 5) * 4) + 1):
+            time = min(tick / 4, max(0, duration - 1 / fps))
+            page.evaluate("t => document.getAnimations().forEach(a => {a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", time * 1000)
+            visible = page.evaluate("""() => [...document.querySelectorAll('[data-map-id]')].every(e => {
+              for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.9)return false;}
+              const r=e.getBoundingClientRect();return r.width>5&&r.height>5&&r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight*.7;
+            })""")
+            held = held + .25 if visible else 0
+            if held >= 2.25:
+                break
+        if held < 2.25:
+            errors.append('Required map outlines and labels are not visible for two seconds')
+    return {'errors': sorted(set(errors)), 'warnings': summarize_motion(differences, times), 'sample_times': times}
+
+
+def bind_maps(html: str, assets: list[dict]) -> str:
+    """Replace map placeholders with pinned geometry; the model never authors these paths."""
+    from html import escape
+    tokens = [f'<histold-map id="{a["map_id"]}"></histold-map>' for a in assets]
+    if any(token in html for token in tokens):
+        labels = {'canada': (190, 135), 'united_states': (200, 294),
+                  'washington': (62, 214), 'minnesota': (245, 235)}
+        groups = []
+        for asset in sorted(assets, key=lambda a: a['map_id'] in ('minnesota', 'washington')):
+            x, y = labels[asset['map_id']]
+            path = re.search(r'<path\b.*?/>', asset['svg']).group(0)
+            color = '#e39a2d' if asset['map_id'] in ('minnesota', 'washington') else '#8a7f6a' if asset['map_id'] == 'canada' else '#c9bb9c'
+            groups.append(f'<g data-map-id="{asset["map_id"]}" color="{color}">{path}'
+                          f'<text x="{x}" y="{y}" text-anchor="middle" fill="#ecdfc2" stroke="#0e0d10" '
+                          f'stroke-width="3" paint-order="stroke" font-size="14">{escape(asset["label"])}</text></g>')
+        bundle = '<div class="histold-map" style="width:100%"><svg viewBox="0 0 480 366" role="img" aria-label="Present-day establishing geography">'+''.join(groups)+'</svg><div class="k-label" style="font-size:10px">Present-day continental context</div></div>'
+        placed = False
+        for token in tokens:
+            if token in html:
+                html = html.replace(token, bundle if not placed else '')
+                placed = True
+    if '<histold-map' in html:
+        raise ValueError('Scene requested unverified geographic asset')
+    return html
+
+
 def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int) -> dict[int, str]:
     import anthropic
 
     lines = [f"Video title: {title}", ""]
+    board = cfg.get('production.storyboard')
+    if board:
+        lines.append('Measured storyboard (scene-local word/cue seconds drive animation delays):\n' + json.dumps(board))
+        lines.append('Use reveal cues for meaningful development every 2–4 seconds. Hold key labels at least two seconds. '
+                     'Reserve upper-left x=4.5%-17%, y=4.5%-12% for the small translucent HISTOLD logo. '
+                     'Use present-day maps only as establishing context; never invent historical borders.')
+    maps = cfg.get('production.map_assets', [])
+    if maps:
+        lines.append('Verified map IDs: ' + ', '.join(a['map_id'] for a in maps) +
+                     '. In scene 0 establish ALL these locations with exact placeholders '
+                     '<histold-map id="MAP_ID"></histold-map> inside .k-stage, at readable size. '
+                     'These are present-day continental establishing outlines with shared projection, not detailed survey maps. '
+                     'Use relative SVG overlays for countries/states where appropriate. Keep the establishing labels for >=2 seconds '
+                     'before any schematic/inset. Do not draw substitute map paths or unsupported borders.')
     for i, (seg, (s, e)) in enumerate(zip(segs, windows)):
         lines.append(
             f"Segment {i} — beat: {seg.beat or 'n/a'} — duration: {e - s:.1f}s\n"
@@ -157,6 +269,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         raise RuntimeError(f"refused: {msg.stop_details}")
     text = "".join(b.text for b in msg.content if b.type == "text")
     scenes = {int(i): html for i, html in _SCENE_RE.findall(text)}
+    scenes = {i: html for i, html in scenes.items() if 0 <= i < len(segs)}
     print(f"  claude_motion: {len(scenes)}/{len(segs)} scenes, stop={msg.stop_reason}, "
           f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
     return scenes
@@ -320,6 +433,18 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     preset, _ = vb._encode_settings(cfg)
     cw, ch = w // _SCALE, h // _SCALE
     windows = segment_windows([s.narration for s in segs], words, duration + 0.5)
+    production = cfg.get('production.enabled', False)
+    maps = []
+    if production:
+        from .config import Config
+        from .map_assets import load_map
+        from copy import deepcopy
+        board = st['storyboard']
+        windows = [(s['start'], s['end']) for s in board['scenes']]
+        cfg = Config(deepcopy(cfg.raw))
+        maps = [load_map(asset['map_id']) for asset in st.get('maps', [])]
+        cfg.raw.setdefault('production', {})['storyboard'] = board
+        cfg.raw['production']['map_assets'] = [{k: v for k, v in a.items() if k != 'svg'} for a in maps]
 
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
@@ -330,13 +455,43 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     scene_dir.mkdir(exist_ok=True)
 
     clips: list[Path | None] = [None] * len(segs)
+    report = {'schema_version': 1, 'scenes': {}, 'warnings': [], 'errors': [],
+              'narration_hash': st.get('storyboard', {}).get('narration_hash')}
     if scenes:
         from playwright.sync_api import sync_playwright
 
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page(viewport={"width": cw, "height": ch}, device_scale_factor=_SCALE)
-            scenes = _check_and_repair(cfg, page, scenes, cw, ch)
+            if not production:
+                scenes = _check_and_repair(cfg, page, scenes, cw, ch)
+            else:
+                issues = {}
+                for i, html in scenes.items():
+                    if i < 0 or i >= len(windows):
+                        continue
+                    if i == 0 and maps and any(f'<histold-map id="{a["map_id"]}"></histold-map>' not in html for a in maps):
+                        raise ValueError('Opening scene is missing required establishing map assets')
+                    scenes[i] = bind_maps(html, maps)
+                    s, e = windows[i]
+                    inspection = inspect_scene(page, inject_kit(scenes[i]), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                    report['scenes'][str(i)] = inspection
+                    if inspection['errors']:
+                        issues[i] = inspection['errors']
+                if issues and cfg.get('video.claude_motion.repair', True):
+                    fixed = _repair_scenes(cfg, scenes, issues, cw, ch)
+                    for i, html in fixed.items():
+                        html = bind_maps(html, maps)
+                        if i == 0 and maps and any(f'data-map-id="{asset["map_id"]}"' not in html for asset in maps):
+                            continue
+                        s, e = windows[i]
+                        repaired = inspect_scene(page, inject_kit(html), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                        if len(repaired['errors']) < len(report['scenes'][str(i)]['errors']):
+                            scenes[i] = html
+                            report['scenes'][str(i)] = repaired
+                for i, inspection in report['scenes'].items():
+                    report['errors'].extend(f'Scene {i}: {v}' for v in inspection['errors'])
+                    report['warnings'].extend(f'Scene {i}: {v}' for v in inspection['warnings'])
             scenes = {i: inject_kit(html) for i, html in scenes.items()}
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
@@ -354,9 +509,16 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     for i, (s, e) in enumerate(windows):
         if clips[i] is not None:
             continue
+        if production:
+            report['warnings'].append(f'Scene {i} used stock fallback; visual review required')
+            if maps:
+                report['errors'].append(f'Scene {i} geographic rendering failed')
         assets = fetch_for_segments(cfg, [segs[i]], stage / f"fallback_{i:02d}", st["fmt"])[0]
         if not assets:
             raise RuntimeError(f"segment {i}: no scene and no fallback asset")
         clips[i] = vb._build_segment_clip(assets[0], e - s, w, h, fps,
                                           scene_dir / f"fallback_{i:02d}.mp4", preset)
+    if production:
+        st['render_quality'] = report
+        (stage / 'render_quality.json').write_text(json.dumps(report, indent=2))
     return vb._concat(clips, stage / "silent.mp4")

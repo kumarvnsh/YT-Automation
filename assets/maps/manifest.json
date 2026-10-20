@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "assets": {
+    "united_states": {
+      "file": "united_states.svg",
+      "label": "United States",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        -130,
+        24,
+        -50,
+        85
+      ],
+      "scope": "Present-day continental establishing outline; clipped at display extent; not survey or historical boundary data",
+      "sha256": "ee7d77f684ae92090df95310e957b116a0365505325ed3af21d11265035e6f56"
+    },
+    "canada": {
+      "file": "canada.svg",
+      "label": "Canada",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        -130,
+        24,
+        -50,
+        85
+      ],
+      "scope": "Present-day continental establishing outline; clipped at display extent; not survey or historical boundary data",
+      "sha256": "9a78d27ce412f3644f9051023ee9bbb4261e26e1621453e191ca8e0c2dcef8b2"
+    },
+    "minnesota": {
+      "file": "minnesota.svg",
+      "label": "Minnesota",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_1_states_provinces.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        -130,
+        24,
+        -50,
+        85
+      ],
+      "scope": "Present-day continental establishing outline; clipped at display extent; not survey or historical boundary data",
+      "sha256": "7e5ba582fb4ed254ff9152979edce78770cfea085542c4ec9472c688f1da085c"
+    },
+    "washington": {
+      "file": "washington.svg",
+      "label": "Washington",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_1_states_provinces.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        -130,
+        24,
+        -50,
+        85
+      ],
+      "scope": "Present-day continental establishing outline; clipped at display extent; not survey or historical boundary data",
+      "sha256": "539b3d537a06e188a284beb3138d16b921a27b2f2c8672c987ed7bcd0098381b"
+    }
+  }
+}

@@ -36,6 +36,7 @@ html::after { background: radial-gradient(ellipse at 50% 40%, transparent 55%, r
   background-image: linear-gradient(var(--bone) 1px, transparent 1px), linear-gradient(90deg, var(--bone) 1px, transparent 1px);
   background-size: 36px 36px; }
 .k-stage > * { position: relative; z-index: 1; }
+.histold-map svg { display: block; width: 100%; max-height: 300px; }
 
 /* type */
 .k-kicker { font: 500 15px/1 var(--display); letter-spacing: .32em; text-transform: uppercase; color: var(--accent);

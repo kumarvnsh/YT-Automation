@@ -2,7 +2,7 @@ name: Export Analytics & Trends
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 * * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -37,7 +37,7 @@ jobs:
       - name: Export analytics + trends and wrap for the dashboard
         run: |
           # playlistItems.list (1 quota unit) + videos.list (1 unit/50 ids) —
-          # well under YouTube's 10k/day cap even at 4 runs/day.
+          # well under YouTube's 10k/day cap even with hourly exports.
           python scripts/export_analytics.py --label histold
           python scripts/merge_channel_json.py --labels histold --out data/analytics.json data/analytics.json
 
@@ -51,13 +51,20 @@ jobs:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
         run: python scripts/export_meta_analytics.py
 
+      - name: Capture six-Reel experiment observations
+        run: python scripts/report_experiment.py
+
       # Auto-republish stuck videos (config republish.auto). Dispatches
       # republish.yml per candidate and stamps auto_dispatched_at in the index
       # so each video gets exactly one automatic attempt.
       - name: Auto-republish underperformers
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python scripts/auto_republish.py --label histold
+        run: |
+          # Preserve the previous six-hour repost cadence while observations run hourly.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$((10#$(date -u +%H) % 6))" -eq 0 ]; then
+            python scripts/auto_republish.py --label histold
+          fi
 
       - name: Commit exports
         run: |
@@ -69,6 +76,7 @@ jobs:
           if [ "${{ steps.meta_analytics.outcome }}" = "success" ] && [ -f data/meta_analytics.json ]; then
             git add data/meta_analytics.json
           fi
+          git add data/experiments/
           if ! git diff --cached --quiet; then
             git commit -m "chore: refresh analytics + trends [skip ci]"
             git pull --rebase --autostash

@@ -30,6 +30,19 @@ from src.config import load_config, base_dir, env  # noqa: E402
 from src.meta_uploader import GRAPH, _page_access_token, _raise_graph  # noqa: E402
 
 
+def _experiment_metrics(video: dict, platform: str) -> dict:
+    """Keep unsupported per-Reel measures explicit instead of inventing zeroes."""
+    video["unavailable_metrics"] = {}
+    for metric in ("shares", "average_watch_time_seconds", "followers_gained", "three_second_retention", "completion_rate"):
+        video.setdefault(metric, None)
+        if video[metric] is None:
+            video["unavailable_metrics"][metric] = (
+                f"{platform} per-media metric not collected by this exporter; requires a supported "
+                "Insights metric and account permissions. No account-level substitute used."
+            )
+    return video
+
+
 def _first_line(text: str) -> str:
     return (text or "").strip().splitlines()[0][:120] if (text or "").strip() else "(untitled)"
 
@@ -76,7 +89,7 @@ def fetch_facebook(token: str, page_id: str, ver: str, limit: int) -> list[dict]
             "comments": ((v.get("comments") or {}).get("summary") or {}).get("total_count", 0),
             "url": f"https://www.facebook.com{permalink}" if permalink.startswith("/") else permalink,
         })
-    return videos
+    return [_experiment_metrics(video, "facebook") for video in videos]
 
 
 def _ig_media_views(media_id: str, token: str, ver: str, metric: str) -> tuple[int, str]:
@@ -128,7 +141,7 @@ def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[d
             "comments": m.get("comments_count", 0),
             "url": m.get("permalink", ""),
         })
-    return videos
+    return [_experiment_metrics(video, "instagram") for video in videos]
 
 
 def main() -> int:

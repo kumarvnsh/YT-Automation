@@ -7,6 +7,7 @@ quality.json by the pipeline's quality step and a failed report blocks upload.
 from __future__ import annotations
 
 import json
+import hashlib
 import subprocess
 from pathlib import Path
 
@@ -19,6 +20,80 @@ CHECK_NAMES = [
     "script", "topic", "narration", "structure", "audio", "captions", "assets",
     "video", "dimensions", "duration", "safety", "metadata",
 ]
+
+
+def production_checks(cfg: Config, stage: Path, st: dict) -> tuple[dict, list, list]:
+    """Offline checks bind evidence, timing and actual composition to this stage."""
+    from .research import script_hash, validate_research
+    from .alignment import narration_hash, build_storyboard
+    from .tts import WordTiming
+    from .map_assets import required_maps
+    checks, errors, warnings = {}, [], []
+    script = st.get('script', {})
+
+    def check(name, ok, message):
+        checks[name] = 'pass' if ok else 'fail'
+        if not ok:
+            errors.append(message)
+
+    verification = st.get('verification', {})
+    check('verification', verification.get('status') == 'supported' and
+          verification.get('script_hash') == script_hash(script), 'Missing or stale historical verification')
+    evidence_errors = validate_research(cfg, st.get('research', {}))
+    check('research_evidence', st.get('research', {}).get('status') == 'supported' and not evidence_errors,
+          '; '.join(evidence_errors) or 'Research is not supported')
+    try:
+        maps = required_maps(st.get('research', {}))
+        map_ok = [m['map_id'] for m in maps] == [m['map_id'] for m in st.get('maps', [])]
+    except (OSError, ValueError, KeyError):
+        map_ok = False
+    check('map_assets', map_ok, 'Required geographic assets are missing or changed')
+    expected_hash = narration_hash(script.get('segments', []))
+    board = st.get('storyboard', {})
+    check('alignment', board.get('narration_hash') == expected_hash and board.get('coverage') == 1 and
+          board.get('timing_source') in ('native', 'forced_aligned'), 'Missing, estimated or stale narration alignment')
+    vo = st.get('voiceover', {})
+    try:
+        rebuilt = build_storyboard(script['segments'], [WordTiming(*w) for w in vo['words']],
+            vo['duration'], int(cfg.get(f"video.{st.get('fmt', 'short')}.fps", 30)), vo['timing_source'], strict=True)
+        timing_ok = all(board.get(k) == rebuilt.get(k) for k in ('scenes', 'audio_duration', 'last_word_end', 'fps'))
+        timing_ok = timing_ok and board.get('audio_sha256') == file_hash(stage / vo['path'])
+    except (KeyError, ValueError, OSError, TypeError):
+        timing_ok = False
+    check('timing_binding', timing_ok, 'Storyboard does not match current narration audio and timestamps')
+    audio = st.get('audio_quality', {})
+    check('audio_diagnostics', audio.get('narration_hash') == expected_hash and
+          audio.get('audio_sha256') == board.get('audio_sha256') and bool(audio.get('audio_sha256')) and
+          audio.get('status') in ('pass', 'warn') and not audio.get('errors'), 'Missing or failed audio diagnostics')
+    warnings.extend(audio.get('warnings', []))
+    try:
+        composition = json.loads((stage / 'composition.json').read_text())
+    except (OSError, ValueError):
+        composition = {}
+    try:
+        composition_ok = (composition.get('video_sha256') == file_hash(stage / st.get('video', 'video.mp4')) and
+                          composition.get('audio_sha256') == file_hash(stage / vo['path']) and
+                          composition.get('captions_sha256') == file_hash(stage / st.get('captions', 'captions.ass')))
+    except (OSError, KeyError, TypeError):
+        composition_ok = False
+    check('composition_binding', composition_ok, 'Final video, narration or caption input changed after composition')
+    check('caption_composition', bool(composition.get('captions_applied')), 'Required captions were not composed')
+    if cfg.get('video.branding.enabled', False):
+        check('branding', bool(composition.get('branding_applied')), 'HISTOLD branding was not composed')
+    visual = st.get('render_quality', {})
+    check('render_quality', bool(visual) and visual.get('narration_hash') == expected_hash and not visual.get('errors'), 'Missing or failed rendered frame checks')
+    if any('fallback' in warning for warning in visual.get('warnings', [])):
+        check('fallback_review', bool(st.get('visual_reviewed')), 'Stock fallback requires visual review before publishing')
+    warnings.extend(visual.get('warnings', []))
+    return checks, errors, warnings
+
+
+def file_hash(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open('rb') as source:
+        for chunk in iter(lambda: source.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 WORDS_PER_MINUTE = 150
 
@@ -109,6 +184,7 @@ def validate_stage(cfg: Config, stage: Path, st: dict) -> dict:
         structure_error = validate_structure(
             [str(seg.get("beat", "")).strip().lower() for seg in segments],
             [str(seg.get("narration", "")).strip() for seg in segments],
+            cfg.get('script.story_profile'),
         )
         result("structure", structure_error is None, structure_error)
     else:
@@ -192,10 +268,27 @@ def validate_stage(cfg: Config, stage: Path, st: dict) -> dict:
     result("safety", not hits, f"banned terms found: {', '.join(hits)}" if hits else None)
 
     ordered = {name: checks[name] for name in CHECK_NAMES}
+    warnings = []
+    if cfg.get('production.enabled', False):
+        extra, failures, warnings = production_checks(cfg, stage, st)
+        ordered.update(extra)
+        errors.extend(failures)
+        if video_ok:
+            from .audio_quality import validate_endpoints
+            audio_stream = next((s for s in probe.get('streams', []) if s.get('codec_type') == 'audio'), {})
+            stream_duration = audio_stream.get('duration')
+            # Container duration can mask a short audio stream: require stream duration.
+            actual_video_duration = video_stream.get('duration')
+            endpoint_errors = validate_endpoints(float(stream_duration) if stream_duration else None,
+                float(actual_video_duration) if actual_video_duration else None, st.get('storyboard', {}).get('last_word_end', 0),
+                float(cfg.get('audio_quality.endpoint_tolerance', .15)))
+            ordered['narration_endpoint'] = 'fail' if endpoint_errors else 'pass'
+            errors.extend(endpoint_errors)
     passing = sum(1 for status in ordered.values() if status == "pass")
     return {
         "passed": passing == len(ordered),
         "score": round(100 * passing / len(ordered)),
         "checks": ordered,
         "errors": errors,
+        'warnings': warnings,
     }

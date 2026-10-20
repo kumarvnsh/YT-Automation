@@ -1,8 +1,9 @@
 """Text-to-speech voiceover generation.
 
 Default provider is edge-tts (free, no API key) which also gives word-level
-timing — ideal for animated captions. ElevenLabs / OpenAI are optional upgrades
-(no word timing, so captions fall back to evenly distributed timing).
+timing — ideal for animated captions. ElevenLabs / OpenAI are optional upgrades.
+Estimated timings remain available for legacy jobs; strict production requires
+measured boundaries, optionally obtained through configured transcription.
 
 Returns a `Voiceover` with the audio file path, total duration, and a list of
 WordTiming(word, start, end) in seconds.
@@ -28,6 +29,7 @@ class Voiceover:
     audio_path: Path
     duration: float
     words: list[WordTiming]
+    timing_source: str = "estimated"
 
 
 def _ffprobe_duration(path: Path) -> float:
@@ -55,7 +57,7 @@ async def _edge_synthesize(text: str, voice: str, rate: str, out_path: Path) -> 
             ctype = chunk["type"]
             if ctype == "audio":
                 fh.write(chunk["data"])
-            elif ctype in ("WordBoundary", "SentenceBoundary"):
+            elif ctype == "WordBoundary":
                 start = chunk["offset"] / 1e7  # 100-ns ticks -> seconds
                 dur = chunk["duration"] / 1e7
                 words.append(WordTiming(chunk["text"], start, start + dur))
@@ -69,9 +71,11 @@ def _synthesize_edge(cfg: Config, text: str, out_path: Path) -> Voiceover:
     duration = _ffprobe_duration(out_path)
     # If boundaries came back sentence-level (or empty), refine to word-level
     # by evenly distributing within the spoken span so captions stay readable.
-    if len(words) < max(2, len(text.split()) // 6):
+    timing_source = "native"
+    if len(words) < max(1, len(text.split()) // 6):
+        timing_source = "estimated"
         words = _refine_to_words(text, words, duration)
-    return Voiceover(out_path, duration, words)
+    return Voiceover(out_path, duration, words, timing_source)
 
 
 def _refine_to_words(text: str, coarse: list[WordTiming], duration: float) -> list[WordTiming]:
@@ -136,9 +140,45 @@ def synthesize(cfg: Config, text: str, out_path: Path) -> Voiceover:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     provider = cfg.get("tts.provider", "edge")
     if provider == "edge":
-        return _synthesize_edge(cfg, text, out_path)
-    if provider == "elevenlabs":
-        return _synthesize_elevenlabs(cfg, text, out_path)
-    if provider == "openai":
-        return _synthesize_openai(cfg, text, out_path)
-    raise ValueError(f"Unknown tts.provider: {provider}")
+        voiceover = _synthesize_edge(cfg, text, out_path)
+    elif provider == "elevenlabs":
+        voiceover = _synthesize_elevenlabs(cfg, text, out_path)
+    elif provider == "openai":
+        voiceover = _synthesize_openai(cfg, text, out_path)
+    else:
+        raise ValueError(f"Unknown tts.provider: {provider}")
+    strict = cfg.get("production.strict_timing", False)
+    if voiceover.timing_source == "estimated" and cfg.get("tts.alignment_provider", "") == "openai":
+        voiceover = align_voiceover(voiceover)
+    if strict:
+        from .alignment import build_storyboard
+        try:
+            build_storyboard([{"narration": text}], voiceover.words, voiceover.duration,
+                             30, voiceover.timing_source, strict=True)
+        except ValueError:
+            if cfg.get("tts.alignment_provider", "") != "openai" or voiceover.timing_source == "forced_aligned":
+                raise
+            voiceover = align_voiceover(voiceover)
+            build_storyboard([{"narration": text}], voiceover.words, voiceover.duration,
+                             30, voiceover.timing_source, strict=True)
+    return voiceover
+
+
+def align_voiceover(voiceover: Voiceover) -> Voiceover:
+    """Obtain measured ASR word timestamps; text agreement is validated downstream.
+
+    OpenAI documents word timestamps for whisper-1 + verbose_json:
+    https://developers.openai.com/api/docs/guides/speech-to-text
+    This is transcription alignment, not proof that every scripted word was spoken.
+    """
+    from openai import OpenAI
+    client = OpenAI(api_key=env("OPENAI_API_KEY"))
+    with voiceover.audio_path.open("rb") as audio:
+        transcript = client.audio.transcriptions.create(
+            model="whisper-1", file=audio, response_format="verbose_json",
+            timestamp_granularities=["word"],
+        )
+    words = [WordTiming(w.word, w.start, w.end) for w in (transcript.words or [])]
+    if not words:
+        raise ValueError("OpenAI alignment returned no measured word timestamps")
+    return Voiceover(voiceover.audio_path, voiceover.duration, words, "forced_aligned")

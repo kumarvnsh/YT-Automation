@@ -14,6 +14,7 @@ Everything uses ffmpeg via subprocess for reliability and zero heavy deps.
 from __future__ import annotations
 
 import os
+import json
 import random
 import subprocess
 from pathlib import Path
@@ -405,7 +406,13 @@ def finalize(
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     captions_on = bool(ass_path and cfg.get("video.captions.enabled", True))
+    strict = cfg.get("production.enabled", False)
+    branding = cfg.get("video.branding.enabled", False)
+    if strict and cfg.get("video.captions.enabled", True) and not ass_path:
+        raise RuntimeError("Required caption source is missing")
     if captions_on and not _has_subtitles_filter():
+        if strict:
+            raise RuntimeError("Required captions cannot be burned: FFmpeg lacks libass")
         print(
             "  ! WARNING: this ffmpeg build has no 'subtitles' filter (missing libass) — "
             "rendering WITHOUT burned captions. Install a libass-enabled ffmpeg "
@@ -418,13 +425,26 @@ def finalize(
     # from the stage dir (bare filename, no slashes/colons/quotes). This avoids
     # filtergraph-parser quirks in newer ffmpeg (8.x rejects the shorthand /
     # quoted-path forms inside -filter_complex).
-    if captions_on:
-        stage_dir = Path(ass_path).parent
-        ass_name = Path(ass_path).name
+    if captions_on or branding:
+        stage_dir = Path(ass_path).parent if captions_on else work_dir
+        filters = []
+        if captions_on:
+            ass_name = Path(ass_path).name
+            filters.append(f"subtitles=filename={ass_name}")
+        if branding:
+            logo = Path(__file__).resolve().parent.parent / 'assets/branding/histold-logo.png'
+            if not logo.is_file():
+                raise RuntimeError('Histold branding logo is missing')
+            width = round(int(cfg.get('video.short.width', 1080)) * .10)
+            base = ','.join(filters) if filters else 'null'
+            graph = (f'[0:v]{base}[base];[1:v]scale={width}:-1,format=rgba,'
+                     'colorchannelmixer=aa=0.72[logo];'
+                     '[base][logo]overlay=x=main_w*0.05:y=main_h*0.05:eof_action=repeat[out]')
         captioned = work_dir / "captioned.mp4"
         _run([
             "ffmpeg", "-y", "-i", str(silent_video.resolve()),
-            "-vf", f"subtitles=filename={ass_name}",
+            *(["-i", str(logo), "-filter_complex", graph, "-map", "[out]"]
+              if branding else ["-vf", ",".join(filters)]),
             "-c:v", "libx264", "-preset", preset, "-crf", crf, "-pix_fmt", "yuv420p",
             "-an", str(captioned.resolve()),
         ], cwd=stage_dir)
@@ -445,4 +465,12 @@ def finalize(
         str(out_path.resolve()),
     ]
     _run(cmd)
+    from .quality_gate import file_hash
+    (work_dir / "composition.json").write_text(json.dumps({
+        "schema_version": 1, "captions_applied": captions_on,
+        "branding_applied": branding, "output": out_path.name,
+        'video_sha256': file_hash(out_path) if out_path.exists() else None,
+        'audio_sha256': file_hash(voiceover_path) if voiceover_path.exists() else None,
+        'captions_sha256': file_hash(ass_path) if captions_on and ass_path.exists() else None,
+    }, indent=2))
     return out_path
