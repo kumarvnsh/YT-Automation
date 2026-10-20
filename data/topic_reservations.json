@@ -1933,5 +1933,14 @@
     "slot": "morning",
     "date": "2026-10-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261020_062952_short",
+    "title": "The Order That Froze an Army's Biggest Threat | History's Almost Moments",
+    "fingerprint": "almost_army_biggest_froze_history_moments_order_s_that_threat",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-20",
+    "status": "reserved"
   }
 ]

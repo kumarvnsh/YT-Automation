@@ -3569,5 +3569,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "60lWZwdWvVI",
+    "run_id": "39380575226",
+    "stage_dir_name": "20261020_062952_short",
+    "title": "The Order That Froze an Army's Biggest Threat | History's Almost Moments",
+    "published_at": "2026-10-20T06:35:34.965930+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
