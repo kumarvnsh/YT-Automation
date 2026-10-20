@@ -3555,5 +3555,19 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "0jn1ExQjM34",
+    "run_id": "39367304551",
+    "stage_dir_name": "20261020_040207_short",
+    "title": "The Straight Line Border That Isn't Straight?",
+    "published_at": "2026-10-20T04:08:58.660205+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null
   }
 ]
