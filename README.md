@@ -51,8 +51,10 @@ added. These maps establish present-day context and do not resolve local roads.
 
 Final composition adds HISTOLD and captions. Missing libass, stale evidence or
 timing, changed media, narration truncation, and blocking frame defects prevent
-upload. Static-scene detection and pauses remain warning heuristics. Stock
-fallback requires visual review before production publishing.
+upload. Static-scene detection and pauses remain warning heuristics. Missing or
+invalid generated scenes use a local house template with supplied narration and
+vetted maps, and must pass the same frame checks. This recovery needs no image
+credits. Historical stock-fallback reports still require review or a corrected render.
 
 Every new job snapshots its production settings; older jobs retain legacy
 behavior, and Astrotold does not opt into the new profile. Set

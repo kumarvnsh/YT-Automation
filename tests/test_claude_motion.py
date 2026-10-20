@@ -8,6 +8,25 @@ from src.tts import WordTiming
 
 
 class ClaudeMotionTest(unittest.TestCase):
+    def test_one_based_scene_ids_are_normalized_without_losing_hook(self):
+        from src.claude_motion import parse_scenes
+        raw = '<scene index="1"><html>hook</html></scene><scene index="2"><html>end</html></scene>'
+        self.assertEqual(parse_scenes(raw, 2), {0:'<html>hook</html>',1:'<html>end</html>'})
+
+    def test_scene_parser_accepts_single_quoted_indices(self):
+        from src.claude_motion import parse_scenes
+        self.assertEqual(parse_scenes("<scene index='0'><html>hook</html></scene>",1),{0:'<html>hook</html>'})
+
+    def test_house_recovery_uses_vetted_maps_and_narration_only(self):
+        from src.claude_motion import house_scene
+        from src.map_assets import load_map
+        html = house_scene('This American town requires a border detour.',
+                           [load_map('canada'),load_map('washington'),load_map('united_states')])
+        self.assertIn('data-map-id="canada"',html)
+        self.assertIn('data-map-id="washington"',html)
+        self.assertNotIn('<histold-map',html)
+        self.assertIn('This American town',html)
+
     def test_windows_follow_word_timings_and_cover_total(self):
         words = [WordTiming(f"w{i}", i * 0.5, i * 0.5 + 0.4) for i in range(10)]
         win = segment_windows(["a b c d", "e f", "g h i j"], words, 6.0)

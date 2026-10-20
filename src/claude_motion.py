@@ -6,9 +6,9 @@ with headless Chromium: all animations are paused, then each frame is captured
 by seeking document.getAnimations() to t. That way the output does not depend
 on wall-clock speed, and a slow CI runner produces the same video as a fast laptop.
 
-One API call per video returns every scene. Any scene that is missing or fails
-to render falls back to the normal stock/AI-image chain for that segment, so
-this mode can never break a run.
+One API call per video returns every scene. Production recovers missing or invalid
+scenes using local, checked house templates and vetted maps. Legacy jobs retain
+the stock/AI-image recovery chain.
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from .config import Config, env
 # Claude works in a 540x960 CSS viewport while the output is 1080x1920.
 _SCALE = 2
 
-_SCENE_RE = re.compile(r'<scene index="(\d+)">\s*(.*?)\s*</scene>', re.DOTALL)
+_SCENE_RE = re.compile(r'''<scene\s+index\s*=\s*['"](\d+)['"]\s*>\s*(.*?)\s*</scene>''', re.DOTALL)
 _HEAD_RE = re.compile(r"<head[^>]*>", re.IGNORECASE)
 
 # Shared look (fonts, palette, grain, vignette, drift, motion utilities) is
@@ -36,10 +36,35 @@ _EXAMPLE = Path(__file__).with_name("motion_example.html").read_text(encoding="u
 
 def inject_kit(html: str) -> str:
     """Put the kit first in <head> so the scene's own CSS overrides it."""
+    if _KIT_CSS in html:
+        return html
     m = _HEAD_RE.search(html)
     if m:
         return html[:m.end()] + _KIT + html[m.end():]
     return "<!doctype html><html><head>" + _KIT + "</head>" + re.sub(r"(?i)<!doctype[^>]*>", "", html, count=1)
+
+
+def parse_scenes(text: str, count: int) -> dict[int, str]:
+    scenes = {int(i): html for i, html in _SCENE_RE.findall(text)}
+    # Some responses use storyboard-style 1-based IDs; normalize only an unambiguous complete set.
+    if set(scenes) == set(range(1, count + 1)):
+        return {i - 1: html for i, html in scenes.items()}
+    return {i: html for i, html in scenes.items() if 0 <= i < count}
+
+
+def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
+    """Local recovery scene: supplied narration and pinned geography, no generated facts or images."""
+    from html import escape
+    placeholders = ''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in maps)
+    art = placeholders or '<div class="k-rule k-grow" style="--t:4s"></div>'
+    html = ('<!doctype html><html><head><style>'
+            '.k-stage{padding:128px 36px 24px;justify-content:flex-start;gap:18px}'
+            '.k-title{font-size:30px;line-height:1.12;text-transform:none;max-width:468px}'
+            '</style></head><body><div class="k-stage">'
+            '<div class="k-title k-rise">' + escape(narration) + '</div>' + art + '</div></body></html>')
+    html = bind_maps(html, maps)
+    return html.replace('class="histold-map" style="width:100%"',
+        f'class="histold-map k-pan" style="width:100%;--t:{duration}s;--s0:1;--s1:1.02"')
 
 _SYSTEM = """You are a senior motion designer making the visuals for a narrated \
 vertical YouTube Short on a history channel called Histold. The voiceover and \
@@ -233,7 +258,8 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     lines = [f"Video title: {title}", ""]
     board = cfg.get('production.storyboard')
     if board:
-        lines.append('Measured storyboard (scene-local word/cue seconds drive animation delays):\n' + json.dumps(board))
+        board = {**board, 'scenes': [{**scene, 'scene_id': scene['segment_id']} for scene in board['scenes']]}
+        lines.append('Measured storyboard with ZERO-BASED scene IDs (scene-local word/cue seconds drive animation delays):\n' + json.dumps(board))
         lines.append('Use reveal cues for meaningful development every 2–4 seconds. Hold key labels at least two seconds. '
                      'Reserve upper-left x=4.5%-17%, y=4.5%-12% for the small translucent HISTOLD logo. '
                      'Use present-day maps only as establishing context; never invent historical borders.')
@@ -268,8 +294,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     if msg.stop_reason == "refusal":
         raise RuntimeError(f"refused: {msg.stop_details}")
     text = "".join(b.text for b in msg.content if b.type == "text")
-    scenes = {int(i): html for i, html in _SCENE_RE.findall(text)}
-    scenes = {i: html for i, html in scenes.items() if 0 <= i < len(segs)}
+    scenes = parse_scenes(text, len(segs))
     print(f"  claude_motion: {len(scenes)}/{len(segs)} scenes, stop={msg.stop_reason}, "
           f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
     return scenes
@@ -423,7 +448,7 @@ def _render_scene(page, html: str, duration: float, fps: int, dest: Path, preset
 
 
 def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: float) -> Path:
-    """Build stage/silent.mp4 from Claude scenes; per-segment stock fallback."""
+    """Build silent visuals; production recovers locally, legacy jobs use stock."""
     from . import video_builder as vb
     from .assets import fetch_for_segments
     from .pipeline import _rebuild_segments
@@ -449,15 +474,16 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
-        print(f"  ! claude_motion: scene request failed ({exc}) — using stock.")
+        recovery = 'local house templates' if production else 'stock'
+        print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
 
     clips: list[Path | None] = [None] * len(segs)
-    report = {'schema_version': 1, 'scenes': {}, 'warnings': [], 'errors': [],
+    report = {'schema_version': 1, 'scenes': {}, 'warnings': [], 'errors': [], 'recoveries': [],
               'narration_hash': st.get('storyboard', {}).get('narration_hash')}
-    if scenes:
+    if scenes or production:
         from playwright.sync_api import sync_playwright
 
         with sync_playwright() as p:
@@ -467,31 +493,52 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                 scenes = _check_and_repair(cfg, page, scenes, cw, ch)
             else:
                 issues = {}
-                for i, html in scenes.items():
-                    if i < 0 or i >= len(windows):
+                for i, (s, e) in enumerate(windows):
+                    html = scenes.get(i)
+                    if not html:
+                        report['scenes'][str(i)] = {'errors': ['Missing generated scene'], 'warnings': []}
                         continue
                     if i == 0 and maps and any(f'<histold-map id="{a["map_id"]}"></histold-map>' not in html for a in maps):
-                        raise ValueError('Opening scene is missing required establishing map assets')
-                    scenes[i] = bind_maps(html, maps)
+                        report['scenes'][str(i)] = {'errors': ['Opening scene is missing required establishing maps'], 'warnings': []}
+                        continue
                     s, e = windows[i]
-                    inspection = inspect_scene(page, inject_kit(scenes[i]), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                    try:
+                        scenes[i] = bind_maps(html, maps)
+                        inspection = inspect_scene(page, inject_kit(scenes[i]), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                    except Exception as exc:
+                        inspection = {'errors': [str(exc)], 'warnings': []}
                     report['scenes'][str(i)] = inspection
                     if inspection['errors']:
                         issues[i] = inspection['errors']
                 if issues and cfg.get('video.claude_motion.repair', True):
-                    fixed = _repair_scenes(cfg, scenes, issues, cw, ch)
+                    try:
+                        fixed = _repair_scenes(cfg, scenes, issues, cw, ch)
+                    except Exception as exc:
+                        print(f'  ! layout repair unavailable ({exc}) — using local house scenes')
+                        fixed = {}
                     for i, html in fixed.items():
-                        html = bind_maps(html, maps)
-                        if i == 0 and maps and any(f'data-map-id="{asset["map_id"]}"' not in html for asset in maps):
+                        try:
+                            html = bind_maps(html, maps)
+                            if i == 0 and maps and any(f'data-map-id="{asset["map_id"]}"' not in html for asset in maps):
+                                continue
+                            s, e = windows[i]
+                            repaired = inspect_scene(page, inject_kit(html), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                        except Exception:
                             continue
-                        s, e = windows[i]
-                        repaired = inspect_scene(page, inject_kit(html), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         if len(repaired['errors']) < len(report['scenes'][str(i)]['errors']):
                             scenes[i] = html
                             report['scenes'][str(i)] = repaired
-                for i, inspection in report['scenes'].items():
-                    report['errors'].extend(f'Scene {i}: {v}' for v in inspection['errors'])
-                    report['warnings'].extend(f'Scene {i}: {v}' for v in inspection['warnings'])
+                for i, (s, e) in enumerate(windows):
+                    original_errors = report['scenes'][str(i)]['errors']
+                    if not original_errors:
+                        continue
+                    scenes[i] = house_scene(segs[i].narration, maps, e-s)
+                    inspection = inspect_scene(page, inject_kit(scenes[i]), e-s, fps,
+                        board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                    report['recoveries'].append({'scene': i, 'method': 'local_house_scene',
+                        'original_errors': original_errors, 'validated': not inspection['errors']})
+                    report['scenes'][str(i)] = inspection
+                    print(f'  ✓ scene {i} recovered with local house template')
             scenes = {i: inject_kit(html) for i, html in scenes.items()}
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
@@ -503,6 +550,18 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                                              scene_dir / f"scene_{i:02d}.mp4", preset)
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
+                    if production:
+                        scenes[i] = inject_kit(house_scene(segs[i].narration, maps, e-s))
+                        inspection = inspect_scene(page, scenes[i], e-s, fps,
+                            board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                        if inspection['errors']:
+                            print(f'  ! local scene {i} has layout errors; quality gate will report them')
+                        report['scenes'][str(i)] = inspection
+                        report['recoveries'].append({'scene':i,'method':'local_house_scene',
+                            'original_errors':[str(exc)],'validated':not inspection['errors']})
+                        clips[i] = _render_scene(page, scenes[i], e-s, fps, scene_dir / f'scene_{i:02d}.mp4', preset)
+                        (scene_dir / f'scene_{i:02d}.html').write_text(scenes[i], encoding='utf-8')
+                        continue
                     print(f"  ! scene {i} failed ({exc}) — stock fallback.")
             browser.close()
 
@@ -519,6 +578,9 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         clips[i] = vb._build_segment_clip(assets[0], e - s, w, h, fps,
                                           scene_dir / f"fallback_{i:02d}.mp4", preset)
     if production:
+        for i, inspection in report['scenes'].items():
+            report['errors'].extend(f'Scene {i}: {v}' for v in inspection['errors'])
+            report['warnings'].extend(f'Scene {i}: {v}' for v in inspection['warnings'])
         st['render_quality'] = report
         (stage / 'render_quality.json').write_text(json.dumps(report, indent=2))
     return vb._concat(clips, stage / "silent.mp4")
