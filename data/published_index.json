@@ -3583,5 +3583,27 @@
     "retitled_at": null,
     "republished_from": null,
     "republished_as": null
+  },
+  {
+    "video_id": "IDnUPy_0OSU",
+    "run_id": "39387466130",
+    "stage_dir_name": "20261020_073557_339806_short",
+    "title": "The American Town You Can't Drive To Without Canada",
+    "published_at": "2026-10-20T07:43:00.278472+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-six-reels",
+    "experiment_slot": 1,
+    "category": "strange_geography",
+    "hook": "This American community can only be reached by road through Canada. How did that happen?",
+    "duration": 45.672,
+    "production_profile": 2,
+    "facebook_id": "2050488608925423",
+    "instagram_id": "18098898767662659"
   }
 ]
