@@ -117,7 +117,7 @@ limit, cut a fact or tighten the fact stack — never pad the hook or callback.
 
 _CONSEQUENCE_STRUCTURE = """
 CONSEQUENCE-FIRST HISTOLD PROFILE v1:
-Use beats hook, setup, pivot, 3-5 fact segments, callback in that order.
+Use exactly 7 segments: hook, setup, pivot, exactly 3 fact segments, callback in that order.
 State the strange consequence in the first 2–3 spoken seconds (roughly the first
 5-8 words), then explain context and historical cause. The full hook may be
 5-24 words; do not force a long sentence into three seconds. Never lead with a date.
@@ -166,7 +166,9 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     beats_on = fmt == "short" and enforce_beats(cfg)
     if fmt == "short":
         secs = cfg.get("script.shorts_target_seconds", 45)
-        if beats_on:
+        if cfg.get('script.story_profile') == 'consequence_first':
+            seg_hint = 'exactly 7 segments, one per beat below'
+        elif beats_on:
             seg_hint = "6 to 8 segments, one per beat below"
         else:
             seg_hint = "3 to 5 short segments" if secs <= 30 else "5 to 7 short segments"
@@ -210,6 +212,8 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     # original position inside Constraints, so their prompts do not drift.
     consequence = fmt == "short" and cfg.get("script.story_profile") == "consequence_first"
     structure_block = _CONSEQUENCE_STRUCTURE if consequence else (_SHORT_STRUCTURE if beats_on else "")
+    if consequence:
+        structure_block += '\n' + _consequence_budget(words)
     hook_rule = "" if (beats_on or consequence) else _LEGACY_HOOK
     # Beats path carries the closing question inside the callback beat already.
     closing_rule = _CLOSING_QUESTION if (fmt == "short" and not beats_on and not consequence) else ""
@@ -361,6 +365,16 @@ def enforce_beats(cfg) -> bool:
     return bool(cfg.get("script.enforce_beats", False) or cfg.get("script.story_profile") == "consequence_first")
 
 
+def _consequence_budget(target: int) -> str:
+    # Allocate the full target across seven beats, leaving headroom below the hard ceiling.
+    roles = ['hook', 'setup', 'pivot', 'fact 1', 'fact 2', 'fact 3', 'callback']
+    budgets = [target // 7 + (i < target % 7) for i in range(7)]
+    return ('PER-BEAT WORD BUDGET: ' + ', '.join(f'{role}: {budget}' for role, budget in zip(roles, budgets)) +
+            f'. Total target: {target} words. These counts apply only to narration, using whitespace-separated words. '
+            'All three fact segments use the exact JSON beat tag "fact", never "fact 1" or other numbered tags. '
+            'Keep qualifications and causal links. Omit optional details rather than adding segments; never cut a sentence mid-thought.')
+
+
 def _content_words(text: str) -> set[str]:
     """Distinctive words used for the hook/callback loop check."""
     return {
@@ -408,6 +422,8 @@ def validate_structure(beats: list[str], narrations: list[str], profile: str | N
 
     hook, callback = narrations[0], narrations[-1]
     if profile == "consequence_first":
+        if counts['fact'] != 3 or beats != ['hook', 'setup', 'pivot', 'fact', 'fact', 'fact', 'callback']:
+            return 'consequence profile requires exactly seven ordered beats with three facts'
         if re.match(r"^\s*(?:in\s+)?\d{3,4}\b", hook, re.I):
             return "consequence hook must not open with a date"
         if not 5 <= len(hook.split()) <= 24:
@@ -593,6 +609,8 @@ def _parse_script_response(raw: str) -> tuple[dict, list[Segment]]:
         ):
             raise ValueError("script response has invalid segment")
         beat = str(item.get("beat", "")).strip().lower()
+        if re.fullmatch(r'fact[ _-]?[1-5]', beat):
+            beat = 'fact'
         if beat and beat not in valid_beats:
             raise ValueError(f"script response has unknown beat tag: {beat!r}")
         refs = item.get("claim_ids", [])
@@ -686,8 +704,17 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
                 f"narration, one string per segment:\n{draft}\n"
                 "Return the same script with the narration edited to fit: keep the "
                 "topic, beats, hook and callback, and tighten or cut sentences "
-                "(drop the weakest fact first if over). Count the words before answering."
+                "(remove optional details first if over). Count the words before answering."
             )
+            if cfg.get('script.story_profile') == 'consequence_first':
+                attempt_prompt += (
+                    '\n' + _consequence_budget(target) +
+                    f'\nCut at least {max(0, word_count-target)} words from the previous draft to reach the target. '
+                    'Rewrite narration within each beat, combining or omitting optional fact segments until exactly three remain. '
+                    'Preserve the hook subject, complete causal explanation, and final payoff. '
+                    'Return the full script JSON, retaining claim_ids for every rewritten factual segment. '
+                    'Do not add claims to compensate for shorter wording.'
+                )
         if structure_error is not None:
             print(f"  ! structure: {structure_error} — regenerating.")
             attempt_prompt += (

@@ -63,6 +63,34 @@ def _cfg() -> Config:
 
 
 class ScriptLengthTests(unittest.TestCase):
+    def test_numbered_fact_labels_are_normalized_before_structure_checks(self):
+        from src.script_generator import _parse_script_response
+        draft = json.loads(GOOD)
+        for index, segment in enumerate(draft['segments'][3:6], 1):
+            segment['beat'] = f'fact {index}'
+        _, segments = _parse_script_response(json.dumps(draft))
+        self.assertEqual([s.beat for s in segments[3:6]], ['fact'] * 3)
+
+    def test_consequence_profile_has_consistent_seven_beat_budget(self):
+        from src.script_generator import _build_prompt
+        cfg = _cfg()
+        cfg.raw['script']['story_profile'] = 'consequence_first'
+        prompt = _build_prompt(cfg, 'short', topic_override='test topic')
+        self.assertIn('exactly 7 segments', prompt)
+        self.assertIn('exactly 3 fact segments', prompt)
+        self.assertIn('PER-BEAT WORD BUDGET', prompt)
+        self.assertNotIn('3-5 fact segments', prompt)
+
+    def test_retry_has_measured_cut_and_individual_budgets(self):
+        cfg = _cfg()
+        cfg.raw['script']['story_profile'] = 'consequence_first'
+        with patch('src.script_generator._call_anthropic', side_effect=[LONG, GOOD]) as call:
+            generate_script(cfg, 'short', topic_override='test topic')
+        retry = call.call_args_list[1].args[1]
+        self.assertIn('PER-BEAT WORD BUDGET', retry)
+        self.assertIn('Cut at least', retry)
+        self.assertIn('claim_ids', retry)
+
     def test_fixtures_straddle_the_budget(self) -> None:
         self.assertTrue(84 <= GOOD_WORDS <= 151, GOOD_WORDS)
         self.assertGreater(LONG_WORDS, 151)
