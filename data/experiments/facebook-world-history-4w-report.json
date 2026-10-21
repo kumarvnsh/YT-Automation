@@ -1,0 +1,22 @@
+{
+  "experiment_id": "facebook-world-history-4w",
+  "observations": [],
+  "comparisons": [],
+  "earnings_by_period": {
+    "schema_version": 1,
+    "reels": [],
+    "limitations": [
+      "Imported dashboard amounts may be estimated or revised; these are not payout statements.",
+      "Stars counts are never converted to earnings; import reported Stars earnings separately.",
+      "No pooling across currencies, periods or audience observation windows."
+    ]
+  },
+  "limitations": [
+    "Exploratory descriptive comparisons only; small unrandomized samples do not establish causal winners.",
+    "Only on-time cumulative observations are compared at the same target age; late observations remain visible.",
+    "Sources and explicit view definitions are separate comparison groups. Unknown view definitions have no derived rates and are not pooled across Reels.",
+    "Missing measures remain null. Rate denominators include only Reels with both measures available.",
+    "Region, series and duration may be confounded. Unknown metadata is grouped as null.",
+    "Earnings retain their own reporting periods and currencies; never divide period earnings by snapshot views."
+  ]
+}

@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-21T19:00:46.556647+00:00",
+      "updated": "2026-10-21T22:51:19.662478+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,49 @@
         ]
       },
       "videos": [
+        {
+          "id": "ArtlBc4O8P0",
+          "title": "Your Floral Curtains Have a Hindi Secret",
+          "description": "The English word chintz comes from Hindi and describes painted cotton from India's Coromandel Coast. Indian dyers mastered permanent colour, and European buyers wanted it so much that some countries restricted imports. Part of the You Use It Every Day series.\n#history #india #didyouknow",
+          "tags": [
+            "chintz",
+            "coromandel coast",
+            "cotton",
+            "did you know",
+            "education",
+            "everyday origins",
+            "hindi words",
+            "historical facts",
+            "history shorts",
+            "india history",
+            "mordant",
+            "queen mary",
+            "textile history",
+            "word origins",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-10-21T20:30:16Z",
+          "thumbnail": "https://i.ytimg.com/vi/ArtlBc4O8P0/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-06",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "tiHKZr7XzxA",
           "title": "The Corner of America That Sits Inside Canada's Roads",
@@ -152,7 +195,7 @@
           ],
           "publishedAt": "2026-10-20T16:08:37Z",
           "thumbnail": "https://i.ytimg.com/vi/iMedjVY015g/mqdefault.jpg",
-          "views": 55,
+          "views": 57,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -241,7 +284,7 @@
           ],
           "publishedAt": "2026-10-20T07:42:28Z",
           "thumbnail": "https://i.ytimg.com/vi/IDnUPy_0OSU/mqdefault.jpg",
-          "views": 57,
+          "views": 58,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -373,7 +416,7 @@
           ],
           "publishedAt": "2026-10-20T03:40:39Z",
           "thumbnail": "https://i.ytimg.com/vi/EQ0uhPk9Slw/mqdefault.jpg",
-          "views": 2,
+          "views": 3,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2157,48 +2200,6 @@
           "average_watch_time_seconds": 0.0,
           "shares": 0,
           "analytics_views": 1,
-          "analytics_period": {
-            "start_date": "2026-10-06",
-            "end_date": "2026-10-21",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "a377NfQSi7U",
-          "title": "One Signature Almost Never Happened | History's Almost Moments",
-          "description": "In 1683, the entire fate of Europe rested on a single ruler's willingness to sign a treaty he had every reason to refuse. One hesitation could have left Vienna \u2014 and the continent \u2014 wide open. This is the close call that textbooks skip over. #history #historicalfacts #almostmoments",
-          "tags": [
-            "almost moments",
-            "close calls",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "historical facts",
-            "history",
-            "history shorts",
-            "near miss",
-            "ottoman empire",
-            "shorts",
-            "trending",
-            "vienna 1683",
-            "viral",
-            "world history"
-          ],
-          "publishedAt": "2026-10-06T04:06:51Z",
-          "thumbnail": "https://i.ytimg.com/vi/a377NfQSi7U/mqdefault.jpg",
-          "views": 36,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 14.17,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 7.0,
-          "shares": 0,
-          "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-06",
             "end_date": "2026-10-21",
