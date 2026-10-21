@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-20T03:39:34.214537+00:00",
+      "updated": "2026-10-21T02:13:57.295283+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,274 @@
       },
       "videos": [
         {
+          "id": "iMedjVY015g",
+          "title": "The Missing Part That Doomed a North Sea Giant",
+          "description": "In 1988, a hidden maintenance gap on the Piper Alpha platform set off the deadliest offshore oil disaster in history. Here is how one missing valve and one misplaced permit led to catastrophe. Which failure matters most?\n#history #piperalpha #disaster",
+          "tags": [
+            "1988",
+            "did you know",
+            "disaster history",
+            "education",
+            "engineering failure",
+            "facts",
+            "history",
+            "history shorts",
+            "industrial accident",
+            "lord cullen inquiry",
+            "north sea",
+            "offshore oil",
+            "oil platform",
+            "piper alpha",
+            "safety failure",
+            "shorts",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-20T16:08:37Z",
+          "thumbnail": "https://i.ytimg.com/vi/iMedjVY015g/mqdefault.jpg",
+          "views": 36,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "uJWD0GH82WA",
+          "title": "Why Did Two Popes Lead to a Student Jail Covered in Poetry?",
+          "description": "Heidelberg held its first lecture on October 19, 1386, born from a church split that gave Europe two popes. Here are a few surprising facts about Germany's oldest university. Would the split have been worth it?\n#history #didyouknow #germany",
+          "tags": [
+            "did you know",
+            "education",
+            "facts",
+            "germany",
+            "heidelberg",
+            "history",
+            "history shorts",
+            "mark twain",
+            "marsilius of inghen",
+            "medieval history",
+            "october 19",
+            "on this day",
+            "shorts",
+            "trending",
+            "university history",
+            "viral",
+            "western schism"
+          ],
+          "publishedAt": "2026-10-20T12:23:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/uJWD0GH82WA/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "IDnUPy_0OSU",
+          "title": "The American Town You Can't Drive To Without Canada",
+          "description": "The Northwest Angle is the only part of the contiguous US north of the 49th parallel. A mapping error in an 1783 treaty, then later treaty fixes, left it cut off from the rest of Minnesota by land. Here is how a line on a map became a drive through another country.\n#history #geography #didyouknow",
+          "tags": [
+            "border history",
+            "did you know",
+            "education",
+            "exclave",
+            "facts",
+            "history",
+            "history facts",
+            "history shorts",
+            "lake of the woods",
+            "minnesota",
+            "northwest angle",
+            "shorts",
+            "strange geography",
+            "treaty of paris",
+            "trending",
+            "us canada border",
+            "viral",
+            "webster ashburton treaty"
+          ],
+          "publishedAt": "2026-10-20T07:42:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/IDnUPy_0OSU/mqdefault.jpg",
+          "views": 33,
+          "likes": 1,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "60lWZwdWvVI",
+          "title": "The Order That Froze an Army's Biggest Threat | History's Almost Moments",
+          "description": "In May 1940, German tanks stopped just as a huge Allied army was cornered at Dunkirk. Historians still argue about why the halt happened, and what it changed. Where do you land on the debate?\n#history #ww2 #dunkirk",
+          "tags": [
+            "1940",
+            "almost moments",
+            "british army",
+            "did you know",
+            "dunkirk",
+            "education",
+            "facts",
+            "halt order",
+            "history",
+            "history shorts",
+            "military history",
+            "operation dynamo",
+            "shorts",
+            "trending",
+            "viral",
+            "world war two",
+            "ww2"
+          ],
+          "publishedAt": "2026-10-20T06:35:15Z",
+          "thumbnail": "https://i.ytimg.com/vi/60lWZwdWvVI/mqdefault.jpg",
+          "views": 22,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "0jn1ExQjM34",
+          "title": "The Straight Line Border That Isn't Straight?",
+          "description": "On October 20, 1818, Britain and the United States signed the convention that set much of the Canada-US border on the 49th parallel. Yet two American pockets still sit north of that line. Here is how that happened.\n#history #didyouknow #borders",
+          "tags": [
+            "49th parallel",
+            "canada us border",
+            "convention of 1818",
+            "did you know",
+            "education",
+            "facts",
+            "geography",
+            "history",
+            "history shorts",
+            "lake of the woods",
+            "northwest angle",
+            "october 20",
+            "on this day",
+            "point roberts",
+            "shorts",
+            "treaty",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-20T04:08:01Z",
+          "thumbnail": "https://i.ytimg.com/vi/0jn1ExQjM34/mqdefault.jpg",
+          "views": 30,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "EQ0uhPk9Slw",
+          "title": "14 Cats Trained, Only 1 Flew \u2014 Why Did France Pick Her?",
+          "description": "On October 18, 1963, a Parisian stray named F\u00e9licette became the first cat launched into space. Here is what she actually did up there, and why her name faded from memory. Do you rank her with the famous space dogs?\n#history #space #didyouknow",
+          "tags": [
+            "1963",
+            "animals in space",
+            "cnes",
+            "did you know",
+            "education",
+            "facts",
+            "felicette",
+            "first cat in space",
+            "french space program",
+            "history",
+            "history facts",
+            "history shorts",
+            "october 18",
+            "shorts",
+            "space history",
+            "space race",
+            "trending",
+            "viral"
+          ],
+          "publishedAt": "2026-10-20T03:40:39Z",
+          "thumbnail": "https://i.ytimg.com/vi/EQ0uhPk9Slw/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "vl3sGqYflTQ",
           "title": "The Surrender That Had No Loser \u2014 and a Sword Nobody Wanted",
           "description": "On October 19, 1781, Britain surrendered at Yorktown, but the story of who handed over the sword is stranger than most people know. Here is what really happened on that field.",
@@ -59,12 +327,24 @@
           ],
           "publishedAt": "2026-10-19T17:35:10Z",
           "thumbnail": "https://i.ytimg.com/vi/vl3sGqYflTQ/mqdefault.jpg",
-          "views": 16,
+          "views": 22,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "9z3194GpZb8",
@@ -92,12 +372,24 @@
           ],
           "publishedAt": "2026-10-19T16:08:23Z",
           "thumbnail": "https://i.ytimg.com/vi/9z3194GpZb8/mqdefault.jpg",
-          "views": 15,
+          "views": 20,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "pUwftZeiosk",
@@ -130,7 +422,19 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "VOk6bVxqF9o",
@@ -157,12 +461,23 @@
           ],
           "publishedAt": "2026-10-19T04:08:14Z",
           "thumbnail": "https://i.ytimg.com/vi/VOk6bVxqF9o/mqdefault.jpg",
-          "views": 34,
+          "views": 49,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 43.79,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 23.0,
+          "shares": 0,
+          "analytics_views": 10,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "UwsvLInb8AI",
@@ -195,7 +510,19 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "PVPglgVMHfk",
@@ -223,12 +550,23 @@
           ],
           "publishedAt": "2026-10-18T16:06:32Z",
           "thumbnail": "https://i.ytimg.com/vi/PVPglgVMHfk/mqdefault.jpg",
-          "views": 54,
+          "views": 56,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 27.16,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 13.0,
+          "shares": 0,
+          "analytics_views": 51,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "bCnqFyEomPE",
@@ -259,7 +597,19 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "P5pwEH0ZXlk",
@@ -287,14 +637,23 @@
           ],
           "publishedAt": "2026-10-18T04:07:26Z",
           "thumbnail": "https://i.ytimg.com/vi/P5pwEH0ZXlk/mqdefault.jpg",
-          "views": 19,
+          "views": 20,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 44.62,
-          "subs_gained": 0
+          "avg_view_pct": 38.29,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 20.0,
+          "shares": 0,
+          "analytics_views": 19,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "48tQuJdT2hE",
@@ -327,7 +686,18 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "avg_view_pct": 26.039999999999996,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 12.0,
+          "shares": 0,
+          "analytics_views": 1,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "0qpOhzctlvA",
@@ -361,8 +731,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 37.55,
-          "subs_gained": 0
+          "avg_view_pct": 32.9,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 16.0,
+          "shares": 0,
+          "analytics_views": 51,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "wXgJBZTcd1g",
@@ -396,7 +775,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 0.0,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 2,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "1JEaFyDDJAU",
@@ -429,7 +817,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 43.09,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 21.0,
+          "shares": 0,
+          "analytics_views": 28,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "oyGoej3tthA",
@@ -463,8 +860,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 13.91,
-          "subs_gained": 0
+          "avg_view_pct": 18.84,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 9.0,
+          "shares": 0,
+          "analytics_views": 51,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "UXKvTz-F7Og",
@@ -491,14 +897,23 @@
           ],
           "publishedAt": "2026-10-16T04:05:57Z",
           "thumbnail": "https://i.ytimg.com/vi/UXKvTz-F7Og/mqdefault.jpg",
-          "views": 35,
+          "views": 34,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 40.75,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 20.0,
+          "shares": 0,
+          "analytics_views": 35,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "OkQ1Z60Owgc",
@@ -525,12 +940,24 @@
           ],
           "publishedAt": "2026-10-16T03:24:29Z",
           "thumbnail": "https://i.ytimg.com/vi/OkQ1Z60Owgc/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "6PGbkEOLcPc",
@@ -563,7 +990,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 39.53,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 19.0,
+          "shares": 0,
+          "analytics_views": 169,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "X135OtgqjA8",
@@ -595,7 +1031,19 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "uhmMe1J1wKk",
@@ -630,8 +1078,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 51.07000000000001,
-          "subs_gained": 0
+          "avg_view_pct": 51.41,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 26.0,
+          "shares": 0,
+          "analytics_views": 421,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "i2ad8UCtXXw",
@@ -664,7 +1121,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 0.0,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "5GHxOKaePMQ",
@@ -698,7 +1164,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 49.71,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 24.0,
+          "shares": 0,
+          "analytics_views": 106,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "dEg83M82xa8",
@@ -732,7 +1207,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 60.14000000000001,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 28.0,
+          "shares": 0,
+          "analytics_views": 31,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "yu0qs7qMAcs",
@@ -765,7 +1249,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 67.8,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 30.0,
+          "shares": 0,
+          "analytics_views": 70,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "CFyo3YjUWQ4",
@@ -798,7 +1291,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 18.9,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 9.0,
+          "shares": 0,
+          "analytics_views": 9,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "Pmjt688h0tU",
@@ -825,14 +1327,23 @@
           ],
           "publishedAt": "2026-10-11T16:06:36Z",
           "thumbnail": "https://i.ytimg.com/vi/Pmjt688h0tU/mqdefault.jpg",
-          "views": 115,
+          "views": 116,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 54.1,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 27.0,
+          "shares": 0,
+          "analytics_views": 115,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "saA2DMLYLoQ",
@@ -865,7 +1376,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 62.5,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 29.0,
+          "shares": 0,
+          "analytics_views": 120,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "eE7Rc8c3XOA",
@@ -902,7 +1422,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 102.84,
-          "subs_gained": 1
+          "subs_gained": 1,
+          "average_watch_time_seconds": 54.0,
+          "shares": 0,
+          "analytics_views": 568,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "eVggAuM4z70",
@@ -936,7 +1465,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 56.220000000000006,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 28.0,
+          "shares": 0,
+          "analytics_views": 165,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "6OlXXJhr5xQ",
@@ -970,7 +1508,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 55.7,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 26.0,
+          "shares": 0,
+          "analytics_views": 54,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "VqBozML4s6k",
@@ -1004,7 +1551,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 89.63,
-          "subs_gained": 2
+          "subs_gained": 2,
+          "average_watch_time_seconds": 43.0,
+          "shares": 0,
+          "analytics_views": 1004,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "1lIfc_aOGvI",
@@ -1038,7 +1594,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 67.92,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 36.0,
+          "shares": 0,
+          "analytics_views": 3,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "Iayzxos778M",
@@ -1075,7 +1640,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 60.57,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 31.0,
+          "shares": 0,
+          "analytics_views": 115,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "Oa8FtfkXgGQ",
@@ -1109,7 +1683,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 73.0,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 31.0,
+          "shares": 0,
+          "analytics_views": 3,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "WBmM1Unw1ro",
@@ -1143,7 +1726,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 35.57,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 17.0,
+          "shares": 0,
+          "analytics_views": 42,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "7kDODOw-WuA",
@@ -1177,7 +1769,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 35.77,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 18.0,
+          "shares": 0,
+          "analytics_views": 46,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "5XRQNe4ajk8",
@@ -1208,7 +1809,19 @@
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
-          "is_unsorted": true
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         },
         {
           "id": "gTlsjP-w5ec",
@@ -1242,7 +1855,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 57.8,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 24.0,
+          "shares": 0,
+          "analytics_views": 14,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "cZXd1oj5rgQ",
@@ -1275,7 +1897,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 35.17,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 19.0,
+          "shares": 0,
+          "analytics_views": 8,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "LSt8hNGmxuI",
@@ -1308,7 +1939,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 54.76,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 26.0,
+          "shares": 0,
+          "analytics_views": 914,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "YtsObdQQPuI",
@@ -1341,7 +1981,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 0.0,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "KkaN5QafNWA",
@@ -1374,7 +2023,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 45.82,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 20.0,
+          "shares": 0,
+          "analytics_views": 15,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "p-_Jfdvmwr0",
@@ -1408,7 +2066,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 0.0,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "a377NfQSi7U",
@@ -1441,7 +2108,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 43.18,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 24.0,
+          "shares": 0,
+          "analytics_views": 36,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "4UcRVKUUegY",
@@ -1477,7 +2153,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 0.0,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         },
         {
           "id": "Bn0dk-bFQ10",
@@ -1510,211 +2195,16 @@
           "playlists": [],
           "is_unsorted": true,
           "avg_view_pct": 65.21,
-          "subs_gained": 0
-        },
-        {
-          "id": "CND8Vi1N0G8",
-          "title": "Why Was This Radio Station Hidden Inside a Segregated Building?",
-          "description": "On October 3, 1949, a single radio station in Atlanta quietly changed American broadcasting forever \u2014 and almost nobody noticed. WERD became the first Black-owned radio station in the United States, and the story of how it survived is wilder than you'd expect. Drop your take in the comments.",
-          "tags": [
-            "1949",
-            "american history",
-            "atlanta history",
-            "black history",
-            "broadcasting",
-            "civil rights era",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "radio history",
-            "short history",
-            "shorts",
-            "trending",
-            "viral",
-            "werd atlanta"
-          ],
-          "publishedAt": "2026-10-05T04:22:49Z",
-          "thumbnail": "https://i.ytimg.com/vi/CND8Vi1N0G8/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 96.44,
-          "subs_gained": 0
-        },
-        {
-          "id": "GPmVjxFBJ3k",
-          "title": "The Speech That Changed Power Forever \u2014 Nobody Saw It Coming",
-          "description": "On October 5, 1947, Harry Truman walked up to a camera and quietly rewired how leaders rule. What he did that night still shapes every election you've ever watched. The moment was smaller than you'd expect \u2014 and more powerful than anyone admitted at the time. #history #didyouknow #americanhistory",
-          "tags": [
-            "1947",
-            "american politics",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "harry truman",
-            "history",
-            "history facts",
-            "history shorts",
-            "media history",
-            "presidential history",
-            "shorts",
-            "television history",
-            "trending",
-            "viral",
-            "white house history"
-          ],
-          "publishedAt": "2026-10-05T04:05:48Z",
-          "thumbnail": "https://i.ytimg.com/vi/GPmVjxFBJ3k/mqdefault.jpg",
-          "views": 25,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 45.72,
-          "subs_gained": 0
-        },
-        {
-          "id": "FmO3_-HBDxE",
-          "title": "One Wrong Turn Almost Changed Nothing | History's Almost Moments",
-          "description": "On 28 June 1914, the assassination of Archduke Franz Ferdinand triggered World War One \u2014 but it nearly didn't happen at all. A wrong turn, a stalled engine, and a sandwich brought the assassin and his target face to face by pure accident. How much of the 20th century was decided by a missed street corner?",
-          "tags": [
-            "archduke",
-            "assassination 1914",
-            "close call history",
-            "did you know",
-            "education",
-            "facts",
-            "franz ferdinand",
-            "gavrilo princip",
-            "history",
-            "history almost moments",
-            "history facts",
-            "history shorts",
-            "near miss history",
-            "sarajevo",
-            "shorts",
-            "trending",
-            "viral",
-            "world war one",
-            "wwi origins"
-          ],
-          "publishedAt": "2026-10-04T16:06:14Z",
-          "thumbnail": "https://i.ytimg.com/vi/FmO3_-HBDxE/mqdefault.jpg",
-          "views": 57,
-          "likes": 1,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 70.28,
-          "subs_gained": 0
-        },
-        {
-          "id": "bBo6oS17qSs",
-          "title": "The Vote That Almost Killed the Montgomery Bus Boycott",
-          "description": "In December 1955, a single vote inside a church basement nearly collapsed the Montgomery Bus Boycott before it could change America. The margin was razor-thin, and almost nobody remembers how close it came to falling apart. Watch to find out what almost stopped one of history's most consequential acts of collective courage. #history #civilrights #HistorysAlmostMoments",
-          "tags": [
-            "1955 history",
-            "american history",
-            "civil rights history",
-            "close calls in history",
-            "did you know",
-            "did you know history",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "martin luther king jr",
-            "montgomery bus boycott",
-            "rosa parks",
-            "short history videos",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-04T04:37:25Z",
-          "thumbnail": "https://i.ytimg.com/vi/bBo6oS17qSs/mqdefault.jpg",
-          "views": 0,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true
-        },
-        {
-          "id": "REFodewrbUA",
-          "title": "The Satellite Nobody Believed Could Actually Orbit",
-          "description": "On October 4, 1957, the world woke up to a beeping metal ball circling the Earth \u2014 and nothing was ever the same. Sputnik 1 wasn't just a satellite; it was the moment an entire superpower realized it was losing a race it didn't know had already started. Drop your verdict below.",
-          "tags": [
-            "1957",
-            "cold war history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "nasa origins",
-            "october 4",
-            "shorts",
-            "soviet union",
-            "space history",
-            "space race",
-            "sputnik",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-04T04:05:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/REFodewrbUA/mqdefault.jpg",
-          "views": 257,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 105.86,
-          "subs_gained": 0
-        },
-        {
-          "id": "GgtBI61C7rU",
-          "title": "The Radio Station Nobody Thought Would Last a Week",
-          "description": "On October 3, 1949, a single radio station in Atlanta quietly changed American broadcasting forever \u2014 and almost nobody noticed. WERD became the first Black-owned radio station in the United States, and the story of how it survived is wilder than you'd expect. Drop your take in the comments.",
-          "tags": [
-            "1949",
-            "american history",
-            "atlanta history",
-            "black history",
-            "broadcasting",
-            "civil rights era",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "radio history",
-            "short history",
-            "shorts",
-            "trending",
-            "viral",
-            "werd atlanta"
-          ],
-          "publishedAt": "2026-10-03T16:06:06Z",
-          "thumbnail": "https://i.ytimg.com/vi/GgtBI61C7rU/mqdefault.jpg",
-          "views": 31,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 221.73,
-          "subs_gained": 0
+          "subs_gained": 0,
+          "average_watch_time_seconds": 33.0,
+          "shares": 0,
+          "analytics_views": 36,
+          "analytics_period": {
+            "start_date": "2026-10-05",
+            "end_date": "2026-10-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {}
         }
       ]
     }
