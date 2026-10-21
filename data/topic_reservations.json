@@ -2005,5 +2005,14 @@
     "slot": "morning",
     "date": "2026-10-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261021_202142_275388_short",
+    "title": "Your Floral Curtains Have a Hindi Secret",
+    "fingerprint": "curtains_floral_have_hindi_secret_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-21",
+    "status": "reserved"
   }
 ]

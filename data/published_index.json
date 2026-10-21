@@ -3672,5 +3672,31 @@
     "production_profile": 2,
     "facebook_id": "1093255483511097",
     "instagram_id": "18116362244029169"
+  },
+  {
+    "video_id": "ArtlBc4O8P0",
+    "run_id": "39669328388",
+    "stage_dir_name": "20261021_202142_275388_short",
+    "title": "Your Floral Curtains Have a Hindi Secret",
+    "published_at": "2026-10-21T20:29:55.900669+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 1,
+    "category": "everyday_origins",
+    "editorial_slot": 0,
+    "editorial_region": "india",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "The word chintz, for floral fabric, comes from Hindi.",
+    "duration": 34.968,
+    "production_profile": 2,
+    "facebook_id": "947761681388758",
+    "instagram_id": "18077949701744054"
   }
 ]
