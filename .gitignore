@@ -21,6 +21,7 @@ run.log
 __pycache__/
 *.pyc
 .venv/
+.venv-kokoro/
 venv/
 .DS_Store
 

@@ -1,7 +1,7 @@
 """Text-to-speech voiceover generation.
 
-Default provider is edge-tts (free, no API key) which also gives word-level
-timing — ideal for animated captions. ElevenLabs / OpenAI are optional upgrades.
+Histold uses CPU Kokoro with native token timing and Edge fallback.
+ElevenLabs / OpenAI are optional providers.
 Estimated timings remain available for legacy jobs; strict production requires
 measured boundaries, optionally obtained through configured transcription.
 
@@ -11,6 +11,11 @@ WordTiming(word, start, end) in seconds.
 from __future__ import annotations
 
 import asyncio
+import json
+import os
+import subprocess
+import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -136,10 +141,39 @@ def _estimate_word_timings(text: str, duration: float) -> list[WordTiming]:
     return [WordTiming(w, i * per, (i + 1) * per) for i, w in enumerate(words)]
 
 
+def _synthesize_kokoro(cfg: Config, text: str, out_path: Path) -> Voiceover:
+    """Keep model dependencies and CPU work in a bounded, isolated worker."""
+    with tempfile.TemporaryDirectory(prefix="histold-kokoro-") as scratch:
+        request = Path(scratch) / "request.json"
+        result = Path(scratch) / "result.json"
+        request.write_text(json.dumps({
+            "text": text, "output": str(out_path.resolve()),
+            "voice": cfg.get("tts.kokoro_voice", "am_michael"),
+            "speed": cfg.get("tts.kokoro_speed", 0.95),
+        }), encoding="utf-8")
+        subprocess.run([
+            os.environ.get("KOKORO_PYTHON", sys.executable), "-m", "src.kokoro_voice",
+            str(request), str(result),
+        ], cwd=Path(__file__).resolve().parent.parent, check=True,
+            timeout=float(cfg.get("tts.kokoro_timeout", 300)))
+        data = json.loads(result.read_text(encoding="utf-8"))
+    return Voiceover(out_path, _ffprobe_duration(out_path),
+                     [WordTiming(**w) for w in data["words"]], "native")
+
+
 def synthesize(cfg: Config, text: str, out_path: Path) -> Voiceover:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     provider = cfg.get("tts.provider", "edge")
-    if provider == "edge":
+    if provider == "kokoro":
+        try:
+            voiceover = _synthesize_kokoro(cfg, text, out_path)
+            from .alignment import build_storyboard
+            build_storyboard([{"narration": text}], voiceover.words,
+                             voiceover.duration, 30, voiceover.timing_source, strict=True)
+        except Exception as exc:
+            print(f"  ! Kokoro unavailable or invalid ({type(exc).__name__}); using Edge voiceover.")
+            voiceover = _synthesize_edge(cfg, text, out_path)
+    elif provider == "edge":
         voiceover = _synthesize_edge(cfg, text, out_path)
     elif provider == "elevenlabs":
         voiceover = _synthesize_elevenlabs(cfg, text, out_path)

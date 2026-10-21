@@ -73,7 +73,10 @@ script:
 
 tts:
   alignment_provider: "openai" # Used only if measured native timing is absent/inconsistent
-  provider: "edge"             # "edge" (free) | "elevenlabs" | "openai"
+  provider: "kokoro"           # CPU open-weight narrator; Edge fallback
+  kokoro_voice: "am_michael"
+  kokoro_speed: 0.95
+  kokoro_timeout: 300          # seconds, including cold model downloads
   edge_voice: "en-US-GuyNeural"        # try en-US-AriaNeural, en-GB-RyanNeural
   edge_rate: "+8%"
   elevenlabs_voice_id: "21m00Tcm4TlvDq8ikWAM"   # only used if provider=elevenlabs

@@ -7,7 +7,7 @@ Fully scripted pipeline that, on each run, **writes a script → generates a voi
 ```
 topic (angle + dedupe)
    └─> script_generator   LLM writes title, description, tags, segmented narration
-         └─> tts          edge-tts voiceover (+ word-level timing, free)
+         └─> tts          CPU Kokoro voiceover (+ native timing, Edge fallback)
                └─> captions   word timings → animated ASS subtitles
                └─> assets     Pexels stock video/photo per segment (keywords)
                      └─> video_builder   ffmpeg: clips + Ken-Burns + music + captions
@@ -125,7 +125,7 @@ automatic financial exports are assumed; importing new dashboard data is manual.
    Minimum to render videos:
    - `ANTHROPIC_API_KEY` *(or set `script.provider: openai` + `OPENAI_API_KEY`)* — writes the script.
    - `PEXELS_API_KEY` — free at <https://www.pexels.com/api/> — stock footage.
-   - Voiceover uses **edge-tts** which is **free, no key**. (Optional: ElevenLabs/OpenAI for premium voices.)
+   - Histold voiceover uses **Kokoro Michael** (`am_michael`, speed `0.95`) on CPU, with **Edge fallback**. GitHub Actions installs an isolated worker and caches model downloads. No TTS API key or running Mac is required. For local Kokoro use, install `torch==2.6.0` and `requirements-kokoro.txt` in a separate Python 3.11 environment and set `KOKORO_PYTHON` to its interpreter. Otherwise generation falls back to Edge. The manual **Voiceover CPU Smoke Test** workflow produces audio and timing artifacts without publishing a video.
 
 4. **YouTube upload** (one-time OAuth):
    - Google Cloud Console → new project → enable **YouTube Data API v3**.
@@ -234,7 +234,8 @@ src/
   config.py            config + env loader
   topics.py            angle picker + dedupe (data/used_topics.json)
   script_generator.py  LLM → title/description/tags/segments
-  tts.py               edge-tts / elevenlabs / openai voiceover
+  tts.py               Kokoro / edge-tts / elevenlabs / openai voiceover
+  kokoro_voice.py      isolated CPU worker with native token timestamps
   captions.py          word timings → ASS subtitles
   assets.py            Pexels stock fetch per segment
   video_builder.py     ffmpeg assembly

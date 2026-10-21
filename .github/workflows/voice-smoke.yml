@@ -1,0 +1,47 @@
+name: Voiceover CPU Smoke Test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kokoro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface/hub
+          key: kokoro-v1-${{ runner.os }}-${{ hashFiles('requirements-kokoro.txt') }}
+      - name: Install CPU dependencies
+        run: |
+          pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-kokoro.txt PyYAML
+      - name: Generate and validate narration without publishing
+        run: |
+          python - <<'PY'
+          import json, time
+          from pathlib import Path
+          from src.config import load_config
+          from src.tts import _synthesize_kokoro
+          from src.alignment import build_storyboard
+          text = "Imagine living in America, but crossing another country just to drive home. That's everyday life in Point Roberts, Washington. The town sits below Canada, separated by water from the rest of its own state. So a road trip to the rest of Washington means crossing the border twice. An ordinary line on a map becomes a very unusual journey home."
+          output = Path('output/voice-smoke')
+          output.mkdir(parents=True, exist_ok=True)
+          started = time.monotonic()
+          voice = _synthesize_kokoro(load_config(), text, output / 'kokoro-michael.mp3')
+          result = build_storyboard([{'narration': text}], voice.words, voice.duration, 30, voice.timing_source, strict=True)
+          result['generation_seconds'] = time.monotonic() - started
+          (output / 'timing.json').write_text(json.dumps(result, indent=2))
+          print(json.dumps({'coverage': result['coverage'], 'duration': voice.duration, 'generation_seconds': result['generation_seconds']}))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kokoro-cpu-sample
+          path: output/voice-smoke/
