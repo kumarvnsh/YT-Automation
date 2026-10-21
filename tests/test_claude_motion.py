@@ -27,6 +27,20 @@ class ClaudeMotionTest(unittest.TestCase):
         self.assertNotIn('<histold-map',html)
         self.assertIn('This American town',html)
 
+    def test_world_maps_preserve_individual_viewboxes_and_labels(self):
+        from src.claude_motion import bind_maps
+        from src.map_assets import load_map
+        import xml.etree.ElementTree as ET
+        assets = [load_map('russia'), load_map('india')]
+        html = bind_maps(''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in assets), assets)
+        for asset in assets:
+            viewbox = ET.fromstring(asset['svg']).attrib['viewBox']
+            self.assertIn(f'viewBox="{viewbox}"', html)
+            self.assertIn(f'data-map-id="{asset["map_id"]}"', html)
+            self.assertIn(asset['label'], html)
+        self.assertIn('Present-day establishing geography', html)
+        self.assertNotIn('<histold-map', html)
+
     def test_windows_follow_word_timings_and_cover_total(self):
         words = [WordTiming(f"w{i}", i * 0.5, i * 0.5 + 0.4) for i in range(10)]
         win = segment_windows(["a b c d", "e f", "g h i j"], words, 6.0)

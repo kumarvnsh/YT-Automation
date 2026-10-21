@@ -160,13 +160,17 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         if rule
     )
     today = date.today()
-    task_context = f"TODAY'S DATE: {today.day} {today:%B %Y}"
+    facebook_editorial = cfg.get('production.editorial.primary_platform') == 'facebook'
+    task_context = ('EVERGREEN WORLD HISTORY: choose for curiosity and evidence, independent of today\'s anniversary.'
+                    if facebook_editorial else f"TODAY'S DATE: {today.day} {today:%B %Y}")
     if channel_rules:
         task_context += f"\n{channel_rules}"
     beats_on = fmt == "short" and enforce_beats(cfg)
     if fmt == "short":
         secs = cfg.get("script.shorts_target_seconds", 45)
-        if cfg.get('script.story_profile') == 'consequence_first':
+        if cfg.get('script.story_profile') == 'evergreen_concise':
+            seg_hint = 'exactly 5 segments: hook, setup, pivot, fact, callback'
+        elif cfg.get('script.story_profile') in ('consequence_first', 'evergreen_story'):
             seg_hint = 'exactly 7 segments, one per beat below'
         elif beats_on:
             seg_hint = "6 to 8 segments, one per beat below"
@@ -210,13 +214,36 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     # opt-in per channel. Everything else — long-form, and any channel that has
     # not opted in — keeps the original hook rule, byte-for-byte and in its
     # original position inside Constraints, so their prompts do not drift.
-    consequence = fmt == "short" and cfg.get("script.story_profile") == "consequence_first"
-    structure_block = _CONSEQUENCE_STRUCTURE if consequence else (_SHORT_STRUCTURE if beats_on else "")
-    if consequence:
+    evergreen = fmt == 'short' and cfg.get('script.story_profile') in ('evergreen_concise', 'evergreen_story')
+    consequence = fmt == "short" and cfg.get("script.story_profile") in ("consequence_first", 'evergreen_story')
+    if evergreen:
+        concise = cfg.get('script.story_profile') == 'evergreen_concise'
+        structure_block = (
+            'EVERGREEN WORLD HISTORY: Use ' + ('exactly 5 segments: hook, setup, pivot, fact, callback.' if concise else
+            'exactly 7 segments: hook, setup, pivot, fact, fact, fact, callback.') +
+            '\nState the specific surprise in the first 2–3 spoken seconds, roughly the first 5-8 words. '
+            'Never open with a date or a generic "Did you know?" introduction. '
+            'Explain the everyday origin, misconception or decision clearly, using only cited production facts. '
+            'Do not manufacture a disaster, a dramatic twist, or an unresolved mystery. '
+            'Deliver the explanation promptly; the callback must give a complete satisfying payoff and reuse the hook subject. '
+            'No withheld answer, forced Part 2, generic motivational ending or comment bait. '
+            'Keep place names and cultural context understandable to a global English-speaking audience. '
+            f'Allocate about {words // (5 if concise else 7)} words per segment, within the total word budget.')
+    else:
+        structure_block = _CONSEQUENCE_STRUCTURE if consequence else (_SHORT_STRUCTURE if beats_on else "")
+    if consequence and not evergreen:
         structure_block += '\n' + _consequence_budget(words)
     hook_rule = "" if (beats_on or consequence) else _LEGACY_HOOK
     # Beats path carries the closing question inside the callback beat already.
-    closing_rule = _CLOSING_QUESTION if (fmt == "short" and not beats_on and not consequence) else ""
+    closing_rule = _CLOSING_QUESTION if (fmt == "short" and not beats_on and not consequence and not evergreen) else ""
+    editorial = cfg.get('production.editorial')
+    if editorial and fmt == 'short':
+        structure_block += ('\nFacebook is the primary audience. Recurring series: ' + editorial['series']['name'] +
+                            '. Make the video independently satisfying; never send viewers away to YouTube.')
+        if editorial.get('follow_cta'):
+            structure_block += '\nAfter delivering the payoff, add this brief invitation within the final segment: "Follow for more surprising world history." Count it in the narration budget.'
+        elif editorial.get('discussion_question'):
+            structure_block += '\nAfter the payoff, you may ask one specific thoughtful question about this story. No "comment YES", forced sides or generic engagement requests.'
     segment_schema = (
         '{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}'
         if beats_on or consequence
@@ -231,7 +258,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         segment_schema = segment_schema[:-1] + ', "claim_ids": ["c1"]}'
 
     # Retention feedback: what this channel's audience actually watched through.
-    winners, losers = performance_examples()
+    winners, losers = ([], []) if facebook_editorial else performance_examples()
     perf_block = ""
     if winners:
         perf_block = ("\n\nThese past videos held viewers LONGEST (highest average view "
@@ -363,7 +390,7 @@ def enforce_beats(cfg) -> bool:
     assume a ~45s history-short format. A channel with a different format or a
     word budget too small to hold the beats leaves this off and is unaffected.
     """
-    return bool(cfg.get("script.enforce_beats", False) or cfg.get("script.story_profile") == "consequence_first")
+    return bool(cfg.get("script.enforce_beats", False) or cfg.get("script.story_profile") in ("consequence_first", 'evergreen_concise', 'evergreen_story'))
 
 
 def _consequence_budget(target: int) -> str:
@@ -407,7 +434,7 @@ def validate_structure(beats: list[str], narrations: list[str], profile: str | N
     if counts["pivot"] != 1:
         return f"script needs exactly one 'pivot' segment (found {counts['pivot']})"
 
-    lo_facts, hi_facts = _FACT_RANGE
+    lo_facts, hi_facts = (1, 1) if profile == 'evergreen_concise' else _FACT_RANGE
     if not lo_facts <= counts["fact"] <= hi_facts:
         return (
             f"fact stack has {counts['fact']} segments, need {lo_facts}-{hi_facts}"
@@ -422,9 +449,10 @@ def validate_structure(beats: list[str], narrations: list[str], profile: str | N
         )
 
     hook, callback = narrations[0], narrations[-1]
-    if profile == "consequence_first":
-        if counts['fact'] != 3 or beats != ['hook', 'setup', 'pivot', 'fact', 'fact', 'fact', 'callback']:
-            return 'consequence profile requires exactly seven ordered beats with three facts'
+    if profile in ("consequence_first", 'evergreen_concise', 'evergreen_story'):
+        expected = ['hook', 'setup', 'pivot'] + ['fact'] * (1 if profile == 'evergreen_concise' else 3) + ['callback']
+        if beats != expected:
+            return f'{profile} profile requires exactly {len(expected)} ordered beats: {", ".join(expected)}'
         if re.match(r"^\s*(?:in\s+)?\d{3,4}\b", hook, re.I):
             return "consequence hook must not open with a date"
         if not 5 <= len(hook.split()) <= 24:
@@ -749,9 +777,9 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
             topic=data.get("topic", data["title"]).strip(),
             provider=provider,
             fallback_used=fallback_used,
-            metadata=({"story_profile":"consequence_first", "story_profile_version":1,
+            metadata=({"story_profile":cfg.get('script.story_profile'), "story_profile_version":1,
                        "category": cfg.get("production.category"), "hook":segments[0].narration,
-                       "payoff":segments[-1].narration} if cfg.get("script.story_profile") == "consequence_first" else {}),
+                       "payoff":segments[-1].narration} if cfg.get("script.story_profile") in ('consequence_first', 'evergreen_concise', 'evergreen_story') else {}),
         )
 
     if structure_error:

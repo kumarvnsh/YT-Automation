@@ -5,15 +5,15 @@
 # ===========================================================================
 
 channel:
-  niche: "History / Did-you-know"
+  niche: "Surprising World History / Did-you-know"
   # High-level instruction handed to the script writer. Tune the voice here.
   persona: >
     You write punchy, accurate, surprising history and 'did you know' content.
-    Open on an unresolved gap, stay factually correct, avoid sensitive/graphic
-    detail, and close by calling back to your opening line so it means
-    something new — then turn that callback into a direct question that makes
-    viewers pick a side in the comments. No clickbait that the content doesn't
-    deliver on.
+    Explain surprising origins, forgotten people, misconceptions and real
+    decisions from around the world. Start with a specific surprise, explain
+    it promptly and finish with a satisfying answer. Use accessible English,
+    clear context and a warm documentary voice. Avoid graphic detail, forced
+    outrage and clickbait. Never withhold the answer for another video.
   language: "en"
   # Extra script rules (appended to the task context).
   content_rules: >
@@ -22,8 +22,12 @@ channel:
     feared it couldn't stop" only if engineers really said so). Write for the
     ear: short sentences, one idea each, no parentheses or lists. Each segment
     is shown as its own on-screen scene, so it must make sense on its own.
-  # Trend-aware topics: bridge trending searches to history + use anniversaries.
-  topic_source: "blend"          # "angles" | "trends" | "on_this_day" | "blend"
+    Respect the differences between countries, cultures and periods. Explain
+    unfamiliar names and show readable maps or diagrams. Never present an
+    illustration as archival evidence. Avoid rapid flashes, dense text and
+    unexplained jargon. No generic comment bait or forced sides.
+  # Evergreen by default; anniversaries are optional rather than the topic driver.
+  topic_source: "angles"
   trend_region: "global"
   # Topics already used are stored in data/used_topics.json to avoid repeats.
 
@@ -35,15 +39,44 @@ series:
   every: 3                       # 1 = every video, 3 = every third
   direction: ""                  # blank = built-in counterfactual brief
 
+editorial:
+  enabled: true                 # new automatic Histold Shorts only; manual topics stay fixed
+  primary_platform: "facebook"
+  experiment_id: "facebook-world-history-4w"
+  experiment_posts: 56          # first 56 reserved automatic assignments, about four weeks at 2/day
+  regions:
+    - {id: "india", label: "India", guidance: "Origins, daily life, inventions and forgotten people across distinct Indian periods and communities"}
+    - {id: "africa", label: "African countries", guidance: "Rotate specific countries such as Nigeria, South Africa, Kenya, Ethiopia, Ghana and Egypt; avoid continent-wide generalizations"}
+    - {id: "japan", label: "Japan", guidance: "Everyday customs, material culture, inventions and historical choices"}
+    - {id: "russia", label: "Russia and its historical contexts", guidance: "Distinguish Russian, Soviet and neighboring histories; use independent corroboration for contested claims"}
+    - {id: "middle_east", label: "the Middle East", guidance: "Name a specific country, culture and period; explore everyday origins, scholarship and trade without modern political provocation"}
+    - {id: "europe", label: "Europe", guidance: "Rotate countries, ordinary life, forgotten people and unexpected connections"}
+    - {id: "americas", label: "the Americas", guidance: "Include North, Central and South America and named Indigenous communities; retain existing US/Canada audience relevance"}
+    - {id: "asia_pacific", label: "other Asian and Pacific countries", guidance: "Include the Philippines, China, Korea, Southeast Asia and Pacific communities; explain distinct cultures precisely"}
+  series:
+    - id: "everyday_origins"
+      name: "You Use It Every Day"
+      direction: "The surprising documented history of food, words, objects, inventions or customs, including cross-cultural connections and daily life"
+    - id: "myth_evidence"
+      name: "History Got This Wrong"
+      direction: "A documented misconception or overlooked person; use evidence, avoid inventing a popular myth just to debunk it"
+    - id: "decisions"
+      name: "One Decision Changed Everything"
+      direction: "A verified choice or near-miss with an actual documented consequence; no invented alternate timelines or exaggerated sole-cause claims"
+  duration_variants:
+    - {id: "concise", seconds: 30}
+    - {id: "story", seconds: 50}
+
 production:
   enabled: true              # New Histold shorts only; settings snapshotted per stage
   strict_timing: true
-  experiment: true            # Six alternating category slots, then regular topic selection
+  experiment: false           # legacy six-Reel study stays archived; editorial rotation replaces it
 
 research:
   max_searches: 5
   model: "claude-sonnet-4-6"
-  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk"]
+  publisher_aliases: {"qdl.qa": "qnl.qa"}  # related collections do not count as independent corroboration
+  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa"]
 
 audio_quality:
   silence_db: -40
@@ -65,9 +98,8 @@ script:
   # percentage. Needs shorts_target_seconds >= 45 to fit the beats.
   enforce_beats: true
   # Target spoken duration. The writer aims for ~150 words/min.
-  # Do NOT lower this below 45. Every short on this channel that exceeded 100%
-  # average view percentage ran 44s+; the 20s era (commit 886d4a5, 2026-07-10)
-  # averaged 10-14s watched vs 44-74s, a ~6x loss of watch time per view.
+  # Legacy/manual target. Editorial snapshots test 30s and 50s separately on Facebook;
+  # prior YouTube retention patterns do not establish Facebook's preferred duration.
   shorts_target_seconds: 45
   longform_target_seconds: 420   # 7 minutes
 
@@ -199,7 +231,7 @@ youtube:
   # Safety lock: uploads abort unless the authorized channel matches this ID.
   # This is the Histold channel. Leave blank to disable the check.
   expected_channel_id: "UCJImBb1E8e0llDt8ISdF_1g"
-  default_tags: ["history", "did you know", "facts", "history shorts", "education", "shorts", "viral", "trending"]
+  default_tags: ["world history", "did you know", "historical facts", "history shorts", "education", "everyday origins"]
 
 republish:
   # Auto-repost stuck videos: checked after every analytics export (~6h).
@@ -214,15 +246,19 @@ republish:
 meta:
   # Cross-post rendered shorts to Facebook Reels + Instagram Reels via the Graph
   # API. Requires the META_ACCESS_TOKEN secret (non-expiring System User token).
-  # Only shorts (vertical 1080x1920) are cross-posted. Best-effort: a Meta
-  # failure never blocks the YouTube upload.
+  # Facebook is primary for Histold Shorts: a missing Facebook Reel ID fails the
+  # upload step for retry, and successful platform IDs are reused on retry.
   enabled: true                # master switch; every short cross-posts to FB + IG (scheduled + manual)
+  primary: true
   post_to_facebook: true
   post_to_instagram: true
   page_id: "1194740133719930"          # Histold Facebook Page
   ig_user_id: "17841410834243353"      # Histold Instagram business account
   api_version: "v21.0"
-  hashtags: ["#history", "#shorts", "#didyouknow", "#historyfacts"]
+  hashtags: ["#WorldHistory", "#Histold"]
+  facebook_caption:
+    enabled: true
+    hashtags: ["#WorldHistory", "#Histold"]
 
 notifications:
   enabled: true                # master switch for WhatsApp alerts

@@ -35,7 +35,8 @@ def main():
         response = requests.get(BASE + filename + '.geojson', timeout=60)
         response.raise_for_status()
         layers[kind] = (filename, response.json())
-    manifest = {'schema_version': 1, 'assets': {}}
+    manifest_path = ROOT / 'manifest.json'
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {'schema_version': 1, 'assets': {}}
     for name, label, kind, key, value in [
         ('united_states', 'United States', 'countries', 'ADMIN', 'United States of America'),
         ('canada', 'Canada', 'countries', 'ADMIN', 'Canada'),

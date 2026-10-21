@@ -46,6 +46,26 @@ class MergeListsTests(unittest.TestCase):
 
         self.assertEqual(["old", "run-a", "run-b"], [e["job_id"] for e in merged])
 
+    def test_facebook_only_posts_remain_distinct(self):
+        first = {'video_id': None, 'facebook_id': 'fb1', 'stage_dir_name': 'stage1'}
+        second = {'video_id': None, 'facebook_id': 'fb2', 'stage_dir_name': 'stage2'}
+        self.assertEqual(merge_lists([first], [first, second], ('video_id',)), [first, second])
+
+    def test_same_stage_enrichment_preserves_platform_ids_in_both_merge_directions(self):
+        old = {'video_id': None, 'facebook_id': 'fb1', 'stage_dir_name': 'stage1', 'title': 'old'}
+        enriched = {**old, 'video_id': 'yt1', 'instagram_id': 'ig1'}
+        for remote, local in ((old, enriched), (enriched, old)):
+            merged = merge_lists([remote], [local], ('video_id',))
+            self.assertEqual(len(merged), 1)
+            self.assertEqual(merged[0]['video_id'], 'yt1')
+            self.assertEqual(merged[0]['instagram_id'], 'ig1')
+
+    def test_legacy_facebook_fallback_and_unidentified_rows_are_preserved(self):
+        first = {'facebook_id': 'fb1'}
+        second = {'facebook_id': 'fb2'}
+        self.assertEqual(merge_lists([first], [first, second], ('video_id',)), [first, second])
+        self.assertEqual(merge_lists([{}], [{}], ('video_id',)), [{}, {}])
+
     def test_astrotold_channel_state_uses_the_same_identity_rules(self) -> None:
         self.assertEqual(
             ("job_id",),

@@ -14,6 +14,7 @@ ref's copy so the subsequent commit applies cleanly on top of the ref:
 - entries only in the working tree are appended,
 - entries present in both keep the working-tree version (this run may have
   mutated them, e.g. retitled_at / auto_dispatched_at / playlist_ids).
+  Published records retain known platform IDs when a stale local row lacks them.
 
 Files that are missing, unparsable, or not list-shaped are left untouched.
 """
@@ -36,7 +37,13 @@ IDENTITY_KEYS = {
 }
 
 
-def _identity(entry: dict, keys: tuple[str, ...]) -> tuple:
+def _identity(entry: dict, keys: tuple[str, ...]) -> tuple | None:
+    if keys == ('video_id',):
+        # A stage retains its identity when a Facebook-only post gains a YouTube ID.
+        for field in ('stage_dir_name', 'video_id', 'facebook_id'):
+            if entry.get(field):
+                return field, str(entry[field])
+        return None
     return tuple(str(entry.get(key)) for key in keys)
 
 
@@ -61,7 +68,13 @@ def merge_lists(base: list, local: list, keys: tuple[str, ...]) -> list:
     merged, seen = [], set()
     for entry in base:
         ident = _identity(entry, keys) if isinstance(entry, dict) else None
-        merged.append(local_by_id.get(ident, entry) if ident else entry)
+        replacement = local_by_id.get(ident, entry) if ident else entry
+        if keys == ('video_id',) and replacement is not entry:
+            replacement = {**entry, **replacement}
+            for field in ('video_id', 'facebook_id', 'instagram_id'):
+                if entry.get(field) and not replacement.get(field):
+                    replacement[field] = entry[field]
+        merged.append(replacement)
         seen.add(ident)
     for entry in local:
         ident = _identity(entry, keys) if isinstance(entry, dict) else None

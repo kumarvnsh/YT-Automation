@@ -92,7 +92,30 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
         state['pipeline_version'] = 2
         state['production_config'] = copy.deepcopy(cfg.raw)
         state['target_steps'] = ['research', 'script'] if dry_run else list(PRODUCTION_STEPS)
-        if cfg.get('production.experiment', False):
+        if cfg.get('editorial.enabled', False) and not topic:
+            from .editorial import assignment
+            index_path = base_dir() / 'data/published_index.json'
+            entries = json.loads(index_path.read_text()) if index_path.exists() else []
+            for previous in _out_root(cfg).glob('*/state.json'):
+                try:
+                    entries.append(json.loads(previous.read_text()))
+                except (OSError, ValueError):
+                    continue
+            occupied = [e['editorial_slot'] for e in entries if isinstance(e, dict)
+                        and isinstance(e.get('editorial_slot'), int) and not e.get('editorial_preview')]
+            ordinal = max(occupied, default=-1) + 1
+            editorial = assignment(cfg, ordinal)
+            state.update(editorial=editorial, editorial_slot=ordinal, editorial_preview=dry_run,
+                         editorial_region=editorial['region']['id'], editorial_series=editorial['series']['name'],
+                         duration_variant=editorial['duration_variant'], category=editorial['series']['id'])
+            snapshot = state['production_config']
+            snapshot.setdefault('script', {}).update(shorts_target_seconds=editorial['target_seconds'],
+                                                    story_profile=editorial['story_profile'], enforce_beats=True)
+            snapshot.setdefault('production', {})['editorial'] = editorial
+            if ordinal < cfg.get('editorial.experiment_posts', 56):
+                state.update(experiment=cfg.get('editorial.experiment_id', 'facebook-world-history-4w'),
+                             experiment_slot=ordinal + 1)
+        elif cfg.get('production.experiment', False):
             from .experiments import select_slot
             manifest_path = base_dir() / 'data/experiments/histold-six-reels.json'
             manifest = json.loads(manifest_path.read_text())
@@ -211,6 +234,8 @@ def _step_script(cfg: Config, stage: Path, st: dict) -> None:
         cfg = Config(copy.deepcopy(cfg.raw))
         cfg.raw.setdefault('production', {})['research_context'] = st['research']
         cfg.raw['production']['category'] = st.get('category', '')
+        if st.get('editorial'):
+            cfg.raw['production']['editorial'] = st['editorial']
     script = generate_script(cfg, st["fmt"], topic_override=overrides.get("topic") or st.get('research', {}).get('topic'))
     st["script"] = script.to_dict()
     st["title"] = script.title
@@ -256,6 +281,9 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
     from .research import research_topic
     topic = st.get('overrides', {}).get('topic') or (
         f"{st['category']}: {st.get('experiment_hook', '')}" if st.get('category') else topics.pick_angle(cfg))
+    if st.get('editorial') and not st.get('overrides', {}).get('topic'):
+        from .editorial import brief
+        topic = brief(st['editorial'], topics.recent_titles())
     original_topic = topic
     attempts = []
     # Two passes per story; automatic runs may try one different story in the same niche.
@@ -447,8 +475,19 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         raise RuntimeError("upload blocked because quality gate did not pass")
 
     sc = st["script"]
+    facebook_primary = (st.get('fmt') == 'short' and cfg.get('meta.primary', False))
+    if facebook_primary:
+        if not cfg.get('meta.enabled') or not cfg.get('meta.post_to_facebook') or not cfg.get('meta.page_id'):
+            raise RuntimeError('Facebook primary publishing requires Meta enabled and a Facebook Page')
+        from .meta_uploader import publish_reel
+        if not st.get('meta', {}).get('facebook'):
+            st['meta'] = publish_reel(cfg, stage / 'video.mp4', sc['title'], sc['description'],
+                                      existing_results=st.get('meta'))
+        if not st.get('meta', {}).get('facebook'):
+            raise RuntimeError('Facebook primary upload failed: ' + st.get('meta', {}).get('facebook_error', 'No Reel ID returned'))
+        _record_published(cfg, stage, st)
 
-    if cfg.get("youtube.enabled", False):
+    if cfg.get("youtube.enabled", False) and not st.get('youtube_id'):
         from .youtube_uploader import upload_video
 
         privacy_override = st.get("overrides", {}).get("privacy")
@@ -459,14 +498,14 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         )
         st["youtube_id"] = vid
         st["youtube_url"] = f"https://youtu.be/{vid}"
-    else:
+    elif not cfg.get('youtube.enabled', False):
         st["upload_skipped"] = "youtube.enabled=false"
 
     # Cross-post to Facebook/Instagram Reels. Only shorts (vertical) qualify, and
     # this is best-effort: a Meta failure must never fail the run or block the
     # primary YouTube upload. Enable via config or the META_CROSS_POST env toggle.
     meta_on = cfg.get("meta.enabled", False) or env("META_CROSS_POST") == "true"
-    if meta_on and st.get("fmt") == "short":
+    if meta_on and st.get("fmt") == "short" and not facebook_primary:
         from .meta_uploader import publish_reel
 
         try:
@@ -591,7 +630,7 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
     the only durable video_id → run/stage mapping (used by the daily cap and
     the dashboard retitle/repost feature). Best-effort: never fails the run.
     """
-    if not st.get("youtube_id"):
+    if not st.get("youtube_id") and not st.get('meta', {}).get('facebook'):
         return
     try:
         from datetime import timezone
@@ -599,12 +638,13 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
         path = base_dir() / "data" / "published_index.json"
         path.parent.mkdir(parents=True, exist_ok=True)
         entries = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
-        entries.append({
-            "video_id": st["youtube_id"],
+        existing = next((row for row in entries if row.get('stage_dir_name') == stage.name), None)
+        record = {
+            "video_id": st.get("youtube_id"),
             "run_id": env("PUBLISH_ARTIFACT_RUN_ID") or env("GITHUB_RUN_ID") or "",
             "stage_dir_name": stage.name,
             "title": st.get("title", ""),
-            "published_at": datetime.now(timezone.utc).isoformat(),
+            "published_at": existing['published_at'] if existing else datetime.now(timezone.utc).isoformat(),
             "channel": env("CHANNEL_LABEL") or "histold",
             "slot": st.get("slot") or env("PUBLISH_SLOT") or "manual",
             "scheduled": env("PUBLISH_SCHEDULED") == "true",
@@ -615,14 +655,22 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             'experiment': st.get('experiment'),
             'experiment_slot': st.get('experiment_slot'),
             'category': st.get('category'),
+            'editorial_slot': st.get('editorial_slot'),
+            'editorial_region': st.get('editorial_region'),
+            'editorial_series': st.get('editorial_series'),
+            'duration_variant': st.get('duration_variant'),
             'hook': (st.get('script', {}).get('segments') or [{}])[0].get('narration'),
             'duration': st.get('voiceover', {}).get('duration'),
             'production_profile': st.get('pipeline_version', 1),
             'facebook_id': st.get('meta', {}).get('facebook'),
             'instagram_id': st.get('meta', {}).get('instagram'),
-        })
+        }
+        if existing:
+            existing.update(record)
+        else:
+            entries.append(record)
         path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
-        print(f"  ✓ recorded {st['youtube_id']} in {path.name}")
+        print(f"  ✓ recorded {st.get('youtube_id') or st.get('meta', {}).get('facebook')} in {path.name}")
     except Exception as exc:  # noqa: BLE001
         print(f"  ! published-index record skipped: {exc}")
 

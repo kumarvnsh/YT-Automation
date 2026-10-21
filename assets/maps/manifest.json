@@ -68,6 +68,387 @@
       ],
       "scope": "Present-day continental establishing outline; clipped at display extent; not survey or historical boundary data",
       "sha256": "539b3d537a06e188a284beb3138d16b921a27b2f2c8672c987ed7bcd0098381b"
+    },
+    "india": {
+      "file": "india.svg",
+      "label": "India",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "India"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        67.176645,
+        6.965535,
+        98.402561,
+        36.49401
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "c65d337452533440888cc6aece89617a8af00a2091988732b1035c52ea03c96d"
+    },
+    "japan": {
+      "file": "japan.svg",
+      "label": "Japan",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Japan"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        128.408463,
+        30.029579,
+        146.543137,
+        46.551483
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "2e66c5404ed9ca6f2a15d683796c567ae1d2ecb3d031bb110e23b6e15589570a"
+    },
+    "russia": {
+      "file": "russia.svg",
+      "label": "Russia",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Russia"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree; negative longitudes shifted +360 for dateline continuity",
+      "extent": [
+        18.66064,
+        40.151416,
+        191.10042,
+        82.2504
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "0ec5f84c8544f3ba15e075550708d2b515e95627ca8a4bba6c550ceae62ad269"
+    },
+    "egypt": {
+      "file": "egypt.svg",
+      "label": "Egypt",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Egypt"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        23.70007,
+        21,
+        37.86623,
+        32.585679999999996
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "1463153ad57abeb8d7a358e25c7bb85ffab143f4b64dd8e217d323d9c31d2bdb"
+    },
+    "kenya": {
+      "file": "kenya.svg",
+      "label": "Kenya",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Kenya"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        32.893569,
+        -5.67677,
+        42.855083,
+        6.506
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "7c73c6280f80f88426e856b5bc763521fb1a04c9aedaa3ab2a78ef86983d7465"
+    },
+    "nigeria": {
+      "file": "nigeria.svg",
+      "label": "Nigeria",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Nigeria"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        1.6917019999999998,
+        3.2405939999999998,
+        15.577178,
+        14.865924
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "d8d39af43c152e5700c2fcd2a86d9f35f5fa950010742978a2fffc33550d12fd"
+    },
+    "south_africa": {
+      "file": "south_africa.svg",
+      "label": "South Africa",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "South Africa"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        15.344977,
+        -35.819166,
+        33.83012,
+        -21.091313
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "3bc7518d669fcd769a63d20327cf6f2e7d46c0ceda2e6c6a368539f125215495"
+    },
+    "ethiopia": {
+      "file": "ethiopia.svg",
+      "label": "Ethiopia",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Ethiopia"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        31.95418,
+        2.42206,
+        48.78942,
+        15.95943
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "78d4ed7cc0ab2aef8834df6d13879d0e71426b8a06ccf76df289a07d0956e326"
+    },
+    "ghana": {
+      "file": "ghana.svg",
+      "label": "Ghana",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Ghana"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        -4.24437,
+        3.7104619999999997,
+        2.060122,
+        12.098341
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "ce7b42a9a3f7d49c5681195a06a03c645d846ecf446473bd170af45ce75cb34d"
+    },
+    "iran": {
+      "file": "iran.svg",
+      "label": "Iran",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Iran"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        43.109225,
+        24.078237,
+        64.316632,
+        40.713003
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "95082361a216e3b510091df11985bea1cfb89dd0eae0bec6fb5dee16b81da288"
+    },
+    "iraq": {
+      "file": "iraq.svg",
+      "label": "Iraq",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Iraq"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        37.792341,
+        28.099025,
+        49.567971,
+        38.385264
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "4cf22ab729dca9112e8f2b18c1b9b59a6012d3307d695bd4d405a734c179606b"
+    },
+    "saudi_arabia": {
+      "file": "saudi_arabia.svg",
+      "label": "Saudi Arabia",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Saudi Arabia"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        33.632336,
+        15.347891,
+        56.666659,
+        33.161009
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "eb29768f7b32021ddd4867a8a776c763c994a38e6bc58736b6753e2ebdb2fb4e"
+    },
+    "turkey": {
+      "file": "turkey.svg",
+      "label": "Turkey",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Turkey"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        25.043351,
+        34.821535,
+        45.79399,
+        43.141485
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "5999a866dcff8dc2c7d95be0cf9e5fa100ab74ed34ed88222a42987850012270"
+    },
+    "africa": {
+      "file": "africa.svg",
+      "label": "Africa",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Algeria",
+        "Angola",
+        "Benin",
+        "Botswana",
+        "Burkina Faso",
+        "Burundi",
+        "Cameroon",
+        "Central African Republic",
+        "Chad",
+        "Democratic Republic of the Congo",
+        "Djibouti",
+        "Egypt",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Ethiopia",
+        "Gabon",
+        "Gambia",
+        "Ghana",
+        "Guinea",
+        "Guinea-Bissau",
+        "Ivory Coast",
+        "Kenya",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Madagascar",
+        "Malawi",
+        "Mali",
+        "Mauritania",
+        "Morocco",
+        "Mozambique",
+        "Namibia",
+        "Niger",
+        "Nigeria",
+        "Republic of the Congo",
+        "Rwanda",
+        "Senegal",
+        "Sierra Leone",
+        "Somalia",
+        "Somaliland",
+        "South Africa",
+        "South Sudan",
+        "Sudan",
+        "Togo",
+        "Tunisia",
+        "Uganda",
+        "United Republic of Tanzania",
+        "Western Sahara",
+        "Zambia",
+        "Zimbabwe",
+        "eSwatini"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        -18.625043,
+        -35.819166,
+        52.13387,
+        38.349994
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "85131142035147bf27bc7beed58bfa338b21e6be6930d3fecb586bc47b621a78"
+    },
+    "middle_east": {
+      "file": "middle_east.svg",
+      "label": "Middle East",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "Cyprus",
+        "Egypt",
+        "Iran",
+        "Iraq",
+        "Israel",
+        "Jordan",
+        "Kuwait",
+        "Lebanon",
+        "Oman",
+        "Palestine",
+        "Qatar",
+        "Saudi Arabia",
+        "Syria",
+        "Turkey",
+        "United Arab Emirates",
+        "Yemen"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        23.70007,
+        11.58595,
+        64.316632,
+        43.141485
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "11b2ac88e89f141bb7bba9801e39ffa02f4456e9bb8a55d171a5e5007c9e06b2",
+      "regional_convention": "Editorial selection: Bahrain, Cyprus, Egypt, Iran, Iraq, Israel, Jordan, Kuwait, Lebanon, Oman, Palestine, Qatar, Saudi Arabia, Syria, Turkey, United Arab Emirates, Yemen. Includes Egypt, Cyprus and Turkey; excludes North Africa west of Egypt and South Caucasus. No universally agreed regional boundary is implied."
     }
   }
 }

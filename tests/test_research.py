@@ -127,6 +127,13 @@ class ResearchTests(unittest.TestCase):
         citations=[{'url':s['url'],'cited_text':s['excerpt']} for s in packet['sources']]
         with patch.object(research,'_retrieve',return_value=(packet,citations)):
             self.assertEqual(research.research_topic(Config({}),'border')['status'],'unsupported')
+    def test_related_institution_domains_are_not_independent(self):
+        cfg = Config({'research': {'authoritative_domains': ['qdl.qa', 'qnl.qa'],
+                                  'publisher_aliases': {'qdl.qa': 'qnl.qa'}}})
+        claim = {'id': 'C1', 'status': 'supported', 'extraordinary': True, 'source_ids': ['S1', 'S2']}
+        sources = {'S1': {'url': 'https://qdl.qa/item/1', 'citation_verified': True},
+                   'S2': {'url': 'https://qnl.qa/item/2', 'citation_verified': True}}
+        self.assertFalse(research._claim_ok(cfg, claim, sources))
     def test_legacy_location_strings_cannot_silently_skip_maps(self):
         packet=self.packet();packet['locations']=['canada']
         citation={'url':packet['sources'][0]['url'],'cited_text':packet['sources'][0]['excerpt']}

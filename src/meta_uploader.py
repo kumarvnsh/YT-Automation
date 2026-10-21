@@ -212,7 +212,23 @@ def _raise_graph(resp: requests.Response, what: str) -> None:
         raise RuntimeError(f"{what} failed [{resp.status_code}]: {resp.text}")
 
 
-def _build_caption(cfg: Config, title: str, description: str) -> str:
+def _build_caption(cfg: Config, title: str, description: str, *, platform='instagram') -> str:
+    if platform == 'facebook' and cfg.get('meta.facebook_caption.enabled', False):
+        import re
+        lines = [line.strip() for line in description.splitlines() if line.strip() and
+                 not re.search(r'https?://|youtube|subscribe|#', line, re.I)]
+        summary = ' '.join(lines)[:320]
+        if len(' '.join(lines)) > 320:
+            summary = summary.rsplit(' ', 1)[0].rstrip('.,;:') + '…'
+        parts = [title.strip(), summary]
+        editorial = cfg.get('production.editorial', {})
+        if editorial:
+            parts.append(editorial['series']['name'])
+            if editorial.get('follow_cta'):
+                parts.append('Follow Histold for surprising world history.')
+        tags = cfg.get('meta.facebook_caption.hashtags', []) or []
+        parts.append(' '.join(tags[:3]))
+        return '\n\n'.join(part for part in parts if part)[:650]
     tags = cfg.get("meta.hashtags", []) or []
     parts = [title.strip()]
     if description.strip():
@@ -225,7 +241,7 @@ def _build_caption(cfg: Config, title: str, description: str) -> str:
 # --------------------------------------------------------------------------- #
 # public entrypoint
 # --------------------------------------------------------------------------- #
-def publish_reel(cfg: Config, video_path: Path, title: str, description: str) -> dict:
+def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *, existing_results=None) -> dict:
     """Cross-post the rendered short to FB and/or IG. Returns per-platform ids.
 
     Best-effort: raises on hard config/host errors, but the caller treats a
@@ -238,20 +254,34 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str) ->
     ver = cfg.get("meta.api_version", "v21.0")
     page_id = str(cfg.get("meta.page_id", "")).strip()
     ig_user_id = str(cfg.get("meta.ig_user_id", "")).strip()
-    caption = _build_caption(cfg, title, description)
-
-    results: dict = {}
+    results: dict = dict(existing_results or {})
+    need_facebook = cfg.get('meta.post_to_facebook', True) and page_id and not results.get('facebook')
+    need_instagram = cfg.get('meta.post_to_instagram', True) and ig_user_id and not results.get('instagram')
+    if not need_facebook and not need_instagram:
+        return results
     url, cleanup = _host_video(video_path)
     try:
-        if cfg.get("meta.post_to_instagram", True) and ig_user_id:
+        if need_facebook and cfg.get('meta.primary', False):
             try:
+                caption = _build_caption(cfg, title, description, platform='facebook')
+                results['facebook'] = _publish_facebook_reel(token, page_id, url, caption, ver)
+                results.pop('facebook_error', None)
+            except Exception as exc:
+                results['facebook_error'] = str(exc)
+                return results
+        if need_instagram:
+            try:
+                caption = _build_caption(cfg, title, description)
                 results["instagram"] = _publish_instagram(token, ig_user_id, url, caption, ver)
+                results.pop('instagram_error', None)
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Instagram cross-post failed: {exc}")
                 results["instagram_error"] = str(exc)
-        if cfg.get("meta.post_to_facebook", True) and page_id:
+        if need_facebook and not cfg.get('meta.primary', False):
             try:
+                caption = _build_caption(cfg, title, description, platform='facebook')
                 results["facebook"] = _publish_facebook_reel(token, page_id, url, caption, ver)
+                results.pop('facebook_error', None)
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Facebook cross-post failed: {exc}")
                 results["facebook_error"] = str(exc)

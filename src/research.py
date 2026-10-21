@@ -51,6 +51,8 @@ def _client():
     return Anthropic(api_key=key)
 
 def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
+    from .map_assets import available_map_ids
+    map_ids = ', '.join(available_map_ids())
     tool = {'type':'web_search_20250305', 'name':'web_search', 'max_uses':cfg.get('research.max_searches', 5)}
     domains = cfg.get('research.allowed_domains') or cfg.get('research.authoritative_domains', _DEFAULT_AUTHORITIES)
     if domains:
@@ -79,7 +81,8 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         max_tokens=6000, tools=[tool], messages=[{'role':'user','content':repair_prompt if repair_prompt else recovery_prompt + (
         'Research only the narrow core of this topic for ONE short video, using web search now: '+topic+
         '\nUse authoritative archives, government records, museums, and original records. '
-        'Find only 3-6 directly supported claims sufficient to explain the consequence, historical cause and payoff. '
+        'Find only 3-6 directly supported claims sufficient to explain the surprising fact, context and payoff. '
+        'For origins, inventions, daily life and misconceptions, do not force a disaster or single historical cause. '
         'Avoid tangents, extra naming anecdotes, population statistics and dramatic origin myths. Use only the approved authoritative domains. '
         'Cite directly supporting excerpts, never invent citations. Preserve geographic qualifications and disputed dates. '
         'Separate nonessential disputed/unsupported background into findings [{text,status,material_to_core_story:boolean,source_ids}]. '
@@ -90,7 +93,7 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         'as structured location objects, dates. '
         'Extraordinary or disputed claims need two independent authoritative publishers. '
         'locations must be [{name,map_id:null|string,requires_map:boolean}]. Supported present-day map IDs are '
-        'united_states,canada,minnesota,washington. For geography-dependent stories set geography_required:true '
+        + map_ids + '. For geography-dependent stories set geography_required:true '
         'and list EVERY essential establishing location with requires_map:true; never substitute another map or '
         'omit an unsupported required location. For other stories use geography_required:false. '
         'Only present-day establishing outlines are supported; historical borders cannot be rendered accurately '
@@ -127,11 +130,15 @@ def _claim_ok(cfg, claim, sources):
     domains = cfg.get('research.authoritative_domains', _DEFAULT_AUTHORITIES)
     # Count an approved institution once, even across catalog/search subdomains.
     publishers = {next(d for d in sorted(domains, key=len) if urlparse(s['url']).hostname == d or urlparse(s['url']).hostname.endswith('.'+d)) for s in supporting}
+    aliases = cfg.get('research.publisher_aliases', {})
+    publishers = {aliases.get(publisher, publisher) for publisher in publishers}
     required = 2 if claim.get('extraordinary') else 1
     return claim.get('status') == 'supported' and len(publishers) >= required
 
 def validate_research(cfg, packet: dict) -> list[str]:
     """Offline source and geography policy check for resumed and final jobs."""
+    from .map_assets import available_map_ids
+    map_ids = available_map_ids()
     errors = []
     source_rows, claim_rows = packet.get('sources', []), packet.get('claims', [])
     try:
@@ -162,7 +169,7 @@ def validate_research(cfg, packet: dict) -> list[str]:
                 continue
             if location['requires_map']:
                 required.append(location)
-                if location.get('map_id') not in ('united_states','canada','minnesota','washington'):
+                if location.get('map_id') not in map_ids:
                     errors.append('Required geography has no vetted map asset')
         if packet.get('geography_required') and not required:
             errors.append('Geography story requires mapped establishing locations')

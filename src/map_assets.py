@@ -20,6 +20,11 @@ def sanitize_svg(text: str) -> str:
     return text
 
 
+def available_map_ids() -> list[str]:
+    """Return the reviewed asset IDs available to research and rendering."""
+    return sorted(json.loads((ROOT / 'manifest.json').read_text())['assets'])
+
+
 def load_map(map_id: str) -> dict:
     manifest = json.loads((ROOT / 'manifest.json').read_text())
     asset = manifest['assets'].get(map_id)

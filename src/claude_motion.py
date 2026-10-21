@@ -230,7 +230,21 @@ def bind_maps(html: str, assets: list[dict]) -> str:
     """Replace map placeholders with pinned geometry; the model never authors these paths."""
     from html import escape
     tokens = [f'<histold-map id="{a["map_id"]}"></histold-map>' for a in assets]
-    if any(token in html for token in tokens):
+    if any(token in html for token in tokens) and any(
+            a['map_id'] not in {'canada', 'united_states', 'washington', 'minnesota'} for a in assets):
+        # Different extents need separate viewports; overlaying would invent relative positions.
+        cards = []
+        for asset in assets:
+            svg = asset['svg'].replace('<svg ', '<svg style="display:block;width:100%;height:180px;color:#c9bb9c" ', 1)
+            cards.append(f'<div data-map-id="{escape(asset["map_id"])}" style="flex:1 1 150px;min-width:0;text-align:center">'
+                         f'{svg}<div style="font-size:16px;color:#ecdfc2">{escape(asset["label"])}</div></div>')
+        bundle = '<div class="histold-map" style="width:100%"><div style="display:flex;flex-wrap:wrap;gap:12px">'+''.join(cards)+'</div><div class="k-label" style="font-size:10px">Present-day establishing geography · separate extents</div></div>'
+        placed = False
+        for token in tokens:
+            if token in html:
+                html = html.replace(token, bundle if not placed else '')
+                placed = True
+    elif any(token in html for token in tokens):
         labels = {'canada': (190, 135), 'united_states': (200, 294),
                   'washington': (62, 214), 'minnesota': (245, 235)}
         groups = []
@@ -264,12 +278,20 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      'Reserve upper-left x=4.5%-17%, y=4.5%-12% for the small translucent HISTOLD logo. '
                      'Use present-day maps only as establishing context; never invent historical borders.')
     maps = cfg.get('production.map_assets', [])
+    editorial = cfg.get('production.editorial')
+    if editorial:
+        lines.append('Facebook world-history series: ' + editorial['series']['name'] +
+                     '. Establish the specific opening subject immediately with a readable map, object, '
+                     'diagram or meaningful comparison. Prefer original explanatory visuals to generic stock. '
+                     'Use large high-contrast labels, hold important labels long enough to read and avoid flashing '
+                     'or decorative rapid cuts. Keep the series name as a short readable opening label. '
+                     'Distinguish illustrative reconstructions from archival evidence; never invent archival photographs.')
     if maps:
         lines.append('Verified map IDs: ' + ', '.join(a['map_id'] for a in maps) +
                      '. In scene 0 establish ALL these locations with exact placeholders '
                      '<histold-map id="MAP_ID"></histold-map> inside .k-stage, at readable size. '
-                     'These are present-day continental establishing outlines with shared projection, not detailed survey maps. '
-                     'Use relative SVG overlays for countries/states where appropriate. Keep the establishing labels for >=2 seconds '
+                     'These are present-day establishing outlines; world maps use separate extents and North American country/state maps share a projection. '
+                     'The binding supplies the geometry and layout. Keep the establishing labels for >=2 seconds '
                      'before any schematic/inset. Do not draw substitute map paths or unsupported borders.')
     for i, (seg, (s, e)) in enumerate(zip(segs, windows)):
         lines.append(

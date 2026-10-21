@@ -54,6 +54,9 @@ jobs:
       - name: Capture six-Reel experiment observations
         run: python scripts/report_experiment.py
 
+      - name: Capture Facebook four-week growth observations
+        run: python scripts/report_facebook_growth.py --root .
+
       # Auto-republish stuck videos (config republish.auto). Dispatches
       # republish.yml per candidate and stamps auto_dispatched_at in the index
       # so each video gets exactly one automatic attempt.
