@@ -63,7 +63,7 @@ STYLE_PRESETS = {
         "punchy colour of a vintage propaganda poster; and the heavy inked "
         "shadows, high contrast and cinematic tension of a graphic novel. "
         "Painterly texture with strong graphic shapes and deep chiaroscuro, "
-        "one warm accent colour, clearly a hand-made illustration and "
+        "a coordinated navy, blue and teal palette with cyan or mint highlights and occasional small gold or coral accents; no purple, sepia wash or brown/orange dominance, clearly a hand-made illustration and "
         "obviously not a photograph"
     ),
     # --- History-leaning illustration styles (all obviously non-photographic,

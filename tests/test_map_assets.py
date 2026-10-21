@@ -28,7 +28,7 @@ class MapAssetTests(unittest.TestCase):
 
     def test_world_maps_are_manifest_discoverable_and_nonempty(self):
         names = map_assets.available_map_ids()
-        for name in ('india', 'japan', 'russia', 'africa', 'middle_east', 'egypt', 'kenya', 'nigeria', 'south_africa', 'iran', 'iraq', 'saudi_arabia', 'turkey'):
+        for name in ('china', 'india', 'japan', 'russia', 'africa', 'middle_east', 'egypt', 'kenya', 'nigeria', 'south_africa', 'iran', 'iraq', 'saudi_arabia', 'turkey'):
             self.assertIn(name, names)
             asset = map_assets.load_map(name)
             self.assertIn('Present-day', asset['scope'])
@@ -77,3 +77,17 @@ class MapAssetTests(unittest.TestCase):
             manifest = json.loads((root / 'manifest.json').read_text())
             self.assertEqual(manifest['assets']['india'], world)
             self.assertIn('canada', manifest['assets'])
+
+    def test_china_map_keeps_provenance_and_binds_with_its_own_viewbox(self):
+        from src.claude_motion import bind_maps
+        import xml.etree.ElementTree as ET
+        asset = map_assets.load_map('china')
+        self.assertEqual(asset['feature_names'], ['China'])
+        self.assertEqual(asset['version'], '5.1.2')
+        self.assertIn('v5.1.2', asset['source_url'])
+        self.assertEqual(len(asset['source_sha256']), 64)
+        html = bind_maps('<histold-map id="china"></histold-map>', [asset])
+        self.assertIn('data-map-id="china"', html)
+        self.assertIn('viewBox="'+ET.fromstring(asset['svg']).attrib['viewBox']+'"', html)
+        self.assertIn('China', html)
+        self.assertNotIn('<histold-map', html)

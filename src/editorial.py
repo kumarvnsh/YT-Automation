@@ -10,7 +10,7 @@ def assignment(cfg, ordinal):
     region_at = ordinal % len(regions)
     series_at = (ordinal // len(regions) + region_at) % len(series)
     cycle = ordinal // (len(regions) * len(series))
-    variant = variants[(ordinal + cycle) % 2]
+    variant = variants[(ordinal % (len(regions) * len(series)) + cycle) % 2]
     return {'ordinal': ordinal, 'region': regions[region_at], 'series': series[series_at],
             'duration_variant': variant['id'], 'target_seconds': variant['seconds'],
             'story_profile': 'evergreen_concise' if variant['id'] == 'concise' else 'evergreen_story',

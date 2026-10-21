@@ -2,7 +2,7 @@
 
 Fully scripted pipeline that, on each run, **writes a script → generates a voiceover → pulls matching stock footage → burns in captions → renders an MP4 → uploads it to YouTube**. Supports both vertical **Shorts** and horizontal **long-form** videos. Point a scheduler at it and it runs hands-off every day.
 
-Histold's current automatic Shorts prioritize **Facebook and surprising world history**, with YouTube and Instagram distribution retained. New jobs interleave eight regional groups, three evergreen series and 30/50-second duration tests. Facebook is published first; a missing Reel ID fails the step, and known successful platform IDs survive retries. The existing two daily schedule is unchanged. Manual topics and existing stage snapshots keep their original settings.
+Histold's current automatic Shorts prioritize **Facebook and surprising world history**, with YouTube and Instagram distribution retained. New jobs interleave nine regional groups, three evergreen series and 30/50-second duration tests. Facebook is published first; a missing Reel ID fails the step, and known successful platform IDs survive retries. The existing two daily schedule is unchanged. Manual topics and existing stage snapshots keep their original settings.
 
 See the [content playbook and prepared Page copy](docs/facebook-content-playbook.md), [Facebook Insights import/report guide](docs/facebook-growth.md), and [world map/source provenance](docs/world-history-sources.md). Raw dashboard CSVs, demographic notes and financial baselines stay in ignored `data/private/`. No Page edits, comment replies or video uploads are triggered by these local import/report commands.
 

@@ -449,6 +449,27 @@
       "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
       "sha256": "11b2ac88e89f141bb7bba9801e39ffa02f4456e9bb8a55d171a5e5007c9e06b2",
       "regional_convention": "Editorial selection: Bahrain, Cyprus, Egypt, Iran, Iraq, Israel, Jordan, Kuwait, Lebanon, Oman, Palestine, Qatar, Saudi Arabia, Syria, Turkey, United Arab Emirates, Yemen. Includes Egypt, Cyprus and Turkey; excludes North Africa west of Egypt and South Caucasus. No universally agreed regional boundary is implied."
+    },
+    "china": {
+      "file": "china.svg",
+      "label": "China",
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson",
+      "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "feature_names": [
+        "China"
+      ],
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "version": "5.1.2",
+      "projection": "Equirectangular EPSG:4326, scaled 6 px/degree",
+      "extent": [
+        72.675379,
+        17.197701,
+        136.026311,
+        54.4588
+      ],
+      "scope": "Present-day establishing geography using Natural Earth v5.1.2 de facto boundary conventions; not historical, legal, sovereignty or survey evidence.",
+      "sha256": "4367f98d631b1e2f65db0ca1c1c9ececb85b6e6fba62c3b539bcc9856c7ce331"
     }
   }
 }

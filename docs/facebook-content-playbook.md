@@ -16,7 +16,7 @@ This copy is prepared locally. It has not been posted or applied to the live Fac
 
 ## Content and presentation
 
-Rotate India, African countries, Japan, Russia and its historical contexts, the Middle East, Europe, the Americas, and other Asian/Pacific countries. Name actual cultures and periods. Do not treat continents or regions as single cultures. Research the specific claim, not a national stereotype. Modern map outlines establish location; they never establish an ancient empire's boundaries.
+Rotate India, African countries, Japan, China, Russia and its historical contexts, the Middle East, Europe, the Americas, and other Asian/Pacific countries. Name actual cultures and periods. Do not treat continents or regions as single cultures. Research the specific claim, not a national stereotype. Modern map outlines establish location; they never establish an ancient empire's boundaries.
 
 Interleave three series: everyday origins and cross-cultural connections; evidence-led misconceptions and overlooked people; documented decisions and near-misses. The last preserves a useful exploratory signal in the supplied historical export without assuming that series is a proven winner. Older scripts, unfinished stages and manual topic overrides retain their existing contracts.
 
@@ -28,10 +28,14 @@ The 30-second concise profile uses five beats; the 50-second story profile uses 
 
 ## Four-week evaluation
 
-The first 56 reserved automatic assignments carry `facebook-world-history-4w`; at two a day this is about four weeks. Failed reservations can reduce the published sample, and previews do not consume it. Region/series/duration combinations cover a full 48-assignment cycle; the final eight begin the next cycle. Posting time, region, series and duration remain possible confounders.
+The first 56 reserved automatic assignments carry `facebook-world-history-4w`; at two a day this is about four weeks. Failed reservations can reduce the published sample, and previews do not consume it. Region/series/duration combinations cover a full 54-assignment cycle; the final two begin the next cycle. Posting time, region, series and duration remain possible confounders.
 
 Compare Facebook observations at 24, 72 and 168 hours separately. Use reported watch time/retention, shares and attributed gross follows per compatible 1,000 views, with denominators and sample counts shown. Keep source and view definitions separate. Report missing data as unknown. Earnings retain their actual reporting period, currency and qualified-view denominator. Do not optimize for lifetime views alone or infer causality from one successful Reel.
 
 Keep raw Insights exports and financial analysis in ignored `data/private/`. See [measurement instructions](facebook-growth.md) and [map/source provenance](world-history-sources.md). The supplied Lifetime export is a private historical baseline, not an equal-age experiment.
 
 Review substantive comments and reply in the Page's voice when appropriate. Turn recurring audience questions into researched topic candidates. This deployment does not send comments or messages, change the live Page, buy engagement, boost posts or increase upload volume.
+
+## Approved visual palettes
+
+Blue and teal lead: navy/teal, ocean blue/cyan, and deep teal/mint. Blue/gold, teal/coral and ice blue/teal add occasional variety. No purple or brown/orange-dominated grade. The renderer applies the same palette before inspection and capture, including local recovery scenes; maps use palette variables and narration captions remain readable. China has its own regional assignment, establishing map and verified institutional source domains.

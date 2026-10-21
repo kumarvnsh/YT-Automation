@@ -9,6 +9,8 @@ terms separately.
 
 | Coverage | Domain | Verified institutional entry point |
 | --- | --- | --- |
+| China / imperial material culture | dpm.org.cn | [Palace Museum collections](https://intl.dpm.org.cn/collection_list); [official multilingual website description](https://www.dpm.org.cn/bottom/friend.html) |
+| China / historical material culture | chnmuseum.cn | [National Museum of China institutional identity](https://en.chnmuseum.cn/about_the_nmc_593/about_the_nmc_594/); [exhibitions and collections](https://en.chnmuseum.cn/) |
 | India | nationalarchives.nic.in | [National Archives of India, Government of India](https://www.nationalarchives.nic.in/en) |
 | Japan | nich.go.jp | [National Institutes for Cultural Heritage](https://www.nich.go.jp/en/); [Museum of the Imperial Collections](https://shozokan.nich.go.jp/en/about) |
 | South Africa | nationalarchives.gov.za | [National Archives and Records Service](https://www.nationalarchives.gov.za/) |
@@ -55,3 +57,14 @@ cannot be fabricated into the geometry.
 
 Use `src.map_assets.available_map_ids()` for manifest-derived available IDs;
 `load_map()` verifies the asset checksum and sanitizes the SVG before use.
+
+China is explicitly supported through the `china` establishing asset (source
+feature `ADMIN=China`). It retains the same pinned dataset's de facto boundary
+conventions and disputed-territory limitations described above; it is not a
+historical territorial claim. Chinese collection sources can support carefully
+attributed stories about everyday origins, inventions, food, clothing, ceramics,
+writing and distinct regional cultures and periods. Check claims of "first" or
+sole invention independently, and distinguish surviving objects from proof of
+origin. Museum institutional narratives do not independently settle contested
+historical or modern political assertions. Inclusion does not guarantee audience
+reach or interest.

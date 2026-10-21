@@ -5,9 +5,10 @@
 @property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
 
 :root {
-  --ink: #0e0d10; --char: #1b191d; --soot: #2a2629;
-  --parch: #ecdfc2; --bone: #c9bb9c; --dim: #8a7f6a;
-  --amber: #e39a2d; --verm: #c8432b; --accent: var(--amber);
+  --ink: #09192e; --char: #102d49; --soot: #164982;
+  --parch: #f5f8ff; --bone: #a9c9ec; --dim: #c0d2e8;
+  --teal: #40e0d0; --sky: #38bdf8; --mint: #86efac; --gold: #facc15; --coral: #fb7185;
+  --amber: var(--gold); --verm: var(--coral); --accent: var(--teal);
   --display: 'Oswald', 'Arial Narrow', sans-serif;
   --serif: 'Cormorant Garamond', Georgia, serif;
 }
@@ -21,7 +22,7 @@ body {
 html::before, html::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
 html::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-  opacity: .13; mix-blend-mode: overlay;
+  opacity: .04; mix-blend-mode: overlay;
   animation: kit-fx-grain .5s steps(5) infinite;
 }
 html::after { background: radial-gradient(ellipse at 50% 40%, transparent 55%, rgba(0,0,0,.6) 100%); }

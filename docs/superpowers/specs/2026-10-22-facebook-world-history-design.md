@@ -2,7 +2,7 @@
 
 Approved scope: broaden Histold to engaging evergreen world history, prioritize its monetized Facebook audience, keep two daily uploads and the existing YouTube/Instagram distribution, and commit/push without dispatching publishing jobs.
 
-New automatic production Shorts reserve a deterministic region/series/duration assignment under the existing stage-creation lock. Eight region groups and three series interleave; two duration cycles cover all region/series/duration combinations. The first 56 reserved assignments form an exploratory four-week study. Dry previews do not consume a publishing assignment; failed production reservations remain reserved to avoid repeated subjects. Existing stages keep their snapshots, manual topics remain fixed, other channels stay unchanged.
+New automatic production Shorts reserve a deterministic region/series/duration assignment under the existing stage-creation lock. Nine region groups and three series interleave; two duration cycles cover all region/series/duration combinations. The first 56 reserved assignments form an exploratory four-week study. Dry previews do not consume a publishing assignment; failed production reservations remain reserved to avoid repeated subjects. Existing stages keep their snapshots, manual topics remain fixed, other channels stay unchanged.
 
 The research brief favors curiosity, relevant context and a complete payoff over anniversaries. All source, dispute, citation and upload-quality checks remain required. Expanded approved institutions are starting points, not automatic verification. Manifest-derived map IDs, provenance checks and separate world-map viewports prevent unsupported invented geography.
 

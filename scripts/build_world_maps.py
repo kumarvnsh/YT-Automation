@@ -12,7 +12,7 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent / 'assets/maps'
 SOURCE = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_110m_admin_0_countries.geojson'
 MIDDLE_EAST = ['Bahrain', 'Cyprus', 'Egypt', 'Iran', 'Iraq', 'Israel', 'Jordan', 'Kuwait', 'Lebanon', 'Oman', 'Palestine', 'Qatar', 'Saudi Arabia', 'Syria', 'Turkey', 'United Arab Emirates', 'Yemen']
-COUNTRIES = {'india': 'India', 'japan': 'Japan', 'russia': 'Russia', 'egypt': 'Egypt', 'kenya': 'Kenya', 'nigeria': 'Nigeria', 'south_africa': 'South Africa', 'ethiopia': 'Ethiopia', 'ghana': 'Ghana', 'iran': 'Iran', 'iraq': 'Iraq', 'saudi_arabia': 'Saudi Arabia', 'turkey': 'Turkey'}
+COUNTRIES = {'china': 'China', 'india': 'India', 'japan': 'Japan', 'russia': 'Russia', 'egypt': 'Egypt', 'kenya': 'Kenya', 'nigeria': 'Nigeria', 'south_africa': 'South Africa', 'ethiopia': 'Ethiopia', 'ghana': 'Ghana', 'iran': 'Iran', 'iraq': 'Iraq', 'saudi_arabia': 'Saudi Arabia', 'turkey': 'Turkey'}
 
 
 def main():

@@ -48,11 +48,12 @@ editorial:
     - {id: "india", label: "India", guidance: "Origins, daily life, inventions and forgotten people across distinct Indian periods and communities"}
     - {id: "africa", label: "African countries", guidance: "Rotate specific countries such as Nigeria, South Africa, Kenya, Ethiopia, Ghana and Egypt; avoid continent-wide generalizations"}
     - {id: "japan", label: "Japan", guidance: "Everyday customs, material culture, inventions and historical choices"}
+    - {id: "china", label: "China", guidance: "Documented everyday origins, inventions, trade, art and daily life across named periods and communities; corroborate first-invention claims independently"}
     - {id: "russia", label: "Russia and its historical contexts", guidance: "Distinguish Russian, Soviet and neighboring histories; use independent corroboration for contested claims"}
     - {id: "middle_east", label: "the Middle East", guidance: "Name a specific country, culture and period; explore everyday origins, scholarship and trade without modern political provocation"}
     - {id: "europe", label: "Europe", guidance: "Rotate countries, ordinary life, forgotten people and unexpected connections"}
     - {id: "americas", label: "the Americas", guidance: "Include North, Central and South America and named Indigenous communities; retain existing US/Canada audience relevance"}
-    - {id: "asia_pacific", label: "other Asian and Pacific countries", guidance: "Include the Philippines, China, Korea, Southeast Asia and Pacific communities; explain distinct cultures precisely"}
+    - {id: "asia_pacific", label: "other Asian and Pacific countries", guidance: "Include the Philippines, Korea, Southeast Asia and Pacific communities; explain distinct cultures precisely"}
   series:
     - id: "everyday_origins"
       name: "You Use It Every Day"
@@ -76,7 +77,7 @@ research:
   max_searches: 5
   model: "claude-sonnet-4-6"
   publisher_aliases: {"qdl.qa": "qnl.qa"}  # related collections do not count as independent corroboration
-  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa"]
+  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa", "dpm.org.cn", "chnmuseum.cn"]
 
 audio_quality:
   silence_db: -40

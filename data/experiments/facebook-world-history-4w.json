@@ -8,7 +8,7 @@
     168
   ],
   "window_tolerance_hours": 1,
-  "interpretation": "Exploratory rotation of region, series and duration across the first 56 automatic assignments. Failed assignments may reduce published samples. Only compare on-time observations at the same age; missing measures are null; no causal winner claims.",
+  "interpretation": "Exploratory rotation of nine regions, three series and two duration variants. A full cycle takes 54 assignments; the first 56 assignments span about four weeks at two per day. Failed assignments may reduce published samples. Compare on-time observations at the same age, separate source definitions and missing data, and do not infer causal winners.",
   "slots": [
     {
       "slot": 1,
@@ -37,7 +37,7 @@
     {
       "slot": 4,
       "category": "everyday_origins",
-      "region": "russia",
+      "region": "china",
       "series": "You Use It Every Day",
       "duration_variant": "story",
       "target_seconds": 50
@@ -45,7 +45,7 @@
     {
       "slot": 5,
       "category": "myth_evidence",
-      "region": "middle_east",
+      "region": "russia",
       "series": "History Got This Wrong",
       "duration_variant": "concise",
       "target_seconds": 30
@@ -53,7 +53,7 @@
     {
       "slot": 6,
       "category": "decisions",
-      "region": "europe",
+      "region": "middle_east",
       "series": "One Decision Changed Everything",
       "duration_variant": "story",
       "target_seconds": 50
@@ -61,7 +61,7 @@
     {
       "slot": 7,
       "category": "everyday_origins",
-      "region": "americas",
+      "region": "europe",
       "series": "You Use It Every Day",
       "duration_variant": "concise",
       "target_seconds": 30
@@ -69,79 +69,79 @@
     {
       "slot": 8,
       "category": "myth_evidence",
-      "region": "asia_pacific",
+      "region": "americas",
       "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 9,
-      "category": "myth_evidence",
-      "region": "india",
-      "series": "History Got This Wrong",
+      "category": "decisions",
+      "region": "asia_pacific",
+      "series": "One Decision Changed Everything",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
       "slot": 10,
-      "category": "decisions",
-      "region": "africa",
-      "series": "One Decision Changed Everything",
+      "category": "myth_evidence",
+      "region": "india",
+      "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 11,
-      "category": "everyday_origins",
-      "region": "japan",
-      "series": "You Use It Every Day",
+      "category": "decisions",
+      "region": "africa",
+      "series": "One Decision Changed Everything",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
       "slot": 12,
-      "category": "myth_evidence",
-      "region": "russia",
-      "series": "History Got This Wrong",
-      "duration_variant": "story",
-      "target_seconds": 50
-    },
-    {
-      "slot": 13,
-      "category": "decisions",
-      "region": "middle_east",
-      "series": "One Decision Changed Everything",
-      "duration_variant": "concise",
-      "target_seconds": 30
-    },
-    {
-      "slot": 14,
       "category": "everyday_origins",
-      "region": "europe",
+      "region": "japan",
       "series": "You Use It Every Day",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
-      "slot": 15,
+      "slot": 13,
       "category": "myth_evidence",
-      "region": "americas",
+      "region": "china",
       "series": "History Got This Wrong",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
-      "slot": 16,
+      "slot": 14,
       "category": "decisions",
-      "region": "asia_pacific",
+      "region": "russia",
       "series": "One Decision Changed Everything",
+      "duration_variant": "story",
+      "target_seconds": 50
+    },
+    {
+      "slot": 15,
+      "category": "everyday_origins",
+      "region": "middle_east",
+      "series": "You Use It Every Day",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
+      "slot": 16,
+      "category": "myth_evidence",
+      "region": "europe",
+      "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 17,
       "category": "decisions",
-      "region": "india",
+      "region": "americas",
       "series": "One Decision Changed Everything",
       "duration_variant": "concise",
       "target_seconds": 30
@@ -149,221 +149,197 @@
     {
       "slot": 18,
       "category": "everyday_origins",
-      "region": "africa",
+      "region": "asia_pacific",
       "series": "You Use It Every Day",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 19,
-      "category": "myth_evidence",
-      "region": "japan",
-      "series": "History Got This Wrong",
+      "category": "decisions",
+      "region": "india",
+      "series": "One Decision Changed Everything",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
       "slot": 20,
-      "category": "decisions",
-      "region": "russia",
-      "series": "One Decision Changed Everything",
+      "category": "everyday_origins",
+      "region": "africa",
+      "series": "You Use It Every Day",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 21,
-      "category": "everyday_origins",
-      "region": "middle_east",
-      "series": "You Use It Every Day",
+      "category": "myth_evidence",
+      "region": "japan",
+      "series": "History Got This Wrong",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
       "slot": 22,
-      "category": "myth_evidence",
-      "region": "europe",
-      "series": "History Got This Wrong",
+      "category": "decisions",
+      "region": "china",
+      "series": "One Decision Changed Everything",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 23,
-      "category": "decisions",
-      "region": "americas",
-      "series": "One Decision Changed Everything",
+      "category": "everyday_origins",
+      "region": "russia",
+      "series": "You Use It Every Day",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
       "slot": 24,
-      "category": "everyday_origins",
-      "region": "asia_pacific",
-      "series": "You Use It Every Day",
+      "category": "myth_evidence",
+      "region": "middle_east",
+      "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 25,
+      "category": "decisions",
+      "region": "europe",
+      "series": "One Decision Changed Everything",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
+      "slot": 26,
       "category": "everyday_origins",
-      "region": "india",
+      "region": "americas",
       "series": "You Use It Every Day",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
-      "slot": 26,
+      "slot": 27,
       "category": "myth_evidence",
-      "region": "africa",
+      "region": "asia_pacific",
       "series": "History Got This Wrong",
       "duration_variant": "concise",
       "target_seconds": 30
-    },
-    {
-      "slot": 27,
-      "category": "decisions",
-      "region": "japan",
-      "series": "One Decision Changed Everything",
-      "duration_variant": "story",
-      "target_seconds": 50
     },
     {
       "slot": 28,
       "category": "everyday_origins",
-      "region": "russia",
+      "region": "india",
       "series": "You Use It Every Day",
-      "duration_variant": "concise",
-      "target_seconds": 30
+      "duration_variant": "story",
+      "target_seconds": 50
     },
     {
       "slot": 29,
       "category": "myth_evidence",
-      "region": "middle_east",
+      "region": "africa",
       "series": "History Got This Wrong",
-      "duration_variant": "story",
-      "target_seconds": 50
+      "duration_variant": "concise",
+      "target_seconds": 30
     },
     {
       "slot": 30,
       "category": "decisions",
-      "region": "europe",
+      "region": "japan",
       "series": "One Decision Changed Everything",
-      "duration_variant": "concise",
-      "target_seconds": 30
+      "duration_variant": "story",
+      "target_seconds": 50
     },
     {
       "slot": 31,
       "category": "everyday_origins",
-      "region": "americas",
+      "region": "china",
       "series": "You Use It Every Day",
-      "duration_variant": "story",
-      "target_seconds": 50
+      "duration_variant": "concise",
+      "target_seconds": 30
     },
     {
       "slot": 32,
       "category": "myth_evidence",
-      "region": "asia_pacific",
+      "region": "russia",
       "series": "History Got This Wrong",
-      "duration_variant": "concise",
-      "target_seconds": 30
+      "duration_variant": "story",
+      "target_seconds": 50
     },
     {
       "slot": 33,
-      "category": "myth_evidence",
-      "region": "india",
-      "series": "History Got This Wrong",
-      "duration_variant": "story",
-      "target_seconds": 50
-    },
-    {
-      "slot": 34,
-      "category": "decisions",
-      "region": "africa",
-      "series": "One Decision Changed Everything",
-      "duration_variant": "concise",
-      "target_seconds": 30
-    },
-    {
-      "slot": 35,
-      "category": "everyday_origins",
-      "region": "japan",
-      "series": "You Use It Every Day",
-      "duration_variant": "story",
-      "target_seconds": 50
-    },
-    {
-      "slot": 36,
-      "category": "myth_evidence",
-      "region": "russia",
-      "series": "History Got This Wrong",
-      "duration_variant": "concise",
-      "target_seconds": 30
-    },
-    {
-      "slot": 37,
       "category": "decisions",
       "region": "middle_east",
       "series": "One Decision Changed Everything",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
+      "slot": 34,
+      "category": "everyday_origins",
+      "region": "europe",
+      "series": "You Use It Every Day",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
+      "slot": 35,
+      "category": "myth_evidence",
+      "region": "americas",
+      "series": "History Got This Wrong",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
+      "slot": 36,
+      "category": "decisions",
+      "region": "asia_pacific",
+      "series": "One Decision Changed Everything",
+      "duration_variant": "story",
+      "target_seconds": 50
+    },
+    {
+      "slot": 37,
+      "category": "myth_evidence",
+      "region": "india",
+      "series": "History Got This Wrong",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
       "slot": 38,
+      "category": "decisions",
+      "region": "africa",
+      "series": "One Decision Changed Everything",
+      "duration_variant": "story",
+      "target_seconds": 50
+    },
+    {
+      "slot": 39,
       "category": "everyday_origins",
-      "region": "europe",
+      "region": "japan",
       "series": "You Use It Every Day",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
-      "slot": 39,
+      "slot": 40,
       "category": "myth_evidence",
-      "region": "americas",
+      "region": "china",
       "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50
-    },
-    {
-      "slot": 40,
-      "category": "decisions",
-      "region": "asia_pacific",
-      "series": "One Decision Changed Everything",
-      "duration_variant": "concise",
-      "target_seconds": 30
     },
     {
       "slot": 41,
       "category": "decisions",
-      "region": "india",
-      "series": "One Decision Changed Everything",
-      "duration_variant": "story",
-      "target_seconds": 50
-    },
-    {
-      "slot": 42,
-      "category": "everyday_origins",
-      "region": "africa",
-      "series": "You Use It Every Day",
-      "duration_variant": "concise",
-      "target_seconds": 30
-    },
-    {
-      "slot": 43,
-      "category": "myth_evidence",
-      "region": "japan",
-      "series": "History Got This Wrong",
-      "duration_variant": "story",
-      "target_seconds": 50
-    },
-    {
-      "slot": 44,
-      "category": "decisions",
       "region": "russia",
       "series": "One Decision Changed Everything",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
-      "slot": 45,
+      "slot": 42,
       "category": "everyday_origins",
       "region": "middle_east",
       "series": "You Use It Every Day",
@@ -371,7 +347,7 @@
       "target_seconds": 50
     },
     {
-      "slot": 46,
+      "slot": 43,
       "category": "myth_evidence",
       "region": "europe",
       "series": "History Got This Wrong",
@@ -379,7 +355,7 @@
       "target_seconds": 30
     },
     {
-      "slot": 47,
+      "slot": 44,
       "category": "decisions",
       "region": "americas",
       "series": "One Decision Changed Everything",
@@ -387,7 +363,7 @@
       "target_seconds": 50
     },
     {
-      "slot": 48,
+      "slot": 45,
       "category": "everyday_origins",
       "region": "asia_pacific",
       "series": "You Use It Every Day",
@@ -395,31 +371,39 @@
       "target_seconds": 30
     },
     {
-      "slot": 49,
-      "category": "everyday_origins",
+      "slot": 46,
+      "category": "decisions",
       "region": "india",
+      "series": "One Decision Changed Everything",
+      "duration_variant": "story",
+      "target_seconds": 50
+    },
+    {
+      "slot": 47,
+      "category": "everyday_origins",
+      "region": "africa",
       "series": "You Use It Every Day",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
+      "slot": 48,
+      "category": "myth_evidence",
+      "region": "japan",
+      "series": "History Got This Wrong",
+      "duration_variant": "story",
+      "target_seconds": 50
+    },
+    {
+      "slot": 49,
+      "category": "decisions",
+      "region": "china",
+      "series": "One Decision Changed Everything",
       "duration_variant": "concise",
       "target_seconds": 30
     },
     {
       "slot": 50,
-      "category": "myth_evidence",
-      "region": "africa",
-      "series": "History Got This Wrong",
-      "duration_variant": "story",
-      "target_seconds": 50
-    },
-    {
-      "slot": 51,
-      "category": "decisions",
-      "region": "japan",
-      "series": "One Decision Changed Everything",
-      "duration_variant": "concise",
-      "target_seconds": 30
-    },
-    {
-      "slot": 52,
       "category": "everyday_origins",
       "region": "russia",
       "series": "You Use It Every Day",
@@ -427,7 +411,7 @@
       "target_seconds": 50
     },
     {
-      "slot": 53,
+      "slot": 51,
       "category": "myth_evidence",
       "region": "middle_east",
       "series": "History Got This Wrong",
@@ -435,17 +419,33 @@
       "target_seconds": 30
     },
     {
-      "slot": 54,
+      "slot": 52,
       "category": "decisions",
       "region": "europe",
       "series": "One Decision Changed Everything",
+      "duration_variant": "story",
+      "target_seconds": 50
+    },
+    {
+      "slot": 53,
+      "category": "everyday_origins",
+      "region": "americas",
+      "series": "You Use It Every Day",
+      "duration_variant": "concise",
+      "target_seconds": 30
+    },
+    {
+      "slot": 54,
+      "category": "myth_evidence",
+      "region": "asia_pacific",
+      "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50
     },
     {
       "slot": 55,
       "category": "everyday_origins",
-      "region": "americas",
+      "region": "india",
       "series": "You Use It Every Day",
       "duration_variant": "concise",
       "target_seconds": 30
@@ -453,7 +453,7 @@
     {
       "slot": 56,
       "category": "myth_evidence",
-      "region": "asia_pacific",
+      "region": "africa",
       "series": "History Got This Wrong",
       "duration_variant": "story",
       "target_seconds": 50

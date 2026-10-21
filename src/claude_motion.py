@@ -33,6 +33,29 @@ _KIT = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=O
         '&family=Cormorant+Garamond:ital,wght@1,500&display=block">\n<style>' + _KIT_CSS + "</style>\n")
 _EXAMPLE = Path(__file__).with_name("motion_example.html").read_text(encoding="utf-8")
 
+PALETTES = {
+    'navy_teal': dict(ink='#09192e', char='#102d49', soot='#164982', parch='#f5f8ff', bone='#a9c9ec', dim='#c0d2e8', accent='#40e0d0'),
+    'ocean_cyan': dict(ink='#07243c', char='#0a3855', soot='#0c628a', parch='#f5f8ff', bone='#7dd3fc', dim='#c0deed', accent='#67e8f9'),
+    'deep_teal_mint': dict(ink='#063436', char='#094a4e', soot='#0e6670', parch='#f5f8ff', bone='#67e8f9', dim='#bce2e0', accent='#86efac'),
+    'blue_gold': dict(ink='#0b254a', char='#133969', soot='#19559b', parch='#f5f8ff', bone='#93c5fd', dim='#c5dbf5', accent='#facc15'),
+    'teal_coral': dict(ink='#082d3b', char='#0b4353', soot='#115e72', parch='#f5f8ff', bone='#fb7185', dim='#bce2e0', accent='#5eead4'),
+    'ice_teal': dict(ink='#e6f5fc', char='#d1eff8', soot='#b8e7f5', parch='#102d45', bone='#0369a1', dim='#31566d', accent='#087788'),
+}
+# Blue and teal lead; gold, coral and the light treatment provide occasional variety.
+PALETTE_SEQUENCE = ('navy_teal', 'ocean_cyan', 'deep_teal_mint', 'navy_teal',
+                    'ocean_cyan', 'blue_gold', 'teal_coral', 'ice_teal')
+
+
+def apply_palette(html: str, name: str) -> str:
+    html = inject_kit(html)
+    html = re.sub(r'<style id="histold-palette">.*?</style>', '', html, flags=re.S)
+    variables = ';'.join(f'--{key}:{value}' for key, value in PALETTES[name].items())
+    style = ('<style id="histold-palette">:root{' + variables + '}'
+             'body{background:radial-gradient(120% 80% at 80% 15%,var(--soot),var(--char) 45%,var(--ink))!important;color:var(--parch)!important}'
+             '.k-card{background:var(--parch);color:var(--ink);box-shadow:0 18px 40px #0003}'
+             '.k-kicker,.k-title,.k-serif,.k-label{text-shadow:none}</style>')
+    return re.sub(r'</head>', lambda _: style + '</head>', html, count=1, flags=re.I)
+
 
 def inject_kit(html: str) -> str:
     """Put the kit first in <head> so the scene's own CSS overrides it."""
@@ -85,12 +108,13 @@ captions: keep it free of text and important detail (background texture only).
 
 HOUSE KIT (already injected into every scene's <head> — do NOT redefine fonts, \
 page size, background, grain or vignette; just use it and add scene-specific CSS):
-- Vars: --ink --char --soot (darks), --parch --bone --dim (lights), --amber \
---verm, --accent (amber by default; set --accent:var(--verm) for danger/death), \
+- Vars: --ink --char --soot (backgrounds), --parch --bone --dim (readable text), \
+--teal --sky --mint --gold --coral, --amber (gold alias), --verm (coral alias), \
+--accent (teal by default), \
 --display (Oswald), --serif (Cormorant italic).
 - Layout: .k-stage = the safe area above captions (flex column, centered, gap). \
 .k-bg = full-frame layer behind it; .k-grid = faint grid texture.
-- Type: .k-kicker (small amber label with rules), .k-title (64px condensed caps), \
+- Type: .k-kicker (small accent label with rules), .k-title (64px condensed caps), \
 .k-huge (132px accent number), .k-serif (italic aside), .k-label, .k-accent.
 - Objects: .k-card (parchment card), .k-stamp (rotated red stamp), .k-rule, \
 .k-dot, .k-ring, .k-sil (silhouette fill for SVG).
@@ -108,6 +132,10 @@ of London destroyed 13,200 houses." (3.5s):
 </example>
 
 CREATIVE DIRECTION:
+- Use the approved blue/teal family, with cyan, mint, small gold or coral accents. \
+No purple, sepia wash or brown/orange-dominated scenes. The renderer supplies \
+each scene's palette; use CSS variables rather than hardcoded background/text colors. \
+Use two or three coordinated colors for meaningful objects and diagrams, not a rainbow. \
 - Editorial documentary feel, like a premium history explainer. Every scene \
 needs depth: a background layer (silhouette, map, diagram, grid) with slow \
 motion, plus a foreground payoff (number, date, name, stamp).
@@ -235,9 +263,9 @@ def bind_maps(html: str, assets: list[dict]) -> str:
         # Different extents need separate viewports; overlaying would invent relative positions.
         cards = []
         for asset in assets:
-            svg = asset['svg'].replace('<svg ', '<svg style="display:block;width:100%;height:180px;color:#c9bb9c" ', 1)
+            svg = asset['svg'].replace('<svg ', '<svg style="display:block;width:100%;height:180px;color:var(--accent)" ', 1)
             cards.append(f'<div data-map-id="{escape(asset["map_id"])}" style="flex:1 1 150px;min-width:0;text-align:center">'
-                         f'{svg}<div style="font-size:16px;color:#ecdfc2">{escape(asset["label"])}</div></div>')
+                         f'{svg}<div style="font-size:16px;color:var(--parch)">{escape(asset["label"])}</div></div>')
         bundle = '<div class="histold-map" style="width:100%"><div style="display:flex;flex-wrap:wrap;gap:12px">'+''.join(cards)+'</div><div class="k-label" style="font-size:10px">Present-day establishing geography · separate extents</div></div>'
         placed = False
         for token in tokens:
@@ -251,9 +279,9 @@ def bind_maps(html: str, assets: list[dict]) -> str:
         for asset in sorted(assets, key=lambda a: a['map_id'] in ('minnesota', 'washington')):
             x, y = labels[asset['map_id']]
             path = re.search(r'<path\b.*?/>', asset['svg']).group(0)
-            color = '#e39a2d' if asset['map_id'] in ('minnesota', 'washington') else '#8a7f6a' if asset['map_id'] == 'canada' else '#c9bb9c'
+            color = 'var(--gold)' if asset['map_id'] in ('minnesota', 'washington') else 'var(--bone)' if asset['map_id'] == 'canada' else 'var(--accent)'
             groups.append(f'<g data-map-id="{asset["map_id"]}" color="{color}">{path}'
-                          f'<text x="{x}" y="{y}" text-anchor="middle" fill="#ecdfc2" stroke="#0e0d10" '
+                          f'<text x="{x}" y="{y}" text-anchor="middle" fill="var(--parch)" stroke="var(--ink)" '
                           f'stroke-width="3" paint-order="stroke" font-size="14">{escape(asset["label"])}</text></g>')
         bundle = '<div class="histold-map" style="width:100%"><svg viewBox="0 0 480 366" role="img" aria-label="Present-day establishing geography">'+''.join(groups)+'</svg><div class="k-label" style="font-size:10px">Present-day continental context</div></div>'
         placed = False
@@ -499,6 +527,10 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         recovery = 'local house templates' if production else 'stock'
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
+    def prepare(html, index):
+        palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
+        return apply_palette(html, palette)
+
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
 
@@ -526,7 +558,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     s, e = windows[i]
                     try:
                         scenes[i] = bind_maps(html, maps)
-                        inspection = inspect_scene(page, inject_kit(scenes[i]), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                        inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                     except Exception as exc:
                         inspection = {'errors': [str(exc)], 'warnings': []}
                     report['scenes'][str(i)] = inspection
@@ -544,7 +576,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                             if i == 0 and maps and any(f'data-map-id="{asset["map_id"]}"' not in html for asset in maps):
                                 continue
                             s, e = windows[i]
-                            repaired = inspect_scene(page, inject_kit(html), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
+                            repaired = inspect_scene(page, prepare(html, i), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         except Exception:
                             continue
                         if len(repaired['errors']) < len(report['scenes'][str(i)]['errors']):
@@ -555,13 +587,13 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     if not original_errors:
                         continue
                     scenes[i] = house_scene(segs[i].narration, maps, e-s)
-                    inspection = inspect_scene(page, inject_kit(scenes[i]), e-s, fps,
+                    inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                     report['recoveries'].append({'scene': i, 'method': 'local_house_scene',
                         'original_errors': original_errors, 'validated': not inspection['errors']})
                     report['scenes'][str(i)] = inspection
                     print(f'  ✓ scene {i} recovered with local house template')
-            scenes = {i: inject_kit(html) for i, html in scenes.items()}
+            scenes = {i: prepare(html, i) for i, html in scenes.items()}
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
             for i, (s, e) in enumerate(windows):
@@ -573,7 +605,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
                     if production:
-                        scenes[i] = inject_kit(house_scene(segs[i].narration, maps, e-s))
+                        scenes[i] = prepare(house_scene(segs[i].narration, maps, e-s), i)
                         inspection = inspect_scene(page, scenes[i], e-s, fps,
                             board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         if inspection['errors']:
