@@ -57,6 +57,16 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
     domains = cfg.get('research.allowed_domains') or cfg.get('research.authoritative_domains', _DEFAULT_AUTHORITIES)
     if domains:
         tool['allowed_domains'] = domains
+    approved = cfg.get('research.authoritative_domains', _DEFAULT_AUTHORITIES)
+    source_policy = (
+        'APPROVED SOURCE HOSTS (all production claims are checked against this exact list): '
+        + ', '.join(approved) + '. Use site:HOST in each search query to target these institutions explicitly. '
+        'A returned search result is not automatically approved: discard sources outside this list, including '
+        'arXiv, patent filings and unrelated repositories. Choose the story from evidence available on approved '
+        'pages, rather than choosing a famous origin claim first and trying to justify it. '
+        'If a core claim cannot be supported here, report it unresolved; do not invent support. '
+        'Return exactly one JSON object for the requested packet, never multiple draft objects or JSON examples. '
+        'Cited explanatory prose may follow the complete packet.\n\n')
     repair_prompt = ('Repair missing citation evidence for this historical topic: ' + topic +
         '\nThe following fixed claims lack retained authoritative supporting excerpts. Search authoritative records now. '
         'Return JSON {sources:[{id,url,title,publisher,excerpt}],unresolved_claim_ids:[]}, with real web citations. '
@@ -78,7 +88,7 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
                           'error': recovery_request.get('error')}, ensure_ascii=False) + '\n\n')
     response = _client().messages.create(
         model=cfg.get('research.model', cfg.get('script.anthropic_model', 'claude-sonnet-4-6')),
-        max_tokens=6000, tools=[tool], messages=[{'role':'user','content':repair_prompt if repair_prompt else recovery_prompt + (
+        max_tokens=6000, tools=[tool], messages=[{'role':'user','content':source_policy + (repair_prompt if repair_prompt else recovery_prompt + (
         'Research only the narrow core of this topic for ONE short video, using web search now: '+topic+
         '\nUse authoritative archives, government records, museums, and original records. '
         'Find only 3-6 directly supported claims sufficient to explain the surprising fact, context and payoff. '
@@ -100,7 +110,7 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         'by this pipeline. Set historical_overlays:[] and do not request historical border overlays. '
         'Every production claim needs a retained direct web citation in this response. Do not list uncited core claims. '
         'Use source URLs exactly as they appear in the actual citations, including legacy domain names. '
-        'Include citations in your response.')}])
+        'Include citations in your response.'))}])
     if response.stop_reason != 'end_turn':
         raise RuntimeError(f'Historical web research did not complete: {response.stop_reason}; retry research or increase the search budget')
     text = ''; citations = []

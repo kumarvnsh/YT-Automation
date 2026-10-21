@@ -284,6 +284,10 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
     if st.get('editorial') and not st.get('overrides', {}).get('topic'):
         from .editorial import brief
         topic = brief(st['editorial'], topics.recent_titles())
+        leads = cfg.get('research.regional_source_leads', {}).get(st['editorial_region'], [])
+        if leads:
+            topic += ('\nStart by searching these approved museum collection pages for a narrow, supported story. '
+                      'They are research leads, not facts to copy without retrieval:\n' + '\n'.join(leads))
     original_topic = topic
     attempts = []
     # Two passes per story; automatic runs may try one different story in the same niche.

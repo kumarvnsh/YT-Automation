@@ -68,3 +68,10 @@ sole invention independently, and distinguish surviving objects from proof of
 origin. Museum institutional narratives do not independently settle contested
 historical or modern political assertions. Inclusion does not guarantee audience
 reach or interest.
+
+## Additional collection leads
+
+- `vam.ac.uk`: [V&A Indian textiles](https://www.vam.ac.uk/articles/indian-textiles/) and [Indian chintz](https://www.vam.ac.uk/blog/fabric-of-india/guest-post-indian-chintz-a-legacy-of-luxury). Start from retrieved collection evidence for everyday-origin stories; do not generalize individual items into disputed first-invention claims.
+- `britishmuseum.org`: [British Museum Indian chess-piece collection record](https://www.britishmuseum.org/collection/object/A_As1880-0820-31). An object record supports its own catalogued context, not all claims about the invention of chess.
+
+Research prompts enumerate the exact approved host list and request explicit `site:HOST` searches in initial research, citation repair and replacement packets. Search results outside that list remain rejected even if the search provider returns them.

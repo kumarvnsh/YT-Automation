@@ -76,8 +76,12 @@ production:
 research:
   max_searches: 5
   model: "claude-sonnet-4-6"
+  regional_source_leads:
+    india:
+      - "https://www.vam.ac.uk/articles/indian-textiles/"
+      - "https://www.vam.ac.uk/blog/fabric-of-india/guest-post-indian-chintz-a-legacy-of-luxury"
   publisher_aliases: {"qdl.qa": "qnl.qa"}  # related collections do not count as independent corroboration
-  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa", "dpm.org.cn", "chnmuseum.cn"]
+  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa", "dpm.org.cn", "chnmuseum.cn", "vam.ac.uk", "britishmuseum.org"]
 
 audio_quality:
   silence_db: -40
