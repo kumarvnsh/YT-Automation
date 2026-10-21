@@ -3628,5 +3628,27 @@
     "production_profile": 2,
     "facebook_id": "994684102884139",
     "instagram_id": "17915336382495108"
+  },
+  {
+    "video_id": "9F2VczndYm0",
+    "run_id": "39541701152",
+    "stage_dir_name": "20261021_040144_016338_short",
+    "title": "The Crime Scene That Sat Underwater for 159 Years",
+    "published_at": "2026-10-21T04:07:24.009746+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-six-reels",
+    "experiment_slot": 3,
+    "category": "unbelievable_true_history",
+    "hook": "A ship was burned and sunk to hide a crime, and stayed hidden for 159 years.",
+    "duration": 44.52,
+    "production_profile": 2,
+    "facebook_id": "1671065674926939",
+    "instagram_id": "18098859554536108"
   }
 ]
