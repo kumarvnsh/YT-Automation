@@ -33,7 +33,16 @@ Broaden `research.authoritative_domains` deliberately for new historical topics.
 When search citations omit a core source, one bounded repair pass retrieves the
 approved source pages directly (including checked redirects), then searches for
 remaining evidence if necessary. Fetched text, response hashes, and both attempts
-remain in `research.json`; claims are not dropped or relabeled to make a job pass.
+remain in `research.json`. Rejected claims explicitly classified as nonessential
+(`material_to_core_story: false`) move to background findings and `excluded_claims`;
+the script must not use those findings. Core disputes are never relabeled to pass.
+If validation still fails, research retries once with the failed packet and errors.
+Automatic runs can then try one different story in the same niche, with one retry
+for that story (four research packets maximum). An explicit `--topic` stays fixed
+and gets only the same-topic retry. Known material contradictions remain blocking
+on same-topic retries. Each packet is saved as `research_attempt_N.json` in the run
+artifact; `research.json` contains the final packet. Exhausted attempts still stop
+the job before script generation. Recovery can add research API cost.
 Workflow failures identify the affected claim and source IDs.
 
 `storyboard.json` records measured word timing, frame boundaries and reveal cues.
@@ -81,7 +90,7 @@ The render fixture uses synthetic tone audio and is a technical check, not a
 finished historical Reel. To generate a real unpublished Short use
 `python -m src.main --format short --no-upload`; this makes configured API calls
 and may send configured notifications. Failed evidence stays in `research.json`;
-fix the research support problem before retrying.
+inspect the saved attempts if automatic recovery also fails.
 
 ## Facebook Content Monetization and Stars tracking
 
