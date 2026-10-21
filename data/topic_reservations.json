@@ -1996,5 +1996,14 @@
     "slot": "morning",
     "date": "2026-10-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261021_054020_174167_short",
+    "title": "The Corner of America That Sits Inside Canada's Roads",
+    "fingerprint": "america_canada_corner_inside_roads_s_sits_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-21",
+    "status": "reserved"
   }
 ]

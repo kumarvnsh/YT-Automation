@@ -3650,5 +3650,27 @@
     "production_profile": 2,
     "facebook_id": "1671065674926939",
     "instagram_id": "18098859554536108"
+  },
+  {
+    "video_id": "tiHKZr7XzxA",
+    "run_id": "39550681956",
+    "stage_dir_name": "20261021_054020_174167_short",
+    "title": "The Corner of America That Sits Inside Canada's Roads",
+    "published_at": "2026-10-21T05:48:42.281018+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-six-reels",
+    "experiment_slot": 4,
+    "category": "strange_geography",
+    "hook": "Part of Minnesota can only be reached by road by crossing into Canada and back.",
+    "duration": 52.608,
+    "production_profile": 2,
+    "facebook_id": "1093255483511097",
+    "instagram_id": "18116362244029169"
   }
 ]
