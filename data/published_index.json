@@ -3698,5 +3698,31 @@
     "production_profile": 2,
     "facebook_id": "947761681388758",
     "instagram_id": "18077949701744054"
+  },
+  {
+    "video_id": "Qg7mmDQiddg",
+    "run_id": "39728352458",
+    "stage_dir_name": "20261022_053133_824833_short",
+    "title": "The European Power That Lost to an African Army \u2014 Why?",
+    "published_at": "2026-10-22T05:39:14.978594+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 2,
+    "category": "myth_evidence",
+    "editorial_slot": 1,
+    "editorial_region": "africa",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "Ethiopia's army beat a European power in battle, while most of Africa was being colonized.",
+    "duration": 56.424,
+    "production_profile": 2,
+    "facebook_id": "2012305902696912",
+    "instagram_id": "18092111798688481"
   }
 ]

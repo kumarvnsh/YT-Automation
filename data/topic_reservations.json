@@ -2014,5 +2014,14 @@
     "slot": "morning",
     "date": "2026-10-21",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261022_053133_824833_short",
+    "title": "The European Power That Lost to an African Army \u2014 Why?",
+    "fingerprint": "african_army_european_lost_power_that",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-22",
+    "status": "reserved"
   }
 ]
