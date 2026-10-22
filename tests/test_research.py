@@ -41,25 +41,22 @@ class ResearchTests(unittest.TestCase):
         self.assertNotIn('retrieval_citations', context)
         self.assertNotIn('evidence_attempts', context)
 
-    def test_missing_core_citation_is_researched_once_without_changing_claim(self):
+    def test_research_missing_citation_makes_no_paid_repair_call(self):
         packet = self.packet()
-        repaired = {'sources': [dict(packet['sources'][0], url='https://www.loc.gov/item/verified')]}
-        citation = {'url': repaired['sources'][0]['url'], 'cited_text': 'The border was agreed in 1818.'}
-        with patch.object(research, '_retrieve', side_effect=[(packet, []), (repaired, [citation])]) as retrieve:
+        with patch.object(research, '_retrieve', return_value=(packet, [])) as retrieve, \
+                patch.object(research, '_fetch_page', side_effect=ValueError('offline')):
             result = research.research_topic(Config({}), 'border')
-        self.assertEqual(result['status'], 'supported')
+        self.assertEqual(retrieve.call_count, 1)
         self.assertEqual(result['claims'], packet['claims'])
-        self.assertEqual(retrieve.call_count, 2)
-        self.assertEqual(len(result['evidence_attempts']), 2)
 
     def test_failed_repair_retains_original_evidence_and_actionable_claim_error(self):
         packet = self.packet()
-        with patch.object(research, '_retrieve', side_effect=[(packet, []), RuntimeError('search unavailable')]):
+        with patch.object(research, '_retrieve', return_value=(packet, [])) as retrieve:
             result = research.research_topic(Config({}), 'border')
+        self.assertEqual(retrieve.call_count, 1)
         self.assertEqual(result['status'], 'unsupported')
         self.assertEqual(result['claims'], packet['claims'])
         self.assertTrue(any('c1' in error for error in result['errors']))
-        self.assertIn('search unavailable', result['evidence_attempts'][-1]['error'])
 
     def test_fragment_link_matches_actual_page_citation_without_network(self):
         packet = self.packet()
@@ -153,12 +150,12 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual(research._json('A claim {not JSON}. Final packet:\n{"claims":[]}\nSources {citations}'),{'claims':[]})
     def test_provider_web_search_error_is_actionable(self):
         from types import SimpleNamespace
-        response=SimpleNamespace(stop_reason='end_turn',content=[SimpleNamespace(type='web_search_tool_result',content={'type':'web_search_tool_result_error','error_code':'max_uses_exceeded'})])
+        response=SimpleNamespace(stop_reason='end_turn',content=[SimpleNamespace(type='web_search_tool_result',content={'type':'web_search_tool_result_error','error_code':'unavailable'})])
         client=SimpleNamespace(messages=SimpleNamespace(create=lambda **_:response))
         with patch.object(research,'_client',return_value=client):
             result=research.research_topic(Config({}),'border')
         self.assertEqual(result['status'],'retrieval_failed')
-        self.assertIn('max_uses_exceeded',result['error'])
+        self.assertIn('unavailable',result['error'])
     def test_paused_web_search_is_not_a_completed_research_packet(self):
         from types import SimpleNamespace
         response=SimpleNamespace(stop_reason='pause_turn',content=[])

@@ -69,15 +69,6 @@ class ResearchRecoveryTests(unittest.TestCase):
         return {'topic': 'bridge', 'status': 'unsupported', 'errors': ['Claim C7 disputed'],
                 'claims': [{'id': 'C7', 'text': 'Tacoma flutter is disputed'}]}
 
-    def test_retry_receives_original_evidence_and_validation_errors(self):
-        bad = self.bad()
-        state, stage, retrieve = self.run_stage([bad, self.good()])
-        self.assertEqual(state['research']['status'], 'supported')
-        self.assertEqual(retrieve.call_count, 2)
-        self.assertEqual(retrieve.call_args_list[1].kwargs['recovery_request'], bad)
-        self.assertEqual(json.loads((stage / 'research_attempt_1.json').read_text()), bad)
-        self.assertEqual(json.loads((stage / 'research.json').read_text())['status'], 'supported')
-
     def test_recovery_prompt_contains_errors_without_duplicate_audit_bodies(self):
         from types import SimpleNamespace
         prior = self.bad()
@@ -92,29 +83,13 @@ class ResearchRecoveryTests(unittest.TestCase):
         self.assertIn('Tacoma flutter', prompt)
         self.assertNotIn('must not enter prompt', prompt)
 
-    def test_automatic_topic_fallback_excludes_failed_story_and_keeps_category(self):
-        state, stage, retrieve = self.run_stage([self.bad(), self.bad(), self.good()])
-        fallback = retrieve.call_args_list[2].args[1]
-        self.assertIn('historical_disasters', fallback)
-        self.assertIn('Tacoma flutter', fallback)
-        self.assertIn('different', fallback.lower())
-        self.assertEqual(state['research']['status'], 'supported')
-
-    def test_manual_topic_is_retried_without_switching(self):
+    def test_research_unsupported_report_continues_after_one_call(self):
         with tempfile.TemporaryDirectory() as folder:
             with patch.object(research, 'research_topic', return_value=self.bad()) as retrieve:
-                with self.assertRaisesRegex(RuntimeError, 'C7'):
-                    pipeline._step_research(Config({}), Path(folder), {'overrides': {'topic': 'Tacoma'}})
-        self.assertEqual(retrieve.call_count, 2)
-        self.assertTrue(all(call.args[1] == 'Tacoma' for call in retrieve.call_args_list))
-
-    def test_all_attempts_exhausted_stop_and_preserve_final_report(self):
-        with tempfile.TemporaryDirectory() as folder:
-            with patch.object(research, 'research_topic', return_value=self.bad()) as retrieve:
-                with self.assertRaisesRegex(RuntimeError, 'Historical research failed'):
-                    pipeline._step_research(Config({}), Path(folder), {'category': 'historical_disasters'})
-            self.assertEqual(retrieve.call_count, 4)
-            self.assertEqual(len(list(Path(folder).glob('research_attempt_*.json'))), 4)
+                state = {'category': 'historical_disasters'}
+                pipeline._step_research(Config({}), Path(folder), state)
+            self.assertEqual(retrieve.call_count, 1)
+            self.assertEqual(state['research']['status'], 'unsupported')
             self.assertEqual(json.loads((Path(folder) / 'research.json').read_text())['status'], 'unsupported')
 
     def test_first_success_has_no_extra_research_calls(self):

@@ -43,4 +43,5 @@ def required_maps(research: dict) -> list[dict]:
             ids.append(location['map_id'])
     if any(name in ids for name in ('minnesota', 'washington')) and 'united_states' not in ids:
         ids.insert(0, 'united_states')
-    return [load_map(map_id) for map_id in dict.fromkeys(ids)]
+    known = set(available_map_ids())  # unverified research may name maps we don't have
+    return [load_map(map_id) for map_id in dict.fromkeys(ids) if map_id in known]

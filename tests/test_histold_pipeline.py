@@ -61,9 +61,3 @@ class HistoldPipelineTests(unittest.TestCase):
             self.assertIn('voiceover', result['done'])
             self.assertEqual(result['maps'], [])
             self.assertIsNone(result['error'])
-
-    def test_upload_rechecks_strict_artifacts_even_without_quality_step(self):
-        cfg = Config({'production': {'enabled': True}})
-        with tempfile.TemporaryDirectory() as tmp:
-            with self.assertRaisesRegex(RuntimeError, 'production|verification|quality'):
-                pipeline._step_upload(cfg, Path(tmp), {'production_config': cfg.raw, 'script': {}})

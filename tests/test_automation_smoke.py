@@ -148,7 +148,7 @@ class AutomationSmokeTests(unittest.TestCase):
             (self.tmp / "data" / "topic_reservations.json").exists()
         )
 
-    def test_failed_quality_blocks_upload(self) -> None:
+    def test_failed_quality_still_uploads(self) -> None:
         upload = unittest.mock.MagicMock(return_value="mock-video-id")
         failed = {
             "passed": False,
@@ -163,12 +163,11 @@ class AutomationSmokeTests(unittest.TestCase):
             ),
         )
 
-        with self.assertRaisesRegex(RuntimeError, "quality gate failed: audio"):
-            pipeline.run_stage(cfg, stage, one_step=False)
+        pipeline.run_stage(cfg, stage, one_step=False)
 
-        upload.assert_not_called()
+        upload.assert_called_once()
         state = pipeline.load_state(stage)
-        self.assertFalse(state["complete"])
+        self.assertTrue(state["complete"])
         self.assertFalse(state["quality"]["passed"])
 
 

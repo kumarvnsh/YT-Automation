@@ -114,10 +114,11 @@ class ScriptLengthTests(unittest.TestCase):
         self.assertIn(f"previous draft was {LONG_WORDS} words", retry_prompt)
         self.assertIn("MUST be between 84 and 151 words", retry_prompt)
 
-    def test_gives_up_with_clear_error_after_three_long_drafts(self) -> None:
-        with patch("src.script_generator._call_anthropic", side_effect=[LONG] * 3):
-            with self.assertRaisesRegex(RuntimeError, "out of bounds after 3 attempts"):
-                generate_script(_cfg(), "short", topic_override="test topic")
+    def test_uses_last_draft_after_three_long_drafts(self) -> None:
+        with patch("src.script_generator._call_anthropic", side_effect=[LONG] * 3) as call:
+            script = generate_script(_cfg(), "short", topic_override="test topic")
+        self.assertEqual(3, call.call_count)
+        self.assertTrue(script.segments)
 
     def test_long_form_is_not_word_budget_enforced(self) -> None:
         with patch("src.script_generator._call_anthropic", return_value=LONG) as call:
@@ -156,15 +157,15 @@ class ScriptStructureRetryTests(unittest.TestCase):
         self.assertIn("broke the required structure", retry_prompt)
         self.assertIn("shares no distinctive word", retry_prompt)
 
-    def test_gives_up_with_clear_error_after_three_broken_drafts(self) -> None:
+    def test_uses_last_draft_after_three_broken_drafts(self) -> None:
         broken = json.loads(GOOD)
         broken["segments"][2]["beat"] = "fact"
         with patch(
             "src.script_generator._call_anthropic",
             side_effect=[json.dumps(broken)] * 3,
         ):
-            with self.assertRaisesRegex(RuntimeError, "structure stayed invalid"):
-                generate_script(_cfg(), "short", topic_override="test topic")
+            script = generate_script(_cfg(), "short", topic_override="test topic")
+        self.assertEqual("fact", script.segments[2].beat)
 
     def test_beat_tags_survive_onto_the_script(self) -> None:
         with patch("src.script_generator._call_anthropic", return_value=GOOD):

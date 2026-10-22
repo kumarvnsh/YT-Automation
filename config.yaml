@@ -74,7 +74,7 @@ production:
   experiment: false           # legacy six-Reel study stays archived; editorial rotation replaces it
 
 research:
-  max_searches: 5
+  max_searches: 1              # one research call per video; web search is $0.01/query
   model: "claude-haiku-5-5"      # ~30x cheaper per token than Sonnet 4.6; research was ~90% of per-video cost
   regional_source_leads:
     india:
@@ -94,7 +94,7 @@ script:
   provider: "anthropic"        # primary provider: "anthropic" | "openai"
   routing: "fallback"          # "fallback" | "random" | "round_robin"
   fallback_provider: "openai"
-  anthropic_model: "claude-sonnet-5-5"   # cheaper per token than 4.6
+  anthropic_model: "claude-haiku-5-5"    # ~$0.002/script vs ~$0.03 on Sonnet 5.5
   anthropic_effort: "low"      # thinking on, so word budgets land first try; unset = old no-thinking call
   openai_model: "gpt-4o-mini"
   # Require the four-beat looping structure (hook / setup / pivot / fact stack
@@ -180,9 +180,9 @@ video:
   # VIDEO_MODE env overrides this for a single run.
   mode: "claude_motion"
   claude_motion:
-    model: "claude-sonnet-5-5"
-    effort: "medium"           # "low" came out bare (~$0.05); "high" thinks far past the budget
-    max_tokens: 30000          # hard cost cap (~$0.30 on Sonnet 5.5); cut-off scenes fall back to stock
+    model: "claude-haiku-5-5"  # A/B on 2026-10-22: matches Sonnet visuals at ~$0.009 vs ~$0.044
+    effort: "medium"           # Haiku "low" looked bare (blank panels, template fallbacks)
+    max_tokens: 30000          # hard cost cap (~$0.015 on Haiku 5.5); cut-off scenes fall back to stock
   # Image motion + transitions (applies to the broll/AI-image render path).
   motion: "pan"               # "pan" (zoom + drift) | "kenburns" (zoom) | "stopmotion" (wobble)
   transition: "fade"          # crossfade between beats; "" = hard cuts

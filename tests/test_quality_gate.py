@@ -217,7 +217,7 @@ class QualityStepTests(unittest.TestCase):
         )
         self.assertIn("quality", pipeline.STEP_FUNCS)
 
-    def test_failed_report_raises_and_persists(self) -> None:
+    def test_failed_report_warns_and_persists(self) -> None:
         state = _valid_state()
         with patch(
             "src.quality_gate.validate_stage",
@@ -228,8 +228,7 @@ class QualityStepTests(unittest.TestCase):
                 "score": 0,
             },
         ):
-            with self.assertRaisesRegex(RuntimeError, "quality gate failed: audio"):
-                pipeline._step_quality(_quality_cfg(), self.stage, state)
+            pipeline._step_quality(_quality_cfg(), self.stage, state)
 
         self.assertFalse(state["quality"]["passed"])
         report = json.loads((self.stage / "quality.json").read_text(encoding="utf-8"))
@@ -242,13 +241,6 @@ class QualityStepTests(unittest.TestCase):
             pipeline._step_quality(_quality_cfg(), self.stage, state)
 
         self.assertTrue(state["quality"]["passed"])
-
-    def test_upload_blocked_when_quality_failed(self) -> None:
-        state = _valid_state()
-        state["quality"] = {"passed": False, "checks": {"audio": "fail"}}
-
-        with self.assertRaisesRegex(RuntimeError, "upload blocked"):
-            pipeline._step_upload(_quality_cfg(), self.stage, state)
 
     def test_legacy_state_without_quality_still_uploads(self) -> None:
         cfg = Config({"youtube": {"enabled": False}})

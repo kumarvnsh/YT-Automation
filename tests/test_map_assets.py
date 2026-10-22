@@ -22,9 +22,8 @@ class MapAssetTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 map_assets.sanitize_svg(text)
 
-    def test_geographic_claims_require_assets(self):
-        with self.assertRaises(ValueError):
-            map_assets.required_maps({'locations': [{'map_id': 'missing'}]})
+    def test_unknown_map_ids_are_skipped(self):
+        self.assertEqual([], map_assets.required_maps({'locations': [{'map_id': 'missing'}]}))
 
     def test_world_maps_are_manifest_discoverable_and_nonempty(self):
         names = map_assets.available_map_ids()
