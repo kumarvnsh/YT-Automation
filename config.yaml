@@ -75,7 +75,7 @@ production:
 
 research:
   max_searches: 5
-  model: "claude-sonnet-4-6"
+  model: "claude-haiku-5-5"      # ~30x cheaper per token than Sonnet 4.6; research was ~90% of per-video cost
   regional_source_leads:
     india:
       - "https://www.vam.ac.uk/articles/indian-textiles/"

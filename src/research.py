@@ -88,7 +88,7 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
                           'error': recovery_request.get('error')}, ensure_ascii=False) + '\n\n')
     response = _client().messages.create(
         model=cfg.get('research.model', cfg.get('script.anthropic_model', 'claude-sonnet-4-6')),
-        max_tokens=6000, tools=[tool], messages=[{'role':'user','content':source_policy + (repair_prompt if repair_prompt else recovery_prompt + (
+        max_tokens=16000, tools=[tool], messages=[{'role':'user','content':source_policy + (repair_prompt if repair_prompt else recovery_prompt + (
         'Research only the narrow core of this topic for ONE short video, using web search now: '+topic+
         '\nUse authoritative archives, government records, museums, and original records. '
         'Find only 3-6 directly supported claims sufficient to explain the surprising fact, context and payoff. '

@@ -494,10 +494,11 @@ def _extract_json(text: str) -> dict:
     try:
         return json.loads(text)
     except json.JSONDecodeError:
-        # Grab the outermost {...} block.
-        start, end = text.find("{"), text.rfind("}")
-        if start != -1 and end != -1:
-            return json.loads(text[start : end + 1])
+        # Take the first complete {...} object; ignore any trailing prose or
+        # second object (rfind("}") would span both and fail with "Extra data").
+        start = text.find("{")
+        if start != -1:
+            return json.JSONDecoder().raw_decode(text, start)[0]
         raise
 
 
