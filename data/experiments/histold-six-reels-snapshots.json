@@ -422,5 +422,429 @@
         "definition": "followers_gained / compatible report views \u00d7 1000."
       }
     }
+  },
+  {
+    "experiment_id": "histold-six-reels",
+    "slot": 3,
+    "category": "unbelievable_true_history",
+    "hook": "A ship was burned and sunk to hide a crime, and stayed hidden for 159 years.",
+    "duration": 44.52,
+    "profile": 2,
+    "platform": "youtube",
+    "media_id": "9F2VczndYm0",
+    "published_at": "2026-10-21T04:07:01Z",
+    "observed_at": "2026-10-22T06:44:46.952501+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 26.6294,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 27,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "YouTube Analytics permission, report delay, or missing response row."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "YouTube Analytics permission, report delay, or missing response row."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "YouTube Analytics permission, report delay, or missing response row."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": null,
+          "source": "youtube_analytics_report.views",
+          "period": {
+            "start_date": "2026-10-06",
+            "end_date": "2026-10-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          }
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": null,
+          "source": "youtube_analytics_report.views",
+          "period": {
+            "start_date": "2026-10-06",
+            "end_date": "2026-10-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          }
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "histold-six-reels",
+    "slot": 3,
+    "category": "unbelievable_true_history",
+    "hook": "A ship was burned and sunk to hide a crime, and stayed hidden for 159 years.",
+    "duration": 44.52,
+    "profile": 2,
+    "platform": "instagram",
+    "media_id": "18098859554536108",
+    "published_at": "2026-10-21T04:07:07+0000",
+    "observed_at": "2026-10-22T06:44:48.748825+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 26.6283,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 22,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 22,
+          "source": "instagram_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 22,
+          "source": "instagram_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "histold-six-reels",
+    "slot": 3,
+    "category": "unbelievable_true_history",
+    "hook": "A ship was burned and sunk to hide a crime, and stayed hidden for 159 years.",
+    "duration": 44.52,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "1671065674926939",
+    "published_at": "2026-10-21T04:07:15+0000",
+    "observed_at": "2026-10-22T06:44:48.748825+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 26.626,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 194,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 194,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 194,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "histold-six-reels",
+    "slot": 4,
+    "category": "strange_geography",
+    "hook": "Part of Minnesota can only be reached by road by crossing into Canada and back.",
+    "duration": 52.608,
+    "profile": 2,
+    "platform": "youtube",
+    "media_id": "tiHKZr7XzxA",
+    "published_at": "2026-10-21T05:48:19Z",
+    "observed_at": "2026-10-22T06:44:46.952501+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 24.9411,
+    "late": false,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 83,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "YouTube Analytics permission, report delay, or missing response row."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "YouTube Analytics permission, report delay, or missing response row."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "YouTube Analytics permission, report delay, or missing response row."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": null,
+          "source": "youtube_analytics_report.views",
+          "period": {
+            "start_date": "2026-10-06",
+            "end_date": "2026-10-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          }
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": null,
+          "source": "youtube_analytics_report.views",
+          "period": {
+            "start_date": "2026-10-06",
+            "end_date": "2026-10-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          }
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "histold-six-reels",
+    "slot": 4,
+    "category": "strange_geography",
+    "hook": "Part of Minnesota can only be reached by road by crossing into Canada and back.",
+    "duration": 52.608,
+    "profile": 2,
+    "platform": "instagram",
+    "media_id": "18116362244029169",
+    "published_at": "2026-10-21T05:48:20+0000",
+    "observed_at": "2026-10-22T06:44:48.748825+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 24.9413,
+    "late": false,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 68,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 68,
+          "source": "instagram_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 68,
+          "source": "instagram_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "histold-six-reels",
+    "slot": 4,
+    "category": "strange_geography",
+    "hook": "Part of Minnesota can only be reached by road by crossing into Canada and back.",
+    "duration": 52.608,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "1093255483511097",
+    "published_at": "2026-10-21T05:48:27+0000",
+    "observed_at": "2026-10-22T06:44:48.748825+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 24.9394,
+    "late": false,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 237,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 237,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 237,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
   }
 ]
