@@ -2023,5 +2023,14 @@
     "slot": "morning",
     "date": "2026-10-22",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261022_160321_726627_short",
+    "title": "Why Did Japan Once Lose Nearly a Whole December?",
+    "fingerprint": "december_did_japan_lose_nearly_once_whole",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-22",
+    "status": "reserved"
   }
 ]
