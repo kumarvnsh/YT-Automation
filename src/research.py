@@ -111,6 +111,10 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         'Every production claim needs a retained direct web citation in this response. Do not list uncited core claims. '
         'Use source URLs exactly as they appear in the actual citations, including legacy domain names. '
         'Include citations in your response.'))}])
+    u = getattr(response, 'usage', None)
+    if u is not None:
+        print(f"  research: in_tokens={getattr(u, 'input_tokens', '?')} out_tokens={getattr(u, 'output_tokens', '?')} "
+              f"searches={getattr(getattr(u, 'server_tool_use', None), 'web_search_requests', '?')}")
     if response.stop_reason != 'end_turn':
         raise RuntimeError(f'Historical web research did not complete: {response.stop_reason}; retry research or increase the search budget')
     text = ''; citations = []

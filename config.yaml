@@ -215,7 +215,7 @@ thumbnails:
   # Custom thumbnail per video (Shorts support these since Jul 2026, YPP only;
   # one per Short, no Test & Compare). Two compositions are generated in the
   # house style and Claude picks one; the other stays in the stage dir.
-  enabled: true
+  enabled: false        # off: ~$0.14/video for little Shorts impact
   model: "gpt-image-1"         # uses OPENAI_API_KEY
   quality: "medium"            # ~2 x $0.06 per video at medium portrait; style is in src/thumbnail.py
   judge_model: "claude-sonnet-5-5"
