@@ -3752,5 +3752,31 @@
     "production_profile": 2,
     "facebook_id": "1421989696179092",
     "instagram_id": "18218847754353474"
+  },
+  {
+    "video_id": "vacXPJk2XNU",
+    "run_id": "39898046884",
+    "stage_dir_name": "20261023_040309_154672_short",
+    "title": "Where Did Britain's Paper Money Collection Really Begin?",
+    "published_at": "2026-10-23T04:10:59.899856+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 4,
+    "category": "everyday_origins",
+    "editorial_slot": 3,
+    "editorial_region": "china",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Britain's national paper money collection doesn't start in Europe. It starts in China, with banknotes from the 14th century.",
+    "duration": 53.064,
+    "production_profile": 2,
+    "facebook_id": "29373542462334756",
+    "instagram_id": "18016082648988210"
   }
 ]
