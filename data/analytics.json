@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-23T08:00:47.777958+00:00",
+      "updated": "2026-10-23T13:53:31.806727+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -56,7 +56,7 @@
           ],
           "publishedAt": "2026-10-23T04:11:32Z",
           "thumbnail": "https://i.ytimg.com/vi/vacXPJk2XNU/mqdefault.jpg",
-          "views": 7,
+          "views": 17,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -811,7 +811,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 18.0,
           "shares": 0,
-          "analytics_views": 50,
+          "analytics_views": 49,
           "analytics_period": {
             "start_date": "2026-10-07",
             "end_date": "2026-10-23",
@@ -1204,7 +1204,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 49,
+          "analytics_views": 47,
           "analytics_period": {
             "start_date": "2026-10-07",
             "end_date": "2026-10-23",
@@ -1237,7 +1237,7 @@
           ],
           "publishedAt": "2026-10-16T04:05:57Z",
           "thumbnail": "https://i.ytimg.com/vi/UXKvTz-F7Og/mqdefault.jpg",
-          "views": 36,
+          "views": 37,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1332,7 +1332,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 19.0,
           "shares": 0,
-          "analytics_views": 169,
+          "analytics_views": 168,
           "analytics_period": {
             "start_date": "2026-10-07",
             "end_date": "2026-10-23",
