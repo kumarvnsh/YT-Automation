@@ -1102,6 +1102,218 @@
           "definition": "followers_gained / compatible report views \u00d7 1000."
         }
       }
+    },
+    {
+      "experiment_id": "histold-six-reels",
+      "slot": 2,
+      "category": "historical_disasters",
+      "hook": "One missing safety valve turned a routine shift change into the deadliest offshore oil disaster ever.",
+      "duration": 44.064,
+      "profile": 2,
+      "platform": "youtube",
+      "media_id": "iMedjVY015g",
+      "published_at": "2026-10-20T16:08:37Z",
+      "observed_at": "2026-10-23T18:00:30.504992+00:00",
+      "target_age_hours": 72,
+      "actual_age_hours": 73.8649,
+      "late": true,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 76,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": 22.0,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": null
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares": {
+          "value": 0,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": null
+        },
+        "followers_gained": {
+          "value": 0,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": null
+        },
+        "shares_per_1000_views": {
+          "value": 0.0,
+          "denominator": {
+            "value": 48,
+            "source": "youtube_analytics_report.views",
+            "period": {
+              "start_date": "2026-10-07",
+              "end_date": "2026-10-23",
+              "note": "Rates use views from this same Analytics report; Data API counts may differ."
+            }
+          },
+          "reason": null,
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": 0.0,
+          "denominator": {
+            "value": 48,
+            "source": "youtube_analytics_report.views",
+            "period": {
+              "start_date": "2026-10-07",
+              "end_date": "2026-10-23",
+              "note": "Rates use views from this same Analytics report; Data API counts may differ."
+            }
+          },
+          "reason": null,
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      }
+    },
+    {
+      "experiment_id": "histold-six-reels",
+      "slot": 2,
+      "category": "historical_disasters",
+      "hook": "One missing safety valve turned a routine shift change into the deadliest offshore oil disaster ever.",
+      "duration": 44.064,
+      "profile": 2,
+      "platform": "instagram",
+      "media_id": "17915336382495108",
+      "published_at": "2026-10-20T16:09:04+0000",
+      "observed_at": "2026-10-23T18:00:32.353025+00:00",
+      "target_age_hours": 72,
+      "actual_age_hours": 73.8579,
+      "late": true,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 108,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "instagram per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 108,
+            "source": "instagram_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires numerator and positive views from a compatible report period.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 108,
+            "source": "instagram_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires numerator and positive views from a compatible report period.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      }
+    },
+    {
+      "experiment_id": "histold-six-reels",
+      "slot": 2,
+      "category": "historical_disasters",
+      "hook": "One missing safety valve turned a routine shift change into the deadliest offshore oil disaster ever.",
+      "duration": 44.064,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "994684102884139",
+      "published_at": "2026-10-20T16:09:12+0000",
+      "observed_at": "2026-10-23T18:00:32.353025+00:00",
+      "target_age_hours": 72,
+      "actual_age_hours": 73.8557,
+      "late": true,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 209,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 209,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires numerator and positive views from a compatible report period.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 209,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires numerator and positive views from a compatible report period.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      }
     }
   ],
   "limitations": [

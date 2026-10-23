@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-23T13:53:31.806727+00:00",
+      "updated": "2026-10-23T18:00:30.504992+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "C-chgrkkYy8",
+          "title": "Russia Once Had a Farm Colony on the California Coast \u2014 Why?",
+          "description": "Fort Ross, a settlement on the Sonoma Coast of California, was founded by Russia's Russian-American Company in 1812. Its farms struggled with fog, rust and rodents, and the Russians left in January 1842. #HistoryGotThisWrong #RussianHistory #CaliforniaHistory",
+          "tags": [
+            "california history",
+            "colonial history",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "forgotten history",
+            "fort ross",
+            "historical facts",
+            "history got this wrong",
+            "history shorts",
+            "russian america",
+            "russian history",
+            "russian-american company",
+            "sea otters",
+            "sonoma coast",
+            "world history"
+          ],
+          "publishedAt": "2026-10-23T16:10:20Z",
+          "thumbnail": "https://i.ytimg.com/vi/C-chgrkkYy8/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-07",
+            "end_date": "2026-10-23",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "vacXPJk2XNU",
           "title": "Where Did Britain's Paper Money Collection Really Begin?",
           "description": "Britain's national paper money collection does not start in Europe. Its earliest pieces are 14th-century Chinese banknotes, including a Ming treasure note the British Museum dates to AD 1375. #ChineseHistory #MoneyHistory #BritishMuseum",
@@ -56,7 +100,7 @@
           ],
           "publishedAt": "2026-10-23T04:11:32Z",
           "thumbnail": "https://i.ytimg.com/vi/vacXPJk2XNU/mqdefault.jpg",
-          "views": 17,
+          "views": 22,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -97,7 +141,7 @@
           ],
           "publishedAt": "2026-10-22T16:09:57Z",
           "thumbnail": "https://i.ytimg.com/vi/kI_tpSIAmI4/mqdefault.jpg",
-          "views": 20,
+          "views": 21,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -407,7 +451,7 @@
           ],
           "publishedAt": "2026-10-20T16:08:37Z",
           "thumbnail": "https://i.ytimg.com/vi/iMedjVY015g/mqdefault.jpg",
-          "views": 75,
+          "views": 76,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -1237,7 +1281,7 @@
           ],
           "publishedAt": "2026-10-16T04:05:57Z",
           "thumbnail": "https://i.ytimg.com/vi/UXKvTz-F7Og/mqdefault.jpg",
-          "views": 37,
+          "views": 38,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2161,49 +2205,6 @@
             "shares": "YouTube Analytics permission, report delay, or missing response row.",
             "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
           }
-        },
-        {
-          "id": "gTlsjP-w5ec",
-          "title": "One Muddy Morning Almost Made Napoleon Emperor Again | History's Almost Moments",
-          "description": "On June 18, 1815, a single overnight rainstorm delayed Napoleon's attack at Waterloo by several hours \u2014 and that delay may have cost him Europe. Historians have debated for two centuries whether a dry field would have changed everything. This is the story of the morning that almost never happened the way we remember it. #Napoleon #Waterloo #HistoryAlmostMoments",
-          "tags": [
-            "1815",
-            "battle of waterloo",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "history",
-            "history almost moments",
-            "history facts",
-            "history shorts",
-            "napoleon",
-            "near miss history",
-            "shorts",
-            "trending",
-            "viral",
-            "waterloo",
-            "wellington"
-          ],
-          "publishedAt": "2026-10-07T16:06:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/gTlsjP-w5ec/mqdefault.jpg",
-          "views": 14,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 57.8,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 24.0,
-          "shares": 0,
-          "analytics_views": 14,
-          "analytics_period": {
-            "start_date": "2026-10-07",
-            "end_date": "2026-10-23",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
         }
       ]
     }
