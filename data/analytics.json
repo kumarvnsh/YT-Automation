@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-23T02:13:15.039390+00:00",
+      "updated": "2026-10-23T08:00:47.777958+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,47 @@
       },
       "videos": [
         {
+          "id": "vacXPJk2XNU",
+          "title": "Where Did Britain's Paper Money Collection Really Begin?",
+          "description": "Britain's national paper money collection does not start in Europe. Its earliest pieces are 14th-century Chinese banknotes, including a Ming treasure note the British Museum dates to AD 1375. #ChineseHistory #MoneyHistory #BritishMuseum",
+          "tags": [
+            "british museum",
+            "chinese history",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "ming dynasty",
+            "ming treasure note",
+            "money history",
+            "paper money",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-10-23T04:11:32Z",
+          "thumbnail": "https://i.ytimg.com/vi/vacXPJk2XNU/mqdefault.jpg",
+          "views": 7,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-07",
+            "end_date": "2026-10-23",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "kI_tpSIAmI4",
           "title": "Why Did Japan Once Lose Nearly a Whole December?",
           "description": "In 1872, Japan's new Meiji government changed its calendar to the Western Gregorian system used by much of the world. The switch shortened December 1872 to just two days, and Japan's calendar has matched most of the world ever since. #JapanHistory #CalendarHistory #DidYouKnow",
@@ -56,7 +97,7 @@
           ],
           "publishedAt": "2026-10-22T16:09:57Z",
           "thumbnail": "https://i.ytimg.com/vi/kI_tpSIAmI4/mqdefault.jpg",
-          "views": 16,
+          "views": 20,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -146,7 +187,7 @@
           "publishedAt": "2026-10-22T06:46:05Z",
           "thumbnail": "https://i.ytimg.com/vi/wdEhHg8g7Ns/mqdefault.jpg",
           "views": 1,
-          "likes": 1,
+          "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -277,7 +318,7 @@
           ],
           "publishedAt": "2026-10-21T05:48:19Z",
           "thumbnail": "https://i.ytimg.com/vi/tiHKZr7XzxA/mqdefault.jpg",
-          "views": 92,
+          "views": 95,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -497,7 +538,7 @@
           ],
           "publishedAt": "2026-10-20T06:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/60lWZwdWvVI/mqdefault.jpg",
-          "views": 27,
+          "views": 28,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2157,48 +2198,6 @@
           "average_watch_time_seconds": 24.0,
           "shares": 0,
           "analytics_views": 14,
-          "analytics_period": {
-            "start_date": "2026-10-07",
-            "end_date": "2026-10-23",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "cZXd1oj5rgQ",
-          "title": "Why Did Europe's Last Hope Almost Say No?",
-          "description": "In 1683, the entire fate of Europe rested on a single ruler's willingness to sign a treaty he had every reason to refuse. One hesitation could have left Vienna \u2014 and the continent \u2014 wide open. This is the close call that textbooks skip over. #history #historicalfacts #almostmoments",
-          "tags": [
-            "almost moments",
-            "close calls",
-            "did you know",
-            "education",
-            "european history",
-            "facts",
-            "historical facts",
-            "history",
-            "history shorts",
-            "near miss",
-            "ottoman empire",
-            "shorts",
-            "trending",
-            "vienna 1683",
-            "viral",
-            "world history"
-          ],
-          "publishedAt": "2026-10-07T12:46:38Z",
-          "thumbnail": "https://i.ytimg.com/vi/cZXd1oj5rgQ/mqdefault.jpg",
-          "views": 8,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 35.17,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 19.0,
-          "shares": 0,
-          "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-10-07",
             "end_date": "2026-10-23",
