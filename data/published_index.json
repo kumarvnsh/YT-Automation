@@ -3832,5 +3832,31 @@
     "production_profile": 2,
     "facebook_id": "1676229487434881",
     "instagram_id": "18129019645849464"
+  },
+  {
+    "video_id": "AlvJ6m0qkVA",
+    "run_id": "40109611925",
+    "stage_dir_name": "20261024_160303_586097_short",
+    "title": "Where Did the Dutch Tulip Really Come From?",
+    "published_at": "2026-10-24T16:08:59.005266+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 7,
+    "category": "everyday_origins",
+    "editorial_slot": 6,
+    "editorial_region": "europe",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "The tulip was an Ottoman decoration before it was a Dutch icon.",
+    "duration": 29.664,
+    "production_profile": 2,
+    "facebook_id": "1166579442604718",
+    "instagram_id": "17942539968384614"
   }
 ]
