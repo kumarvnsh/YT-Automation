@@ -292,6 +292,79 @@
       "duration_variant": "story",
       "source": "meta_api_unverified_views",
       "view_definition": null
+    },
+    {
+      "experiment_id": "facebook-world-history-4w",
+      "slot": 5,
+      "category": "myth_evidence",
+      "hook": "Russia once ran a farm settlement on the California coast, of all places.",
+      "duration": 33.648,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "990653096706046",
+      "published_at": "2026-10-23T16:08:42+0000",
+      "observed_at": "2026-10-24T17:03:35.277540+00:00",
+      "target_age_hours": 24,
+      "actual_age_hours": 24.9148,
+      "late": false,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 23,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 23,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 23,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      },
+      "editorial_region": "russia",
+      "editorial_series": "History Got This Wrong",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null
     }
   ],
   "comparisons": [
@@ -309,6 +382,25 @@
         24.4545
       ],
       "total_views": 182,
+      "shares_per_1000_views": null,
+      "shares_per_1000_views_sample_size": 0,
+      "followers_per_1000_views": null,
+      "followers_per_1000_views_sample_size": 0
+    },
+    {
+      "target_age_hours": 24,
+      "editorial_region": "russia",
+      "editorial_series": "History Got This Wrong",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null,
+      "unverified_definition_media_id": "990653096706046",
+      "sample_size": 1,
+      "actual_age_hours_range": [
+        24.9148,
+        24.9148
+      ],
+      "total_views": 23,
       "shares_per_1000_views": null,
       "shares_per_1000_views_sample_size": 0,
       "followers_per_1000_views": null,
