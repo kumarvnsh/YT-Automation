@@ -3806,5 +3806,31 @@
     "production_profile": 2,
     "facebook_id": "990653096706046",
     "instagram_id": "17934779430142461"
+  },
+  {
+    "video_id": "l941V3Da3vc",
+    "run_id": "40060646622",
+    "stage_dir_name": "20261024_040238_607180_short",
+    "title": "Why Did a Burning City Leave Its Books Behind?",
+    "published_at": "2026-10-24T04:09:14.971862+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 6,
+    "category": "decisions",
+    "editorial_slot": 5,
+    "editorial_region": "middle_east",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "A fire that destroyed a city also helped preserve its books.",
+    "duration": 53.808,
+    "production_profile": 2,
+    "facebook_id": "1676229487434881",
+    "instagram_id": "18129019645849464"
   }
 ]
