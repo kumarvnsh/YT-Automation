@@ -2068,5 +2068,14 @@
     "slot": "evening",
     "date": "2026-10-24",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261025_040250_449157_short",
+    "title": "Why Did a Newspaper Print in a Script One Man Invented?",
+    "fingerprint": "did_invented_man_newspaper_one_print_script",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-25",
+    "status": "reserved"
   }
 ]
