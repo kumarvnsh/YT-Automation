@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-25T14:38:19.841764+00:00",
+      "updated": "2026-10-25T17:55:46.076503+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,52 @@
       },
       "videos": [
         {
+          "id": "sX9hpoZGMRQ",
+          "title": "Why Did Chinese Craftsmen Carve a Christian Book for Manila?",
+          "description": "A 1593 Christian teaching book printed in Manila mixed Chinese woodblock carving, Spanish missionary goals and Philippine writing. Library of Congress records show it appeared in both Roman and Baybayin scripts. #PhilippineHistory #ColonialHistory #WorldHistory",
+          "tags": [
+            "asian history",
+            "baybayin",
+            "chinese woodblock printing",
+            "did you know",
+            "did you know history",
+            "doctrina christiana",
+            "early printing history",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "library of congress",
+            "manila history",
+            "one decision changed everything",
+            "philippine history",
+            "spanish colonial philippines",
+            "tagalog language",
+            "world history",
+            "world history facts"
+          ],
+          "publishedAt": "2026-10-25T16:09:29Z",
+          "thumbnail": "https://i.ytimg.com/vi/sX9hpoZGMRQ/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-09",
+            "end_date": "2026-10-25",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "pJZ5DAglSsQ",
           "title": "Why Did a Newspaper Print in a Script One Man Invented?",
           "description": "In 1821, Sequoyah, a Cherokee man, devised a writing system of 86 characters for the Cherokee language. By 1828, that script was printed in the Cherokee Phoenix, a newspaper in New Echota, Georgia. Which do you think would be harder to learn, a syllabary or an alphabet?\n#CherokeeHistory #NativeAmericanHistory #HistoryGotThisWrong",
@@ -59,7 +105,7 @@
           ],
           "publishedAt": "2026-10-25T04:09:09Z",
           "thumbnail": "https://i.ytimg.com/vi/pJZ5DAglSsQ/mqdefault.jpg",
-          "views": 7,
+          "views": 8,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -359,7 +405,7 @@
           ],
           "publishedAt": "2026-10-22T16:09:57Z",
           "thumbnail": "https://i.ytimg.com/vi/kI_tpSIAmI4/mqdefault.jpg",
-          "views": 25,
+          "views": 27,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2149,49 +2195,6 @@
           "average_watch_time_seconds": 43.0,
           "shares": 0,
           "analytics_views": 1005,
-          "analytics_period": {
-            "start_date": "2026-10-09",
-            "end_date": "2026-10-25",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "1lIfc_aOGvI",
-          "title": "Why Did the Church Delete 10 Days From History?",
-          "description": "In October 1582, four countries deleted ten days from existence overnight \u2014 and almost nobody saw it coming. The Gregorian calendar reform is one of history's strangest and most overlooked events. Drop your reaction below. #history #didyouknow #calendar",
-          "tags": [
-            "calendar history",
-            "did you know",
-            "education",
-            "facts",
-            "gregorian calendar",
-            "history",
-            "history facts",
-            "history shorts",
-            "julian calendar",
-            "lost days 1582",
-            "october history",
-            "pope gregory",
-            "reformation",
-            "shorts",
-            "time history",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-09T12:41:26Z",
-          "thumbnail": "https://i.ytimg.com/vi/1lIfc_aOGvI/mqdefault.jpg",
-          "views": 3,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 67.92,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 36.0,
-          "shares": 0,
-          "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-10-09",
             "end_date": "2026-10-25",
