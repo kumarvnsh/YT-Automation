@@ -3884,5 +3884,31 @@
     "production_profile": 2,
     "facebook_id": "1112065345121310",
     "instagram_id": "18152556175553379"
+  },
+  {
+    "video_id": "sX9hpoZGMRQ",
+    "run_id": "40209675739",
+    "stage_dir_name": "20261025_160321_742757_short",
+    "title": "Why Did Chinese Craftsmen Carve a Christian Book for Manila?",
+    "published_at": "2026-10-25T16:09:03.275679+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 9,
+    "category": "decisions",
+    "editorial_slot": 8,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Carved by Chinese craftsmen, this 1593 Christian teaching book was printed in Manila.",
+    "duration": 27.552,
+    "production_profile": 2,
+    "facebook_id": "2204061720492006",
+    "instagram_id": "18190744834418470"
   }
 ]
