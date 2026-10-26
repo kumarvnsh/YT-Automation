@@ -2086,5 +2086,14 @@
     "slot": "evening",
     "date": "2026-10-25",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261026_040234_291915_short",
+    "title": "The Spinning Wheel on a Freedom Flag \u2014 Why Was It There?",
+    "fingerprint": "flag_freedom_it_on_spinning_there_was_wheel",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-26",
+    "status": "reserved"
   }
 ]
