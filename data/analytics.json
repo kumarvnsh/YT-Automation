@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-26T00:48:30.549668+00:00",
+      "updated": "2026-10-26T05:31:04.738508+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,49 @@
         ]
       },
       "videos": [
+        {
+          "id": "KEianvSdwJc",
+          "title": "The Spinning Wheel on a Freedom Flag \u2014 Why Was It There?",
+          "description": "A spinning wheel appeared on the flag of India's freedom movement in 1921. The story starts with cheap machine cloth from England and a 1890s call to buy local goods. Follow for more surprising world history.\n#IndianHistory #SwadeshiMovement #WorldHistory",
+          "tags": [
+            "colonial india",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history got this wrong",
+            "history shorts",
+            "indian history",
+            "indian independence",
+            "khadi",
+            "lancashire mills",
+            "mohandas gandhi",
+            "spinning wheel",
+            "swadeshi movement",
+            "textile history",
+            "world history"
+          ],
+          "publishedAt": "2026-10-26T04:09:21Z",
+          "thumbnail": "https://i.ytimg.com/vi/KEianvSdwJc/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-09",
+            "end_date": "2026-10-26",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "sX9hpoZGMRQ",
           "title": "Why Did Chinese Craftsmen Carve a Christian Book for Manila?",
@@ -105,7 +148,7 @@
           ],
           "publishedAt": "2026-10-25T04:09:09Z",
           "thumbnail": "https://i.ytimg.com/vi/pJZ5DAglSsQ/mqdefault.jpg",
-          "views": 12,
+          "views": 14,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -533,7 +576,7 @@
           ],
           "publishedAt": "2026-10-22T05:39:46Z",
           "thumbnail": "https://i.ytimg.com/vi/Qg7mmDQiddg/mqdefault.jpg",
-          "views": 12,
+          "views": 13,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2150,49 +2193,6 @@
           "average_watch_time_seconds": 26.0,
           "shares": 0,
           "analytics_views": 54,
-          "analytics_period": {
-            "start_date": "2026-10-09",
-            "end_date": "2026-10-26",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "VqBozML4s6k",
-          "title": "The Last Star to Explode in Our Galaxy \u2014 Nobody Knows Why It Stopped",
-          "description": "On October 9, 1604, a new star blazed into the night sky so bright it was visible in daylight \u2014 and it rewrote everything astronomers thought they knew. It was the last supernova ever observed inside the Milky Way, and over 400 years later, scientists still can't explain why none have appeared since. Drop your theory below.",
-          "tags": [
-            "1604",
-            "astronomy history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "kepler supernova",
-            "milky way",
-            "shorts",
-            "space history",
-            "stars",
-            "supernova",
-            "trending",
-            "universe mysteries",
-            "viral"
-          ],
-          "publishedAt": "2026-10-09T16:06:33Z",
-          "thumbnail": "https://i.ytimg.com/vi/VqBozML4s6k/mqdefault.jpg",
-          "views": 1005,
-          "likes": 16,
-          "comments": 3,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 89.63,
-          "subs_gained": 2,
-          "average_watch_time_seconds": 43.0,
-          "shares": 0,
-          "analytics_views": 1005,
           "analytics_period": {
             "start_date": "2026-10-09",
             "end_date": "2026-10-26",
