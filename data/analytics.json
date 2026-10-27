@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-27T01:09:55.849447+00:00",
+      "updated": "2026-10-27T06:56:12.456234+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "XdjsE8R9Bb0",
+          "title": "Why Did Japan's Flower Parties Switch Flowers?",
+          "description": "Hanami, the Japanese custom of viewing flowers, did not always center on cherry blossoms. Its earliest link was to plum blossoms, and the shift to cherries is documented by the Library of Congress. The tradition continues in Japan today.\n#JapaneseHistory #HanamiTradition #CherryBlossoms",
+          "tags": [
+            "cherry blossoms",
+            "did you know",
+            "education",
+            "everyday origins",
+            "hanami",
+            "heian period",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "japan history",
+            "japanese culture",
+            "japanese traditions",
+            "plum blossoms",
+            "sakura",
+            "tokugawa yoshimune",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-10-27T04:10:24Z",
+          "thumbnail": "https://i.ytimg.com/vi/XdjsE8R9Bb0/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-10",
+            "end_date": "2026-10-27",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "3rBp2PdYRl4",
           "title": "Why Did Someone Carve the Same Message in Three Scripts?",
@@ -190,7 +234,7 @@
           ],
           "publishedAt": "2026-10-25T04:09:09Z",
           "thumbnail": "https://i.ytimg.com/vi/pJZ5DAglSsQ/mqdefault.jpg",
-          "views": 15,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -233,7 +277,7 @@
           ],
           "publishedAt": "2026-10-24T16:09:27Z",
           "thumbnail": "https://i.ytimg.com/vi/AlvJ6m0qkVA/mqdefault.jpg",
-          "views": 26,
+          "views": 27,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -487,7 +531,7 @@
           ],
           "publishedAt": "2026-10-22T16:09:57Z",
           "thumbnail": "https://i.ytimg.com/vi/kI_tpSIAmI4/mqdefault.jpg",
-          "views": 30,
+          "views": 31,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -497,7 +541,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 8.0,
           "shares": 0,
-          "analytics_views": 28,
+          "analytics_views": 26,
           "analytics_period": {
             "start_date": "2026-10-10",
             "end_date": "2026-10-27",
@@ -749,7 +793,7 @@
           ],
           "publishedAt": "2026-10-21T04:07:01Z",
           "thumbnail": "https://i.ytimg.com/vi/9F2VczndYm0/mqdefault.jpg",
-          "views": 28,
+          "views": 30,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2148,49 +2192,6 @@
           "average_watch_time_seconds": 54.0,
           "shares": 0,
           "analytics_views": 568,
-          "analytics_period": {
-            "start_date": "2026-10-10",
-            "end_date": "2026-10-27",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "eVggAuM4z70",
-          "title": "The Nuclear Fire They Tried to Erase From History",
-          "description": "On October 10, 1957, Britain's first nuclear reactor caught fire \u2014 and the government buried the truth for decades. This is the accident that rewrote how the world thinks about nuclear safety. Drop your take in the comments.",
-          "tags": [
-            "1957",
-            "british history",
-            "cold war",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "nuclear accident",
-            "nuclear fire",
-            "science history",
-            "shorts",
-            "trending",
-            "uk history",
-            "viral",
-            "windscale"
-          ],
-          "publishedAt": "2026-10-10T04:05:58Z",
-          "thumbnail": "https://i.ytimg.com/vi/eVggAuM4z70/mqdefault.jpg",
-          "views": 165,
-          "likes": 3,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 58.52,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 29.0,
-          "shares": 0,
-          "analytics_views": 114,
           "analytics_period": {
             "start_date": "2026-10-10",
             "end_date": "2026-10-27",
