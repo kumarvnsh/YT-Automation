@@ -3962,5 +3962,31 @@
     "production_profile": 2,
     "facebook_id": "1102455502499708",
     "instagram_id": "18125319184973063"
+  },
+  {
+    "video_id": "XdjsE8R9Bb0",
+    "run_id": "40447366894",
+    "stage_dir_name": "20261027_040240_123972_short",
+    "title": "Why Did Japan's Flower Parties Switch Flowers?",
+    "published_at": "2026-10-27T04:10:04.466578+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 12,
+    "category": "everyday_origins",
+    "editorial_slot": 11,
+    "editorial_region": "japan",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Japan's famous flower parties didn't always belong to cherry blossoms. Long ago, the plum came first.",
+    "duration": 55.656,
+    "production_profile": 2,
+    "facebook_id": "863673990142795",
+    "instagram_id": "17987178384094971"
   }
 ]
