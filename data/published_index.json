@@ -4066,5 +4066,31 @@
     "production_profile": 2,
     "facebook_id": "944874685084549",
     "instagram_id": "18092367842288830"
+  },
+  {
+    "video_id": "m6Yn5M_oa-o",
+    "run_id": "40815334042",
+    "stage_dir_name": "20261029_040729_257893_short",
+    "title": "The Sikh Princess Who Ran a Refuge in England, How?",
+    "published_at": "2026-10-29T04:15:35.169050+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 16,
+    "category": "myth_evidence",
+    "editorial_slot": 15,
+    "editorial_region": "europe",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "A princess from a lost Sikh empire once opened her English home to people seeking sanctuary.",
+    "duration": 54.432,
+    "production_profile": 2,
+    "facebook_id": "1956597872411686",
+    "instagram_id": "18640326970039188"
   }
 ]

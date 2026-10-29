@@ -2140,5 +2140,14 @@
     "slot": "evening",
     "date": "2026-10-28",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261029_040729_257893_short",
+    "title": "The Sikh Princess Who Ran a Refuge in England, How?",
+    "fingerprint": "england_princess_ran_refuge_sikh_who",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-29",
+    "status": "reserved"
   }
 ]
