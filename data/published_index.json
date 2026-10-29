@@ -4092,5 +4092,31 @@
     "production_profile": 2,
     "facebook_id": "1956597872411686",
     "instagram_id": "18640326970039188"
+  },
+  {
+    "video_id": "duDXaeY8Jy8",
+    "run_id": "40907399683",
+    "stage_dir_name": "20261029_160319_757264_short",
+    "title": "The Revolt That Emptied Santa Fe: Who Planned It?",
+    "published_at": "2026-10-29T16:11:36.037647+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 17,
+    "category": "decisions",
+    "editorial_slot": 16,
+    "editorial_region": "americas",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Pueblo communities drove Spanish colonists out of Santa Fe in 1680.",
+    "duration": 33.72,
+    "production_profile": 2,
+    "facebook_id": "2553977341779026",
+    "instagram_id": "18074922950771878"
   }
 ]
