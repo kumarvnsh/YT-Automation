@@ -4144,5 +4144,31 @@
     "production_profile": 2,
     "facebook_id": "2184484288838336",
     "instagram_id": "18118640768046439"
+  },
+  {
+    "video_id": "JdEBv6P4EOc",
+    "run_id": "41017481924",
+    "stage_dir_name": "20261030_070323_085214_short",
+    "title": "Where Did the Number Zero Get Its First Rules?",
+    "published_at": "2026-10-30T07:10:58.017474+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 19,
+    "category": "decisions",
+    "editorial_slot": 18,
+    "editorial_region": "india",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "The number zero got its first rulebook in India, over 1,300 years ago.",
+    "duration": 35.592,
+    "production_profile": 2,
+    "facebook_id": "1132320822474223",
+    "instagram_id": "18117612008600539"
   }
 ]

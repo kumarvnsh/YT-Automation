@@ -2167,5 +2167,14 @@
     "slot": "morning",
     "date": "2026-10-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261030_070323_085214_short",
+    "title": "Where Did the Number Zero Get Its First Rules?",
+    "fingerprint": "did_first_get_its_number_rules_where_zero",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-30",
+    "status": "reserved"
   }
 ]
