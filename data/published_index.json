@@ -4118,5 +4118,31 @@
     "production_profile": 2,
     "facebook_id": "2553977341779026",
     "instagram_id": "18074922950771878"
+  },
+  {
+    "video_id": "g6C791iwukU",
+    "run_id": "41000505816",
+    "stage_dir_name": "20261030_040309_530133_short",
+    "title": "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
+    "published_at": "2026-10-30T04:12:09.905746+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 18,
+    "category": "everyday_origins",
+    "editorial_slot": 17,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Silver mined in Mexico crossed the Pacific Ocean to buy Chinese silk and porcelain in Manila.",
+    "duration": 52.656,
+    "production_profile": 2,
+    "facebook_id": "2184484288838336",
+    "instagram_id": "18118640768046439"
   }
 ]

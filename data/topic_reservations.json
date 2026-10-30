@@ -2158,5 +2158,14 @@
     "slot": "evening",
     "date": "2026-10-29",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261030_040309_530133_short",
+    "title": "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
+    "fingerprint": "cross_did_manila_mexican_pacific_reach_silver",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-30",
+    "status": "reserved"
   }
 ]
