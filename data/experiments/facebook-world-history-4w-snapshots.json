@@ -1970,5 +1970,209 @@
         "definition": "followers_gained / compatible report views \u00d7 1000."
       }
     }
+  },
+  {
+    "experiment_id": "facebook-world-history-4w",
+    "slot": 4,
+    "category": "everyday_origins",
+    "hook": "Britain's national paper money collection doesn't start in Europe. It starts in China, with banknotes from the 14th century.",
+    "duration": 53.064,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "29373542462334756",
+    "published_at": "2026-10-23T04:09:53+0000",
+    "observed_at": "2026-10-30T09:09:53.240411+00:00",
+    "target_age_hours": 168,
+    "actual_age_hours": 173.0001,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 12,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 12,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 12,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "facebook-world-history-4w",
+    "slot": 12,
+    "category": "everyday_origins",
+    "hook": "Japan's famous flower parties didn't always belong to cherry blossoms. Long ago, the plum came first.",
+    "duration": 55.656,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "863673990142795",
+    "published_at": "2026-10-27T04:08:55+0000",
+    "observed_at": "2026-10-30T09:09:53.240411+00:00",
+    "target_age_hours": 72,
+    "actual_age_hours": 77.0162,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 112,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 112,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 112,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "facebook-world-history-4w",
+    "slot": 16,
+    "category": "myth_evidence",
+    "hook": "A princess from a lost Sikh empire once opened her English home to people seeking sanctuary.",
+    "duration": 54.432,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "1956597872411686",
+    "published_at": "2026-10-29T04:14:41+0000",
+    "observed_at": "2026-10-30T09:09:53.240411+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 28.9201,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 1,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 1,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 1,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
   }
 ]
