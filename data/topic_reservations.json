@@ -2257,5 +2257,14 @@
     "slot": "morning",
     "date": "2026-10-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261031_221909_093074_short",
+    "title": "Why Did Indian Weavers Make Different Cloth for Each Foreign Buyer?",
+    "fingerprint": "buyer_cloth_did_different_each_for_foreign_indian_make_weavers",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-31",
+    "status": "reserved"
   }
 ]

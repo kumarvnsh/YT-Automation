@@ -4404,5 +4404,31 @@
     "production_profile": 2,
     "facebook_id": "28791003023915691",
     "instagram_id": "18093651974225005"
+  },
+  {
+    "video_id": "zzZEvlx6sOs",
+    "run_id": "41247531990",
+    "stage_dir_name": "20261031_221909_093074_short",
+    "title": "Why Did Indian Weavers Make Different Cloth for Each Foreign Buyer?",
+    "published_at": "2026-10-31T22:27:42.650484+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 28,
+    "category": "everyday_origins",
+    "editorial_slot": 27,
+    "editorial_region": "india",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Indian weavers were tailoring cloth for foreign buyers long before Europeans arrived.",
+    "duration": 51.552,
+    "production_profile": 2,
+    "facebook_id": "1657660645724865",
+    "instagram_id": "18144832177596744"
   }
 ]
