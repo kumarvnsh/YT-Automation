@@ -2185,5 +2185,14 @@
     "slot": "morning",
     "date": "2026-10-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261031_041150_933659_short",
+    "title": "Before Paper, What Were Ancient Egyptians Writing On?",
+    "fingerprint": "ancient_before_egyptians_on_paper_were_what_writing",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-31",
+    "status": "reserved"
   }
 ]

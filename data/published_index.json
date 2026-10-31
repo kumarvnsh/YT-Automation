@@ -4196,5 +4196,31 @@
     "production_profile": 2,
     "facebook_id": "1455935093272274",
     "instagram_id": "18115200622861105"
+  },
+  {
+    "video_id": "d2IrqkS6smw",
+    "run_id": "41166772305",
+    "stage_dir_name": "20261031_041150_933659_short",
+    "title": "Before Paper, What Were Ancient Egyptians Writing On?",
+    "published_at": "2026-10-31T04:21:57.609764+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 20,
+    "category": "everyday_origins",
+    "editorial_slot": 19,
+    "editorial_region": "africa",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Long before modern paper existed, the ancient Egyptians wrote on sheets made from plant stems.",
+    "duration": 54.912,
+    "production_profile": 2,
+    "facebook_id": "2011130439463521",
+    "instagram_id": "18023379269951987"
   }
 ]
