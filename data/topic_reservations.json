@@ -2212,5 +2212,14 @@
     "slot": "morning",
     "date": "2026-10-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261031_120314_271511_short",
+    "title": "The Doll Inside Every Doll: Where Does It End?",
+    "fingerprint": "does_doll_end_every_inside_it_where",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-31",
+    "status": "reserved"
   }
 ]

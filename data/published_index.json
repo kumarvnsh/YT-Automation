@@ -4274,5 +4274,31 @@
     "production_profile": 2,
     "facebook_id": "1471323638209612",
     "instagram_id": "18156960124514219"
+  },
+  {
+    "video_id": "3OEyZvUPgP0",
+    "run_id": "41199229024",
+    "stage_dir_name": "20261031_120314_271511_short",
+    "title": "The Doll Inside Every Doll: Where Does It End?",
+    "published_at": "2026-10-31T12:10:19.607401+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 23,
+    "category": "everyday_origins",
+    "editorial_slot": 22,
+    "editorial_region": "russia",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "Inside a Russian nesting doll, there is always another doll waiting.",
+    "duration": 28.032,
+    "production_profile": 2,
+    "facebook_id": "1602636791028389",
+    "instagram_id": "18141676354625096"
   }
 ]
