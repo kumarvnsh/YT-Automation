@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-31T01:09:52.294554+00:00",
+      "updated": "2026-10-31T07:37:54.986553+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,178 @@
       },
       "videos": [
         {
+          "id": "sWmP-P-WbLk",
+          "title": "What Did Ancient Chinese Shoppers Actually Pay With?",
+          "description": "Bronze vessel inscriptions from ancient China record strings of cowrie shells used first as gifts and later as payments. The link between those shells and money still appears in written Chinese today. #WorldHistory #ChinaHistory #DidYouKnow",
+          "tags": [
+            "ancient china",
+            "ancient money",
+            "china history",
+            "chinese bronze",
+            "chinese characters",
+            "cowrie shells",
+            "did you know",
+            "early chinese trade",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "money history",
+            "world history"
+          ],
+          "publishedAt": "2026-10-31T07:11:27Z",
+          "thumbnail": "https://i.ytimg.com/vi/sWmP-P-WbLk/mqdefault.jpg",
+          "views": 4,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-16",
+            "end_date": "2026-10-31",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "kXrtlRXac00",
+          "title": "Who Really Shaped Edo Japan's Famous Woodblock Prints?",
+          "description": "In Edo-era Japan, merchants had the most spending power but sat low on the social ladder. Their partnership with artists, publishers and townspeople helped give ukiyo-e prints their distinctive style. #JapaneseHistory #WoodblockPrints #HistoryGotThisWrong",
+          "tags": [
+            "did you know",
+            "edo period",
+            "edo tokyo",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history got this wrong",
+            "history shorts",
+            "japan merchants",
+            "japanese art history",
+            "japanese culture",
+            "japanese history",
+            "tokugawa shogunate",
+            "ukiyo-e",
+            "woodblock prints",
+            "world history"
+          ],
+          "publishedAt": "2026-10-31T04:35:15Z",
+          "thumbnail": "https://i.ytimg.com/vi/kXrtlRXac00/mqdefault.jpg",
+          "views": 4,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-16",
+            "end_date": "2026-10-31",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "d2IrqkS6smw",
+          "title": "Before Paper, What Were Ancient Egyptians Writing On?",
+          "description": "Long before modern paper, ancient Egyptians wrote on sheets made from the stems of a reed called Cyperus papyrus. Egypt exported these sheets, and they carried everything from business records to the Rhind Mathematical Papyrus. #EgyptianHistory #PapyrusFacts #YouUseItEveryDay",
+          "tags": [
+            "ancient egypt",
+            "ancient egyptian maths",
+            "ancient writing",
+            "demotic script",
+            "did you know",
+            "education",
+            "egyptian history",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "papyrus",
+            "rhind papyrus",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-10-31T04:22:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/d2IrqkS6smw/mqdefault.jpg",
+          "views": 16,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-16",
+            "end_date": "2026-10-31",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "QleLd2bpeAM",
+          "title": "Where Did Your Notebook Page Really Start?",
+          "description": "Long before modern paper, ancient Egyptians wrote on papyrus, made from the stems of a plant that grew along the Nile. The Rhind Mathematical Papyrus shows how scribes used it to teach real-life maths. Hashtags: #YouUseItEveryDay #EgyptianHistory #AncientWriting",
+          "tags": [
+            "african history",
+            "ancient egypt",
+            "ancient maths",
+            "did you know",
+            "early paper",
+            "education",
+            "egyptian history",
+            "everyday origins",
+            "hieroglyphs",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "nile river",
+            "papyrus",
+            "rhind papyrus",
+            "scribes",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-10-31T04:10:13Z",
+          "thumbnail": "https://i.ytimg.com/vi/QleLd2bpeAM/mqdefault.jpg",
+          "views": 11,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-16",
+            "end_date": "2026-10-31",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "JdEBv6P4EOc",
           "title": "Where Did the Number Zero Get Its First Rules?",
           "description": "Earlier cultures used zero mostly as a placeholder, but an Indian astronomer in 628 CE wrote rules for zero as a number. Those ideas later travelled west through Arab scholars and into European arithmetic. #MathHistory #IndianHistory #WorldHistory",
@@ -65,7 +237,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -107,7 +279,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -143,14 +315,14 @@
           ],
           "publishedAt": "2026-10-29T16:11:56Z",
           "thumbnail": "https://i.ytimg.com/vi/duDXaeY8Jy8/mqdefault.jpg",
-          "views": 4,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -186,7 +358,7 @@
           ],
           "publishedAt": "2026-10-29T04:15:59Z",
           "thumbnail": "https://i.ytimg.com/vi/m6Yn5M_oa-o/mqdefault.jpg",
-          "views": 209,
+          "views": 235,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -198,7 +370,7 @@
           "shares": 0,
           "analytics_views": 6,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -242,7 +414,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -283,7 +455,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -326,7 +498,7 @@
           "shares": 0,
           "analytics_views": 12,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -369,7 +541,7 @@
           "shares": 0,
           "analytics_views": 14,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -410,7 +582,7 @@
           "shares": 0,
           "analytics_views": 5,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -452,7 +624,7 @@
           "shares": 0,
           "analytics_views": 8,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -497,7 +669,7 @@
           "shares": 0,
           "analytics_views": 8,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -540,7 +712,7 @@
           "shares": 0,
           "analytics_views": 16,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -582,7 +754,7 @@
           "shares": 0,
           "analytics_views": 26,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -624,7 +796,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -663,7 +835,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -707,7 +879,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -756,7 +928,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -796,7 +968,7 @@
           "shares": 0,
           "analytics_views": 31,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -836,7 +1008,7 @@
           "shares": 0,
           "analytics_views": 33,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -875,7 +1047,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -924,7 +1096,7 @@
           "shares": 0,
           "analytics_views": 0,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -966,7 +1138,7 @@
           "shares": 0,
           "analytics_views": 13,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1008,7 +1180,7 @@
           "shares": 0,
           "analytics_views": 20,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1053,7 +1225,7 @@
           "shares": 0,
           "analytics_views": 95,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1098,7 +1270,7 @@
           "shares": 0,
           "analytics_views": 30,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1142,7 +1314,7 @@
           "shares": 0,
           "analytics_views": 84,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1185,7 +1357,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1229,7 +1401,7 @@
           "shares": 0,
           "analytics_views": 61,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1272,7 +1444,7 @@
           "shares": 0,
           "analytics_views": 28,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1316,7 +1488,7 @@
           "shares": 0,
           "analytics_views": 39,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1360,7 +1532,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1403,7 +1575,7 @@
           "shares": 0,
           "analytics_views": 22,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1447,7 +1619,7 @@
           "shares": 0,
           "analytics_views": 20,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1491,7 +1663,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1534,7 +1706,7 @@
           "shares": 0,
           "analytics_views": 53,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1573,7 +1745,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1623,7 +1795,7 @@
           "shares": 0,
           "analytics_views": 56,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1660,7 +1832,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1710,7 +1882,7 @@
           "shares": 0,
           "analytics_views": 20,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1754,7 +1926,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1798,7 +1970,7 @@
           "shares": 0,
           "analytics_views": 54,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1841,7 +2013,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1883,7 +2055,7 @@
           "shares": 0,
           "analytics_views": 28,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1927,7 +2099,7 @@
           "shares": 0,
           "analytics_views": 47,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1964,13 +2136,13 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 35.81,
+          "avg_view_pct": 32.65,
           "subs_gained": 0,
-          "average_watch_time_seconds": 17.0,
+          "average_watch_time_seconds": 16.0,
           "shares": 0,
-          "analytics_views": 38,
+          "analytics_views": 21,
           "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2013,179 +2185,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-10-15",
-            "end_date": "2026-10-31",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "6PGbkEOLcPc",
-          "title": "The Submarine That Killed Its Own Inventor \u2014 Twice",
-          "description": "On October 15, 1863, the H.L. Hunley sank during a test run \u2014 killing the very man who built it. What made this vessel so dangerous, and why did the Confederacy keep sending crews inside it anyway? The answer changes how you think about the first submarine ever used in combat. #civilwarhistory #submarinehistory #didyouknow",
-          "tags": [
-            "american history",
-            "civil war",
-            "confederate navy",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "hl hunley",
-            "inventors",
-            "naval history",
-            "shorts",
-            "submarine history",
-            "trending",
-            "underwater warfare",
-            "viral"
-          ],
-          "publishedAt": "2026-10-15T16:05:21Z",
-          "thumbnail": "https://i.ytimg.com/vi/6PGbkEOLcPc/mqdefault.jpg",
-          "views": 168,
-          "likes": 4,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 39.53,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 19.0,
-          "shares": 0,
-          "analytics_views": 168,
-          "analytics_period": {
-            "start_date": "2026-10-15",
-            "end_date": "2026-10-31",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "X135OtgqjA8",
-          "title": "William Won, But Was He Actually Just Lucky?",
-          "description": "On October 14, 1066, a single day's fighting changed the English language, the law, and the bloodline of every British monarch since. But the story you were taught leaves out the strangest part. Drop your verdict in the comments. #history #didyouknow #battleofhastings",
-          "tags": [
-            "1066",
-            "battle of hastings",
-            "british history",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "king harold",
-            "medieval history",
-            "norman conquest",
-            "october 14",
-            "shorts",
-            "trending",
-            "viral",
-            "william the conqueror"
-          ],
-          "publishedAt": "2026-10-15T10:57:52Z",
-          "thumbnail": "https://i.ytimg.com/vi/X135OtgqjA8/mqdefault.jpg",
-          "views": 3,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 98.09,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 46.0,
-          "shares": 0,
-          "analytics_views": 3,
-          "analytics_period": {
-            "start_date": "2026-10-15",
-            "end_date": "2026-10-31",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "uhmMe1J1wKk",
-          "title": "One Calculation Almost Left Them Stranded | History's Almost Moments",
-          "description": "In April 1970, Apollo 13's crew survived an oxygen tank explosion \u2014 but the math that brought them home was nearly done wrong. One engineer's last-minute correction changed everything. Could a single pencil error have ended the Space Age's greatest rescue?",
-          "tags": [
-            "1970",
-            "apollo 13",
-            "astronauts",
-            "close call",
-            "did you know",
-            "education",
-            "engineering",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "moon mission",
-            "nasa",
-            "shorts",
-            "space history",
-            "space race",
-            "survival",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-15T04:06:08Z",
-          "thumbnail": "https://i.ytimg.com/vi/uhmMe1J1wKk/mqdefault.jpg",
-          "views": 421,
-          "likes": 2,
-          "comments": 1,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 52.05,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 26.0,
-          "shares": 0,
-          "analytics_views": 368,
-          "analytics_period": {
-            "start_date": "2026-10-15",
-            "end_date": "2026-10-31",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "i2ad8UCtXXw",
-          "title": "The Fake Message That May Have Won the Pacific War",
-          "description": "In June 1942, a single intelligence gamble at Midway turned the entire Pacific War \u2014 but it nearly didn't happen. One analyst's fight to be believed changed everything. Did America win Midway, or did Japan lose it? Drop your verdict below.",
-          "tags": [
-            "almost moments",
-            "code breaking",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history shorts",
-            "joseph rochefort",
-            "midway",
-            "naval history",
-            "pacific war",
-            "shorts",
-            "trending",
-            "turning points",
-            "viral",
-            "world war 2"
-          ],
-          "publishedAt": "2026-10-15T03:28:56Z",
-          "thumbnail": "https://i.ytimg.com/vi/i2ad8UCtXXw/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
-          "shares": 0,
-          "analytics_views": 1,
-          "analytics_period": {
-            "start_date": "2026-10-15",
+            "start_date": "2026-10-16",
             "end_date": "2026-10-31",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
