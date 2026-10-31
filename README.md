@@ -191,6 +191,10 @@ dispatch is an **independent job slot**:
 - The workflow commits `data/topic_reservations.json` back to the repo along
   with the other dedup state.
 
+### Continuous motion
+
+Future Histold scenes are checked at 0.15s and 0.3s, then throughout the narration. Static openings and foreground holds of 1.5 seconds trigger repair or animated local recovery. Recovery scenes use vetted map outlines or animated diagrams with timed short labels; a static map introduction is no longer the recovery template. Run the browser check with `PYTHONPATH=. python scripts/validate_continuous_motion.py` after installing Chromium for Playwright.
+
 ### Script provider routing
 
 Script generation defaults to **Claude with automatic OpenAI fallback**: if the

@@ -76,18 +76,47 @@ def parse_scenes(text: str, count: int) -> dict[int, str]:
 
 
 def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
-    """Local recovery scene: supplied narration and pinned geography, no generated facts or images."""
+    """Animated recovery: vetted geography and timed excerpts, without invented facts."""
     from html import escape
+    duration = max(duration, .1)
+    words = narration.split()
+    chunks = [' '.join(words[i:i+6]) for i in range(0, len(words), 6)] or ['']
+    labels = ''.join(
+        f'<div class="house-beat" style="--delay:{i * duration / len(chunks):.3f}s;'
+        f'--hold:{duration / len(chunks):.3f}s">{escape(chunk)}</div>'
+        for i, chunk in enumerate(chunks))
     placeholders = ''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in maps)
-    art = placeholders or '<div class="k-rule k-grow" style="--t:4s"></div>'
+    # Abstract chronological diagram when no geographic asset is available.
+    art = placeholders or ('<svg viewBox="0 0 460 220" aria-label="Narration progression">'
+        '<path d="M30 110H430" fill="none" stroke="var(--bone)" stroke-width="6"/>'
+        + ''.join(f'<circle cx="{x}" cy="110" r="{r}" fill="var(--accent)" '
+                  f'class="k-pulse" style="--t:1.8s;--d:{i*.3}s"/>'
+                  for i, (x, r) in enumerate(((55, 24), (175, 34), (295, 24), (405, 34))))
+        + '</svg>')
     html = ('<!doctype html><html><head><style>'
-            '.k-stage{padding:128px 36px 24px;justify-content:flex-start;gap:18px}'
-            '.k-title{font-size:30px;line-height:1.12;text-transform:none;max-width:468px}'
-            '</style></head><body><div class="k-stage">'
-            '<div class="k-title k-rise">' + escape(narration) + '</div>' + art + '</div></body></html>')
+            '.k-stage{padding:128px 36px 24px;justify-content:flex-start;gap:20px}'
+            '.house-copy{position:relative;width:100%;height:100px;flex-shrink:0}'
+            '.house-beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;'
+            'font:700 38px/1.12 var(--display);text-align:center;opacity:0;'
+            'animation:house-beat var(--hold) linear var(--delay) both}'
+            '@keyframes house-beat{0%{opacity:0;transform:translateY(8px)}1%{opacity:1}'
+            '85%{opacity:1;transform:translateY(-4px)}100%{opacity:0;transform:translateY(-8px)}}'
+            '.house-art{width:100%;transform-origin:center;animation:house-camera var(--scene) linear both}'
+            '@keyframes house-camera{from{transform:scale(.88) translateX(-12px)}'
+            'to{transform:scale(.98) translateX(6px)}}'
+            '.house-art svg path{stroke:var(--parch);stroke-width:1.5;stroke-dasharray:18 10;'
+            'animation:house-outline 1.5s linear infinite}'
+            '@keyframes house-outline{to{stroke-dashoffset:-56}}'
+            '.house-rail{height:8px;width:100%;background:var(--bone);overflow:hidden;flex-shrink:0}'
+            '.house-rail::after{content:"";display:block;width:42%;height:100%;background:var(--accent);'
+            'animation:house-progress 2s linear infinite alternate}'
+            '@keyframes house-progress{from{transform:translateX(0)}to{transform:translateX(138%)}}'
+            '</style></head><body><div class="k-stage" '
+            f'style="--scene:{duration}s" aria-label="{escape(narration, quote=True)}">'
+            '<div class="house-copy">' + labels + '</div><div class="house-art">' + art +
+            '</div><div class="house-rail"></div></div></body></html>')
     html = bind_maps(html, maps)
-    return html.replace('class="histold-map" style="width:100%"',
-        f'class="histold-map k-pan" style="width:100%;--t:{duration}s;--s0:1;--s1:1.02"')
+    return html
 
 _SYSTEM = """You are a senior motion designer making the visuals for a narrated \
 vertical YouTube Short on a history channel called Histold. The voiceover and \
@@ -141,6 +170,10 @@ needs depth: a background layer (silhouette, map, diagram, grid) with slow \
 motion, plus a foreground payoff (number, date, name, stamp).
 - Open each scene on its payoff. No intros. Movement starts in the first 0.3s, \
 and something keeps moving until the end.
+- Never open on a standalone static map or narration slide. Integrate geography \
+with animated outlines, meaningful diagram builds, timed emphasis and short labels. \
+A tiny camera zoom or ambient background drift alone is insufficient. Develop \
+the foreground throughout every scene, including the first spoken line.
 - Show, don't transcribe: maps, timelines, counters, silhouettes, diagrams, \
 dates, names and numbers. On-screen text is short (max ~6 words per element). \
 The narration is already captioned, so do not repeat it.
@@ -186,6 +219,8 @@ def segment_windows(segments: list[str], words: list, total: float) -> list[tupl
 def sample_times(duration: float, fps: int, cues: list[dict]) -> list[float]:
     final = max(0, (round(duration * fps) - 1) / fps)
     return sorted({0.0, min(final, duration / 2), final,
+                   *[min(final, t) for t in (.15, .3)],
+                   *[min(final, n * .75) for n in range(1, int(duration / .75) + 1)],
                    *[min(final, max(0, float(c['time']))) for c in cues],
                    *[min(final, float(t)) for t in range(2, int(duration), 2)]})
 
@@ -194,7 +229,7 @@ def summarize_motion(differences: list[float], times: list[float]) -> list[str]:
     idle = 0.0
     for difference, start, end in zip(differences, times, times[1:]):
         idle = idle + end - start if difference < .002 else 0
-        if idle >= 4:
+        if idle >= 1.5:
             return ['static_foreground']
     return []
 
@@ -224,11 +259,11 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
         if previous is not None:
             differences.append(float(np.mean(np.abs(frame - previous))))
         previous = frame
-        visible_samples.append(page.evaluate("""() => [...document.querySelectorAll('.k-stage *, svg path')].some(e => {
+        visible_samples.append(page.evaluate("""() => [...document.querySelectorAll('.k-stage *, svg path, svg circle, svg rect, svg polygon')].some(e => {
           const r=e.getBoundingClientRect(); let visible=true;
           for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.05)visible=false;}
           return visible && r.width>2 && r.height>2 && r.right>0 && r.left<innerWidth && r.bottom>0 && r.top<innerHeight*.7 &&
-            (e.tagName.toLowerCase()==='path'||[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
+            (['path','circle','rect','polygon'].includes(e.tagName.toLowerCase())||[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
         })"""))
     # An opening reveal may begin invisible, but later blank samples are defects.
     for time, visible in zip(times, visible_samples):
@@ -251,7 +286,10 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
                 break
         if held < 2.25:
             errors.append('Required map outlines and labels are not visible for two seconds')
-    return {'errors': sorted(set(errors)), 'warnings': summarize_motion(differences, times), 'sample_times': times}
+    if duration >= .3 and sum(d for d, t in zip(differences, times[1:]) if t <= .3) < .002:
+        errors.append('static_opening')
+    errors.extend(summarize_motion(differences, times))
+    return {'errors': sorted(set(errors)), 'warnings': [], 'sample_times': times}
 
 
 def bind_maps(html: str, assets: list[dict]) -> str:
@@ -319,8 +357,10 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      '. In scene 0 establish ALL these locations with exact placeholders '
                      '<histold-map id="MAP_ID"></histold-map> inside .k-stage, at readable size. '
                      'These are present-day establishing outlines; world maps use separate extents and North American country/state maps share a projection. '
-                     'The binding supplies the geometry and layout. Keep the establishing labels for >=2 seconds '
-                     'before any schematic/inset. Do not draw substitute map paths or unsupported borders.')
+                     'The binding supplies the geometry and layout. Keep labels readable for >=2 seconds '
+                     'while animating outlines, emphasis and story graphics from the first frame; do not wait '
+                     'for a static establishing shot before starting the action. '
+                     'Do not draw substitute map paths, invented routes or unsupported borders.')
     for i, (seg, (s, e)) in enumerate(zip(segs, windows)):
         lines.append(
             f"Segment {i} — beat: {seg.beat or 'n/a'} — duration: {e - s:.1f}s\n"
@@ -397,8 +437,10 @@ _REPAIR_SYSTEM = """You fix layout bugs in animated HTML scenes for a vertical v
 ({w}x{h} CSS px). Classes starting with k- and CSS variables like --accent come \
 from a shared stylesheet that is injected later; keep using them.
 
-For each scene you get the HTML and a list of problems measured on its final \
-frame. Fix ONLY those problems: move, resize, re-flow or shorten-to-fit the \
+For each scene you get the HTML and problems measured across its timeline. \
+For static_foreground or static_opening, add meaningful foreground development from 0–0.3s \
+through the end: animated diagrams, map emphasis or staged reveals; ambient \
+background drift alone is insufficient. For layout problems, move, resize, re-flow or shorten-to-fit the \
 offending elements. Keep the content, wording, animations, timing and style. \
 Text must stay inside the frame (8px margin) and above y={cap_y}px. Prefer \
 putting text in the .k-stage flex flow over absolute positioning.
