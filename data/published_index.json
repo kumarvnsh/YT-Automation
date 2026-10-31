@@ -4248,5 +4248,31 @@
     "production_profile": 2,
     "facebook_id": "975612945606045",
     "instagram_id": "18019926356951689"
+  },
+  {
+    "video_id": "sWmP-P-WbLk",
+    "run_id": "41178895495",
+    "stage_dir_name": "20261031_070242_607289_short",
+    "title": "What Did Ancient Chinese Shoppers Actually Pay With?",
+    "published_at": "2026-10-31T07:11:02.195949+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 22,
+    "category": "decisions",
+    "editorial_slot": 21,
+    "editorial_region": "china",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Ancient Chinese money was once seashells, not coins. Small cowrie shells, brought from distant seas, were treasured in early China.",
+    "duration": 53.376,
+    "production_profile": 2,
+    "facebook_id": "1471323638209612",
+    "instagram_id": "18156960124514219"
   }
 ]
