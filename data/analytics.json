@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-10-31T13:57:20.511887+00:00",
+      "updated": "2026-10-31T18:06:19.758452+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "rcKbAQ3SITg",
+          "title": "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
+          "description": "A basalt water clock from ancient Egypt, now held by the British Museum, shows how people measured the night hours. Water dripped from a small opening, and the falling level marked the passing time. Discover how this simple device solved a problem sundials could not.\n#AncientEgypt #HistoryFacts #WaterClock",
+          "tags": [
+            "ancient egypt",
+            "ancient technology",
+            "ancient timekeeping",
+            "british museum",
+            "clepsydra",
+            "did you know",
+            "education",
+            "egypt",
+            "egyptian history",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history got this wrong",
+            "history shorts",
+            "night hours",
+            "water clock",
+            "world history"
+          ],
+          "publishedAt": "2026-10-31T16:11:14Z",
+          "thumbnail": "https://i.ytimg.com/vi/rcKbAQ3SITg/mqdefault.jpg",
+          "views": 4,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-16",
+            "end_date": "2026-10-31",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "3OEyZvUPgP0",
           "title": "The Doll Inside Every Doll: Where Does It End?",
           "description": "A Russian nesting doll always hides another doll inside, but the nesting does not go on forever. This short look at a seven-doll set in the British Museum shows where the chain stops and why. #RussianHistory #DidYouKnow #YouUseItEveryDay",
@@ -58,7 +102,7 @@
           ],
           "publishedAt": "2026-10-31T12:10:50Z",
           "thumbnail": "https://i.ytimg.com/vi/3OEyZvUPgP0/mqdefault.jpg",
-          "views": 44,
+          "views": 56,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -100,7 +144,7 @@
           ],
           "publishedAt": "2026-10-31T07:11:27Z",
           "thumbnail": "https://i.ytimg.com/vi/sWmP-P-WbLk/mqdefault.jpg",
-          "views": 9,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -185,7 +229,7 @@
           ],
           "publishedAt": "2026-10-31T04:22:17Z",
           "thumbnail": "https://i.ytimg.com/vi/d2IrqkS6smw/mqdefault.jpg",
-          "views": 21,
+          "views": 22,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2141,49 +2185,6 @@
           "average_watch_time_seconds": 6.0,
           "shares": 0,
           "analytics_views": 47,
-          "analytics_period": {
-            "start_date": "2026-10-16",
-            "end_date": "2026-10-31",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "UXKvTz-F7Og",
-          "title": "The March That Should Have Destroyed Him \u2014 It Made Him Untouchable",
-          "description": "On October 16, 1934, Mao Zedong began one of history's most punishing retreats \u2014 and somehow turned total defeat into total power. The Long March covered 6,000 miles, cost tens of thousands of lives, and yet became the founding myth of modern China. How does a desperate escape become a legend that still shapes a superpower today? #history #didyouknow #china",
-          "tags": [
-            "1934 history",
-            "chinese history",
-            "chinese revolution",
-            "communist party china",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history facts",
-            "history shorts",
-            "long march",
-            "mao zedong",
-            "military history",
-            "on this day",
-            "shorts",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-16T04:05:57Z",
-          "thumbnail": "https://i.ytimg.com/vi/UXKvTz-F7Og/mqdefault.jpg",
-          "views": 38,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 32.65,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 16.0,
-          "shares": 0,
-          "analytics_views": 21,
           "analytics_period": {
             "start_date": "2026-10-16",
             "end_date": "2026-10-31",
