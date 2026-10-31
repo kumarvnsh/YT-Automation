@@ -2176,5 +2176,14 @@
     "slot": "morning",
     "date": "2026-10-30",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261031_040216_733425_short",
+    "title": "Where Did Your Notebook Page Really Start?",
+    "fingerprint": "did_notebook_page_really_start_where_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-10-31",
+    "status": "reserved"
   }
 ]

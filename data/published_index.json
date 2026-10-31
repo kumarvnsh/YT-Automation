@@ -4170,5 +4170,31 @@
     "production_profile": 2,
     "facebook_id": "1132320822474223",
     "instagram_id": "18117612008600539"
+  },
+  {
+    "video_id": "QleLd2bpeAM",
+    "run_id": "41052218124",
+    "stage_dir_name": "20261031_040216_733425_short",
+    "title": "Where Did Your Notebook Page Really Start?",
+    "published_at": "2026-10-31T04:09:47.666832+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 20,
+    "category": "everyday_origins",
+    "editorial_slot": 19,
+    "editorial_region": "africa",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Your notebook has an ancestor: a plant that grew along Egypt's Nile River.",
+    "duration": 50.952,
+    "production_profile": 2,
+    "facebook_id": "1455935093272274",
+    "instagram_id": "18115200622861105"
   }
 ]
