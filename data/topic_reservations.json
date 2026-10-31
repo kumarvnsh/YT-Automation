@@ -2221,5 +2221,14 @@
     "slot": "evening",
     "date": "2026-10-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261031_160244_477043_short",
+    "title": "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
+    "fingerprint": "ancient_did_down_egyptians_keep_once_sun_time_went",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-10-31",
+    "status": "reserved"
   }
 ]
