@@ -1,7 +1,7 @@
 name: Publish Video
 
 on:
-  # Scheduling is handled externally by cron-job.org (9:00am/6:00pm IST = 2/day),
+  # Scheduling is handled externally by cron-job.org (up to 10 scheduled uploads per IST day),
   # which POSTs to this workflow's dispatches endpoint with inputs.scheduled=true.
   # GitHub's own cron was dropped: it fired 47-204min late or not at all.
   workflow_dispatch:
@@ -91,7 +91,7 @@ jobs:
             fi
           done <<< "$RUNS"
 
-          # Daily cap: max 2 successful scheduled uploads per IST day. Counts
+          # Daily cap: max 10 successful scheduled uploads per IST day. Counts
           # entries recorded by the pipeline in data/published_index.json.
           TODAY_IST=$(TZ=Asia/Kolkata date +%F)
           COUNT=$(python3 - "$TODAY_IST" <<'PY'
@@ -113,12 +113,12 @@ jobs:
           print(n)
           PY
           )
-          if [ "$COUNT" -ge 2 ]; then
+          if [ "$COUNT" -ge 10 ]; then
             echo "Daily cap reached ($COUNT scheduled uploads today IST) — skipping."
             gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
             sleep 60; exit 1
           fi
-          echo "No recent publish for this slot and daily cap OK ($COUNT/2) — proceeding."
+          echo "No recent publish for this slot and daily cap OK ($COUNT/10) — proceeding."
 
       - uses: actions/setup-python@v5
         with:
@@ -183,8 +183,7 @@ jobs:
 
           [ "$CROSS_POST" = "true" ] && export META_CROSS_POST=true
 
-          # Independent job slots: derive morning/evening from IST so each of
-          # the two daily cron-job.org dispatches gets its own topic reservation.
+          # Label jobs by IST period; each dispatch reserves topics by unique job ID.
           HOUR_IST=$(TZ=Asia/Kolkata date +%H)
           if [ "$HOUR_IST" -lt 14 ]; then
             export PUBLISH_SLOT=morning
