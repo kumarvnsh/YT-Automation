@@ -4326,5 +4326,31 @@
     "production_profile": 2,
     "facebook_id": "1671300364661727",
     "instagram_id": "18098598515649945"
+  },
+  {
+    "video_id": "zMxDTm83qYM",
+    "run_id": "41227300554",
+    "stage_dir_name": "20261031_180250_143865_short",
+    "title": "Why Did Bristol's Clocks Refuse to Match London's?",
+    "published_at": "2026-10-31T18:11:15.027682+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 25,
+    "category": "decisions",
+    "editorial_slot": 24,
+    "editorial_region": "europe",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Before trains, Bristol's clocks ran about ten minutes behind London's.",
+    "duration": 31.704,
+    "production_profile": 2,
+    "facebook_id": "1027214517079328",
+    "instagram_id": "18016016192968431"
   }
 ]
