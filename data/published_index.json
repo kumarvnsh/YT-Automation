@@ -4482,5 +4482,31 @@
     "production_profile": 2,
     "facebook_id": "874485502376351",
     "instagram_id": "18042510023832750"
+  },
+  {
+    "video_id": "cUltMyqJRhs",
+    "run_id": "41279167487",
+    "stage_dir_name": "20261101_060349_362442_short",
+    "title": "Your Chopsticks Had a Different Job Once \u2014 What Was It?",
+    "published_at": "2026-11-01T06:10:24.537160+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 31,
+    "category": "everyday_origins",
+    "editorial_slot": 30,
+    "editorial_region": "china",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "Chopsticks began as cooking tools, not eating tools.",
+    "duration": 28.08,
+    "production_profile": 2,
+    "facebook_id": "28834466039556050",
+    "instagram_id": "17993972064113183"
   }
 ]

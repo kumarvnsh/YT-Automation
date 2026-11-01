@@ -2284,5 +2284,14 @@
     "slot": "morning",
     "date": "2026-11-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261101_060349_362442_short",
+    "title": "Your Chopsticks Had a Different Job Once \u2014 What Was It?",
+    "fingerprint": "chopsticks_different_had_it_job_once_was_what_your",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-01",
+    "status": "reserved"
   }
 ]
