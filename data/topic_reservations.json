@@ -2275,5 +2275,14 @@
     "slot": "morning",
     "date": "2026-11-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261101_055131_281536_short",
+    "title": "Why Would a Japanese Official Hand Over a Banned Map?",
+    "fingerprint": "banned_hand_japanese_map_official_over_would",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-01",
+    "status": "reserved"
   }
 ]

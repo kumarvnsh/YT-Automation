@@ -4456,5 +4456,31 @@
     "production_profile": 2,
     "facebook_id": "896302193477163",
     "instagram_id": "18183764908429635"
+  },
+  {
+    "video_id": "5Uqjecu4THc",
+    "run_id": "41278420124",
+    "stage_dir_name": "20261101_055131_281536_short",
+    "title": "Why Would a Japanese Official Hand Over a Banned Map?",
+    "published_at": "2026-11-01T06:00:43.435564+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 30,
+    "category": "decisions",
+    "editorial_slot": 29,
+    "editorial_region": "japan",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "A Japanese government official once handed a foreign doctor maps that were banned from leaving Japan.",
+    "duration": 52.584,
+    "production_profile": 2,
+    "facebook_id": "874485502376351",
+    "instagram_id": "18042510023832750"
   }
 ]
