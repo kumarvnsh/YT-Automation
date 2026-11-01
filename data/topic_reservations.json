@@ -2302,5 +2302,14 @@
     "slot": "morning",
     "date": "2026-11-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261101_120253_436371_short",
+    "title": "Why Was the World's First Writing About Food?",
+    "fingerprint": "about_first_food_s_was_world_writing",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-01",
+    "status": "reserved"
   }
 ]

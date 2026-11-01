@@ -4534,5 +4534,31 @@
     "production_profile": 2,
     "facebook_id": "1807571663821952",
     "instagram_id": "17982519768129705"
+  },
+  {
+    "video_id": "XytTgzubsKk",
+    "run_id": "41304446978",
+    "stage_dir_name": "20261101_120253_436371_short",
+    "title": "Why Was the World's First Writing About Food?",
+    "published_at": "2026-11-01T12:10:02.490074+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 33,
+    "category": "decisions",
+    "editorial_slot": 32,
+    "editorial_region": "middle_east",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "The world's first writing was made to track food.",
+    "duration": 32.016,
+    "production_profile": 2,
+    "facebook_id": "1123182140508943",
+    "instagram_id": "18145512457514716"
   }
 ]
