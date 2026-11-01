@@ -2266,5 +2266,14 @@
     "slot": "morning",
     "date": "2026-10-31",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261101_040226_532238_short",
+    "title": "How Did a Medieval English Jug Reach a West African King?",
+    "fingerprint": "african_did_english_jug_king_medieval_reach_west",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-01",
+    "status": "reserved"
   }
 ]
