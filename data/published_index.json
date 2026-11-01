@@ -4560,5 +4560,31 @@
     "production_profile": 2,
     "facebook_id": "1123182140508943",
     "instagram_id": "18145512457514716"
+  },
+  {
+    "video_id": "Z4QlJPHTSiU",
+    "run_id": "41324119064",
+    "stage_dir_name": "20261101_160304_417469_short",
+    "title": "Is There Really Lead Inside Your Pencil?",
+    "published_at": "2026-11-01T16:12:54.115817+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 34,
+    "category": "everyday_origins",
+    "editorial_slot": 33,
+    "editorial_region": "europe",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Your pencil's core is not lead, even though we still call it that.",
+    "duration": 50.4,
+    "production_profile": 2,
+    "facebook_id": "29074443788861434",
+    "instagram_id": "18126198196933946"
   }
 ]

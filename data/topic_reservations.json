@@ -2311,5 +2311,14 @@
     "slot": "evening",
     "date": "2026-11-01",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261101_160304_417469_short",
+    "title": "Is There Really Lead Inside Your Pencil?",
+    "fingerprint": "inside_is_lead_pencil_really_there_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-01",
+    "status": "reserved"
   }
 ]
