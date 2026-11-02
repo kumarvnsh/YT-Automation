@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-02T01:56:37.719965+00:00",
+      "updated": "2026-11-02T08:38:31.914746+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,90 @@
       },
       "videos": [
         {
+          "id": "vDCbD07VENw",
+          "title": "Your Shampoo Bottle Word Has a Surprising Passport",
+          "description": "The English word shampoo comes from Hindi, and an Indian-born entrepreneur helped bring the practice to Britain in 1814. This History Got This Wrong video explains the word's origin and the overlooked man behind Brighton's shampooing baths. #WorldHistory #IndianHistory #DidYouKnow",
+          "tags": [
+            "brighton history",
+            "did you know",
+            "education",
+            "english word origins",
+            "everyday origins",
+            "hidden history",
+            "hindi words",
+            "historical facts",
+            "history got this wrong",
+            "history shorts",
+            "indian history",
+            "sake dean mahomed",
+            "shampoo history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-02T07:10:26Z",
+          "thumbnail": "https://i.ytimg.com/vi/vDCbD07VENw/mqdefault.jpg",
+          "views": 12,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-20",
+            "end_date": "2026-11-02",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "HkS_WXFbMm4",
+          "title": "Why Did Japanese Doctors Trust a Dutch Book?",
+          "description": "In the 1700s, Japan limited foreign contact, yet its doctors studied human anatomy from a Dutch textbook. Their decision to check its drawings against a real body led to a Japanese translation and a wider movement called rangaku. #JapaneseHistory #DutchLearning #HistoryFacts",
+          "tags": [
+            "anatomy history",
+            "dejima",
+            "did you know",
+            "did you know history",
+            "dutch learning",
+            "edo japan",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "japanese history",
+            "kaitai shinsho",
+            "medical history",
+            "rangaku",
+            "world history"
+          ],
+          "publishedAt": "2026-11-02T04:13:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/HkS_WXFbMm4/mqdefault.jpg",
+          "views": 32,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-20",
+            "end_date": "2026-11-02",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "HA2lk84EHVk",
           "title": "The Silversmith Who Invented a Writing System \u2014 How Did It Spread?",
           "description": "A Cherokee silversmith named Sequoyah built a writing system where each character stands for a whole syllable. Within a few years, the Cherokee Nation adopted it and printed a newspaper in it. #CherokeeHistory #NativeAmericanHistory #HistoryGotThisWrong",
@@ -58,14 +142,14 @@
           ],
           "publishedAt": "2026-11-01T18:12:06Z",
           "thumbnail": "https://i.ytimg.com/vi/HA2lk84EHVk/mqdefault.jpg",
-          "views": 32,
+          "views": 50,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -101,14 +185,14 @@
           ],
           "publishedAt": "2026-11-01T16:13:18Z",
           "thumbnail": "https://i.ytimg.com/vi/Z4QlJPHTSiU/mqdefault.jpg",
-          "views": 47,
+          "views": 48,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -145,14 +229,14 @@
           ],
           "publishedAt": "2026-11-01T12:10:19Z",
           "thumbnail": "https://i.ytimg.com/vi/XytTgzubsKk/mqdefault.jpg",
-          "views": 67,
+          "views": 73,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -197,7 +281,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -233,14 +317,14 @@
           ],
           "publishedAt": "2026-11-01T06:10:49Z",
           "thumbnail": "https://i.ytimg.com/vi/cUltMyqJRhs/mqdefault.jpg",
-          "views": 129,
+          "views": 130,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -277,14 +361,14 @@
           ],
           "publishedAt": "2026-11-01T06:01:05Z",
           "thumbnail": "https://i.ytimg.com/vi/5Uqjecu4THc/mqdefault.jpg",
-          "views": 1014,
+          "views": 1015,
           "likes": 4,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -328,7 +412,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -363,14 +447,14 @@
           ],
           "publishedAt": "2026-10-31T22:28:03Z",
           "thumbnail": "https://i.ytimg.com/vi/zzZEvlx6sOs/mqdefault.jpg",
-          "views": 163,
+          "views": 164,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -413,7 +497,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -458,7 +542,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -499,7 +583,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -543,7 +627,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -586,7 +670,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -628,7 +712,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -676,7 +760,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -717,7 +801,7 @@
           "shares": 0,
           "analytics_views": 20,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -761,7 +845,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -803,7 +887,7 @@
           "shares": 0,
           "analytics_views": 12,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -844,7 +928,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -874,7 +958,7 @@
           ],
           "publishedAt": "2026-10-29T16:11:56Z",
           "thumbnail": "https://i.ytimg.com/vi/duDXaeY8Jy8/mqdefault.jpg",
-          "views": 7,
+          "views": 8,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -886,7 +970,7 @@
           "shares": 0,
           "analytics_views": 5,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -926,9 +1010,9 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 12.0,
           "shares": 0,
-          "analytics_views": 237,
+          "analytics_views": 236,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -972,7 +1056,7 @@
           "shares": 0,
           "analytics_views": 9,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1013,7 +1097,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1056,7 +1140,7 @@
           "shares": 0,
           "analytics_views": 16,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1099,7 +1183,7 @@
           "shares": 0,
           "analytics_views": 14,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1140,7 +1224,7 @@
           "shares": 0,
           "analytics_views": 6,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1182,7 +1266,7 @@
           "shares": 0,
           "analytics_views": 8,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1227,7 +1311,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1270,7 +1354,7 @@
           "shares": 0,
           "analytics_views": 16,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1312,7 +1396,7 @@
           "shares": 0,
           "analytics_views": 27,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1354,7 +1438,7 @@
           "shares": 0,
           "analytics_views": 11,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1398,7 +1482,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1436,7 +1520,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1485,7 +1569,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1525,7 +1609,7 @@
           "shares": 0,
           "analytics_views": 33,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1565,7 +1649,7 @@
           "shares": 0,
           "analytics_views": 33,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1604,7 +1688,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1653,7 +1737,7 @@
           "shares": 0,
           "analytics_views": 0,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1695,7 +1779,7 @@
           "shares": 0,
           "analytics_views": 13,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1737,7 +1821,7 @@
           "shares": 0,
           "analytics_views": 20,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1782,7 +1866,7 @@
           "shares": 0,
           "analytics_views": 95,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1827,7 +1911,7 @@
           "shares": 0,
           "analytics_views": 30,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1871,7 +1955,7 @@
           "shares": 0,
           "analytics_views": 84,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1914,7 +1998,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1958,7 +2042,7 @@
           "shares": 0,
           "analytics_views": 61,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1995,13 +2079,13 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 23.6,
+          "avg_view_pct": 17.42,
           "subs_gained": 0,
-          "average_watch_time_seconds": 10.0,
+          "average_watch_time_seconds": 8.0,
           "shares": 0,
-          "analytics_views": 28,
+          "analytics_views": 23,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2039,13 +2123,13 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 42.92,
+          "avg_view_pct": 19.7,
           "subs_gained": 0,
-          "average_watch_time_seconds": 22.0,
+          "average_watch_time_seconds": 10.0,
           "shares": 0,
-          "analytics_views": 39,
+          "analytics_views": 23,
           "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2089,94 +2173,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-10-19",
-            "end_date": "2026-11-02",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "vl3sGqYflTQ",
-          "title": "The Surrender That Had No Loser \u2014 and a Sword Nobody Wanted",
-          "description": "On October 19, 1781, Britain surrendered at Yorktown, but the story of who handed over the sword is stranger than most people know. Here is what really happened on that field.",
-          "tags": [
-            "1781",
-            "american revolution",
-            "benjamin lincoln",
-            "cornwallis",
-            "did you know",
-            "education",
-            "facts",
-            "george washington",
-            "history",
-            "history shorts",
-            "october 19",
-            "rochambeau",
-            "shorts",
-            "surrender",
-            "trending",
-            "viral",
-            "yorktown"
-          ],
-          "publishedAt": "2026-10-19T17:35:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/vl3sGqYflTQ/mqdefault.jpg",
-          "views": 22,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 31.269999999999996,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 14.0,
-          "shares": 0,
-          "analytics_views": 22,
-          "analytics_period": {
-            "start_date": "2026-10-19",
-            "end_date": "2026-11-02",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "9z3194GpZb8",
-          "title": "One Alarm Almost Cancelled the Moon Landing | History's Almost Moments",
-          "description": "In July 1969, Apollo 11's lunar module computer flashed alarms minutes before landing. A young guidance officer in Houston made a split-second call that kept the landing on. Would you have trusted the computer or the abort rule?\n#Apollo11 #SpaceHistory #HistorysAlmostMoments",
-          "tags": [
-            "1202 alarm",
-            "1969",
-            "apollo 11",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "lunar module",
-            "mission control",
-            "moon landing",
-            "nasa",
-            "shorts",
-            "space history",
-            "steve bales",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-19T16:08:23Z",
-          "thumbnail": "https://i.ytimg.com/vi/9z3194GpZb8/mqdefault.jpg",
-          "views": 20,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 28.82,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 14.0,
-          "shares": 0,
-          "analytics_views": 20,
-          "analytics_period": {
-            "start_date": "2026-10-19",
+            "start_date": "2026-10-20",
             "end_date": "2026-11-02",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
