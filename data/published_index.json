@@ -4664,5 +4664,31 @@
     "production_profile": 2,
     "facebook_id": "1635433227962234",
     "instagram_id": "18106700822573029"
+  },
+  {
+    "video_id": "N12YUvX0VQE",
+    "run_id": "41441299548",
+    "stage_dir_name": "20261102_120316_675786_short",
+    "title": "Why Did a British Governor Demand a Seat on Asante's Golden Stool?",
+    "published_at": "2026-11-02T12:11:57.939491+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 38,
+    "category": "decisions",
+    "editorial_slot": 37,
+    "editorial_region": "africa",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "A British governor once demanded to sit on the Asante people's most sacred object, the Golden Stool.",
+    "duration": 50.64,
+    "production_profile": 2,
+    "facebook_id": "3752519744905535",
+    "instagram_id": "18116378639157301"
   }
 ]
