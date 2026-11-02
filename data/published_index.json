@@ -4612,5 +4612,31 @@
     "production_profile": 2,
     "facebook_id": "2053445698664950",
     "instagram_id": "18119787656063703"
+  },
+  {
+    "video_id": "HkS_WXFbMm4",
+    "run_id": "41386100517",
+    "stage_dir_name": "20261102_040301_111455_short",
+    "title": "Why Did Japanese Doctors Trust a Dutch Book?",
+    "published_at": "2026-11-02T04:12:51.594887+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 36,
+    "category": "decisions",
+    "editorial_slot": 35,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Japanese doctors learned human anatomy from a Dutch textbook while Japan was largely closed to the world.",
+    "duration": 54.576,
+    "production_profile": 2,
+    "facebook_id": "1169609315637575",
+    "instagram_id": "18107217584209527"
   }
 ]
