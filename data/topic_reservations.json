@@ -2365,5 +2365,14 @@
     "slot": "evening",
     "date": "2026-11-02",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261102_180301_968672_short",
+    "title": "Why Did Historians Once Call a Ming Porcelain Era Blank?",
+    "fingerprint": "blank_call_did_era_historians_ming_once_porcelain",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-02",
+    "status": "reserved"
   }
 ]
