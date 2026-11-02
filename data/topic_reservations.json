@@ -2356,5 +2356,14 @@
     "slot": "evening",
     "date": "2026-11-02",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261102_160336_890612_short",
+    "title": "The Fifth Taste Hiding in Your Soup Bowl, Who Found It?",
+    "fingerprint": "bowl_fifth_found_hiding_it_soup_taste_who_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-02",
+    "status": "reserved"
   }
 ]

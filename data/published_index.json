@@ -4690,5 +4690,31 @@
     "production_profile": 2,
     "facebook_id": "3752519744905535",
     "instagram_id": "18116378639157301"
+  },
+  {
+    "video_id": "ZkqWMMfnDf0",
+    "run_id": "41477311415",
+    "stage_dir_name": "20261102_160336_890612_short",
+    "title": "The Fifth Taste Hiding in Your Soup Bowl, Who Found It?",
+    "published_at": "2026-11-02T16:10:28.368970+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 39,
+    "category": "everyday_origins",
+    "editorial_slot": 38,
+    "editorial_region": "japan",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "A Japanese chemist discovered a fifth basic taste hiding in seaweed broth.",
+    "duration": 32.184,
+    "production_profile": 2,
+    "facebook_id": "4565762147044684",
+    "instagram_id": "18138344632631221"
   }
 ]
