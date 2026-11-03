@@ -4846,5 +4846,31 @@
     "production_profile": 2,
     "facebook_id": "4503357743236867",
     "instagram_id": "18000472383044316"
+  },
+  {
+    "video_id": "uVOqGTgBS0o",
+    "run_id": "41689738482",
+    "stage_dir_name": "20261103_180315_091607_short",
+    "title": "Why Are Philippine Bamboo Verses Written in an Indian-Rooted Script?",
+    "published_at": "2026-11-03T18:11:39.121614+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 45,
+    "category": "everyday_origins",
+    "editorial_slot": 44,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "A Philippine island's people carved their everyday writing into bamboo, in a script descended from ancient Indian writing.",
+    "duration": 31.752,
+    "production_profile": 2,
+    "facebook_id": "2038233913560551",
+    "instagram_id": "18140737930615887"
   }
 ]
