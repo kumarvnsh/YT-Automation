@@ -4768,5 +4768,31 @@
     "production_profile": 2,
     "facebook_id": "2030779411215799",
     "instagram_id": "18133502798493970"
+  },
+  {
+    "video_id": "tLpmosly_Qg",
+    "run_id": "41593522623",
+    "stage_dir_name": "20261103_070325_396049_short",
+    "title": "Which Everyday Math Word Began as a Baghdad Book Title?",
+    "published_at": "2026-11-03T07:15:09.983296+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 42,
+    "category": "everyday_origins",
+    "editorial_slot": 41,
+    "editorial_region": "middle_east",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "The word algebra began as the title of a book written in Baghdad, Iraq, about 1,200 years ago.",
+    "duration": 53.664,
+    "production_profile": 2,
+    "facebook_id": "1384201643532244",
+    "instagram_id": "17914921806547068"
   }
 ]
