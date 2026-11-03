@@ -5329,6 +5329,371 @@
       "duration_variant": "concise",
       "source": "meta_api_unverified_views",
       "view_definition": null
+    },
+    {
+      "experiment_id": "facebook-world-history-4w",
+      "slot": 13,
+      "category": "myth_evidence",
+      "hook": "Movable type was first described in China, made from baked clay, centuries before Gutenberg.",
+      "duration": 35.976,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "1066817639722665",
+      "published_at": "2026-10-27T16:09:11+0000",
+      "observed_at": "2026-11-03T16:40:58.678857+00:00",
+      "target_age_hours": 168,
+      "actual_age_hours": 168.5299,
+      "late": false,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 20,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 20,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 20,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      },
+      "editorial_region": "china",
+      "editorial_series": "History Got This Wrong",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null
+    },
+    {
+      "experiment_id": "facebook-world-history-4w",
+      "slot": 23,
+      "category": "everyday_origins",
+      "hook": "Inside a Russian nesting doll, there is always another doll waiting.",
+      "duration": 28.032,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "1602636791028389",
+      "published_at": "2026-10-31T12:09:32+0000",
+      "observed_at": "2026-11-03T16:40:58.678857+00:00",
+      "target_age_hours": 72,
+      "actual_age_hours": 76.5241,
+      "late": true,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 195,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 195,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 195,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      },
+      "editorial_region": "russia",
+      "editorial_series": "You Use It Every Day",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null
+    },
+    {
+      "experiment_id": "facebook-world-history-4w",
+      "slot": 24,
+      "category": "myth_evidence",
+      "hook": "Ancient Egyptians had a clock that kept counting the hours through the night.",
+      "duration": 43.488,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "1671300364661727",
+      "published_at": "2026-10-31T16:09:38+0000",
+      "observed_at": "2026-11-03T16:40:58.678857+00:00",
+      "target_age_hours": 72,
+      "actual_age_hours": 72.5224,
+      "late": false,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 199,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 199,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 199,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      },
+      "editorial_region": "middle_east",
+      "editorial_series": "History Got This Wrong",
+      "duration_variant": "story",
+      "source": "meta_api_unverified_views",
+      "view_definition": null
+    },
+    {
+      "experiment_id": "facebook-world-history-4w",
+      "slot": 38,
+      "category": "decisions",
+      "hook": "A British governor once demanded to sit on the Asante people's most sacred object, the Golden Stool.",
+      "duration": 50.64,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "3752519744905535",
+      "published_at": "2026-11-02T12:11:14+0000",
+      "observed_at": "2026-11-03T16:40:58.678857+00:00",
+      "target_age_hours": 24,
+      "actual_age_hours": 28.4957,
+      "late": true,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 0,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 0,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 0,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      },
+      "editorial_region": "africa",
+      "editorial_series": "One Decision Changed Everything",
+      "duration_variant": "story",
+      "source": "meta_api_unverified_views",
+      "view_definition": null
+    },
+    {
+      "experiment_id": "facebook-world-history-4w",
+      "slot": 39,
+      "category": "everyday_origins",
+      "hook": "A Japanese chemist discovered a fifth basic taste hiding in seaweed broth.",
+      "duration": 32.184,
+      "profile": 2,
+      "platform": "facebook",
+      "media_id": "4565762147044684",
+      "published_at": "2026-11-02T16:09:38+0000",
+      "observed_at": "2026-11-03T16:40:58.678857+00:00",
+      "target_age_hours": 24,
+      "actual_age_hours": 24.5224,
+      "late": false,
+      "missed_windows": [],
+      "metrics": {
+        "views": {
+          "value": 200,
+          "definition": "Platform-reported cumulative views; platform definitions differ.",
+          "reason": null
+        },
+        "average_watch_time_seconds": {
+          "value": null,
+          "definition": "Platform-reported average watch duration in seconds.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "three_second_retention": {
+          "value": null,
+          "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "completion_rate": {
+          "value": null,
+          "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "shares": {
+          "value": null,
+          "definition": "Platform-reported cumulative shares.",
+          "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+        },
+        "followers_gained": {
+          "value": null,
+          "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+          "reason": "Not returned by this export or unavailable for this media/account."
+        },
+        "shares_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 200,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "shares / compatible report views \u00d7 1000."
+        },
+        "followers_per_1000_views": {
+          "value": null,
+          "denominator": {
+            "value": 200,
+            "source": "facebook_media_insights.views",
+            "period": null
+          },
+          "reason": "Requires an explicit verified view definition.",
+          "definition": "followers_gained / compatible report views \u00d7 1000."
+        }
+      },
+      "editorial_region": "japan",
+      "editorial_series": "You Use It Every Day",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null
     }
   ],
   "comparisons": [
@@ -5498,6 +5863,63 @@
         24.74
       ],
       "total_views": 238,
+      "shares_per_1000_views": null,
+      "shares_per_1000_views_sample_size": 0,
+      "followers_per_1000_views": null,
+      "followers_per_1000_views_sample_size": 0
+    },
+    {
+      "target_age_hours": 168,
+      "editorial_region": "china",
+      "editorial_series": "History Got This Wrong",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null,
+      "unverified_definition_media_id": "1066817639722665",
+      "sample_size": 1,
+      "actual_age_hours_range": [
+        168.5299,
+        168.5299
+      ],
+      "total_views": 20,
+      "shares_per_1000_views": null,
+      "shares_per_1000_views_sample_size": 0,
+      "followers_per_1000_views": null,
+      "followers_per_1000_views_sample_size": 0
+    },
+    {
+      "target_age_hours": 72,
+      "editorial_region": "middle_east",
+      "editorial_series": "History Got This Wrong",
+      "duration_variant": "story",
+      "source": "meta_api_unverified_views",
+      "view_definition": null,
+      "unverified_definition_media_id": "1671300364661727",
+      "sample_size": 1,
+      "actual_age_hours_range": [
+        72.5224,
+        72.5224
+      ],
+      "total_views": 199,
+      "shares_per_1000_views": null,
+      "shares_per_1000_views_sample_size": 0,
+      "followers_per_1000_views": null,
+      "followers_per_1000_views_sample_size": 0
+    },
+    {
+      "target_age_hours": 24,
+      "editorial_region": "japan",
+      "editorial_series": "You Use It Every Day",
+      "duration_variant": "concise",
+      "source": "meta_api_unverified_views",
+      "view_definition": null,
+      "unverified_definition_media_id": "4565762147044684",
+      "sample_size": 1,
+      "actual_age_hours_range": [
+        24.5224,
+        24.5224
+      ],
+      "total_views": 200,
       "shares_per_1000_views": null,
       "shares_per_1000_views_sample_size": 0,
       "followers_per_1000_views": null,
