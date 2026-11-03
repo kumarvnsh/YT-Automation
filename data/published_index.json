@@ -4742,5 +4742,31 @@
     "production_profile": 2,
     "facebook_id": "1622317995446383",
     "instagram_id": "17895149829437278"
+  },
+  {
+    "video_id": "eWaJHfqcCzw",
+    "run_id": "41575576461",
+    "stage_dir_name": "20261103_040236_252785_short",
+    "title": "Why Did a Tsar Build His Capital in a Marsh?",
+    "published_at": "2026-11-03T04:08:05.186786+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 41,
+    "category": "decisions",
+    "editorial_slot": 40,
+    "editorial_region": "russia",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Russia's grand imperial capital was built on boggy marshland, by a tsar's choice.",
+    "duration": 31.656,
+    "production_profile": 2,
+    "facebook_id": "2030779411215799",
+    "instagram_id": "18133502798493970"
   }
 ]
