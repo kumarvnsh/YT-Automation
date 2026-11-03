@@ -2392,5 +2392,14 @@
     "slot": "morning",
     "date": "2026-11-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261103_120240_967224_short",
+    "title": "Why Did Britain Turn Away the Nurse Who Fed Its Soldiers?",
+    "fingerprint": "away_britain_did_fed_its_nurse_soldiers_turn_who",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-03",
+    "status": "reserved"
   }
 ]
