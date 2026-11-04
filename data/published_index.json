@@ -4976,5 +4976,31 @@
     "production_profile": 2,
     "facebook_id": "1767990368668121",
     "instagram_id": "18121478359763259"
+  },
+  {
+    "video_id": "3RgH6W8-Eig",
+    "run_id": "41882790012",
+    "stage_dir_name": "20261104_180345_592169_short",
+    "title": "What Does the Word Samovar Really Mean?",
+    "published_at": "2026-11-04T18:13:27.693427+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 50,
+    "category": "everyday_origins",
+    "editorial_slot": 49,
+    "editorial_region": "russia",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "The Russian word samovar literally means self-boiler, and the name is an exact description of what it does.",
+    "duration": 45.432,
+    "production_profile": 2,
+    "facebook_id": "1913635163328132",
+    "instagram_id": "18290748067290238"
   }
 ]
