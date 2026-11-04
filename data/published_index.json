@@ -4872,5 +4872,31 @@
     "production_profile": 2,
     "facebook_id": "2038233913560551",
     "instagram_id": "18140737930615887"
+  },
+  {
+    "video_id": "73s9bqnpu_w",
+    "run_id": "41770586534",
+    "stage_dir_name": "20261104_040254_111958_short",
+    "title": "What Did Ancient Indian Cities Hide Under Their Streets?",
+    "published_at": "2026-11-04T04:12:42.886572+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 46,
+    "category": "decisions",
+    "editorial_slot": 45,
+    "editorial_region": "india",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Ancient Indian cities hid their drains beneath their streets.",
+    "duration": 51.408,
+    "production_profile": 2,
+    "facebook_id": "2294492834443591",
+    "instagram_id": "18092388152695484"
   }
 ]

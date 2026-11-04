@@ -2419,5 +2419,14 @@
     "slot": "evening",
     "date": "2026-11-03",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261104_040254_111958_short",
+    "title": "What Did Ancient Indian Cities Hide Under Their Streets?",
+    "fingerprint": "ancient_cities_did_hide_indian_streets_their_under_what",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-04",
+    "status": "reserved"
   }
 ]
