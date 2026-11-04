@@ -4950,5 +4950,31 @@
     "production_profile": 2,
     "facebook_id": "2659324367859775",
     "instagram_id": "18112640027335735"
+  },
+  {
+    "video_id": "An-sogsACSQ",
+    "run_id": "41863410509",
+    "stage_dir_name": "20261104_160331_973045_short",
+    "title": "Why Did China's Money Start as a Receipt?",
+    "published_at": "2026-11-04T16:10:07.249471+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 49,
+    "category": "decisions",
+    "editorial_slot": 48,
+    "editorial_region": "china",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Some of the earliest paper money in China began as a receipt for heavy iron coins.",
+    "duration": 32.304,
+    "production_profile": 2,
+    "facebook_id": "1767990368668121",
+    "instagram_id": "18121478359763259"
   }
 ]

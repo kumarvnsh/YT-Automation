@@ -2446,5 +2446,14 @@
     "slot": "evening",
     "date": "2026-11-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261104_160331_973045_short",
+    "title": "Why Did China's Money Start as a Receipt?",
+    "fingerprint": "as_china_did_money_receipt_s_start",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-04",
+    "status": "reserved"
   }
 ]
