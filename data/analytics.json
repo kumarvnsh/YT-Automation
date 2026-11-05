@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-05T15:52:04.672421+00:00",
+      "updated": "2026-11-05T21:38:36.059728+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,92 @@
       },
       "videos": [
         {
+          "id": "r8D02fkopjo",
+          "title": "Which Indian Board Game Hides Inside Your Childhood Ludo Set?",
+          "description": "Ludo, the classic family board game, traces back to pachisi, a cross-shaped game played in India since at least the 16th century. Its name comes from a Hindi word meaning twenty-five, and its principles were simplified into Ludo in England in 1896. #BoardGames #WorldHistory #Ludo",
+          "tags": [
+            "board games",
+            "cross board game",
+            "did you know",
+            "education",
+            "everyday origins",
+            "game history",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "india",
+            "indian history",
+            "ludo",
+            "pachisi",
+            "surprising history",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-11-05T18:10:29Z",
+          "thumbnail": "https://i.ytimg.com/vi/r8D02fkopjo/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-24",
+            "end_date": "2026-11-05",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "odWaFFwv4sY",
+          "title": "What Else Did Rice Do in a Philippine Mountain Culture?",
+          "description": "In the Ifugao society of northern Luzon, rice was far more than a meal. It also served as a means of trade and a sign of social standing. Part of the History Got This Wrong series. #History #Philippines #RiceTerraces",
+          "tags": [
+            "did you know",
+            "education",
+            "everyday origins",
+            "food history",
+            "historical facts",
+            "history",
+            "history got this wrong",
+            "history shorts",
+            "ifugao",
+            "indigenous cultures",
+            "luzon",
+            "philippines",
+            "rice farming",
+            "rice terraces",
+            "southeast asian history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-05T16:13:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/odWaFFwv4sY/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-24",
+            "end_date": "2026-11-05",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "6gDOq6xYYRc",
           "title": "Why Did an Ancient Empire Store Potatoes Like This?",
           "description": "The Inka Empire in the Andes stored surplus food in storehouses called colcas, and freeze-dried potato, called chu\u00f1o, could be kept for years. This series explores everyday foods and the Andean origins behind them. #YouUseItEveryDay #InkaEmpire #PotatoHistory",
@@ -60,7 +146,7 @@
           ],
           "publishedAt": "2026-11-05T12:13:22Z",
           "thumbnail": "https://i.ytimg.com/vi/6gDOq6xYYRc/mqdefault.jpg",
-          "views": 1,
+          "views": 6,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -146,7 +232,7 @@
           ],
           "publishedAt": "2026-11-05T04:10:31Z",
           "thumbnail": "https://i.ytimg.com/vi/dRRJi6Qa6bM/mqdefault.jpg",
-          "views": 5,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -189,7 +275,7 @@
           ],
           "publishedAt": "2026-11-04T18:13:46Z",
           "thumbnail": "https://i.ytimg.com/vi/3RgH6W8-Eig/mqdefault.jpg",
-          "views": 4,
+          "views": 7,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -231,7 +317,7 @@
           ],
           "publishedAt": "2026-11-04T16:10:35Z",
           "thumbnail": "https://i.ytimg.com/vi/An-sogsACSQ/mqdefault.jpg",
-          "views": 12,
+          "views": 11,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -276,7 +362,7 @@
           ],
           "publishedAt": "2026-11-04T12:14:41Z",
           "thumbnail": "https://i.ytimg.com/vi/Yu1v-j33w6E/mqdefault.jpg",
-          "views": 3,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -325,18 +411,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 24.15,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 8.0,
+          "shares": 0,
+          "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "73s9bqnpu_w",
@@ -361,24 +446,23 @@
           ],
           "publishedAt": "2026-11-04T04:13:20Z",
           "thumbnail": "https://i.ytimg.com/vi/73s9bqnpu_w/mqdefault.jpg",
-          "views": 195,
+          "views": 218,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 23.61,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 12.0,
+          "shares": 0,
+          "analytics_views": 98,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "uVOqGTgBS0o",
@@ -411,18 +495,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 18.06,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 5.0,
+          "shares": 0,
+          "analytics_views": 4,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "ZNN0bFJPGaQ",
@@ -454,18 +537,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 17.7,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 10.0,
+          "shares": 0,
+          "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "Zdp9AZCcXmA",
@@ -499,18 +581,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 43.7,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 14.0,
+          "shares": 0,
+          "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "tLpmosly_Qg",
@@ -543,18 +624,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 37.88,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 20.0,
+          "shares": 0,
+          "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "eWaJHfqcCzw",
@@ -586,11 +666,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 146.88,
           "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
+          "average_watch_time_seconds": 47.0,
           "shares": 0,
-          "analytics_views": 2,
+          "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -627,11 +707,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 11.89,
+          "avg_view_pct": 17.36,
           "subs_gained": 0,
-          "average_watch_time_seconds": 6.0,
+          "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 6,
+          "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -670,11 +750,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 30.18,
+          "avg_view_pct": 29.79,
           "subs_gained": 0,
           "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 13,
+          "analytics_views": 14,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -717,7 +797,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 10.0,
           "shares": 0,
-          "analytics_views": 5,
+          "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -757,7 +837,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 21.0,
           "shares": 0,
-          "analytics_views": 30,
+          "analytics_views": 31,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -799,7 +879,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 16.0,
           "shares": 0,
-          "analytics_views": 57,
+          "analytics_views": 58,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -883,7 +963,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 11.0,
           "shares": 0,
-          "analytics_views": 49,
+          "analytics_views": 50,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -966,11 +1046,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 45.71,
+          "avg_view_pct": 45.25,
           "subs_gained": 0,
           "average_watch_time_seconds": 26.0,
           "shares": 0,
-          "analytics_views": 131,
+          "analytics_views": 132,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -1129,7 +1209,7 @@
           ],
           "publishedAt": "2026-10-31T22:28:03Z",
           "thumbnail": "https://i.ytimg.com/vi/zzZEvlx6sOs/mqdefault.jpg",
-          "views": 165,
+          "views": 166,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -1181,7 +1261,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 19.0,
           "shares": 0,
-          "analytics_views": 136,
+          "analytics_views": 137,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -1265,7 +1345,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 17.0,
           "shares": 0,
-          "analytics_views": 66,
+          "analytics_views": 67,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -1856,7 +1936,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 14,
+          "analytics_views": 15,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
@@ -2069,93 +2149,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 7.0,
           "shares": 0,
-          "analytics_views": 27,
-          "analytics_period": {
-            "start_date": "2026-10-24",
-            "end_date": "2026-11-05",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "l941V3Da3vc",
-          "title": "Why Did a Burning City Leave Its Books Behind?",
-          "description": "Around 612 BC, the Assyrian capital Nineveh in what is now Iraq was destroyed by fire. The same fire baked the clay tablets of King Ashurbanipal's library hard, which helped them survive for scholars to read today.\n#AncientHistory #Mesopotamia #WorldHistory",
-          "tags": [
-            "ancient history",
-            "ancient libraries",
-            "ashurbanipal",
-            "assyria",
-            "clay tablets",
-            "cuneiform",
-            "did you know",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "iraq history",
-            "mesopotamia",
-            "nineveh",
-            "world history"
-          ],
-          "publishedAt": "2026-10-24T04:09:51Z",
-          "thumbnail": "https://i.ytimg.com/vi/l941V3Da3vc/mqdefault.jpg",
-          "views": 11,
-          "likes": 1,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 17.86,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 9.0,
-          "shares": 0,
-          "analytics_views": 10,
-          "analytics_period": {
-            "start_date": "2026-10-24",
-            "end_date": "2026-11-05",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "qbQnGKDbUrg",
-          "title": "The Computer Said Abort. Why Did They Land Anyway?",
-          "description": "In July 1969, Apollo 11's lunar module computer flashed alarms minutes before landing. A young guidance officer in Houston made a split-second call that kept the landing on. Would you have trusted the computer or the abort rule?\n#Apollo11 #SpaceHistory #HistorysAlmostMoments",
-          "tags": [
-            "1202 alarm",
-            "1969",
-            "apollo 11",
-            "did you know",
-            "education",
-            "facts",
-            "history",
-            "history almost moments",
-            "history shorts",
-            "lunar module",
-            "mission control",
-            "moon landing",
-            "nasa",
-            "shorts",
-            "space history",
-            "steve bales",
-            "trending",
-            "viral"
-          ],
-          "publishedAt": "2026-10-24T00:08:05Z",
-          "thumbnail": "https://i.ytimg.com/vi/qbQnGKDbUrg/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
-          "shares": 0,
-          "analytics_views": 1,
+          "analytics_views": 29,
           "analytics_period": {
             "start_date": "2026-10-24",
             "end_date": "2026-11-05",
