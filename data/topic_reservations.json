@@ -2464,5 +2464,14 @@
     "slot": "evening",
     "date": "2026-11-04",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261105_040247_763980_short",
+    "title": "Why Did Ancient Mesopotamians Roll Stone Cylinders Across Clay?",
+    "fingerprint": "across_ancient_clay_cylinders_did_mesopotamians_roll_stone",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-05",
+    "status": "reserved"
   }
 ]
