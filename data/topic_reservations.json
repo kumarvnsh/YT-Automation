@@ -2482,5 +2482,14 @@
     "slot": "morning",
     "date": "2026-11-05",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261105_120401_705565_short",
+    "title": "Why Did an Ancient Empire Store Potatoes Like This?",
+    "fingerprint": "ancient_did_empire_like_potatoes_store_this",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-05",
+    "status": "reserved"
   }
 ]

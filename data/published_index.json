@@ -5054,5 +5054,31 @@
     "production_profile": 2,
     "facebook_id": "1432397868974833",
     "instagram_id": "17966048391222178"
+  },
+  {
+    "video_id": "6gDOq6xYYRc",
+    "run_id": "42023603886",
+    "stage_dir_name": "20261105_120401_705565_short",
+    "title": "Why Did an Ancient Empire Store Potatoes Like This?",
+    "published_at": "2026-11-05T12:12:58.397553+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 53,
+    "category": "everyday_origins",
+    "editorial_slot": 52,
+    "editorial_region": "americas",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "Long before supermarkets, the Inka stored freeze-dried potatoes for years.",
+    "duration": 37.536,
+    "production_profile": 2,
+    "facebook_id": "1632146548647209",
+    "instagram_id": "18038658146845472"
   }
 ]
