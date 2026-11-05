@@ -2491,5 +2491,14 @@
     "slot": "evening",
     "date": "2026-11-05",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261105_160317_249908_short",
+    "title": "What Else Did Rice Do in a Philippine Mountain Culture?",
+    "fingerprint": "culture_did_do_else_mountain_philippine_rice_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-05",
+    "status": "reserved"
   }
 ]
