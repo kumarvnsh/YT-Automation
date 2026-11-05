@@ -5028,5 +5028,31 @@
     "production_profile": 2,
     "facebook_id": "1672186337853121",
     "instagram_id": "18133157597494721"
+  },
+  {
+    "video_id": "U6vqzfpBsXM",
+    "run_id": "41984272973",
+    "stage_dir_name": "20261105_070302_498120_short",
+    "title": "Who Once Paid for Your Letter, and Why Did That Change?",
+    "published_at": "2026-11-05T07:12:59.496159+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "facebook-world-history-4w",
+    "experiment_slot": 52,
+    "category": "decisions",
+    "editorial_slot": 51,
+    "editorial_region": "europe",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Before 1840, the person receiving a letter often paid for it. Not the sender.",
+    "duration": 49.32,
+    "production_profile": 2,
+    "facebook_id": "1432397868974833",
+    "instagram_id": "17966048391222178"
   }
 ]
