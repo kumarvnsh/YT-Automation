@@ -6934,5 +6934,141 @@
         "definition": "followers_gained / compatible report views \u00d7 1000."
       }
     }
+  },
+  {
+    "experiment_id": "facebook-world-history-4w",
+    "slot": 38,
+    "category": "decisions",
+    "hook": "A British governor once demanded to sit on the Asante people's most sacred object, the Golden Stool.",
+    "duration": 50.64,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "3752519744905535",
+    "published_at": "2026-11-02T12:11:14+0000",
+    "observed_at": "2026-11-05T15:52:07.173207+00:00",
+    "target_age_hours": 72,
+    "actual_age_hours": 75.6814,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 0,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 0,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 0,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
+  },
+  {
+    "experiment_id": "facebook-world-history-4w",
+    "slot": 48,
+    "category": "myth_evidence",
+    "hook": "In Edo-period Japan, the hours you lived by could change length with the seasons.",
+    "duration": 54.36,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "2659324367859775",
+    "published_at": "2026-11-04T12:13:26+0000",
+    "observed_at": "2026-11-05T15:52:07.173207+00:00",
+    "target_age_hours": 24,
+    "actual_age_hours": 27.6448,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 128,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 128,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 128,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
   }
 ]
