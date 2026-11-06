@@ -2536,5 +2536,14 @@
     "slot": "evening",
     "date": "2026-11-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261106_160426_893268_short",
+    "title": "What Did Russia's Tsar Really Do to Men's Beards?",
+    "fingerprint": "beards_did_do_men_really_russia_s_tsar_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-06",
+    "status": "reserved"
   }
 ]

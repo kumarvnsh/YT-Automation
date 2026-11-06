@@ -5210,5 +5210,31 @@
     "production_profile": 2,
     "facebook_id": "1676027194024642",
     "instagram_id": "18112840133273563"
+  },
+  {
+    "video_id": "39xqrUiLKz8",
+    "run_id": "42248414835",
+    "stage_dir_name": "20261106_160426_893268_short",
+    "title": "What Did Russia's Tsar Really Do to Men's Beards?",
+    "published_at": "2026-11-06T16:12:15.485808+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 58,
+    "editorial_region": "russia",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "Peter the Great did not ban beards in Russia. He taxed them.",
+    "duration": 29.064,
+    "production_profile": 2,
+    "facebook_id": "29525517520373386",
+    "instagram_id": "18117585116052381"
   }
 ]
