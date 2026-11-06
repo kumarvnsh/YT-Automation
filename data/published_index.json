@@ -5184,5 +5184,31 @@
     "production_profile": 2,
     "facebook_id": "29219206757704453",
     "instagram_id": "18134088751775318"
+  },
+  {
+    "video_id": "St-HGzbCE9M",
+    "run_id": "42214465049",
+    "stage_dir_name": "20261106_120256_520047_short",
+    "title": "Which Chinese Word Is Hiding in Your Morning Cup?",
+    "published_at": "2026-11-06T12:12:54.691406+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 57,
+    "editorial_region": "china",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "The word for your morning tea may have come from a Chinese dialect.",
+    "duration": 44.664,
+    "production_profile": 2,
+    "facebook_id": "1676027194024642",
+    "instagram_id": "18112840133273563"
   }
 ]

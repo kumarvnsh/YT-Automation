@@ -2527,5 +2527,14 @@
     "slot": "morning",
     "date": "2026-11-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261106_120256_520047_short",
+    "title": "Which Chinese Word Is Hiding in Your Morning Cup?",
+    "fingerprint": "chinese_cup_hiding_is_morning_which_word_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-06",
+    "status": "reserved"
   }
 ]
