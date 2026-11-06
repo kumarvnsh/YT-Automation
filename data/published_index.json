@@ -5158,5 +5158,31 @@
     "production_profile": 2,
     "facebook_id": "29590155870569156",
     "instagram_id": "18159473311450803"
+  },
+  {
+    "video_id": "emeROS9M5wA",
+    "run_id": "42178095668",
+    "stage_dir_name": "20261106_070249_230385_short",
+    "title": "Where Did Japan's Sturdiest Ancient Pots Really Come From?",
+    "published_at": "2026-11-06T07:09:59.392359+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 56,
+    "editorial_region": "japan",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Japan's tough, liquid-holding pots came from kiln technology imported across the sea.",
+    "duration": 32.136,
+    "production_profile": 2,
+    "facebook_id": "29219206757704453",
+    "instagram_id": "18134088751775318"
   }
 ]

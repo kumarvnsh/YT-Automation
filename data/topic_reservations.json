@@ -2518,5 +2518,14 @@
     "slot": "morning",
     "date": "2026-11-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261106_070249_230385_short",
+    "title": "Where Did Japan's Sturdiest Ancient Pots Really Come From?",
+    "fingerprint": "ancient_come_did_from_japan_pots_really_s_sturdiest_where",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-06",
+    "status": "reserved"
   }
 ]
