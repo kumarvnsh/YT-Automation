@@ -2545,5 +2545,14 @@
     "slot": "evening",
     "date": "2026-11-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261106_180300_977407_short",
+    "title": "How Did Desert Towns Drink Without a Single Pump?",
+    "fingerprint": "desert_did_drink_pump_single_towns_without",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-06",
+    "status": "reserved"
   }
 ]

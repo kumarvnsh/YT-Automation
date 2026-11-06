@@ -5236,5 +5236,31 @@
     "production_profile": 2,
     "facebook_id": "29525517520373386",
     "instagram_id": "18117585116052381"
+  },
+  {
+    "video_id": "1_h7SOlkv4Y",
+    "run_id": "42266856469",
+    "stage_dir_name": "20261106_180300_977407_short",
+    "title": "How Did Desert Towns Drink Without a Single Pump?",
+    "published_at": "2026-11-06T18:13:06.690682+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 59,
+    "editorial_region": "middle_east",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Some Iranian desert towns still drink water carried through underground tunnels built in ancient times.",
+    "duration": 52.92,
+    "production_profile": 2,
+    "facebook_id": "1823159348726336",
+    "instagram_id": "18007691444793214"
   }
 ]
