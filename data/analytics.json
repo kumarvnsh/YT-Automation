@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-07T19:08:15.819516+00:00",
+      "updated": "2026-11-07T23:10:30.276746+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -57,7 +57,7 @@
           ],
           "publishedAt": "2026-11-07T18:10:51Z",
           "thumbnail": "https://i.ytimg.com/vi/utnb_IsgCXk/mqdefault.jpg",
-          "views": 3,
+          "views": 21,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -101,7 +101,7 @@
           ],
           "publishedAt": "2026-11-07T16:14:24Z",
           "thumbnail": "https://i.ytimg.com/vi/1lDocQ8fkpo/mqdefault.jpg",
-          "views": 1,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -145,7 +145,7 @@
           ],
           "publishedAt": "2026-11-07T12:10:59Z",
           "thumbnail": "https://i.ytimg.com/vi/XoeVilvOqLo/mqdefault.jpg",
-          "views": 11,
+          "views": 14,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -319,7 +319,7 @@
           ],
           "publishedAt": "2026-11-06T16:12:38Z",
           "thumbnail": "https://i.ytimg.com/vi/39xqrUiLKz8/mqdefault.jpg",
-          "views": 2,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -412,18 +412,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "nnIskse7CiA",
@@ -457,18 +456,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "r8D02fkopjo",
@@ -500,18 +498,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "odWaFFwv4sY",
@@ -588,18 +585,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 16.57,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 6.0,
+          "shares": 0,
+          "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "U6vqzfpBsXM",
@@ -673,11 +669,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 47.08,
+          "avg_view_pct": 33.94,
           "subs_gained": 0,
-          "average_watch_time_seconds": 14.0,
+          "average_watch_time_seconds": 10.0,
           "shares": 0,
-          "analytics_views": 2,
+          "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -719,7 +715,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 8.0,
           "shares": 0,
-          "analytics_views": 4,
+          "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -760,7 +756,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 106.0,
           "shares": 0,
-          "analytics_views": 10,
+          "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -804,7 +800,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 0.0,
           "shares": 0,
-          "analytics_views": 1,
+          "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -846,7 +842,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 8.0,
           "shares": 0,
-          "analytics_views": 3,
+          "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -883,11 +879,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 31.010000000000005,
+          "avg_view_pct": 28.48,
           "subs_gained": 0,
-          "average_watch_time_seconds": 16.0,
+          "average_watch_time_seconds": 14.0,
           "shares": 0,
-          "analytics_views": 197,
+          "analytics_views": 236,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -1132,7 +1128,7 @@
           ],
           "publishedAt": "2026-11-02T18:14:48Z",
           "thumbnail": "https://i.ytimg.com/vi/tId2xh4cBPk/mqdefault.jpg",
-          "views": 9,
+          "views": 10,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1224,11 +1220,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 19.84,
+          "avg_view_pct": 26.950000000000003,
           "subs_gained": 0,
-          "average_watch_time_seconds": 10.0,
+          "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 7,
+          "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -1310,7 +1306,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 16.0,
           "shares": 0,
-          "analytics_views": 58,
+          "analytics_views": 59,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -1481,7 +1477,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 26.0,
           "shares": 0,
-          "analytics_views": 131,
+          "analytics_views": 132,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -1519,7 +1515,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 55.8,
+          "avg_view_pct": 56.3,
           "subs_gained": 0,
           "average_watch_time_seconds": 16.0,
           "shares": 0,
@@ -1650,7 +1646,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 17.0,
           "shares": 0,
-          "analytics_views": 165,
+          "analytics_views": 166,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -1815,11 +1811,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 48.45,
+          "avg_view_pct": 46.18,
           "subs_gained": 0,
-          "average_watch_time_seconds": 21.0,
+          "average_watch_time_seconds": 20.0,
           "shares": 0,
-          "analytics_views": 41,
+          "analytics_views": 42,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
@@ -2154,7 +2150,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 16.0,
           "shares": 0,
-          "analytics_views": 8,
+          "analytics_views": 9,
           "analytics_period": {
             "start_date": "2026-10-29",
             "end_date": "2026-11-07",
