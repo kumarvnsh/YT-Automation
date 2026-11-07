@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-07T01:22:38.831038+00:00",
+      "updated": "2026-11-07T07:54:19.115680+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,94 @@
       },
       "videos": [
         {
+          "id": "2vMau4aA0ts",
+          "title": "Were the Aztecs' Floating Islands Really Floating?",
+          "description": "Aztec farms near Tenochtitlan are often called floating islands, but the truth is more grounded. We look at how chinampas were built in the shallow lake of central Mexico. #AztecHistory #MexicoCityHistory #HistoryGotThisWrong",
+          "tags": [
+            "ancient farming",
+            "aztec farming",
+            "aztec history",
+            "chinampas",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "floating gardens",
+            "historical facts",
+            "history got this wrong",
+            "history shorts",
+            "indigenous americas",
+            "lake texcoco",
+            "mesoamerican history",
+            "mexico city history",
+            "tenochtitlan",
+            "world history"
+          ],
+          "publishedAt": "2026-11-07T07:11:19Z",
+          "thumbnail": "https://i.ytimg.com/vi/2vMau4aA0ts/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-28",
+            "end_date": "2026-11-07",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "CQPwWFzJX6g",
+          "title": "Before Tomatoes, What Was Ketchup Made From?",
+          "description": "The ketchup on British tables began as a savoury sauce, not a tomato one. Surviving recipes from the 1700s and 1826 show mushrooms and cucumbers at its heart. Explore how one everyday condiment changed over time.\n#WorldHistory #Ketchup #FoodHistory",
+          "tags": [
+            "british food history",
+            "condiment history",
+            "cucumber catsup",
+            "did you know",
+            "education",
+            "eighteenth century england",
+            "everyday origins",
+            "food history",
+            "historical facts",
+            "history shorts",
+            "ketchup history",
+            "margaret dods",
+            "mushroom ketchup",
+            "surprising history",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-11-07T04:09:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/CQPwWFzJX6g/mqdefault.jpg",
+          "views": 23,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-28",
+            "end_date": "2026-11-07",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "1_h7SOlkv4Y",
           "title": "How Did Desert Towns Drink Without a Single Pump?",
           "description": "Long before modern pumps, people in Iran's dry regions carried water through gently sloping underground tunnels called qanats. We look at how gravity, shafts, and patient digging helped towns grow where rain was rare. Hashtags: #WorldHistory #Iran #AncientEngineering",
@@ -58,14 +146,14 @@
           ],
           "publishedAt": "2026-11-06T18:13:38Z",
           "thumbnail": "https://i.ytimg.com/vi/1_h7SOlkv4Y/mqdefault.jpg",
-          "views": 1,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -101,14 +189,14 @@
           ],
           "publishedAt": "2026-11-06T16:12:38Z",
           "thumbnail": "https://i.ytimg.com/vi/39xqrUiLKz8/mqdefault.jpg",
-          "views": 0,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -144,14 +232,14 @@
           ],
           "publishedAt": "2026-11-06T12:13:18Z",
           "thumbnail": "https://i.ytimg.com/vi/St-HGzbCE9M/mqdefault.jpg",
-          "views": 5,
+          "views": 6,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -188,14 +276,14 @@
           ],
           "publishedAt": "2026-11-06T07:10:20Z",
           "thumbnail": "https://i.ytimg.com/vi/emeROS9M5wA/mqdefault.jpg",
-          "views": 8,
+          "views": 9,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -240,7 +328,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -283,7 +371,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -326,7 +414,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -371,7 +459,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -419,7 +507,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -461,7 +549,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -503,7 +591,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -544,7 +632,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -588,7 +676,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -630,7 +718,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -659,7 +747,7 @@
           ],
           "publishedAt": "2026-11-04T04:13:20Z",
           "thumbnail": "https://i.ytimg.com/vi/73s9bqnpu_w/mqdefault.jpg",
-          "views": 233,
+          "views": 232,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
@@ -671,7 +759,7 @@
           "shares": 0,
           "analytics_views": 197,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -714,7 +802,7 @@
           "shares": 0,
           "analytics_views": 12,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -756,7 +844,7 @@
           "shares": 0,
           "analytics_views": 7,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -800,7 +888,7 @@
           "shares": 0,
           "analytics_views": 9,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -843,7 +931,7 @@
           "shares": 0,
           "analytics_views": 5,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -885,7 +973,7 @@
           "shares": 0,
           "analytics_views": 7,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -926,7 +1014,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -969,7 +1057,7 @@
           "shares": 0,
           "analytics_views": 15,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1012,7 +1100,7 @@
           "shares": 0,
           "analytics_views": 7,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1052,7 +1140,7 @@
           "shares": 0,
           "analytics_views": 32,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1094,7 +1182,7 @@
           "shares": 0,
           "analytics_views": 58,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1136,7 +1224,7 @@
           "shares": 0,
           "analytics_views": 54,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1178,7 +1266,7 @@
           "shares": 0,
           "analytics_views": 50,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1221,7 +1309,7 @@
           "shares": 0,
           "analytics_views": 79,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1265,7 +1353,7 @@
           "shares": 0,
           "analytics_views": 131,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1307,7 +1395,7 @@
           "shares": 0,
           "analytics_views": 129,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1350,7 +1438,7 @@
           "shares": 0,
           "analytics_views": 1012,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1393,7 +1481,7 @@
           "shares": 0,
           "analytics_views": 996,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1434,7 +1522,7 @@
           "shares": 0,
           "analytics_views": 165,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1476,7 +1564,7 @@
           "shares": 0,
           "analytics_views": 135,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1520,7 +1608,7 @@
           "shares": 0,
           "analytics_views": 38,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1560,7 +1648,7 @@
           "shares": 0,
           "analytics_views": 68,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1591,7 +1679,7 @@
           ],
           "publishedAt": "2026-10-31T16:11:14Z",
           "thumbnail": "https://i.ytimg.com/vi/rcKbAQ3SITg/mqdefault.jpg",
-          "views": 42,
+          "views": 43,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -1603,7 +1691,7 @@
           "shares": 0,
           "analytics_views": 41,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1645,7 +1733,7 @@
           "shares": 0,
           "analytics_views": 89,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1686,7 +1774,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1728,7 +1816,7 @@
           "shares": 0,
           "analytics_views": 24,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1769,7 +1857,7 @@
           "shares": 0,
           "analytics_views": 26,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1813,7 +1901,7 @@
           "shares": 0,
           "analytics_views": 15,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1855,7 +1943,7 @@
           "shares": 0,
           "analytics_views": 14,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1896,7 +1984,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1938,7 +2026,7 @@
           "shares": 0,
           "analytics_views": 8,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1980,7 +2068,7 @@
           "shares": 0,
           "analytics_views": 233,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2024,7 +2112,7 @@
           "shares": 0,
           "analytics_views": 12,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2059,103 +2147,18 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 18.87,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 11.0,
-          "shares": 0,
-          "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-10-27",
+            "start_date": "2026-10-28",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "wX4W1cEZYu8",
-          "title": "Why Did China's Clay Printing Idea Stay Rare?",
-          "description": "Movable type was described in China centuries before Johann Gutenberg, using baked clay pieces credited to Bi Sheng. Block printing stayed dominant in China because of its huge character set and lower cost. #HistoryGotThisWrong #ChineseHistory #PrintingHistory",
-          "tags": [
-            "bi sheng",
-            "block printing",
-            "chinese history",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "gutenberg",
-            "historical facts",
-            "history facts",
-            "history got this wrong",
-            "history shorts",
-            "movable type",
-            "printing history",
-            "shen kuo",
-            "song dynasty",
-            "world history"
-          ],
-          "publishedAt": "2026-10-27T16:11:17Z",
-          "thumbnail": "https://i.ytimg.com/vi/wX4W1cEZYu8/mqdefault.jpg",
-          "views": 19,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 55.93,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 20.0,
-          "shares": 0,
-          "analytics_views": 18,
-          "analytics_period": {
-            "start_date": "2026-10-27",
-            "end_date": "2026-11-07",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "XdjsE8R9Bb0",
-          "title": "Why Did Japan's Flower Parties Switch Flowers?",
-          "description": "Hanami, the Japanese custom of viewing flowers, did not always center on cherry blossoms. Its earliest link was to plum blossoms, and the shift to cherries is documented by the Library of Congress. The tradition continues in Japan today.\n#JapaneseHistory #HanamiTradition #CherryBlossoms",
-          "tags": [
-            "cherry blossoms",
-            "did you know",
-            "education",
-            "everyday origins",
-            "hanami",
-            "heian period",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "japan history",
-            "japanese culture",
-            "japanese traditions",
-            "plum blossoms",
-            "sakura",
-            "tokugawa yoshimune",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-10-27T04:10:24Z",
-          "thumbnail": "https://i.ytimg.com/vi/XdjsE8R9Bb0/mqdefault.jpg",
-          "views": 15,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 23.62,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 13.0,
-          "shares": 0,
-          "analytics_views": 15,
-          "analytics_period": {
-            "start_date": "2026-10-27",
-            "end_date": "2026-11-07",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
         }
       ]
     }
