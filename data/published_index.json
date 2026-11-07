@@ -5366,5 +5366,31 @@
     "production_profile": 2,
     "facebook_id": "29133018746355453",
     "instagram_id": "18135858457655418"
+  },
+  {
+    "video_id": "utnb_IsgCXk",
+    "run_id": "42399129303",
+    "stage_dir_name": "20261107_180258_844643_short",
+    "title": "Why Does Egypt's Key to Its Own Writing Sit in London?",
+    "published_at": "2026-11-07T18:10:27.154480+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 64,
+    "editorial_region": "africa",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "A stone found by French soldiers now sits in London, not Egypt.",
+    "duration": 32.736,
+    "production_profile": 2,
+    "facebook_id": "1655194189735840",
+    "instagram_id": "18477890227188566"
   }
 ]

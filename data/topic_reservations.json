@@ -2590,5 +2590,14 @@
     "slot": "evening",
     "date": "2026-11-07",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261107_180258_844643_short",
+    "title": "Why Does Egypt's Key to Its Own Writing Sit in London?",
+    "fingerprint": "does_egypt_its_key_london_own_s_sit_writing",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-07",
+    "status": "reserved"
   }
 ]
