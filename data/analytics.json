@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-07T07:54:19.115680+00:00",
+      "updated": "2026-11-07T14:27:48.794729+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "XoeVilvOqLo",
+          "title": "Could a Canoe Find Tahiti With Nothing but the Sky?",
+          "description": "In 1976, a Hawaiian voyaging canoe sailed to Tahiti without modern instruments. A navigator from Micronesia guided the crew using stars, swells, and wind. #PacificHistory #Wayfinding #HiddenHistory",
+          "tags": [
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "hawaii history",
+            "historical facts",
+            "history shorts",
+            "hokulea",
+            "mau piailug",
+            "micronesia",
+            "ocean voyaging",
+            "pacific history",
+            "polynesian navigation",
+            "tahiti",
+            "traditional navigation",
+            "wayfinding",
+            "world history"
+          ],
+          "publishedAt": "2026-11-07T12:10:59Z",
+          "thumbnail": "https://i.ytimg.com/vi/XoeVilvOqLo/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-28",
+            "end_date": "2026-11-07",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "2vMau4aA0ts",
           "title": "Were the Aztecs' Floating Islands Really Floating?",
           "description": "Aztec farms near Tenochtitlan are often called floating islands, but the truth is more grounded. We look at how chinampas were built in the shallow lake of central Mexico. #AztecHistory #MexicoCityHistory #HistoryGotThisWrong",
@@ -60,7 +104,7 @@
           ],
           "publishedAt": "2026-11-07T07:11:19Z",
           "thumbnail": "https://i.ytimg.com/vi/2vMau4aA0ts/mqdefault.jpg",
-          "views": 0,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -103,7 +147,7 @@
           ],
           "publishedAt": "2026-11-07T04:09:31Z",
           "thumbnail": "https://i.ytimg.com/vi/CQPwWFzJX6g/mqdefault.jpg",
-          "views": 23,
+          "views": 41,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -146,7 +190,7 @@
           ],
           "publishedAt": "2026-11-06T18:13:38Z",
           "thumbnail": "https://i.ytimg.com/vi/1_h7SOlkv4Y/mqdefault.jpg",
-          "views": 2,
+          "views": 3,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -232,7 +276,7 @@
           ],
           "publishedAt": "2026-11-06T12:13:18Z",
           "thumbnail": "https://i.ytimg.com/vi/St-HGzbCE9M/mqdefault.jpg",
-          "views": 6,
+          "views": 11,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -276,7 +320,7 @@
           ],
           "publishedAt": "2026-11-06T07:10:20Z",
           "thumbnail": "https://i.ytimg.com/vi/emeROS9M5wA/mqdefault.jpg",
-          "views": 9,
+          "views": 10,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1218,9 +1262,9 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 36.46,
+          "avg_view_pct": 37.56,
           "subs_gained": 0,
-          "average_watch_time_seconds": 13.0,
+          "average_watch_time_seconds": 14.0,
           "shares": 0,
           "analytics_views": 54,
           "analytics_period": {
@@ -1347,7 +1391,7 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 45.25,
+          "avg_view_pct": 45.31,
           "subs_gained": 0,
           "average_watch_time_seconds": 26.0,
           "shares": 0,
@@ -1432,9 +1476,9 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 47.17,
+          "avg_view_pct": 47.2,
           "subs_gained": 0,
-          "average_watch_time_seconds": 24.0,
+          "average_watch_time_seconds": 25.0,
           "shares": 0,
           "analytics_views": 1012,
           "analytics_period": {
@@ -1721,7 +1765,7 @@
           ],
           "publishedAt": "2026-10-31T12:10:50Z",
           "thumbnail": "https://i.ytimg.com/vi/3OEyZvUPgP0/mqdefault.jpg",
-          "views": 89,
+          "views": 90,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1804,7 +1848,7 @@
           ],
           "publishedAt": "2026-10-31T04:35:15Z",
           "thumbnail": "https://i.ytimg.com/vi/kXrtlRXac00/mqdefault.jpg",
-          "views": 24,
+          "views": 25,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2117,48 +2161,6 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
-        },
-        {
-          "id": "0BoQmbuVPYY",
-          "title": "The Icebox Deal Critics Laughed At: Who Really Got the Last Laugh?",
-          "description": "In 1867 the United States agreed to buy Alaska from Russia for $7.2 million, and critics mocked the deal as Seward's Folly. The story shows how a deal ridiculed at the time later became a strategic and resource-rich part of the United States. Based on Library of Congress records.\n#AlaskaPurchase #RussianHistory #USHistory",
-          "tags": [
-            "1867",
-            "alaska history",
-            "alaska purchase",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "russian empire",
-            "russian history",
-            "seward's folly",
-            "us history",
-            "world history"
-          ],
-          "publishedAt": "2026-10-28T04:14:00Z",
-          "thumbnail": "https://i.ytimg.com/vi/0BoQmbuVPYY/mqdefault.jpg",
-          "views": 2,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "analytics_period": {
-            "start_date": "2026-10-28",
-            "end_date": "2026-11-07",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
         }
       ]
     }
