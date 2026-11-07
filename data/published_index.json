@@ -5340,5 +5340,31 @@
     "production_profile": 2,
     "facebook_id": "1674148701172468",
     "instagram_id": "18114596837612687"
+  },
+  {
+    "video_id": "1lDocQ8fkpo",
+    "run_id": "42389155371",
+    "stage_dir_name": "20261107_160321_151982_short",
+    "title": "Europe Banned This Indian Cloth, So Why Did Everyone Keep Wearing It?",
+    "published_at": "2026-11-07T16:14:01.105291+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 63,
+    "editorial_region": "india",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "Europe tried to ban Indian chintz, yet fashionable women kept wearing it anyway.",
+    "duration": 49.128,
+    "production_profile": 2,
+    "facebook_id": "29133018746355453",
+    "instagram_id": "18135858457655418"
   }
 ]
