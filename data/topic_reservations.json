@@ -2554,5 +2554,14 @@
     "slot": "evening",
     "date": "2026-11-06",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261107_040257_529278_short",
+    "title": "Before Tomatoes, What Was Ketchup Made From?",
+    "fingerprint": "before_from_ketchup_made_tomatoes_was_what",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-07",
+    "status": "reserved"
   }
 ]

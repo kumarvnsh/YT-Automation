@@ -5262,5 +5262,31 @@
     "production_profile": 2,
     "facebook_id": "1823159348726336",
     "instagram_id": "18007691444793214"
+  },
+  {
+    "video_id": "CQPwWFzJX6g",
+    "run_id": "42336533069",
+    "stage_dir_name": "20261107_040257_529278_short",
+    "title": "Before Tomatoes, What Was Ketchup Made From?",
+    "published_at": "2026-11-07T04:09:01.970124+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 60,
+    "editorial_region": "europe",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "The ketchup on your table began as a mushroom sauce in Britain.",
+    "duration": 31.248,
+    "production_profile": 2,
+    "facebook_id": "28811758915117564",
+    "instagram_id": "17957840667291274"
   }
 ]
