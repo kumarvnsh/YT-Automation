@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-07T14:27:48.794729+00:00",
+      "updated": "2026-11-07T19:08:15.819516+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,92 @@
       },
       "videos": [
         {
+          "id": "utnb_IsgCXk",
+          "title": "Why Does Egypt's Key to Its Own Writing Sit in London?",
+          "description": "A stone found by French soldiers in 1799 ended up in London under the terms of a 1801 surrender. Its three scripts later helped scholars begin reading ancient Egyptian hieroglyphs. Learn how one decision shaped where the stone sits today.\n#RosettaStone #AncientEgypt #WorldHistory",
+          "tags": [
+            "ancient egypt",
+            "british museum",
+            "champollion",
+            "did you know",
+            "did you know history",
+            "education",
+            "egyptian writing",
+            "everyday origins",
+            "hieroglyphs",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "one decision changed everything",
+            "rosetta stone",
+            "world history"
+          ],
+          "publishedAt": "2026-11-07T18:10:51Z",
+          "thumbnail": "https://i.ytimg.com/vi/utnb_IsgCXk/mqdefault.jpg",
+          "views": 3,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-29",
+            "end_date": "2026-11-07",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "1lDocQ8fkpo",
+          "title": "Europe Banned This Indian Cloth, So Why Did Everyone Keep Wearing It?",
+          "description": "Europe's wool and textile makers pushed to restrict chintz, a painted cotton from India, and some laws banned certain items. Fashionable women kept wearing it anyway, thanks to its bright, lasting colours. #IndianHistory #TextileHistory #HistoryGotThisWrong",
+          "tags": [
+            "chintz",
+            "did you know",
+            "education",
+            "everyday origins",
+            "fashion history",
+            "historical facts",
+            "history facts",
+            "history got this wrong",
+            "history shorts",
+            "india textiles",
+            "indian history",
+            "kalamkari",
+            "natural dyes",
+            "surprising history",
+            "textile history",
+            "trade history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-07T16:14:24Z",
+          "thumbnail": "https://i.ytimg.com/vi/1lDocQ8fkpo/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-29",
+            "end_date": "2026-11-07",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "XoeVilvOqLo",
           "title": "Could a Canoe Find Tahiti With Nothing but the Sky?",
           "description": "In 1976, a Hawaiian voyaging canoe sailed to Tahiti without modern instruments. A navigator from Micronesia guided the crew using stars, swells, and wind. #PacificHistory #Wayfinding #HiddenHistory",
@@ -59,14 +145,14 @@
           ],
           "publishedAt": "2026-11-07T12:10:59Z",
           "thumbnail": "https://i.ytimg.com/vi/XoeVilvOqLo/mqdefault.jpg",
-          "views": 0,
+          "views": 11,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -111,7 +197,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -154,7 +240,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -197,7 +283,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -240,7 +326,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -283,7 +369,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -327,7 +413,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -372,7 +458,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -415,7 +501,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -458,7 +544,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -503,7 +589,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -551,7 +637,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -593,7 +679,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -635,7 +721,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -676,7 +762,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -720,7 +806,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -762,7 +848,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -803,7 +889,7 @@
           "shares": 0,
           "analytics_views": 197,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -846,7 +932,7 @@
           "shares": 0,
           "analytics_views": 12,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -888,7 +974,7 @@
           "shares": 0,
           "analytics_views": 7,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -932,7 +1018,7 @@
           "shares": 0,
           "analytics_views": 9,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -975,7 +1061,7 @@
           "shares": 0,
           "analytics_views": 5,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1017,7 +1103,7 @@
           "shares": 0,
           "analytics_views": 7,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1058,7 +1144,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1101,7 +1187,7 @@
           "shares": 0,
           "analytics_views": 15,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1144,7 +1230,7 @@
           "shares": 0,
           "analytics_views": 7,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1184,7 +1270,7 @@
           "shares": 0,
           "analytics_views": 32,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1226,7 +1312,7 @@
           "shares": 0,
           "analytics_views": 58,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1268,7 +1354,7 @@
           "shares": 0,
           "analytics_views": 54,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1310,7 +1396,7 @@
           "shares": 0,
           "analytics_views": 50,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1353,7 +1439,7 @@
           "shares": 0,
           "analytics_views": 79,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1397,7 +1483,7 @@
           "shares": 0,
           "analytics_views": 131,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1439,7 +1525,7 @@
           "shares": 0,
           "analytics_views": 129,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1482,7 +1568,7 @@
           "shares": 0,
           "analytics_views": 1012,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1525,7 +1611,7 @@
           "shares": 0,
           "analytics_views": 996,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1566,7 +1652,7 @@
           "shares": 0,
           "analytics_views": 165,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1608,7 +1694,7 @@
           "shares": 0,
           "analytics_views": 135,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1652,7 +1738,7 @@
           "shares": 0,
           "analytics_views": 38,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1692,7 +1778,7 @@
           "shares": 0,
           "analytics_views": 68,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1735,7 +1821,7 @@
           "shares": 0,
           "analytics_views": 41,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1777,7 +1863,7 @@
           "shares": 0,
           "analytics_views": 89,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1818,7 +1904,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1860,7 +1946,7 @@
           "shares": 0,
           "analytics_views": 24,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1901,7 +1987,7 @@
           "shares": 0,
           "analytics_views": 26,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1945,7 +2031,7 @@
           "shares": 0,
           "analytics_views": 15,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1987,7 +2073,7 @@
           "shares": 0,
           "analytics_views": 14,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2028,7 +2114,7 @@
           "shares": 0,
           "analytics_views": 19,
           "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2070,93 +2156,7 @@
           "shares": 0,
           "analytics_views": 8,
           "analytics_period": {
-            "start_date": "2026-10-28",
-            "end_date": "2026-11-07",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "m6Yn5M_oa-o",
-          "title": "The Sikh Princess Who Ran a Refuge in England, How?",
-          "description": "A Sikh princess whose father lost his empire as a child later opened her English home to people seeking sanctuary. Sophia Duleep Singh's story shows how one family's exile shaped a quiet act of care. #HistoryGotThisWrong #WorldHistory #ForgottenHistory",
-          "tags": [
-            "british india",
-            "did you know",
-            "did you know history",
-            "education",
-            "english history",
-            "everyday origins",
-            "forgotten history",
-            "hidden history",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "maharaja duleep singh",
-            "sikh empire",
-            "sophia duleep singh",
-            "world history",
-            "world history facts"
-          ],
-          "publishedAt": "2026-10-29T04:15:59Z",
-          "thumbnail": "https://i.ytimg.com/vi/m6Yn5M_oa-o/mqdefault.jpg",
-          "views": 233,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 22.12,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 12.0,
-          "shares": 0,
-          "analytics_views": 233,
-          "analytics_period": {
-            "start_date": "2026-10-28",
-            "end_date": "2026-11-07",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "P3X3cP0KOvU",
-          "title": "How Did an Ancient Iraqi Board Game Lose Its Rules?",
-          "description": "A two-player race game from the city of Ur in southern Iraq was played about 4,600 years ago. Its rules stayed lost until a British Museum curator decoded a clay tablet in the early 1980s. Here's how a game can vanish for millennia.\n#AncientHistory #BoardGames #MiddleEastHistory",
-          "tags": [
-            "ancient games",
-            "ancient history",
-            "board games",
-            "british museum",
-            "cuneiform",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "iraq history",
-            "mesopotamia",
-            "middle east history",
-            "royal game of ur",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-10-28T16:11:14Z",
-          "thumbnail": "https://i.ytimg.com/vi/P3X3cP0KOvU/mqdefault.jpg",
-          "views": 12,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 25.629999999999995,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 8.0,
-          "shares": 0,
-          "analytics_views": 12,
-          "analytics_period": {
-            "start_date": "2026-10-28",
+            "start_date": "2026-10-29",
             "end_date": "2026-11-07",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
