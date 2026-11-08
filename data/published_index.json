@@ -5470,5 +5470,31 @@
     "production_profile": 2,
     "facebook_id": "1434434695492255",
     "instagram_id": null
+  },
+  {
+    "video_id": "2ms9PQeKIBE",
+    "run_id": "42497708146",
+    "stage_dir_name": "20261108_160257_026691_short",
+    "title": "Who Added the Yeast to Ancient Egypt's Beer?",
+    "published_at": "2026-11-08T16:09:10.641763+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 68,
+    "editorial_region": "middle_east",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "Ancient Egyptians brewed beer without adding yeast, because wild yeast lived in their clay pots.",
+    "duration": 28.92,
+    "production_profile": 2,
+    "facebook_id": "2221339648728644",
+    "instagram_id": "18140381836731940"
   }
 ]

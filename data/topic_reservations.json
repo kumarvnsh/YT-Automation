@@ -2626,5 +2626,14 @@
     "slot": "evening",
     "date": "2026-11-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261108_160257_026691_short",
+    "title": "Who Added the Yeast to Ancient Egypt's Beer?",
+    "fingerprint": "added_ancient_beer_egypt_s_who_yeast",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-08",
+    "status": "reserved"
   }
 ]
