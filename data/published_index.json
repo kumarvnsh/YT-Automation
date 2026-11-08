@@ -5418,5 +5418,31 @@
     "production_profile": 2,
     "facebook_id": "1363726085713964",
     "instagram_id": "17976623052172488"
+  },
+  {
+    "video_id": "x--3ODcJEEg",
+    "run_id": "42457036234",
+    "stage_dir_name": "20261108_070258_824924_short",
+    "title": "Was This Song Dynasty Tea Bowl's Black Glaze Just Decoration?",
+    "published_at": "2026-11-08T07:08:57.410358+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 66,
+    "editorial_region": "china",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "A black Chinese tea bowl was prized because its glaze made tea foam stand out.",
+    "duration": 31.104,
+    "production_profile": 2,
+    "facebook_id": "2358055295010560",
+    "instagram_id": "18119951786100453"
   }
 ]

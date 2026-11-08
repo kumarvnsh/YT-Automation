@@ -2608,5 +2608,14 @@
     "slot": "morning",
     "date": "2026-11-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261108_070258_824924_short",
+    "title": "Was This Song Dynasty Tea Bowl's Black Glaze Just Decoration?",
+    "fingerprint": "black_bowl_decoration_dynasty_glaze_just_s_song_tea_this_was",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-08",
+    "status": "reserved"
   }
 ]
