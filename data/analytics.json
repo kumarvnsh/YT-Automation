@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-08T16:25:24.449797+00:00",
+      "updated": "2026-11-08T20:50:03.838263+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "CLFOEpLnopY",
+          "title": "The Metal Neck-Ring Everyone Ties to the Celts: Who Else Wore It?",
+          "description": "Many people picture the Celts whenever they see a torc, a metal neck-ring from ancient Europe. A British Museum curator explains that men and women across Europe and beyond wore torcs to show power and status. #HistoryGotThisWrong #WorldHistory #Europe",
+          "tags": [
+            "ancient europe",
+            "ancient jewelry",
+            "ancient status symbols",
+            "british museum",
+            "celtic history",
+            "did you know",
+            "education",
+            "european history",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history got this wrong",
+            "history shorts",
+            "iron age europe",
+            "surprising history",
+            "torc",
+            "world history"
+          ],
+          "publishedAt": "2026-11-08T18:11:54Z",
+          "thumbnail": "https://i.ytimg.com/vi/CLFOEpLnopY/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-10-31",
+            "end_date": "2026-11-08",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "2ms9PQeKIBE",
           "title": "Who Added the Yeast to Ancient Egypt's Beer?",
           "description": "Ancient Egyptians in Thebes, now Luxor, brewed beer every day, and their clay jars helped the brewing along. Watch how wild yeast did the work in a pot that was made to hold it. #AncientEgypt #FoodHistory #YouUseItEveryDay",
@@ -58,7 +102,7 @@
           ],
           "publishedAt": "2026-11-08T16:11:00Z",
           "thumbnail": "https://i.ytimg.com/vi/2ms9PQeKIBE/mqdefault.jpg",
-          "views": 0,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -101,7 +145,7 @@
           ],
           "publishedAt": "2026-11-08T12:12:43Z",
           "thumbnail": "https://i.ytimg.com/vi/iA6xO2v5sDM/mqdefault.jpg",
-          "views": 9,
+          "views": 10,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -144,7 +188,7 @@
           ],
           "publishedAt": "2026-11-08T07:09:22Z",
           "thumbnail": "https://i.ytimg.com/vi/x--3ODcJEEg/mqdefault.jpg",
-          "views": 28,
+          "views": 30,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -230,7 +274,7 @@
           ],
           "publishedAt": "2026-11-07T18:10:51Z",
           "thumbnail": "https://i.ytimg.com/vi/utnb_IsgCXk/mqdefault.jpg",
-          "views": 58,
+          "views": 59,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -318,7 +362,7 @@
           ],
           "publishedAt": "2026-11-07T12:10:59Z",
           "thumbnail": "https://i.ytimg.com/vi/XoeVilvOqLo/mqdefault.jpg",
-          "views": 16,
+          "views": 18,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -363,24 +407,23 @@
           ],
           "publishedAt": "2026-11-07T07:11:19Z",
           "thumbnail": "https://i.ytimg.com/vi/2vMau4aA0ts/mqdefault.jpg",
-          "views": 7,
+          "views": 8,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "CQPwWFzJX6g",
@@ -412,18 +455,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 29.7,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 9.0,
+          "shares": 0,
+          "analytics_views": 37,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "1_h7SOlkv4Y",
@@ -455,18 +497,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 13.019999999999998,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 6.0,
+          "shares": 0,
+          "analytics_views": 2,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "39xqrUiLKz8",
@@ -498,18 +539,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "St-HGzbCE9M",
@@ -541,18 +581,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 52.300000000000004,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 23.0,
+          "shares": 0,
+          "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "emeROS9M5wA",
@@ -585,11 +624,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 22.45,
           "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
+          "average_watch_time_seconds": 7.0,
           "shares": 0,
-          "analytics_views": 1,
+          "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -629,11 +668,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 24.26,
           "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
+          "average_watch_time_seconds": 12.0,
           "shares": 0,
-          "analytics_views": 1,
+          "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -758,11 +797,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 16.57,
+          "avg_view_pct": 20.24,
           "subs_gained": 0,
-          "average_watch_time_seconds": 6.0,
+          "average_watch_time_seconds": 7.0,
           "shares": 0,
-          "analytics_views": 7,
+          "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -1015,7 +1054,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 8.0,
           "shares": 0,
-          "analytics_views": 5,
+          "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -1735,7 +1774,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 25.0,
           "shares": 0,
-          "analytics_views": 1012,
+          "analytics_views": 1013,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -1851,7 +1890,7 @@
           ],
           "publishedAt": "2026-10-31T20:40:07Z",
           "thumbnail": "https://i.ytimg.com/vi/lntJyfnmPag/mqdefault.jpg",
-          "views": 136,
+          "views": 138,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -1861,7 +1900,7 @@
           "subs_gained": 1,
           "average_watch_time_seconds": 19.0,
           "shares": 0,
-          "analytics_views": 135,
+          "analytics_views": 136,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -1978,17 +2017,17 @@
           ],
           "publishedAt": "2026-10-31T16:11:14Z",
           "thumbnail": "https://i.ytimg.com/vi/rcKbAQ3SITg/mqdefault.jpg",
-          "views": 44,
+          "views": 45,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 46.18,
+          "avg_view_pct": 45.12,
           "subs_gained": 0,
-          "average_watch_time_seconds": 20.0,
+          "average_watch_time_seconds": 19.0,
           "shares": 0,
-          "analytics_views": 42,
+          "analytics_views": 43,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -2030,7 +2069,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 16.0,
           "shares": 0,
-          "analytics_views": 89,
+          "analytics_views": 90,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
@@ -2114,47 +2153,6 @@
           "average_watch_time_seconds": 9.0,
           "shares": 0,
           "analytics_views": 14,
-          "analytics_period": {
-            "start_date": "2026-10-31",
-            "end_date": "2026-11-08",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "d2IrqkS6smw",
-          "title": "Before Paper, What Were Ancient Egyptians Writing On?",
-          "description": "Long before modern paper, ancient Egyptians wrote on sheets made from the stems of a reed called Cyperus papyrus. Egypt exported these sheets, and they carried everything from business records to the Rhind Mathematical Papyrus. #EgyptianHistory #PapyrusFacts #YouUseItEveryDay",
-          "tags": [
-            "ancient egypt",
-            "ancient egyptian maths",
-            "ancient writing",
-            "demotic script",
-            "did you know",
-            "education",
-            "egyptian history",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "papyrus",
-            "rhind papyrus",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-10-31T04:22:17Z",
-          "thumbnail": "https://i.ytimg.com/vi/d2IrqkS6smw/mqdefault.jpg",
-          "views": 28,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 25.16,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 13.0,
-          "shares": 0,
-          "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-10-31",
             "end_date": "2026-11-08",
