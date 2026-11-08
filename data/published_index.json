@@ -5444,5 +5444,31 @@
     "production_profile": 2,
     "facebook_id": "2358055295010560",
     "instagram_id": "18119951786100453"
+  },
+  {
+    "video_id": "iA6xO2v5sDM",
+    "run_id": "42478264462",
+    "stage_dir_name": "20261108_120247_880293_short",
+    "title": "Why Did a Berlin Merchant's Debt Matter to Russia's Museum?",
+    "published_at": "2026-11-08T12:12:20.395179+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 67,
+    "editorial_region": "russia",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Russia's famous Hermitage museum began, in part, with a merchant's debt.",
+    "duration": 56.496,
+    "production_profile": 2,
+    "facebook_id": "1434434695492255",
+    "instagram_id": null
   }
 ]
