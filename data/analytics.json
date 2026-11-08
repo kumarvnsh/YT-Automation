@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-07T23:10:30.276746+00:00",
+      "updated": "2026-11-08T02:55:55.390331+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -57,7 +57,7 @@
           ],
           "publishedAt": "2026-11-07T18:10:51Z",
           "thumbnail": "https://i.ytimg.com/vi/utnb_IsgCXk/mqdefault.jpg",
-          "views": 21,
+          "views": 55,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -65,7 +65,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -109,7 +109,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -153,7 +153,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -198,7 +198,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -241,7 +241,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -284,7 +284,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -327,7 +327,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -370,7 +370,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -419,7 +419,7 @@
           "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -463,7 +463,7 @@
           "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -505,7 +505,7 @@
           "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -542,7 +542,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -592,7 +592,7 @@
           "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -634,7 +634,7 @@
           "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -676,7 +676,7 @@
           "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -718,7 +718,7 @@
           "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -759,7 +759,7 @@
           "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -803,7 +803,7 @@
           "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -845,7 +845,7 @@
           "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -886,7 +886,7 @@
           "analytics_views": 236,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -929,7 +929,7 @@
           "analytics_views": 12,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -971,7 +971,7 @@
           "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1015,7 +1015,7 @@
           "analytics_views": 9,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1058,7 +1058,7 @@
           "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1100,7 +1100,7 @@
           "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1128,7 +1128,7 @@
           ],
           "publishedAt": "2026-11-02T18:14:48Z",
           "thumbnail": "https://i.ytimg.com/vi/tId2xh4cBPk/mqdefault.jpg",
-          "views": 10,
+          "views": 11,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1141,7 +1141,7 @@
           "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1184,7 +1184,7 @@
           "analytics_views": 15,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1227,7 +1227,7 @@
           "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1267,7 +1267,7 @@
           "analytics_views": 32,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1309,7 +1309,7 @@
           "analytics_views": 59,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1351,7 +1351,7 @@
           "analytics_views": 54,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1393,7 +1393,7 @@
           "analytics_views": 50,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1436,7 +1436,7 @@
           "analytics_views": 79,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1480,7 +1480,7 @@
           "analytics_views": 132,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1522,7 +1522,7 @@
           "analytics_views": 129,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1565,7 +1565,7 @@
           "analytics_views": 1012,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1608,7 +1608,7 @@
           "analytics_views": 996,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1649,7 +1649,7 @@
           "analytics_views": 166,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1691,7 +1691,7 @@
           "analytics_views": 135,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1735,7 +1735,7 @@
           "analytics_views": 38,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1775,7 +1775,7 @@
           "analytics_views": 68,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1805,7 +1805,7 @@
           ],
           "publishedAt": "2026-10-31T16:11:14Z",
           "thumbnail": "https://i.ytimg.com/vi/rcKbAQ3SITg/mqdefault.jpg",
-          "views": 43,
+          "views": 44,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -1818,7 +1818,7 @@
           "analytics_views": 42,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1860,7 +1860,7 @@
           "analytics_views": 89,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1901,7 +1901,7 @@
           "analytics_views": 19,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1943,7 +1943,7 @@
           "analytics_views": 24,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1984,7 +1984,7 @@
           "analytics_views": 26,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2028,7 +2028,7 @@
           "analytics_views": 15,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2070,7 +2070,7 @@
           "analytics_views": 14,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2111,7 +2111,7 @@
           "analytics_views": 19,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2153,7 +2153,7 @@
           "analytics_views": 9,
           "analytics_period": {
             "start_date": "2026-10-29",
-            "end_date": "2026-11-07",
+            "end_date": "2026-11-08",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
