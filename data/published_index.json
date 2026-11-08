@@ -5392,5 +5392,31 @@
     "production_profile": 2,
     "facebook_id": "1655194189735840",
     "instagram_id": "18477890227188566"
+  },
+  {
+    "video_id": "kN43KAAEajU",
+    "run_id": "42445051693",
+    "stage_dir_name": "20261108_040303_136138_short",
+    "title": "Why Did a Cooling Fan Start Sending Secret Messages?",
+    "published_at": "2026-11-08T04:13:44.848669+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 65,
+    "editorial_region": "japan",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "A simple cooling fan became a silent messenger between people. Here is how that happened.",
+    "duration": 54.144,
+    "production_profile": 2,
+    "facebook_id": "1363726085713964",
+    "instagram_id": "17976623052172488"
   }
 ]
