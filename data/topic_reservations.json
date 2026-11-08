@@ -2635,5 +2635,14 @@
     "slot": "evening",
     "date": "2026-11-08",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261108_180231_526880_short",
+    "title": "The Metal Neck-Ring Everyone Ties to the Celts: Who Else Wore It?",
+    "fingerprint": "celts_else_everyone_it_metal_neck_ring_ties_who_wore",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-08",
+    "status": "reserved"
   }
 ]

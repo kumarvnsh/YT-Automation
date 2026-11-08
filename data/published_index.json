@@ -5496,5 +5496,31 @@
     "production_profile": 2,
     "facebook_id": "2221339648728644",
     "instagram_id": "18140381836731940"
+  },
+  {
+    "video_id": "CLFOEpLnopY",
+    "run_id": "42507815826",
+    "stage_dir_name": "20261108_180231_526880_short",
+    "title": "The Metal Neck-Ring Everyone Ties to the Celts: Who Else Wore It?",
+    "published_at": "2026-11-08T18:11:24.784627+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 69,
+    "editorial_region": "europe",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "That metal neck-ring you link with the Celts was not only theirs.",
+    "duration": 50.424,
+    "production_profile": 2,
+    "facebook_id": "1435421798739935",
+    "instagram_id": "18138705718648455"
   }
 ]
