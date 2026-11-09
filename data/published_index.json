@@ -5562,5 +5562,31 @@
     "production_profile": 2,
     "facebook_id": "2530116110848792",
     "instagram_id": "18103448222077023"
+  },
+  {
+    "video_id": "Wk4BaPLlu8U",
+    "run_id": "42576614413",
+    "stage_dir_name": "20261109_070311_179238_short",
+    "title": "Why Did Sushi's Ancestor Throw Away Its Rice?",
+    "published_at": "2026-11-09T07:13:25.922022+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 71,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Your sushi's ancestor had one strange rule: the rice was simply thrown away.",
+    "duration": 44.544,
+    "production_profile": 2,
+    "facebook_id": "2603712036707353",
+    "instagram_id": "18147759313600133"
   }
 ]
