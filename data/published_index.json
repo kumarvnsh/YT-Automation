@@ -5588,5 +5588,31 @@
     "production_profile": 2,
     "facebook_id": "2603712036707353",
     "instagram_id": "18147759313600133"
+  },
+  {
+    "video_id": "RwrYRH1pPy8",
+    "run_id": "42613528785",
+    "stage_dir_name": "20261109_120232_860682_short",
+    "title": "Why Did Some Indian Monuments Descend Instead of Rise?",
+    "published_at": "2026-11-09T12:07:50.683064+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 72,
+    "editorial_region": "india",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "India's grandest water monuments were built to go down, not up.",
+    "duration": 29.736,
+    "production_profile": 2,
+    "facebook_id": "4756631334620294",
+    "instagram_id": "18190898887412333"
   }
 ]
