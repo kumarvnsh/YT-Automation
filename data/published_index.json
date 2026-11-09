@@ -5640,5 +5640,31 @@
     "production_profile": 2,
     "facebook_id": "1209490501514022",
     "instagram_id": "18027652709946697"
+  },
+  {
+    "video_id": "ClRZa9PI-bQ",
+    "run_id": "42670182349",
+    "stage_dir_name": "20261109_180320_472655_short",
+    "title": "What Were Edo Summer Nights Hiding in a Paper Cage?",
+    "published_at": "2026-11-09T18:10:38.022128+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 74,
+    "editorial_region": "japan",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "Summer fun in Edo-period Japan meant catching glowing fireflies to keep at home.",
+    "duration": 30.936,
+    "production_profile": 2,
+    "facebook_id": "2838301563211835",
+    "instagram_id": "18114919553617423"
   }
 ]

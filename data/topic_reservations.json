@@ -2680,5 +2680,14 @@
     "slot": "evening",
     "date": "2026-11-09",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261109_180320_472655_short",
+    "title": "What Were Edo Summer Nights Hiding in a Paper Cage?",
+    "fingerprint": "cage_edo_hiding_nights_paper_summer_were_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-09",
+    "status": "reserved"
   }
 ]
