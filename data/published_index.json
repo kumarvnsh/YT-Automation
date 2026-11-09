@@ -5614,5 +5614,31 @@
     "production_profile": 2,
     "facebook_id": "4756631334620294",
     "instagram_id": "18190898887412333"
+  },
+  {
+    "video_id": "4FCgBhHThzI",
+    "run_id": "42650473299",
+    "stage_dir_name": "20261109_160254_263712_short",
+    "title": "Which Ghanaian Farmer Planted Your Chocolate's Future?",
+    "published_at": "2026-11-09T16:12:27.152619+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 73,
+    "editorial_region": "africa",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Your chocolate bar has a Ghanaian farmer hidden in its history, and it starts with a few seeds.",
+    "duration": 57.096,
+    "production_profile": 2,
+    "facebook_id": "1209490501514022",
+    "instagram_id": "18027652709946697"
   }
 ]
