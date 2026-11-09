@@ -5379,7 +5379,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "TcrAytevFAc",
     "experiment": null,
     "experiment_slot": null,
     "category": "decisions",
@@ -5523,5 +5523,18 @@
     "production_profile": 2,
     "facebook_id": "1435421798739935",
     "instagram_id": "18138705718648455"
+  },
+  {
+    "video_id": "TcrAytevFAc",
+    "run_id": "42538988190",
+    "stage_dir_name": "20261107_180258_844643_short",
+    "title": "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?",
+    "published_at": "2026-11-09T00:13:52.243599+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "utnb_IsgCXk",
+    "republished_as": null
   }
 ]
