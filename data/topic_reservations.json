@@ -2725,5 +2725,14 @@
     "slot": "evening",
     "date": "2026-11-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261110_180307_306178_short",
+    "title": "Who Was Bouncing Rubber Balls Long Before Europeans Arrived?",
+    "fingerprint": "arrived_balls_before_bouncing_europeans_long_rubber_was_who",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-10",
+    "status": "reserved"
   }
 ]
