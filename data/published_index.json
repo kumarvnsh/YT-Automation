@@ -5758,5 +5758,31 @@
     "production_profile": 2,
     "facebook_id": "1725689132417965",
     "instagram_id": "17992975748861966"
+  },
+  {
+    "video_id": "hJH38KsKKZ4",
+    "run_id": "42850387580",
+    "stage_dir_name": "20261110_160254_831915_short",
+    "title": "Why Did Royal Navy Crews Drink Lemon Juice at Sea?",
+    "published_at": "2026-11-10T16:08:33.150390+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 78,
+    "editorial_region": "europe",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "concise",
+    "hook": "Royal Navy crews drank lemon juice, and it was a vital weapon against scurvy.",
+    "duration": 31.368,
+    "production_profile": 2,
+    "facebook_id": "1824625821994269",
+    "instagram_id": "18103063385059843"
   }
 ]

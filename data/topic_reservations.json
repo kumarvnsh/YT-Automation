@@ -2716,5 +2716,14 @@
     "slot": "evening",
     "date": "2026-11-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261110_160254_831915_short",
+    "title": "Why Did Royal Navy Crews Drink Lemon Juice at Sea?",
+    "fingerprint": "at_crews_did_drink_juice_lemon_navy_royal_sea",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-10",
+    "status": "reserved"
   }
 ]
