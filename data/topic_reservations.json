@@ -2698,5 +2698,14 @@
     "slot": "morning",
     "date": "2026-11-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261110_070313_427661_short",
+    "title": "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
+    "fingerprint": "alaskans_colonists_grow_potatoes_russian_teach_would",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-10",
+    "status": "reserved"
   }
 ]
