@@ -10470,5 +10470,73 @@
         "definition": "followers_gained / compatible report views \u00d7 1000."
       }
     }
+  },
+  {
+    "experiment_id": "facebook-world-history-4w",
+    "slot": 40,
+    "category": "myth_evidence",
+    "hook": "Some Ming porcelain reigns were once called China's blank period by historians.",
+    "duration": 52.56,
+    "profile": 2,
+    "platform": "facebook",
+    "media_id": "1622317995446383",
+    "published_at": "2026-11-02T18:11:44+0000",
+    "observed_at": "2026-11-10T00:55:26.079348+00:00",
+    "target_age_hours": 168,
+    "actual_age_hours": 174.7284,
+    "late": true,
+    "missed_windows": [],
+    "metrics": {
+      "views": {
+        "value": 196,
+        "definition": "Platform-reported cumulative views; platform definitions differ.",
+        "reason": null
+      },
+      "average_watch_time_seconds": {
+        "value": null,
+        "definition": "Platform-reported average watch duration in seconds.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "three_second_retention": {
+        "value": null,
+        "definition": "Platform-reported fraction reaching three seconds; unavailable without a supported retention endpoint.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "completion_rate": {
+        "value": null,
+        "definition": "Platform-reported completed plays divided by eligible plays; not average view percentage.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "shares": {
+        "value": null,
+        "definition": "Platform-reported cumulative shares.",
+        "reason": "facebook per-media metric not collected by this exporter; requires a supported Insights metric and account permissions. No account-level substitute used."
+      },
+      "followers_gained": {
+        "value": null,
+        "definition": "YouTube subscribers gained attributed to this video; Meta per-media follows if available.",
+        "reason": "Not returned by this export or unavailable for this media/account."
+      },
+      "shares_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 196,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "shares / compatible report views \u00d7 1000."
+      },
+      "followers_per_1000_views": {
+        "value": null,
+        "denominator": {
+          "value": 196,
+          "source": "facebook_media_insights.views",
+          "period": null
+        },
+        "reason": "Requires numerator and positive views from a compatible report period.",
+        "definition": "followers_gained / compatible report views \u00d7 1000."
+      }
+    }
   }
 ]
