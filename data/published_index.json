@@ -5732,5 +5732,31 @@
     "production_profile": 2,
     "facebook_id": "2392065318275912",
     "instagram_id": "18139992994642336"
+  },
+  {
+    "video_id": "Hl0GQ8N00cg",
+    "run_id": "42812184922",
+    "stage_dir_name": "20261110_120240_212548_short",
+    "title": "What Was Petra's Famous Treasury Really Built to Hold?",
+    "published_at": "2026-11-10T12:10:25.107490+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 77,
+    "editorial_region": "middle_east",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "That famous carved building in Petra, nicknamed the Treasury, was never a treasury at all.",
+    "duration": 47.976,
+    "production_profile": 2,
+    "facebook_id": "1725689132417965",
+    "instagram_id": "17992975748861966"
   }
 ]

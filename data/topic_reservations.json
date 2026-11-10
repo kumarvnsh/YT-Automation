@@ -2707,5 +2707,14 @@
     "slot": "morning",
     "date": "2026-11-10",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261110_120240_212548_short",
+    "title": "What Was Petra's Famous Treasury Really Built to Hold?",
+    "fingerprint": "built_famous_hold_petra_really_s_treasury_was_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-10",
+    "status": "reserved"
   }
 ]
