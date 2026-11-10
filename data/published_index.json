@@ -5510,7 +5510,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "OAT6m7tPTaY",
     "experiment": null,
     "experiment_slot": null,
     "category": "myth_evidence",
@@ -5667,5 +5667,18 @@
     "production_profile": 2,
     "facebook_id": "2838301563211835",
     "instagram_id": "18114919553617423"
+  },
+  {
+    "video_id": "OAT6m7tPTaY",
+    "run_id": "42732009046",
+    "stage_dir_name": "20261108_180231_526880_short",
+    "title": "Ancient Writers Got the Torc Wrong, and a Curator Says Why",
+    "published_at": "2026-11-10T00:56:14.555223+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "CLFOEpLnopY",
+    "republished_as": null
   }
 ]
