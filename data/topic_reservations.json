@@ -2689,5 +2689,14 @@
     "slot": "evening",
     "date": "2026-11-09",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261110_040231_478751_short",
+    "title": "Why Did One Emperor Dig a Canal Across Half of China?",
+    "fingerprint": "across_canal_china_did_dig_emperor_half_one",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-10",
+    "status": "reserved"
   }
 ]
