@@ -5914,5 +5914,31 @@
     "production_profile": 2,
     "facebook_id": "1674580024328947",
     "instagram_id": "17901630894609043"
+  },
+  {
+    "video_id": "WrsGC03_Prc",
+    "run_id": "43073663522",
+    "stage_dir_name": "20261111_180254_735251_short",
+    "title": "Your Garden Wheelbarrow's Surprising Ancestor: Where Did It Start?",
+    "published_at": "2026-11-11T18:10:22.352767+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 84,
+    "editorial_region": "china",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "concise",
+    "hook": "Your garden wheelbarrow has an ancient Chinese ancestor, shown in Han dynasty carvings.",
+    "duration": 31.224,
+    "production_profile": 2,
+    "facebook_id": "2316681952448841",
+    "instagram_id": "18208415326374227"
   }
 ]
