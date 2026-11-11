@@ -5862,5 +5862,31 @@
     "production_profile": 2,
     "facebook_id": "1004400888678721",
     "instagram_id": "18349963984252315"
+  },
+  {
+    "video_id": "o0Sxlzu04KA",
+    "run_id": "43016705877",
+    "stage_dir_name": "20261111_120250_187386_short",
+    "title": "Why Would One Ancient Stone Need Three Alphabets?",
+    "published_at": "2026-11-11T12:09:04.095247+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 82,
+    "editorial_region": "africa",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "One stone from the ancient kingdom of Aksum records one king's deeds in three alphabets.",
+    "duration": 31.176,
+    "production_profile": 2,
+    "facebook_id": "1665772001860223",
+    "instagram_id": "17993807274079160"
   }
 ]
