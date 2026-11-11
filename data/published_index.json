@@ -5810,5 +5810,31 @@
     "production_profile": 2,
     "facebook_id": "3006861533009019",
     "instagram_id": "18141386566619606"
+  },
+  {
+    "video_id": "Oh7Ac0A0qJE",
+    "run_id": "42956436526",
+    "stage_dir_name": "20261111_040240_176011_short",
+    "title": "Where Did Korea's Warmest Rooms Hide Their Heat?",
+    "published_at": "2026-11-11T04:08:34.394903+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 80,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "Korean homes were warmed from underneath, by heat moving through the floor itself.",
+    "duration": 29.856,
+    "production_profile": 2,
+    "facebook_id": "1463805615175224",
+    "instagram_id": "17919105126262108"
   }
 ]
