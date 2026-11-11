@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-11T16:42:53.680042+00:00",
+      "updated": "2026-11-11T23:10:46.070010+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,89 @@
       },
       "videos": [
         {
+          "id": "WrsGC03_Prc",
+          "title": "Your Garden Wheelbarrow's Surprising Ancestor: Where Did It Start?",
+          "description": "A single wheel under a load, shown in carvings from Han dynasty China, helps explain the wheelbarrow you still use today. This short history follows the tool's ancient roots. Follow for more everyday history.\n#WorldHistory #ChineseHistory #DidYouKnow",
+          "tags": [
+            "ancient china",
+            "ancient technology",
+            "chinese history",
+            "did you know",
+            "education",
+            "everyday inventions",
+            "everyday origins",
+            "han dynasty",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "wheelbarrow",
+            "world history",
+            "you use it every day"
+          ],
+          "publishedAt": "2026-11-11T18:10:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/WrsGC03_Prc/mqdefault.jpg",
+          "views": 15,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-02",
+            "end_date": "2026-11-11",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "q2SUkZiL7so",
+          "title": "Why Did Japan Import French Machines to Make Its Silk?",
+          "description": "In 1872, Japan's new Meiji government opened a model silk mill in Tomioka, equipped with machines from France. The video explains why the mill mattered for Japan's silk trade and how the skills it taught spread beyond its walls. #JapaneseHistory #SilkHistory #WorldHistory",
+          "tags": [
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "french machinery",
+            "historical facts",
+            "history shorts",
+            "industrial history",
+            "japan history",
+            "japanese industry",
+            "meiji era",
+            "silk history",
+            "silk production",
+            "tomioka silk mill",
+            "world history"
+          ],
+          "publishedAt": "2026-11-11T17:29:04Z",
+          "thumbnail": "https://i.ytimg.com/vi/q2SUkZiL7so/mqdefault.jpg",
+          "views": 11,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-02",
+            "end_date": "2026-11-11",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "o0Sxlzu04KA",
           "title": "Why Would One Ancient Stone Need Three Alphabets?",
           "description": "A stone monument from the ancient kingdom of Aksum honours King Ezana in three different scripts. Here is what that choice tells us about who was meant to read it. #AncientHistory #Ethiopia #HistoryGotThisWrong",
@@ -60,8 +143,8 @@
           ],
           "publishedAt": "2026-11-11T12:09:23Z",
           "thumbnail": "https://i.ytimg.com/vi/o0Sxlzu04KA/mqdefault.jpg",
-          "views": 12,
-          "likes": 0,
+          "views": 81,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -103,7 +186,7 @@
           ],
           "publishedAt": "2026-11-11T07:11:46Z",
           "thumbnail": "https://i.ytimg.com/vi/akRQMrUcXDc/mqdefault.jpg",
-          "views": 120,
+          "views": 139,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -146,7 +229,7 @@
           ],
           "publishedAt": "2026-11-11T04:09:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Oh7Ac0A0qJE/mqdefault.jpg",
-          "views": 74,
+          "views": 77,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -319,24 +402,23 @@
           ],
           "publishedAt": "2026-11-10T07:09:29Z",
           "thumbnail": "https://i.ytimg.com/vi/0HSzNxOxhvk/mqdefault.jpg",
-          "views": 706,
-          "likes": 4,
+          "views": 743,
+          "likes": 5,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 99.06,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 31.0,
+          "shares": 0,
+          "analytics_views": 12,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "nLSJjS0kQHo",
@@ -369,18 +451,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 26.32,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 13.0,
+          "shares": 0,
+          "analytics_views": 150,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "OAT6m7tPTaY",
@@ -457,18 +538,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 19.26,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 5.0,
+          "shares": 0,
+          "analytics_views": 14,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "4FCgBhHThzI",
@@ -501,18 +581,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 2,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "RwrYRH1pPy8",
@@ -543,18 +622,17 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 50.6,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 15.0,
+          "shares": 0,
+          "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "Wk4BaPLlu8U",
@@ -581,24 +659,23 @@
           ],
           "publishedAt": "2026-11-09T07:13:56Z",
           "thumbnail": "https://i.ytimg.com/vi/Wk4BaPLlu8U/mqdefault.jpg",
-          "views": 16,
+          "views": 17,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 22.77,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 10.0,
+          "shares": 0,
+          "analytics_views": 15,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "RBrsabhs4MM",
@@ -631,11 +708,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 22.42,
+          "avg_view_pct": 32.06,
           "subs_gained": 0,
-          "average_watch_time_seconds": 6.0,
+          "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 24,
+          "analytics_views": 27,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -666,7 +743,7 @@
           ],
           "publishedAt": "2026-11-09T00:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/TcrAytevFAc/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -846,7 +923,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 12.0,
           "shares": 0,
-          "analytics_views": 39,
+          "analytics_views": 41,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -973,7 +1050,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 6,
+          "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1016,7 +1093,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 10.0,
           "shares": 0,
-          "analytics_views": 21,
+          "analytics_views": 22,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1050,7 +1127,7 @@
           ],
           "publishedAt": "2026-11-07T07:11:19Z",
           "thumbnail": "https://i.ytimg.com/vi/2vMau4aA0ts/mqdefault.jpg",
-          "views": 10,
+          "views": 11,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1228,7 +1305,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 23.0,
           "shares": 0,
-          "analytics_views": 11,
+          "analytics_views": 12,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1528,7 +1605,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 10.0,
           "shares": 0,
-          "analytics_views": 6,
+          "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1651,11 +1728,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 97.7,
           "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
+          "average_watch_time_seconds": 53.0,
           "shares": 0,
-          "analytics_views": 3,
+          "analytics_views": 4,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1693,11 +1770,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 24.15,
+          "avg_view_pct": 36.98,
           "subs_gained": 0,
-          "average_watch_time_seconds": 8.0,
+          "average_watch_time_seconds": 12.0,
           "shares": 0,
-          "analytics_views": 7,
+          "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1863,11 +1940,11 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 43.7,
+          "avg_view_pct": 28.110000000000003,
           "subs_gained": 0,
-          "average_watch_time_seconds": 14.0,
+          "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 9,
+          "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -1910,7 +1987,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 20.0,
           "shares": 0,
-          "analytics_views": 5,
+          "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
@@ -2080,88 +2157,6 @@
           "average_watch_time_seconds": 11.0,
           "shares": 0,
           "analytics_views": 9,
-          "analytics_period": {
-            "start_date": "2026-11-02",
-            "end_date": "2026-11-11",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "vDCbD07VENw",
-          "title": "Your Shampoo Bottle Word Has a Surprising Passport",
-          "description": "The English word shampoo comes from Hindi, and an Indian-born entrepreneur helped bring the practice to Britain in 1814. This History Got This Wrong video explains the word's origin and the overlooked man behind Brighton's shampooing baths. #WorldHistory #IndianHistory #DidYouKnow",
-          "tags": [
-            "brighton history",
-            "did you know",
-            "education",
-            "english word origins",
-            "everyday origins",
-            "hidden history",
-            "hindi words",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "indian history",
-            "sake dean mahomed",
-            "shampoo history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-02T07:10:26Z",
-          "thumbnail": "https://i.ytimg.com/vi/vDCbD07VENw/mqdefault.jpg",
-          "views": 32,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 46.75,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 14.0,
-          "shares": 0,
-          "analytics_views": 24,
-          "analytics_period": {
-            "start_date": "2026-11-02",
-            "end_date": "2026-11-11",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "HkS_WXFbMm4",
-          "title": "Why Did Japanese Doctors Trust a Dutch Book?",
-          "description": "In the 1700s, Japan limited foreign contact, yet its doctors studied human anatomy from a Dutch textbook. Their decision to check its drawings against a real body led to a Japanese translation and a wider movement called rangaku. #JapaneseHistory #DutchLearning #HistoryFacts",
-          "tags": [
-            "anatomy history",
-            "dejima",
-            "did you know",
-            "did you know history",
-            "dutch learning",
-            "edo japan",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "japanese history",
-            "kaitai shinsho",
-            "medical history",
-            "rangaku",
-            "world history"
-          ],
-          "publishedAt": "2026-11-02T04:13:12Z",
-          "thumbnail": "https://i.ytimg.com/vi/HkS_WXFbMm4/mqdefault.jpg",
-          "views": 60,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 32.02,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 17.0,
-          "shares": 0,
-          "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-11-02",
             "end_date": "2026-11-11",
