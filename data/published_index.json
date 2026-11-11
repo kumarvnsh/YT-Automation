@@ -5836,5 +5836,31 @@
     "production_profile": 2,
     "facebook_id": "1463805615175224",
     "instagram_id": "17919105126262108"
+  },
+  {
+    "video_id": "akRQMrUcXDc",
+    "run_id": "42976429061",
+    "stage_dir_name": "20261111_070259_389101_short",
+    "title": "How Did India's Blue Stick to Cloth Without a Binder?",
+    "published_at": "2026-11-11T07:11:17.145967+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 81,
+    "editorial_region": "india",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Indian dyers got blue to stick to cloth with no chemical binder at all.",
+    "duration": 48.504,
+    "production_profile": 2,
+    "facebook_id": "1004400888678721",
+    "instagram_id": "18349963984252315"
   }
 ]
