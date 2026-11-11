@@ -5888,5 +5888,31 @@
     "production_profile": 2,
     "facebook_id": "1665772001860223",
     "instagram_id": "17993807274079160"
+  },
+  {
+    "video_id": "q2SUkZiL7so",
+    "run_id": "43054094779",
+    "stage_dir_name": "20261111_171748_406500_short",
+    "title": "Why Did Japan Import French Machines to Make Its Silk?",
+    "published_at": "2026-11-11T17:28:39.080907+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 83,
+    "editorial_region": "japan",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Japan's famous silk mill was built with machinery shipped all the way from France, not from Japan.",
+    "duration": 53.664,
+    "production_profile": 2,
+    "facebook_id": "1674580024328947",
+    "instagram_id": "17901630894609043"
   }
 ]
