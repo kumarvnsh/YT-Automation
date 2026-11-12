@@ -2788,5 +2788,14 @@
     "slot": "morning",
     "date": "2026-11-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261112_070320_098169_short",
+    "title": "Who Mailed Letters Wrapped in Clay 4,000 Years Ago?",
+    "fingerprint": "000_4_ago_clay_letters_mailed_who_wrapped_years",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-12",
+    "status": "reserved"
   }
 ]
