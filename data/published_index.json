@@ -6044,5 +6044,31 @@
     "production_profile": 2,
     "facebook_id": "1132653392646921",
     "instagram_id": "17911243848580893"
+  },
+  {
+    "video_id": "ovRRZr1uBr4",
+    "run_id": "43275423833",
+    "stage_dir_name": "20261112_180304_865461_short",
+    "title": "Why Did a Korean King Design His Own Alphabet?",
+    "published_at": "2026-11-12T18:12:26.679307+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 89,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Korea's alphabet was designed by a king, and it was meant to be easy to learn.",
+    "duration": 48.888,
+    "production_profile": 2,
+    "facebook_id": "1115689121079273",
+    "instagram_id": "17911512870598829"
   }
 ]
