@@ -6018,5 +6018,31 @@
     "production_profile": 2,
     "facebook_id": "1203918048973238",
     "instagram_id": "17945097465382398"
+  },
+  {
+    "video_id": "zQEXjUnu_dA",
+    "run_id": "43254066548",
+    "stage_dir_name": "20261112_160314_460024_short",
+    "title": "Could an Empire Run Its Records on Knots Alone?",
+    "published_at": "2026-11-12T16:10:28.426351+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 88,
+    "editorial_region": "americas",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "The Inca had no written language, yet they kept records with knotted strings.",
+    "duration": 31.248,
+    "production_profile": 2,
+    "facebook_id": "1132653392646921",
+    "instagram_id": "17911243848580893"
   }
 ]

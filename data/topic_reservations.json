@@ -2806,5 +2806,14 @@
     "slot": "evening",
     "date": "2026-11-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261112_160314_460024_short",
+    "title": "Could an Empire Run Its Records on Knots Alone?",
+    "fingerprint": "alone_could_empire_its_knots_on_records_run",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-12",
+    "status": "reserved"
   }
 ]
