@@ -2779,5 +2779,14 @@
     "slot": "evening",
     "date": "2026-11-11",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261112_040255_185009_short",
+    "title": "What Made One Siberian Border Town Russia's Tea Gateway?",
+    "fingerprint": "border_gateway_made_one_russia_s_siberian_tea_town_what",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-12",
+    "status": "reserved"
   }
 ]

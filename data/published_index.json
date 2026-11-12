@@ -5940,5 +5940,31 @@
     "production_profile": 2,
     "facebook_id": "2316681952448841",
     "instagram_id": "18208415326374227"
+  },
+  {
+    "video_id": "gcL_hEeV_JE",
+    "run_id": "43151966921",
+    "stage_dir_name": "20261112_040255_185009_short",
+    "title": "What Made One Siberian Border Town Russia's Tea Gateway?",
+    "published_at": "2026-11-12T04:13:08.759386+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 85,
+    "editorial_region": "russia",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "A large share of Russia's tea once crossed Kyakhta, a remote Siberian border town.",
+    "duration": 51.12,
+    "production_profile": 2,
+    "facebook_id": "2363465427786201",
+    "instagram_id": "17993009916053974"
   }
 ]
