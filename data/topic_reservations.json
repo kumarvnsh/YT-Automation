@@ -2797,5 +2797,14 @@
     "slot": "morning",
     "date": "2026-11-12",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261112_120249_099454_short",
+    "title": "Did English Coffeehouses Once Make Their Own Money?",
+    "fingerprint": "coffeehouses_did_english_make_money_once_own_their",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-12",
+    "status": "reserved"
   }
 ]

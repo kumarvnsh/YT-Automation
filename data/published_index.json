@@ -5992,5 +5992,31 @@
     "production_profile": 2,
     "facebook_id": "4663409597216284",
     "instagram_id": "18169809136473092"
+  },
+  {
+    "video_id": "sMUpVI79w2M",
+    "run_id": "43214101962",
+    "stage_dir_name": "20261112_120249_099454_short",
+    "title": "Did English Coffeehouses Once Make Their Own Money?",
+    "published_at": "2026-11-12T12:12:38.545478+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 87,
+    "editorial_region": "europe",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "English coffeehouses once made their own money, and the reason is surprisingly ordinary.",
+    "duration": 60.504,
+    "production_profile": 2,
+    "facebook_id": "1203918048973238",
+    "instagram_id": "17945097465382398"
   }
 ]
