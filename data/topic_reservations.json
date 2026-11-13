@@ -2941,5 +2941,14 @@
     "slot": "morning",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_204255_897894_short",
+    "title": "Could a Boat Really Climb From the Hudson to Lake Erie?",
+    "fingerprint": "boat_climb_could_erie_from_hudson_lake_really",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]
