@@ -70,3 +70,19 @@ class PortraitAssetTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class PolishTests(unittest.TestCase):
+    def test_cap_photos_keeps_each_person_in_two_scenes(self):
+        tag = lambda pid: f'<histold-photo id="{pid}"></histold-photo>'  # noqa: E731
+        scenes = {0: tag('galileo'), 1: tag('galileo') + tag('copernicus'), 2: tag('galileo'), 3: tag('copernicus')}
+        capped = pa.cap_photos(scenes)
+        self.assertEqual([capped[i].count('galileo') for i in range(4)], [1, 1, 0, 0])
+        self.assertEqual([capped[i].count('copernicus') for i in range(4)], [0, 1, 0, 1])
+
+    def test_strip_layout_arrows_removes_model_arrow_only_inside_layout_scenes(self):
+        from src.claude_motion import strip_layout_arrows
+        cause = '<div class="k-cause"><div>a</div><div class="k-fade" style="x">⇒</div><div>b</div></div>'
+        self.assertEqual(strip_layout_arrows(cause), '<div class="k-cause"><div>a</div><div>b</div></div>')
+        plain = '<div class="k-stage"><div>→</div></div>'
+        self.assertEqual(strip_layout_arrows(plain), plain)

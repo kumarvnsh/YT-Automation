@@ -16,6 +16,7 @@ from urllib.parse import quote
 
 import requests
 
+_PHOTO = re.compile(r'<histold-photo\b([^>]*?)\s*(?:/>|>\s*</histold-photo>)', re.I)
 UA = {'User-Agent': 'HistoldVideoBot/1.0 (automated history explainer; Wikimedia API client)'}
 _OK_LICENSE = re.compile(r'^(public domain|pd\b|cc0|cc[ -]by(-sa)?[ -]\d)', re.I)
 
@@ -104,6 +105,28 @@ def fetch_portraits(people: list[dict], narration: str, dest_dir: Path, limit: i
     return found
 
 
+def cap_photos(scenes: dict[int, str], limit: int = 2) -> dict[int, str]:
+    """Keep each portrait in at most `limit` scenes (in scene order); later repeats are removed."""
+    seen: dict[str, int] = {}
+
+    def keep(m: re.Match) -> str:
+        pid = re.search(r'''\bid\s*=\s*['"]([a-z0-9_]+)['"]''', m.group(1))
+        key = pid.group(1) if pid else ''
+        if key in shown_here:
+            return m.group(0)
+        if seen.get(key, 0) >= limit:
+            return ''
+        seen[key] = seen.get(key, 0) + 1
+        shown_here.add(key)
+        return m.group(0)
+
+    out = {}
+    for i in sorted(scenes):
+        shown_here: set[str] = set()
+        out[i] = _PHOTO.sub(keep, scenes[i])
+    return out
+
+
 def bind_photos(html: str, portraits: list[dict]) -> tuple[str, list[str]]:
     """Replace <histold-photo id> placeholders with an embedded framed portrait."""
     by_id, used = {p['id']: p for p in portraits}, []
@@ -123,4 +146,4 @@ def bind_photos(html: str, portraits: list[dict]) -> tuple[str, list[str]]:
                 f'<img alt="{escape(p["name"])}" src="data:{p["mime"]};base64,{data}"></div>'
                 f'<figcaption>{escape(p["name"])}<small>{escape(p["years"])}</small></figcaption></figure>')
 
-    return re.sub(r'<histold-photo\b([^>]*?)\s*(?:/>|>\s*</histold-photo>)', swap, html, flags=re.I), used
+    return _PHOTO.sub(swap, html), used

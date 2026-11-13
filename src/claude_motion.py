@@ -158,6 +158,16 @@ def key_words(narration: str, limit: int = 3) -> list[str]:
     return [w for w in words if w in keep]
 
 
+_ARROW_ONLY = re.compile(r'<(div|span)\b[^>]*>\s*(?:&[rl]arr;|&[rl]Arr;|[→⇒➜➔➝⟶⟹↓←])\s*</\1>', re.I)
+
+
+def strip_layout_arrows(html: str) -> str:
+    """k-steps/k-cause draw their own arrows; drop arrow-only elements the model adds to them."""
+    if 'k-steps' not in html and 'k-cause' not in html:
+        return html
+    return _ARROW_ONLY.sub('', html)
+
+
 def key_facts(narration: str, limit: int = 3) -> list[str]:
     """Dates, numbers and proper names stated in the narration, in spoken order."""
     found = []
@@ -207,7 +217,8 @@ combine 2-4 into a small diagram. Never draw your own figurative SVG when an ico
 - Explainer layouts (children reveal one by one every --gap, default .8s, starting at --d): \
 .k-steps (a process, 2-4 steps, arrows added), .k-cause (cause => effect, 2 children), \
 .k-compare (then/now or A/B, exactly 2 children), .k-timeline (2-4 children, each <b>date</b> + label). \
-Each child = one icon + one short .k-label. Use one whenever the narration explains how or why \
+Each child = one icon + one short .k-label. Arrows are drawn automatically: never add arrow \
+characters or arrow elements inside these layouts. Use one whenever the narration explains how or why \
 something happened, a process, a change, a comparison or a sequence of dates.
 - Motion classes (stagger with style="--d:.4s", length with --t): k-rise, \
 k-fade, k-pop, k-wipe, k-slam (stamp; tilt via --r), k-draw (SVG stroke with \
@@ -444,7 +455,8 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
             f'id={p["id"]} = {p["name"]} ({p["years"]})' for p in portraits) +
             '. When the narration names that person, show <histold-photo id="ID" class="k-rise" '
             'style="width:260px"></histold-photo> inside .k-stage, readable for at least 2 seconds, with a short '
-            'label of who they are. The binding adds the frame, name and dates. Never draw their face yourself.')
+            'label of who they are. The binding adds the frame, name and dates. Never draw their face yourself. '
+            'Show each portrait in at most two scenes.')
     from .icon_assets import candidate_icons
     icons = candidate_icons([title] + [f"{seg.narration} {' '.join(seg.keywords)}" for seg in segs])
     lines.append('Icon list for <histold-icon name="...">: ' + ', '.join(icons) +
@@ -671,7 +683,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         from .icon_assets import bind_icons
         from .portrait_assets import bind_photos
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
-        return apply_palette(bind_photos(bind_icons(html)[0], st.get('portraits', []))[0], palette)
+        return apply_palette(bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0], palette)
 
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
@@ -739,7 +751,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                         'original_errors': original_errors, 'validated': not inspection['errors']})
                     report['scenes'][str(i)] = inspection
                     print(f'  ✓ scene {i} recovered with local house template (was: {"; ".join(original_errors[:3])})')
-            scenes = {i: prepare(html, i) for i, html in scenes.items()}
+            from .portrait_assets import cap_photos
+            scenes = {i: prepare(html, i) for i, html in cap_photos(scenes).items()}
             if any('class="k-icon' in html for html in scenes.values()):
                 from .icon_assets import CREDIT
                 st['credits'] = sorted(set(st.get('credits', [])) | {CREDIT})

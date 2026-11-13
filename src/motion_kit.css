@@ -131,3 +131,8 @@ html::after { background: radial-gradient(ellipse at 50% 40%, transparent 55%, r
   text-shadow: 0 0 16px var(--ink), 0 0 6px var(--ink); }
 .k-photo figcaption small { display: block; font: 500 14px/1.4 var(--display); letter-spacing: .16em; color: var(--accent); }
 @keyframes k-photo-push { from { transform: scale(1.02); } to { transform: scale(1.14) translateY(-2%); } }
+
+/* icons keep breathing after they land, so a held diagram never reads as a frozen frame */
+.k-icon path { transform-box: fill-box; transform-origin: 50% 50%;
+  animation: k-float 3.2s ease-in-out infinite alternate; }
+@keyframes k-float { from { transform: translateY(-3%) rotate(-2.5deg); } to { transform: translateY(3%) rotate(2.5deg); } }
