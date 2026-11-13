@@ -22,6 +22,9 @@ DEFAULTS = ('scroll-unfurled', 'crown', 'castle', 'sailboat', 'crossed-swords', 
 _FANTASY = set('evil spell magic aura demon dragon wizard witch zombie monster alien orc goblin troll ghost '
                'undead vampire fairy elf unicorn potion rune arcane cursed haunted tentacle cthulhu imp '
                'skull death bleeding blood gore robot golem bolt'.split())
+# Names that match everyday words but draw something else ("private" is a rank chevron).
+_MISLEADING = {'private', 'private-first-class', 'corporal', 'sergeant', 'rank-1', 'rank-2', 'rank-3',
+               'desert-eagle'}
 _STOP = set('the and for with from that this was were are his her their they them into over after '
             'before about which while when where what who how why than then also only very more most '
             'have had has not but its one two first last years year began made make each every'.split())
@@ -47,7 +50,7 @@ def candidate_icons(texts: list[str], limit: int = 30) -> list[str]:
     scored = []
     for name in load_icons():
         parts = name.split('-')
-        if _FANTASY & set(parts):
+        if _FANTASY & set(parts) or name in _MISLEADING:
             continue
         # Whole-word match, or a long word inside a compound part ("shelf" in "bookshelf").
         hits = sum(1 for p in parts if _stem(p) in words or any(len(w) >= 5 and w in p for w in words))

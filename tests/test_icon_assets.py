@@ -35,3 +35,9 @@ class IconAssetTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class MisleadingIconTests(unittest.TestCase):
+    def test_candidate_icons_skip_rank_chevron_named_private(self):
+        names = candidate_icons(['Common land was private property owned by the lord.'])
+        self.assertNotIn('private', names)
