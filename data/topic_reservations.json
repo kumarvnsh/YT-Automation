@@ -2950,5 +2950,14 @@
     "slot": "morning",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_212840_842583_short",
+    "title": "Why Can't Scholars Read a Script From Four Thousand Years Ago?",
+    "fingerprint": "ago_can_four_from_read_scholars_script_t_thousand_years",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]

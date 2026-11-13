@@ -6357,5 +6357,32 @@
     "production_profile": 2,
     "facebook_id": "1659708409189342",
     "instagram_id": "18008434773006871"
+  },
+  {
+    "video_id": "g4aOe5vcitA",
+    "run_id": "43510700810",
+    "stage_dir_name": "20261113_212840_842583_short",
+    "title": "Why Can't Scholars Read a Script From Four Thousand Years Ago?",
+    "published_at": "2026-11-13T21:34:24.235888+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "unsolved",
+    "editorial_slot": 98,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "Unsolved",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "No one can yet read the writing on ancient Indus Valley seals.",
+    "duration": 31.92,
+    "production_profile": 2,
+    "facebook_id": "1150137540786884",
+    "instagram_id": "18131796341477414"
   }
 ]
