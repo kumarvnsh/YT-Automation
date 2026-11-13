@@ -2887,5 +2887,14 @@
     "slot": "evening",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_161610_820587_short",
+    "title": "Why Did a Licensed Book Lead to Galileo's Church Trial?",
+    "fingerprint": "book_church_did_galileo_lead_licensed_s_trial",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]
