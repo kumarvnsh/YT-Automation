@@ -6005,7 +6005,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "C9GeTO7j1W8",
     "experiment": null,
     "experiment_slot": null,
     "category": "everyday_origins",
@@ -6253,5 +6253,18 @@
     "production_profile": 2,
     "facebook_id": "3568280993342757",
     "instagram_id": "17922363939460863"
+  },
+  {
+    "video_id": "C9GeTO7j1W8",
+    "run_id": "43480541780",
+    "stage_dir_name": "20261112_120249_099454_short",
+    "title": "Why Did Coffeehouses Start Printing Their Own Cash?",
+    "published_at": "2026-11-13T18:14:09.590105+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "sMUpVI79w2M",
+    "republished_as": null
   }
 ]
