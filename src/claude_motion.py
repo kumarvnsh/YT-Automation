@@ -75,7 +75,7 @@ def parse_scenes(text: str, count: int) -> dict[int, str]:
     return {i: html for i, html in scenes.items() if 0 <= i < count}
 
 
-def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
+def house_scene(narration: str, maps: list[dict], duration: float = 6.0, photos: list[dict] = ()) -> str:
     """Animated recovery: vetted geography and timed excerpts, without invented facts."""
     from html import escape
     duration = max(duration, .1)
@@ -104,7 +104,11 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
     if cards:
         from .icon_assets import DEFAULTS, candidate_icons
         icon = next((n for n in candidate_icons([narration], limit=1) if n not in DEFAULTS), None)
-        if icon:  # a matched illustration above the facts
+        from .portrait_assets import mentioned
+        photo = next((p for p in photos if mentioned(p, narration)), None)
+        if photo:  # the person being talked about beats any illustration
+            cards = f'<histold-photo id="{photo["id"]}" class="k-pop" style="width:210px"></histold-photo>' + cards
+        elif icon:  # a matched illustration above the facts
             cards = (f'<histold-icon name="{icon}" class="k-pop" style="width:150px;--d:.05s"></histold-icon>'
                      + cards)
     # Abstract chronological diagram when no geographic asset or fact is available.
@@ -236,7 +240,8 @@ dates, names and numbers. On-screen text is short (max ~6 words per element). \
 The narration is already captioned, so do not repeat it.
 - Vary the composition from scene to scene; don't reuse one layout.
 - Only state facts that appear in the narration. Never invent dates, numbers \
-or quotes. Draw people as simple silhouettes or icons, never realistic faces.
+or quotes. Draw people as simple silhouettes or icons, never realistic faces; \
+supplied <histold-photo> portraits are the only real faces allowed.
 - Be economical: no comments, compact CSS, no unused rules. Keep each scene under ~6,000 characters.
 - LAYOUT (each scene is measured automatically; overlaps and clipping get flagged):
   * Put ALL text inside .k-stage, in normal flex flow, so it stacks without \
@@ -433,6 +438,13 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      'while animating outlines, emphasis and story graphics from the first frame; do not wait '
                      'for a static establishing shot before starting the action. '
                      'Do not draw substitute map paths, invented routes or unsupported borders.')
+    portraits = cfg.get('production.portraits', [])
+    if portraits:
+        lines.append('Archival portraits (real, licence-checked): ' + '; '.join(
+            f'id={p["id"]} = {p["name"]} ({p["years"]})' for p in portraits) +
+            '. When the narration names that person, show <histold-photo id="ID" class="k-rise" '
+            'style="width:260px"></histold-photo> inside .k-stage, readable for at least 2 seconds, with a short '
+            'label of who they are. The binding adds the frame, name and dates. Never draw their face yourself.')
     from .icon_assets import candidate_icons
     icons = candidate_icons([title] + [f"{seg.narration} {' '.join(seg.keywords)}" for seg in segs])
     lines.append('Icon list for <histold-icon name="...">: ' + ', '.join(icons) +
@@ -641,8 +653,13 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         windows = [(s['start'], s['end']) for s in board['scenes']]
         cfg = Config(deepcopy(cfg.raw))
         maps = [load_map(asset['map_id']) for asset in st.get('maps', [])]
+        if cfg.get('video.claude_motion.portraits', True) and 'portraits' not in st:
+            from .portrait_assets import fetch_portraits
+            st['portraits'] = fetch_portraits(st.get('research', {}).get('people', []),
+                                              ' '.join(s.narration for s in segs), stage / 'portraits')
         cfg.raw.setdefault('production', {})['storyboard'] = board
         cfg.raw['production']['map_assets'] = [{k: v for k, v in a.items() if k != 'svg'} for a in maps]
+        cfg.raw['production']['portraits'] = st.get('portraits', [])
 
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
@@ -652,8 +669,9 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         scenes = {}
     def prepare(html, index):
         from .icon_assets import bind_icons
+        from .portrait_assets import bind_photos
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
-        return apply_palette(bind_icons(html)[0], palette)
+        return apply_palette(bind_photos(bind_icons(html)[0], st.get('portraits', []))[0], palette)
 
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
@@ -714,7 +732,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     original_errors = report['scenes'][str(i)]['errors']
                     if not original_errors:
                         continue
-                    scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s)
+                    scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', []))
                     inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                     report['recoveries'].append({'scene': i, 'method': 'local_house_scene',
@@ -725,6 +743,9 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
             if any('class="k-icon' in html for html in scenes.values()):
                 from .icon_assets import CREDIT
                 st['credits'] = sorted(set(st.get('credits', [])) | {CREDIT})
+            shown = {p['id'] for p in st.get('portraits', []) if f'data-photo-id="{p["id"]}"' in ''.join(scenes.values())}
+            st['credits'] = sorted(set(st.get('credits', [])) |
+                                   {p['credit'] for p in st.get('portraits', []) if p['id'] in shown})
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
             for i, (s, e) in enumerate(windows):
@@ -736,7 +757,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
                     if production:
-                        scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s), i)
+                        scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', [])), i)
                         inspection = inspect_scene(page, scenes[i], e-s, fps,
                             board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         if inspection['errors']:
