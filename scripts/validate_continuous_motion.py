@@ -17,6 +17,11 @@ def main():
             report = inspect_scene(page, html, 5.6, 30, [], True)
             assert not report['errors'], (ids, report)
             print(f'PASS: animated recovery {ids or "diagram"}')
+        # Regression: the reference example scene was rejected as static at real scene lengths.
+        example = apply_palette(open('src/motion_example.html').read(), 'navy_teal')
+        report = inspect_scene(page, example, 6.0, 30, [], False)
+        assert not report['errors'], report
+        print('PASS: reference example accepted at 6s')
         static = apply_palette('<html><head></head><body><div class="k-stage">'
                                '<div class="k-title">1680</div></div></body></html>', 'navy_teal')
         report = inspect_scene(page, static, 5.6, 30, [], False)

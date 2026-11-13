@@ -80,13 +80,15 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
     from html import escape
     duration = max(duration, .1)
     words = narration.split()
-    chunks = [' '.join(words[i:i+6]) for i in range(0, len(words), 6)] or ['']
+    # Even chunks of <=6 words, so no lone trailing word like "ends." gets its own beat.
+    size = -(-len(words) // max(1, -(-len(words) // 6))) if words else 6
+    chunks = [' '.join(words[i:i+size]) for i in range(0, len(words), size)] or ['']
     labels = ''.join(
         f'<div class="house-beat" style="--delay:{i * duration / len(chunks):.3f}s;'
         f'--hold:{duration / len(chunks):.3f}s">{escape(chunk)}</div>'
         for i, chunk in enumerate(chunks))
     placeholders = ''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in maps)
-    facts = key_facts(narration)
+    facts = key_facts(narration) or key_words(narration)
     # Explain with the narration's own dates, numbers and names; maps only establish place.
     cards = ''.join(
         f'<div class="house-fact k-pop" style="--d:{.1 + i * duration / (len(facts) + 1):.3f}s">'
@@ -132,6 +134,19 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
             '</div><div class="house-rail"></div></div></body></html>')
     html = bind_maps(html, maps)
     return html
+
+_STOP = set('about after again against because before being below between could during every '
+             'first found other their there these thing those through under until where which while '
+             'would never still always people really actually today years'.split())
+
+
+def key_words(narration: str, limit: int = 3) -> list[str]:
+    """Longest content words, in spoken order, when the line has no dates, numbers or names."""
+    words = [w.strip('.,;:!?"\'()').lower() for w in narration.split()]
+    words = list(dict.fromkeys(w for w in words if len(w) >= 5 and w.isalpha() and w not in _STOP))
+    keep = set(sorted(words, key=len, reverse=True)[:limit])
+    return [w for w in words if w in keep]
+
 
 def key_facts(narration: str, limit: int = 3) -> list[str]:
     """Dates, numbers and proper names stated in the narration, in spoken order."""
@@ -284,7 +299,9 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
                 errors.append(f'{time:.2f}s: text overlaps HISTOLD safe area')
         frame = np.asarray(Image.open(io.BytesIO(page.screenshot(type='png'))).convert('L').resize((108, 192)), dtype=float) / 255
         if previous is not None:
-            differences.append(float(np.mean(np.abs(frame - previous))))
+            # Share of pixels that visibly changed: a moving label or diagram counts even when
+            # the frame-wide mean barely moves (that mean rejected our own reference scene).
+            differences.append(float(np.mean(np.abs(frame - previous) > .04)))
         previous = frame
         visible_samples.append(page.evaluate("""() => [...document.querySelectorAll('.k-stage *, svg path, svg circle, svg rect, svg polygon')].some(e => {
           const r=e.getBoundingClientRect(); let visible=true;
@@ -615,6 +632,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
 
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
+    for i, html in scenes.items():  # keep the model's originals for diagnosing rejections
+        (scene_dir / f"scene_{i:02d}.claude.html").write_text(html, encoding="utf-8")
 
     clips: list[Path | None] = [None] * len(segs)
     report = {'schema_version': 1, 'scenes': {}, 'warnings': [], 'errors': [], 'recoveries': [],

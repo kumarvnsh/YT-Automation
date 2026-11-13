@@ -1,7 +1,9 @@
 """Regression: recovered scenes explained nothing and every one repeated the maps."""
 import unittest
 
-from src.claude_motion import bind_maps, ensure_opening_maps, house_scene, key_facts, summarize_motion
+import re
+
+from src.claude_motion import bind_maps, ensure_opening_maps, house_scene, key_facts, key_words, summarize_motion
 from src.map_assets import load_map
 
 
@@ -15,6 +17,17 @@ class SceneExplanationTests(unittest.TestCase):
         self.assertIn('house-fact', html)
         self.assertIn('3.1 million', html)
         self.assertNotIn('data-map-id', html)
+
+    def test_house_scene_without_facts_uses_key_words_not_dots(self):
+        html = house_scene('People kept using them for a very long time before the story ends.', [], 5.0)
+        self.assertEqual(key_words('And that is how the story ends.'), ['story'])
+        self.assertIn('house-fact', html)
+        self.assertNotIn('<circle', html)
+
+    def test_house_scene_beats_never_leave_a_lone_word(self):
+        html = house_scene('People kept using them for a very long time before the story ends.', [], 5.0)
+        beats = re.findall(r'class="house-beat"[^>]*>([^<]*)', html)
+        self.assertGreater(min(len(b.split()) for b in beats), 1)
 
     def test_bind_maps_drops_unvetted_map_instead_of_rejecting_scene(self):
         html = bind_maps('<div class="k-stage"><histold-map id="atlantis"></histold-map>1666</div>', [])
