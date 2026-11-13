@@ -2896,5 +2896,14 @@
     "slot": "evening",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_163615_508168_short",
+    "title": "Who Really Owned the Land Everyone Thought Was Public?",
+    "fingerprint": "everyone_land_owned_public_really_thought_was_who",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]

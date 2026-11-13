@@ -6226,5 +6226,31 @@
     "production_profile": 2,
     "facebook_id": "3639352506229011",
     "instagram_id": "18150819526488386"
+  },
+  {
+    "video_id": "yKweCJSpQUg",
+    "run_id": "43464024532",
+    "stage_dir_name": "20261113_163615_508168_short",
+    "title": "Who Really Owned the Land Everyone Thought Was Public?",
+    "published_at": "2026-11-13T16:43:27.398025+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 96,
+    "editorial_region": "europe",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "Common land was never owned by the public.",
+    "duration": 29.448,
+    "production_profile": 2,
+    "facebook_id": "3568280993342757",
+    "instagram_id": "17922363939460863"
   }
 ]
