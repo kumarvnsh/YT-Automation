@@ -2842,5 +2842,14 @@
     "slot": "morning",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_120416_817766_short",
+    "title": "Why Does the Rickshaw Carry a Japanese Name?",
+    "fingerprint": "carry_does_japanese_name_rickshaw",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]
