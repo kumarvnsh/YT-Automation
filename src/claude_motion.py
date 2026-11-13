@@ -101,6 +101,12 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
         cards = ('<div class="house-facts">' + cards + '</div>'
                  '<svg viewBox="0 0 460 40" aria-hidden="true"><path class="k-draw" pathLength="1" '
                  'd="M20 20H440" fill="none" stroke="var(--accent)" stroke-width="4" style="--t:' f'{duration:.2f}s"/></svg>')
+    if cards:
+        from .icon_assets import DEFAULTS, candidate_icons
+        icon = next((n for n in candidate_icons([narration], limit=1) if n not in DEFAULTS), None)
+        if icon:  # a matched illustration above the facts
+            cards = (f'<histold-icon name="{icon}" class="k-pop" style="width:150px;--d:.05s"></histold-icon>'
+                     + cards)
     # Abstract chronological diagram when no geographic asset or fact is available.
     art = placeholders or cards or ('<svg viewBox="0 0 460 220" aria-label="Narration progression">'
         '<path d="M30 110H430" fill="none" stroke="var(--bone)" stroke-width="6"/>'
@@ -123,7 +129,7 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
             'animation:house-outline 1.5s linear infinite}'
             '@keyframes house-outline{to{stroke-dashoffset:-56}}'
             '.house-facts{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}'
-            '.house-fact{max-width:460px;overflow-wrap:anywhere}'
+            '.house-fact{max-width:460px;overflow-wrap:anywhere}.house-art .k-icon{margin:0 auto 10px}'
             '.house-rail{height:8px;width:100%;background:var(--bone);overflow:hidden;flex-shrink:0}'
             '.house-rail::after{content:"";display:block;width:42%;height:100%;background:var(--accent);'
             'animation:house-progress 2s linear infinite alternate}'
@@ -190,6 +196,15 @@ page size, background, grain or vignette; just use it and add scene-specific CSS
 - Objects: .k-card (parchment card), .k-stamp (rotated red stamp), .k-rule, \
 .k-dot, .k-ring, .k-sil (silhouette fill for SVG).
 - Counter: <span class="k-count" style="--to:515"></span> counts 0→515.
+- Illustrations: <histold-icon name="NAME" class="k-pop" style="--d:.4s;width:150px;color:var(--gold)"></histold-icon> \
+inserts a vetted, detailed illustration (it fills currentColor). Use ONLY names from the per-video \
+icon list. Prefer them to hand-drawn SVG for people, objects, buildings, tools, animals and vehicles; \
+combine 2-4 into a small diagram. Never draw your own figurative SVG when an icon fits.
+- Explainer layouts (children reveal one by one every --gap, default .8s, starting at --d): \
+.k-steps (a process, 2-4 steps, arrows added), .k-cause (cause => effect, 2 children), \
+.k-compare (then/now or A/B, exactly 2 children), .k-timeline (2-4 children, each <b>date</b> + label). \
+Each child = one icon + one short .k-label. Use one whenever the narration explains how or why \
+something happened, a process, a change, a comparison or a sequence of dates.
 - Motion classes (stagger with style="--d:.4s", length with --t): k-rise, \
 k-fade, k-pop, k-wipe, k-slam (stamp; tilt via --r), k-draw (SVG stroke with \
 pathLength="1"), k-grow (bar scaleX), k-count, k-pan (slow camera move: \
@@ -418,6 +433,10 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      'while animating outlines, emphasis and story graphics from the first frame; do not wait '
                      'for a static establishing shot before starting the action. '
                      'Do not draw substitute map paths, invented routes or unsupported borders.')
+    from .icon_assets import candidate_icons
+    icons = candidate_icons([title] + [f"{seg.narration} {' '.join(seg.keywords)}" for seg in segs])
+    lines.append('Icon list for <histold-icon name="...">: ' + ', '.join(icons) +
+                 '. Aim for an icon or explainer layout in most scenes.')
     for i, (seg, (s, e)) in enumerate(zip(segs, windows)):
         lines.append(
             f"Segment {i} — beat: {seg.beat or 'n/a'} — duration: {e - s:.1f}s\n"
@@ -632,8 +651,9 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
     def prepare(html, index):
+        from .icon_assets import bind_icons
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
-        return apply_palette(html, palette)
+        return apply_palette(bind_icons(html)[0], palette)
 
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
@@ -702,6 +722,9 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     report['scenes'][str(i)] = inspection
                     print(f'  ✓ scene {i} recovered with local house template (was: {"; ".join(original_errors[:3])})')
             scenes = {i: prepare(html, i) for i, html in scenes.items()}
+            if any('class="k-icon' in html for html in scenes.values()):
+                from .icon_assets import CREDIT
+                st['credits'] = sorted(set(st.get('credits', [])) | {CREDIT})
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
             for i, (s, e) in enumerate(windows):
