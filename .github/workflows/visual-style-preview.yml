@@ -1,0 +1,48 @@
+name: Visual Style Preview
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/roman-style-previews]
+    paths:
+      - .github/workflows/visual-style-preview.yml
+      - scripts/roman_style_preview.py
+permissions:
+  contents: read
+jobs:
+  render-stills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          python -m pip install Pillow==11.3.0
+          npm install --prefix "$RUNNER_TEMP/histold-preview" hyperframes@0.9.41
+          "$RUNNER_TEMP/histold-preview/node_modules/.bin/hyperframes" browser ensure
+      - name: Render four still-image styles without publishing
+        run: |
+          python scripts/roman_style_preview.py --cli "$RUNNER_TEMP/histold-preview/node_modules/.bin/hyperframes"
+      - name: Upload PNGs, comparison sheet and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roman-hypocaust-four-styles
+          path: output/roman-style-preview/
+          retention-days: 7
+      - name: Summarize
+        if: always()
+        run: |
+          echo '## Roman hypocaust: four still-image styles' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Cinematic cutaway · Field journal · Editorial collage · Engineering blueprint' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No publishing credentials or paid generation APIs are used.' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f output/roman-style-preview/metrics.json ]; then
+            cat output/roman-style-preview/metrics.json >> "$GITHUB_STEP_SUMMARY"
+          fi
