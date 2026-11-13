@@ -110,11 +110,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 def effects(out,board):
  rate=24000;n=round(board['duration']*rate);rng=random.Random(27);samples=[];smooth=0
- fire=board['scenes'][1];air=board['scenes'][2];cut=[s['start'] for s in board['scenes'][1:]]
+ fire=board['scenes'][1];air=board['scenes'][2];cut=board.get('visual_cuts',[s['start'] for s in board['scenes'][1:]])
  for k in range(n):
   t=k/rate;noise=rng.uniform(-1,1);smooth=.96*smooth+.04*noise;v=0
   if fire['start']+.4<t<fire['end']-.2:v+=.035*smooth*(.5+.5*math.sin(t*13)**2)
-  elapsed=t-(air['start']+2.3)
+  elapsed=t-board.get('air_effect_start',air['start']+2.3)
   if 0<elapsed<2:v+=.022*smooth*math.sin(math.pi*elapsed/2)
   for moment in cut:
    dt=t-moment
@@ -126,7 +126,7 @@ def render(out,cli,gsap):
  start=time.monotonic();board=narrate(out);voice_seconds=time.monotonic()-start
  composition(out,board,gsap);captions(out,board);effects(out,board)
  with (out/'check.json').open('w') as log:subprocess.run([cli,'check',str(out),'--json'],stdout=log,check=True)
- with (out/'snapshot.log').open('w') as log:subprocess.run([cli,'snapshot',str(out),'--at',','.join(str(round((s['start']+s['end'])/2,3)) for s in board['scenes']),'--no-end','--output',str(out/'snapshots')],stdout=log,check=True)
+ with (out/'snapshot.log').open('w') as log:subprocess.run([cli,'snapshot',str(out),'--at',','.join(str(round(t,3)) for t in board.get('snapshot_times',[(s['start']+s['end'])/2 for s in board['scenes']])),'--no-end','--output',str(out/'snapshots')],stdout=log,check=True)
  start=time.monotonic()
  with (out/'render.log').open('w') as log:subprocess.run([cli,'render',str(out),'-o',str(out/'silent.mp4'),'--resolution','portrait','--fps','30','--crf','23','--workers','2','--no-browser-gpu','--experimental-fast-capture=false'],stdout=log,stderr=subprocess.STDOUT,check=True)
  render_seconds=time.monotonic()-start
