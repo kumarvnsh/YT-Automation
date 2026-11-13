@@ -6070,5 +6070,31 @@
     "production_profile": 2,
     "facebook_id": "1115689121079273",
     "instagram_id": "17911512870598829"
+  },
+  {
+    "video_id": "o2MACyaI07w",
+    "run_id": "43362696416",
+    "stage_dir_name": "20261113_040240_335818_short",
+    "title": "Why Did a Freedom Movement Put a Spinning Wheel on Its Flag?",
+    "published_at": "2026-11-13T04:09:36.670383+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 90,
+    "editorial_region": "india",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "concise",
+    "hook": "India's independence movement put a spinning wheel on its flag.",
+    "duration": 35.448,
+    "production_profile": 2,
+    "facebook_id": "1144509901363395",
+    "instagram_id": "18053617811623162"
   }
 ]
