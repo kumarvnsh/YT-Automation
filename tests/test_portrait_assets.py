@@ -24,7 +24,7 @@ def _api(license_name='Public domain', **entity):
         if 'wikidata' in url:
             return _entity(**entity)
         return {'query': {'pages': {'1': {'imageinfo': [{'thumburl': 'https://up/x.jpg', 'extmetadata': {
-            'LicenseShortName': {'value': license_name}, 'Artist': {'value': '<a href="#">Alix</a>'}}}]}}}}
+            'LicenseShortName': {'value': license_name}, 'Artist': {'value': '<a href="#">Alix</a><span>Alix</span>'}}}]}}}}
     return get
 
 

@@ -71,6 +71,7 @@ def fetch_portrait(person: dict, dest_dir: Path) -> dict | None:
     if not _OK_LICENSE.match(license_name.strip()):
         return None
     artist = re.sub(r'<[^>]+>', '', unescape((meta.get('Artist') or {}).get('value', 'Unknown'))).strip()[:80]
+    artist = re.sub(r'^(.+?)\s*\1$', r'\1', artist)  # Commons markup can repeat the text ("Unknown authorUnknown author")
     image = requests.get(info['thumburl'], headers=UA, timeout=30)
     image.raise_for_status()
     if not image.headers.get('content-type', '').startswith('image/'):
