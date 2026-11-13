@@ -2932,5 +2932,14 @@
     "slot": "morning",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_203018_554652_short",
+    "title": "Did Romans Ever Pump Water Across This Valley?",
+    "fingerprint": "across_did_ever_pump_romans_this_valley_water",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]
