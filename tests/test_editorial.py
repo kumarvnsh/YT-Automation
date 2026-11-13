@@ -7,7 +7,7 @@ from unittest.mock import patch
 from src.config import Config
 from src import pipeline
 from src.script_generator import _build_prompt, validate_structure
-from src.editorial import assignment, brief
+from src.editorial import assignment, brief, this_week
 
 
 class EditorialTests(unittest.TestCase):
@@ -25,6 +25,25 @@ class EditorialTests(unittest.TestCase):
         self.assertEqual(len({(r['region']['id'], r['series']['id'], r['duration_variant']) for r in rows}), 12)
         self.assertEqual([r['region']['id'] for r in rows[:4]], ['india', 'africa', 'india', 'africa'])
         self.assertEqual(sum(r['duration_variant'] == 'concise' for r in rows), 6)
+
+    def test_this_week_slot_is_weekly_uses_seeds_once_then_open_window(self):
+        from datetime import date
+        cfg = Config({'editorial': {'this_week': {'enabled': True, 'weekday': 6, 'slot': 'evening', 'window_days': 9,
+            'seeds': [{'date': '12-07', 'event': 'Pearl Harbor'}]}}})
+        sunday = date(2026, 11, 29)
+        self.assertIsNone(this_week(cfg, sunday, 'morning', []))
+        self.assertIsNone(this_week(cfg, date(2026, 11, 28), 'evening', []))
+        self.assertEqual(this_week(cfg, sunday, 'evening', [])['this_week']['event'], 'Pearl Harbor')
+        done = [{'editorial_series': 'This Week in History', 'this_week_event': 'Pearl Harbor',
+                 'published_at': '2026-11-29T16:05:00+00:00'}]
+        self.assertIsNone(this_week(cfg, sunday, 'evening', done))  # one episode per week
+        open_week = this_week(cfg, date(2026, 12, 6), 'evening', done)['this_week']
+        self.assertIsNone(open_week['event'])
+        self.assertEqual(open_week['end'], '2026-12-15')
+        editorial = {**assignment(self.config(), 0), **this_week(cfg, sunday, 'evening', [])}
+        text = brief(editorial, ['Old title'])
+        self.assertIn('Pearl Harbor', text)
+        self.assertIn('This Week in History', text)
 
     def test_brief_uses_evergreen_region_and_recent_topic_exclusions(self):
         text = brief(assignment(self.config(), 1), ['Old border story'])

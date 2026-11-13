@@ -55,15 +55,38 @@ editorial:
     - {id: "americas", label: "the Americas", guidance: "Include North, Central and South America and named Indigenous communities; retain existing US/Canada audience relevance"}
     - {id: "asia_pacific", label: "other Asian and Pacific countries", guidance: "Include the Philippines, Korea, Southeast Asia and Pacific communities; explain distinct cultures precisely"}
   series:
-    - id: "everyday_origins"
-      name: "You Use It Every Day"
-      direction: "The surprising documented history of food, words, objects, inventions or customs, including cross-cultural connections and daily life"
-    - id: "myth_evidence"
-      name: "History Got This Wrong"
-      direction: "A documented misconception or overlooked person; use evidence, avoid inventing a popular myth just to debunk it"
-    - id: "decisions"
-      name: "One Decision Changed Everything"
-      direction: "A verified choice or near-miss with an actual documented consequence; no invented alternate timelines or exaggerated sole-cause claims"
+    - id: "school_myths"
+      name: "Myths You Learned in School"
+      direction: "Something widely taught in classrooms or textbooks that the documented evidence contradicts; show where the myth came from; never invent a myth just to debunk it"
+    - id: "mistakes"
+      name: "Mistakes That Changed History"
+      direction: "A documented error, miscalculation or blunder with a verified consequence; no exaggerated sole-cause claims"
+    - id: "almost"
+      name: "History's Almost Moments"
+      direction: "A documented near-miss where events very nearly went differently, with evidence of how close it came; no invented alternate timelines"
+    - id: "erased"
+      name: "Erased From History"
+      direction: "A person, group or achievement left out of the usual story, with documented evidence of their role and of how they were overlooked"
+    - id: "unsolved"
+      name: "Unsolved"
+      direction: "A genuine open historical question; give the documented evidence and the leading explanations fairly, say plainly it is unresolved, and make the strongest current evidence the payoff; never present speculation as fact"
+    - id: "weird_dark"
+      name: "Weird and Dark History"
+      direction: "A strange or grim but documented practice or event; respectful to victims, no gore, no sensationalism, platform-safe"
+  # Weekly anniversary slot: overrides the rotation once a week (weekday 6 = Sunday,
+  # evening = 9:30pm IST, Sunday morning in the US). Picks the first unused seed whose
+  # date falls in the next window_days, else lets research pick a well-sourced anniversary.
+  this_week:
+    enabled: true
+    name: "This Week in History"
+    weekday: 6
+    slot: "evening"
+    window_days: 9
+    direction: "Explain what happened, why it mattered, and one documented detail most people do not know."
+    seeds:
+      - {date: "2026-11-26", event: "the 1621 harvest feast at Plymouth often called the first Thanksgiving, and how the holiday took shape"}  # US Thanksgiving moves yearly
+      - {date: "12-07", event: "the attack on Pearl Harbor, 7 December 1941"}
+      - {date: "12-24", event: "the 1914 Christmas truce on the Western Front"}
   duration_variants:
     - {id: "concise", seconds: 30}
     - {id: "story", seconds: 50}

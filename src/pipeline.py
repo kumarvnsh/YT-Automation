@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import json
 import copy
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 from .config import Config, base_dir, env
@@ -106,6 +106,11 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
                         and isinstance(e.get('editorial_slot'), int) and not e.get('editorial_preview')]
             ordinal = max(occupied, default=-1) + 1
             editorial = assignment(cfg, ordinal)
+            from .editorial import this_week
+            weekly = this_week(cfg, date.today(), state['slot'], entries)
+            if weekly:
+                editorial.update(weekly)
+                state['this_week_event'] = weekly['this_week'].get('event')
             state.update(editorial=editorial, editorial_slot=ordinal, editorial_preview=dry_run,
                          editorial_region=editorial['region']['id'], editorial_series=editorial['series']['name'],
                          duration_variant=editorial['duration_variant'], category=editorial['series']['id'])
@@ -682,6 +687,7 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             'editorial_slot': st.get('editorial_slot'),
             'editorial_region': st.get('editorial_region'),
             'editorial_series': st.get('editorial_series'),
+            'this_week_event': st.get('this_week_event'),
             'duration_variant': st.get('duration_variant'),
             'hook': (st.get('script', {}).get('segments') or [{}])[0].get('narration'),
             'duration': st.get('voiceover', {}).get('duration'),

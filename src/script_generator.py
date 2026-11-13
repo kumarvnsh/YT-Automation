@@ -240,6 +240,9 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     if editorial and fmt == 'short':
         structure_block += ('\nFacebook is the primary audience. Recurring series: ' + editorial['series']['name'] +
                             '. Make the video independently satisfying; never send viewers away to YouTube.')
+        if editorial.get('this_week'):
+            structure_block += ('\nThis is a weekly anniversary episode: hook with the surprising detail, then say the '
+                                'anniversary date naturally in the setup segment so viewers know why it is this week.')
         if editorial.get('follow_cta'):
             structure_block += '\nAfter delivering the payoff, add this brief invitation within the final segment: "Follow for more surprising world history." Count it in the narration budget.'
         elif editorial.get('discussion_question'):
