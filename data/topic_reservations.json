@@ -2851,5 +2851,14 @@
     "slot": "evening",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_145854_921473_short",
+    "title": "What Was Hiding in Your Toothbrush's Ancestor?",
+    "fingerprint": "ancestor_hiding_s_toothbrush_was_what_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]

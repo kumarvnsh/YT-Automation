@@ -6148,5 +6148,31 @@
     "production_profile": 2,
     "facebook_id": "1666292718242876",
     "instagram_id": "17955933135289171"
+  },
+  {
+    "video_id": "sSDW2obwQ2U",
+    "run_id": "43447535980",
+    "stage_dir_name": "20261113_145854_921473_short",
+    "title": "What Was Hiding in Your Toothbrush's Ancestor?",
+    "published_at": "2026-11-13T15:08:33.427755+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "myth_evidence",
+    "editorial_slot": 93,
+    "editorial_region": "china",
+    "editorial_series": "History Got This Wrong",
+    "duration_variant": "story",
+    "hook": "Your toothbrush's early ancestor was bristled with hair from a pig's neck.",
+    "duration": 49.416,
+    "production_profile": 2,
+    "facebook_id": "1886470122522389",
+    "instagram_id": "18130487939307583"
   }
 ]
