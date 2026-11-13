@@ -16,7 +16,7 @@ class ThreeMotionTests(unittest.TestCase):
   p=plan();p['shots']=p['shots'][:2]
   with self.assertRaisesRegex(ValueError,'shot'):validate_plan(p,10)
  def test_rejects_bad_geometry_and_unbounded_parameters(self):
-  for key,value in [('kind','script'),('size',[1,-2,1]),('position',[0,float('nan'),0]),('spans',10000)]:
+  for key,value in [('kind','script'),('size',[1,-2,1]),('position',[0,float('nan'),0]),('position',[0,600,0]),('spans',10000)]:
    with self.subTest(key=key):
     p=plan();p['objects'][0][key]=value
     with self.assertRaises(ValueError):validate_plan(p,10)
@@ -30,6 +30,11 @@ class ThreeMotionTests(unittest.TestCase):
   with self.assertRaises(ValueError):validate_plan(p,10)
   p=plan();p['shots'][0]['start']=.4
   with self.assertRaises(ValueError):validate_plan(p,10)
+ def test_clamps_animation_past_end_and_names_bad_field(self):
+  p=plan();p['animations']=[{'object':'bridge','property':'rotation','axis':'y','start':0,'end':10.2,'from':0,'to':1}]
+  self.assertEqual(validate_plan(p,10)['animations'][0]['end'],10)
+  p=plan();p['shots'][1]['fov']=120
+  with self.assertRaisesRegex(ValueError,r'shots\[1\]\.fov'):validate_plan(p,10)
  def test_sampled_blank_or_stationary_visuals_fail_publication(self):
   self.assertTrue(inspection_errors([0,0,0],[0,0],[0,.5,1]))
   self.assertTrue(inspection_errors([.02,.02,.02],[0,0],[0,.5,1]))

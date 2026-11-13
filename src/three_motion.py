@@ -8,13 +8,13 @@ from .alignment import narration_hash
 KINDS={'box','sphere','cylinder','cone','torus','plane','arch_bridge','building','water_channel','wheel','person','tree','boat','bowl','flow'}
 ROOT=Path(__file__).resolve().parents[1]
 
-def _number(value,low=-200,high=200):
- if isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) or not low<=value<=high:raise ValueError('Invalid bounded numeric value')
+def _number(value,low=-500,high=500,name='value'):
+ if isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) or not low<=value<=high:raise ValueError(f'{name}={value!r} must be a number in [{low}, {high}]')
  return value
 
-def _vector(value,positive=False):
- if not isinstance(value,list) or len(value)!=3:raise ValueError('Expected three numeric coordinates')
- return [_number(x,.005 if positive else -200,200) for x in value]
+def _vector(value,positive=False,name='vector'):
+ if not isinstance(value,list) or len(value)!=3:raise ValueError(f'{name}={value!r} must be three numbers')
+ return [_number(x,.005 if positive else -500,500,name) for x in value]
 
 def validate_plan(data:dict,duration:float)->dict:
  """Reject malformed/unbounded geometry and static or incomplete camera plans."""
@@ -28,34 +28,38 @@ def validate_plan(data:dict,duration:float)->dict:
   if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_-]{0,39}',ident) or ident in ids:raise ValueError('Invalid or duplicate object id')
   ids.add(ident)
   if obj.get('kind') not in KINDS:raise ValueError('Unsupported geometry kind')
-  obj['position']=_vector(obj.get('position',[0,0,0]));obj['rotation']=_vector(obj.get('rotation',[0,0,0]))
-  obj['size']=_vector(obj.get('size',[1,1,1]),True)
+  obj['position']=_vector(obj.get('position',[0,0,0]),name=f'{ident}.position');obj['rotation']=_vector(obj.get('rotation',[0,0,0]),name=f'{ident}.rotation')
+  obj['size']=_vector(obj.get('size',[1,1,1]),True,f'{ident}.size')
   if not re.fullmatch(r'#[0-9a-fA-F]{6}',obj.get('color','#b79570')):raise ValueError('Invalid geometry color')
   for key,maximum in [('spans',12),('tiers',3),('count',80)]:
    if key in obj and (type(obj[key]) is not int or not 1<=obj[key]<=maximum):raise ValueError(f'Unbounded {key}')
   if obj['kind']=='flow':
    pts=obj.get('points')
    if not isinstance(pts,list) or not 2<=len(pts)<=24:raise ValueError('Flow needs a bounded path')
-   for v in pts:_vector(v)
-   _number(obj.get('speed',.20),.01,2);_number(obj.get('radius',.025),.005,.15)
+   for v in pts:_vector(v,name=f'{ident}.points')
+   _number(obj.get('speed',.20),.01,2,f'{ident}.speed');_number(obj.get('radius',.025),.005,.15,f'{ident}.radius')
  if not isinstance(shots,list) or not 2<=len(shots)<=28:raise ValueError('Missing camera shots')
  for i,shot in enumerate(shots):
-  start=_number(shot.get('start'),0,duration)
+  start=_number(shot.get('start'),0,duration,f'shots[{i}].start')
   if (i==0 and start!=0) or (i and start<=shots[i-1]['start']):raise ValueError('Camera shots must cover the timeline from zero')
   end=shots[i+1]['start'] if i+1<len(shots) else duration
   if not isinstance(end,(int,float)) or not .3<=end-start<=4.5:raise ValueError('Each camera shot must be 0.3–4.5 seconds')
-  for k in ('from','to','look'):_vector(shot.get(k))
-  _vector(shot.get('lookTo',shot['look']))
+  for k in ('from','to','look'):_vector(shot.get(k),name=f'shots[{i}].{k}')
+  _vector(shot.get('lookTo',shot['look']),name=f'shots[{i}].lookTo')
   distance=math.dist(shot['from'],shot['look'])
   if distance<.1 or math.dist(shot['from'],shot['to'])<max(.12,.035*distance):raise ValueError('Each camera must visibly travel through the scene')
-  _number(shot.get('fov',50),30,78)
+  _number(shot.get('fov',50),30,78,f'shots[{i}].fov')
   if len(str(shot.get('cue','')))>36 or len(str(shot.get('note','')))>85:raise ValueError('Camera labels must be brief')
  for a in p.get('animations',[]):
   if a.get('object') not in ids:raise ValueError('Unknown animation target')
   if a.get('property') not in ('position','rotation','scale') or a.get('axis') not in ('x','y','z'):raise ValueError('Invalid animation property')
-  start=_number(a.get('start'),0,duration);end=_number(a.get('end'),0,duration)
+  for k in ('start','end'):  # models round the final time up past the clip; clamp, don't reject
+   if isinstance(a.get(k),(int,float)) and not isinstance(a.get(k),bool) and math.isfinite(a[k]):a[k]=min(max(a[k],0),duration)
+  n=f"animation {a.get('object')}.{a.get('property')}.{a.get('axis')}"
+  start=_number(a.get('start'),0,duration,n+'.start');end=_number(a.get('end'),0,duration,n+'.end')
   if end<=start:raise ValueError('Invalid animation time window')
-  _number(a.get('from'),.005 if a['property']=='scale' else -200,200);_number(a.get('to'),.005 if a['property']=='scale' else -200,200)
+  low=.005 if a['property']=='scale' else -500
+  _number(a.get('from'),low,500,n+'.from');_number(a.get('to'),low,500,n+'.to')
  if len(p.get('animations',[]))>100:raise ValueError('Too many animations')
  return p
 
@@ -73,7 +77,7 @@ def inspection_errors(foreground,differences,times):
 SYSTEM='''You are the production 3D visual director for HISTOLD history Shorts. Return ONE JSON object only, no code. Design a coherent, historically responsible LOW-POLY 3D reconstruction with moving objects and strong depth. The viewer must discover mechanisms, objects, people or consequences, not read posters. Camera framing changes every 1.5–3.5 seconds; no shot >4.5 seconds. Each shot has genuine camera travel (at least 5% of camera-to-target distance), purposeful close-ups and wide reveals, subject large in portrait framing (9:16). Keep key action above the bottom 18% where subtitles go. All diagrams are illustrative, never archival evidence. Do not invent geography/borders or imply an exact reconstruction. Do not add historical claims beyond narration.
 Schema:
 {"objects":[{"id":"unique_id","kind":"box","position":[0,0,0],"size":[2,2,2],"rotation":[0,0,0],"color":"#b79570"}],"shots":[{"start":0,"from":[7,5,10],"to":[5,4,8],"look":[0,1,0],"lookTo":[0,1,0],"fov":50,"cue":"TWO OR THREE WORDS","note":"optional very short label"}],"animations":[{"object":"unique_id","property":"rotation","axis":"y","start":0,"end":5,"from":0,"to":3.14}]}
-Allowed object kinds: box, sphere, cylinder, cone, torus, plane; composite arch_bridge, building, water_channel, wheel, person, tree, boat, bowl; flow. Sizes are world width/height/depth. Position is world coordinates, rotations in radians. Y is UP; ground at y=0. Composites are centered horizontally and rest on y=0 before position offset, EXCEPT primitives centered in all axes. arch_bridge: size width/total height/depth; optional spans 1–12, tiers 1–3; arches support an open water channel on top at height +0.2; cross-section is schematic. water_channel is a U-shaped conduit with water, size width along X/side-wall height/depth. wheel has axle along Z and rotates around Z. building has a cutaway roof and front, person is an anonymous stylized figure, boat length along X. Use color palettes stone/terracotta/teal/water cyan. Use geometry to tell the story; do not make unrelated cubes stand for named artifacts. No electricity motifs for periods before electricity. A flow object uses points [[x,y,z],...] relative to its position, color, speed 0.01–2 cycles/s, radius .005–.15, count 1–80; flowing particles are schematic route markers. Keep flow radius <=.025 for close cameras. A flow path must obey mechanism (water runs DOWNHILL, gas exits a flue, never into an occupied room). Each object's id is unique. 1–160 objects, <=100 animations. Detailed dioramas can combine many primitives. Avoid only one generic abstract block for the whole topic. Include at least 8 purposeful shots for a 30s video; shots start at 0, sorted; the last extends to the supplied duration. Brief cues disappear; no persistent headline layout. Explicitly calculate camera view distance so subject fits portrait; a 10-unit-wide subject needs ~20 units of camera distance at FOV50, close-ups need 2–6 units. Never place camera inside solid geometry. Close camera movement should pass through empty corridors. Keep every shot visibly populated. Animations are absolute-time linear interpolations; multiple animations for an object's axis must chain to the previous ending value. Build a complete scene, then reveal/explain the relevant parts. Use source notes only as context; narration is the approved spoken story.'''
+Allowed object kinds: box, sphere, cylinder, cone, torus, plane; composite arch_bridge, building, water_channel, wheel, person, tree, boat, bowl; flow. Sizes are world width/height/depth. Every coordinate, size and animation value must stay within ±500. Position is world coordinates, rotations in radians. Y is UP; ground at y=0. Composites are centered horizontally and rest on y=0 before position offset, EXCEPT primitives centered in all axes. arch_bridge: size width/total height/depth; optional spans 1–12, tiers 1–3; arches support an open water channel on top at height +0.2; cross-section is schematic. water_channel is a U-shaped conduit with water, size width along X/side-wall height/depth. wheel has axle along Z and rotates around Z. building has a cutaway roof and front, person is an anonymous stylized figure, boat length along X. Use color palettes stone/terracotta/teal/water cyan. Use geometry to tell the story; do not make unrelated cubes stand for named artifacts. No electricity motifs for periods before electricity. A flow object uses points [[x,y,z],...] relative to its position, color, speed 0.01–2 cycles/s, radius .005–.15, count 1–80; flowing particles are schematic route markers. Keep flow radius <=.025 for close cameras. A flow path must obey mechanism (water runs DOWNHILL, gas exits a flue, never into an occupied room). Each object's id is unique. 1–160 objects, <=100 animations. Detailed dioramas can combine many primitives. Avoid only one generic abstract block for the whole topic. Include at least 8 purposeful shots for a 30s video; shots start at 0, sorted; the last extends to the supplied duration. Brief cues disappear; no persistent headline layout. Explicitly calculate camera view distance so subject fits portrait; a 10-unit-wide subject needs ~20 units of camera distance at FOV50, close-ups need 2–6 units. Never place camera inside solid geometry. Close camera movement should pass through empty corridors. Keep every shot visibly populated. Animations are absolute-time linear interpolations; multiple animations for an object's axis must chain to the previous ending value. Build a complete scene, then reveal/explain the relevant parts. Use source notes only as context; narration is the approved spoken story.'''
 
 def generate_plan(cfg,st,duration):
  import anthropic
