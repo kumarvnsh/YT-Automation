@@ -81,7 +81,7 @@ research:
       - "https://www.vam.ac.uk/articles/indian-textiles/"
       - "https://www.vam.ac.uk/blog/fabric-of-india/guest-post-indian-chintz-a-legacy-of-luxury"
   publisher_aliases: {"qdl.qa": "qnl.qa"}  # related collections do not count as independent corroboration
-  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa", "dpm.org.cn", "chnmuseum.cn", "vam.ac.uk", "britishmuseum.org"]
+  authoritative_domains: ["loc.gov", "archives.gov", "si.edu", "nps.gov", "history.state.gov", "canada.ca", "statcan.gc.ca", "mnhs.org", "historylink.org", "noaa.gov", "usgs.gov", "nasa.gov", "nationalarchives.gov.uk", "bl.uk", "iwm.org.uk", "nationalarchives.nic.in", "nich.go.jp", "nationalarchives.gov.za", "museums.or.ke", "hermitagemuseum.org", "qdl.qa", "qnl.qa", "dpm.org.cn", "chnmuseum.cn", "vam.ac.uk", "britishmuseum.org", "whc.unesco.org", "pontdugard.fr"]
 
 audio_quality:
   silence_db: -40
@@ -179,6 +179,17 @@ video:
   # Failed scenes fall back to stock. "broll" = previous stock/AI-image look.
   # VIDEO_MODE env overrides this for a single run.
   mode: "claude_motion"
+  # Persistent GitHub switch: python -m src.visual_mode on/off.
+  three_d:
+    enabled: true
+    camera_shot_seconds: 2.5
+    render_workers: 2
+    render_scale: 1
+    captions:
+      font: "Arial"
+      fontsize_short: 58
+      outline: 3
+      margin_bottom: 220
   claude_motion:
     model: "claude-haiku-5-5"  # A/B on 2026-10-22: matches Sonnet visuals at ~$0.009 vs ~$0.044
     effort: "medium"           # Haiku "low" looked bare (blank panels, template fallbacks)

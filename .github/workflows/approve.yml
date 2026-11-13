@@ -12,7 +12,7 @@ on:
         type: string
         required: true
       source_run_id:
-        description: "The publish.yml run ID that rendered this draft"
+        description: "Draft run ID, or latest approval run ID when retrying partial publication"
         type: string
         required: true
       privacy_status:
@@ -34,6 +34,10 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
       YOUTUBE_CLIENT_SECRET_FILE: secrets/client_secret.json
+      META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
+      GITHUB_REPOSITORY: ${{ github.repository }}
+      PRESERVE_STAGE_ARTIFACT: "true"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,7 +75,7 @@ jobs:
         env:
           PUBLISH_SCHEDULED: "false"
           PUBLISH_WORKFLOW: approve
-          # Reposts must download the original draft artifact, not this approval run.
+          # Index the current source artifact; retries must use the latest saved state.
           PUBLISH_ARTIFACT_RUN_ID: ${{ inputs.source_run_id }}
         run: |
           PRIVACY="${{ inputs.privacy_status }}"
@@ -104,3 +108,14 @@ jobs:
           else
             echo "No changes to commit."
           fi
+
+      # Retry using this approval run's artifact to retain already-published IDs.
+      # Reusing the original draft after partial publication can duplicate posts.
+      - name: Preserve publication state for safe retries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-${{ inputs.stage_dir_name }}
+          path: output/${{ inputs.stage_dir_name }}
+          retention-days: 14
+          if-no-files-found: ignore

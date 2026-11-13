@@ -78,6 +78,7 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
     target = ["script"] if dry_run else list(STEP_ORDER)
     state = {
         "fmt": fmt,
+        "visual_mode": _effective_mode(cfg, fmt),
         "created": ts,
         "job_id": f"{ts}_{fmt}",
         "slot": env("PUBLISH_SLOT", "manual"),
@@ -213,17 +214,23 @@ def _rebuild_assets(stage: Path, state: dict):
     return [[Asset(stage / p, is_video, [])] for p, is_video in stored]
 
 
-def _effective_mode(cfg: Config, fmt: str) -> str:
+def _effective_mode(cfg: Config, fmt: str, st: dict | None = None) -> str:
     """Visual mode for this format. Long-form always b-roll (mascot render too heavy).
 
     Shorts honor config video.mode: 'broll' | 'mascot' | 'captions_only'.
     """
     if fmt != "short":
         return "broll"
-    # VIDEO_MODE env overrides config so a single run can A/B a mode.
+    if st is not None and st.get("visual_mode"):
+        return st["visual_mode"]
+    # Only new stages opt into 3D; old checkpoints keep their original behavior.
+    toggle = env("VIDEO_3D")
+    enabled = (toggle.lower() in ("on", "true", "1")) if toggle is not None else cfg.get("video.three_d.enabled", False)
+    if st is None and cfg.get("video.three_d.enabled", False) and enabled and not env("VIDEO_MODE"):
+        return "three_motion"
     mode = env("VIDEO_MODE") or cfg.get("video.mode", "broll")
     return mode if mode in ("broll", "mascot", "captions_only", "motion_graphics",
-                            "stopmotion", "claude_motion") else "broll"
+                            "stopmotion", "claude_motion", "three_motion") else "broll"
 
 
 def _step_script(cfg: Config, stage: Path, st: dict) -> None:
@@ -351,9 +358,15 @@ def _step_captions(cfg: Config, stage: Path, st: dict) -> None:
     from .tts import WordTiming
 
     words = [WordTiming(*w) for w in st["voiceover"]["words"]]
-    mode = _effective_mode(cfg, st["fmt"])
+    mode = _effective_mode(cfg, st["fmt"], st)
     position = {"mascot": "top", "captions_only": "center",
                 "motion_graphics": "center"}.get(mode, "bottom")
+    if mode == "three_motion":
+        data = copy.deepcopy(cfg.raw)
+        data.setdefault("video", {}).setdefault("captions", {}).update(
+            cfg.get("video.three_d.captions", {"fontsize_short": 58, "outline": 3})
+        )
+        cfg = Config(data)
     build_ass(
         cfg,
         words,
@@ -368,7 +381,7 @@ def _step_captions(cfg: Config, stage: Path, st: dict) -> None:
 def _step_assets(cfg: Config, stage: Path, st: dict) -> None:
     # captions_only / motion_graphics need no footage; claude_motion fetches
     # stock only for segments whose scene fails, at render time.
-    if _effective_mode(cfg, st["fmt"]) in ("captions_only", "motion_graphics", "claude_motion"):
+    if _effective_mode(cfg, st["fmt"], st) in ("captions_only", "motion_graphics", "claude_motion", "three_motion"):
         st["assets"] = []
         return
     from .assets import fetch_for_segments
@@ -389,7 +402,7 @@ def _step_render(cfg: Config, stage: Path, st: dict) -> None:
     duration = st["voiceover"]["duration"]
     assets = _rebuild_assets(stage, st)
     words = [WordTiming(*w) for w in st["voiceover"]["words"]]
-    mode = _effective_mode(cfg, st["fmt"])
+    mode = _effective_mode(cfg, st["fmt"], st)
 
     if mode == "mascot":
         from .mascot import render_overlay
@@ -406,6 +419,18 @@ def _step_render(cfg: Config, stage: Path, st: dict) -> None:
         from .motion import render_motion_video
 
         render_motion_video(cfg, duration, st["fmt"], stage / "silent.mp4")
+    elif mode == "three_motion":
+        from .three_motion import render_motion_video as render_three_motion
+
+        try:
+            render_three_motion(cfg, st, stage, words, duration)
+        except Exception as exc:  # noqa: BLE001 - a 3D failure must not cost the daily slot
+            print(f"  ! 3D render failed ({exc}); falling back to claude_motion")
+            st["render_fallback"] = str(exc)
+            st["visual_mode"] = "claude_motion"
+            from .claude_motion import render_motion_video as render_claude_motion
+
+            render_claude_motion(cfg, st, stage, words, duration)
     elif mode == "claude_motion":
         from .claude_motion import render_motion_video as render_claude_motion
 
@@ -422,7 +447,7 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
     vo = stage / "voiceover.mp3"
     out = stage / "video.mp4"
 
-    if _effective_mode(cfg, st["fmt"]) == "mascot":
+    if _effective_mode(cfg, st["fmt"], st) == "mascot":
         vb.compose_overlay(cfg, stage / "bg.mp4", stage / "owl.mov", vo, ass, out, stage, base_dir())
     else:
         vb.finalize(cfg, stage / "silent.mp4", vo, ass, out, stage, base_dir())
@@ -432,7 +457,8 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
 def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
     from .quality_gate import validate_stage
 
-    if not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
+    three_d = st.get("visual_mode") == "three_motion"
+    if not three_d and not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
         st["quality"] = {"passed": True, "skipped": True, "score": 100, "checks": {}, "errors": []}
         return
     report = validate_stage(cfg, stage, st)
@@ -444,6 +470,8 @@ def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
         failed = ", ".join(
             name for name, status in report["checks"].items() if status == "fail"
         )
+        if three_d:
+            raise RuntimeError(f"3D quality checks failed: {failed}; see quality.json")
         # Warn only: the video is already paid for, so it publishes anyway.
         print(f"  ! quality checks flagged: {failed}; continuing — see quality.json")
 
@@ -462,13 +490,18 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
     if st.get('credits'):  # licence attribution for library art used in the video (CC BY)
         sc = {**sc, 'description': sc['description'].rstrip() + '\n\n' + '\n'.join(st['credits'])}
     facebook_primary = (st.get('fmt') == 'short' and cfg.get('meta.primary', False))
+
+    def save_meta(results: dict) -> None:
+        # Persist each platform ID as it lands so a crash/retry never re-posts.
+        st['meta'] = results
+        save_state(stage, st)
     if facebook_primary:
         if not cfg.get('meta.enabled') or not cfg.get('meta.post_to_facebook') or not cfg.get('meta.page_id'):
             raise RuntimeError('Facebook primary publishing requires Meta enabled and a Facebook Page')
         from .meta_uploader import publish_reel
-        if not st.get('meta', {}).get('facebook'):
-            st['meta'] = publish_reel(cfg, stage / 'video.mp4', sc['title'], sc['description'],
-                                      existing_results=st.get('meta'))
+        # Idempotent: skips platforms already in st['meta'], retries the rest.
+        st['meta'] = publish_reel(cfg, stage / 'video.mp4', sc['title'], sc['description'],
+                                  existing_results=st.get('meta'), on_progress=save_meta)
         if not st.get('meta', {}).get('facebook'):
             raise RuntimeError('Facebook primary upload failed: ' + st.get('meta', {}).get('facebook_error', 'No Reel ID returned'))
         _record_published(cfg, stage, st)
@@ -495,7 +528,8 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         from .meta_uploader import publish_reel
 
         try:
-            st["meta"] = publish_reel(cfg, stage / "video.mp4", sc["title"], sc["description"])
+            st["meta"] = publish_reel(cfg, stage / "video.mp4", sc["title"], sc["description"],
+                                      existing_results=st.get("meta"), on_progress=save_meta)
         except Exception as exc:  # noqa: BLE001
             print(f"  ! Meta cross-post skipped: {exc}")
             st["meta_error"] = str(exc)

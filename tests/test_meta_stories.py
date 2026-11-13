@@ -40,6 +40,35 @@ class MetaStoriesTests(unittest.TestCase):
         self.assertEqual(results['facebook'], 'fb1')
         self.assertEqual(results['facebook_story_error'], 'boom')
 
+    def test_progress_saves_every_result_before_next_publication(self):
+        snapshots = []
+        mu.publish_reel(_cfg(), Path('v.mp4'), 'T', 'D',
+                        on_progress=lambda result: snapshots.append(result))
+        self.assertEqual(snapshots[0], {'facebook': 'fb1'})
+        self.assertEqual(len(snapshots), 4)
+        self.assertIn('facebook_story', snapshots[-1])
+
+    def test_instagram_failure_preserves_facebook_and_reports_error(self):
+        self.ig.side_effect = RuntimeError('IG unavailable')
+        snapshots = []
+        result = mu.publish_reel(_cfg(stories=False), Path('v.mp4'), 'T', 'D',
+                                on_progress=lambda result: snapshots.append(result))
+        self.assertEqual(result['facebook'], 'fb1')
+        self.assertEqual(result['instagram_error'], 'IG unavailable')
+        self.assertEqual(snapshots[-1], result)
+
+    def test_persistence_failure_stops_before_next_platform(self):
+        with self.assertRaisesRegex(RuntimeError, 'disk full'):
+            mu.publish_reel(_cfg(), Path('v.mp4'), 'T', 'D',
+                            on_progress=lambda result: (_ for _ in ()).throw(RuntimeError('disk full')))
+        self.ig.assert_not_called()
+
+    def test_retry_facebook_success_instagram_failure_only_posts_missing(self):
+        result = mu.publish_reel(_cfg(stories=False), Path('v.mp4'), 'T', 'D',
+                                 existing_results={'facebook': 'fb1', 'instagram_error': 'offline'})
+        mu._publish_facebook_reel.assert_not_called()
+        self.assertEqual(result, {'facebook': 'fb1', 'instagram': 'ig1'})
+
     def test_meta_retry_posts_only_missing_story(self):
         done = {'facebook': 'fb1', 'instagram': 'ig1', 'instagram_story': 'igs1'}
         results = mu.publish_reel(_cfg(), Path('v.mp4'), 'T', 'D', existing_results=done)

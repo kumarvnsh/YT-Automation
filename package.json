@@ -1,0 +1,7 @@
+{
+  "name": "histold-rendering",
+  "private": true,
+  "description": "Pinned local render dependencies for optional daily 3D Shorts",
+  "engines": {"node": ">=22"},
+  "dependencies": {"hyperframes": "0.9.41", "three": "0.187.0"}
+}

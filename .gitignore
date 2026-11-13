@@ -31,3 +31,6 @@ venv/
 # Local dashboard earnings imports
 data/private/
 **/data/private/
+
+# Local video rendering dependencies
+node_modules/

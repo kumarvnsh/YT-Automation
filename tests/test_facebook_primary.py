@@ -28,7 +28,9 @@ class FacebookPrimaryTests(unittest.TestCase):
     def test_facebook_publishes_first_and_successful_ids_are_reused_on_retry(self):
         state = self.state()
         order = []
-        def facebook(*args, **kwargs):
+        def facebook(*args, existing_results=None, **kwargs):
+            if (existing_results or {}).get('facebook'):  # real publish_reel skips done platforms
+                return existing_results
             order.append('facebook')
             return {'facebook': 'fb-id'}
         def youtube(*args, **kwargs):
@@ -52,7 +54,6 @@ class FacebookPrimaryTests(unittest.TestCase):
             self.assertEqual(index[0]['video_id'], 'yt-id')
             self.assertEqual(index[0]['facebook_id'], 'fb-id')
         self.assertEqual(order, ['facebook', 'youtube', 'youtube'])
-        self.assertEqual(fb.call_count, 1)
 
     def test_facebook_caption_is_short_relevant_and_has_no_youtube_promotion(self):
         cfg = self.cfg()

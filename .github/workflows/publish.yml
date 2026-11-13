@@ -50,6 +50,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
+      VIDEO_3D: ${{ vars.HISTOLD_3D || 'off' }}
+      VIDEO_MODE: ${{ vars.VIDEO_MODE }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -125,6 +127,16 @@ jobs:
           python-version: "3.11"
           cache: pip
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install pinned 3D renderer
+        run: |
+          npm ci
+          echo "HYPERFRAMES_CLI=$GITHUB_WORKSPACE/node_modules/.bin/hyperframes" >> "$GITHUB_ENV"
+
       - name: Install ffmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
@@ -151,11 +163,9 @@ jobs:
         if: steps.kokoro_setup.outcome == 'failure'
         run: echo 'Kokoro setup failed; narration will use the Edge fallback.'
 
-      - name: Install Chromium (claude_motion mode only)
-        run: |
-          if grep -q 'mode: "claude_motion"' config.yaml || [ "${VIDEO_MODE:-}" = claude_motion ]; then
-            python -m playwright install --with-deps chromium
-          fi
+      # Both 2D scenes and HyperFrames use Chromium.
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
 
       - name: Reconstruct YouTube credentials
         env:

@@ -223,7 +223,7 @@ def _publish_facebook_story(token: str, page_id: str, video_url: str, ver: str) 
 
 
 def _publish_stories(cfg: Config, token: str, page_id: str, ig_user_id: str, url: str,
-                     ver: str, results: dict) -> None:
+                     ver: str, results: dict, on_progress=None) -> None:
     """Share the just-posted Reel's video to Stories too. Best-effort and idempotent."""
     if not cfg.get('meta.stories', False):
         return
@@ -240,6 +240,8 @@ def _publish_stories(cfg: Config, token: str, page_id: str, ig_user_id: str, url
         except Exception as exc:  # noqa: BLE001 - a Story must never fail the Reel
             print(f"  ! {key} failed: {exc}")
             results[f'{key}_error'] = str(exc)
+        if on_progress is not None:
+            on_progress(dict(results))
 
 
 # --------------------------------------------------------------------------- #
@@ -279,8 +281,11 @@ def _build_caption(cfg: Config, title: str, description: str, *, platform='insta
 # --------------------------------------------------------------------------- #
 # public entrypoint
 # --------------------------------------------------------------------------- #
-def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *, existing_results=None) -> dict:
+def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *, existing_results=None, on_progress=None) -> dict:
     """Cross-post the rendered short to FB and/or IG. Returns per-platform ids.
+
+    on_progress receives a snapshot after each platform attempt, before the next.
+    Callback failures abort publishing so unpersisted success is never ignored.
 
     Best-effort: raises on hard config/host errors, but the caller treats a
     per-platform failure as non-fatal so a YouTube upload is never blocked.
@@ -309,7 +314,11 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
                 results.pop('facebook_error', None)
             except Exception as exc:
                 results['facebook_error'] = str(exc)
+                if on_progress is not None:
+                    on_progress(dict(results))
                 return results
+            if on_progress is not None:
+                on_progress(dict(results))
         if need_instagram:
             try:
                 caption = _build_caption(cfg, title, description)
@@ -318,6 +327,8 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Instagram cross-post failed: {exc}")
                 results["instagram_error"] = str(exc)
+            if on_progress is not None:
+                on_progress(dict(results))
         if need_facebook and not cfg.get('meta.primary', False):
             try:
                 caption = _build_caption(cfg, title, description, platform='facebook')
@@ -326,7 +337,9 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Facebook cross-post failed: {exc}")
                 results["facebook_error"] = str(exc)
-        _publish_stories(cfg, token, page_id, ig_user_id, url, ver, results)
+            if on_progress is not None:
+                on_progress(dict(results))
+        _publish_stories(cfg, token, page_id, ig_user_id, url, ver, results, on_progress)
     finally:
         cleanup()
     return results
