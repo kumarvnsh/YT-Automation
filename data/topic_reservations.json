@@ -2959,5 +2959,14 @@
     "slot": "morning",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_214535_838872_short",
+    "title": "Why Did India's Freedom Walk Start With Salt?",
+    "fingerprint": "did_freedom_india_s_salt_start_walk_with",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]

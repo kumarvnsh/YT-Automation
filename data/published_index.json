@@ -6384,5 +6384,32 @@
     "production_profile": 2,
     "facebook_id": "1150137540786884",
     "instagram_id": "18131796341477414"
+  },
+  {
+    "video_id": "k3M_LZ3BwWA",
+    "run_id": "43513213178",
+    "stage_dir_name": "20261113_214535_838872_short",
+    "title": "Why Did India's Freedom Walk Start With Salt?",
+    "published_at": "2026-11-13T21:54:01.420990+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "forgotten_rules",
+    "editorial_slot": 99,
+    "editorial_region": "india",
+    "editorial_series": "Rules Nobody Remembered Why",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "In British-ruled India, making your own salt was against the law.",
+    "duration": 49.536,
+    "production_profile": 2,
+    "facebook_id": "2095777344562910",
+    "instagram_id": "17878513308635331"
   }
 ]
