@@ -6305,5 +6305,31 @@
     "production_profile": 2,
     "facebook_id": "1701219591729919",
     "instagram_id": "18105808547626813"
+  },
+  {
+    "video_id": "yUDJaAj3Zvg",
+    "run_id": "43501898991",
+    "stage_dir_name": "20261113_203018_554652_short",
+    "title": "Did Romans Ever Pump Water Across This Valley?",
+    "published_at": "2026-11-13T20:55:47.044733+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "approve",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": null,
+    "editorial_slot": null,
+    "editorial_region": null,
+    "editorial_series": null,
+    "duration_variant": null,
+    "hook": "This Roman bridge carried drinking water across a valley with no pumps, only gravity.",
+    "duration": 46.344,
+    "production_profile": 2,
+    "facebook_id": "935918729511629",
+    "instagram_id": "18169939738487384"
   }
 ]
