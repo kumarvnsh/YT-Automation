@@ -459,6 +459,8 @@ def _step_thumbnail(cfg: Config, stage: Path, st: dict) -> None:
 
 def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
     sc = st["script"]
+    if st.get('credits'):  # licence attribution for library art used in the video (CC BY)
+        sc = {**sc, 'description': sc['description'].rstrip() + '\n\n' + '\n'.join(st['credits'])}
     facebook_primary = (st.get('fmt') == 'short' and cfg.get('meta.primary', False))
     if facebook_primary:
         if not cfg.get('meta.enabled') or not cfg.get('meta.post_to_facebook') or not cfg.get('meta.page_id'):

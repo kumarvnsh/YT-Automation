@@ -94,3 +94,40 @@ html::after { background: radial-gradient(ellipse at 50% 40%, transparent 55%, r
 @keyframes k-pulse  { 50% { opacity: .45; transform: scale(1.08); } }
 @keyframes k-spin   { to { transform: rotate(360deg); } }
 @keyframes k-ringout{ from { opacity: .9; transform: scale(.6); } to { opacity: 0; transform: scale(2.2); } }
+
+/* illustrations: <histold-icon name="crown"> becomes svg.k-icon (fills currentColor) */
+.k-icon { display: block; width: 120px; height: auto; aspect-ratio: 1; color: var(--accent); flex-shrink: 0;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.5)); }
+
+/* explainer layouts: children reveal one by one every --gap (default .8s) from --d */
+.k-steps, .k-compare, .k-timeline, .k-cause { display: flex; width: 100%; justify-content: center;
+  align-items: flex-start; gap: 22px; position: relative; }
+.k-steps > *, .k-compare > *, .k-timeline > *, .k-cause > * { position: relative; flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+  animation: k-rise var(--t, .7s) cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: calc(var(--d, 0s) + var(--i, 0) * var(--gap, .8s)); }
+:is(.k-steps, .k-compare, .k-timeline, .k-cause) > :nth-child(2) { --i: 1; }
+:is(.k-steps, .k-compare, .k-timeline, .k-cause) > :nth-child(3) { --i: 2; }
+:is(.k-steps, .k-compare, .k-timeline, .k-cause) > :nth-child(4) { --i: 3; }
+:is(.k-steps, .k-compare, .k-timeline, .k-cause) .k-icon { width: 100%; max-width: 110px; }
+.k-steps > * + *::before, .k-cause > * + *::before { content: '\2192'; position: absolute; left: -20px; top: 38px;
+  font: 700 26px/1 var(--display); color: var(--accent); }
+.k-cause > * + *::before { content: '\21D2'; }
+.k-compare > * + * { border-left: 2px solid var(--accent); padding-left: 16px; margin-left: -6px; }
+.k-timeline { padding-top: 22px; }
+.k-timeline::before { content: ''; position: absolute; left: 4%; right: 4%; top: 8px; height: 3px; background: var(--bone);
+  transform-origin: left; animation: k-grow var(--t, 1.2s) cubic-bezier(.2,.8,.2,1) var(--d, 0s) both; }
+.k-timeline > *::before { content: ''; position: absolute; top: -21px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); }
+.k-timeline b { font: 700 30px/1 var(--display); color: var(--accent); }
+
+/* archival portrait: <histold-photo id> becomes figure.k-photo (slow push-in, name + dates) */
+.k-photo { margin: 0 auto; width: 240px; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.k-photo-frame { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border: 3px solid var(--parch);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 55%, transparent), 0 18px 40px rgba(0,0,0,.6); background: var(--ink); }
+.k-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block;
+  filter: saturate(.85) contrast(1.05); animation: k-photo-push var(--pt, 9s) linear both; }
+.k-photo figcaption { font: 700 24px/1.05 var(--display); text-transform: uppercase; color: var(--parch); text-align: center;
+  text-shadow: 0 0 16px var(--ink), 0 0 6px var(--ink); }
+.k-photo figcaption small { display: block; font: 500 14px/1.4 var(--display); letter-spacing: .16em; color: var(--accent); }
+@keyframes k-photo-push { from { transform: scale(1.02); } to { transform: scale(1.14) translateY(-2%); } }

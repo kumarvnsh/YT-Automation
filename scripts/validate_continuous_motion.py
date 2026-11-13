@@ -29,6 +29,17 @@ def main():
         report = inspect_scene(page, stamp, 3.0, 30, [{'time': 1.15}], False)
         assert not [e for e in report['errors'] if 'cut off' in e or 'overlaps' in e], report
         print('PASS: entering stamp judged at landed size')
+        # Explainer layouts with library icons must lay out cleanly (no overlap or clipping).
+        from src.icon_assets import bind_icons
+        steps = ('<html><head></head><body><div class="k-stage"><div class="k-title k-wipe">Ice in the desert</div>'
+                 '<div class="k-steps" style="--d:.3s">' + ''.join(
+                     f'<div><histold-icon name="{n}"></histold-icon><div class="k-label">{n}</div></div>'
+                     for n in ('ice-cube', 'mining', 'stone-wall')) +
+                 '</div><div class="k-timeline" style="--d:2s"><div><b>1700</b><div class="k-label">Built</div></div>'
+                 '<div><b>1900</b><div class="k-label">Fridges</div></div></div></div></body></html>')
+        report = inspect_scene(page, apply_palette(bind_icons(steps)[0], 'navy_teal'), 4.0, 30, [], True)
+        assert not [e for e in report['errors'] if 'overlap' in e or 'cut off' in e], report
+        print('PASS: explainer layouts with icons')
         static = apply_palette('<html><head></head><body><div class="k-stage">'
                                '<div class="k-title">1680</div></div></body></html>', 'navy_teal')
         report = inspect_scene(page, static, 5.6, 30, [], False)

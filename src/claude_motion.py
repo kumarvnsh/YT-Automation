@@ -75,7 +75,7 @@ def parse_scenes(text: str, count: int) -> dict[int, str]:
     return {i: html for i, html in scenes.items() if 0 <= i < count}
 
 
-def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
+def house_scene(narration: str, maps: list[dict], duration: float = 6.0, photos: list[dict] = ()) -> str:
     """Animated recovery: vetted geography and timed excerpts, without invented facts."""
     from html import escape
     duration = max(duration, .1)
@@ -101,6 +101,16 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
         cards = ('<div class="house-facts">' + cards + '</div>'
                  '<svg viewBox="0 0 460 40" aria-hidden="true"><path class="k-draw" pathLength="1" '
                  'd="M20 20H440" fill="none" stroke="var(--accent)" stroke-width="4" style="--t:' f'{duration:.2f}s"/></svg>')
+    if cards:
+        from .icon_assets import DEFAULTS, candidate_icons
+        icon = next((n for n in candidate_icons([narration], limit=1) if n not in DEFAULTS), None)
+        from .portrait_assets import mentioned
+        photo = next((p for p in photos if mentioned(p, narration)), None)
+        if photo:  # the person being talked about beats any illustration
+            cards = f'<histold-photo id="{photo["id"]}" class="k-pop" style="width:210px"></histold-photo>' + cards
+        elif icon:  # a matched illustration above the facts
+            cards = (f'<histold-icon name="{icon}" class="k-pop" style="width:150px;--d:.05s"></histold-icon>'
+                     + cards)
     # Abstract chronological diagram when no geographic asset or fact is available.
     art = placeholders or cards or ('<svg viewBox="0 0 460 220" aria-label="Narration progression">'
         '<path d="M30 110H430" fill="none" stroke="var(--bone)" stroke-width="6"/>'
@@ -123,7 +133,7 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
             'animation:house-outline 1.5s linear infinite}'
             '@keyframes house-outline{to{stroke-dashoffset:-56}}'
             '.house-facts{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}'
-            '.house-fact{max-width:460px;overflow-wrap:anywhere}'
+            '.house-fact{max-width:460px;overflow-wrap:anywhere}.house-art .k-icon{margin:0 auto 10px}'
             '.house-rail{height:8px;width:100%;background:var(--bone);overflow:hidden;flex-shrink:0}'
             '.house-rail::after{content:"";display:block;width:42%;height:100%;background:var(--accent);'
             'animation:house-progress 2s linear infinite alternate}'
@@ -190,6 +200,15 @@ page size, background, grain or vignette; just use it and add scene-specific CSS
 - Objects: .k-card (parchment card), .k-stamp (rotated red stamp), .k-rule, \
 .k-dot, .k-ring, .k-sil (silhouette fill for SVG).
 - Counter: <span class="k-count" style="--to:515"></span> counts 0→515.
+- Illustrations: <histold-icon name="NAME" class="k-pop" style="--d:.4s;width:150px;color:var(--gold)"></histold-icon> \
+inserts a vetted, detailed illustration (it fills currentColor). Use ONLY names from the per-video \
+icon list. Prefer them to hand-drawn SVG for people, objects, buildings, tools, animals and vehicles; \
+combine 2-4 into a small diagram. Never draw your own figurative SVG when an icon fits.
+- Explainer layouts (children reveal one by one every --gap, default .8s, starting at --d): \
+.k-steps (a process, 2-4 steps, arrows added), .k-cause (cause => effect, 2 children), \
+.k-compare (then/now or A/B, exactly 2 children), .k-timeline (2-4 children, each <b>date</b> + label). \
+Each child = one icon + one short .k-label. Use one whenever the narration explains how or why \
+something happened, a process, a change, a comparison or a sequence of dates.
 - Motion classes (stagger with style="--d:.4s", length with --t): k-rise, \
 k-fade, k-pop, k-wipe, k-slam (stamp; tilt via --r), k-draw (SVG stroke with \
 pathLength="1"), k-grow (bar scaleX), k-count, k-pan (slow camera move: \
@@ -221,7 +240,8 @@ dates, names and numbers. On-screen text is short (max ~6 words per element). \
 The narration is already captioned, so do not repeat it.
 - Vary the composition from scene to scene; don't reuse one layout.
 - Only state facts that appear in the narration. Never invent dates, numbers \
-or quotes. Draw people as simple silhouettes or icons, never realistic faces.
+or quotes. Draw people as simple silhouettes or icons, never realistic faces; \
+supplied <histold-photo> portraits are the only real faces allowed.
 - Be economical: no comments, compact CSS, no unused rules. Keep each scene under ~6,000 characters.
 - LAYOUT (each scene is measured automatically; overlaps and clipping get flagged):
   * Put ALL text inside .k-stage, in normal flex flow, so it stacks without \
@@ -418,6 +438,17 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      'while animating outlines, emphasis and story graphics from the first frame; do not wait '
                      'for a static establishing shot before starting the action. '
                      'Do not draw substitute map paths, invented routes or unsupported borders.')
+    portraits = cfg.get('production.portraits', [])
+    if portraits:
+        lines.append('Archival portraits (real, licence-checked): ' + '; '.join(
+            f'id={p["id"]} = {p["name"]} ({p["years"]})' for p in portraits) +
+            '. When the narration names that person, show <histold-photo id="ID" class="k-rise" '
+            'style="width:260px"></histold-photo> inside .k-stage, readable for at least 2 seconds, with a short '
+            'label of who they are. The binding adds the frame, name and dates. Never draw their face yourself.')
+    from .icon_assets import candidate_icons
+    icons = candidate_icons([title] + [f"{seg.narration} {' '.join(seg.keywords)}" for seg in segs])
+    lines.append('Icon list for <histold-icon name="...">: ' + ', '.join(icons) +
+                 '. Aim for an icon or explainer layout in most scenes.')
     for i, (seg, (s, e)) in enumerate(zip(segs, windows)):
         lines.append(
             f"Segment {i} — beat: {seg.beat or 'n/a'} — duration: {e - s:.1f}s\n"
@@ -622,8 +653,13 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         windows = [(s['start'], s['end']) for s in board['scenes']]
         cfg = Config(deepcopy(cfg.raw))
         maps = [load_map(asset['map_id']) for asset in st.get('maps', [])]
+        if cfg.get('video.claude_motion.portraits', True) and 'portraits' not in st:
+            from .portrait_assets import fetch_portraits
+            st['portraits'] = fetch_portraits(st.get('research', {}).get('people', []),
+                                              ' '.join(s.narration for s in segs), stage / 'portraits')
         cfg.raw.setdefault('production', {})['storyboard'] = board
         cfg.raw['production']['map_assets'] = [{k: v for k, v in a.items() if k != 'svg'} for a in maps]
+        cfg.raw['production']['portraits'] = st.get('portraits', [])
 
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
@@ -632,8 +668,10 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
     def prepare(html, index):
+        from .icon_assets import bind_icons
+        from .portrait_assets import bind_photos
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
-        return apply_palette(html, palette)
+        return apply_palette(bind_photos(bind_icons(html)[0], st.get('portraits', []))[0], palette)
 
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
@@ -694,7 +732,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     original_errors = report['scenes'][str(i)]['errors']
                     if not original_errors:
                         continue
-                    scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s)
+                    scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', []))
                     inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                     report['recoveries'].append({'scene': i, 'method': 'local_house_scene',
@@ -702,6 +740,12 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     report['scenes'][str(i)] = inspection
                     print(f'  ✓ scene {i} recovered with local house template (was: {"; ".join(original_errors[:3])})')
             scenes = {i: prepare(html, i) for i, html in scenes.items()}
+            if any('class="k-icon' in html for html in scenes.values()):
+                from .icon_assets import CREDIT
+                st['credits'] = sorted(set(st.get('credits', [])) | {CREDIT})
+            shown = {p['id'] for p in st.get('portraits', []) if f'data-photo-id="{p["id"]}"' in ''.join(scenes.values())}
+            st['credits'] = sorted(set(st.get('credits', [])) |
+                                   {p['credit'] for p in st.get('portraits', []) if p['id'] in shown})
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
             for i, (s, e) in enumerate(windows):
@@ -713,7 +757,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
                     if production:
-                        scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s), i)
+                        scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', [])), i)
                         inspection = inspect_scene(page, scenes[i], e-s, fps,
                             board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         if inspection['errors']:

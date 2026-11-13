@@ -120,7 +120,9 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         'that materially undermines the core consequence/cause. Record that as a material finding and stop verification. '
         'Then return a JSON object with sources [{id,url,title,publisher,excerpt}], claims '
         '[{id,text,status:supported|disputed|unsupported,source_ids,extraordinary:boolean,material_to_core_story:boolean}], locations '
-        'as structured location objects, dates. '
+        'as structured location objects, dates, people. '
+        'people must be [{name,wikipedia_title}] for up to 3 historical individuals central to the story, '
+        'using the exact English Wikipedia article title; use [] when no specific person matters. '
         'Extraordinary or disputed claims need two independent authoritative publishers. '
         'locations must be [{name,map_id:null|string,requires_map:boolean}]. Supported present-day map IDs are '
         + map_ids + '. For geography-dependent stories set geography_required:true '
@@ -223,7 +225,7 @@ def research_topic(cfg, topic: str, *, recovery_request=None) -> dict:
             packet, citations = _retrieve(cfg, topic)
         else:
             packet, citations = _retrieve(cfg, topic, recovery_request=recovery_request)
-        result.update({key:copy.deepcopy(packet.get(key, [])) for key in ('sources','claims','locations','dates','historical_overlays','findings')})
+        result.update({key:copy.deepcopy(packet.get(key, [])) for key in ('sources','claims','locations','dates','historical_overlays','findings','people')})
         result['geography_required'] = packet.get('geography_required', False)
         result['retrieval_citations'] = citations
         _bind_citations(result)
