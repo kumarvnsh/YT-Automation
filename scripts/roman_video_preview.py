@@ -18,7 +18,7 @@ def probe(path):return json.loads(subprocess.check_output(['ffprobe','-v','error
 
 def narrate(out):
  text='\n\n'.join(TEXTS);(out/'narration.txt').write_text(text)
- request=dict(text=text,voice='am_michael',speed=.95,output=str(out/'voiceover.mp3'))
+ request=dict(text=text,voice='am_michael',speed=.84,output=str(out/'voiceover.mp3'))
  (out/'voice-request.json').write_text(json.dumps(request))
  subprocess.run([os.environ.get('KOKORO_PYTHON',sys.executable),'-m','src.kokoro_voice',str(out/'voice-request.json'),str(out/'word-timings.json')],check=True,cwd=Path(__file__).resolve().parents[1])
  duration=float(probe(out/'voiceover.mp3')['format']['duration'])
@@ -87,15 +87,23 @@ Style: Default,DM Sans,66,&H00CDE8F6,&H00000000,&H00000000,0,0,1,0,0,2,88,88,180
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 '''
  lines=[];caption_words=[]
- for scene in board['scenes']:
-  group=[]
+ for scene_index,scene in enumerate(board['scenes']):
+  punctuation={};position=0
+  for token in TEXTS[scene_index].split():
+   position+=len(normalized_tokens(token))
+   if token[-1] in '.,?!':punctuation[position]=token[-1]
+  consumed=0;group=[]
   def flush():
    if not group:return
    start=scene['start']+group[0]['start'];end=min(scene['end'],scene['start']+group[-1]['end']);text=' '.join(w['word'] for w in group)
    lines.append(f'Dialogue: 0,{ts(start)},{ts(end)},Default,,0,0,0,,{{\\fad(50,50)}}{text}');caption_words.append(text)
-  for word in scene['words']:
+  for original in scene['words']:
+   word=dict(original);consumed+=len(normalized_tokens(word['word']))
+   mark=punctuation.get(consumed,'')
+   if mark:word['word']=word['word'].rstrip('.,?!')+mark
    if group and (len(' '.join(w['word'] for w in group+[word]))>27 or len(group)>=4):flush();group=[]
    group.append(word)
+   if mark in ('.','?','!'):flush();group=[]
   flush()
  assert normalized_tokens(' '.join(caption_words))==normalized_tokens(' '.join(TEXTS))
  (out/'captions.ass').write_text(header+'\n'.join(lines)+'\n')
