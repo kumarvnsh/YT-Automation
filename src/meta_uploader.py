@@ -102,14 +102,12 @@ def _host_video(video_path: Path) -> tuple[str, callable]:
 # Instagram Reels
 # --------------------------------------------------------------------------- #
 def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str,
-                       ver: str, timeout_s: int = 300) -> str:
+                       ver: str, timeout_s: int = 300, media_type: str = "REELS") -> str:
     base = f"{GRAPH}/{ver}/{ig_user_id}"
-    r = requests.post(f"{base}/media", data={
-        "media_type": "REELS",
-        "video_url": video_url,
-        "caption": caption,
-        "access_token": token,
-    }, timeout=60)
+    data = {"media_type": media_type, "video_url": video_url, "access_token": token}
+    if media_type == "REELS":  # Stories take no caption
+        data["caption"] = caption
+    r = requests.post(f"{base}/media", data=data, timeout=60)
     _raise_graph(r, "IG media container")
     creation_id = r.json()["id"]
 
@@ -135,7 +133,7 @@ def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str
     }, timeout=60)
     _raise_graph(pub, "IG media_publish")
     media_id = pub.json()["id"]
-    print(f"  ✓ Instagram Reel published: {media_id}")
+    print(f"  ✓ Instagram {media_type.title()} published: {media_id}")
     return media_id
 
 
@@ -204,6 +202,46 @@ def _publish_facebook_reel(token: str, page_id: str, video_url: str, description
     return video_id
 
 
+def _publish_facebook_story(token: str, page_id: str, video_url: str, ver: str) -> str:
+    """Page video Story: same start → hosted transfer → finish flow as Reels."""
+    token = _page_access_token(token, page_id, ver)
+    start = requests.post(f"{GRAPH}/{ver}/{page_id}/video_stories",
+                          data={"upload_phase": "start", "access_token": token}, timeout=60)
+    _raise_graph(start, "FB story start")
+    video_id = start.json()["video_id"]
+    transfer = requests.post(f"{RUPLOAD}/{ver}/{video_id}",
+                             headers={"Authorization": f"OAuth {token}", "file_url": video_url},
+                             timeout=120)
+    _raise_graph(transfer, "FB story transfer")
+    finish = requests.post(f"{GRAPH}/{ver}/{page_id}/video_stories", data={
+        "upload_phase": "finish", "video_id": video_id, "access_token": token,
+    }, timeout=60)
+    _raise_graph(finish, "FB story finish")
+    story_id = finish.json().get("post_id") or video_id
+    print(f"  ✓ Facebook Story published: {story_id}")
+    return story_id
+
+
+def _publish_stories(cfg: Config, token: str, page_id: str, ig_user_id: str, url: str,
+                     ver: str, results: dict) -> None:
+    """Share the just-posted Reel's video to Stories too. Best-effort and idempotent."""
+    if not cfg.get('meta.stories', False):
+        return
+    jobs = []
+    if results.get('instagram') and not results.get('instagram_story'):
+        jobs.append(('instagram_story', lambda: _publish_instagram(token, ig_user_id, url, '', ver,
+                                                                   media_type='STORIES')))
+    if results.get('facebook') and not results.get('facebook_story'):
+        jobs.append(('facebook_story', lambda: _publish_facebook_story(token, page_id, url, ver)))
+    for key, job in jobs:
+        try:
+            results[key] = job()
+            results.pop(f'{key}_error', None)
+        except Exception as exc:  # noqa: BLE001 - a Story must never fail the Reel
+            print(f"  ! {key} failed: {exc}")
+            results[f'{key}_error'] = str(exc)
+
+
 # --------------------------------------------------------------------------- #
 # helpers
 # --------------------------------------------------------------------------- #
@@ -257,7 +295,10 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
     results: dict = dict(existing_results or {})
     need_facebook = cfg.get('meta.post_to_facebook', True) and page_id and not results.get('facebook')
     need_instagram = cfg.get('meta.post_to_instagram', True) and ig_user_id and not results.get('instagram')
-    if not need_facebook and not need_instagram:
+    need_stories = cfg.get('meta.stories', False) and (
+        (results.get('instagram') and not results.get('instagram_story')) or
+        (results.get('facebook') and not results.get('facebook_story')))
+    if not need_facebook and not need_instagram and not need_stories:
         return results
     url, cleanup = _host_video(video_path)
     try:
@@ -285,6 +326,7 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Facebook cross-post failed: {exc}")
                 results["facebook_error"] = str(exc)
+        _publish_stories(cfg, token, page_id, ig_user_id, url, ver, results)
     finally:
         cleanup()
     return results

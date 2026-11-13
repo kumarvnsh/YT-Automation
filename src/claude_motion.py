@@ -86,8 +86,21 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
         f'--hold:{duration / len(chunks):.3f}s">{escape(chunk)}</div>'
         for i, chunk in enumerate(chunks))
     placeholders = ''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in maps)
-    # Abstract chronological diagram when no geographic asset is available.
-    art = placeholders or ('<svg viewBox="0 0 460 220" aria-label="Narration progression">'
+    facts = key_facts(narration)
+    # Explain with the narration's own dates, numbers and names; maps only establish place.
+    cards = ''.join(
+        f'<div class="house-fact k-pop" style="--d:{.1 + i * duration / (len(facts) + 1):.3f}s">'
+        f'<div class="k-huge" style="font-size:{72 if len(f) > 4 else 112}px">{escape(f)}</div></div>'
+        if any(c.isdigit() for c in f) else
+        f'<div class="house-fact k-pop" style="--d:{.1 + i * duration / (len(facts) + 1):.3f}s">'
+        f'<div class="k-title" style="font-size:{40 if len(f) > 14 else 56}px">{escape(f)}</div></div>'
+        for i, f in enumerate(facts))
+    if cards:
+        cards = ('<div class="house-facts">' + cards + '</div>'
+                 '<svg viewBox="0 0 460 40" aria-hidden="true"><path class="k-draw" pathLength="1" '
+                 'd="M20 20H440" fill="none" stroke="var(--accent)" stroke-width="4" style="--t:' f'{duration:.2f}s"/></svg>')
+    # Abstract chronological diagram when no geographic asset or fact is available.
+    art = placeholders or cards or ('<svg viewBox="0 0 460 220" aria-label="Narration progression">'
         '<path d="M30 110H430" fill="none" stroke="var(--bone)" stroke-width="6"/>'
         + ''.join(f'<circle cx="{x}" cy="110" r="{r}" fill="var(--accent)" '
                   f'class="k-pulse" style="--t:1.8s;--d:{i*.3}s"/>'
@@ -107,6 +120,8 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
             '.house-art svg path{stroke:var(--parch);stroke-width:1.5;stroke-dasharray:18 10;'
             'animation:house-outline 1.5s linear infinite}'
             '@keyframes house-outline{to{stroke-dashoffset:-56}}'
+            '.house-facts{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}'
+            '.house-fact{max-width:460px;overflow-wrap:anywhere}'
             '.house-rail{height:8px;width:100%;background:var(--bone);overflow:hidden;flex-shrink:0}'
             '.house-rail::after{content:"";display:block;width:42%;height:100%;background:var(--accent);'
             'animation:house-progress 2s linear infinite alternate}'
@@ -117,6 +132,18 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0) -> str:
             '</div><div class="house-rail"></div></div></body></html>')
     html = bind_maps(html, maps)
     return html
+
+def key_facts(narration: str, limit: int = 3) -> list[str]:
+    """Dates, numbers and proper names stated in the narration, in spoken order."""
+    found = []
+    pattern = (r'\b\d[\d,.]*(?:\s?%|\s(?:million|billion|thousand)\b|\s?(?:BC|BCE|AD|CE)\b)?'
+               r'|(?<![.!?]\s)(?<!^)\b[A-Z][a-z]+(?:\s+(?:of\s+|the\s+)?[A-Z][a-z]+)*')
+    for m in re.finditer(pattern, narration.strip()):
+        fact = m.group(0).strip().rstrip('.,')
+        if fact and fact not in found:
+            found.append(fact)
+    return found[:limit]
+
 
 _SYSTEM = """You are a senior motion designer making the visuals for a narrated \
 vertical YouTube Short on a history channel called Histold. The voiceover and \
@@ -225,11 +252,11 @@ def sample_times(duration: float, fps: int, cues: list[dict]) -> list[float]:
                    *[min(final, float(t)) for t in range(2, int(duration), 2)]})
 
 
-def summarize_motion(differences: list[float], times: list[float]) -> list[str]:
+def summarize_motion(differences: list[float], times: list[float], limit: float = 1.5) -> list[str]:
     idle = 0.0
     for difference, start, end in zip(differences, times, times[1:]):
         idle = idle + end - start if difference < .002 else 0
-        if idle >= 1.5:
+        if idle >= limit:
             return ['static_foreground']
     return []
 
@@ -288,8 +315,13 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
             errors.append('Required map outlines and labels are not visible for two seconds')
     if duration >= .3 and sum(d for d, t in zip(differences, times[1:]) if t <= .3) < .002:
         errors.append('static_opening')
-    errors.extend(summarize_motion(differences, times))
-    return {'errors': sorted(set(errors)), 'warnings': [], 'sample_times': times}
+    # A built-up scene may hold its payoff briefly; only a long freeze is a defect.
+    warnings = []
+    if summarize_motion(differences, times, limit=3.0):
+        errors.append('static_foreground')
+    elif summarize_motion(differences, times):
+        warnings.append('brief_static_hold')
+    return {'errors': sorted(set(errors)), 'warnings': warnings, 'sample_times': times}
 
 
 def bind_maps(html: str, assets: list[dict]) -> str:
@@ -327,9 +359,17 @@ def bind_maps(html: str, assets: list[dict]) -> str:
             if token in html:
                 html = html.replace(token, bundle if not placed else '')
                 placed = True
-    if '<histold-map' in html:
-        raise ValueError('Scene requested unverified geographic asset')
-    return html
+    # Drop requests for maps we have not vetted rather than discarding the whole scene.
+    return re.sub(r'<histold-map\b[^>]*>\s*</histold-map>', '', html)
+
+
+def ensure_opening_maps(html: str, maps: list[dict]) -> str:
+    """Insert required establishing-map placeholders the model forgot, at the top of .k-stage."""
+    missing = ''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in maps
+                      if f'<histold-map id="{a["map_id"]}"></histold-map>' not in html)
+    if not missing:
+        return html
+    return re.sub(r'(<div[^>]*class="[^"]*\bk-stage\b[^"]*"[^>]*>)', lambda m: m.group(1) + missing, html, count=1)
 
 
 def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int) -> dict[int, str]:
@@ -594,6 +634,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     if not html:
                         report['scenes'][str(i)] = {'errors': ['Missing generated scene'], 'warnings': []}
                         continue
+                    if i == 0 and maps:
+                        html = ensure_opening_maps(html, maps)
                     if i == 0 and maps and any(f'<histold-map id="{a["map_id"]}"></histold-map>' not in html for a in maps):
                         report['scenes'][str(i)] = {'errors': ['Opening scene is missing required establishing maps'], 'warnings': []}
                         continue
@@ -614,7 +656,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                         fixed = {}
                     for i, html in fixed.items():
                         try:
-                            html = bind_maps(html, maps)
+                            html = bind_maps(ensure_opening_maps(html, maps) if i == 0 else html, maps)
                             if i == 0 and maps and any(f'data-map-id="{asset["map_id"]}"' not in html for asset in maps):
                                 continue
                             s, e = windows[i]
@@ -628,13 +670,13 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     original_errors = report['scenes'][str(i)]['errors']
                     if not original_errors:
                         continue
-                    scenes[i] = house_scene(segs[i].narration, maps, e-s)
+                    scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s)
                     inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                     report['recoveries'].append({'scene': i, 'method': 'local_house_scene',
                         'original_errors': original_errors, 'validated': not inspection['errors']})
                     report['scenes'][str(i)] = inspection
-                    print(f'  ✓ scene {i} recovered with local house template')
+                    print(f'  ✓ scene {i} recovered with local house template (was: {"; ".join(original_errors[:3])})')
             scenes = {i: prepare(html, i) for i, html in scenes.items()}
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
@@ -647,7 +689,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
                     if production:
-                        scenes[i] = prepare(house_scene(segs[i].narration, maps, e-s), i)
+                        scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s), i)
                         inspection = inspect_scene(page, scenes[i], e-s, fps,
                             board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         if inspection['errors']:

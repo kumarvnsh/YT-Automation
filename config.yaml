@@ -261,6 +261,7 @@ meta:
   ig_user_id: "17841410834243353"      # Histold Instagram business account
   api_version: "v21.0"
   hashtags: ["#WorldHistory", "#Histold"]
+  stories: true                # also share each Reel video to the FB Page + IG Stories (best-effort)
   facebook_caption:
     enabled: true
     hashtags: ["#WorldHistory", "#Histold"]
