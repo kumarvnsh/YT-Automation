@@ -22,6 +22,13 @@ def main():
         report = inspect_scene(page, example, 6.0, 30, [], False)
         assert not report['errors'], report
         print('PASS: reference example accepted at 6s')
+        # Regression: a k-slam stamp was flagged as cut off while still entering at 2.4x scale.
+        stamp = apply_palette('<html><head></head><body><div class="k-stage"><div class="k-title k-rise">Hermitage</div>'
+                              '<div class="k-stamp k-slam" style="--d:1s;--r:-4deg">Philosopher\'s books</div>'
+                              '</div></body></html>', 'navy_teal')
+        report = inspect_scene(page, stamp, 3.0, 30, [{'time': 1.15}], False)
+        assert not [e for e in report['errors'] if 'cut off' in e or 'overlaps' in e], report
+        print('PASS: entering stamp judged at landed size')
         static = apply_palette('<html><head></head><body><div class="k-stage">'
                                '<div class="k-title">1680</div></div></body></html>', 'navy_teal')
         report = inspect_scene(page, static, 5.6, 30, [], False)

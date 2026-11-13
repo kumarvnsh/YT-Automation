@@ -455,6 +455,9 @@ _LINT_JS = """() => {
   const seen = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
     const cs = getComputedStyle(n);
     if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05) return false; } return true; };
+  const slamming = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement)
+    if (n.getAnimations().some(a => a.animationName === 'k-slam' && a.effect.getComputedTiming().progress !== null
+                                    && a.effect.getComputedTiming().progress < 1)) return true; return false; };
   const boxes = [];
   for (const e of document.body.querySelectorAll('*')) {
     const tag = e.tagName.toLowerCase();
@@ -462,6 +465,8 @@ _LINT_JS = """() => {
     const counter = e.classList.contains('k-count');
     if (!counter && ![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
     if (!seen(e)) continue;
+    // The kit's k-slam stamp enters at 2.4x scale; judge it on its landed size, not mid-flight.
+    if (slamming(e)) continue;
     let r = e.getBoundingClientRect();
     if (!counter) { const rg = document.createRange(); rg.selectNodeContents(e); r = rg.getBoundingClientRect(); }
     if (r.width < 2 || r.height < 2) continue;
