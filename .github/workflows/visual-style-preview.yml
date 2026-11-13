@@ -7,12 +7,13 @@ on:
       - .github/workflows/visual-style-preview.yml
       - scripts/roman_style_preview.py
       - scripts/roman_storyboard_preview.py
+      - scripts/roman_video_preview.py
 permissions:
   contents: read
 jobs:
-  render-stills:
+  render-video:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,26 +25,37 @@ jobs:
       - name: Install rendering dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg
+          sudo apt-get install -y ffmpeg espeak-ng libsndfile1
           python -m pip install Pillow==11.3.0
-          npm install --prefix "$RUNNER_TEMP/histold-preview" hyperframes@0.9.41
+          npm install --prefix "$RUNNER_TEMP/histold-preview" hyperframes@0.9.41 gsap@3.14.2
           "$RUNNER_TEMP/histold-preview/node_modules/.bin/hyperframes" browser ensure
-      - name: Render four cinematic storyboard frames without publishing
+      - name: Cache Kokoro model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface/hub
+          key: roman-preview-kokoro-v1-${{ runner.os }}
+      - name: Install production CPU voice worker
         run: |
-          python scripts/roman_storyboard_preview.py --cli "$RUNNER_TEMP/histold-preview/node_modules/.bin/hyperframes"
-      - name: Upload PNGs, comparison sheet and logs
+          python -m venv .venv-kokoro
+          .venv-kokoro/bin/python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          .venv-kokoro/bin/python -m pip install -r requirements-kokoro.txt
+          echo "KOKORO_PYTHON=$GITHUB_WORKSPACE/.venv-kokoro/bin/python" >> "$GITHUB_ENV"
+      - name: Render narrated cinematic preview without publishing
+        run: |
+          python scripts/roman_video_preview.py --cli "$RUNNER_TEMP/histold-preview/node_modules/.bin/hyperframes" --gsap "$RUNNER_TEMP/histold-preview/node_modules/gsap/dist/gsap.min.js"
+      - name: Upload video, snapshots, timings and logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: roman-hypocaust-storyboard
-          path: output/roman-storyboard-preview/
+          name: roman-hypocaust-video-preview
+          path: output/roman-video-preview/
           retention-days: 7
       - name: Summarize
         if: always()
         run: |
-          echo '## Roman hypocaust: cinematic storyboard' >> "$GITHUB_STEP_SUMMARY"
+          echo '## Roman hypocaust: narrated cinematic preview' >> "$GITHUB_STEP_SUMMARY"
           echo 'Floor reveal · External furnace · Hot-air route · Complete system' >> "$GITHUB_STEP_SUMMARY"
           echo 'No publishing credentials or paid generation APIs are used.' >> "$GITHUB_STEP_SUMMARY"
-          if [ -f output/roman-storyboard-preview/metrics.json ]; then
-            cat output/roman-storyboard-preview/metrics.json >> "$GITHUB_STEP_SUMMARY"
+          if [ -f output/roman-video-preview/metrics.json ]; then
+            cat output/roman-video-preview/metrics.json >> "$GITHUB_STEP_SUMMARY"
           fi
