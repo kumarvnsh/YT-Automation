@@ -470,8 +470,12 @@ def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
         failed = ", ".join(
             name for name, status in report["checks"].items() if status == "fail"
         )
-        if three_d:
-            raise RuntimeError(f"3D quality checks failed: {failed}; see quality.json")
+        # 3D is strict on visual checks only; research/content keep the usual warn-only rule.
+        visual = {"render_quality", "video", "dimensions", "duration", "composition_binding",
+                  "caption_composition", "branding"}
+        bad_visual = [n for n, v in report["checks"].items() if v == "fail" and n in visual]
+        if three_d and bad_visual:
+            raise RuntimeError(f"3D visual checks failed: {', '.join(bad_visual)}; see quality.json")
         # Warn only: the video is already paid for, so it publishes anyway.
         print(f"  ! quality checks flagged: {failed}; continuing — see quality.json")
 

@@ -43,10 +43,13 @@ class VisualModeTests(unittest.TestCase):
         run.assert_called_once_with(['gh', 'variable', 'set', 'HISTOLD_3D', '--body', 'off', '--repo', 'owner/repo'], check=True)
 
     def test_three_motion_blocks_failed_quality(self):
-        report = {'passed': False, 'checks': {'render': 'fail'}, 'errors': ['bad render']}
+        report = {'passed': False, 'checks': {'render_quality': 'fail'}, 'errors': ['bad render']}
         with tempfile.TemporaryDirectory() as tmp, patch('src.quality_gate.validate_stage', return_value=report):
-            with self.assertRaisesRegex(RuntimeError, 'quality'):
+            with self.assertRaisesRegex(RuntimeError, 'render_quality'):
                 pipeline._step_quality(self.cfg, Path(tmp), {'fmt': 'short', 'visual_mode': 'three_motion'})
+        report = {'passed': False, 'checks': {'research_evidence': 'fail'}, 'errors': ['weak source']}
+        with tempfile.TemporaryDirectory() as tmp, patch('src.quality_gate.validate_stage', return_value=report):
+            pipeline._step_quality(self.cfg, Path(tmp), {'fmt': 'short', 'visual_mode': 'three_motion'})
 
     def test_workflow_installs_pinned_renderer_and_exports_toggle(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/publish.yml').read_text()
