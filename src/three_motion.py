@@ -87,14 +87,17 @@ def generate_plan(cfg,st,duration):
  client=anthropic.Anthropic(api_key=env('ANTHROPIC_API_KEY'),timeout=600,max_retries=1)
  messages=[dict(role='user',content=json.dumps(context))];usage={}
  for attempt in range(2):
-  with client.beta.messages.stream(model=model,max_tokens=int(cfg.get('video.three_d.max_tokens',14000)),thinking={'type':'adaptive','display':'summarized'},output_config={'effort':cfg.get('video.claude_motion.effort','medium')},betas=['server-side-fallback-2026-07-01'],extra_body={'fallbacks':'default'},system=SYSTEM,messages=messages) as stream:
+  with client.beta.messages.stream(model=model,max_tokens=int(cfg.get('video.three_d.max_tokens',32000)),thinking={'type':'adaptive','display':'summarized'},output_config={'effort':cfg.get('video.claude_motion.effort','medium')},betas=['server-side-fallback-2026-07-01'],extra_body={'fallbacks':'default'},system=SYSTEM,messages=messages) as stream:
    msg=stream.get_final_message()
-  text=''.join(b.text for b in msg.content if b.type=='text');usage.setdefault('calls',[]).append(dict(input_tokens=msg.usage.input_tokens,output_tokens=msg.usage.output_tokens))
+  text=''.join(b.text for b in msg.content if b.type=='text');usage.setdefault('calls',[]).append(dict(input_tokens=msg.usage.input_tokens,output_tokens=msg.usage.output_tokens,stop_reason=msg.stop_reason))
   try:
    plan=validate_plan(_extract_json(text),duration);return plan,usage
   except (ValueError,TypeError,KeyError) as exc:
-   if attempt:raise
-   messages.extend([dict(role='assistant',content=text),dict(role='user',content=f'Fix the JSON plan. Validation failed: {exc}. Return the complete corrected plan, preserve the story, no commentary.')])
+   if attempt:raise ValueError(f'{exc} (stop_reason={msg.stop_reason}, output_tokens={msg.usage.output_tokens})') from exc
+   if text.strip():
+    messages.extend([dict(role='assistant',content=text),dict(role='user',content=f'Fix the JSON plan. Validation failed: {exc}. Return the complete corrected plan, preserve the story, no commentary.')])
+   else:  # no text at all (thinking used the budget): ask again, compactly
+    messages=[dict(role='user',content=messages[0]['content']+'\n\nThink briefly, then output the JSON plan only; keep it compact (<=60 objects).')]
  raise RuntimeError('3D planning failed')
 
 def _project(cfg,stage,st,plan,duration):
