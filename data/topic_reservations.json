@@ -2878,5 +2878,14 @@
     "slot": "evening",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_160219_981654_short",
+    "title": "Could a Desert Keep Ice Frozen Through the Hottest Summer?",
+    "fingerprint": "could_desert_frozen_hottest_ice_keep_summer_through",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]
