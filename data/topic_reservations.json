@@ -2860,5 +2860,14 @@
     "slot": "evening",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261113_152118_626564_short",
+    "title": "Whose Bookshelves Built Russia's Famous Hermitage Library?",
+    "fingerprint": "bookshelves_built_famous_hermitage_library_russia_s_whose",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-13",
+    "status": "reserved"
   }
 ]
