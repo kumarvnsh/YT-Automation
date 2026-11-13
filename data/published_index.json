@@ -6096,5 +6096,31 @@
     "production_profile": 2,
     "facebook_id": "1144509901363395",
     "instagram_id": "18053617811623162"
+  },
+  {
+    "video_id": "jkyJh0XeuDg",
+    "run_id": "43382689513",
+    "stage_dir_name": "20261113_070234_607790_short",
+    "title": "Why Did Italy's Army Lose to an African Empire in 1896?",
+    "published_at": "2026-11-13T07:11:13.230619+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "decisions",
+    "editorial_slot": 91,
+    "editorial_region": "africa",
+    "editorial_series": "One Decision Changed Everything",
+    "duration_variant": "story",
+    "hook": "Ethiopia's army beat an invading Italian force in 1896, and the empire stayed independent.",
+    "duration": 57.744,
+    "production_profile": 2,
+    "facebook_id": "975245895233278",
+    "instagram_id": "18113268269234176"
   }
 ]
