@@ -6200,5 +6200,31 @@
     "production_profile": 2,
     "facebook_id": "1836387380708928",
     "instagram_id": "18138624457657772"
+  },
+  {
+    "video_id": "lCQJdMRx814",
+    "run_id": "43454082207",
+    "stage_dir_name": "20261113_153812_883170_short",
+    "title": "Why Did Persian Builders Dig Their Ice Stores Deep Underground?",
+    "published_at": "2026-11-13T15:49:08.348173+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "everyday_origins",
+    "editorial_slot": 95,
+    "editorial_region": "middle_east",
+    "editorial_series": "You Use It Every Day",
+    "duration_variant": "story",
+    "hook": "Ancient Iran built special buildings just to store winter ice.",
+    "duration": 49.128,
+    "production_profile": 2,
+    "facebook_id": "3639352506229011",
+    "instagram_id": "18150819526488386"
   }
 ]
