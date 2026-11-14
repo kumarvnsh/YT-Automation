@@ -6411,5 +6411,32 @@
     "production_profile": 2,
     "facebook_id": "2095777344562910",
     "instagram_id": "17878513308635331"
+  },
+  {
+    "video_id": "keMA0RGoEpM",
+    "run_id": "43554497372",
+    "stage_dir_name": "20261114_040302_479201_short",
+    "title": "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
+    "published_at": "2026-11-14T04:09:38.591127+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "behind_legend",
+    "editorial_slot": 100,
+    "editorial_region": "africa",
+    "editorial_series": "Behind the Legend",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Nigeria's first president began his public life as a newspaper man.",
+    "duration": 31.488,
+    "production_profile": 2,
+    "facebook_id": "970693609070347",
+    "instagram_id": "18150897259491586"
   }
 ]

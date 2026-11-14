@@ -2968,5 +2968,14 @@
     "slot": "morning",
     "date": "2026-11-13",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_040302_479201_short",
+    "title": "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
+    "fingerprint": "azikiwe_before_doing_nigeria_nnamdi_presidency_really_s_was_what",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
