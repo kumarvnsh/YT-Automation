@@ -3121,5 +3121,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_163220_515803_short",
+    "title": "Was Japan Really Locked Shut for 200 Years?",
+    "fingerprint": "200_for_japan_locked_really_shut_was_years",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]

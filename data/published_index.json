@@ -6708,5 +6708,32 @@
     "production_profile": 2,
     "facebook_id": "1439749951614026",
     "instagram_id": "17999913912045150"
+  },
+  {
+    "video_id": "SfvGGm6eaok",
+    "run_id": "43615940782",
+    "stage_dir_name": "20261114_163220_515803_short",
+    "title": "Was Japan Really Locked Shut for 200 Years?",
+    "published_at": "2026-11-14T16:39:07.805088+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "school_myths",
+    "editorial_slot": 110,
+    "editorial_region": "japan",
+    "editorial_series": "Myths You Learned in School",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Japan was not completely shut off from the world for two centuries.",
+    "duration": 38.016,
+    "production_profile": 2,
+    "facebook_id": "2736705340120279",
+    "instagram_id": "18002725320043308"
   }
 ]
