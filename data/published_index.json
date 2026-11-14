@@ -6600,5 +6600,32 @@
     "production_profile": 2,
     "facebook_id": "1113738698202344",
     "instagram_id": "18135510172787231"
+  },
+  {
+    "video_id": "keQ8T53m2zs",
+    "run_id": "43610460320",
+    "stage_dir_name": "20261114_153139_534749_short",
+    "title": "Why Would Ancient New Mexico Build 30-Foot Roads Without Wheels?",
+    "published_at": "2026-11-14T15:40:01.374651+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "unsolved",
+    "editorial_slot": 106,
+    "editorial_region": "americas",
+    "editorial_series": "Unsolved",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Roads up to thirty feet wide, built with no wheels or pack animals, in New Mexico.",
+    "duration": 32.256,
+    "production_profile": 2,
+    "facebook_id": "1590570539537516",
+    "instagram_id": "18076954229750144"
   }
 ]

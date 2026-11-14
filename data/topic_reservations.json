@@ -3085,5 +3085,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_153139_534749_short",
+    "title": "Why Would Ancient New Mexico Build 30-Foot Roads Without Wheels?",
+    "fingerprint": "30_ancient_build_foot_mexico_new_roads_wheels_without_would",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
