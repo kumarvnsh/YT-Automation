@@ -3094,5 +3094,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_154819_988780_short",
+    "title": "Were the World's Finest Ocean Maps Ever Meant to Leave Shore?",
+    "fingerprint": "ever_finest_leave_maps_meant_ocean_s_shore_were_world",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]

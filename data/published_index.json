@@ -6627,5 +6627,32 @@
     "production_profile": 2,
     "facebook_id": "1590570539537516",
     "instagram_id": "18076954229750144"
+  },
+  {
+    "video_id": "4vjxe7HaQZI",
+    "run_id": "43611904841",
+    "stage_dir_name": "20261114_154819_988780_short",
+    "title": "Were the World's Finest Ocean Maps Ever Meant to Leave Shore?",
+    "published_at": "2026-11-14T15:57:13.851124+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "weird_dark",
+    "editorial_slot": 107,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "Weird and Dark History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Some of the most detailed ocean maps ever made were woven from palm sticks and shells.",
+    "duration": 47.688,
+    "production_profile": 2,
+    "facebook_id": "1473622334706386",
+    "instagram_id": "18113145662624432"
   }
 ]
