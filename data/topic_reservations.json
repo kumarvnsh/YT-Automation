@@ -3049,5 +3049,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_131431_975992_long",
+    "title": "Who Was Boycott, and Why Is His Name a Verb?",
+    "fingerprint": "boycott_his_is_name_verb_was_who",
+    "format": "long",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
