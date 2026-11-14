@@ -33,9 +33,13 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # Every external boundary (LLM, TTS, Pexels, ffmpeg, YouTube, HTTP) is
+      - name: Install Chromium for cinematic layout regression
+        run: python -m playwright install --with-deps chromium
+
+      # Every external service boundary (LLM, TTS, Pexels, ffmpeg, YouTube, HTTP) is
       # patched in the suite, so this needs no secrets and makes no network
-      # calls. ffmpeg is deliberately not installed — if a test ever needs it,
+      # calls. The cinematic layout regression uses local Chromium.
+      # ffmpeg is deliberately not installed — if a test ever needs it,
       # that test is reaching a boundary it should be mocking.
       # `unittest discover` exits 0 when it collects nothing (a missing
       # tests/__init__.py is enough to cause that), which is how an unparseable
