@@ -6492,5 +6492,32 @@
     "production_profile": 2,
     "facebook_id": "2521279838400631",
     "instagram_id": "18363648625218361"
+  },
+  {
+    "video_id": "IJn74t35Uu8",
+    "run_id": "43599897479",
+    "stage_dir_name": "20261114_133008_479845_short",
+    "title": "Why Did Russia's Fleet Open Fire on British Fishermen?",
+    "published_at": "2026-11-14T13:42:05.093588+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "mistakes",
+    "editorial_slot": 103,
+    "editorial_region": "russia",
+    "editorial_series": "Mistakes That Changed History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "A Russian fleet once fired on British fishing boats in the North Sea.",
+    "duration": 49.2,
+    "production_profile": 2,
+    "facebook_id": "1497911715598206",
+    "instagram_id": "18101634851433196"
   }
 ]
