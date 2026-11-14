@@ -6681,5 +6681,32 @@
     "production_profile": 2,
     "facebook_id": "1210774471275137",
     "instagram_id": "18470240347136805"
+  },
+  {
+    "video_id": "qV660KJq95A",
+    "run_id": "43614335397",
+    "stage_dir_name": "20261114_161439_202557_short",
+    "title": "What Did a Chance Spot in Kenya Reveal About Our Ancestors?",
+    "published_at": "2026-11-14T16:29:04.421156+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "found_by_accident",
+    "editorial_slot": 109,
+    "editorial_region": "africa",
+    "editorial_series": "Found by Accident",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "A Kenyan fossil hunter spotted a skeleton that became one of the most complete early human finds ever.",
+    "duration": 52.08,
+    "production_profile": 2,
+    "facebook_id": "1439749951614026",
+    "instagram_id": "17999913912045150"
   }
 ]
