@@ -49,6 +49,22 @@ class CinematicMotionTests(unittest.TestCase):
                 self.assertEqual(effect.getframerate(), 24000)
                 self.assertEqual(effect.getnframes(), 36000)
 
+    def test_truncated_generation_requests_only_missing_scenes(self):
+        from types import SimpleNamespace as NS
+        from unittest.mock import MagicMock
+        from src.claude_motion import _request_scenes
+        first = NS(stop_reason='max_tokens', content=[NS(type='text', text='<scene index="0"><html>first</html></scene>')], usage=NS(input_tokens=10, output_tokens=20))
+        recovered = NS(stop_reason='end_turn', content=[NS(type='text', text='<scene index="1"><html>last</html></scene>')], usage=NS(input_tokens=10, output_tokens=10))
+        client = MagicMock()
+        client.beta.messages.stream.return_value.__enter__.return_value.get_final_message.side_effect = [first, recovered]
+        seg = NS(narration='Printing changed history', keywords=['printing'], beat='hook')
+        with patch('anthropic.Anthropic', return_value=client):
+            scenes = _request_scenes(Config({'video': {'claude_motion': {'style': 'cinematic_2d'}}}), 'Press', [seg, seg], [(0, 3), (3, 6)], 540, 960)
+        self.assertEqual(scenes, {0: '<html>first</html>', 1: '<html>last</html>'})
+        self.assertEqual(client.beta.messages.stream.call_count, 2)
+        request = client.beta.messages.stream.call_args.kwargs['messages'][0]['content']
+        self.assertIn('ONLY these missing zero-based scene IDs: [1]', request)
+
 
 if __name__ == '__main__':
     unittest.main()

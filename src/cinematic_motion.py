@@ -75,7 +75,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     scoped = deepcopy(cfg.raw)
     motion = scoped.setdefault('video', {}).setdefault('claude_motion', {})
     motion['style'] = 'cinematic_2d'
-    motion['max_tokens'] = min(int(motion.get('max_tokens', 16000)), 24000)
+    motion.setdefault('max_tokens', 30000)
     result = render(Config(scoped), st, stage, words, duration)
     boundaries = [float(scene['start']) for scene in st.get('storyboard', {}).get('scenes', [])[1:]]
     effects = stage / 'cinematic_fx.wav'
