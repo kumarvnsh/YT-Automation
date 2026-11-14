@@ -1,5 +1,6 @@
 """Re-render an existing artifact with cinematic visuals; never call upload."""
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -20,6 +21,7 @@ def main(root):
                   if step not in ('captions', 'render', 'compose', 'quality', 'thumbnail', 'upload')]
     for key in ('video', 'render_quality', 'quality', 'meta', 'youtube_id', 'youtube_url', 'render_fallback'):
         st.pop(key, None)
+    shutil.rmtree(stage / 'scenes', ignore_errors=True)
     # Failed previews must not present the source run's old video as new output.
     for name in ('video.mp4', 'silent.mp4', 'captioned.mp4', 'render_quality.json', 'quality.json', 'composition.json'):
         (stage / name).unlink(missing_ok=True)
