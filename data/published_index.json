@@ -6519,5 +6519,32 @@
     "production_profile": 2,
     "facebook_id": "1497911715598206",
     "instagram_id": "18101634851433196"
+  },
+  {
+    "video_id": "QN1FmIl8Cto",
+    "run_id": "43598609244",
+    "stage_dir_name": "20261114_131431_975992_long",
+    "title": "Who Was Boycott, and Why Is His Name a Verb?",
+    "published_at": "2026-11-14T14:37:57.667958+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "approve",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": null,
+    "editorial_slot": null,
+    "editorial_region": null,
+    "editorial_series": null,
+    "this_week_event": null,
+    "duration_variant": null,
+    "hook": "One everyday word began with a man whose workers simply stopped working for him.",
+    "duration": 174.744,
+    "production_profile": 1,
+    "facebook_id": null,
+    "instagram_id": null
   }
 ]
