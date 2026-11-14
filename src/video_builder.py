@@ -404,6 +404,18 @@ def finalize(
     else:
         filter_a = "[1:a]volume=1.0[aout]"
 
+    effects_file = cfg.get("video.effects_file")
+    if effects_file:
+        effects_path = Path(effects_file)
+        if not effects_path.is_file():
+            raise RuntimeError("Cinematic sound-effects track is missing")
+        effect_index = 3 if music else 2
+        audio_inputs += ["-i", str(effects_path.resolve())]
+        filter_a = filter_a.replace("[aout]", "[voice_mix]") + (
+            f";[voice_mix][{effect_index}:a]amix=inputs=2:duration=first:normalize=0,"
+            "alimiter=limit=0.95:level=0[aout]"
+        )
+
     out_path.parent.mkdir(parents=True, exist_ok=True)
     captions_on = bool(ass_path and cfg.get("video.captions.enabled", True))
     strict = cfg.get("production.enabled", False)

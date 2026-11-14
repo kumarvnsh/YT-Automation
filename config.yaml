@@ -225,7 +225,14 @@ video:
   # frame-by-frame in headless Chromium (~$0.07/short on Sonnet 5.5 medium).
   # Failed scenes fall back to stock. "broll" = previous stock/AI-image look.
   # VIDEO_MODE env overrides this for a single run.
-  mode: "claude_motion"
+  mode: "cinematic_2d"
+  # 3D off uses the approved cinematic illustrated 2D style.
+  cinematic_2d:
+    captions:
+      font: "Arial"
+      fontsize_short: 66
+      outline: 2
+      margin_bottom: 180
   # Persistent GitHub switch: python -m src.visual_mode on/off.
   three_d:
     enabled: true
