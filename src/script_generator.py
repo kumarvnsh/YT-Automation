@@ -177,7 +177,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         else:
             seg_hint = "3 to 5 short segments" if secs <= 30 else "5 to 7 short segments"
     else:
-        secs = cfg.get("script.longform_target_seconds", 420)
+        secs = cfg.get("script.longform_target_seconds", 180)
         seg_hint = "10 to 16 segments"
     words = int(secs * 150 / 60)  # ~150 wpm
     lo, hi = int(words * 0.9), int(words * 1.1)

@@ -153,7 +153,7 @@ script:
   # Legacy/manual target. Editorial snapshots test 30s and 50s separately on Facebook;
   # prior YouTube retention patterns do not establish Facebook's preferred duration.
   shorts_target_seconds: 45
-  longform_target_seconds: 420   # 7 minutes
+  longform_target_seconds: 180   # 3 minutes; daily YouTube-only long-form (cron-job.org)
 
 tts:
   alignment_provider: "openai" # Used only if measured native timing is absent/inconsistent
