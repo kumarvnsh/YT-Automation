@@ -545,9 +545,8 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
 
     # Cross-post to Facebook/Instagram Reels. Only shorts (vertical) qualify, and
     # this is best-effort: a Meta failure must never fail the run or block the
-    # primary YouTube upload. Enable via config or the META_CROSS_POST env toggle.
-    meta_on = cfg.get("meta.enabled", False) or env("META_CROSS_POST") == "true"
-    if meta_on and st.get("fmt") == "short" and not facebook_primary:
+    # primary YouTube upload. Every short goes out when meta.enabled is on.
+    if cfg.get("meta.enabled", False) and st.get("fmt") == "short" and not facebook_primary:
         from .meta_uploader import publish_reel
 
         try:

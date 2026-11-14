@@ -33,10 +33,6 @@ on:
         description: "Set by the external cron trigger — enables the duplicate-slot guard"
         type: boolean
         default: false
-      cross_post:
-        description: "Also post this short to Facebook + Instagram Reels (test toggle; config meta.enabled does it for every run)"
-        type: boolean
-        default: false
 
 concurrency:
   group: publish-histold
@@ -189,9 +185,6 @@ jobs:
           PRIVACY="${{ github.event.inputs.privacy_status }}"
           DRY_RUN="${{ github.event.inputs.dry_run }}"
           NO_UPLOAD="${{ github.event.inputs.no_upload }}"
-          CROSS_POST="${{ github.event.inputs.cross_post }}"
-
-          [ "$CROSS_POST" = "true" ] && export META_CROSS_POST=true
 
           # Label jobs by IST period; each dispatch reserves topics by unique job ID.
           HOUR_IST=$(TZ=Asia/Kolkata date +%H)
