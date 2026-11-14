@@ -3130,5 +3130,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_180305_062105_short",
+    "title": "Why Did China's Ming Government Abandon Its Paper Money?",
+    "fingerprint": "abandon_china_did_government_its_ming_money_paper_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]

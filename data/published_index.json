@@ -6735,5 +6735,32 @@
     "production_profile": 2,
     "facebook_id": "2736705340120279",
     "instagram_id": "18002725320043308"
+  },
+  {
+    "video_id": "8tA4rackeYA",
+    "run_id": "43624213499",
+    "stage_dir_name": "20261114_180305_062105_short",
+    "title": "Why Did China's Ming Government Abandon Its Paper Money?",
+    "published_at": "2026-11-14T18:13:17.550966+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "mistakes",
+    "editorial_slot": 111,
+    "editorial_region": "china",
+    "editorial_series": "Mistakes That Changed History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "A paper banknote from Ming China, dated 1375, is kept in London's British Museum.",
+    "duration": 50.856,
+    "production_profile": 2,
+    "facebook_id": "1105718192092599",
+    "instagram_id": "18582226255077064"
   }
 ]
