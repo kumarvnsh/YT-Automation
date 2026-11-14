@@ -6,9 +6,6 @@ on:
         description: Existing publish run to reuse (never uploads)
         required: true
         default: '43554497372'
-  push:
-    branches: [codex/cinematic-2d]
-    paths: [.github/workflows/cinematic-preview.yml]
 permissions:
   contents: read
   actions: read

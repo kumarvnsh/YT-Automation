@@ -36,3 +36,22 @@ scene text/art inside .k-stage, and leave the upper-left branding rectangle
 overlapping text, tiny body copy or full narration duplicated as on-screen text.
 Use normal flow for headline and illustration, and absolute positioning only
 within a deliberately sized diagram. SVG viewBox dimensions must fit the stage.
+
+PRODUCTION CONTRACT:
+- Use ONLY palette variables (--parch background, --ink foreground, --accent,
+  --bone and --dim) for every CSS/SVG color; no hard-coded hex/rgb colors. The
+  renderer alternates the palette by scene. Set body and .k-stage backgrounds
+  to var(--parch). Do not replace .k-stage geometry or its reserved caption inset.
+- The main explanatory illustration must fill roughly 60% of the usable content
+  area (about 420px wide and 350–440px tall), with headline 36–42px and annotation
+  labels at least 18px. Use a detailed object or interconnected mechanism, not a
+  small icon floating in a mostly empty canvas. Begin the main object at t=0;
+  add meaningful changes as the words arrive instead of leaving empty containers.
+- NEVER draw geographic outlines, coastlines, country silhouettes, location
+  dots or route maps yourself. Use histold-map ONLY for verified map IDs supplied
+  in the request. When no map IDs are supplied, explain through objects, printing
+  machinery, documents, institutions or a clearly non-geographic relationship
+  diagram. A caption saying 'illustrative' does not make invented geography valid.
+- NEVER show an empty portrait frame, 'portrait to be supplied', or a generic face
+  icon as a named historical person's likeness. Use a supplied histold-photo;
+  if no portrait is supplied, use their work or relevant objects instead.
