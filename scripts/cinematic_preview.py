@@ -8,7 +8,9 @@ from src.config import load_config
 from src import pipeline
 
 
-def main(root):
+def main(root, art_style='cinematic'):
+    if art_style not in ('cinematic', 'woodblock'):
+        raise ValueError(f'Unknown preview style: {art_style}')
     states = list(Path(root).rglob('state.json'))
     if len(states) != 1:
         raise RuntimeError(f'Expected one stage, found {len(states)}')
@@ -16,7 +18,8 @@ def main(root):
     stage = path.parent
     st = json.loads(path.read_text())
     cfg = load_config()
-    st.update(visual_mode='cinematic_2d', no_upload=True, complete=False)
+    cfg.raw.setdefault('video', {}).setdefault('claude_motion', {})['art_style'] = art_style
+    st.update(visual_mode='cinematic_2d', preview_style=art_style, no_upload=True, complete=False)
     st['done'] = [step for step in st.get('done', [])
                   if step not in ('captions', 'render', 'compose', 'quality', 'thumbnail', 'upload')]
     for key in ('video', 'render_quality', 'quality', 'meta', 'youtube_id', 'youtube_url', 'render_fallback'):
@@ -40,4 +43,4 @@ def main(root):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else 'cinematic')

@@ -6,6 +6,11 @@ on:
         description: Existing publish run to reuse (never uploads)
         required: true
         default: '43554497372'
+      style:
+        description: Visual style for this unpublished preview
+        type: choice
+        options: [cinematic, woodblock]
+        default: cinematic
 permissions:
   contents: read
   actions: read
@@ -29,11 +34,12 @@ jobs:
           path: output/cinematic-preview
       - name: Render unpublished cinematic draft
         env:
+          PREVIEW_STYLE: ${{ inputs.style }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m scripts.cinematic_preview output/cinematic-preview
+        run: python -m scripts.cinematic_preview output/cinematic-preview "$PREVIEW_STYLE"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cinematic-2d-preview
+          name: histold-${{ inputs.style }}-preview
           path: output/cinematic-preview
           retention-days: 14

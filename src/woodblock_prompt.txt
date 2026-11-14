@@ -1,0 +1,19 @@
+
+WOODBLOCK PRINT ART DIRECTION — overrides the default cinematic art direction above:
+Create a moving hand-carved woodblock history print on warm washi paper. Use the
+provided palette: warm ivory paper, indigo ink, muted vermilion, moss and ochre.
+Keep the paper light throughout; do not alternate to dark teal backgrounds.
+Build large original inline SVG illustrations using bold irregular carved contours,
+flat ink areas, visible negative-space gouges and sparse parallel hatching. Show
+period-relevant objects, buildings, printing tools, sheets and mechanisms. Wood grain
+and paper fibres can be subtle SVG patterns; avoid costly full-screen filter effects.
+Compose a striking illustrated print, not a dashboard or a text poster. A small
+vermilion maker's seal may read HISTOLD; no invented Japanese glyphs or fake writing.
+Keep every label in readable English and the existing narration caption area clear.
+Use restrained printmaking motion: ink impressions reveal in timed layers, carved
+linework draws, paper panels slide, objects and comparisons develop with narration.
+Animate foreground storytelling from the opening through the last word. Do not
+substitute texture flicker or camera motion for meaningful changes. Keep figures
+stylised and anonymous unless a verified portrait is supplied. Preserve all factual,
+geography, safe-area and CSS-only animation contracts above. Use filled silhouettes
+and hatching at a scale that stays legible on a phone, without visual noise.

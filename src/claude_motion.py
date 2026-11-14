@@ -473,7 +473,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     system = _SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), w_text=w - 72, example=_EXAMPLE.strip())
     if cfg.get('video.claude_motion.style') == 'cinematic_2d':
         from .cinematic_motion import system_prompt
-        system = system_prompt(w, h)
+        system = system_prompt(w, h, cfg.get("video.claude_motion.art_style", "cinematic"))
     with client.beta.messages.stream(
         model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
         max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
@@ -601,7 +601,7 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
     repair_system = _REPAIR_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7))
     if cfg.get("video.claude_motion.style") == "cinematic_2d":
         from .cinematic_motion import system_prompt
-        repair_system = system_prompt(w, h) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
+        repair_system = system_prompt(w, h, cfg.get("video.claude_motion.art_style", "cinematic")) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
     msg = client.messages.create(
         model=cfg.get("video.claude_motion.repair_model", "claude-haiku-5-5"),
         max_tokens=16000,
@@ -621,7 +621,7 @@ def _check_and_repair(cfg: Config, page, raw: dict[int, str], w: int, h: int) ->
     def prepared(html, index):
         if cfg.get("video.claude_motion.style") == "cinematic_2d":
             from .cinematic_motion import prepare_html
-            return prepare_html(html, index)
+            return prepare_html(html, index, cfg.get("video.claude_motion.art_style", "cinematic"))
         return inject_kit(html)
     issues = {}
     for i, html in raw.items():
@@ -722,7 +722,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
         if cinematic:
             from .cinematic_motion import prepare_html
-            return prepare_html(bound, index)
+            return prepare_html(bound, index, cfg.get("video.claude_motion.art_style", "cinematic"))
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
         return apply_palette(bound, palette)
 

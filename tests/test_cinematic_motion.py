@@ -42,6 +42,16 @@ class CinematicMotionTests(unittest.TestCase):
             self.assertEqual(page.evaluate(_LINT_JS), [])
             browser.close()
 
+    def test_woodblock_prompt_and_palette(self):
+        prompt = system_prompt(540, 960, 'woodblock')
+        self.assertIn('WOODBLOCK', prompt)
+        self.assertIn('carved', prompt)
+        self.assertIn('CSS @keyframes ONLY', prompt)
+        html = prepare_html('<head></head>', 1, 'woodblock')
+        self.assertIn('--parch:#f3e7cc', html)
+        self.assertIn('--ink:#203b57', html)
+        self.assertIn('--accent:#ad4737', html)
+
     def test_themes_alternate(self):
         self.assertIn('--parch:#f1eadb', prepare_html('<head></head>', 0))
         self.assertIn('--parch:#153c3a', prepare_html('<head></head>', 1))

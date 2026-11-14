@@ -21,8 +21,11 @@ _THEMES = (
 )
 
 
-def system_prompt(w: int, h: int) -> str:
-    return _HERE.joinpath('cinematic_2d_prompt.txt').read_text().format(width=w, height=h)
+def system_prompt(w: int, h: int, art_style: str = 'cinematic') -> str:
+    prompt = _HERE.joinpath('cinematic_2d_prompt.txt').read_text().format(width=w, height=h)
+    if art_style == 'woodblock':
+        prompt += _HERE.joinpath('woodblock_prompt.txt').read_text()
+    return prompt
 
 
 @lru_cache(maxsize=1)
@@ -39,7 +42,7 @@ def _base_css() -> str:
     return ''.join(faces) + _HERE.joinpath('cinematic_2d.css').read_text()
 
 
-def prepare_html(html: str, index: int) -> str:
+def prepare_html(html: str, index: int, art_style: str = 'cinematic') -> str:
     """Prefix helpers so authored layouts and keyframes retain precedence."""
     html = re.sub(r'<style id="cinematic-2d">.*?</style>', '', html, flags=re.S)
     # Asset binding replaces custom tags with SVG/figure elements. Preserve
@@ -50,6 +53,8 @@ def prepare_html(html: str, index: int) -> str:
         return match.group(1) + css + match.group(3)
     html = re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', bound_selectors, html, flags=re.S | re.I)
     paper, ink, bone, accent, dim = _THEMES[index % len(_THEMES)]
+    if art_style == 'woodblock':
+        paper, ink, bone, accent, dim = ('#f3e7cc', '#203b57', '#dccba7', '#ad4737', '#65705b')
     theme = (f':root{{--parch:{paper};--ink:{ink};--bone:{bone};'
              f'--accent:{accent};--dim:{dim}}}')
     style = '<style id="cinematic-2d">' + _base_css() + theme + '</style>'
