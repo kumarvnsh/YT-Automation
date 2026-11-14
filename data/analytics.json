@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-14T11:50:26.233854+00:00",
+      "updated": "2026-11-14T17:24:14.456278+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,393 @@
       },
       "videos": [
         {
+          "id": "SfvGGm6eaok",
+          "title": "Was Japan Really Locked Shut for 200 Years?",
+          "description": "Many students learn that Japan closed its doors completely for about two centuries. The Library of Congress describes the sakoku period as relative seclusion, with limited contact at Nagasaki and rules over trade and relations. This short video explains what the policy actually did and how it ended.\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "commodore perry",
+            "did you know",
+            "edo period",
+            "education",
+            "everyday origins",
+            "harris treaty",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "japan history",
+            "japan isolation",
+            "japanese history",
+            "myths you learned in school",
+            "nagasaki",
+            "sakoku",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T16:39:35Z",
+          "thumbnail": "https://i.ytimg.com/vi/SfvGGm6eaok/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "qV660KJq95A",
+          "title": "What Did a Chance Spot in Kenya Reveal About Our Ancestors?",
+          "description": "A fossil hunter's chance discovery near Lake Turkana in Kenya led to one of the most complete early human skeletons ever found. Here is how the find was made and what it taught scientists about early human bodies. Found by Accident. #Kenya #HumanEvolution #FoundByAccident\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "african history",
+            "ancient humans",
+            "did you know",
+            "east africa history",
+            "education",
+            "everyday origins",
+            "fossil discovery",
+            "found by accident",
+            "historical facts",
+            "history shorts",
+            "human evolution",
+            "kenya",
+            "lake turkana",
+            "paleoanthropology",
+            "turkana boy",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T16:29:27Z",
+          "thumbnail": "https://i.ytimg.com/vi/qV660KJq95A/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "hs_frBOTDE8",
+          "title": "What Did India's Legendary Conqueror Carve Into His Stone?",
+          "description": "Ashoka is often remembered as a fearsome conqueror of ancient India. His own rock edicts, carved across his realm, show a different side of the story. Behind the Legend: what the stones say in his own words. #IndianHistory #AncientIndia #BehindTheLegend\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "ancient india",
+            "ancient inscriptions",
+            "ashoka",
+            "behind the legend",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "indian history",
+            "kalinga war",
+            "mauryan empire",
+            "rock edicts",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T16:12:01Z",
+          "thumbnail": "https://i.ytimg.com/vi/hs_frBOTDE8/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "4vjxe7HaQZI",
+          "title": "Were the World's Finest Ocean Maps Ever Meant to Leave Shore?",
+          "description": "Marshallese navigators in the central Pacific learned the ocean with woven stick charts made of palm sticks and shells. Find out what these charts showed and why they were mostly used on land. #PacificHistory #WeirdHistory #Navigation\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "indigenous knowledge",
+            "marshall islands",
+            "ocean swells",
+            "pacific history",
+            "pacific navigation",
+            "polynesian navigation",
+            "rebbelib",
+            "stick charts",
+            "traditional navigation",
+            "weird history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T15:57:36Z",
+          "thumbnail": "https://i.ytimg.com/vi/4vjxe7HaQZI/mqdefault.jpg",
+          "views": 3,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "keQ8T53m2zs",
+          "title": "Why Would Ancient New Mexico Build 30-Foot Roads Without Wheels?",
+          "description": "Ancient Chaco Canyon in New Mexico was linked by roads up to 30 feet wide, built by Native American peoples who had no wheels or pack animals. Archaeologists still debate whether the roads were used for travel, ritual, or both. Would you walk a road built for a reason we cannot yet prove? #ChacoCanyon #NativeAmericanHistory #UnsolvedHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "ancient america",
+            "ancient roads",
+            "archaeology",
+            "chaco canyon",
+            "chacoan roads",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "great houses",
+            "historical facts",
+            "history shorts",
+            "native american history",
+            "new mexico",
+            "pueblo culture",
+            "unsolved history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T15:40:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/keQ8T53m2zs/mqdefault.jpg",
+          "views": 3,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "hk8oGsZj7I4",
+          "title": "Who Dug Britain's Trenches in the First World War?",
+          "description": "During the First World War, Britain recruited the Chinese Labour Corps for support work on the Western Front. Its workers dug trenches, cleared battlefields and worked on roads and railways, yet their contribution was little recognised afterwards. #WorldHistory #FirstWorldWar #ErasedFromHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "british history",
+            "china history",
+            "chinese labour corps",
+            "did you know",
+            "education",
+            "erased from history",
+            "everyday origins",
+            "first world war",
+            "forgotten history",
+            "historical facts",
+            "history shorts",
+            "shandong",
+            "surprising history",
+            "western front",
+            "world history",
+            "ww1 history"
+          ],
+          "publishedAt": "2026-11-14T15:24:52Z",
+          "thumbnail": "https://i.ytimg.com/vi/hk8oGsZj7I4/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "yZEtFoH-rGg",
+          "title": "Which Ancient Counting Habit Is Ticking on Your Wrist?",
+          "description": "Your clock's sixty minutes trace back to the number system of ancient Babylon. Scribes wrote numbers in base sixty on clay tablets, and that habit still shapes how we measure time. Here is where it comes from.\n#History #Babylon #DidYouKnow",
+          "tags": [
+            "ancient babylon",
+            "ancient mathematics",
+            "babylonian numbers",
+            "base 60",
+            "cuneiform",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "mesopotamia",
+            "time measurement",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T14:59:32Z",
+          "thumbnail": "https://i.ytimg.com/vi/yZEtFoH-rGg/mqdefault.jpg",
+          "views": 3,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "QN1FmIl8Cto",
+          "title": "Who Was Boycott, and Why Is His Name a Verb?",
+          "description": "Every time you refuse to buy something to make a point, you use a word that began in County Mayo in 1880. We follow the story of one estate agent, the workers who stopped working for him, and how his name became a tool of protest worldwide. #history #didyouknow #etymology",
+          "tags": [
+            "boycott",
+            "charles boycott",
+            "charles stewart parnell",
+            "county mayo",
+            "did you know",
+            "education",
+            "etymology",
+            "everyday origins",
+            "forgotten history",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "ireland 1880",
+            "irish history",
+            "land league",
+            "word history",
+            "word origins",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T14:38:28Z",
+          "thumbnail": "https://i.ytimg.com/vi/QN1FmIl8Cto/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
+          "id": "IJn74t35Uu8",
+          "title": "Why Did Russia's Fleet Open Fire on British Fishermen?",
+          "description": "In October 1904, a Russian naval force fired on British trawlers in the North Sea, mistaking them for Japanese torpedo boats during the Russo-Japanese War. The mistake caused a serious diplomatic crisis and led to an international inquiry in Paris. #RussianHistory #NavalHistory #WorldHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "baltic fleet",
+            "did you know",
+            "dogger bank",
+            "education",
+            "everyday origins",
+            "forgotten history",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "mistakes that changed history",
+            "naval history",
+            "north sea",
+            "royal navy",
+            "russian history",
+            "russo japanese war",
+            "world history"
+          ],
+          "publishedAt": "2026-11-14T13:42:32Z",
+          "thumbnail": "https://i.ytimg.com/vi/IJn74t35Uu8/mqdefault.jpg",
+          "views": 5,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-08",
+            "end_date": "2026-11-14",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "6HH18W39hFU",
           "title": "Was Paper Really Invented by One Man?",
           "description": "Your textbook may credit one Chinese official with inventing paper around 105 CE. Archaeologists have found older paper scraps in northwestern China, so the real story is more shared than that. Follow for more surprising world history.\n#WorldHistory #ChinaHistory #DidYouKnow\n\nPortrait of Cai Lun: Unknown author, Public domain, via Wikimedia Commons",
@@ -58,14 +445,14 @@
           ],
           "publishedAt": "2026-11-14T07:30:00Z",
           "thumbnail": "https://i.ytimg.com/vi/6HH18W39hFU/mqdefault.jpg",
-          "views": 4,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -109,7 +496,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -151,7 +538,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -193,7 +580,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -239,7 +626,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -275,14 +662,14 @@
           ],
           "publishedAt": "2026-11-13T20:59:56Z",
           "thumbnail": "https://i.ytimg.com/vi/-cPiNs-0pLA/mqdefault.jpg",
-          "views": 1,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -319,14 +706,14 @@
           ],
           "publishedAt": "2026-11-13T20:56:15Z",
           "thumbnail": "https://i.ytimg.com/vi/yUDJaAj3Zvg/mqdefault.jpg",
-          "views": 14,
+          "views": 18,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -368,7 +755,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -410,7 +797,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -453,7 +840,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -495,7 +882,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -538,7 +925,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -581,7 +968,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -625,7 +1012,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -666,7 +1053,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -711,7 +1098,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -753,7 +1140,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -798,7 +1185,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -840,7 +1227,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -888,7 +1275,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -932,7 +1319,7 @@
           "shares": 0,
           "analytics_views": 21,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -972,7 +1359,7 @@
           "shares": 0,
           "analytics_views": 38,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1013,7 +1400,7 @@
           "shares": 0,
           "analytics_views": 71,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1057,7 +1444,7 @@
           "shares": 0,
           "analytics_views": 84,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1099,7 +1486,7 @@
           "shares": 0,
           "analytics_views": 141,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1141,7 +1528,7 @@
           "shares": 0,
           "analytics_views": 105,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1184,7 +1571,7 @@
           "shares": 0,
           "analytics_views": 49,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1226,7 +1613,7 @@
           "shares": 0,
           "analytics_views": 89,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1268,7 +1655,7 @@
           "shares": 0,
           "analytics_views": 84,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1310,7 +1697,7 @@
           "shares": 0,
           "analytics_views": 805,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1353,7 +1740,7 @@
           "shares": 0,
           "analytics_views": 155,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1391,7 +1778,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1440,7 +1827,7 @@
           "shares": 0,
           "analytics_views": 16,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1483,7 +1870,7 @@
           "shares": 0,
           "analytics_views": 3,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1524,7 +1911,7 @@
           "shares": 0,
           "analytics_views": 11,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1567,7 +1954,7 @@
           "shares": 0,
           "analytics_views": 20,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1610,7 +1997,7 @@
           "shares": 0,
           "analytics_views": 27,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1651,7 +2038,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1694,7 +2081,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1724,7 +2111,7 @@
           ],
           "publishedAt": "2026-11-08T16:11:00Z",
           "thumbnail": "https://i.ytimg.com/vi/2ms9PQeKIBE/mqdefault.jpg",
-          "views": 17,
+          "views": 18,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1736,7 +2123,7 @@
           "shares": 0,
           "analytics_views": 16,
           "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1778,389 +2165,7 @@
           "shares": 0,
           "analytics_views": 12,
           "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "x--3ODcJEEg",
-          "title": "Was This Song Dynasty Tea Bowl's Black Glaze Just Decoration?",
-          "description": "A Song dynasty tea bowl from the Jian kilns in Fujian, China, shows that its dark glaze was valued for more than looks. Museum records link the bowl's popularity to the tea-drinking practice of the time. #ChineseHistory #SongDynasty #WorldHistory",
-          "tags": [
-            "ceramics",
-            "chinese history",
-            "chinese pottery",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "fujian",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "jian ware",
-            "song dynasty",
-            "tea bowl",
-            "tea history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-08T07:09:22Z",
-          "thumbnail": "https://i.ytimg.com/vi/x--3ODcJEEg/mqdefault.jpg",
-          "views": 42,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 40.28,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 12.0,
-          "shares": 0,
-          "analytics_views": 42,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "kN43KAAEajU",
-          "title": "Why Did a Cooling Fan Start Sending Secret Messages?",
-          "description": "A simple summer fan could do far more than cool your face. This short video explains how fans became a silent language and how Edo-period printed designs and European makers shaped them. You Use It Every Day. #FoldingFan #JapaneseHistory #EverydayHistory",
-          "tags": [
-            "cultural history",
-            "did you know",
-            "edo period",
-            "education",
-            "european history",
-            "everyday objects",
-            "everyday origins",
-            "fan history",
-            "folding fan",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "japan history",
-            "japanese history",
-            "silent communication",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-11-08T04:14:04Z",
-          "thumbnail": "https://i.ytimg.com/vi/kN43KAAEajU/mqdefault.jpg",
-          "views": 17,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 56.16,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 30.0,
-          "shares": 0,
-          "analytics_views": 17,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "utnb_IsgCXk",
-          "title": "Why Does Egypt's Key to Its Own Writing Sit in London?",
-          "description": "A stone found by French soldiers in 1799 ended up in London under the terms of a 1801 surrender. Its three scripts later helped scholars begin reading ancient Egyptian hieroglyphs. Learn how one decision shaped where the stone sits today.\n#RosettaStone #AncientEgypt #WorldHistory",
-          "tags": [
-            "ancient egypt",
-            "british museum",
-            "champollion",
-            "did you know",
-            "did you know history",
-            "education",
-            "egyptian writing",
-            "everyday origins",
-            "hieroglyphs",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "one decision changed everything",
-            "rosetta stone",
-            "world history"
-          ],
-          "publishedAt": "2026-11-07T18:10:51Z",
-          "thumbnail": "https://i.ytimg.com/vi/utnb_IsgCXk/mqdefault.jpg",
-          "views": 59,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 30.73,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 10.0,
-          "shares": 0,
-          "analytics_views": 60,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "1lDocQ8fkpo",
-          "title": "Europe Banned This Indian Cloth, So Why Did Everyone Keep Wearing It?",
-          "description": "Europe's wool and textile makers pushed to restrict chintz, a painted cotton from India, and some laws banned certain items. Fashionable women kept wearing it anyway, thanks to its bright, lasting colours. #IndianHistory #TextileHistory #HistoryGotThisWrong",
-          "tags": [
-            "chintz",
-            "did you know",
-            "education",
-            "everyday origins",
-            "fashion history",
-            "historical facts",
-            "history facts",
-            "history got this wrong",
-            "history shorts",
-            "india textiles",
-            "indian history",
-            "kalamkari",
-            "natural dyes",
-            "surprising history",
-            "textile history",
-            "trade history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-07T16:14:24Z",
-          "thumbnail": "https://i.ytimg.com/vi/1lDocQ8fkpo/mqdefault.jpg",
-          "views": 9,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 31.2,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 15.0,
-          "shares": 0,
-          "analytics_views": 9,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "XoeVilvOqLo",
-          "title": "Could a Canoe Find Tahiti With Nothing but the Sky?",
-          "description": "In 1976, a Hawaiian voyaging canoe sailed to Tahiti without modern instruments. A navigator from Micronesia guided the crew using stars, swells, and wind. #PacificHistory #Wayfinding #HiddenHistory",
-          "tags": [
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "hawaii history",
-            "historical facts",
-            "history shorts",
-            "hokulea",
-            "mau piailug",
-            "micronesia",
-            "ocean voyaging",
-            "pacific history",
-            "polynesian navigation",
-            "tahiti",
-            "traditional navigation",
-            "wayfinding",
-            "world history"
-          ],
-          "publishedAt": "2026-11-07T12:10:59Z",
-          "thumbnail": "https://i.ytimg.com/vi/XoeVilvOqLo/mqdefault.jpg",
-          "views": 25,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 31.78,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 10.0,
-          "shares": 0,
-          "analytics_views": 23,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "2vMau4aA0ts",
-          "title": "Were the Aztecs' Floating Islands Really Floating?",
-          "description": "Aztec farms near Tenochtitlan are often called floating islands, but the truth is more grounded. We look at how chinampas were built in the shallow lake of central Mexico. #AztecHistory #MexicoCityHistory #HistoryGotThisWrong",
-          "tags": [
-            "ancient farming",
-            "aztec farming",
-            "aztec history",
-            "chinampas",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "floating gardens",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "indigenous americas",
-            "lake texcoco",
-            "mesoamerican history",
-            "mexico city history",
-            "tenochtitlan",
-            "world history"
-          ],
-          "publishedAt": "2026-11-07T07:11:19Z",
-          "thumbnail": "https://i.ytimg.com/vi/2vMau4aA0ts/mqdefault.jpg",
-          "views": 11,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 34.08,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 16.0,
-          "shares": 0,
-          "analytics_views": 11,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "CQPwWFzJX6g",
-          "title": "Before Tomatoes, What Was Ketchup Made From?",
-          "description": "The ketchup on British tables began as a savoury sauce, not a tomato one. Surviving recipes from the 1700s and 1826 show mushrooms and cucumbers at its heart. Explore how one everyday condiment changed over time.\n#WorldHistory #Ketchup #FoodHistory",
-          "tags": [
-            "british food history",
-            "condiment history",
-            "cucumber catsup",
-            "did you know",
-            "education",
-            "eighteenth century england",
-            "everyday origins",
-            "food history",
-            "historical facts",
-            "history shorts",
-            "ketchup history",
-            "margaret dods",
-            "mushroom ketchup",
-            "surprising history",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-11-07T04:09:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/CQPwWFzJX6g/mqdefault.jpg",
-          "views": 42,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 29.7,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 9.0,
-          "shares": 0,
-          "analytics_views": 42,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "1_h7SOlkv4Y",
-          "title": "How Did Desert Towns Drink Without a Single Pump?",
-          "description": "Long before modern pumps, people in Iran's dry regions carried water through gently sloping underground tunnels called qanats. We look at how gravity, shafts, and patient digging helped towns grow where rain was rare. Hashtags: #WorldHistory #Iran #AncientEngineering",
-          "tags": [
-            "ancient engineering",
-            "ancient water systems",
-            "desert towns",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "iran history",
-            "middle east history",
-            "persian history",
-            "qanat",
-            "water history",
-            "world history",
-            "yazd"
-          ],
-          "publishedAt": "2026-11-06T18:13:38Z",
-          "thumbnail": "https://i.ytimg.com/vi/1_h7SOlkv4Y/mqdefault.jpg",
-          "views": 2,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 13.019999999999998,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 6.0,
-          "shares": 0,
-          "analytics_views": 2,
-          "analytics_period": {
-            "start_date": "2026-11-06",
-            "end_date": "2026-11-14",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "39xqrUiLKz8",
-          "title": "What Did Russia's Tsar Really Do to Men's Beards?",
-          "description": "Many people think Tsar Peter the Great banned beards, but he actually taxed them and issued tokens to men who paid. Why would a ruler turn a face-hair rule into a paid privilege, and what did that say about his reforms? #RussianHistory #HistoryGotThisWrong #HiddenHistory",
-          "tags": [
-            "beard tax",
-            "did you know",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history got this wrong",
-            "history shorts",
-            "old coins",
-            "peter the great",
-            "russian empire",
-            "russian history",
-            "russian tsars",
-            "st petersburg",
-            "surprising history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-06T16:12:38Z",
-          "thumbnail": "https://i.ytimg.com/vi/39xqrUiLKz8/mqdefault.jpg",
-          "views": 1,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
-          "shares": 0,
-          "analytics_views": 1,
-          "analytics_period": {
-            "start_date": "2026-11-06",
+            "start_date": "2026-11-08",
             "end_date": "2026-11-14",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
