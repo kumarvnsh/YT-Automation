@@ -786,8 +786,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     original_errors = report['scenes'][str(i)]['errors']
                     if not original_errors:
                         continue
-                    if cinematic:
-                        raise RuntimeError(f'Cinematic scene {i} failed visual checks: '+ '; '.join(original_errors))
+                    # One weak scene should not cancel the publish; the house scene keeps the slot filled.
                     scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', []))
                     inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
