@@ -22,6 +22,13 @@ class CinematicMotionTests(unittest.TestCase):
         self.assertNotIn('https://', html)
         self.assertEqual(prepare_html(html, 0).count('id="cinematic-2d"'), 1)
 
+    def test_authored_asset_selectors_survive_binding(self):
+        from src.icon_assets import bind_icons
+        html = '<head><style>.row histold-icon{width:36px;height:36px}</style></head><body><histold-icon name="newspaper"></histold-icon></body>'
+        prepared = prepare_html(bind_icons(html)[0], 0)
+        self.assertIn('.row .k-icon{width:36px;height:36px}', prepared)
+        self.assertNotIn('histold-icon', prepared)
+
     def test_themes_alternate(self):
         self.assertIn('--parch:#f1eadb', prepare_html('<head></head>', 0))
         self.assertIn('--parch:#153c3a', prepare_html('<head></head>', 1))

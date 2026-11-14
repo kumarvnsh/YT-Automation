@@ -42,6 +42,13 @@ def _base_css() -> str:
 def prepare_html(html: str, index: int) -> str:
     """Prefix helpers so authored layouts and keyframes retain precedence."""
     html = re.sub(r'<style id="cinematic-2d">.*?</style>', '', html, flags=re.S)
+    # Asset binding replaces custom tags with SVG/figure elements. Preserve
+    # authored sizing rules that targeted those original placeholder tags.
+    def bound_selectors(match):
+        css = re.sub(r'\bhistold-icon\b', '.k-icon', match.group(2))
+        css = re.sub(r'\bhistold-photo\b', '.k-photo', css)
+        return match.group(1) + css + match.group(3)
+    html = re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', bound_selectors, html, flags=re.S | re.I)
     paper, ink, bone, accent, dim = _THEMES[index % len(_THEMES)]
     theme = (f':root{{--parch:{paper};--ink:{ink};--bone:{bone};'
              f'--accent:{accent};--dim:{dim}}}')
