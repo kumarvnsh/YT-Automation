@@ -6465,5 +6465,32 @@
     "production_profile": 2,
     "facebook_id": "1143434218058178",
     "instagram_id": "18104513444374489"
+  },
+  {
+    "video_id": "6HH18W39hFU",
+    "run_id": "43570556094",
+    "stage_dir_name": "20261114_072144_165611_short",
+    "title": "Was Paper Really Invented by One Man?",
+    "published_at": "2026-11-14T07:29:31.270980+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "school_myths",
+    "editorial_slot": 102,
+    "editorial_region": "china",
+    "editorial_series": "Myths You Learned in School",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Your textbook says one official invented paper. The evidence tells a different story.",
+    "duration": 32.232,
+    "production_profile": 2,
+    "facebook_id": "2521279838400631",
+    "instagram_id": "18363648625218361"
   }
 ]
