@@ -6573,5 +6573,32 @@
     "production_profile": 2,
     "facebook_id": "1905233567209421",
     "instagram_id": "18121856860975021"
+  },
+  {
+    "video_id": "hk8oGsZj7I4",
+    "run_id": "43608894921",
+    "stage_dir_name": "20261114_151403_895379_short",
+    "title": "Who Dug Britain's Trenches in the First World War?",
+    "published_at": "2026-11-14T15:24:34.293031+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "erased",
+    "editorial_slot": 105,
+    "editorial_region": "europe",
+    "editorial_series": "Erased From History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Chinese workers helped Britain fight the First World War, yet most histories never mention them.",
+    "duration": 52.632,
+    "production_profile": 2,
+    "facebook_id": "1113738698202344",
+    "instagram_id": "18135510172787231"
   }
 ]

@@ -3076,5 +3076,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_151403_895379_short",
+    "title": "Who Dug Britain's Trenches in the First World War?",
+    "fingerprint": "britain_dug_first_s_trenches_war_who_world",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
