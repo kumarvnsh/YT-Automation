@@ -7,7 +7,7 @@ import subprocess
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('mode', choices=('on', 'off'), help='on: 3D; off: prior 2D renderer')
+    parser.add_argument('mode', choices=('on', 'off'), help='on: 3D; off: cinematic 2D illustrations')
     parser.add_argument('--repo', help='GitHub OWNER/REPO (defaults to this checkout)')
     args = parser.parse_args(argv)
     command = ['gh', 'variable', 'set', 'HISTOLD_3D', '--body', args.mode]

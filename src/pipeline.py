@@ -235,7 +235,7 @@ def _effective_mode(cfg: Config, fmt: str, st: dict | None = None) -> str:
         return "three_motion"
     mode = env("VIDEO_MODE") or cfg.get("video.mode", "broll")
     return mode if mode in ("broll", "mascot", "captions_only", "motion_graphics",
-                            "stopmotion", "claude_motion", "three_motion") else "broll"
+                            "stopmotion", "claude_motion", "cinematic_2d", "three_motion") else "broll"
 
 
 def _step_script(cfg: Config, stage: Path, st: dict) -> None:
@@ -366,10 +366,10 @@ def _step_captions(cfg: Config, stage: Path, st: dict) -> None:
     mode = _effective_mode(cfg, st["fmt"], st)
     position = {"mascot": "top", "captions_only": "center",
                 "motion_graphics": "center"}.get(mode, "bottom")
-    if mode == "three_motion":
+    if mode in ("three_motion", "cinematic_2d"):
         data = copy.deepcopy(cfg.raw)
         data.setdefault("video", {}).setdefault("captions", {}).update(
-            cfg.get("video.three_d.captions", {"fontsize_short": 58, "outline": 3})
+            cfg.get("video.cinematic_2d.captions", {"fontsize_short": 66, "outline": 2, "margin_bottom": 180}) if mode == "cinematic_2d" else cfg.get("video.three_d.captions", {"fontsize_short": 58, "outline": 3})
         )
         cfg = Config(data)
     build_ass(
@@ -386,7 +386,7 @@ def _step_captions(cfg: Config, stage: Path, st: dict) -> None:
 def _step_assets(cfg: Config, stage: Path, st: dict) -> None:
     # captions_only / motion_graphics need no footage; claude_motion fetches
     # stock only for segments whose scene fails, at render time.
-    if _effective_mode(cfg, st["fmt"], st) in ("captions_only", "motion_graphics", "claude_motion", "three_motion"):
+    if _effective_mode(cfg, st["fmt"], st) in ("captions_only", "motion_graphics", "claude_motion", "cinematic_2d", "three_motion"):
         st["assets"] = []
         return
     from .assets import fetch_for_segments
@@ -430,12 +430,21 @@ def _step_render(cfg: Config, stage: Path, st: dict) -> None:
         try:
             render_three_motion(cfg, st, stage, words, duration)
         except Exception as exc:  # noqa: BLE001 - a 3D failure must not cost the daily slot
-            print(f"  ! 3D render failed ({exc}); falling back to claude_motion")
+            fallback = cfg.get("video.mode", "claude_motion")
+            if fallback not in ("claude_motion", "cinematic_2d"):
+                fallback = "claude_motion"
+            print(f"  ! 3D render failed ({exc}); falling back to {fallback}")
             st["render_fallback"] = str(exc)
-            st["visual_mode"] = "claude_motion"
-            from .claude_motion import render_motion_video as render_claude_motion
+            st["visual_mode"] = fallback
+            if fallback == "cinematic_2d":
+                from .cinematic_motion import render_motion_video as render_2d
+            else:
+                from .claude_motion import render_motion_video as render_2d
+            render_2d(cfg, st, stage, words, duration)
+    elif mode == "cinematic_2d":
+        from .cinematic_motion import render_motion_video as render_cinematic
 
-            render_claude_motion(cfg, st, stage, words, duration)
+        render_cinematic(cfg, st, stage, words, duration)
     elif mode == "claude_motion":
         from .claude_motion import render_motion_video as render_claude_motion
 
@@ -452,6 +461,11 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
     vo = stage / "voiceover.mp3"
     out = stage / "video.mp4"
 
+    if st.get("cinematic_effects"):
+        data = copy.deepcopy(cfg.raw)
+        data.setdefault("video", {})["effects_file"] = str((stage / st["cinematic_effects"]).resolve())
+        cfg = Config(data)
+
     if _effective_mode(cfg, st["fmt"], st) == "mascot":
         vb.compose_overlay(cfg, stage / "bg.mp4", stage / "owl.mov", vo, ass, out, stage, base_dir())
     else:
@@ -462,8 +476,8 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
 def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
     from .quality_gate import validate_stage
 
-    three_d = st.get("visual_mode") == "three_motion"
-    if not three_d and not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
+    strict_visuals = st.get("visual_mode") in ("three_motion", "cinematic_2d")
+    if not strict_visuals and not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
         st["quality"] = {"passed": True, "skipped": True, "score": 100, "checks": {}, "errors": []}
         return
     report = validate_stage(cfg, stage, st)
@@ -475,12 +489,12 @@ def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
         failed = ", ".join(
             name for name, status in report["checks"].items() if status == "fail"
         )
-        # 3D is strict on visual checks only; research/content keep the usual warn-only rule.
+        # Modern renderers are strict on visual checks; research/content keep the usual warn-only rule.
         visual = {"render_quality", "video", "dimensions", "duration", "composition_binding",
                   "caption_composition", "branding"}
         bad_visual = [n for n, v in report["checks"].items() if v == "fail" and n in visual]
-        if three_d and bad_visual:
-            raise RuntimeError(f"3D visual checks failed: {', '.join(bad_visual)}; see quality.json")
+        if strict_visuals and bad_visual:
+            raise RuntimeError(f"Renderer visual checks failed: {', '.join(bad_visual)}; see quality.json")
         # Warn only: the video is already paid for, so it publishes anyway.
         print(f"  ! quality checks flagged: {failed}; continuing — see quality.json")
 

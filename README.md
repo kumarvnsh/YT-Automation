@@ -270,18 +270,18 @@ output/                generated videos + metadata
 
 ### Daily Shorts 3D switch
 
-New Histold Shorts use the 3D renderer by default. From an authenticated `gh`
+The switch selects 3D or cinematic 2D for new Histold Shorts. From an authenticated `gh`
 checkout, persist the setting for daily and manual GitHub runs:
 
 ```sh
-python -m src.visual_mode off  # previous 2D claude_motion renderer
+python -m src.visual_mode off  # cinematic 2D illustrations, diagrams and subtle sound effects
 python -m src.visual_mode on   # 3D renderer
 ```
 
 The command sets repository variable `HISTOLD_3D`; it does not edit local config.
 Use `--repo OWNER/REPO` to target another checkout explicitly. For a local run,
 use `VIDEO_3D=off python -m src.main --format short` (or `VIDEO_3D=on`).
-An explicit `VIDEO_MODE=claude_motion` or `VIDEO_MODE=three_motion` takes priority;
+An explicit `VIDEO_MODE=claude_motion` (legacy), `cinematic_2d`, or `three_motion` takes priority;
 clear repository variable `VIDEO_MODE` to let the persistent switch control runs.
 Each new stage records its renderer so changing the switch cannot change an
 in-flight render. Older stages keep their original mode behavior. Long videos

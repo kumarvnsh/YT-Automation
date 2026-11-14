@@ -219,13 +219,17 @@ video:
   encode:
     preset: "veryfast"         # ffmpeg x264 preset; faster = quicker render, slightly larger file
     crf: 23                    # 18-28; lower = higher quality/larger. 23 is a good balance
-  # Visual mode for SHORTS: "mascot" (talking owl on branded bg) or "broll" (stock footage).
-  # Long-form always uses b-roll (mascot full-frame render is too heavy for 7-min videos).
-  # "claude_motion": Claude writes an animated HTML scene per segment, rendered
-  # frame-by-frame in headless Chromium (~$0.07/short on Sonnet 5.5 medium).
-  # Failed scenes fall back to stock. "broll" = previous stock/AI-image look.
-  # VIDEO_MODE env overrides this for a single run.
-  mode: "claude_motion"
+  # Shorts: cinematic_2d = illustrated documentary scenes; claude_motion = legacy.
+  # Long-form always uses b-roll. VIDEO_MODE overrides an individual run.
+  # Cinematic scenes fail closed if visual checks fail, without old-style fallback.
+  mode: "cinematic_2d"
+  # 3D off uses the approved cinematic illustrated 2D style.
+  cinematic_2d:
+    captions:
+      font: "Arial"
+      fontsize_short: 66
+      outline: 2
+      margin_bottom: 180
   # Persistent GitHub switch: python -m src.visual_mode on/off.
   three_d:
     enabled: true

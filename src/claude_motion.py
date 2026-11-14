@@ -337,7 +337,7 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
         visible_samples.append(page.evaluate("""() => [...document.querySelectorAll('.k-stage *, svg path, svg circle, svg rect, svg polygon')].some(e => {
           const r=e.getBoundingClientRect(); let visible=true;
           for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.05)visible=false;}
-          return visible && r.width>2 && r.height>2 && r.right>0 && r.left<innerWidth && r.bottom>0 && r.top<innerHeight*.7 &&
+          return visible && r.width>2 && r.height>2 && r.right>0 && r.left<innerWidth && r.bottom>0 && r.top<(innerHeight - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--caption-reserve')) || innerHeight * .3)) &&
             (['path','circle','rect','polygon'].includes(e.tagName.toLowerCase())||[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
         })"""))
     # An opening reveal may begin invisible, but later blank samples are defects.
@@ -354,7 +354,7 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
             page.evaluate("t => document.getAnimations().forEach(a => {a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", time * 1000)
             visible = page.evaluate("""() => [...document.querySelectorAll('[data-map-id]')].every(e => {
               for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.9)return false;}
-              const r=e.getBoundingClientRect();return r.width>5&&r.height>5&&r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight*.7;
+              const r=e.getBoundingClientRect();return r.width>5&&r.height>5&&r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=(innerHeight - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--caption-reserve')) || innerHeight * .3));
             })""")
             held = held + .25 if visible else 0
             if held >= 2.25:
@@ -470,6 +470,10 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     # Writing every scene can take well over the SDK's 10-min default, with long
     # quiet stretches while the model thinks; summarized thinking keeps bytes flowing.
     client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), timeout=1800, max_retries=1)
+    system = _SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), w_text=w - 72, example=_EXAMPLE.strip())
+    if cfg.get('video.claude_motion.style') == 'cinematic_2d':
+        from .cinematic_motion import system_prompt
+        system = system_prompt(w, h)
     with client.beta.messages.stream(
         model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
         max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
@@ -477,7 +481,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         output_config={"effort": cfg.get("video.claude_motion.effort", "medium")},
         betas=["server-side-fallback-2026-07-01"],
         extra_body={"fallbacks": "default"},
-        system=_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), w_text=w - 72, example=_EXAMPLE.strip()),
+        system=system,
         messages=[{"role": "user", "content": "\n".join(lines)}],
     ) as stream:
         msg = stream.get_final_message()
@@ -487,6 +491,24 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     scenes = parse_scenes(text, len(segs))
     print(f"  claude_motion: {len(scenes)}/{len(segs)} scenes, stop={msg.stop_reason}, "
           f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
+    missing = sorted(set(range(len(segs))) - scenes.keys())
+    if missing and cfg.get('video.claude_motion.style') == 'cinematic_2d':
+        # A truncated response often contains all but the last complete scene.
+        # Keep usable work and spend one bounded request on missing scenes only.
+        request = "\n".join(lines) + f"\nReturn ONLY these missing zero-based scene IDs: {missing}. Return complete HTML documents, not a continuation of partial HTML."
+        with client.beta.messages.stream(
+            model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
+            max_tokens=16000,
+            thinking={"type": "adaptive", "display": "summarized"},
+            output_config={"effort": cfg.get("video.claude_motion.effort", "medium")},
+            betas=["server-side-fallback-2026-07-01"], extra_body={"fallbacks": "default"},
+            system=system, messages=[{"role": "user", "content": request}],
+        ) as stream:
+            recovery = stream.get_final_message()
+        recovered = parse_scenes("".join(b.text for b in recovery.content if b.type == "text"), len(segs))
+        scenes.update({i: html for i, html in recovered.items() if i in missing})
+        print(f"  cinematic completion: {len(scenes)}/{len(segs)} scenes, "
+              f"in_tokens={recovery.usage.input_tokens} out_tokens={recovery.usage.output_tokens}")
     return scenes
 
 
@@ -494,7 +516,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
 # Text boxes are inset vertically to the glyph core so tight-but-clean
 # stacks (big number over a label) don't count as overlap.
 _LINT_JS = """() => {
-  const W = innerWidth, H = innerHeight, CAP = H * 0.7, M = 8;
+  const W = innerWidth, H = innerHeight, CAP = H - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--caption-reserve')) || H * .3), M = 8;
   const seen = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
     const cs = getComputedStyle(n);
     if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05) return false; } return true; };
@@ -573,11 +595,15 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
         parts.append(f'Scene {i} problems:\n- ' + "\n- ".join(probs)
                      + f'\n<scene index="{i}">\n{raw[i]}\n</scene>\n')
     client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), max_retries=1)
+    repair_system = _REPAIR_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7))
+    if cfg.get("video.claude_motion.style") == "cinematic_2d":
+        from .cinematic_motion import system_prompt
+        repair_system = system_prompt(w, h) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
     msg = client.messages.create(
         model=cfg.get("video.claude_motion.repair_model", "claude-haiku-5-5"),
         max_tokens=16000,
         output_config={"effort": cfg.get("video.claude_motion.repair_effort", "low")},
-        system=_REPAIR_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7)),
+        system=repair_system,
         messages=[{"role": "user", "content": "\n".join(parts)}],
     )
     text = "".join(b.text for b in msg.content if b.type == "text")
@@ -589,10 +615,15 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
 
 def _check_and_repair(cfg: Config, page, raw: dict[int, str], w: int, h: int) -> dict[int, str]:
     """Lint every scene; repair flagged ones; keep whichever version lints cleaner."""
+    def prepared(html, index):
+        if cfg.get("video.claude_motion.style") == "cinematic_2d":
+            from .cinematic_motion import prepare_html
+            return prepare_html(html, index)
+        return inject_kit(html)
     issues = {}
     for i, html in raw.items():
         try:
-            found = _lint(page, inject_kit(html))
+            found = _lint(page, prepared(html, i))
         except Exception as exc:  # noqa: BLE001 - a lint failure must not cost the scene
             print(f"  ! scene {i} lint failed ({exc})")
             continue
@@ -609,7 +640,7 @@ def _check_and_repair(cfg: Config, page, raw: dict[int, str], w: int, h: int) ->
     out = dict(raw)
     for i, html in fixed.items():
         try:
-            after = _lint(page, inject_kit(html))
+            after = _lint(page, prepared(html, i))
         except Exception:  # noqa: BLE001
             continue
         if len(after) < len(issues[i]):
@@ -650,6 +681,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     from .assets import fetch_for_segments
     from .pipeline import _rebuild_segments
 
+    cinematic = cfg.get('video.claude_motion.style') == 'cinematic_2d'
     segs = _rebuild_segments(st)
     w, h, fps = vb._dims(cfg, st["fmt"])
     preset, _ = vb._encode_settings(cfg)
@@ -676,14 +708,20 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
+        if cinematic:
+            raise RuntimeError('Cinematic 2D scene generation failed; refusing old-style fallback') from exc
         recovery = 'local house templates' if production else 'stock'
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
     def prepare(html, index):
         from .icon_assets import bind_icons
         from .portrait_assets import bind_photos
+        bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
+        if cinematic:
+            from .cinematic_motion import prepare_html
+            return prepare_html(bound, index)
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
-        return apply_palette(bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0], palette)
+        return apply_palette(bound, palette)
 
     scene_dir = stage / "scenes"
     scene_dir.mkdir(exist_ok=True)
@@ -692,7 +730,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
 
     clips: list[Path | None] = [None] * len(segs)
     report = {'schema_version': 1, 'scenes': {}, 'warnings': [], 'errors': [], 'recoveries': [],
-              'narration_hash': st.get('storyboard', {}).get('narration_hash')}
+              'narration_hash': st.get('storyboard', {}).get('narration_hash'),
+              'renderer': 'cinematic_2d' if cinematic else 'claude_motion'}
     if scenes or production:
         from playwright.sync_api import sync_playwright
 
@@ -744,6 +783,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     original_errors = report['scenes'][str(i)]['errors']
                     if not original_errors:
                         continue
+                    if cinematic:
+                        raise RuntimeError(f'Cinematic scene {i} failed visual checks: '+ '; '.join(original_errors))
                     scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', []))
                     inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
@@ -769,6 +810,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                                              scene_dir / f"scene_{i:02d}.mp4", preset)
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
+                    if cinematic:
+                        raise
                     if production:
                         scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', [])), i)
                         inspection = inspect_scene(page, scenes[i], e-s, fps,
@@ -787,6 +830,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     for i, (s, e) in enumerate(windows):
         if clips[i] is not None:
             continue
+        if cinematic:
+            raise RuntimeError(f"Cinematic scene {i} missing; refusing legacy/stock fallback")
         if production:
             report['warnings'].append(f'Scene {i} used stock fallback; visual review required')
             if maps:
