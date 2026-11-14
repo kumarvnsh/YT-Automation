@@ -8,7 +8,7 @@ from src.config import load_config
 from src import pipeline
 
 
-def main(root, art_style='cinematic'):
+def main(root, art_style='cinematic', reuse_generated=False):
     if art_style not in ('cinematic', 'woodblock'):
         raise ValueError(f'Unknown preview style: {art_style}')
     states = list(Path(root).rglob('state.json'))
@@ -17,14 +17,18 @@ def main(root, art_style='cinematic'):
     path = states[0]
     stage = path.parent
     st = json.loads(path.read_text())
+    if reuse_generated and st.get('preview_style') != art_style:
+        raise ValueError('Saved scenes must come from a preview with the same style')
     cfg = load_config()
     cfg.raw.setdefault('video', {}).setdefault('claude_motion', {})['art_style'] = art_style
+    cfg.raw['video']['claude_motion']['reuse_generated'] = reuse_generated
     st.update(visual_mode='cinematic_2d', preview_style=art_style, no_upload=True, complete=False)
     st['done'] = [step for step in st.get('done', [])
                   if step not in ('captions', 'render', 'compose', 'quality', 'thumbnail', 'upload')]
     for key in ('video', 'render_quality', 'quality', 'meta', 'youtube_id', 'youtube_url', 'render_fallback'):
         st.pop(key, None)
-    shutil.rmtree(stage / 'scenes', ignore_errors=True)
+    if not reuse_generated:
+        shutil.rmtree(stage / 'scenes', ignore_errors=True)
     # Failed previews must not present the source run's old video as new output.
     for name in ('video.mp4', 'silent.mp4', 'captioned.mp4', 'render_quality.json', 'quality.json', 'composition.json'):
         (stage / name).unlink(missing_ok=True)
@@ -43,4 +47,5 @@ def main(root, art_style='cinematic'):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else 'cinematic')
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else 'cinematic',
+         len(sys.argv) > 3 and sys.argv[3] == 'true')

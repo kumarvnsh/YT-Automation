@@ -52,6 +52,19 @@ class CinematicMotionTests(unittest.TestCase):
         self.assertIn('--ink:#203b57', html)
         self.assertIn('--accent:#ad4737', html)
 
+    def test_bound_map_fits_authored_small_container(self):
+        from playwright.sync_api import sync_playwright
+        from src.claude_motion import bind_maps, _LINT_JS
+        from src.map_assets import load_map
+        html = '<html><head></head><body><div class="k-stage"><div style="position:absolute;left:40px;top:598px;width:230px;height:160px"><histold-map id="japan"></histold-map></div></div></body></html>'
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page(viewport={"width": 540, "height": 960})
+            page.set_content(prepare_html(bind_maps(html, [load_map('japan')]), 0, 'woodblock'))
+            page.evaluate('async () => { await document.fonts.ready; }')
+            self.assertEqual(page.evaluate(_LINT_JS), [])
+            browser.close()
+
     def test_themes_alternate(self):
         self.assertIn('--parch:#f1eadb', prepare_html('<head></head>', 0))
         self.assertIn('--parch:#153c3a', prepare_html('<head></head>', 1))

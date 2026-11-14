@@ -709,7 +709,12 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         cfg.raw['production']['portraits'] = st.get('portraits', [])
 
     try:
-        scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
+        if st.get('no_upload') and cfg.get('video.claude_motion.reuse_generated', False):
+            scenes = {i: (stage / 'scenes' / f'scene_{i:02d}.claude.html').read_text()
+                      for i in range(len(segs))}
+            print(f"  Reusing {len(scenes)} saved preview scenes; visual checks still required")
+        else:
+            scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
         if cinematic:
             raise RuntimeError('Cinematic 2D scene generation failed; refusing old-style fallback') from exc

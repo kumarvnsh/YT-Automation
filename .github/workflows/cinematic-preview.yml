@@ -11,6 +11,10 @@ on:
         type: choice
         options: [cinematic, woodblock]
         default: cinematic
+      reuse_generated:
+        description: Reuse saved scenes from a same-style preview artifact
+        type: boolean
+        default: false
 permissions:
   contents: read
   actions: read
@@ -34,9 +38,10 @@ jobs:
           path: output/cinematic-preview
       - name: Render unpublished cinematic draft
         env:
+          REUSE_GENERATED: ${{ inputs.reuse_generated }}
           PREVIEW_STYLE: ${{ inputs.style }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m scripts.cinematic_preview output/cinematic-preview "$PREVIEW_STYLE"
+        run: python -m scripts.cinematic_preview output/cinematic-preview "$PREVIEW_STYLE" "$REUSE_GENERATED"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

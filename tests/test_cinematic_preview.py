@@ -34,6 +34,12 @@ class CinematicPreviewTests(unittest.TestCase):
             self.assertFalse((stage / 'video.mp4').exists())
             upload.assert_not_called()
 
+    def test_reuse_requires_matching_preview_style(self):
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / 'state.json').write_text(json.dumps({'preview_style': 'cinematic'}))
+            with self.assertRaisesRegex(ValueError, 'same style'):
+                main(directory, 'woodblock', True)
+
     def test_unknown_style_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unknown preview style'):
             main('unused', 'unknown')
