@@ -493,22 +493,25 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
           f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
     missing = sorted(set(range(len(segs))) - scenes.keys())
     if missing and cfg.get('video.claude_motion.style') == 'cinematic_2d':
-        # A truncated response often contains all but the last complete scene.
-        # Keep usable work and spend one bounded request on missing scenes only.
-        request = "\n".join(lines) + f"\nReturn ONLY these missing zero-based scene IDs: {missing}. Return complete HTML documents, not a continuation of partial HTML."
-        with client.beta.messages.stream(
-            model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
-            max_tokens=16000,
-            thinking={"type": "adaptive", "display": "summarized"},
-            output_config={"effort": cfg.get("video.claude_motion.effort", "medium")},
-            betas=["server-side-fallback-2026-07-01"], extra_body={"fallbacks": "default"},
-            system=system, messages=[{"role": "user", "content": request}],
-        ) as stream:
-            recovery = stream.get_final_message()
-        recovered = parse_scenes("".join(b.text for b in recovery.content if b.type == "text"), len(segs))
-        scenes.update({i: html for i, html in recovered.items() if i in missing})
-        print(f"  cinematic completion: {len(scenes)}/{len(segs)} scenes, "
-              f"in_tokens={recovery.usage.input_tokens} out_tokens={recovery.usage.output_tokens}")
+        # Recover individually: batching missing scenes can exhaust the token budget again.
+        for index in missing:
+            request = "\n".join(lines) + f"\nReturn ONLY these missing zero-based scene IDs: {[index]}. Return complete HTML documents, not a continuation of partial HTML."
+            with client.beta.messages.stream(
+                model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
+                max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
+                thinking={"type": "adaptive", "display": "summarized"},
+                output_config={"effort": cfg.get("video.claude_motion.effort", "medium")},
+                betas=["server-side-fallback-2026-07-01"], extra_body={"fallbacks": "default"},
+                system=system, messages=[{"role": "user", "content": request}],
+            ) as stream:
+                recovery = stream.get_final_message()
+            recovered = parse_scenes("".join(b.text for b in recovery.content if b.type == "text"), len(segs))
+            if index not in recovered:
+                raise RuntimeError(f"Cinematic scene {index} generation incomplete: "
+                                   f"stop={recovery.stop_reason}, out_tokens={recovery.usage.output_tokens}")
+            scenes[index] = recovered[index]
+            print(f"  cinematic completion: {len(scenes)}/{len(segs)} scenes, "
+                  f"in_tokens={recovery.usage.input_tokens} out_tokens={recovery.usage.output_tokens}")
     return scenes
 
 
