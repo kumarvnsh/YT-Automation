@@ -6438,5 +6438,32 @@
     "production_profile": 2,
     "facebook_id": "970693609070347",
     "instagram_id": "18150897259491586"
+  },
+  {
+    "video_id": "9JGGj-Yg9vs",
+    "run_id": "43567776874",
+    "stage_dir_name": "20261114_064615_563990_short",
+    "title": "What Did a Farmer's Plow Turn Up in Nara in 1831?",
+    "published_at": "2026-11-14T06:54:57.918852+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "found_by_accident",
+    "editorial_slot": 101,
+    "editorial_region": "japan",
+    "editorial_series": "Found by Accident",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "A farmer's plow in 1831 turned up a name that had waited over a thousand years.",
+    "duration": 55.32,
+    "production_profile": 2,
+    "facebook_id": "1143434218058178",
+    "instagram_id": "18104513444374489"
   }
 ]
