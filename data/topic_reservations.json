@@ -2986,5 +2986,14 @@
     "slot": "morning",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_062025_422337_short",
+    "title": "What Was a Farmer's Plow Hiding in 1831 Japan?",
+    "fingerprint": "1831_farmer_hiding_japan_plow_s_was_what",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
