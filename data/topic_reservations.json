@@ -3031,5 +3031,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_121153_909867_short",
+    "title": "How Did Fear of Russian Sailors Stretch Spain's Pacific Reach?",
+    "fingerprint": "did_fear_pacific_reach_russian_s_sailors_spain_stretch",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
