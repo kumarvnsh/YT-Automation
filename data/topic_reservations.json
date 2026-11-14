@@ -3103,5 +3103,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_160420_158413_short",
+    "title": "What Did India's Legendary Conqueror Carve Into His Stone?",
+    "fingerprint": "carve_conqueror_did_his_india_into_legendary_s_stone_what",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
