@@ -2995,5 +2995,14 @@
     "slot": "morning",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_062822_378898_short",
+    "title": "How Did Tokyo's Gold End Up in a Pile of Dirt?",
+    "fingerprint": "did_dirt_end_gold_pile_s_tokyo_up",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]
