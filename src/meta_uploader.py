@@ -12,6 +12,7 @@ GITHUB_TOKEN + GITHUB_REPOSITORY in the environment (both present in Actions).
 """
 from __future__ import annotations
 
+import json
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -102,11 +103,14 @@ def _host_video(video_path: Path) -> tuple[str, callable]:
 # Instagram Reels
 # --------------------------------------------------------------------------- #
 def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str,
-                       ver: str, timeout_s: int = 300, media_type: str = "REELS") -> str:
+                       ver: str, timeout_s: int = 300, media_type: str = "REELS",
+                       trial: bool = False) -> str:
     base = f"{GRAPH}/{ver}/{ig_user_id}"
     data = {"media_type": media_type, "video_url": video_url, "access_token": token}
     if media_type == "REELS":  # Stories take no caption
         data["caption"] = caption
+    if trial:  # shown to non-followers first; Instagram shares it with followers if it performs
+        data["trial_params"] = json.dumps({"graduation_strategy": "SS_PERFORMANCE"})
     r = requests.post(f"{base}/media", data=data, timeout=60)
     _raise_graph(r, "IG media container")
     creation_id = r.json()["id"]
@@ -133,7 +137,7 @@ def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str
     }, timeout=60)
     _raise_graph(pub, "IG media_publish")
     media_id = pub.json()["id"]
-    print(f"  ✓ Instagram {media_type.title()} published: {media_id}")
+    print(f"  ✓ Instagram {'Trial ' if trial else ''}{media_type.title()} published: {media_id}")
     return media_id
 
 
@@ -228,7 +232,8 @@ def _publish_stories(cfg: Config, token: str, page_id: str, ig_user_id: str, url
     if not cfg.get('meta.stories', False):
         return
     jobs = []
-    if results.get('instagram') and not results.get('instagram_story'):
+    # A trial reel is meant to reach non-followers first; a Story would show it to followers.
+    if results.get('instagram') and not results.get('instagram_story') and not results.get('instagram_trial'):
         jobs.append(('instagram_story', lambda: _publish_instagram(token, ig_user_id, url, '', ver,
                                                                    media_type='STORIES')))
     if results.get('facebook') and not results.get('facebook_story'):
@@ -247,6 +252,20 @@ def _publish_stories(cfg: Config, token: str, page_id: str, ig_user_id: str, url
 # --------------------------------------------------------------------------- #
 # helpers
 # --------------------------------------------------------------------------- #
+# trial_params arrived in Graph API v24.0; older versions may ignore it.
+_TRIAL_VER = "v24.0"
+
+
+def _trial_slot(cfg: Config, now: float | None = None) -> bool:
+    """True for 1 in `meta.trial_reel_every` posts.
+
+    Posts go out every 12h (9:30 IST am/pm), so the 12h slot number rotates through
+    the cycle; retries inside the same slot get the same answer.
+    """
+    every = int(cfg.get('meta.trial_reel_every', 0) or 0)
+    return every > 0 and int((time.time() if now is None else now) // 43200) % every == 0
+
+
 def _raise_graph(resp: requests.Response, what: str) -> None:
     if not resp.ok:
         raise RuntimeError(f"{what} failed [{resp.status_code}]: {resp.text}")
@@ -322,7 +341,15 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
         if need_instagram:
             try:
                 caption = _build_caption(cfg, title, description)
-                results["instagram"] = _publish_instagram(token, ig_user_id, url, caption, ver)
+                if _trial_slot(cfg):
+                    try:
+                        results["instagram"] = _publish_instagram(token, ig_user_id, url, caption,
+                                                                  _TRIAL_VER, trial=True)
+                        results["instagram_trial"] = True
+                    except Exception as exc:  # noqa: BLE001 - not eligible etc.: post a normal Reel
+                        print(f"  ! Instagram trial reel failed ({exc}) — posting a normal Reel")
+                if not results.get("instagram"):
+                    results["instagram"] = _publish_instagram(token, ig_user_id, url, caption, ver)
                 results.pop('instagram_error', None)
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Instagram cross-post failed: {exc}")
