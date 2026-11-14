@@ -3067,5 +3067,14 @@
     "slot": "evening",
     "date": "2026-11-14",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261114_145119_100113_short",
+    "title": "Which Ancient Counting Habit Is Ticking on Your Wrist?",
+    "fingerprint": "ancient_counting_habit_is_on_ticking_which_wrist_your",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-14",
+    "status": "reserved"
   }
 ]

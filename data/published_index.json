@@ -6546,5 +6546,32 @@
     "production_profile": 1,
     "facebook_id": null,
     "instagram_id": null
+  },
+  {
+    "video_id": "yZEtFoH-rGg",
+    "run_id": "43606862527",
+    "stage_dir_name": "20261114_145119_100113_short",
+    "title": "Which Ancient Counting Habit Is Ticking on Your Wrist?",
+    "published_at": "2026-11-14T14:59:06.056955+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "almost",
+    "editorial_slot": 104,
+    "editorial_region": "middle_east",
+    "editorial_series": "History's Almost Moments",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Your clock's sixty minutes come from a counting system used in ancient Babylon.",
+    "duration": 29.928,
+    "production_profile": 2,
+    "facebook_id": "1905233567209421",
+    "instagram_id": "18121856860975021"
   }
 ]
