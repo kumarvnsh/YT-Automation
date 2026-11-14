@@ -29,6 +29,19 @@ class CinematicMotionTests(unittest.TestCase):
         self.assertIn('.row .k-icon{width:36px;height:36px}', prepared)
         self.assertNotIn('histold-icon', prepared)
 
+    def test_authored_stage_cannot_override_caption_reserve(self):
+        from playwright.sync_api import sync_playwright
+        from src.claude_motion import _LINT_JS
+        html = '<html><head><style>.k-stage{position:relative;height:960px;bottom:auto}</style></head><body><div class="k-stage"><span style="position:absolute;bottom:20px">Edo period</span></div></body></html>'
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page(viewport={"width": 540, "height": 960})
+            page.set_content(prepare_html(html, 3))
+            page.evaluate('async () => { await document.fonts.ready; }')
+            self.assertEqual(page.locator('.k-stage').bounding_box()['height'], 780)
+            self.assertEqual(page.evaluate(_LINT_JS), [])
+            browser.close()
+
     def test_themes_alternate(self):
         self.assertIn('--parch:#f1eadb', prepare_html('<head></head>', 0))
         self.assertIn('--parch:#153c3a', prepare_html('<head></head>', 1))

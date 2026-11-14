@@ -22,3 +22,6 @@ body{background:var(--parch);color:var(--ink);font:400 18px/1.4 var(--body)}
 .k-photo figcaption{font:400 20px/1.2 var(--display);color:var(--ink);text-align:center}
 .k-photo figcaption small{display:block;font:400 12px/1.4 var(--body);color:var(--dim);letter-spacing:.08em}
 @keyframes cinematic-photo-push{from{transform:scale(1.02)}to{transform:scale(1.1) translateY(-2%)}}
+
+/* Stage geometry is a renderer contract; generated CSS cannot consume the caption band. */
+.k-stage{position:absolute!important;inset:0 0 180px!important;height:auto!important;min-height:0!important;max-height:none!important}
