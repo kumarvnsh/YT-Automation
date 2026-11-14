@@ -476,8 +476,8 @@ def _step_compose(cfg: Config, stage: Path, st: dict) -> None:
 def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
     from .quality_gate import validate_stage
 
-    three_d = st.get("visual_mode") in ("three_motion", "cinematic_2d")
-    if not three_d and not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
+    strict_visuals = st.get("visual_mode") in ("three_motion", "cinematic_2d")
+    if not strict_visuals and not cfg.get("quality.enabled", True) and not cfg.get('production.enabled', False):
         st["quality"] = {"passed": True, "skipped": True, "score": 100, "checks": {}, "errors": []}
         return
     report = validate_stage(cfg, stage, st)
@@ -489,11 +489,11 @@ def _step_quality(cfg: Config, stage: Path, st: dict) -> None:
         failed = ", ".join(
             name for name, status in report["checks"].items() if status == "fail"
         )
-        # 3D is strict on visual checks only; research/content keep the usual warn-only rule.
+        # Modern renderers are strict on visual checks; research/content keep the usual warn-only rule.
         visual = {"render_quality", "video", "dimensions", "duration", "composition_binding",
                   "caption_composition", "branding"}
         bad_visual = [n for n, v in report["checks"].items() if v == "fail" and n in visual]
-        if three_d and bad_visual:
+        if strict_visuals and bad_visual:
             raise RuntimeError(f"Renderer visual checks failed: {', '.join(bad_visual)}; see quality.json")
         # Warn only: the video is already paid for, so it publishes anyway.
         print(f"  ! quality checks flagged: {failed}; continuing — see quality.json")

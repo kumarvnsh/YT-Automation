@@ -32,3 +32,26 @@ class HistoldCompositionTests(unittest.TestCase):
             self.assertTrue(any(str(arg).endswith('histold-logo.png') for arg in filters))
             self.assertNotIn('drawtext=', graph)
             self.assertTrue((root/'composition.json').exists())
+
+    def test_cinematic_effects_mix_with_and_without_music(self):
+        for music in (None, Path('music.mp3')):
+            with self.subTest(music=music), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                effects = root / 'effects.wav'
+                effects.write_bytes(b'wave')
+                cfg = Config({'video': {'effects_file': str(effects), 'captions': {'enabled': False}}})
+                with patch.object(vb, '_pick_music', return_value=music), patch.object(vb, '_run') as run:
+                    vb.finalize(cfg, root/'silent.mp4', root/'voice.mp3', None,
+                                root/'out.mp4', root, root)
+                command = run.call_args.args[0]
+                graph = command[command.index('-filter_complex') + 1]
+                self.assertIn('[voice_mix][3:a]' if music else '[voice_mix][2:a]', graph)
+                self.assertIn('duration=first:normalize=0', graph)
+                self.assertIn(str(effects.resolve()), command)
+
+    def test_missing_effects_fails_before_rendering(self):
+        cfg = Config({'video': {'effects_file': '/missing/cinematic.wav'}})
+        with patch.object(vb, '_run') as run:
+            with self.assertRaisesRegex(RuntimeError, 'effects track is missing'):
+                vb.finalize(cfg, Path('silent'), Path('voice'), None, Path('out'), Path('.'), Path('.'))
+        run.assert_not_called()

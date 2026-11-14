@@ -337,7 +337,7 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
         visible_samples.append(page.evaluate("""() => [...document.querySelectorAll('.k-stage *, svg path, svg circle, svg rect, svg polygon')].some(e => {
           const r=e.getBoundingClientRect(); let visible=true;
           for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.05)visible=false;}
-          return visible && r.width>2 && r.height>2 && r.right>0 && r.left<innerWidth && r.bottom>0 && r.top<innerHeight*.7 &&
+          return visible && r.width>2 && r.height>2 && r.right>0 && r.left<innerWidth && r.bottom>0 && r.top<(innerHeight - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--caption-reserve')) || innerHeight * .3)) &&
             (['path','circle','rect','polygon'].includes(e.tagName.toLowerCase())||[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
         })"""))
     # An opening reveal may begin invisible, but later blank samples are defects.
@@ -354,7 +354,7 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
             page.evaluate("t => document.getAnimations().forEach(a => {a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", time * 1000)
             visible = page.evaluate("""() => [...document.querySelectorAll('[data-map-id]')].every(e => {
               for(let n=e;n&&n.nodeType===1;n=n.parentElement){const s=getComputedStyle(n);if(s.display==='none'||s.visibility==='hidden'||+s.opacity<.9)return false;}
-              const r=e.getBoundingClientRect();return r.width>5&&r.height>5&&r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight*.7;
+              const r=e.getBoundingClientRect();return r.width>5&&r.height>5&&r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=(innerHeight - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--caption-reserve')) || innerHeight * .3));
             })""")
             held = held + .25 if visible else 0
             if held >= 2.25:
@@ -498,7 +498,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
 # Text boxes are inset vertically to the glyph core so tight-but-clean
 # stacks (big number over a label) don't count as overlap.
 _LINT_JS = """() => {
-  const W = innerWidth, H = innerHeight, CAP = H * 0.7, M = 8;
+  const W = innerWidth, H = innerHeight, CAP = H - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--caption-reserve')) || H * .3), M = 8;
   const seen = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
     const cs = getComputedStyle(n);
     if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05) return false; } return true; };
@@ -712,7 +712,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
 
     clips: list[Path | None] = [None] * len(segs)
     report = {'schema_version': 1, 'scenes': {}, 'warnings': [], 'errors': [], 'recoveries': [],
-              'narration_hash': st.get('storyboard', {}).get('narration_hash')}
+              'narration_hash': st.get('storyboard', {}).get('narration_hash'),
+              'renderer': 'cinematic_2d' if cinematic else 'claude_motion'}
     if scenes or production:
         from playwright.sync_api import sync_playwright
 
