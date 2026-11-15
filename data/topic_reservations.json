@@ -3202,5 +3202,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_160341_311401_short",
+    "title": "Why Would a Doctor's Map Get Him Banned From Japan?",
+    "fingerprint": "banned_doctor_from_get_him_japan_map_s_would",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]
