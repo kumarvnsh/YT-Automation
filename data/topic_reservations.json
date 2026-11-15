@@ -3148,5 +3148,14 @@
     "slot": "morning",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_070306_414133_short",
+    "title": "Why Would a Merchant Tell His Couriers to Hide Tin in Their Underwear?",
+    "fingerprint": "couriers_hide_his_merchant_tell_their_tin_underwear_would",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]

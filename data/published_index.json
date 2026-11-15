@@ -6789,5 +6789,32 @@
     "production_profile": 2,
     "facebook_id": "1084940397881259",
     "instagram_id": "18033950534856872"
+  },
+  {
+    "video_id": "MnAdN0TEL38",
+    "run_id": "43688021980",
+    "stage_dir_name": "20261115_070306_414133_short",
+    "title": "Why Would a Merchant Tell His Couriers to Hide Tin in Their Underwear?",
+    "published_at": "2026-11-15T07:14:40.652323+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "erased",
+    "editorial_slot": 113,
+    "editorial_region": "middle_east",
+    "editorial_series": "Erased From History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Four thousand years ago, a merchant told his couriers to hide tin in their underwear.",
+    "duration": 49.296,
+    "production_profile": 2,
+    "facebook_id": "1188182136880548",
+    "instagram_id": "18117048242467104"
   }
 ]
