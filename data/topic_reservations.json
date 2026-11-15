@@ -3193,5 +3193,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_120259_477030_short",
+    "title": "Was Zimbabwe's Stone City Really Built by Outsiders?",
+    "fingerprint": "built_by_city_outsiders_really_s_stone_was_zimbabwe",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]
