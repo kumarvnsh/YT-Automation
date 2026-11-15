@@ -6870,5 +6870,32 @@
     "production_profile": 2,
     "facebook_id": "1808241213791714",
     "instagram_id": "17916346212514580"
+  },
+  {
+    "video_id": "T2PhQx-4814",
+    "run_id": "43705609274",
+    "stage_dir_name": "20261115_104751_928254_short",
+    "title": "Were These Manila Police Really Former Rebels?",
+    "published_at": "2026-11-15T10:54:59.447532+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "photo_story",
+    "editorial_slot": 116,
+    "editorial_region": "asia_pacific",
+    "editorial_series": "The Story Behind This Photo",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "This Manila photo's caption calls its policemen former rebels, now faithful servants of the United States.",
+    "duration": 33.336,
+    "production_profile": 2,
+    "facebook_id": "2510679999455508",
+    "instagram_id": "18500365915102799"
   }
 ]

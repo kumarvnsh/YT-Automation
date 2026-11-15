@@ -3175,5 +3175,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_104751_928254_short",
+    "title": "Were These Manila Police Really Former Rebels?",
+    "fingerprint": "former_manila_police_really_rebels_these_were",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]
