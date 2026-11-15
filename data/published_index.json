@@ -6897,5 +6897,32 @@
     "production_profile": 2,
     "facebook_id": "2510679999455508",
     "instagram_id": "18500365915102799"
+  },
+  {
+    "video_id": "wIZR2uJMgEw",
+    "run_id": "43706633978",
+    "stage_dir_name": "20261115_110025_076788_short",
+    "title": "Why Did Ajanta's Buddhists Carve Their Caves Twice, Centuries Apart?",
+    "published_at": "2026-11-15T11:11:58.468539+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "found_by_accident",
+    "editorial_slot": 117,
+    "editorial_region": "india",
+    "editorial_series": "Found by Accident",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Ajanta's Buddhist caves in India were carved in two separate waves.",
+    "duration": 56.808,
+    "production_profile": 2,
+    "facebook_id": "1125814723542473",
+    "instagram_id": "18107664134376156"
   }
 ]

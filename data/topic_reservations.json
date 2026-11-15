@@ -3184,5 +3184,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_110025_076788_short",
+    "title": "Why Did Ajanta's Buddhists Carve Their Caves Twice, Centuries Apart?",
+    "fingerprint": "ajanta_apart_buddhists_carve_caves_centuries_did_s_their_twice",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]
