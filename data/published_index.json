@@ -6816,5 +6816,32 @@
     "production_profile": 2,
     "facebook_id": "1188182136880548",
     "instagram_id": "18117048242467104"
+  },
+  {
+    "video_id": "w6dNHoURGX8",
+    "run_id": "43700546974",
+    "stage_dir_name": "20261115_094431_137255_short",
+    "title": "What Were Apollo 12 Astronauts Doing at an Old Moon Probe?",
+    "published_at": "2026-11-15T09:54:57.793871+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "this_week",
+    "editorial_slot": 114,
+    "editorial_region": "europe",
+    "editorial_series": "This Week in History",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Astronauts once removed parts from a robot probe on the Moon.",
+    "duration": 30.84,
+    "production_profile": 2,
+    "facebook_id": "5154027211497073",
+    "instagram_id": "17968162496983361"
   }
 ]
