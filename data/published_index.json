@@ -6951,5 +6951,32 @@
     "production_profile": 2,
     "facebook_id": "816837808191631",
     "instagram_id": "18121726447763146"
+  },
+  {
+    "video_id": "S7egTTzf3qc",
+    "run_id": "43744314883",
+    "stage_dir_name": "20261115_180253_096610_short",
+    "title": "Why Were Japan's Masterpieces Once Used as Packing Paper?",
+    "published_at": "2026-11-15T18:15:51.775858+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "mistakes",
+    "editorial_slot": 119,
+    "editorial_region": "japan",
+    "editorial_series": "Mistakes That Changed History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Japan's most celebrated art prints once worked as cheap packing paper.",
+    "duration": 51.312,
+    "production_profile": 2,
+    "facebook_id": "1152217387506678",
+    "instagram_id": "17998451247062160"
   }
 ]

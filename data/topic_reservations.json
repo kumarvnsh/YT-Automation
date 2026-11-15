@@ -3211,5 +3211,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_180253_096610_short",
+    "title": "Why Were Japan's Masterpieces Once Used as Packing Paper?",
+    "fingerprint": "as_japan_masterpieces_once_packing_paper_s_used_were",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]
