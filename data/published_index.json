@@ -6762,5 +6762,32 @@
     "production_profile": 2,
     "facebook_id": "1105718192092599",
     "instagram_id": "18582226255077064"
+  },
+  {
+    "video_id": "MlqYQmvK-SY",
+    "run_id": "43674869873",
+    "stage_dir_name": "20261115_040319_892360_short",
+    "title": "How Close Did a Million Artworks Come to Staying Behind?",
+    "published_at": "2026-11-15T04:13:21.807523+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "almost",
+    "editorial_slot": 112,
+    "editorial_region": "russia",
+    "editorial_series": "History's Almost Moments",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "More than a million artworks left Leningrad on just two trains.",
+    "duration": 35.352,
+    "production_profile": 2,
+    "facebook_id": "1084940397881259",
+    "instagram_id": "18033950534856872"
   }
 ]
