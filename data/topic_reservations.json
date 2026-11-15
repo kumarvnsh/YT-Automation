@@ -3166,5 +3166,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261115_102753_850627_short",
+    "title": "Who First Turned a Cactus Insect Into the World's Reddest Red?",
+    "fingerprint": "cactus_first_insect_into_red_reddest_s_turned_who_world",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-15",
+    "status": "reserved"
   }
 ]
