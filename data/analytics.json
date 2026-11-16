@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-16T16:57:10.478935+00:00",
+      "updated": "2026-11-16T17:00:33.681349+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,51 @@
         ]
       },
       "videos": [
+        {
+          "id": "Chyn8YLkKO0",
+          "title": "The Caption Calls Them Rebels Turned Loyal. Can a 1901 Photo Prove It?",
+          "description": "A 1901 stereograph from the Library of Congress shows Filipino police in Manila, with a caption calling them former insurgents. The photo's own title is the only source for that claim, so the story behind it is about what the caption says and what can be verified. Part of The Story Behind This Photo series. #PhilippineHistory #PhotoHistory #HiddenHistory",
+          "tags": [
+            "archive photos",
+            "colonial history",
+            "did you know",
+            "education",
+            "everyday origins",
+            "hidden history",
+            "historical facts",
+            "history shorts",
+            "library of congress",
+            "manila",
+            "old photographs",
+            "philippine american war",
+            "philippine history",
+            "photo history",
+            "stereograph",
+            "story behind this photo",
+            "vintage photography",
+            "world history"
+          ],
+          "publishedAt": "2026-11-16T16:59:01Z",
+          "thumbnail": "https://i.ytimg.com/vi/Chyn8YLkKO0/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-11",
+            "end_date": "2026-11-16",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "3itSrNpadaE",
           "title": "Why Did British Lawmakers Try to Ban a Flowery Indian Cotton?",
@@ -2116,48 +2161,6 @@
           "average_watch_time_seconds": 15.0,
           "shares": 0,
           "analytics_views": 148,
-          "analytics_period": {
-            "start_date": "2026-11-11",
-            "end_date": "2026-11-16",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "Oh7Ac0A0qJE",
-          "title": "Where Did Korea's Warmest Rooms Hide Their Heat?",
-          "description": "Korean homes were warmed from underneath long before modern central heating existed. This short history explains how the traditional ondol system sent heat through the floor itself. Many modern Korean homes still use the same principle today. #KoreanHistory #HistoryGotThisWrong #WorldHistory",
-          "tags": [
-            "did you know",
-            "did you know history",
-            "east asian history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history got this wrong",
-            "history shorts",
-            "korea culture",
-            "korean history",
-            "korean homes",
-            "ondol",
-            "traditional architecture",
-            "underfloor heating",
-            "world history"
-          ],
-          "publishedAt": "2026-11-11T04:09:01Z",
-          "thumbnail": "https://i.ytimg.com/vi/Oh7Ac0A0qJE/mqdefault.jpg",
-          "views": 113,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 118.11,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 35.0,
-          "shares": 0,
-          "analytics_views": 44,
           "analytics_period": {
             "start_date": "2026-11-11",
             "end_date": "2026-11-16",
