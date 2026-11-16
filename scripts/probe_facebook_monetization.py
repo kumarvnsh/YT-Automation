@@ -13,11 +13,12 @@ import yaml
 def main():
     root = Path(__file__).resolve().parent.parent
     cfg = yaml.safe_load((root / 'config.yaml').read_text(encoding='utf-8'))
-    token = os.environ['META_ACCESS_TOKEN']
+    token = os.environ.get('META_EARNINGS_ACCESS_TOKEN') or os.environ['META_ACCESS_TOKEN']
     page = str(cfg['meta']['page_id'])
     configured = str(cfg['meta'].get('api_version', 'v21.0'))
     report = {'generated': datetime.now(timezone.utc).isoformat(), 'page_id': page,
-              'configured_version': configured, 'checks': [], 'permissions': None}
+              'configured_version': configured, 'checks': [], 'permissions': None,
+              'credential_source': 'dedicated_earnings' if os.environ.get('META_EARNINGS_ACCESS_TOKEN') else 'existing_publishing'}
 
     def get(version, node, credential, **params):
         try:
@@ -32,12 +33,16 @@ def main():
                         'message': message[:600]}
             # Never retain paging URLs: those can contain tokens.
             return {'status': 'ok', 'data': data.get('data'),
+                    **({'identity': {k: data[k] for k in ('id', 'name', 'tasks') if k in data}}
+                       if any(k in data for k in ('id','name','tasks')) else {}),
                     **({'access_token': data['access_token']} if 'access_token' in data else {})}
         except Exception as exc:
             return {'status': 'network_error', 'type': type(exc).__name__}
 
     permission = get(configured, 'me/permissions', token)
     report['permissions'] = permission
+    report['page_identity'] = get(configured, page, token, fields='id,name')
+    report['page_tasks'] = get(configured, 'me/accounts', token, fields='id,name,tasks', limit=100)
     index = json.loads((root / 'data/published_index.json').read_text())
     now = datetime.now(timezone.utc)
     videos = []
@@ -71,6 +76,11 @@ def main():
                 report['checks'].append({'version': version, 'scope': 'page_aggregate', 'metric': metric,
                                          'requested_period': 'days_28', **result})
                 print(f'{version} {metric} 28-day aggregate: {result["status"]}', flush=True)
+            result = get(version, f'{page}/insights', page_token, metric='monetization_approximate_earnings',
+                         period='month', date_preset='this_month')
+            report['checks'].append({'version': version, 'scope': 'page_month', 'metric': 'monetization_approximate_earnings',
+                                     'requested_period': 'month', 'date_preset':'this_month', **result})
+            print(f'{version} current-month aggregate: {result["status"]}', flush=True)
             continue
         for metric in ('content_monetization_earnings', 'monetization_approximate_earnings',
                        'creator_monetization_qualified_views'):
