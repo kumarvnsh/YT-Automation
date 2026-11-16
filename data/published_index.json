@@ -6885,7 +6885,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "Chyn8YLkKO0",
     "experiment": null,
     "experiment_slot": null,
     "category": "photo_story",
@@ -7108,5 +7108,18 @@
     "production_profile": 2,
     "facebook_id": "1691422212331131",
     "instagram_id": "18469965052136852"
+  },
+  {
+    "video_id": "Chyn8YLkKO0",
+    "run_id": "43913289180",
+    "stage_dir_name": "20261115_104751_928254_short",
+    "title": "The Caption Calls Them Rebels Turned Loyal. Can a 1901 Photo Prove It?",
+    "published_at": "2026-11-16T16:58:35.346309+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "T2PhQx-4814",
+    "republished_as": null
   }
 ]
