@@ -40,7 +40,7 @@ class PrivateEarningsTests(unittest.TestCase):
                 return {'status': 'ok', 'data': [{'id': 'PAGE_POST', 'attachments': {'data': [{'target': {'id': 'VIDEO'}}]}}]}
             return {'status': 'ok', 'data': [{'values': [{'value': 0.4}]}]}
         get.side_effect = response
-        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {'META_ACCESS_TOKEN': 'token'}, clear=True):
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {'META_ACCESS_TOKEN': 't' * 60}, clear=True):
             root = Path(tmp)
             (root / 'data').mkdir()
             (root / 'data/published_index.json').write_text(json.dumps([{'facebook_id': 'VIDEO', 'published_at': '2099-01-01T00:00:00+00:00'}]))

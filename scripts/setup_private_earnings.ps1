@@ -12,7 +12,12 @@ if ($Platform -eq 'Meta') {
     $TokenPath = Join-Path $SecretDir 'meta-earnings-token.txt'
     $Token = Read-Host -AsSecureString 'Meta token (hidden input; never paste into chat)'
     $Plain = [Net.NetworkCredential]::new('', $Token).Password
+    $Plain = $Plain.Trim()
     if ([string]::IsNullOrWhiteSpace($Plain)) { throw 'Token was empty; nothing changed.' }
+    if ($Plain.Length -lt 40 -or $Plain -match '\s' -or $Plain -match '[^\x21-\x7E]') {
+        $Plain = $null; $Token.Dispose()
+        throw 'Input is not a complete access token. Copy the full token from Meta, then paste it at this hidden prompt. Nothing was changed.'
+    }
     # Create a restricted file before writing the credential.
     if (-not (Test-Path -LiteralPath $TokenPath)) { New-Item -ItemType File -Path $TokenPath | Out-Null }
     $Acl = [Security.AccessControl.FileSecurity]::new()

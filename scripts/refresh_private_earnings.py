@@ -40,6 +40,8 @@ def collect_meta(cfg, root):
         token = credential_path.read_text(encoding='utf-8-sig').strip()
     if not token:
         return {'status': 'credentials_missing', 'message': 'Meta token is available in Actions only; no local credential configured.'}
+    if len(token) < 40 or not token.isascii() or any(ch.isspace() for ch in token):
+        return {'status': 'invalid_credential', 'message': 'Saved input is not a complete access token. Copy the full token from Meta into the secure setup prompt.'}
     from src.meta_uploader import _page_access_token
     ver = cfg.get('meta.api_version', 'v21.0')
     page = str(cfg.get('meta.page_id', ''))
