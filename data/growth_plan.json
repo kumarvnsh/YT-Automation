@@ -1,0 +1,56 @@
+{
+  "updated": "2026-11-16T16:55:56.883305+00:00",
+  "status": "changed one hour",
+  "hours_utc": [
+    4,
+    12,
+    16,
+    18,
+    23
+  ],
+  "posts_per_day": 5,
+  "changed_at": "2026-11-16T16:55:56.883305+00:00",
+  "history": [
+    {
+      "at": "2026-11-16T16:55:56.883305+00:00",
+      "removed": 7,
+      "added": 23,
+      "reason": "outside the US/Europe audience hours",
+      "added_score": 0.5,
+      "added_n": 0
+    }
+  ],
+  "hour_stats": {
+    "04": {
+      "n": 26,
+      "mean": 0.425,
+      "shrunk": 0.433
+    },
+    "07": {
+      "n": 15,
+      "mean": 0.547,
+      "shrunk": 0.539
+    },
+    "12": {
+      "n": 14,
+      "mean": 0.455,
+      "shrunk": 0.463
+    },
+    "16": {
+      "n": 21,
+      "mean": 0.466,
+      "shrunk": 0.47
+    },
+    "17": {
+      "n": 1,
+      "mean": 0.265,
+      "shrunk": 0.441
+    },
+    "18": {
+      "n": 12,
+      "mean": 0.71,
+      "shrunk": 0.668
+    }
+  },
+  "method": "Growth agent (laptop, daily): picks the UTC publish hours in data/growth_plan.json."
+}
