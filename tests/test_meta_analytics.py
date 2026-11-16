@@ -19,6 +19,30 @@ class InstagramInsightsTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "instagram_manage_insights"):
             export_meta_analytics._ig_media_views("media-1", "token", "v21.0", "views")
 
+    @staticmethod
+    def _insights(**values) -> Mock:
+        response = Mock(ok=True)
+        response.json.return_value = {"data": [{"name": k, "values": [{"value": v}]} for k, v in values.items()]}
+        return response
+
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_reel_insights_converts_watch_time_ms_and_keeps_skip_rate(self, get: Mock) -> None:
+        get.return_value = self._insights(ig_reels_avg_watch_time=12450, reels_skip_rate=41.5, shares=3)
+
+        result = export_meta_analytics._ig_reel_insights("media-1", "token", "v21.0")
+
+        self.assertEqual(result, {"average_watch_time_seconds": 12.45, "skip_rate": 41.5, "shares": 3})
+
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_reel_insights_retries_singly_when_batch_rejected(self, get: Mock) -> None:
+        rejected = Mock(ok=False, status_code=400, text="reels_skip_rate is not supported")
+        get.side_effect = [rejected, self._insights(ig_reels_avg_watch_time=9000), rejected,
+                           self._insights(shares=0)]
+
+        result = export_meta_analytics._ig_reel_insights("media-1", "token", "v21.0")
+
+        self.assertEqual(result, {"average_watch_time_seconds": 9.0, "skip_rate": None, "shares": 0})
+
     @patch("scripts.export_meta_analytics.requests.get")
     def test_media_views_raises_when_both_metrics_return_empty_data(self, get: Mock) -> None:
         empty = Mock(ok=True)

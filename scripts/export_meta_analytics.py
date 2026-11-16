@@ -33,7 +33,10 @@ from src.meta_uploader import GRAPH, _page_access_token, _raise_graph  # noqa: E
 def _experiment_metrics(video: dict, platform: str) -> dict:
     """Keep unsupported per-Reel measures explicit instead of inventing zeroes."""
     video["unavailable_metrics"] = {}
-    for metric in ("shares", "average_watch_time_seconds", "followers_gained", "three_second_retention", "completion_rate"):
+    metrics = ("shares", "average_watch_time_seconds", "followers_gained", "three_second_retention", "completion_rate")
+    if platform == "instagram":
+        metrics += ("skip_rate",)
+    for metric in metrics:
         video.setdefault(metric, None)
         if video[metric] is None:
             video["unavailable_metrics"][metric] = (
@@ -113,6 +116,31 @@ def _ig_media_views(media_id: str, token: str, ver: str, metric: str) -> tuple[i
     )
 
 
+_IG_REEL_METRICS = ("ig_reels_avg_watch_time", "reels_skip_rate", "shares")
+
+
+def _ig_reel_insights(media_id: str, token: str, ver: str) -> dict:
+    """Watch time, skip rate and shares for one Reel. Best-effort: a missing metric stays None.
+
+    One unsupported metric fails the whole batched call, so retry one at a time.
+    """
+    def get(metrics):
+        r = requests.get(f"{GRAPH}/{ver}/{media_id}/insights",
+                         params={"metric": ",".join(metrics), "access_token": token}, timeout=30)
+        if not r.ok:
+            return {}
+        return {d["name"]: d["values"][0].get("value") for d in r.json().get("data", []) if d.get("values")}
+
+    values = get(_IG_REEL_METRICS) or {k: v for m in _IG_REEL_METRICS for k, v in get([m]).items()}
+    number = lambda v: v if isinstance(v, (int, float)) and not isinstance(v, bool) else None  # noqa: E731
+    watch_ms = number(values.get("ig_reels_avg_watch_time"))
+    return {
+        "average_watch_time_seconds": round(watch_ms / 1000, 2) if watch_ms is not None else None,  # API returns ms
+        "skip_rate": number(values.get("reels_skip_rate")),  # share leaving in the first 3s, as Meta reports it
+        "shares": number(values.get("shares")),
+    }
+
+
 def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[dict]:
     r = requests.get(
         f"{GRAPH}/{ver}/{ig_user_id}/media",
@@ -140,6 +168,7 @@ def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[d
             "likes": m.get("like_count", 0),
             "comments": m.get("comments_count", 0),
             "url": m.get("permalink", ""),
+            **_ig_reel_insights(m["id"], token, ver),
         })
     return [_experiment_metrics(video, "instagram") for video in videos]
 

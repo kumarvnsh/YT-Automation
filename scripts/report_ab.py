@@ -36,7 +36,8 @@ def peaks() -> dict:
     def keep(platform, video):
         row = best[platform].setdefault(str(video['id']), {})
         if (video.get('views') or 0) >= row.get('views', -1):  # latest snapshot with the most views wins
-            row.update({k: video.get(k) for k in ('views', 'likes', 'avg_view_pct')})
+            row.update({k: video.get(k) for k in ('views', 'likes', 'avg_view_pct', 'skip_rate',
+                                                  'average_watch_time_seconds')})
 
     for data in snapshots('data/analytics.json'):
         for video in data.get('channels', {}).get('histold', {}).get('videos', []):
@@ -59,7 +60,8 @@ def summarize(rows: list[dict]) -> str:
         return f'{1000 * likes / views:5.1f}' if views else '    -'
 
     return (f'n={len(rows):2}  YT %viewed {med("yt_pct")}  YT likes/1k {per_k("yt")}  '
-            f'YT views {med("yt_views")}  IG likes/1k {per_k("ig")}  IG views {med("ig_views")}')
+            f'YT views {med("yt_views")}  IG likes/1k {per_k("ig")}  IG views {med("ig_views")}  '
+            f'IG skip {med("ig_skip")}  IG watch s {med("ig_watch")}')
 
 
 def main() -> int:
@@ -82,7 +84,8 @@ def main() -> int:
         rows.append({'title_style': arm['title_style'],
                      'voice': entry.get('voice') or arm['voice'],  # actual engine; Kokoro can fall back to Edge
                      'yt_views': yt.get('views'), 'yt_likes': yt.get('likes'), 'yt_pct': yt.get('avg_view_pct'),
-                     'ig_views': ig.get('views'), 'ig_likes': ig.get('likes')})
+                     'ig_views': ig.get('views'), 'ig_likes': ig.get('likes'),
+                     'ig_skip': ig.get('skip_rate'), 'ig_watch': ig.get('average_watch_time_seconds')})
     print(f'{args.id}: {len(rows)} videos >= {args.min_hours:g}h old ({young} younger skipped)\n')
     for factor in ('title_style', 'voice'):
         groups = defaultdict(list)
