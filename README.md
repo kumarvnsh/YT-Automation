@@ -375,3 +375,40 @@ continue using b-roll.
 Local 3D setup requires Node 22 and `npm ci` at the repository root, alongside
 Python dependencies, ffmpeg, and `python -m playwright install chromium`.
 HyperFrames and Three.js use the pinned local `node_modules` packages.
+# Local earnings collection and data gaps
+
+The dashboard attempts read-only earnings collection hourly. Reports and diagnostics
+stay under `D:\histold\YT-Automation\data\private`; they are never committed.
+Missing credentials or rejected requests retain the previous successful report.
+Dashboard Refresh reloads available exports; it does not authorize a new account.
+
+In PowerShell, from `D:\YT-Automation`:
+
+```powershell
+# Enter your existing Meta token privately at the hidden terminal prompt.
+powershell -ExecutionPolicy Bypass -File scripts\setup_private_earnings.ps1 -Platform Meta
+
+# First place your Google Desktop OAuth client JSON at:
+# D:\histold\YT-Automation\secrets\client_secret.json
+# Enable YouTube Data API v3 and YouTube Analytics API in that Google project.
+# Then approve the separate read-only earnings login in your browser:
+powershell -ExecutionPolicy Bypass -File scripts\setup_private_earnings.ps1 -Platform YouTube
+```
+
+Meta's token file is restricted to your Windows user and SYSTEM. It is stored outside
+both clones at `D:\histold\secrets\meta-earnings-token.txt`. No additional Meta
+permission has been shown to resolve the bonus discrepancy. Existing Page access
+can be reused; never paste tokens into chat. The YouTube login requests monetary
+analytics and channel-read access, and saves `secrets/earnings-token.json` separately
+from the upload token. Use the Histold channel account; the configured channel ID is checked.
+
+Facebook collection requests explicit watch time and retains raw retention graphs;
+these are not assumed to equal a completion rate. Instagram metric failures are
+isolated and include redacted API reasons. Data gaps show affected-video counts.
+Per-post earnings use Page attachment IDs to map videos to posts; unmatched IDs
+remain unavailable. Ordinary earnings exclude bonuses, and a returned bonus zero
+is not treated as proof of no bonus income. Reported currency and reporting periods
+must be verified before combining amounts. The public API may not expose every bonus.
+
+These exporter changes must be deployed to GitHub before hourly Actions collect the
+new engagement fields. Local commits alone do not update the Actions runner.

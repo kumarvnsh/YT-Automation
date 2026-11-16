@@ -32,18 +32,57 @@ from src.meta_uploader import GRAPH, _page_access_token, _raise_graph  # noqa: E
 
 def _experiment_metrics(video: dict, platform: str) -> dict:
     """Keep unsupported per-Reel measures explicit instead of inventing zeroes."""
-    video["unavailable_metrics"] = {}
+    video.setdefault("unavailable_metrics", {})
     metrics = ("shares", "average_watch_time_seconds", "followers_gained", "three_second_retention", "completion_rate")
     if platform == "instagram":
         metrics += ("skip_rate",)
     for metric in metrics:
         video.setdefault(metric, None)
         if video[metric] is None:
-            video["unavailable_metrics"][metric] = (
+            video["unavailable_metrics"].setdefault(metric, (
                 f"{platform} per-media metric not collected by this exporter; requires a supported "
                 "Insights metric and account permissions. No account-level substitute used."
-            )
+            ))
     return video
+
+
+def _metric_values(node, edge, token, ver, metrics):
+    """Isolate metric failures; never expose a credential or replace missing data with zero."""
+    values, errors = {}, {}
+    for metric in metrics:
+        try:
+            response = requests.get(f"{GRAPH}/{ver}/{node}/{edge}",
+                                    headers={"Authorization": f"Bearer {token}"},
+                                    params={"metric": metric}, timeout=30)
+            payload = response.json()
+            if not response.ok or payload.get("error"):
+                error = payload.get("error") or {}
+                code = error.get("code")
+                status = "access_denied" if code in (10, 190, 200, 294) else "request_rejected"
+                message = str(error.get("message") or "Metric request rejected").replace(token, "[redacted]")
+                errors[metric] = f"{status}: code {code}; {message[:250]}"
+                continue
+            rows = [r for item in payload.get("data", []) if item.get("name") == metric
+                    for r in item.get("values", [])]
+            if rows and rows[-1].get("value") is not None:
+                values[metric] = rows[-1]["value"]
+            else:
+                errors[metric] = "no_data: API returned no value; reporting delay or media eligibility may apply."
+        except (requests.RequestException, ValueError):
+            errors[metric] = "fetch_failed: metric request failed; retry on the next export."
+    return values, errors
+
+
+def _facebook_reel_insights(media_id, token, ver):
+    metrics = ("total_video_avg_time_watched", "total_video_retention_graph")
+    values, errors = _metric_values(media_id, "video_insights", token, ver, metrics)
+    watch = values.get(metrics[0])
+    result = {"average_watch_time_seconds": watch / 1000 if isinstance(watch, (int, float)) and not isinstance(watch, bool) else None,
+              "retention_graph": values.get(metrics[1]),
+              "unavailable_metrics": {("average_watch_time_seconds" if k == metrics[0] else "retention_graph"): v
+                                      for k, v in errors.items()}}
+    # Retention graph samples are not a unique-view completion rate or a 3-second start rate.
+    return result
 
 
 def _first_line(text: str) -> str:
@@ -51,14 +90,15 @@ def _first_line(text: str) -> str:
 
 
 def _insight_views(insights: dict) -> int:
-    """Pull a play/view count out of a video_insights blob, whatever Meta calls it today."""
-    for item in (insights or {}).get("data", []):
-        name = item.get("name", "")
-        if "play" in name or "views" in name:
+    """Prefer explicitly recognized video views; never mistake ad views for video views."""
+    by_name = {item.get('name'): item for item in (insights or {}).get('data', [])}
+    for metric in ("total_video_views", "blue_reels_play_count", "total_video_plays"):
+        item = by_name.get(metric)
+        if item:
             values = item.get("values", [])
             if values:
                 v = values[0].get("value")
-                if isinstance(v, (int, float)):
+                if isinstance(v, (int, float)) and not isinstance(v, bool) and v >= 0:
                     return int(v)
     raise RuntimeError(
         "Facebook video_insights contained no recognizable view metric; verify "
@@ -91,6 +131,7 @@ def fetch_facebook(token: str, page_id: str, ver: str, limit: int) -> list[dict]
             "likes": ((v.get("likes") or {}).get("summary") or {}).get("total_count", 0),
             "comments": ((v.get("comments") or {}).get("summary") or {}).get("total_count", 0),
             "url": f"https://www.facebook.com{permalink}" if permalink.startswith("/") else permalink,
+            **_facebook_reel_insights(v["id"], page_token, ver),
         })
     return [_experiment_metrics(video, "facebook") for video in videos]
 
@@ -122,22 +163,17 @@ _IG_REEL_METRICS = ("ig_reels_avg_watch_time", "reels_skip_rate", "shares")
 def _ig_reel_insights(media_id: str, token: str, ver: str) -> dict:
     """Watch time, skip rate and shares for one Reel. Best-effort: a missing metric stays None.
 
-    One unsupported metric fails the whole batched call, so retry one at a time.
+    Request metrics individually so unsupported fields do not hide available values.
     """
-    def get(metrics):
-        r = requests.get(f"{GRAPH}/{ver}/{media_id}/insights",
-                         params={"metric": ",".join(metrics), "access_token": token}, timeout=30)
-        if not r.ok:
-            return {}
-        return {d["name"]: d["values"][0].get("value") for d in r.json().get("data", []) if d.get("values")}
-
-    values = get(_IG_REEL_METRICS) or {k: v for m in _IG_REEL_METRICS for k, v in get([m]).items()}
+    values, errors = _metric_values(media_id, "insights", token, ver, _IG_REEL_METRICS)
     number = lambda v: v if isinstance(v, (int, float)) and not isinstance(v, bool) else None  # noqa: E731
     watch_ms = number(values.get("ig_reels_avg_watch_time"))
     return {
         "average_watch_time_seconds": round(watch_ms / 1000, 2) if watch_ms is not None else None,  # API returns ms
         "skip_rate": number(values.get("reels_skip_rate")),  # share leaving in the first 3s, as Meta reports it
         "shares": number(values.get("shares")),
+        "unavailable_metrics": { {"ig_reels_avg_watch_time": "average_watch_time_seconds", "reels_skip_rate": "skip_rate"}.get(k, k): v
+                                 for k, v in errors.items()},
     }
 
 
@@ -176,7 +212,7 @@ def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[d
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--config", default=None)
-    ap.add_argument("--limit", type=int, default=50)
+    ap.add_argument("--limit", type=int, default=100)
     args = ap.parse_args()
 
     token = env("META_ACCESS_TOKEN")

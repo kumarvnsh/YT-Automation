@@ -27,21 +27,35 @@ class InstagramInsightsTests(unittest.TestCase):
 
     @patch("scripts.export_meta_analytics.requests.get")
     def test_reel_insights_converts_watch_time_ms_and_keeps_skip_rate(self, get: Mock) -> None:
-        get.return_value = self._insights(ig_reels_avg_watch_time=12450, reels_skip_rate=41.5, shares=3)
+        get.side_effect = [self._insights(ig_reels_avg_watch_time=12450), self._insights(reels_skip_rate=41.5), self._insights(shares=3)]
 
         result = export_meta_analytics._ig_reel_insights("media-1", "token", "v21.0")
 
-        self.assertEqual(result, {"average_watch_time_seconds": 12.45, "skip_rate": 41.5, "shares": 3})
+        self.assertEqual(result, {"average_watch_time_seconds": 12.45, "skip_rate": 41.5, "shares": 3, "unavailable_metrics": {}})
 
     @patch("scripts.export_meta_analytics.requests.get")
     def test_reel_insights_retries_singly_when_batch_rejected(self, get: Mock) -> None:
         rejected = Mock(ok=False, status_code=400, text="reels_skip_rate is not supported")
-        get.side_effect = [rejected, self._insights(ig_reels_avg_watch_time=9000), rejected,
+        rejected.json.return_value = {"error": {"code": 100, "message": "unsupported metric"}}
+        get.side_effect = [self._insights(ig_reels_avg_watch_time=9000), rejected,
                            self._insights(shares=0)]
 
         result = export_meta_analytics._ig_reel_insights("media-1", "token", "v21.0")
 
-        self.assertEqual(result, {"average_watch_time_seconds": 9.0, "skip_rate": None, "shares": 0})
+        self.assertEqual(result['average_watch_time_seconds'], 9.0)
+        self.assertIsNone(result['skip_rate'])
+        self.assertEqual(result['shares'], 0)
+        self.assertIn('code 100', result['unavailable_metrics']['skip_rate'])
+
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_failure_is_redacted_and_survives_experiment_annotation(self, get):
+        response = Mock(ok=False)
+        response.json.return_value = {'error': {'code': 200, 'message': 'denied secret-token'}}
+        get.return_value = response
+        result = export_meta_analytics._ig_reel_insights('1', 'secret-token', 'v21.0')
+        result = export_meta_analytics._experiment_metrics(result, 'instagram')
+        self.assertIn('access_denied', result['unavailable_metrics']['shares'])
+        self.assertNotIn('secret-token', str(result))
 
     @patch("scripts.export_meta_analytics.requests.get")
     def test_media_views_raises_when_both_metrics_return_empty_data(self, get: Mock) -> None:
@@ -72,6 +86,18 @@ class InstagramInsightsTests(unittest.TestCase):
 
 
 class FacebookInsightsTests(unittest.TestCase):
+    def test_ad_views_cannot_be_mistaken_for_video_views(self):
+        self.assertEqual(export_meta_analytics._insight_views({'data': [
+            {'name': 'total_video_ad_views', 'values': [{'value': 900}]},
+            {'name': 'total_video_views', 'values': [{'value': 20}]}]}), 20)
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_watch_time_ms_and_raw_retention_graph(self, get):
+        get.side_effect = [InstagramInsightsTests._insights(total_video_avg_time_watched=12340),
+                           InstagramInsightsTests._insights(total_video_retention_graph={'0': 100, '5': 70})]
+        result = export_meta_analytics._facebook_reel_insights('1', 'token', 'v21.0')
+        self.assertEqual(result['average_watch_time_seconds'], 12.34)
+        self.assertEqual(result['retention_graph']['5'], 70)
+        self.assertNotIn('completion_rate', result)
     def test_missing_video_insights_is_not_reported_as_zero(self) -> None:
         with self.assertRaisesRegex(RuntimeError, "no recognizable view metric"):
             export_meta_analytics._insight_views({})

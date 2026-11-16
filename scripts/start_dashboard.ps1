@@ -10,7 +10,7 @@ $Py = Join-Path $DataRoot '.venv\Scripts\python.exe'
 $Script = Join-Path $Repo 'scripts\dashboard_server.py'
 $MetaPath = Join-Path $HomeDir 'dashboard_server.json'
 $CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/weekly_review.py',
-    'scripts/content_insights.py','src/insights.py','src/facebook_monetization.py','src/control.py','src/strategy.py','src/growth.py')
+    'scripts/content_insights.py','scripts/refresh_private_earnings.py','src/insights.py','src/facebook_monetization.py','src/control.py','src/strategy.py','src/growth.py')
 $Digest = ($CodeFiles | ForEach-Object { (Get-FileHash (Join-Path $Repo $_) -Algorithm SHA256).Hash }) -join ''
 $Prior = $null
 if (Test-Path $MetaPath) { try { $Prior = Get-Content $MetaPath -Raw | ConvertFrom-Json } catch {} }

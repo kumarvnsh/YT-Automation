@@ -149,6 +149,7 @@ class State:
         while True:
             time.sleep(REFRESH_SECONDS)
             try:
+                self.refresh_earnings_if_due()
                 self.refresh()
                 report = (self.data or {}).get('ai_insights') or {}
                 try:
@@ -159,6 +160,15 @@ class State:
                     self.start_research()
             except Exception:  # noqa: BLE001
                 traceback.print_exc()
+
+    def refresh_earnings_if_due(self):
+        """Hourly read-only financial collection; credentials and reports remain local."""
+        status = DATA_ROOT / 'data/private/earnings-status.json'
+        if status.exists() and time.time() - status.stat().st_mtime < 3600:
+            return
+        subprocess.run([sys.executable, str(ROOT / 'scripts/refresh_private_earnings.py'),
+                        '--config', str(ROOT / 'config.yaml'), '--data-root', str(DATA_ROOT)],
+                       capture_output=True, timeout=600)
 
 
 def assistant_context(d: dict) -> str:

@@ -148,12 +148,14 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
                             ('Facebook', meta.get('facebook', {}).get('videos', [])),
                             ('Instagram', meta.get('instagram', {}).get('videos', []))):
         missing = {}
+        counts = {}
         for item in items:
             um = item.get('unavailable_metrics') or []
             for key in (um.keys() if isinstance(um, dict) else um):
                 missing[key] = um[key] if isinstance(um, dict) else 'not returned by the API'
+                counts[key] = counts.get(key, 0) + 1
         if missing:
-            gaps[platform] = missing
+            gaps[platform] = {key: f'{counts[key]} of {len(items)} videos: {reason}' for key, reason in missing.items()}
 
     reviews = sorted((root / 'data/reviews').glob('*.md')) if (root / 'data/reviews').exists() else []
     s = settings(cfg)
@@ -178,8 +180,10 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
         'hour_stats': {str(h): v for h, v in hour_stats(index, best, now).items()},
         'review': {'name': reviews[-1].stem, 'html': md_to_html(reviews[-1].read_text(encoding='utf-8'))} if reviews else None,
         'monetization': read_json(root / 'data/private/facebook-monetization-report.json'),
-        'monetization_api': summarize_api(read_json(root / 'data/private/facebook-api-monetization.json'),
-                                         read_json(root / 'data/private/facebook-api-bonus-probe.json')),
+        'monetization_api': summarize_api(read_json(root / 'data/private/facebook-api-live.json') or read_json(root / 'data/private/facebook-api-monetization.json'),
+                                         read_json(root / 'data/private/facebook-api-live.json') or read_json(root / 'data/private/facebook-api-bonus-probe.json')),
+        'earnings_status': read_json(root / 'data/private/earnings-status.json'),
+        'youtube_earnings': read_json(root / 'data/private/youtube-earnings.json'),
         'overrides': read_json(root / 'data/growth_overrides.json', {}),
         'options': {'series': [x['id'] for x in cfg.get('editorial.series') or []],
                     'region': [x['id'] for x in cfg.get('editorial.regions') or []],
@@ -395,7 +399,7 @@ function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('
  $('money').innerHTML=`<div class="eyebrow">Facebook · ${hasRolling?'Meta rolling 28-day estimate':'Daily-detail subtotal'} excluding bonuses</div><div style="font-size:36px;font-weight:750;margin:12px 0">${esc(amount)}</div><p>Through ${local(a.rolling_bucket_end||a.last_bucket_end,{dateStyle:'medium'})} · estimated, not a payout</p>
  <div class="finding ${a.bonus_earnings!=null?'':'weak'}"><b>Extra Bonus: ${a.bonus_earnings!=null?esc(money(a.bonus_earnings)):'unavailable'}</b><p>${a.bonus_earnings!=null?a.bonus_daily_buckets+' daily buckets returned by Meta. This covers the Extra Bonus field, not every possible bonus program.':esc(a.bonus_status||'Unavailable does not mean zero.')}</p></div>
  <p class="small">Daily-detail subtotal: <b>${esc(money(a.total))}</b> across ${a.daily_buckets} buckets.</p>${a.reconciliation?'<p class="small warn">'+esc(a.reconciliation)+'</p>':''}<p class="small"><b>All-in total including every bonus: not verified.</b></p>
- <p class="small muted">Fetched ${ago(a.rolling_checked||a.checked)} ago directly from Meta · ${esc(a.version)}. This separate snapshot is not refreshed by the hourly analytics export.</p><p class="small">Meta rejected the per-Reel earnings and qualified-view requests despite the account’s monetization-insights task. Availability remains unresolved; no revenue-per-view estimate is calculated.</p><details class="small muted"><summary>Source &amp; access details</summary><p>${esc(a.metric)} · ${esc(a.currency_source)}</p><p>Daily bucket end times: ${local(a.first_bucket_end)} – ${local(a.last_bucket_end)}.</p>${(a.limitations||[]).map(t=>'<p>'+esc(t)+'</p>').join('')}${(a.per_video_errors||[]).map(t=>'<p>'+esc(t)+'</p>').join('')}</details>`;if(m)$('money').innerHTML+='<details><summary>Imported Reel-level report</summary><pre class="small" style="white-space:pre-wrap">'+esc(JSON.stringify(m,null,2))+'</pre></details>';return}
+ <p class="small muted">Fetched ${ago(a.rolling_checked||a.checked)} ago directly from Meta · ${esc(a.version)}. Private collection is attempted hourly when local credentials are configured; see collection status below.</p><p class="small">Per-Reel earnings require a matched Page post and a successful earnings response. Unavailable values are not converted into revenue-per-view estimates.</p><details class="small muted"><summary>Source &amp; access details</summary><p>${esc(a.metric)} · ${esc(a.currency_source)}</p><p>Daily bucket end times: ${local(a.first_bucket_end)} – ${local(a.last_bucket_end)}.</p>${(a.limitations||[]).map(t=>'<p>'+esc(t)+'</p>').join('')}${(a.per_video_errors||[]).map(t=>'<p>'+esc(t)+'</p>').join('')}</details>`;if(m)$('money').innerHTML+='<details><summary>Imported Reel-level report</summary><pre class="small" style="white-space:pre-wrap">'+esc(JSON.stringify(m,null,2))+'</pre></details>';return}
  if(!m){$('money').innerHTML=`<p><b class="warn">No earnings data.</b> No earnings snapshot or CSV report is available on this laptop.</p>
 <ul class="small"><li><b>Now:</b> export your earnings CSV in Meta Business Suite (Monetization → Earnings) and run<br><code>.venv\\Scripts\\python scripts\\import_facebook_monetization.py earnings.csv</code><br>in <code>D:\\histold\\YT-Automation</code>. It stays on this laptop (<code>data/private/</code>, never committed).</li>
 <li><b>Status:</b> you reported Facebook monetization active. This app cannot independently verify eligibility or payout status. YouTube and Instagram monetization status is not recorded.</li>
@@ -403,8 +407,12 @@ function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('
  $('money').innerHTML='<pre class="small" style="white-space:pre-wrap">'+esc(JSON.stringify(m,null,2)).slice(0,4000)+'</pre>'})();
 
 // review & gaps
+(()=>{const s=D.earnings_status,y=D.youtube_earnings;
+ if(s){const box=document.createElement('div');box.className='finding';box.innerHTML='<b>Automatic earnings collection</b><p class="small">Last attempt '+esc(local(s.checked))+'</p>'+['facebook','youtube'].map(p=>'<p class="small"><b>'+esc(p)+': '+esc(s[p]?.status||'unknown')+'</b> · '+esc(s[p]?.message||'Read-only report collected; estimates may be revised.')+'</p>').join('');$('money').appendChild(box)}
+ if(y){const rows=y.data?.rows||[],sum=rows.reduce((n,r)=>n+Number(r[1]||0),0),box=document.createElement('div');box.className='finding';box.innerHTML='<b>YouTube estimated revenue: '+esc(new Intl.NumberFormat(undefined,{style:'currency',currency:y.currency}).format(sum))+'</b><p class="small">Requested '+esc(y.requested_start)+'–'+esc(y.requested_end)+' · latest returned day '+esc(y.latest_returned_day||'none')+'. Not a payout statement.</p>';$('money').appendChild(box)}
+})();
 if(D.review){$('reviewTitle').textContent='Weekly notes archive · '+D.review.name;$('review').innerHTML=D.review.html}else $('review').innerHTML='<p class="empty">The first review is written on the laptop\'s next weekly run.</p>';
-(()=>{const g=Object.entries(D.gaps);$('gaps').innerHTML=g.length?'<p class="small muted">Metrics the platform APIs did not return for at least one recent video:</p>'+g.map(([p,m])=>`<h4>${esc(p)}</h4><ul class="small">`+Object.entries(m).map(([k,why])=>`<li><code>${esc(k)}</code> — ${esc(why)}</li>`).join('')+'</ul>').join(''):'<p class="ok">All metrics available.</p>'})();
+(()=>{const g=Object.entries(D.gaps);$('gaps').innerHTML=g.length?'<p class="small muted">Metrics the platform APIs did not return for at least one recent video:</p>'+g.map(([p,m])=>`<h4>${esc(p)}</h4><ul class="small">`+Object.entries(m).map(([k,why])=>`<li><code>${esc(k)}</code> — ${esc(why)}</li>`).join('')+'</ul>').join(''):'<p class="ok">No missing-metric flags in the available exports. This does not establish complete platform coverage.</p>'})();
 </script>__LIVE_JS__</body></html>
 """
 

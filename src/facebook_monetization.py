@@ -12,10 +12,12 @@ def summarize_api(report, bonus_report=None):
     checks = report.get('checks') or []
     versions = list(dict.fromkeys([report.get('configured_version')] + [c.get('version') for c in checks]))
     errors = list(dict.fromkeys(c.get('message', 'Unavailable') for c in checks
-                               if c.get('scope') == 'video' and c.get('status') != 'ok'))
+                               if c.get('scope') in ('video', 'post', 'post_resolution') and c.get('status') != 'ok'))
     result = {'checked': report.get('generated'), 'available': False, 'per_video_errors': errors,
               'bonus_earnings': None, 'total_including_bonuses': None,
               'bonus_status': 'Not available from the collected API metrics',
+              'post_checks': [{k: c.get(k) for k in ('video_id', 'post_id', 'metric', 'status', 'message')}
+                              for c in checks if c.get('scope') in ('post', 'post_resolution')],
               'limitations': ['Estimated Page earnings, not a payout statement or per-Reel attribution.',
                               'monetization_approximate_earnings explicitly excludes bonuses; this is not an all-in earnings total.',
                               'Content Monetization and approximate earnings may overlap; they are not added together.',
