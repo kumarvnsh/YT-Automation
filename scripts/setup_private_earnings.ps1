@@ -1,7 +1,8 @@
 # Configure local read-only earnings access without changing publishing credentials.
 param(
     [Parameter(Mandatory=$true)][ValidateSet('Meta','YouTube')][string]$Platform,
-    [string]$DataRoot = 'D:\histold\YT-Automation'
+    [string]$DataRoot = 'D:\histold\YT-Automation',
+    [switch]$FromClipboard
 )
 $ErrorActionPreference = 'Stop'
 $Repo = Split-Path -Parent $PSScriptRoot
@@ -10,7 +11,14 @@ if ($Platform -eq 'Meta') {
     $SecretDir = Join-Path (Split-Path -Parent $DataRoot) 'secrets'
     New-Item -ItemType Directory -Force -Path $SecretDir | Out-Null
     $TokenPath = Join-Path $SecretDir 'meta-earnings-token.txt'
-    $Token = Read-Host -AsSecureString 'Meta token (hidden input; never paste into chat)'
+    if ($FromClipboard) {
+        $ClipboardToken = (Get-Clipboard -Raw).Trim()
+        if ([string]::IsNullOrWhiteSpace($ClipboardToken)) { throw 'Clipboard is empty. Copy the full token from Meta first.' }
+        $Token = ConvertTo-SecureString -String $ClipboardToken -AsPlainText -Force
+        $ClipboardToken = $null
+    } else {
+        $Token = Read-Host -AsSecureString 'Meta token (hidden input; never paste into chat)'
+    }
     $Plain = [Net.NetworkCredential]::new('', $Token).Password
     $Plain = $Plain.Trim()
     if ([string]::IsNullOrWhiteSpace($Plain)) { throw 'Token was empty; nothing changed.' }
@@ -28,6 +36,7 @@ if ($Platform -eq 'Meta') {
     Set-Acl -LiteralPath $TokenPath -AclObject $Acl
     [IO.File]::WriteAllText($TokenPath, $Plain, [Text.UTF8Encoding]::new($false))
     $Plain = $null; $Token.Dispose()
+    if ($FromClipboard) { Set-Clipboard -Value '' }
 }
 $Arguments = @((Join-Path $Repo 'scripts\refresh_private_earnings.py'), '--config',
                (Join-Path $Repo 'config.yaml'), '--data-root', $DataRoot)
