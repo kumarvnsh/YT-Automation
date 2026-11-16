@@ -3229,5 +3229,14 @@
     "slot": "morning",
     "date": "2026-11-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261116_120308_852403_short",
+    "title": "Did Russia Need Permission to Build a Fort in California?",
+    "fingerprint": "build_california_did_fort_need_permission_russia",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-16",
+    "status": "reserved"
   }
 ]

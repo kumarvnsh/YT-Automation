@@ -7019,5 +7019,32 @@
     "production_profile": 2,
     "facebook_id": "1107580502283022",
     "instagram_id": "18142603117620242"
+  },
+  {
+    "video_id": "2aRdkpMSsVY",
+    "run_id": "43862789302",
+    "stage_dir_name": "20261116_120308_852403_short",
+    "title": "Did Russia Need Permission to Build a Fort in California?",
+    "published_at": "2026-11-16T12:12:35.447236+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "category": "erased",
+    "editorial_slot": 121,
+    "editorial_region": "russia",
+    "editorial_series": "Erased From History",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Russian settlers in California made a land contract with the local people who lived there.",
+    "duration": 50.175,
+    "production_profile": 2,
+    "facebook_id": "1134696419305741",
+    "instagram_id": "17907574086671622"
   }
 ]
