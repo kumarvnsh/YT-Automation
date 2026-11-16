@@ -3220,5 +3220,14 @@
     "slot": "evening",
     "date": "2026-11-15",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261116_040237_520262_short",
+    "title": "Why Did One Drink Deserve Its Own Book in Tang China?",
+    "fingerprint": "book_china_deserve_did_drink_its_one_own_tang",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-16",
+    "status": "reserved"
   }
 ]
