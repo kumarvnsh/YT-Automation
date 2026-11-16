@@ -77,6 +77,27 @@ class StrategyTests(unittest.TestCase):
         self.assertIn('Our audience watched and liked', text)
         self.assertNotIn('audience', brief(assignment(cfg(), 7), []).lower())
 
+    def test_overrides_pause_and_boost_then_renormalize(self):
+        w = {'series': {'a': 0.5, 'b': 0.3, 'c': 0.2}}
+        out = strategy.apply_overrides(w, {'series': {'paused': ['a'], 'boost': {'c': 10}}})['series']
+        self.assertEqual(out['a'], 0)
+        self.assertAlmostEqual(sum(out.values()), 1, places=3)
+        self.assertAlmostEqual(out['c'] / out['b'], 0.2 * strategy.MAX_BOOST / 0.3, places=2)
+        everything = strategy.apply_overrides(w, {'series': {'paused': ['a', 'b', 'c']}})
+        self.assertEqual(everything, w)
+
+    def test_load_applies_overrides_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / 'data').mkdir()
+            fresh = {'updated': datetime.now(timezone.utc).isoformat(), 'videos_scored': 40,
+                     'weights': {'region': {'india': 0.5, 'japan': 0.5}}}
+            (root / 'data/strategy.json').write_text(json.dumps(fresh))
+            (root / strategy.OVERRIDES).write_text(json.dumps({'region': {'paused': ['japan']}}))
+            plan = strategy.load(root)
+            self.assertEqual(plan['weights']['region'], {'india': 1.0, 'japan': 0.0})
+            self.assertEqual(assignment(cfg(), 3, plan)['region']['id'], 'india')
+
     def test_load_ignores_stale_or_thin_strategy(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

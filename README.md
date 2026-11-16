@@ -174,6 +174,75 @@ The pipeline is scheduler-agnostic. `scripts/run_daily.sh` is the entry point.
 - **macOS launchd** — more reliable than cron on laptops; create a `LaunchAgent` plist calling `run_daily.sh`.
 - **Cloud (hands-off, Mac can be off)** — GitHub Actions on a `schedule:` cron, with keys stored as repo **Secrets** and `secrets/token.json` committed as an encrypted secret. Ask and I'll generate the workflow file.
 
+## Laptop dashboard app and local AI
+
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_dashboard.ps1`
+on the Windows laptop. Open **http://localhost:8787** and sign in using the key in
+`D:\histold\dashboard_key.txt`. The key, logs, and process metadata live outside the
+repository. The server reads `D:\histold\YT-Automation`, refreshing its snapshot every
+ten minutes. **Refresh dashboard** reloads sooner; platform exports arrive at the next
+hourly laptop sync.
+
+Local Ollama chat can propose pausing, boosting, or resetting a series/region/length,
+pinning publish hours for 1–30 days, returning control to the agent, or refreshing
+analytics. Press **Confirm** to apply a proposal. The server checks it again and writes
+only `data/growth_overrides.json` or `data/growth_plan.json` through the GitHub CLI.
+The daily post count stays fixed. Controls use UTC; chat also accepts explicit IST
+times ending in `:30`, converting exactly to whole UTC hours. At least one option in
+each dimension must remain active.
+
+Chat understands **"Analyze again and change the publish timings"** as a sequence:
+read the newest committed analytics exports, run local Qwen analysis, then propose a
+validated posting-hour experiment. The card shows UTC/IST times, sample counts, and
+the measurement period; only **Confirm** changes the schedule. Untried hours are
+identified as experiments. If analysis fails, no schedule proposal is made. An
+acknowledgement such as **"Yes, do that"** re-shows the previous validated card.
+Independent clauses are checked separately, so **"Don't change the schedule; boost
+Europe"** can still produce the requested Europe boost.
+
+The **Histold Dashboard** login task starts the app. The hourly runner also invokes
+`start_dashboard.ps1`, checking its process and restarting it when code changes.
+For remote access, install Tailscale on both devices and sign in to the same account.
+Run `tailscale serve --bg 8787` on the laptop and enable Serve at the URL it prints.
+Open the resulting private HTTPS address on another device and enter the dashboard
+key. The laptop must remain powered and connected for live access and AI chat.
+
+Use **Install app** or Edge/Chrome's Install menu. On Mac, Safari offers **File → Add
+to Dock**; on iPhone, Safari offers **Share → Add to Home Screen**. Offline mode shows
+the last cached view; live data and controls need the laptop connection. **Sign out**
+clears the app cache on that device.
+
+Facebook activation/payout status is owner-reported. A read-only Graph API probe can
+retrieve Page-level estimated earnings using the existing GitHub Actions secret.
+`scripts/probe_facebook_monetization.py` encrypts its response to a laptop-held RSA
+key using AES-GCM; only the encrypted artifact leaves the Actions runner. The local
+report is `data/private/facebook-api-monetization.json`. The dashboard uses a single
+numeric approximate-earnings stream with its response currency description; it never
+adds overlapping metrics or API versions, nor guesses a `microAmount` conversion.
+This is a separately fetched snapshot, not part of the hourly analytics exporter yet.
+The bonus probe requests documented `earning_source` / `monetization_tool` breakdowns
+and rolling `days_28` metrics. `extra_bonus` is shown only when returned, including an
+explicit zero. Rolling observations are never summed: only the latest is shown.
+If the rolling estimate and daily-detail subtotal disagree, both stay visible with a
+reconciliation note; no all-in total is inferred. Other bonus programs may not be
+represented by `extra_bonus`.
+Per-Reel earnings/qualified views can require additional monetization-admin access.
+Optional CSV reports can still be imported with `scripts/import_facebook_monetization.py`.
+All raw financial reports and private keys stay outside tracked source files.
+
+**Content insights:** `scripts/content_insights.py --data-root D:\histold\YT-Automation`
+asks local `qwen3:8b` to review measured content patterns. The server and hourly runner
+refresh stale reports once per day; **Analyze with Qwen** refreshes on demand. Reports
+stay in ignored `data/private/content-insights.json`. The dashboard computes medians
+and sample counts itself, considers videos aged 48 hours–28 days, and requires six
+measured Facebook videos before surfacing a group finding. Qwen's title observations
+are hypotheses, distinct from the measured rankings. Missing values are never treated
+as zero. The view uses peak exported metrics rather than age-matched measurements;
+it cannot establish causality, viewer locations, or earnings.
+
+The phone layout uses four bottom navigation targets and paged video cards; the desktop
+layout keeps the sidebar and sortable table. Filters apply to both presentations.
+
 ## Automated content factory (scheduled publishing)
 
 Production scheduling is driven by the **always-on Windows laptop**. Its hourly task

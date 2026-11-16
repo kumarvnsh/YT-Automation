@@ -149,12 +149,40 @@ def pick(options: list[dict], weights: dict | None, seed: int) -> dict:
     return random.Random(seed).choices(options, weights=w)[0] if sum(w) > 0 else None
 
 
+OVERRIDES = 'data/growth_overrides.json'
+MAX_BOOST = 3.0
+
+
+def apply_overrides(weights: dict, overrides: dict) -> dict:
+    """Your manual steering from the dashboard: paused options get weight 0, boosted ones
+    are multiplied (capped at MAX_BOOST), then each dimension is renormalized. A dimension
+    where everything would be paused keeps its computed weights."""
+    out = {}
+    for dim, w in weights.items():
+        o = overrides.get(dim) or {}
+        paused = set(o.get('paused') or [])
+        boost = o.get('boost') or {}
+        adj = {k: 0.0 if k in paused else v * min(max(float(boost.get(k, 1)), 0.0), MAX_BOOST) for k, v in w.items()}
+        total = sum(adj.values())
+        out[dim] = {k: round(v / total, 4) for k, v in adj.items()} if total > 0 else w
+    return out
+
+
 def load(root: Path, max_age_days: int = 3) -> dict | None:
-    """data/strategy.json if present and fresh; stale strategy falls back to plain rotation."""
+    """data/strategy.json if present and fresh (with data/growth_overrides.json applied);
+    stale strategy falls back to plain rotation."""
     path = root / 'data/strategy.json'
     try:
         data = json.loads(path.read_text())
         age = datetime.now(timezone.utc) - datetime.fromisoformat(data['updated'])
     except (OSError, ValueError, KeyError):
         return None
-    return data if age <= timedelta(days=max_age_days) and data.get('videos_scored', 0) >= 10 else None
+    if age > timedelta(days=max_age_days) or data.get('videos_scored', 0) < 10:
+        return None
+    try:
+        overrides = json.loads((root / OVERRIDES).read_text())
+    except (OSError, ValueError):
+        overrides = None
+    if overrides:
+        data = {**data, 'weights': apply_overrides(data.get('weights', {}), overrides), 'overrides': overrides}
+    return data

@@ -43,6 +43,9 @@ if ((Invoke-Logged git @('fetch', '-q', 'origin')) -ne 0) { Finish 1 'fetch fail
 if ((Invoke-Logged git @('reset', '-q', '--hard', 'origin/master')) -ne 0) { Finish 1 'reset failed' }
 $Failed = @()
 
+# Keep the dashboard available while logged off too, and restart it on code updates.
+if ((Invoke-Logged powershell @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'scripts\start_dashboard.ps1', '-DataRoot', $Repo)) -ne 0) { $Failed += 'dashboard server' }
+
 # 1. Dispatch first: it is the time-critical step (publish only in the hour's first 20 min).
 if ((Invoke-Logged $Py @('scripts\dispatch.py')) -ne 0) { $Failed += 'dispatch' }
 
@@ -60,6 +63,7 @@ if ($StrategyAgeH -ge 3.9) {
 if (-not $env:OLLAMA_EXE -and (Test-Path $OllamaExe)) { $env:OLLAMA_EXE = $OllamaExe }
 if ((Invoke-Logged $Py @('scripts\growth_agent.py', '--if-stale')) -ne 0) { $Failed += 'growth_agent' }
 if ((Invoke-Logged $Py @('scripts\weekly_review.py', '--if-missing')) -ne 0) { $Failed += 'weekly_review' }
+if ((Invoke-Logged $Py @('scripts\content_insights.py', '--if-stale')) -ne 0) { $Failed += 'content_insights' }
 
 # 4. Commit and push. Only these outputs are ever committed from this laptop.
 function Push-Outputs {

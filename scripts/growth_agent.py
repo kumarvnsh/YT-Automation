@@ -49,8 +49,13 @@ def main() -> int:
 
     current = prev.get('hours_utc') if not problem(prev.get('hours_utc'), s) else s['default_hours_utc']
     changed_at = prev.get('changed_at')
+    pinned_until = prev.get('pinned_until')
+    if pinned_until and now >= datetime.fromisoformat(pinned_until):
+        pinned_until = None
     change = None
-    if changed_at and now - datetime.fromisoformat(changed_at) < timedelta(days=s['change_interval_days']):
+    if pinned_until:
+        hours, status = current, f'pinned by you until {pinned_until[:16]} UTC'
+    elif changed_at and now - datetime.fromisoformat(changed_at) < timedelta(days=s['change_interval_days']):
         hours, status = current, f"holding: last change {changed_at[:10]}, measuring its effect"
     else:
         hours, change = propose(current, stats, s)
@@ -70,6 +75,7 @@ def main() -> int:
         'hours_utc': hours,
         'posts_per_day': s['posts_per_day'],
         'changed_at': changed_at,
+        'pinned_until': pinned_until,
         'history': history,
         'hour_stats': {f'{h:02d}': stats[h] for h in sorted(stats)},
         'method': __doc__.strip().splitlines()[0],

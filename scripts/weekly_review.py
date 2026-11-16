@@ -101,14 +101,14 @@ def prompt_for(cfg, videos: list[dict], strategy: dict) -> str:
     if len(videos) > 2 * EACH_END:
         videos = videos[:EACH_END] + videos[-EACH_END:]
     table = '\n'.join(
-        f"{v['score']:.2f} | {v['series']} | {v['region']} | {v['duration_variant']} | "
+        f"{v['score']:.2f} | {v['series']} | {v['region']} | {v['duration_variant']} | {v.get('fb_views', '-')} | "
         f"{viewed(v['yt_pct'])} | {pct(v['yt_like_rate'], 1)} | {pct(v['ig_like_rate'], 1)} | "
         f"{v['views'] if v['views'] is not None else '-'} | {'new' if v['new'] else ''} | {v['title']}"
         for v in videos)
     stats = json.dumps(strategy['stats'], separators=(',', ':'))
     return f"""You analyse performance data for Histold, a history Shorts channel on Facebook, YouTube and Instagram. Facebook is the priority: it is the only monetized platform. The target audience is in the USA and Europe.
 
-Score is 0-1: a weighted percentile rank of YouTube % viewed (double weight), YouTube like rate, Instagram like rate and total views across platforms. Higher is better. "new" marks videos published in the last 7 days.
+Score is 0-1: weighted percentile ranks of Facebook views (double weight), YouTube % viewed (double weight), YouTube like rate, Instagram like rate and total views across platforms. Higher is better. "new" marks videos published in the last 7 days.
 
 Series:
 {series}
@@ -118,12 +118,14 @@ Regions:
 
 Per-option stats (n videos, mean score): {stats}
 
-Videos ({'best and worst ' + str(EACH_END) + ' of ' + str(strategy['videos_scored']) if strategy['videos_scored'] > 2 * EACH_END else 'all'}), best first (score | series | region | length | YT % viewed | YT like rate | IG like rate | total views | new | title):
+Videos ({'best and worst ' + str(EACH_END) + ' of ' + str(strategy['videos_scored']) if strategy['videos_scored'] > 2 * EACH_END else 'all'}), best first (score | series | region | length | FB views | YT % viewed | YT like rate | IG like rate | total views | new | title):
 {table}
 
 Write this week's review. Rules:
 - Base every finding on the data above; cite real titles from the table, copied exactly, as examples.
-- Treat options with fewer than 4 videos as too little data, not as winners or losers.
+- Treat options with fewer than 6 videos as too little data, not as winners or losers.
+- A missing metric is unavailable, not zero or negative. Never infer failure from missing data. A zero-view post needs a distribution/reporting check before judging its topic.
+- These snapshots are not matched for video age, so differences do not establish causation. Do not infer earnings or viewer locations.
 - Look at what the titles themselves do (question form, specificity, named places or people, surprise) not only at series and region.
 - Topic ideas must be NEW: never repeat or rephrase a title from the table. They must be real, documented history that fits a listed series and region and would interest a US or European viewer; do not invent events. They will be fact-checked before use.
 - Be concise and specific."""
