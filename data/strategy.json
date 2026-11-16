@@ -1,64 +1,64 @@
 {
-  "updated": "2026-11-16T15:06:14.700935+00:00",
-  "videos_scored": 107,
+  "updated": "2026-11-16T16:55:43.781365+00:00",
+  "videos_scored": 113,
   "weights": {
     "series": {
-      "school_myths": 0.0646,
-      "mistakes": 0.0715,
-      "almost": 0.077,
-      "erased": 0.0758,
-      "unsolved": 0.0621,
-      "weird_dark": 0.0758,
-      "photo_story": 0.0758,
-      "spy_gadgets": 0.0758,
-      "animals": 0.0758,
-      "secretly_deadly": 0.0758,
-      "worst_jobs": 0.0758,
-      "forgotten_rules": 0.0655,
-      "behind_legend": 0.0656,
-      "found_by_accident": 0.0631
+      "school_myths": 0.0572,
+      "mistakes": 0.0728,
+      "almost": 0.0787,
+      "erased": 0.0775,
+      "unsolved": 0.0572,
+      "weird_dark": 0.0781,
+      "photo_story": 0.0789,
+      "spy_gadgets": 0.0789,
+      "animals": 0.0789,
+      "secretly_deadly": 0.0789,
+      "worst_jobs": 0.0789,
+      "forgotten_rules": 0.0657,
+      "behind_legend": 0.0621,
+      "found_by_accident": 0.0564
     },
     "region": {
-      "india": 0.1095,
-      "africa": 0.0935,
-      "japan": 0.1075,
-      "china": 0.1126,
-      "russia": 0.1292,
-      "middle_east": 0.1073,
-      "europe": 0.1025,
-      "americas": 0.1218,
-      "asia_pacific": 0.1161
+      "india": 0.1111,
+      "africa": 0.0866,
+      "japan": 0.094,
+      "china": 0.1064,
+      "russia": 0.1336,
+      "middle_east": 0.1131,
+      "europe": 0.116,
+      "americas": 0.1259,
+      "asia_pacific": 0.1132
     },
     "duration_variant": {
-      "concise": 0.5378,
-      "story": 0.4622
+      "concise": 0.5151,
+      "story": 0.4849
     }
   },
   "stats": {
     "series": {
       "school_myths": {
-        "n": 1,
-        "mean_score": 0.282
+        "n": 2,
+        "mean_score": 0.236
       },
       "mistakes": {
         "n": 1,
-        "mean_score": 0.42
+        "mean_score": 0.391
       },
       "almost": {
         "n": 1,
-        "mean_score": 0.523
+        "mean_score": 0.497
       },
       "erased": {
-        "n": 0,
-        "mean_score": null
+        "n": 1,
+        "mean_score": 0.476
       },
       "unsolved": {
-        "n": 1,
-        "mean_score": 0.23
+        "n": 2,
+        "mean_score": 0.236
       },
       "weird_dark": {
-        "n": 0,
-        "mean_score": null
+        "n": 1,
+        "mean_score": 0.486
       },
       "photo_story": {
         "n": 0,
@@ -82,78 +82,78 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.301
+        "mean_score": 0.255
       },
       "behind_legend": {
-        "n": 1,
-        "mean_score": 0.302
+        "n": 2,
+        "mean_score": 0.301
       },
       "found_by_accident": {
-        "n": 1,
-        "mean_score": 0.252
+        "n": 2,
+        "mean_score": 0.225
       }
     },
     "region": {
       "india": {
-        "n": 12,
-        "mean_score": 0.492
+        "n": 13,
+        "mean_score": 0.501
       },
       "africa": {
-        "n": 13,
-        "mean_score": 0.425
+        "n": 14,
+        "mean_score": 0.396
       },
       "japan": {
-        "n": 12,
-        "mean_score": 0.484
+        "n": 13,
+        "mean_score": 0.429
       },
       "china": {
         "n": 12,
-        "mean_score": 0.505
+        "mean_score": 0.482
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.567
+        "mean_score": 0.586
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.483
+        "mean_score": 0.509
       },
       "europe": {
-        "n": 12,
-        "mean_score": 0.463
+        "n": 13,
+        "mean_score": 0.52
       },
       "americas": {
-        "n": 11,
-        "mean_score": 0.541
+        "n": 12,
+        "mean_score": 0.558
       },
       "asia_pacific": {
-        "n": 11,
-        "mean_score": 0.519
+        "n": 12,
+        "mean_score": 0.51
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 53,
-        "mean_score": 0.525
+        "n": 56,
+        "mean_score": 0.508
       },
       "story": {
-        "n": 54,
-        "mean_score": 0.468
+        "n": 57,
+        "mean_score": 0.486
       }
     }
   },
   "winners": [
-    "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
-    "Why Did One Emperor Dig a Canal Across Half of China?",
     "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-    "How Did a Medieval English Jug Reach a West African King?",
-    "Why Does the Rickshaw Carry a Japanese Name?"
+    "Why Did Bristol's Clocks Refuse to Match London's?",
+    "Why Did One Emperor Dig a Canal Across Half of China?",
+    "What Did Ancient Indian Cities Hide Under Their Streets?",
+    "Why Did Royal Navy Crews Drink Lemon Juice at Sea?"
   ],
   "losers": [
-    "Who Once Paid for Your Letter, and Why Did That Change?",
-    "Did English Coffeehouses Once Make Their Own Money?",
-    "Did English Coffeehouses Once Make Their Own Money?",
+    "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
+    "Why Did a British Governor Demand a Seat on Asante's Golden Stool?",
     "Why Can't Scholars Read a Script From Four Thousand Years Ago?",
+    "What Did a Farmer's Plow Turn Up in Nara in 1831?",
     "Where Did Your Notebook Page Really Start?"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and"
