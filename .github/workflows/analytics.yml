@@ -1,97 +1,29 @@
-name: Export Analytics & Trends
-
+name: Private Meta metrics access check
+run-name: Private Meta metrics access check
 on:
-  # The laptop dispatcher runs this every hour; GitHub's own (often late) cron is only
-  # a backup for when the laptop is offline.
-  schedule:
-    - cron: "37 */6 * * *"
   workflow_dispatch: {}
-
 permissions:
-  contents: write
-  actions: write  # auto-republish dispatches republish.yml
-
+  contents: read
 jobs:
-  export:
+  probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: pip
-
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
-
-      - name: Reconstruct YouTube credentials
-        env:
-          YT_CLIENT_SECRET_JSON_B64: ${{ secrets.YT_CLIENT_SECRET_JSON_B64 }}
-          YT_TOKEN_JSON_B64: ${{ secrets.YT_TOKEN_JSON_B64 }}
-        run: |
-          mkdir -p secrets
-          echo "$YT_CLIENT_SECRET_JSON_B64" | base64 -d > secrets/client_secret.json
-          echo "$YT_TOKEN_JSON_B64" | base64 -d > secrets/token.json
-
-      - name: Export analytics + trends and wrap for the dashboard
-        run: |
-          # playlistItems.list (1 quota unit) + videos.list (1 unit/50 ids) —
-          # well under YouTube's 10k/day cap even with hourly exports.
-          python scripts/export_analytics.py --label histold
-          python scripts/merge_channel_json.py --labels histold --out data/analytics.json data/analytics.json
-
-          python scripts/export_trends.py --label histold
-          python scripts/merge_channel_json.py --labels histold --out data/trends.json data/trends.json
-
-      - name: Export Facebook + Instagram analytics
-        id: meta_analytics
-        continue-on-error: true
+          python-version: '3.11'
+      - run: pip install --quiet requests pyyaml cryptography
+      - name: Read-only Meta access probe
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
-        run: python scripts/export_meta_analytics.py
-
-      - name: Capture six-Reel experiment observations
-        run: python scripts/report_experiment.py
-
-      - name: Capture Facebook four-week growth observations
-        run: python scripts/report_facebook_growth.py --root .
-
-      # Auto-republish stuck videos (config republish.auto). Dispatches
-      # republish.yml per candidate and stamps auto_dispatched_at in the index
-      # so each video gets exactly one automatic attempt.
-      - name: Auto-republish underperformers
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # Preserve the previous six-hour repost cadence while observations run hourly.
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$((10#$(date -u +%H) % 6))" -eq 0 ]; then
-            python scripts/auto_republish.py --label histold
-          fi
-
-      - name: Commit exports
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          for file in data/analytics.json data/trends.json data/published_index.json; do
-            [ -f "$file" ] && git add "$file"
-          done
-          if [ "${{ steps.meta_analytics.outcome }}" = "success" ] && [ -f data/meta_analytics.json ]; then
-            git add data/meta_analytics.json
-          fi
-          git add data/experiments/
-          if ! git diff --cached --quiet; then
-            git commit -m "chore: refresh analytics + trends [skip ci]"
-            git pull --rebase --autostash
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
-      - name: Report Meta analytics failure
-        if: steps.meta_analytics.outcome == 'failure'
-        run: |
-          echo "Facebook/Instagram analytics export failed; inspect the exporter logs above."
-          exit 1
+          PROBE_MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAxY6KbWABv71ler69tQyzcNR93wYW5i+d8C5F0912QW/xu9HBI2Vdl3Qe5t20KcsumpFxXwlTujE7a8r/oK/hvv9bi1zvPXCaQJGJ45yVk40eHcbKw9XSGemDXdsC8yfaq2bhyvOr7kjwtnUCsiHYZsO/h3kWJwlQAhsKdupvGxWVyFcMPuTTrfJoMp0LtA+oM36lVJL42BfjpxNpJxyX8snzp3zkIsekcHaZmLT67w3BYS2aX4qWp5yDNlsl4EyR4w6CbK46R2k1DGk2K6pegJNBmFQcea+sTOnJAFtwma2PI+qkaRbX4MA2e7I0FWWRZ9wAG+oLCwR4DDH4u7HTCjFLXz08GRrT7EPoCaNyyOehyBHaPuVn/RktwM/naaBVI+OsdI9iXH9Y4AnGnQM2QeNyglGXGT3Dq620U5PVDVz+yxAHq22wERRryj8vk+k5ZTFJEvDIpcBNRRHUjD9NwQHdvkUTkf2Z75u4woospmOAWr3xIcN7/ywUzfajxjJpAgMBAAE=_B64: MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAxY6KbWABv71ler69tQyzcNR93wYW5i+d8C5F0912QW/xu9HBI2Vdl3Qe5t20KcsumpFxXwlTujE7a8r/oK/hvv9bi1zvPXCaQJGJ45yVk40eHcbKw9XSGemDXdsC8yfaq2bhyvOr7kjwtnUCsiHYZsO/h3kWJwlQAhsKdupvGxWVyFcMPuTTrfJoMp0LtA+oM36lVJL42BfjpxNpJxyX8snzp3zkIsekcHaZmLT67w3BYS2aX4qWp5yDNlsl4EyR4w6CbK46R2k1DGk2K6pegJNBmFQcea+sTOnJAFtwma2PI+qkaRbX4MA2e7I0FWWRZ9wAG+oLCwR4DDH4u7HTCjFLXz08GRrT7EPoCaNyyOehyBHaPuVn/RktwM/naaBVI+OsdI9iXH9Y4AnGnQM2QeNyglGXGT3Dq620U5PVDVz+yxAHq22wERRryj8vk+k5ZTFJEvDIpcBNRRHUjD9NwQHdvkUTkf2Z75u4woospmOAWr3xIcN7/ywUzfajxjJpAgMBAAE=
+        run: python scripts/probe_facebook_monetization.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: private-meta-probe-encrypted
+          path: output/private-meta-probe.enc.json
+          retention-days: 1
+          if-no-files-found: error
