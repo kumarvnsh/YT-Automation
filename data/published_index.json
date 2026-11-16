@@ -6748,7 +6748,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "wUYjpa6ICeU",
     "experiment": null,
     "experiment_slot": null,
     "category": "mistakes",
@@ -6979,5 +6979,18 @@
     "production_profile": 2,
     "facebook_id": "1152217387506678",
     "instagram_id": "17998451247062160"
+  },
+  {
+    "video_id": "wUYjpa6ICeU",
+    "run_id": "43780709580",
+    "stage_dir_name": "20261114_180305_062105_short",
+    "title": "The Paper Money Experiment That Made Everyone Want Silver Again",
+    "published_at": "2026-11-16T00:30:31.366553+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "8tA4rackeYA",
+    "republished_as": null
   }
 ]
