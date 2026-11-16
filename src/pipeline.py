@@ -457,6 +457,13 @@ def _step_thumbnail(cfg: Config, stage: Path, st: dict) -> None:
     st["thumbnail"] = make_thumbnail(cfg, st, stage)
 
 
+def _closing_question(sc: dict) -> str:
+    """Last question the narration asks (the callback), reused as the IG comment prompt."""
+    import re
+    found = re.findall(r'[^.!?]*\?', ((sc.get('segments') or [{}])[-1]).get('narration', ''))
+    return found[-1].strip() if found else ''
+
+
 def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
     sc = st["script"]
     if st.get('credits'):  # licence attribution for library art used in the video (CC BY)
@@ -468,7 +475,7 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         from .meta_uploader import publish_reel
         if not st.get('meta', {}).get('facebook'):
             st['meta'] = publish_reel(cfg, stage / 'video.mp4', sc['title'], sc['description'],
-                                      existing_results=st.get('meta'))
+                                      existing_results=st.get('meta'), question=_closing_question(sc))
         if not st.get('meta', {}).get('facebook'):
             raise RuntimeError('Facebook primary upload failed: ' + st.get('meta', {}).get('facebook_error', 'No Reel ID returned'))
         _record_published(cfg, stage, st)
@@ -495,7 +502,8 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         from .meta_uploader import publish_reel
 
         try:
-            st["meta"] = publish_reel(cfg, stage / "video.mp4", sc["title"], sc["description"])
+            st["meta"] = publish_reel(cfg, stage / "video.mp4", sc["title"], sc["description"],
+                                      question=_closing_question(sc))
         except Exception as exc:  # noqa: BLE001
             print(f"  ! Meta cross-post skipped: {exc}")
             st["meta_error"] = str(exc)

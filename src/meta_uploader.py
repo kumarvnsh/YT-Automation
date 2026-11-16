@@ -250,7 +250,7 @@ def _raise_graph(resp: requests.Response, what: str) -> None:
         raise RuntimeError(f"{what} failed [{resp.status_code}]: {resp.text}")
 
 
-def _build_caption(cfg: Config, title: str, description: str, *, platform='instagram') -> str:
+def _build_caption(cfg: Config, title: str, description: str, *, platform='instagram', question='') -> str:
     if platform == 'facebook' and cfg.get('meta.facebook_caption.enabled', False):
         import re
         lines = [line.strip() for line in description.splitlines() if line.strip() and
@@ -267,19 +267,28 @@ def _build_caption(cfg: Config, title: str, description: str, *, platform='insta
         tags = cfg.get('meta.facebook_caption.hashtags', []) or []
         parts.append(' '.join(tags[:3]))
         return '\n\n'.join(part for part in parts if part)[:650]
-    tags = cfg.get("meta.hashtags", []) or []
-    parts = [title.strip()]
-    if description.strip():
-        parts.append(description.strip())
-    if tags:
-        parts.append(" ".join(tags))
-    return "\n\n".join(parts)[:2200]  # IG caption hard limit
+    import re
+    found, kept = [], []
+    for line in description.splitlines():
+        if re.search(r'youtube|youtu\.be|subscribe', line, re.I):
+            continue
+        found += re.findall(r'#\w+', line)
+        kept.append(re.sub(r'\s*#\w+', '', line).strip())  # credit lines survive: CC BY attribution
+    body = re.sub(r'\n{3,}', '\n\n', '\n'.join(kept)).strip()
+    tags, seen = [], set()
+    for tag in (cfg.get("meta.hashtags", []) or []) + found:  # brand tags first, IG caps at 5
+        if tag.lower() not in seen and len(tags) < 5:
+            seen.add(tag.lower())
+            tags.append(tag)
+    parts = [title.strip(), body, question.strip(), " ".join(tags)]
+    return "\n\n".join(p for p in parts if p)[:2200]  # IG caption hard limit
 
 
 # --------------------------------------------------------------------------- #
 # public entrypoint
 # --------------------------------------------------------------------------- #
-def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *, existing_results=None) -> dict:
+def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *, existing_results=None,
+                 question: str = '') -> dict:
     """Cross-post the rendered short to FB and/or IG. Returns per-platform ids.
 
     Best-effort: raises on hard config/host errors, but the caller treats a
@@ -312,7 +321,7 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
                 return results
         if need_instagram:
             try:
-                caption = _build_caption(cfg, title, description)
+                caption = _build_caption(cfg, title, description, question=question)
                 results["instagram"] = _publish_instagram(token, ig_user_id, url, caption, ver)
                 results.pop('instagram_error', None)
             except Exception as exc:  # noqa: BLE001
