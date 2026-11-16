@@ -20,7 +20,7 @@ from pathlib import Path
 
 PLAN = 'data/growth_plan.json'
 # Last-resort hours if config.yaml itself cannot be read: the gate must always decide.
-FALLBACK_HOURS = [4, 7, 12, 16, 18]
+FALLBACK_HOURS = [12, 18, 23]
 SHRINK = 3            # pseudo-videos at score 0.5 per hour
 EXPLORE_BONUS = 0.15  # optimism for hours with little data, shrinking with 1/sqrt(n+1)
 SWAP_MARGIN = 0.03    # a new hour must look this much better than the one it replaces

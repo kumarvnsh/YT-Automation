@@ -131,15 +131,15 @@ editorial:
 # the hours from performance data. Only you change these settings: the agent can move
 # hours, never how many videos a day are made.
 growth:
-  posts_per_day: 5                       # fixed spend: exactly this many scheduled publishes per day
-  default_hours_utc: [4, 7, 12, 16, 18]  # the old cron-job.org times; used when the plan is missing/stale/invalid
+  posts_per_day: 3                       # fixed daily volume requested by the owner
+  default_hours_utc: [12, 18, 23]         # Europe lunch, Europe evening/US lunch, US evening
   # Target audience: USA + Europe. Excluded 05-10 UTC = midnight-6am US Eastern while
   # Europe is only at breakfast/work start. Allowed: 11-23 UTC (Europe noon to late
   # evening, US morning to evening) and 00-04 UTC (US Eastern/Pacific evening).
   allowed_hours_utc: [0, 1, 2, 3, 4, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
   min_gap_hours: 2            # publish runs take 11-17 min; keeps clear of the 45-min duplicate guard
   plan_max_age_days: 7        # laptop off for a week -> back to default_hours_utc
-  change_interval_days: 3     # at most one hour swap per 3 days, so each change can be measured
+  change_interval_days: 14    # measure each schedule for two weeks before changing an hour
   min_samples: 6              # an hour needs 6 videos of data before the agent may drop it
 
 production:
@@ -330,7 +330,7 @@ youtube:
 republish:
   # Auto-repost stuck videos: checked after every analytics export (~6h).
   # One auto attempt per video ever; manual dashboard buttons unaffected.
-  auto: true
+  auto: false                # keep unattended uploads at three/day; no extra automatic reposts
   view_threshold: 100     # flag videos still under this many views...
   min_age_hours: 30       # ...this long after publish (24h rule + 6h analytics lag)
   max_age_days: 13        # repost needs the render artifact (14d retention, 1d margin)

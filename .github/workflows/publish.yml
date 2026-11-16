@@ -115,7 +115,7 @@ jobs:
             fi
           done <<< "$RUNS"
 
-          # Daily cap: max 10 successful scheduled uploads per IST day. Counts
+          # Daily cap from config.yaml, counted per IST day. Counts
           # entries recorded by the pipeline in data/published_index.json.
           TODAY_IST=$(TZ=Asia/Kolkata date +%F)
           COUNT=$(python3 - "$TODAY_IST" <<'PY'
@@ -125,9 +125,14 @@ jobs:
           entries = json.loads(p.read_text()) if p.exists() else []
           ist = timezone(timedelta(hours=5, minutes=30))
           n = 0
+          seen = set()
           for e in entries:
               if not e.get("scheduled") or e.get("channel", "histold") != "histold":
                   continue
+              key = e.get("video_id") or (e.get("job_id"), e.get("published_at"), e.get("title"))
+              if key in seen:
+                  continue
+              seen.add(key)
               try:
                   day = datetime.fromisoformat(e["published_at"]).astimezone(ist).date().isoformat()
               except (KeyError, ValueError):
@@ -137,12 +142,13 @@ jobs:
           print(n)
           PY
           )
-          if [ "$COUNT" -ge 10 ]; then
+          DAILY_CAP=$(python3 -c 'import yaml; print(int(yaml.safe_load(open("config.yaml"))["growth"]["posts_per_day"]))')
+          if [ "$COUNT" -ge "$DAILY_CAP" ]; then
             echo "Daily cap reached ($COUNT scheduled uploads today IST) — skipping."
             gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
             sleep 60; exit 1
           fi
-          echo "No recent publish for this slot and daily cap OK ($COUNT/10) — proceeding."
+          echo "No recent publish for this slot and daily cap OK ($COUNT/$DAILY_CAP) — proceeding."
 
       - uses: actions/setup-node@v4
         with:

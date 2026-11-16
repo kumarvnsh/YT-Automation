@@ -1,15 +1,13 @@
 {
-  "updated": "2026-11-16T16:55:56.883305+00:00",
-  "status": "changed one hour",
+  "updated": "2026-11-16T17:26:12.163313+00:00",
+  "status": "Owner requested three daily posts; measuring US/Europe schedule for 14 days",
   "hours_utc": [
-    4,
     12,
-    16,
     18,
     23
   ],
-  "posts_per_day": 5,
-  "changed_at": "2026-11-16T16:55:56.883305+00:00",
+  "posts_per_day": 3,
+  "changed_at": "2026-11-16T17:26:12.163313+00:00",
   "history": [
     {
       "at": "2026-11-16T16:55:56.883305+00:00",
@@ -18,6 +16,15 @@
       "reason": "outside the US/Europe audience hours",
       "added_score": 0.5,
       "added_n": 0
+    },
+    {
+      "at": "2026-11-16T17:26:12.163313+00:00",
+      "hours_utc": [
+        12,
+        18,
+        23
+      ],
+      "reason": "Owner requested three posts/day. Europe lunchtime, Europe evening/US lunch, and US evening; hold 14 days."
     }
   ],
   "hour_stats": {

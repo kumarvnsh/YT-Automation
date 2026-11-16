@@ -23,6 +23,19 @@ def write_plan(root, **plan):
 
 
 class GateTests(unittest.TestCase):
+    def test_reducing_volume_rejects_old_plan_and_keeps_three_slot_fallback(self):
+        reduced = cfg(posts_per_day=3, default_hours_utc=[12, 18, 23])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_plan(root, hours_utc=[0, 12, 16, 18, 22])
+            hours, source = growth.active_hours(root, reduced, NOW)
+            self.assertEqual(hours, [12, 18, 23])
+            self.assertIn('rejected', source)
+            write_plan(root, hours_utc=[12, 18, 23])
+            hours, source = growth.active_hours(root, reduced, NOW)
+            self.assertEqual(hours, [12, 18, 23])
+            self.assertNotIn('default', source)
+
     def active(self, **plan):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
