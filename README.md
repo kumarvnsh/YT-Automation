@@ -176,11 +176,27 @@ The pipeline is scheduler-agnostic. `scripts/run_daily.sh` is the entry point.
 
 ## Automated content factory (scheduled publishing)
 
-Production scheduling is driven by **cron-job.org**, which dispatches the
-`publish.yml` GitHub Actions workflow at the configured posting times, with a
-cap of 10 successful scheduled uploads per IST day. The 45-minute duplicate
-guard remains enabled. Each
-dispatch is an **independent job slot**:
+Production scheduling is driven by the **always-on Windows laptop**. Its hourly task
+runs `scripts/run_strategist.ps1`, which uses `scripts/dispatch.py` (GitHub CLI) to
+dispatch `publish.yml` (`scheduled=true`) at the hours in `data/growth_plan.json`, and
+`analytics.yml` every hour (GitHub's own cron for analytics is a 6-hourly backup). In
+the workflow, the **publish-hour gate** (`scripts/publish_gate.py`) re-checks every
+scheduled run against the same plan and cancels anything outside it or starting after
+:40. How many videos a day stays fixed by `growth.posts_per_day` in `config.yaml`; a
+missing, stale or invalid plan falls back to `growth.default_hours_utc`. The cap of 10
+successful scheduled uploads per IST day and the 45-minute duplicate guard remain.
+
+The **growth agent** (`scripts/growth_agent.py`, daily) scores each publish hour on
+reach (Facebook views double-weighted, plus total views) and swaps at most one hour
+every `growth.change_interval_days`, within `growth.allowed_hours_utc` (the US + Europe
+audience window). Once per ISO week the runner writes `data/reviews/<week>.md`, a
+"what's working" review drafted by a local model (Ollama, `qwen3:8b`) over numbers
+computed in code; its topic ideas are unverified and advisory only. Every run also
+rebuilds the **laptop dashboard** (`scripts/build_dashboard.py` →
+`D:\histold\dashboard\index.html`, a self-contained file: no server, works with a
+private repo).
+
+Each dispatch that passes the gate is an **independent job slot**:
 
 - The workflow derives `PUBLISH_SLOT=morning` (before 14:00 IST) or
   `PUBLISH_SLOT=evening` from the runner clock and passes it to the pipeline.

@@ -1,9 +1,11 @@
-# Windows laptop-side topic strategist (Task Scheduler: "Histold Strategist").
-# Windows equivalent of run_strategist.sh. Runs in a DEDICATED clone, so it
-# hard-resets to origin/master each time, refreshes data/strategy.json and
-# pushes only that file for the publish runs to read.
+# Windows laptop runner, hourly (Task Scheduler: "Histold Strategist"). Runs in a
+# DEDICATED clone, so it hard-resets to origin/master each time. Each run: dispatches
+# publish.yml (at growth-plan hours) and analytics.yml, refreshes data/strategy.json
+# (every 4h), the growth plan (daily) and the weekly review, pushes only those files,
+# and rebuilds the local dashboard.
 param(
-    [string]$Log = 'D:\histold\strategist.log'
+    [string]$Log = 'D:\histold\strategist.log',
+    [string]$OllamaExe = 'D:\Ollama\app\ollama.exe'
 )
 
 $ErrorActionPreference = 'Continue'
@@ -39,27 +41,52 @@ Write-Log '== strategist run start'
 
 if ((Invoke-Logged git @('fetch', '-q', 'origin')) -ne 0) { Finish 1 'fetch failed' }
 if ((Invoke-Logged git @('reset', '-q', '--hard', 'origin/master')) -ne 0) { Finish 1 'reset failed' }
-if ((Invoke-Logged $Py @('scripts\strategist.py')) -ne 0) { Finish 1 'strategist.py failed' }
+$Failed = @()
 
-Invoke-Logged git @('add', 'data/strategy.json') | Out-Null
-& git diff --cached --quiet -- data/strategy.json
-if ($LASTEXITCODE -eq 0) { Finish 0 'strategy unchanged' }
+# 1. Dispatch first: it is the time-critical step (publish only in the hour's first 20 min).
+if ((Invoke-Logged $Py @('scripts\dispatch.py')) -ne 0) { $Failed += 'dispatch' }
 
-if ((Invoke-Logged git @('commit', '-q', '-m', 'chore: refresh topic strategy [skip ci]', '--', 'data/strategy.json')) -ne 0) {
-    Finish 1 'commit failed'
+# 2. Topic strategy every 4 hours.
+$StrategyAgeH = 99
+try {
+    $updated = (Get-Content 'data\strategy.json' -Raw | ConvertFrom-Json).updated
+    $StrategyAgeH = ((Get-Date).ToUniversalTime() - ([datetimeoffset]"$updated").UtcDateTime).TotalHours
+} catch {}
+if ($StrategyAgeH -ge 3.9) {
+    if ((Invoke-Logged $Py @('scripts\strategist.py')) -ne 0) { $Failed += 'strategist' }
 }
 
-# Bots push to master hourly: on a rejected push, fetch, rebase and retry (up to 3 retries).
-for ($attempt = 0; $attempt -le 3; $attempt++) {
-    if ((Invoke-Logged git @('push', '-q', 'origin', 'HEAD:master')) -eq 0) {
-        $sha = (& git rev-parse --short HEAD)
-        Finish 0 "pushed $sha"
+# 3. Growth agent (once a day) and weekly review (once per ISO week, local LLM).
+if (-not $env:OLLAMA_EXE -and (Test-Path $OllamaExe)) { $env:OLLAMA_EXE = $OllamaExe }
+if ((Invoke-Logged $Py @('scripts\growth_agent.py', '--if-stale')) -ne 0) { $Failed += 'growth_agent' }
+if ((Invoke-Logged $Py @('scripts\weekly_review.py', '--if-missing')) -ne 0) { $Failed += 'weekly_review' }
+
+# 4. Commit and push. Only these outputs are ever committed from this laptop.
+function Push-Outputs {
+    $Outputs = @('data/strategy.json', 'data/growth_plan.json', 'data/reviews') | Where-Object { Test-Path $_ }
+    Invoke-Logged git (@('add', '--') + $Outputs) | Out-Null
+    & git diff --cached --quiet -- @Outputs
+    if ($LASTEXITCODE -eq 0) { return 'nothing to push' }
+    if ((Invoke-Logged git (@('commit', '-q', '-m', 'chore: refresh topic strategy and growth plan [skip ci]', '--') + $Outputs)) -ne 0) {
+        return '!commit failed'
     }
-    if ($attempt -eq 3) { break }
-    Invoke-Logged git @('fetch', '-q', 'origin') | Out-Null
-    if ((Invoke-Logged git @('rebase', '-q', 'origin/master')) -ne 0) {
-        Invoke-Logged git @('rebase', '--abort') | Out-Null
-        Finish 1 'rebase failed'
+    # Bots push to master hourly: on a rejected push, fetch, rebase and retry (up to 3 retries).
+    for ($attempt = 0; $attempt -le 3; $attempt++) {
+        if ((Invoke-Logged git @('push', '-q', 'origin', 'HEAD:master')) -eq 0) { return "pushed $(& git rev-parse --short HEAD)" }
+        if ($attempt -eq 3) { break }
+        Invoke-Logged git @('fetch', '-q', 'origin') | Out-Null
+        if ((Invoke-Logged git @('rebase', '-q', 'origin/master')) -ne 0) {
+            Invoke-Logged git @('rebase', '--abort') | Out-Null
+            return '!rebase failed'
+        }
     }
+    return '!push failed after 3 retries'
 }
-Finish 1 'push failed after 3 retries'
+$Pushed = Push-Outputs
+if ($Pushed.StartsWith('!')) { $Failed += $Pushed.Substring(1) }
+
+# 5. Rebuild the laptop dashboard (D:\histold\dashboard\index.html).
+if ((Invoke-Logged $Py @('scripts\build_dashboard.py', '--log', $Log)) -ne 0) { $Failed += 'dashboard' }
+
+if ($Failed) { Write-Log "!! failed: $($Failed -join ', ')"; Finish 1 "$Pushed; failed: $($Failed -join ', ')" }
+Finish 0 $Pushed

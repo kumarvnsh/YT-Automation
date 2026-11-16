@@ -125,6 +125,23 @@ editorial:
     - {id: "concise", seconds: 30}
     - {id: "story", seconds: 50}
 
+# Posting-time control (src/growth.py). The always-on laptop dispatches publish.yml at
+# the growth plan's hours (scripts/dispatch.py) and the workflow's publish-hour gate
+# re-checks every scheduled run against the same plan. The laptop growth agent picks
+# the hours from performance data. Only you change these settings: the agent can move
+# hours, never how many videos a day are made.
+growth:
+  posts_per_day: 5                       # fixed spend: exactly this many scheduled publishes per day
+  default_hours_utc: [4, 7, 12, 16, 18]  # the old cron-job.org times; used when the plan is missing/stale/invalid
+  # Target audience: USA + Europe. Excluded 05-10 UTC = midnight-6am US Eastern while
+  # Europe is only at breakfast/work start. Allowed: 11-23 UTC (Europe noon to late
+  # evening, US morning to evening) and 00-04 UTC (US Eastern/Pacific evening).
+  allowed_hours_utc: [0, 1, 2, 3, 4, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+  min_gap_hours: 2            # publish runs take 11-17 min; keeps clear of the 45-min duplicate guard
+  plan_max_age_days: 7        # laptop off for a week -> back to default_hours_utc
+  change_interval_days: 3     # at most one hour swap per 3 days, so each change can be measured
+  min_samples: 6              # an hour needs 6 videos of data before the agent may drop it
+
 production:
   enabled: true              # New Histold shorts only; settings snapshotted per stage
   strict_timing: true

@@ -1,8 +1,10 @@
 name: Export Analytics & Trends
 
 on:
+  # The laptop dispatcher runs this every hour; GitHub's own (often late) cron is only
+  # a backup for when the laptop is offline.
   schedule:
-    - cron: "0 * * * *"
+    - cron: "37 */6 * * *"
   workflow_dispatch: {}
 
 permissions:

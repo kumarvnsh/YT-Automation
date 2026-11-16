@@ -1,8 +1,8 @@
 name: Publish Video
 
 on:
-  # Scheduling is handled externally by cron-job.org (up to 10 scheduled uploads per IST day),
-  # which POSTs to this workflow's dispatches endpoint with inputs.scheduled=true.
+  # Scheduling is handled by the always-on laptop (scripts/dispatch.py, hourly), which
+  # dispatches this workflow with inputs.scheduled=true at the growth plan's hours.
   # GitHub's own cron was dropped: it fired 47-204min late or not at all.
   workflow_dispatch:
     inputs:
@@ -59,6 +59,32 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # Before the gate: runner system Python refuses pip installs (PEP 668).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      # The laptop dispatcher triggers scheduled runs at the growth plan's hours; this
+      # re-checks the hour (and that the run started before :40) against the same plan
+      # (src/growth.py), so stray, late or legacy cron-job.org triggers cannot publish.
+      # Anything but a clear "publish" verdict cancels the run.
+      - name: Publish-hour gate
+        if: github.event.inputs.scheduled == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python -c 'import yaml' 2>/dev/null || python -m pip install --quiet pyyaml
+          set +e
+          python scripts/publish_gate.py
+          VERDICT=$?
+          set -e
+          if [ "$VERDICT" -ne 0 ]; then
+            echo "Not a publish hour (gate exit $VERDICT) — skipping."
+            gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
+            sleep 60; exit 1
+          fi
 
       # Protects against double-fire of the external cron trigger (retries,
       # accidental double dispatch). Applies only to dispatches marked
@@ -117,11 +143,6 @@ jobs:
             sleep 60; exit 1
           fi
           echo "No recent publish for this slot and daily cap OK ($COUNT/10) — proceeding."
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
 
       - uses: actions/setup-node@v4
         with:

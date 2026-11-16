@@ -1,10 +1,11 @@
 """Data-driven topic strategist: scores recent editorial Shorts across platforms and
 turns the scores into sampling weights for the next topic assignments.
 
-A video's score is the mean percentile rank of the metrics it has: YouTube % viewed
-(counted twice: it is the cleanest content signal), YouTube like-rate, Instagram
-like-rate and log views summed over all platforms. Views alone never decide anything
-on this channel, so they are one input of four.
+A video's score is the weighted mean percentile rank of the metrics it has: YouTube
+% viewed (counted twice: it is the cleanest content signal), Facebook views (counted
+twice: Facebook is the only monetized platform, and its API exposes no per-Reel watch
+time or shares), YouTube like-rate, Instagram like-rate and log views summed over all
+platforms.
 
 Per option (a series, region or length) the mean score is shrunk toward 0.5 by
 SHRINK pseudo-videos so two lucky posts cannot take over, then weights mix 30%
@@ -81,12 +82,13 @@ def rows(index: list[dict], best: dict, now: datetime) -> list[dict]:
             'yt_pct': yt.get('avg_view_pct'),
             'yt_like_rate': yt['likes'] / yt['views'] if yt.get('views') else None,
             'ig_like_rate': ig['likes'] / ig['views'] if ig.get('views') else None,
+            'fb_views': math.log1p(fb['views']) if fb.get('views') is not None else None,
             'log_views': math.log1p(sum(views)) if views else None,
         })
     return out
 
 
-METRIC_WEIGHTS = {'yt_pct': 2, 'yt_like_rate': 1, 'ig_like_rate': 1, 'log_views': 1}
+METRIC_WEIGHTS = {'yt_pct': 2, 'fb_views': 2, 'yt_like_rate': 1, 'ig_like_rate': 1, 'log_views': 1}
 
 
 def score(videos: list[dict]) -> None:

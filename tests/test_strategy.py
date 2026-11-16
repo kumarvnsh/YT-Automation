@@ -45,6 +45,18 @@ class StrategyTests(unittest.TestCase):
             self.assertAlmostEqual(sum(dim.values()), 1, places=2)
             self.assertGreaterEqual(min(dim.values()), strategy.EXPLORE / len(dim))
 
+    def test_facebook_views_steer_weights_when_youtube_is_equal(self):
+        pairs = [entry(i, 'japan', 100, 50) for i in range(6)] + [entry(i + 6, 'india', 100, 50) for i in range(6)]
+        index = [e for e, _ in pairs]
+        for e in index:
+            e['facebook_id'] = 'fb-' + e['video_id']
+        fb = {'fb-' + e['video_id']: {'views': 900 if e['editorial_region'] == 'india' else 30} for e in index}
+        best = {'yt': {e['video_id']: m for e, m in pairs}, 'ig': {}, 'fb': fb}
+
+        weights = strategy.build(cfg(), index, best, NOW)['weights']['region']
+
+        self.assertGreater(weights['india'], weights['japan'])
+
     def test_strategy_skips_young_and_non_editorial_videos(self):
         young, m = entry(1, 'japan', 10, 50)
         young['published_at'] = (NOW - timedelta(hours=5)).isoformat()
