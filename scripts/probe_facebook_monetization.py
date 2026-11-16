@@ -57,6 +57,21 @@ def main():
             report['checks'].append({'version': version, 'scope': 'page_token', **credentials})
             print(f'{version}: page-token access unavailable', flush=True)
             continue
+        if os.environ.get('PROBE_BONUS_ONLY') == '1':
+            for metric, breakdown in [('content_monetization_earnings', 'earning_source'),
+                                      ('monetization_approximate_earnings', 'monetization_tool')]:
+                result = get(version, f'{page}/insights', page_token, metric=metric,
+                             period='day', date_preset='last_28d', breakdown=breakdown)
+                report['checks'].append({'version': version, 'scope': 'page_breakdown', 'metric': metric,
+                                         'breakdown': breakdown, 'requested_period': 'day', **result})
+                print(f'{version} {metric} by {breakdown}: {result["status"]}', flush=True)
+            for metric in ('content_monetization_earnings', 'monetization_approximate_earnings'):
+                result = get(version, f'{page}/insights', page_token, metric=metric,
+                             period='days_28', date_preset='last_28d')
+                report['checks'].append({'version': version, 'scope': 'page_aggregate', 'metric': metric,
+                                         'requested_period': 'days_28', **result})
+                print(f'{version} {metric} 28-day aggregate: {result["status"]}', flush=True)
+            continue
         for metric in ('content_monetization_earnings', 'monetization_approximate_earnings',
                        'creator_monetization_qualified_views'):
             result = get(version, f'{page}/insights', page_token, metric=metric,
