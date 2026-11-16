@@ -3238,5 +3238,14 @@
     "slot": "evening",
     "date": "2026-11-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261116_160307_159318_short",
+    "title": "Why Did British Lawmakers Try to Ban a Flowery Indian Cotton?",
+    "fingerprint": "ban_british_cotton_did_flowery_indian_lawmakers_try",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-16",
+    "status": "reserved"
   }
 ]
