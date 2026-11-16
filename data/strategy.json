@@ -1,33 +1,33 @@
 {
-  "updated": "2026-11-16T14:55:54.069948+00:00",
-  "videos_scored": 106,
+  "updated": "2026-11-16T15:06:14.700935+00:00",
+  "videos_scored": 107,
   "weights": {
     "series": {
-      "school_myths": 0.0647,
-      "mistakes": 0.0716,
-      "almost": 0.0759,
-      "erased": 0.0759,
-      "unsolved": 0.0622,
-      "weird_dark": 0.0759,
-      "photo_story": 0.0759,
-      "spy_gadgets": 0.0759,
-      "animals": 0.0759,
-      "secretly_deadly": 0.0759,
-      "worst_jobs": 0.0759,
-      "forgotten_rules": 0.0656,
+      "school_myths": 0.0646,
+      "mistakes": 0.0715,
+      "almost": 0.077,
+      "erased": 0.0758,
+      "unsolved": 0.0621,
+      "weird_dark": 0.0758,
+      "photo_story": 0.0758,
+      "spy_gadgets": 0.0758,
+      "animals": 0.0758,
+      "secretly_deadly": 0.0758,
+      "worst_jobs": 0.0758,
+      "forgotten_rules": 0.0655,
       "behind_legend": 0.0656,
-      "found_by_accident": 0.0633
+      "found_by_accident": 0.0631
     },
     "region": {
-      "india": 0.1096,
-      "africa": 0.0936,
-      "japan": 0.1077,
-      "china": 0.1127,
+      "india": 0.1095,
+      "africa": 0.0935,
+      "japan": 0.1075,
+      "china": 0.1126,
       "russia": 0.1292,
-      "middle_east": 0.1066,
-      "europe": 0.1026,
+      "middle_east": 0.1073,
+      "europe": 0.1025,
       "americas": 0.1218,
-      "asia_pacific": 0.1163
+      "asia_pacific": 0.1161
     },
     "duration_variant": {
       "concise": 0.5378,
@@ -42,11 +42,11 @@
       },
       "mistakes": {
         "n": 1,
-        "mean_score": 0.419
+        "mean_score": 0.42
       },
       "almost": {
-        "n": 0,
-        "mean_score": null
+        "n": 1,
+        "mean_score": 0.523
       },
       "erased": {
         "n": 0,
@@ -82,7 +82,7 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.3
+        "mean_score": 0.301
       },
       "behind_legend": {
         "n": 1,
@@ -90,7 +90,7 @@
       },
       "found_by_accident": {
         "n": 1,
-        "mean_score": 0.254
+        "mean_score": 0.252
       }
     },
     "region": {
@@ -104,7 +104,7 @@
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.485
+        "mean_score": 0.484
       },
       "china": {
         "n": 12,
@@ -115,8 +115,8 @@
         "mean_score": 0.567
       },
       "middle_east": {
-        "n": 11,
-        "mean_score": 0.48
+        "n": 12,
+        "mean_score": 0.483
       },
       "europe": {
         "n": 12,
@@ -133,7 +133,7 @@
     },
     "duration_variant": {
       "concise": {
-        "n": 52,
+        "n": 53,
         "mean_score": 0.525
       },
       "story": {
