@@ -1,64 +1,64 @@
 {
-  "updated": "2026-11-16T16:55:43.781365+00:00",
+  "updated": "2026-11-16T22:00:32.330199+00:00",
   "videos_scored": 113,
   "weights": {
     "series": {
-      "school_myths": 0.0572,
-      "mistakes": 0.0728,
-      "almost": 0.0787,
-      "erased": 0.0775,
-      "unsolved": 0.0572,
-      "weird_dark": 0.0781,
-      "photo_story": 0.0789,
-      "spy_gadgets": 0.0789,
-      "animals": 0.0789,
-      "secretly_deadly": 0.0789,
-      "worst_jobs": 0.0789,
-      "forgotten_rules": 0.0657,
-      "behind_legend": 0.0621,
-      "found_by_accident": 0.0564
+      "school_myths": 0.0559,
+      "mistakes": 0.0805,
+      "almost": 0.0846,
+      "erased": 0.078,
+      "unsolved": 0.0656,
+      "weird_dark": 0.0727,
+      "photo_story": 0.0772,
+      "spy_gadgets": 0.0772,
+      "animals": 0.0772,
+      "secretly_deadly": 0.0772,
+      "worst_jobs": 0.0772,
+      "forgotten_rules": 0.0642,
+      "behind_legend": 0.0584,
+      "found_by_accident": 0.0541
     },
     "region": {
-      "india": 0.1111,
-      "africa": 0.0866,
-      "japan": 0.094,
-      "china": 0.1064,
-      "russia": 0.1336,
-      "middle_east": 0.1131,
-      "europe": 0.116,
-      "americas": 0.1259,
-      "asia_pacific": 0.1132
+      "india": 0.1093,
+      "africa": 0.0863,
+      "japan": 0.0923,
+      "china": 0.1062,
+      "russia": 0.1359,
+      "middle_east": 0.1148,
+      "europe": 0.1171,
+      "americas": 0.1233,
+      "asia_pacific": 0.1149
     },
     "duration_variant": {
-      "concise": 0.5151,
-      "story": 0.4849
+      "concise": 0.5181,
+      "story": 0.4819
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 2,
-        "mean_score": 0.236
+        "mean_score": 0.232
       },
       "mistakes": {
         "n": 1,
-        "mean_score": 0.391
+        "mean_score": 0.558
       },
       "almost": {
         "n": 1,
-        "mean_score": 0.497
+        "mean_score": 0.629
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.476
+        "mean_score": 0.514
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.236
+        "mean_score": 0.362
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.486
+        "mean_score": 0.418
       },
       "photo_story": {
         "n": 0,
@@ -82,63 +82,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.255
+        "mean_score": 0.252
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.301
+        "mean_score": 0.267
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.225
+        "mean_score": 0.207
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.501
+        "mean_score": 0.498
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.396
+        "mean_score": 0.398
       },
       "japan": {
         "n": 13,
-        "mean_score": 0.429
+        "mean_score": 0.425
       },
       "china": {
         "n": 12,
-        "mean_score": 0.482
+        "mean_score": 0.485
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.586
+        "mean_score": 0.598
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.509
+        "mean_score": 0.52
       },
       "europe": {
         "n": 13,
-        "mean_score": 0.52
+        "mean_score": 0.528
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.558
+        "mean_score": 0.552
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.51
+        "mean_score": 0.52
       }
     },
     "duration_variant": {
       "concise": {
         "n": 56,
-        "mean_score": 0.508
+        "mean_score": 0.514
       },
       "story": {
         "n": 57,
-        "mean_score": 0.486
+        "mean_score": 0.487
       }
     }
   },
@@ -147,12 +147,12 @@
     "Why Did Bristol's Clocks Refuse to Match London's?",
     "Why Did One Emperor Dig a Canal Across Half of China?",
     "What Did Ancient Indian Cities Hide Under Their Streets?",
-    "Why Did Royal Navy Crews Drink Lemon Juice at Sea?"
+    "Who Really Owned the Land Everyone Thought Was Public?"
   ],
   "losers": [
     "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
     "Why Did a British Governor Demand a Seat on Asante's Golden Stool?",
-    "Why Can't Scholars Read a Script From Four Thousand Years Ago?",
+    "Was Japan Really Locked Shut for 200 Years?",
     "What Did a Farmer's Plow Turn Up in Nara in 1831?",
     "Where Did Your Notebook Page Really Start?"
   ],
