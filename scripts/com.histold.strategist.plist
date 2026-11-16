@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  macOS launchd agent: Histold topic strategist, every 4 hours while the Mac is awake
+  (a run missed during sleep fires on wake; RunAtLoad covers login).
+
+  INSTALL:   cp scripts/com.histold.strategist.plist ~/Library/LaunchAgents/
+             launchctl load ~/Library/LaunchAgents/com.histold.strategist.plist
+  RUN NOW:   launchctl start com.histold.strategist
+  LOG:       ~/.histold/strategist.log
+  UNINSTALL: launchctl unload ~/Library/LaunchAgents/com.histold.strategist.plist
+
+  If the laptop stays closed 3+ days the strategy goes stale and the publish
+  runs fall back to the plain editorial rotation on their own.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.histold.strategist</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/vnshkumar/Documents/YT-Automation/scripts/run_strategist.sh</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>14400</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/vnshkumar/.histold/strategist.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/vnshkumar/.histold/strategist.log</string>
+</dict>
+</plist>

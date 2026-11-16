@@ -105,7 +105,8 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
             occupied = [e['editorial_slot'] for e in entries if isinstance(e, dict)
                         and isinstance(e.get('editorial_slot'), int) and not e.get('editorial_preview')]
             ordinal = max(occupied, default=-1) + 1
-            editorial = assignment(cfg, ordinal)
+            from .strategy import load as load_strategy
+            editorial = assignment(cfg, ordinal, load_strategy(base_dir()))
             from .editorial import this_week
             weekly = this_week(cfg, date.today(), state['slot'], entries)
             if weekly:

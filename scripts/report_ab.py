@@ -9,44 +9,14 @@ from __future__ import annotations
 import argparse
 import json
 import statistics
-import subprocess
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-
-
-def snapshots(path: str):
-    commits = subprocess.run(['git', 'log', '--format=%h', '--since=2026-11-15', '--', path],
-                             cwd=ROOT, capture_output=True, text=True).stdout.split()
-    for commit in reversed(commits):
-        try:
-            yield json.loads(subprocess.run(['git', 'show', f'{commit}:{path}'], cwd=ROOT,
-                                            capture_output=True, text=True).stdout)
-        except ValueError:
-            continue
-    yield json.loads((ROOT / path).read_text())
-
-
-def peaks() -> dict:
-    best = {'yt': {}, 'ig': {}, 'fb': {}}
-
-    def keep(platform, video):
-        row = best[platform].setdefault(str(video['id']), {})
-        if (video.get('views') or 0) >= row.get('views', -1):  # latest snapshot with the most views wins
-            row.update({k: video.get(k) for k in ('views', 'likes', 'avg_view_pct', 'skip_rate',
-                                                  'average_watch_time_seconds')})
-
-    for data in snapshots('data/analytics.json'):
-        for video in data.get('channels', {}).get('histold', {}).get('videos', []):
-            keep('yt', video)
-    for data in snapshots('data/meta_analytics.json'):
-        for platform, key in (('instagram', 'ig'), ('facebook', 'fb')):
-            for video in data.get(platform, {}).get('videos', []):
-                keep(key, video)
-    return best
+sys.path.insert(0, str(ROOT))
+from src.strategy import peaks  # noqa: E402
 
 
 def summarize(rows: list[dict]) -> str:
@@ -69,7 +39,7 @@ def main() -> int:
     parser.add_argument('--id', default='voice-title-2x2')
     parser.add_argument('--min-hours', type=float, default=48)
     args = parser.parse_args()
-    best = peaks()
+    best = peaks(ROOT, '2026-11-15')
     now = datetime.now(timezone.utc)
     rows, young = [], 0
     for entry in json.loads((ROOT / 'data/published_index.json').read_text()):
