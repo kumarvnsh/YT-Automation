@@ -65,6 +65,27 @@ class FacebookPrimaryTests(unittest.TestCase):
         self.assertNotIn('#viral', caption)
         self.assertLess(len(caption), 650)
 
+    def test_instagram_caption_drops_youtube_promo_dedupes_tags_and_asks(self):
+        cfg = Config({'meta': {'hashtags': ['#WorldHistory', '#Histold']}})
+        caption = meta_uploader._build_caption(cfg, 'Noodles are older than you think',
+            'Found under a bowl in China. #FoodHistory #worldhistory #A #B #C\n'
+            'Subscribe on YouTube: https://youtube.com/x\n\n'
+            'Portrait of X: Y, CC BY-SA 4.0, via Wikimedia Commons',
+            question='What would you have eaten instead?')
+        self.assertTrue(caption.startswith('Noodles are older than you think'))
+        self.assertNotIn('YouTube', caption)
+        self.assertIn('via Wikimedia Commons', caption)  # licence credit kept
+        self.assertEqual(caption.split('\n\n')[-2], 'What would you have eaten instead?')
+        tags = caption.split('\n\n')[-1].split()
+        self.assertEqual(tags, ['#WorldHistory', '#Histold', '#FoodHistory', '#A', '#B'])
+        self.assertNotIn('#', caption.rsplit('\n\n', 1)[0])
+
+    def test_closing_question_is_last_question_of_callback(self):
+        from src.pipeline import _closing_question
+        sc = {'segments': [{'narration': 'Hook.'}, {'narration': 'So it began. Would you have tried it? Think.'}]}
+        self.assertEqual(_closing_question(sc), 'Would you have tried it?')
+        self.assertEqual(_closing_question({'segments': [{'narration': 'No question here.'}]}), '')
+
     def test_meta_retry_does_not_republish_successful_facebook(self):
         cfg = self.cfg()
         with patch.object(meta_uploader, 'env', return_value='token'), \

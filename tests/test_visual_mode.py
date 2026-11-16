@@ -88,7 +88,7 @@ class VisualModeTests(unittest.TestCase):
     def test_upload_persists_each_meta_id_before_next_platform(self):
         cfg = Config({'meta': {'enabled': True, 'primary': True, 'post_to_facebook': True, 'page_id': '1'},
                       'youtube': {'enabled': False}})
-        def fake_publish(*a, existing_results=None, on_progress=None):
+        def fake_publish(*a, existing_results=None, on_progress=None, question=""):
             on_progress({'facebook': 'fb1'})
             raise RuntimeError('crash before instagram')
         with tempfile.TemporaryDirectory() as tmp, patch('src.meta_uploader.publish_reel', side_effect=fake_publish):
