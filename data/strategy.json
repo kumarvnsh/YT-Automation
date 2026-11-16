@@ -1,0 +1,160 @@
+{
+  "updated": "2026-11-16T14:52:06.989110+00:00",
+  "videos_scored": 106,
+  "weights": {
+    "series": {
+      "school_myths": 0.0647,
+      "mistakes": 0.0716,
+      "almost": 0.0759,
+      "erased": 0.0759,
+      "unsolved": 0.0622,
+      "weird_dark": 0.0759,
+      "photo_story": 0.0759,
+      "spy_gadgets": 0.0759,
+      "animals": 0.0759,
+      "secretly_deadly": 0.0759,
+      "worst_jobs": 0.0759,
+      "forgotten_rules": 0.0656,
+      "behind_legend": 0.0656,
+      "found_by_accident": 0.0633
+    },
+    "region": {
+      "india": 0.1096,
+      "africa": 0.0936,
+      "japan": 0.1077,
+      "china": 0.1127,
+      "russia": 0.1292,
+      "middle_east": 0.1066,
+      "europe": 0.1026,
+      "americas": 0.1218,
+      "asia_pacific": 0.1163
+    },
+    "duration_variant": {
+      "concise": 0.5378,
+      "story": 0.4622
+    }
+  },
+  "stats": {
+    "series": {
+      "school_myths": {
+        "n": 1,
+        "mean_score": 0.282
+      },
+      "mistakes": {
+        "n": 1,
+        "mean_score": 0.419
+      },
+      "almost": {
+        "n": 0,
+        "mean_score": null
+      },
+      "erased": {
+        "n": 0,
+        "mean_score": null
+      },
+      "unsolved": {
+        "n": 1,
+        "mean_score": 0.23
+      },
+      "weird_dark": {
+        "n": 0,
+        "mean_score": null
+      },
+      "photo_story": {
+        "n": 0,
+        "mean_score": null
+      },
+      "spy_gadgets": {
+        "n": 0,
+        "mean_score": null
+      },
+      "animals": {
+        "n": 0,
+        "mean_score": null
+      },
+      "secretly_deadly": {
+        "n": 0,
+        "mean_score": null
+      },
+      "worst_jobs": {
+        "n": 0,
+        "mean_score": null
+      },
+      "forgotten_rules": {
+        "n": 1,
+        "mean_score": 0.3
+      },
+      "behind_legend": {
+        "n": 1,
+        "mean_score": 0.302
+      },
+      "found_by_accident": {
+        "n": 1,
+        "mean_score": 0.254
+      }
+    },
+    "region": {
+      "india": {
+        "n": 12,
+        "mean_score": 0.492
+      },
+      "africa": {
+        "n": 13,
+        "mean_score": 0.425
+      },
+      "japan": {
+        "n": 12,
+        "mean_score": 0.485
+      },
+      "china": {
+        "n": 12,
+        "mean_score": 0.505
+      },
+      "russia": {
+        "n": 12,
+        "mean_score": 0.567
+      },
+      "middle_east": {
+        "n": 11,
+        "mean_score": 0.48
+      },
+      "europe": {
+        "n": 12,
+        "mean_score": 0.463
+      },
+      "americas": {
+        "n": 11,
+        "mean_score": 0.541
+      },
+      "asia_pacific": {
+        "n": 11,
+        "mean_score": 0.519
+      }
+    },
+    "duration_variant": {
+      "concise": {
+        "n": 52,
+        "mean_score": 0.525
+      },
+      "story": {
+        "n": 54,
+        "mean_score": 0.468
+      }
+    }
+  },
+  "winners": [
+    "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
+    "Why Did One Emperor Dig a Canal Across Half of China?",
+    "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
+    "How Did a Medieval English Jug Reach a West African King?",
+    "Why Does the Rickshaw Carry a Japanese Name?"
+  ],
+  "losers": [
+    "Who Once Paid for Your Letter, and Why Did That Change?",
+    "Did English Coffeehouses Once Make Their Own Money?",
+    "Did English Coffeehouses Once Make Their Own Money?",
+    "Why Can't Scholars Read a Script From Four Thousand Years Ago?",
+    "Where Did Your Notebook Page Really Start?"
+  ],
+  "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and"
+}
