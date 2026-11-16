@@ -6803,7 +6803,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "IeZApCwr2NE",
     "experiment": null,
     "experiment_slot": null,
     "category": "erased",
@@ -7047,5 +7047,18 @@
     "production_profile": 2,
     "facebook_id": "1134696419305741",
     "instagram_id": "17907574086671622"
+  },
+  {
+    "video_id": "IeZApCwr2NE",
+    "run_id": "43889672186",
+    "stage_dir_name": "20261115_070306_414133_short",
+    "title": "The Ancient Trade Secret Hidden Where No Customs Officer Would Look",
+    "published_at": "2026-11-16T14:49:14.739999+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "MnAdN0TEL38",
+    "republished_as": null
   }
 ]
