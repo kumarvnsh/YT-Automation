@@ -6858,7 +6858,7 @@
     "workflow": "publish",
     "retitled_at": null,
     "republished_from": null,
-    "republished_as": null,
+    "republished_as": "_LG3VzPRgp0",
     "experiment": null,
     "experiment_slot": null,
     "category": "weird_dark",
@@ -7121,6 +7121,19 @@
     "workflow": "republish",
     "retitled_at": null,
     "republished_from": "T2PhQx-4814",
+    "republished_as": null
+  },
+  {
+    "video_id": "_LG3VzPRgp0",
+    "run_id": "43913947269",
+    "stage_dir_name": "20261115_102753_850627_short",
+    "title": "Your Lipstick Might Be Crawling With This Cactus Bug",
+    "published_at": "2026-11-16T17:02:09.901561+00:00",
+    "channel": "histold",
+    "scheduled": false,
+    "workflow": "republish",
+    "retitled_at": null,
+    "republished_from": "G5y0NwWtlyI",
     "republished_as": null
   }
 ]
