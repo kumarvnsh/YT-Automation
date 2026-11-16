@@ -132,6 +132,7 @@ editorial:
 # hours, never how many videos a day are made.
 growth:
   posts_per_day: 3                       # fixed daily volume requested by the owner
+  daily_publish_cap: 6                   # safety ceiling; leaves room for extra manual runs
   default_hours_utc: [12, 18, 23]         # Europe lunch, Europe evening/US lunch, US evening
   # Target audience: USA + Europe. Excluded 05-10 UTC = midnight-6am US Eastern while
   # Europe is only at breakfast/work start. Allowed: 11-23 UTC (Europe noon to late

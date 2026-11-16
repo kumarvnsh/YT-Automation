@@ -142,7 +142,7 @@ jobs:
           print(n)
           PY
           )
-          DAILY_CAP=$(python3 -c 'import yaml; print(int(yaml.safe_load(open("config.yaml"))["growth"]["posts_per_day"]))')
+          DAILY_CAP=$(python3 -c 'import yaml; g=yaml.safe_load(open("config.yaml"))["growth"]; print(int(g.get("daily_publish_cap", g["posts_per_day"])))')
           if [ "$COUNT" -ge "$DAILY_CAP" ]; then
             echo "Daily cap reached ($COUNT scheduled uploads today IST) — skipping."
             gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
