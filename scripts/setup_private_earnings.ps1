@@ -36,7 +36,10 @@ if ($Platform -eq 'Meta') {
     Set-Acl -LiteralPath $TokenPath -AclObject $Acl
     [IO.File]::WriteAllText($TokenPath, $Plain, [Text.UTF8Encoding]::new($false))
     $Plain = $null; $Token.Dispose()
-    if ($FromClipboard) { Set-Clipboard -Value '' }
+    if ($FromClipboard) {
+        # Windows PowerShell 5.1 rejects an empty clipboard string.
+        try { Set-Clipboard -Value ' ' } catch { Write-Warning 'Token saved, but clipboard cleanup failed. Copy another item to replace it.' }
+    }
 }
 $Arguments = @((Join-Path $Repo 'scripts\refresh_private_earnings.py'), '--config',
                (Join-Path $Repo 'config.yaml'), '--data-root', $DataRoot)
