@@ -267,11 +267,83 @@ main{margin:0;padding:18px 14px calc(95px + env(safe-area-inset-bottom));gap:14p
 .video-card{border:1px solid var(--line);border-radius:12px;padding:14px}.video-card .title{font-size:14px;font-weight:650;line-height:1.5;margin:8px 0 10px}.video-card .meta{font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}.video-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--bg);border-radius:9px;padding:10px}.video-metrics b{display:block;font-size:16px}.video-metrics span{font-size:10px;color:var(--muted)}
 .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom));z-index:30;box-shadow:0 -3px 15px #101c3108}.mobile-nav a{flex:1;text-align:center;text-decoration:none;color:var(--muted);font-size:10px;font-weight:650;min-height:42px;display:grid;align-content:center;gap:4px}.mobile-nav a span{font-size:17px;color:var(--accent)}
 .view-nav{gap:6px}.view-nav span,.view-nav a{display:none}.row{gap:8px}.chat{max-height:340px!important}.msg{max-width:95%!important;font-size:13px}#chatInput{font-size:16px;min-width:0}#chatForm{flex-wrap:nowrap}.wrow{grid-template-columns:117px 1fr 33px;gap:7px}.hour{min-width:105px}.pick{padding:12px}.health-details .pill{white-space:normal}}
-</style>__HEAD__</head><body>
+</style>__HEAD__
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style id="hud">
+/* HUD theme: always dark, cyan telemetry look. Loaded last so it wins over the base styles. */
+:root:root:root{--bg:#030a14;--panel:rgba(7,22,38,.66);--ink:#d6f5ff;--muted:#6f9fb5;--line:rgba(0,229,255,.17);--accent:#00e5ff;--soft:rgba(0,229,255,.08);
+--good:#2bffb1;--warn:#ffc547;--bad:#ff4d6d;--fb:#3d8bff;--ig:#ff3fa4;--yt:#ff6a3d;--glow:0 0 10px rgba(0,229,255,.55);color-scheme:dark}
+body{background:var(--bg);font-family:"Rajdhani","Segoe UI",system-ui,sans-serif;font-size:15px;font-weight:500;letter-spacing:.2px;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+ radial-gradient(ellipse at 75% -10%,rgba(0,130,255,.20),transparent 55%),radial-gradient(ellipse at 0% 110%,rgba(0,229,255,.12),transparent 50%),
+ linear-gradient(rgba(0,229,255,.045) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(0,229,255,.045) 1px,transparent 1px) 0 0/44px 44px}
+body::after{content:"";position:fixed;left:0;right:0;top:-35vh;height:35vh;z-index:-1;pointer-events:none;background:linear-gradient(transparent,rgba(0,229,255,.045),transparent);animation:hudscan 10s linear infinite}
+@keyframes hudscan{to{transform:translateY(170vh)}}
+h1,h2,.eyebrow,.kpi .l,th,.brand,.sidebar nav a,.hud-mono,.mobile-nav a{font-family:"Orbitron","Rajdhani",system-ui,sans-serif;text-transform:uppercase;letter-spacing:1.4px}
+h1{font-size:16px!important;color:var(--accent);text-shadow:var(--glow)}h2{font-size:13px!important;color:var(--accent);text-shadow:var(--glow);font-weight:700}
+h4{color:var(--ink);letter-spacing:.6px}.eyebrow{color:var(--accent);font-size:10px}
+.panel,.kpi{background:var(--panel);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:3px;box-shadow:inset 0 0 40px rgba(0,229,255,.035),0 0 0 1px rgba(0,0,0,.4);position:relative}
+.panel::before,.kpi::before,.panel::after,.kpi::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--accent);pointer-events:none;filter:drop-shadow(0 0 4px var(--accent))}
+.panel::before,.kpi::before{top:-1px;left:-1px;border-right:0;border-bottom:0}.panel::after,.kpi::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.kpi{overflow:hidden}.kpi .l{font-size:10px;color:var(--muted)}
+.kpi .v{font-family:"Orbitron",system-ui,sans-serif;font-weight:700;font-size:28px;color:#fff;text-shadow:0 0 14px rgba(0,229,255,.7);letter-spacing:0}
+.kpi .v.tick{animation:hudtick 1.2s ease-out}@keyframes hudtick{0%{color:var(--good);text-shadow:0 0 22px var(--good)}100%{}}
+.kpi .spark{display:block;margin-top:8px;height:34px}.kpi .spark polyline{fill:none;stroke-width:1.6;vector-effect:non-scaling-stroke}.kpi .spark polygon{opacity:.16}
+.kpi .s{color:var(--muted)}
+.sidebar{background:rgba(2,9,18,.88);border-right:1px solid var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.brandmark{background:transparent;border:2px solid var(--accent);color:var(--accent);box-shadow:var(--glow),inset 0 0 10px rgba(0,229,255,.4);border-radius:50%;font-family:"Orbitron",sans-serif}
+.brand{color:#fff;font-size:17px}.sidebar nav a{font-size:11px;color:var(--muted);border-left:2px solid transparent;border-radius:2px}
+.sidebar nav a:hover,.sidebar nav a:first-child{background:rgba(0,229,255,.08);color:var(--accent);border-left-color:var(--accent)}.sidebar footer{color:var(--muted)}
+header{background:rgba(3,10,20,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.status-dot{background:var(--good);box-shadow:0 0 8px var(--good);animation:hudblink 2s infinite}.status-dot.off{background:var(--bad);box-shadow:0 0 8px var(--bad)}
+@keyframes hudblink{50%{opacity:.35}}
+.hud-clock{font-size:12px;color:var(--ink);display:grid;text-align:right;line-height:1.25}.hud-clock small{color:var(--muted);font-size:9px}
+#uplink{font-size:10px;color:var(--muted);white-space:nowrap}
+.intro{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,330px) auto;align-items:center;gap:22px}
+.intro h2{font-family:"Rajdhani",sans-serif;text-transform:none;letter-spacing:.3px;font-size:34px!important;color:#fff;text-shadow:0 0 18px rgba(0,229,255,.35)}
+.feed{list-style:none;margin:0;padding:10px 12px;border:1px solid var(--line);background:rgba(0,0,0,.28);font:11px/1.6 ui-monospace,Consolas,monospace;color:var(--muted);height:118px;overflow:hidden;border-radius:3px}
+.feed li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:hudfeed .5s ease-out}.feed li b{color:var(--accent);font-weight:500}.feed li:first-child{color:var(--ink)}
+@keyframes hudfeed{from{opacity:0;transform:translateX(-8px)}}
+.core{all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;border-radius:50%}.core:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.core svg{width:132px;height:132px;overflow:visible;filter:drop-shadow(0 0 8px rgba(0,229,255,.55))}
+.core circle{stroke:var(--accent);transform-origin:60px 60px}.core .r1{animation:hudspin 24s linear infinite;stroke-width:1.2}
+.core .r2{animation:hudspin 13s linear infinite reverse;stroke-width:3;opacity:.85}.core .r3{animation:hudspin 7s linear infinite;stroke-width:1.5;opacity:.7}
+.core .hub{stroke:none;animation:hudbreathe 3.2s ease-in-out infinite}.core span{font-size:9px;color:var(--accent);text-shadow:var(--glow)}
+.core.listening .hub{animation-duration:.8s}.core.listening circle{stroke:var(--good)}.core.listening span{color:var(--good)}
+.core.thinking .r2{animation-duration:1.4s}.core.thinking .r3{animation-duration:1s}.core.thinking span{color:var(--warn)}
+.core.speaking .hub{animation-duration:.32s}.core.speaking .r1{animation-duration:4s}
+@keyframes hudspin{to{transform:rotate(360deg)}}@keyframes hudbreathe{50%{transform:scale(.82);opacity:.75}}
+input,select{background:rgba(0,0,0,.35)!important;border:1px solid var(--line)!important;color:var(--ink)!important;border-radius:3px!important}
+button{background:rgba(0,229,255,.05)!important;border:1px solid var(--line)!important;color:var(--accent)!important;border-radius:3px!important;font-family:"Orbitron","Rajdhani",sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+button:hover:not(:disabled){border-color:var(--accent)!important;box-shadow:var(--glow)}
+button.primary,.segmented button[aria-pressed="true"]{background:rgba(0,229,255,.2)!important;color:#fff!important;border-color:var(--accent)!important;box-shadow:inset 0 0 12px rgba(0,229,255,.35)}
+button.on{color:var(--good)!important;border-color:var(--good)!important}
+.segmented{background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:3px}
+th{background:#061527!important;color:var(--accent)!important;font-size:10px!important}td{border-color:rgba(0,229,255,.08)!important}tr:hover td{background:rgba(0,229,255,.06)!important}
+.bar,.compare-row .fill{background:linear-gradient(90deg,rgba(0,229,255,.35),var(--accent))!important;box-shadow:0 0 8px rgba(0,229,255,.5)}
+.compare-row .track{background:rgba(0,229,255,.07)!important}
+.finding,.hour,.video-metrics{background:rgba(0,0,0,.28)!important}.finding{border-radius:2px}.ai-note{background:rgba(0,229,255,.07);border:1px solid var(--line);border-radius:3px}
+.pick,.video-card,.prop{border-color:var(--line)!important;background:rgba(0,0,0,.2)!important;border-radius:3px!important}
+.rank{background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:50%;font-family:"Orbitron",sans-serif}
+.pill{border-color:var(--line)}svg text{fill:var(--muted);font-family:"Rajdhani",sans-serif}
+a{color:var(--accent)}code{color:var(--good)}.tag{background:rgba(0,229,255,.12);color:var(--accent)}
+body .msg{border-radius:3px;border:1px solid var(--line)}body .me{background:rgba(0,229,255,.16);color:#fff}body .ai{background:rgba(0,0,0,.3);border-left:2px solid var(--accent)}
+.mobile-nav{background:rgba(3,10,20,.92);border-top:1px solid var(--line)}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.25);border-radius:4px}::-webkit-scrollbar-track{background:transparent}
+body .core{background:none!important;border:0!important;box-shadow:none!important;padding:0;min-height:0;border-radius:50%!important}
+header #built{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1099px){.intro{grid-template-columns:minmax(0,1fr) auto}.feed{display:none}.hud-clock,.view-nav a{display:none!important}}
+@media(max-width:699px){.intro{grid-template-columns:minmax(0,1fr) auto;gap:10px}.intro h2{font-size:24px!important}.core svg{width:84px;height:84px}.hud-clock,#uplink{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head><body>
 <aside class="sidebar"><div class="brand"><span class="brandmark">H</span>Histold</div><nav aria-label="Main navigation"><a href="#overview">◈ &nbsp; Overview</a><a href="#insights">✦ &nbsp; Content insights</a><a href="#videos">▤ &nbsp; Videos</a><a href="#ai">◎ &nbsp; AI assistant</a><a href="#controls">⚙ &nbsp; Controls</a><a href="#strategy-section">↗ &nbsp; Topic strategy</a><a href="#money-section">◉ &nbsp; Monetization</a></nav><footer><span class="status-dot"></span>Local AI workspace<br>Facebook · Instagram · YouTube</footer></aside>
-<header><div><h1>Channel overview</h1><div class="muted small" id="built"></div></div><div class="view-nav"><span class="small muted"><i class="status-dot"></i>Histold</span><a href="#ai" class="small">Ask AI ↗</a><button id="topRefresh" aria-label="Refresh dashboard" title="Refresh dashboard" type="button">↻ <span>Refresh</span></button></div></header>
+<header><div><h1>Channel overview</h1><div class="muted small" id="built"></div></div><div class="view-nav"><span id="uplink" class="hud-mono"><i class="status-dot"></i>Static snapshot</span><span class="hud-clock hud-mono" id="hudClock"></span><a href="#ai" class="small">Ask AI ↗</a><button id="topRefresh" aria-label="Refresh dashboard" title="Refresh dashboard" type="button">↻ <span>Refresh</span></button></div></header>
 <main id="overview">
-<div class="intro"><div><div class="eyebrow">Histold analytics</div><h2>Your channel, in focus.</h2><p id="cadenceSummary">Performance, content decisions and your next three posts.</p></div></div>
+<div class="intro"><div><div class="eyebrow">Histold analytics</div><h2>Your channel, in focus.</h2><p id="cadenceSummary">Performance, content decisions and your next three posts.</p></div>
+<ol class="feed" id="feed" aria-live="polite" aria-label="Live telemetry"></ol>
+<button class="core" id="core" type="button" aria-label="Talk to Histold AI"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><radialGradient id="hubg"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#9ff6ff"/><stop offset=".7" stop-color="#00e5ff" stop-opacity=".55"/><stop offset="1" stop-color="#00e5ff" stop-opacity="0"/></radialGradient></defs>
+<circle class="r1" cx="60" cy="60" r="56" fill="none" stroke-dasharray="3 7"/><circle class="r2" cx="60" cy="60" r="45" fill="none" stroke-dasharray="70 18 12 18"/>
+<circle class="r3" cx="60" cy="60" r="34" fill="none" stroke-dasharray="2 5"/><circle class="hub" cx="60" cy="60" r="24" fill="url(#hubg)"/></svg><span id="coreState" class="hud-mono">AI core · standby</span></button></div>
 <div class="kpis" id="kpis"></div>
 <section class="panel" id="insights"><div class="section-row"><h2>What’s working</h2><span id="insightsStamp" class="small muted"></span></div><p class="small muted" id="insightsScope"></p><div class="insight-grid"><div><h4 class="ok">Keep exploring</h4><div id="workingFindings" class="finding-list"></div></div><div><h4 class="warn">Needs attention</h4><div id="weakFindings" class="finding-list"></div></div></div><div id="aiTakeaway"></div></section>
 <section class="panel half"><div class="section-row"><h2>Content comparison</h2><div class="segmented" aria-label="Compare content"><button data-dim="region" aria-pressed="true">Regions</button><button data-dim="length" aria-pressed="false">Length</button><button data-dim="series" aria-pressed="false">Series</button></div></div><p class="small muted">Median Facebook views per video · minimum 6 videos for a finding</p><div id="contentCompare"></div></section>
@@ -300,44 +372,70 @@ const fmt=n=>n==null?'–':n>=1e4?(n/1e3).toFixed(1)+'k':n.toLocaleString();
 const ago=iso=>{if(!iso)return null;const h=(Date.now()-new Date(iso))/36e5;return h<1?Math.round(h*60)+' min':h<48?Math.round(h)+' h':Math.round(h/24)+' d'};
 const local=(iso,o)=>new Date(iso).toLocaleString([], o||{dateStyle:'medium',timeStyle:'short'});
 const tz=(h,zone)=>{const d=new Date();d.setUTCHours(h,0,0,0);return d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit',timeZone:zone})};
-$('built').textContent='Built '+local(D.built)+' · data from the last 28 days';
+const builtLine=()=>{$('built').textContent='Data built '+local(D.built)+' · last 28 days'};builtLine();
 $('topRefresh').onclick=()=>location.reload();
+
+// HUD: clock + telemetry feed (works in the static file too)
+const clock=()=>{const d=new Date();$('hudClock').innerHTML=d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})+'<small>UTC '+d.toISOString().slice(11,19)+'</small>'};clock();setInterval(clock,1000);
+const HUD={log(msg){const li=document.createElement('li');li.innerHTML='<b>'+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})+'</b> '+esc(msg);
+ $('feed').prepend(li);while($('feed').children.length>6)$('feed').lastChild.remove()},renders:[],rerender(){V=D.videos;HUD.renders.forEach(f=>{try{f()}catch(e){console.error(e)}})}};
+window.HUD=HUD;$('core').onclick=()=>{location.hash='#ai'};
 
 // health pills
 const limits={'YouTube export':3,'Facebook/Instagram export':3,'Topic strategy':6,'Growth plan':30,'Laptop dispatcher':2};
-let pills=Object.entries(D.freshness).map(([k,v])=>{const h=v?(Date.now()-new Date(v))/36e5:1e9;const c=h<=limits[k]?'ok':h<=limits[k]*4?'warn':'bad';
+function renderPills(){let pills=Object.entries(D.freshness).map(([k,v])=>{const h=v?(Date.now()-new Date(v))/36e5:1e9;const c=h<=limits[k]?'ok':h<=limits[k]*4?'warn':'bad';
  return `<span class="pill"><b class="${c}">●</b> ${esc(k)}: ${v?ago(v)+' ago':'never'}</span>`});
 const p=D.health.problems;pills.push(`<span class="pill" title="${esc(p.join('\n'))}"><b class="${p.length?'bad':'ok'}">●</b> Laptop errors (24h): ${p.length}</span>`);
-$('pills').innerHTML=pills.join('');
+$('pills').innerHTML=pills.join('')}
+renderPills();HUD.renders.push(renderPills,builtLine);
 
 // Local-AI selections use only evidence IDs validated against computed statistics.
 const pretty=s=>String(s||'').replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
-const E=D.content_evidence||{}, AI=D.ai_insights, AE=AI?.evidence||E, choice=AI?.interpretation;
+let E,AI,AE,choice;
+function renderInsights(){E=D.content_evidence||{};AI=D.ai_insights;AE=AI?.evidence||E;choice=AI?.interpretation;
 $('insightsStamp').textContent=AI?`${AI.model} · ${ago(AI.generated)} ago`:'Measured analytics';
 $('insightsScope').textContent=`${AE.mature_videos||0} videos aged 48 hours–28 days · channel median ${fmt(AE.fb_baseline_median)} Facebook views. Findings require ${AE.min_sample||6} videos; small gaps remain exploratory.`;
-function findings(id,list,weak){$(id).innerHTML=list.length?list.slice(0,3).map(g=>`<article class="finding ${weak?'weak':''}"><b>${esc(pretty(g.option))} <span class="muted small">${esc(g.dimension)}</span></b><span class="delta">${g.fb_vs_baseline_pct>0?'+':''}${g.fb_vs_baseline_pct}%</span> <span class="small">vs channel median</span><p>${fmt(g.fb_median)} median FB views · ${g.fb_n} measured videos</p></article>`).join(''):'<p class="empty small">No supported finding yet. Keep gathering data.</p>'}
 findings('workingFindings',AE.working||[],false);findings('weakFindings',AE.not_working||[],true);
-$('aiTakeaway').innerHTML=(choice?`<div class="ai-note"><div class="eyebrow">Qwen’s interpretation · hypothesis</div><p>${esc(choice.title_hypothesis)}</p><b>Next test:</b> ${esc(choice.next_test)}</div>`:'')+`<details class="small muted" style="margin-top:13px"><summary>How to read these findings</summary><p>${(AE.limitations||[]).map(esc).join('</p><p>')}</p><p>New series with fewer than six measured videos are exploratory; do not pause them on this evidence alone.</p></details>`;
-function comparison(dim){const groups=(E.groups||[]).filter(g=>g.dimension===dim).sort((a,b)=>(b.fb_median??-1)-(a.fb_median??-1)),max=Math.max(1,...groups.map(g=>g.fb_median||0));
+$('aiTakeaway').innerHTML=(choice?`<div class="ai-note"><div class="eyebrow">Qwen’s interpretation · hypothesis</div><p>${esc(choice.title_hypothesis)}</p><b>Next test:</b> ${esc(choice.next_test)}</div>`:'')+`<details class="small muted" style="margin-top:13px"><summary>How to read these findings</summary><p>${(AE.limitations||[]).map(esc).join('</p><p>')}</p><p>New series with fewer than six measured videos are exploratory; do not pause them on this evidence alone.</p></details>`}
+function findings(id,list,weak){$(id).innerHTML=list.length?list.slice(0,3).map(g=>`<article class="finding ${weak?'weak':''}"><b>${esc(pretty(g.option))} <span class="muted small">${esc(g.dimension)}</span></b><span class="delta">${g.fb_vs_baseline_pct>0?'+':''}${g.fb_vs_baseline_pct}%</span> <span class="small">vs channel median</span><p>${fmt(g.fb_median)} median FB views · ${g.fb_n} measured videos</p></article>`).join(''):'<p class="empty small">No supported finding yet. Keep gathering data.</p>'}
+renderInsights();
+let curDim='region',curWeak=false;
+function comparison(dim){curDim=dim;const groups=(E.groups||[]).filter(g=>g.dimension===dim).sort((a,b)=>(b.fb_median??-1)-(a.fb_median??-1)),max=Math.max(1,...groups.map(g=>g.fb_median||0));
  $('contentCompare').innerHTML=groups.map(g=>`<div class="compare-row"><div>${esc(pretty(g.option))}<div class="sample">${g.fb_n} measured${g.enough_data?'':' · early data'}</div></div><div class="track"><div class="fill" style="width:${(g.fb_median||0)/max*100}%;opacity:${g.enough_data?1:.3}"></div></div><div style="text-align:right"><b>${fmt(g.fb_median)}</b><div class="sample">median views</div></div></div>`).join('')||'<p class="empty">No comparison data yet.</p>';
  document.querySelectorAll('[data-dim]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dim===dim)))}
 document.querySelectorAll('[data-dim]').forEach(b=>b.onclick=()=>comparison(b.dataset.dim));comparison('region');
-function picks(weak=false){const rows=(weak?E.weak_videos:E.best_videos)||[];$('videoPicks').innerHTML=rows.slice(0,3).map((v,i)=>`<article class="pick"><span class="rank">${i+1}</span><div><div class="pick-title">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">${esc(v.title)}</a>`:esc(v.title)}</div><div class="small muted"><b>${fmt(v.fb)} Facebook views</b> · ${esc(pretty(v.region))} · ${esc(v.length)}</div></div></article>`).join('')+(weak?'<p class="small muted">Zero views may reflect distribution or reporting; check before judging content quality.</p>':'');$('bestPicks').setAttribute('aria-pressed',String(!weak));$('weakPicks').setAttribute('aria-pressed',String(weak))}
+function picks(weak=false){curWeak=weak;const rows=(weak?E.weak_videos:E.best_videos)||[];$('videoPicks').innerHTML=rows.slice(0,3).map((v,i)=>`<article class="pick"><span class="rank">${i+1}</span><div><div class="pick-title">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">${esc(v.title)}</a>`:esc(v.title)}</div><div class="small muted"><b>${fmt(v.fb)} Facebook views</b> · ${esc(pretty(v.region))} · ${esc(v.length)}</div></div></article>`).join('')+(weak?'<p class="small muted">Zero views may reflect distribution or reporting; check before judging content quality.</p>':'');$('bestPicks').setAttribute('aria-pressed',String(!weak));$('weakPicks').setAttribute('aria-pressed',String(weak))}
 $('bestPicks').onclick=()=>picks();$('weakPicks').onclick=()=>picks(true);picks();
+HUD.renders.push(renderInsights,()=>comparison(curDim),()=>picks(curWeak));
 
-// KPIs
-const V=D.videos, now=Date.now(), in7=V.filter(v=>now-new Date(v.at)<7*864e5);
+// KPIs: count-up numbers + 14-day sparkline per platform (by publish day)
+let V=D.videos;
 const sum=(a,k)=>a.reduce((s,v)=>s+(v[k]||0),0), avg=(a,k)=>{const x=a.filter(v=>v[k]!=null);return x.length?sum(x,k)/x.length:null};
-const next=(()=>{for(let i=0;i<48;i++){const d=new Date();d.setUTCMinutes(0,0,0);d.setUTCHours(d.getUTCHours()+i+1);if(D.hours.includes(d.getUTCHours()))return d}})();
-const kpis=[['Facebook views',fmt(sum(V,'fb')),V.filter(v=>v.fb!=null).length+' measured videos · monetization reported active'],
- ['Instagram views',fmt(sum(V,'ig')),V.filter(v=>v.ig!=null).length+' measured videos'],
- ['YouTube views',fmt(sum(V,'yt')),V.filter(v=>v.yt!=null).length+' measured videos'],
- ['Next publish',next?local(next.toISOString(),{hour:'numeric',minute:'2-digit'}):'–',(next?local(next.toISOString(),{weekday:'short'})+' · ':'')+D.posts_per_day+' posts per day']];
-$('kpis').innerHTML=kpis.map(([l,v,s])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join('');
-$('cadenceSummary').textContent=`${D.posts_per_day} scheduled posts daily · ${in7.length} videos published in 7 days · ${V.length} in this 28-day view`;
+const prevK={}, still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function countTo(el,key,to){const from=prevK[key]??0;prevK[key]=to;if(from===to||still){el.textContent=fmt(to);return}
+ if(from){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick')}
+ const t0=performance.now(),step=t=>{const p=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(from+(to-from)*e));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+function spark(k,color){const n=14,now=Date.now(),pts=Array(n).fill(0);V.forEach(v=>{const i=n-1-Math.floor((now-new Date(v.at))/864e5);if(i>=0&&i<n)pts[i]+=v[k]||0});
+ const max=Math.max(1,...pts),xy=pts.map((y,i)=>`${(i/(n-1)*100).toFixed(1)},${(30-y/max*28).toFixed(1)}`).join(' ');
+ return `<svg class="spark" viewBox="0 0 100 32" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,32 ${xy} 100,32" fill="${color}"/><polyline points="${xy}" stroke="${color}"/></svg>`}
+function renderKpis(){const now=Date.now(),in7=V.filter(v=>now-new Date(v.at)<7*864e5);
+ const next=(()=>{for(let i=0;i<48;i++){const d=new Date();d.setUTCMinutes(0,0,0);d.setUTCHours(d.getUTCHours()+i+1);if(D.hours.includes(d.getUTCHours()))return d}})();
+ const kpis=[['fb','Facebook views',sum(V,'fb'),V.filter(v=>v.fb!=null).length+' measured videos · monetization reported active','var(--fb)'],
+  ['ig','Instagram views',sum(V,'ig'),V.filter(v=>v.ig!=null).length+' measured videos','var(--ig)'],
+  ['yt','YouTube views',sum(V,'yt'),V.filter(v=>v.yt!=null).length+' measured videos','var(--yt)'],
+  ['next','Next publish',next?local(next.toISOString(),{hour:'numeric',minute:'2-digit'}):'–',(next?local(next.toISOString(),{weekday:'short'})+' · ':'')+D.posts_per_day+' posts per day']];
+ $('kpis').innerHTML=kpis.map(([k,l,v,s,c])=>`<div class="kpi"><div class="l">${l}</div><div class="v" data-k="${k}">${typeof v=='number'?fmt(prevK[k]??0):esc(v)}</div><div class="s">${esc(s)}</div>${c?spark(k,c):''}</div>`).join('');
+ kpis.forEach(([k,,v])=>{if(typeof v=='number')countTo(document.querySelector(`.kpi .v[data-k="${k}"]`),k,v)});
+ $('cadenceSummary').textContent=`${D.posts_per_day} scheduled posts daily · ${in7.length} videos published in 7 days · ${V.length} in this 28-day view`;
+ return {fb:sum(V,'fb'),ig:sum(V,'ig'),yt:sum(V,'yt'),next,in7:in7.length}}
+const K0=renderKpis();HUD.renders.push(renderKpis);
+HUD.log('Systems online · '+V.length+' videos in 28-day window');
+HUD.log('FB '+fmt(K0.fb)+' · IG '+fmt(K0.ig)+' · YT '+fmt(K0.yt)+' views');
+if(K0.next)HUD.log('Next publish '+local(K0.next.toISOString(),{weekday:'short',hour:'numeric',minute:'2-digit'}));
+HUD.log(D.health.problems.length?D.health.problems.length+' laptop errors in 24h':'Laptop runner: no errors in 24h');
 
 // daily stacked bars
-(()=>{const days=[];for(let i=27;i>=0;i--){const d=new Date(now-i*864e5);days.push(d.toISOString().slice(0,10))}
+function renderDaily(){const now=Date.now(),days=[];for(let i=27;i>=0;i--){const d=new Date(now-i*864e5);days.push(d.toISOString().slice(0,10))}
  const by=Object.fromEntries(days.map(d=>[d,{fb:0,ig:0,yt:0,n:0}]));
  V.forEach(v=>{const d=by[new Date(v.at).toISOString().slice(0,10)];if(d){d.fb+=v.fb||0;d.ig+=v.ig||0;d.yt+=v.yt||0;d.n++}});
  const max=Math.max(1,...days.map(d=>by[d].fb+by[d].ig+by[d].yt)),W=760,H=200,bw=W/days.length;
@@ -346,7 +444,8 @@ $('cadenceSummary').textContent=`${D.posts_per_day} scheduled posts daily · ${i
  days.forEach((d,i)=>{let y=H;const x=i*bw+3,w=bw-6,b=by[d];
   [['fb','var(--fb)'],['ig','var(--ig)'],['yt','var(--yt)']].forEach(([k,c])=>{const h=b[k]/max*H;y-=h;s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}" rx="2"><title>${d}: ${k.toUpperCase()} ${b[k].toLocaleString()} (${b.n} videos)</title></rect>`});
   if(i%4==0)s+=`<text x="${x}" y="${H+16}">${d.slice(5)}</text>`});
- $('daily').innerHTML=s+'</svg>'})();
+ $('daily').innerHTML=s+'</svg>'}
+renderDaily();HUD.renders.push(renderDaily);
 
 // schedule
 (()=>{const pl=D.plan||{};let s='<div class="hours">'+D.hours.map(h=>`<div class="hour"><b>${tz(h)}</b><div class="small muted">${String(h).padStart(2,'0')}:00 UTC</div><div class="small">NY ${tz(h,'America/New_York')} · Paris ${tz(h,'Europe/Paris')}</div></div>`).join('')+'</div>';
@@ -358,7 +457,7 @@ $('cadenceSummary').textContent=`${D.posts_per_day} scheduled posts daily · ${i
  $('schedule').innerHTML=s})();
 
 // reach by hour
-(()=>{const W=760,H=150,bw=W/24;let s=`<svg viewBox="0 0 ${W} ${H+44}" role="img" aria-label="Reach by publish hour">`;
+function renderHours(){const W=760,H=150,bw=W/24;let s=`<svg viewBox="0 0 ${W} ${H+44}" role="img" aria-label="Reach by publish hour">`;
  for(let h=0;h<24;h++){const st=D.hour_stats[h],x=h*bw+3,w=bw-6,on=D.hours.includes(h),ok=D.allowed_hours.includes(h);
   if(st){const bh=st.shrunk*H;s+=`<rect x="${x}" y="${H-bh}" width="${w}" height="${bh}" rx="3" fill="var(--accent)" opacity="${on?1:ok?.45:.18}"><title>${h}:00 UTC · score ${st.shrunk} · ${st.n} videos</title></rect><text x="${x+w/2}" y="${H-bh-4}" text-anchor="middle">${st.n}</text>`}
   else s+=`<rect x="${x}" y="${H-4}" width="${w}" height="4" fill="var(--line)"><title>${h}:00 UTC · no data</title></rect>`;
@@ -366,7 +465,8 @@ $('cadenceSummary').textContent=`${D.posts_per_day} scheduled posts daily · ${i
   s+=`<text x="${x+w/2}" y="${H+24}" text-anchor="middle">${h}</text>`;
   if(h%3==0)s+=`<text x="${x+w/2}" y="${H+38}" text-anchor="middle">${tz(h)}</text>`}
  s+=`<line x1="0" x2="${W}" y1="${H-.5*H}" y2="${H-.5*H}" stroke="var(--line)" stroke-dasharray="4 4"/></svg>`;
- $('hours').innerHTML=s+'<p class="small muted">Row 1: UTC hour (numbers above bars = videos). Row 2: your local time.</p>'})();
+ $('hours').innerHTML=s+'<p class="small muted">Row 1: UTC hour (numbers above bars = videos). Row 2: your local time.</p>'}
+renderHours();HUD.renders.push(renderHours);
 
 // video table
 const cols=[['at','Published'],['title','Title'],['series','Series'],['region','Region'],['length','Length'],['fb','FB views','n'],['ig','IG views','n'],['yt','YT views','n'],['yt_pct','YT % viewed','n'],['score','Score','n']];
@@ -382,7 +482,7 @@ function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('
  $('videoCards').innerHTML=rows.slice(0,videoLimit).map(v=>`<article class="video-card"><div class="meta"><span>${local(v.at,{month:'short',day:'numeric'})}</span><span>${esc(pretty(v.region))} · ${esc(v.length)}</span></div><div class="title">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">${esc(v.title)}</a>`:esc(v.title)}</div><div class="video-metrics"><div><b>${fmt(v.fb)}</b><span>Facebook</span></div><div><b>${fmt(v.ig)}</b><span>Instagram</span></div><div><b>${fmt(v.yt)}</b><span>YouTube</span></div></div><div class="small muted" style="margin-top:9px">${esc(pretty(v.series))}${v.yt_pct!=null?' · YT viewed '+Math.round(v.yt_pct)+'%':''}</div></article>`).join('')||'<p class="empty">No videos match these filters.</p>';
  $('moreVideos').hidden=rows.length<=videoLimit;
  document.querySelectorAll('#vt th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortD=sortK==k?-sortD:-1;sortK=k;table()})}
-['q','fSeries','fRegion'].forEach(id=>$(id).oninput=()=>{videoLimit=12;table()});$('videoSort').onchange=()=>{sortK=$('videoSort').value;sortD=-1;table()};$('moreVideos').onclick=()=>{videoLimit+=12;table()};table();
+['q','fSeries','fRegion'].forEach(id=>$(id).oninput=()=>{videoLimit=12;table()});$('videoSort').onchange=()=>{sortK=$('videoSort').value;sortD=-1;table()};$('moreVideos').onclick=()=>{videoLimit+=12;table()};table();HUD.renders.push(table);
 
 // strategy
 (()=>{const st=D.strategy||{};if(!st.weights){$('strategy').innerHTML='<p class="empty">No strategy yet.</p>';return}

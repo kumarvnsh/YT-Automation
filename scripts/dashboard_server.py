@@ -43,7 +43,7 @@ from weekly_review import ensure_server, ollama  # noqa: E402
 
 KEY_FILE = ROOT.parent / 'dashboard_key.txt'
 LOG = ROOT.parent / 'strategist.log'
-REFRESH_SECONDS = 600
+REFRESH_SECONDS = 300  # server-side re-read of exports/plan; the page polls /api/pulse every 15 s
 MODEL = os.environ.get('REVIEW_MODEL', 'qwen3:8b')
 OLLAMA = os.environ.get('OLLAMA_HOST_URL', 'http://127.0.0.1:11434')
 
@@ -330,12 +330,12 @@ def chat(state: State, messages: list[dict]) -> dict:
 # ---------- app shell: manifest, service worker, icons ----------
 
 MANIFEST = {'name': 'Histold', 'short_name': 'Histold', 'start_url': '/', 'scope': '/', 'display': 'standalone',
-            'background_color': '#141413', 'theme_color': '#5b4bd6', 'description': 'Histold growth dashboard',
+            'background_color': '#030a14', 'theme_color': '#030a14', 'description': 'Histold growth dashboard',
             'icons': [{'src': '/icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
                       {'src': '/icon-512.png', 'sizes': '512x512', 'type': 'image/png'},
                       {'src': '/icon-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]}
 
-SW = """const C='histold-v2';
+SW = """const C='histold-v3';
 self.addEventListener('install',e=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
  await Promise.all((await caches.keys()).filter(k=>k.startsWith('histold-')&&k!==C).map(k=>caches.delete(k)));
@@ -349,8 +349,8 @@ self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET'||new URL
 
 
 def png_icon(size: int) -> bytes:
-    """Purple rounded tile with a white 'H', drawn without an image library."""
-    bg, fg = (91, 75, 214), (255, 255, 255)
+    """Dark rounded tile with a cyan 'H', drawn without an image library."""
+    bg, fg = (3, 10, 20), (0, 229, 255)
     r, rows = size * 0.2, []
     for y in range(size):
         row = bytearray([0])
@@ -368,7 +368,7 @@ def png_icon(size: int) -> bytes:
             + chunk(b'IDAT', zlib.compress(b''.join(rows), 9)) + chunk(b'IEND', b''))
 
 
-HEAD = """<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#5b4bd6">
+HEAD = """<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#030a14">
 <link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes">
 <style>.chat{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto;padding:4px 2px;margin-bottom:10px}
 .msg{padding:9px 12px;border-radius:12px;max-width:88%;white-space:pre-wrap}.me{align-self:flex-end;background:var(--accent);color:#fff}
@@ -381,10 +381,10 @@ button.primary{background:var(--accent);border-color:var(--accent);color:#fff}bu
 PANELS = """<section class="panel"><div class="row"><b>Histold app</b><button id="installApp" hidden>Install app</button><button id="reloadData">Refresh dashboard</button><button id="logout">Sign out</button><span class="small muted" id="connectionStatus"></span></div>
 <details class="hint"><summary>Use on another device</summary>Connect that device to your Tailscale account, open this laptop's HTTPS dashboard address and sign in with the dashboard key.
 Windows: Edge/Chrome menu → Install app. Mac: Safari → File → Add to Dock, or Chrome → Install. iPhone: Safari → Share → Add to Home Screen.</details></section>
-<section class="panel twothird" id="ai"><h2>Ask Histold AI <span class="muted small">· local qwen3:8b</span></h2>
-<div class="chat" id="chat"><div class="msg ai">Ask about performance or tell me what to change. Try "Analyze again and suggest better publish timings", "Avoid unsolved stories", "Focus on European history", or "Pin 12, 18, 23 UTC". I will check requested changes and show you exactly what needs confirmation.</div></div>
-<form class="row" id="chatForm"><input class="grow" id="chatInput" placeholder="Ask or instruct…" autocomplete="off"><button class="primary" id="chatSend">Send</button></form>
-<p class="hint">Changes are only proposed; nothing happens until you press Confirm. Videos per day can't be changed here.</p></section>
+<section class="panel twothird" id="ai"><div class="section-row"><h2>Ask Histold AI <span class="muted small">· local qwen3:8b</span></h2><button id="voiceToggle" type="button" aria-pressed="false" title="Read AI answers aloud">Voice replies: off</button></div>
+<div class="chat" id="chat"><div class="msg ai">Ask about performance or tell me what to change. Try "Analyze again and suggest better publish timings", "Avoid unsolved stories", "Focus on European history", or "Pin 12, 18, 23 UTC". Tap the mic (or the glowing core at the top) to talk instead of typing. I will check requested changes and show you exactly what needs confirmation.</div></div>
+<form class="row" id="chatForm"><input class="grow" id="chatInput" placeholder="Ask or instruct…" autocomplete="off"><button type="button" id="chatMic" title="Speak your question" aria-label="Speak your question" hidden>🎙 Talk</button><button class="primary" id="chatSend">Send</button></form>
+<p class="hint">Changes are only proposed; nothing happens until you press Confirm, including requests made by voice. Videos per day can't be changed here. Voice uses your browser's built-in speech features (Chrome/Edge may send audio to their speech service).</p></section>
 <section class="panel third" id="controls"><h2>Controls</h2>
 <h4>Steer topics</h4><div class="row"><select id="cDim" aria-label="Topic dimension"><option value="series">series</option><option value="region">region</option><option value="duration_variant">length</option></select>
 <select id="cOpt" aria-label="Topic option"></select></div><div class="row" style="margin-top:6px"><select id="cAct" aria-label="Topic action"><option value="pause_option">Pause</option><option value="boost_option:1.5">Boost ×1.5</option>
@@ -406,9 +406,9 @@ let installPrompt;addEventListener('beforeinstallprompt',e=>{e.preventDefault();
 $('installApp').onclick=async()=>{if(installPrompt){await installPrompt.prompt();installPrompt=null;$('installApp').hidden=true}};
 function connectivity(){$('connectionStatus').textContent=navigator.onLine?'Connected to laptop':'Offline · showing saved dashboard';$('chatSend').disabled=!navigator.onLine}
 addEventListener('online',connectivity);addEventListener('offline',connectivity);connectivity();
-$('reloadData').onclick=async()=>{try{await api('/api/refresh',{});location.reload()}catch(e){$('connectionStatus').textContent=e.message}};
+$('reloadData').onclick=async()=>{try{await api('/api/refresh',{});await pulse()}catch(e){$('connectionStatus').textContent=e.message}};
 $('topRefresh').onclick=async()=>{const b=$('topRefresh');b.disabled=true;b.setAttribute('aria-busy','true');b.innerHTML='↻ <span>Refreshing…</span>';
- try{await api('/api/refresh',{});location.reload()}catch(e){$('connectionStatus').textContent='Refresh failed: '+e.message;b.disabled=false;b.removeAttribute('aria-busy');b.innerHTML='↻ <span>Retry</span>'}};
+ try{await api('/api/refresh',{});await pulse();b.disabled=false;b.removeAttribute('aria-busy');b.innerHTML='↻ <span>Refresh</span>'}catch(e){$('connectionStatus').textContent='Refresh failed: '+e.message;b.disabled=false;b.removeAttribute('aria-busy');b.innerHTML='↻ <span>Retry</span>'}};
 $('logout').onclick=async()=>{await api('/api/logout',{});if('caches' in window){for(const k of await caches.keys())await caches.delete(k)}location.replace('/login')};
 if(D.live_note){const p=document.createElement('span');p.className='pill';p.innerHTML='<b class="warn">●</b> '+esc(D.live_note);$('pills').appendChild(p)}
 async function api(path,body){const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Histold':'1'},body:JSON.stringify(body)});
@@ -417,15 +417,53 @@ const msgs=[];
 function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;$('chat').appendChild(d);$('chat').scrollTop=1e9;return d}
 async function act(name,args,btn,out){btn&&(btn.disabled=true);try{const j=await api('/api/action',{name,args});out.innerHTML='<b class="ok">✓</b> '+esc(j.message);setTimeout(()=>location.reload(),2500)}
  catch(e){out.innerHTML='<b class="bad">✗</b> '+esc(e.message);btn&&(btn.disabled=false)}}
-$('chatForm').onsubmit=async e=>{e.preventDefault();const t=$('chatInput').value.trim();if(!t)return;$('chatInput').value='';
+$('chatForm').onsubmit=async e=>{e.preventDefault();const t=$('chatInput').value.trim();if(!t)return;$('chatInput').value='';const spoken=viaVoice;viaVoice=false;coreState('thinking','processing');HUD.log('Query: '+t.slice(0,60));
  msgs.push({role:'user',content:t});bubble('me',esc(t));const wait=bubble('ai','<span class="muted">'+(/analy[sz]e|recheck|research|timings|posting times/i.test(t)?'Rechecking analytics and running local analysis. This can take about a minute…':'Checking your request… (first answer can take ~40 s while the model loads)')+'</span>');$('chatSend').disabled=true;
- try{const j=await api('/api/chat',{messages:msgs});msgs.push({role:'assistant',content:j.reply,proposals:j.proposals});wait.innerHTML=esc(j.reply);
+ try{const j=await api('/api/chat',{messages:msgs});msgs.push({role:'assistant',content:j.reply,proposals:j.proposals});wait.innerHTML=esc(j.reply);HUD.log('AI answered'+(j.proposals.length?' · '+j.proposals.length+' proposal(s) awaiting Confirm':''));if(spoken||voiceOn)speak(j.reply+(j.proposals.length?' Review the proposal card and press Confirm if you want it applied.':''));else coreState('','standby');
   j.proposals.forEach(p=>{const c=document.createElement('div');c.className='prop'+(p.error?' err':'');
    if(p.error){c.innerHTML='<b class="bad">Can\\'t do:</b> '+esc(p.name)+' — '+esc(p.error)}
    else{c.innerHTML='<div><b>Proposed:</b> '+esc(p.summary)+'</div>'+(p.details?'<p class="small">'+esc(p.details)+'</p>':'')+'<div class="row" style="margin-top:6px"><button class="primary">Confirm</button><button>Dismiss</button></div><div class="status"></div>';
     const [ok,no]=c.querySelectorAll('button'),st=c.querySelector('.status');ok.onclick=()=>act(p.name,p.args,ok,st);no.onclick=()=>c.remove()}
    wait.appendChild(c)});$('chat').scrollTop=1e9}
- catch(e){wait.innerHTML='<b class="bad">Error:</b> '+esc(e.message)}finally{$('chatSend').disabled=false}};
+ catch(e){wait.innerHTML='<b class="bad">Error:</b> '+esc(e.message);coreState('','standby')}finally{$('chatSend').disabled=false}};
+// ---- live telemetry: cheap /api/pulse poll; full data only when the server rebuilt it ----
+let version=null,lastSync=Date.now(),online=true;
+function uplink(ok){online=ok;const m=Math.round((Date.now()-lastSync)/6e4);
+ $('uplink').innerHTML='<i class="status-dot'+(ok?'':' off')+'"></i>'+(ok?'Uplink live · synced '+(m<1?'just now':m+'m ago'):'Uplink lost · retrying')}
+async function pulse(){try{const r=await fetch('/api/pulse',{cache:'no-store'});if(!r.ok||r.redirected)throw new Error('signed out');const j=await r.json();
+  if(!online)HUD.log('Uplink restored');
+  if(version!==null&&j.version!==version){const d=await (await fetch('/api/data',{cache:'no-store'})).json();
+   for(const k of Object.keys(D))delete D[k];Object.assign(D,d);HUD.rerender();lastSync=Date.now();
+   HUD.log('Data stream updated · FB '+fmt(sum(V,'fb'))+' · IG '+fmt(sum(V,'ig'))+' · YT '+fmt(sum(V,'yt')))}
+  if(version===null)lastSync=Date.now();version=j.version;uplink(true)}
+ catch(e){if(online)HUD.log('Uplink lost: '+e.message);uplink(false)}}
+pulse();setInterval(pulse,15000);setInterval(()=>uplink(online),30000);
+
+// ---- optional voice: speech in (browser recognition) and speech out (speechSynthesis) ----
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let viaVoice=false,rec=null;
+let voiceOn=false;try{voiceOn=localStorage.getItem('hud-voice')==='1'}catch(e){}
+function coreState(cls,label){$('core').className='core'+(cls?' '+cls:'');$('coreState').textContent='AI core · '+label}
+function setVoice(on){voiceOn=on;try{localStorage.setItem('hud-voice',on?'1':'0')}catch(e){}
+ $('voiceToggle').textContent='Voice replies: '+(on?'on':'off');$('voiceToggle').setAttribute('aria-pressed',String(on));$('voiceToggle').classList.toggle('on',on);if(!on&&window.speechSynthesis)speechSynthesis.cancel()}
+setVoice(voiceOn);if(!('speechSynthesis' in window))$('voiceToggle').hidden=true;
+$('voiceToggle').onclick=()=>setVoice(!voiceOn);
+function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+ return vs.find(v=>/Google UK English Male|Ryan|Guy|Daniel|Brian/i.test(v.name))||vs.find(v=>/Natural|Online/i.test(v.name))||vs.find(v=>/en-GB/i.test(v.lang))||vs[0]}
+function speak(text){if(!('speechSynthesis' in window)){coreState('','standby');return}speechSynthesis.cancel();
+ const clean=String(text).replace(/[*_`#|]/g,' ').replace(/\\s+/g,' ').trim(),u=new SpeechSynthesisUtterance(clean.length>700?clean.slice(0,700)+'… The full answer is on screen.':clean);
+ const v=pickVoice();if(v)u.voice=v;u.rate=1.03;u.pitch=.92;
+ u.onstart=()=>coreState('speaking','speaking');u.onend=u.onerror=()=>coreState('','standby');speechSynthesis.speak(u)}
+function listen(){if(!SR){document.getElementById('ai').scrollIntoView({behavior:'smooth'});$('chatInput').focus();return}
+ if(rec){rec.stop();return}if(window.speechSynthesis)speechSynthesis.cancel();
+ rec=new SR();rec.lang=navigator.language||'en-US';rec.interimResults=true;rec.maxAlternatives=1;
+ let finalText='';coreState('listening','listening');$('chatMic').classList.add('on');$('chatMic').textContent='■ Stop';
+ rec.onresult=e=>{let t='';for(const r of e.results){t+=r[0].transcript;if(r.isFinal)finalText=t}$('chatInput').value=t};
+ rec.onerror=e=>{HUD.log('Voice input: '+e.error)};
+ rec.onend=()=>{rec=null;$('chatMic').classList.remove('on');$('chatMic').textContent='🎙 Talk';
+  const t=(finalText||$('chatInput').value).trim();if(t&&navigator.onLine){$('chatInput').value=t;viaVoice=true;$('chatForm').requestSubmit()}else coreState('','standby')};
+ rec.start()}
+if(SR)$('chatMic').hidden=false;$('chatMic').onclick=listen;
+$('core').onclick=()=>{document.getElementById('ai').scrollIntoView({behavior:'smooth',block:'center'});listen()};
 function fillOpts(){$('cOpt').innerHTML=(D.options[$('cDim').value]||[]).map(o=>`<option>${esc(o)}</option>`).join('')}
 $('cDim').onchange=fillOpts;fillOpts();$('cHours').value=D.hours.join(', ');
 $('cApply').onclick=()=>{const [name,f]=$('cAct').value.split(':'),args={dimension:$('cDim').value,option:$('cOpt').value};if(f)args.factor=+f;
@@ -501,6 +539,10 @@ def make_handler(state: State, key: str, icons: dict):
                 return self.send(302, '', headers={'Location': '/login'})
             if path == '/':
                 return self.send(200, build_dashboard.render(state.get(), HEAD, PANELS, LIVE_JS))
+            if path == '/api/pulse':
+                return self.send(200, json.dumps({'version': state.built, 'built': (state.data or {}).get('built'),
+                                                  'refresh_seconds': REFRESH_SECONDS, 'research': state.research_status,
+                                                  'live_note': (state.data or {}).get('live_note')}), 'application/json')
             if path == '/api/data':
                 return self.send(200, json.dumps(state.get(), default=str), 'application/json')
             if path == '/api/research':
