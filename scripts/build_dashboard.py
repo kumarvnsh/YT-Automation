@@ -41,6 +41,23 @@ def read_json(path: Path, default=None):
         return default
 
 
+NICKNAMES = 'data/private/video-nicknames.json'  # {title: short name}; written by the dashboard server's local model
+_LEAD = re.compile(r"^(?:why|how|what|who|when|where|which|did|does|do|was|were|is|are|the|a|an|this|these|inside|meet)\b\s*", re.I)
+_SMALL = {'the', 'a', 'an', 'of', 'in', 'to', 'and', 'was', 'were', 'is', 'its', 'it', 'his', 'her', 'their', 'that', 'for', 'on',
+          'at', 'by', 'from', 'as', 'with', 'be', 'into', 'than', 'they', 'them', 'did', 'does', 'do', 'really', 'nobody', 'who',
+          'how', 'why', 'what', 'when', 'where', 'could', 'would', 'just', 'ever', 'still', 'had', 'has', 'have', 'so', 'but'}
+
+
+def fallback_nick(title: str) -> str:
+    """Short name until the local model has named the video: drop the question lead-in and filler words."""
+    rest = title.strip()
+    while (m := _LEAD.match(rest)):
+        rest = rest[m.end():]
+    words = [w.strip('?!.,:;"“”') for w in rest.split()]
+    keep = [w for w in words if w and w.lower() not in _SMALL]
+    return ' '.join(keep[:4]) or title[:32]
+
+
 def md_to_html(text: str) -> str:
     """Just enough Markdown for the weekly review: headings, bullets, bold, italics, tables."""
     out, in_list, table = [], 0, []
@@ -122,6 +139,7 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
     score(scored)
     scores = {v['title']: round(v['score'], 3) for v in scored}
 
+    nicknames = read_json(root / NICKNAMES, {}) or {}
     videos = []
     for e in dedupe(index):
         if e.get('channel', 'histold') != 'histold' or not e.get('published_at'):
@@ -140,6 +158,9 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
             'ig': num(ig.get('views')), 'ig_likes': num(ig.get('likes')), 'ig_skip': ig.get('skip_rate'),
             'yt': num(yt.get('views')), 'yt_likes': num(yt.get('likes')), 'yt_pct': yt.get('avg_view_pct'),
             'score': scores.get(e.get('title', '')),
+            'fb_id': str(e['facebook_id']) if e.get('facebook_id') else None,
+            'ig_id': str(e['instagram_id']) if e.get('instagram_id') else None,
+            'nick': nicknames.get(e.get('title', '')) or fallback_nick(e.get('title', '')),
         })
     videos.sort(key=lambda v: v['at'], reverse=True)
 
@@ -330,40 +351,72 @@ a{color:var(--accent)}code{color:var(--good)}.tag{background:rgba(0,229,255,.12)
 body .msg{border-radius:3px;border:1px solid var(--line)}body .me{background:rgba(0,229,255,.16);color:#fff}body .ai{background:rgba(0,0,0,.3);border-left:2px solid var(--accent)}
 .mobile-nav{background:rgba(3,10,20,.92);border-top:1px solid var(--line)}
 ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.25);border-radius:4px}::-webkit-scrollbar-track{background:transparent}
+/* pages */
+main>[data-page]:not(.on){display:none!important}
+.sidebar nav a{display:flex;gap:12px;align-items:center}.sidebar nav a i{font-style:normal;width:16px;text-align:center}
+.sidebar nav a:first-child:not(.active):not(:hover){background:transparent;color:var(--muted);border-left-color:transparent}
+.sidebar nav a.active{background:rgba(0,229,255,.1)!important;color:var(--accent)!important;border-left-color:var(--accent)!important;text-shadow:var(--glow)}
+.mobile-nav a.active{color:var(--accent)}.mobile-nav a{font-size:8px!important}
+#ai .chat{max-height:calc(100vh - 300px)!important;min-height:340px}
+.brain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:6px}.brain{padding:14px;border:1px solid var(--line);background:rgba(0,0,0,.25);border-radius:3px}
+.brain .track{height:6px;background:rgba(0,229,255,.08);border-radius:6px;margin-top:4px}.brain .fill{height:100%;border-radius:6px;background:var(--accent)}
+.via{margin-top:8px;font:10px ui-monospace,Consolas,monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+main>[data-page].on{animation:hudpage .35s ease-out}@keyframes hudpage{from{opacity:0;transform:translateY(6px)}}
+/* briefing */
+.brief{display:grid;gap:10px}.brief-hello{font-size:22px;font-weight:600;color:#fff}.brief-item{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;padding:10px 12px;background:rgba(0,0,0,.25);border-left:2px solid var(--accent);border-radius:2px}
+.brief-item.up{border-color:var(--good)}.brief-item.warn{border-color:var(--warn)}.brief-item.bad{border-color:var(--bad)}.brief-item .ic{font-size:15px;text-align:center;line-height:1.4}
+/* video chips + drawer */
+.vchip{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:1px 8px 1px 2px;margin:1px 2px;border:1px solid var(--line);border-radius:999px;background:rgba(0,229,255,.08);color:var(--accent);font-weight:600;font-size:.95em;line-height:1.5;vertical-align:baseline;max-width:100%}
+.vchip:hover,.vchip:focus-visible{border-color:var(--accent);box-shadow:var(--glow)}.vchip img{width:28px;height:18px;object-fit:cover;border-radius:999px}.vchip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drawer{position:fixed;inset:0;z-index:50;background:rgba(0,5,12,.72);display:grid;place-items:center;padding:16px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.drawer[hidden]{display:none}
+.drawer-card{position:relative;width:min(560px,100%);max-height:90vh;overflow:auto;background:#06172a;border:1px solid var(--accent);box-shadow:0 0 30px rgba(0,229,255,.25);border-radius:4px;padding:20px}
+.drawer-x{position:absolute;top:10px;right:10px;min-height:32px!important;padding:4px 10px!important}.drawer-card img.thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);border-radius:3px;background:#000}
+.drawer-card h3{margin:12px 0 4px;color:#fff;font-size:19px;line-height:1.3}.dstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.dstats div{background:rgba(0,0,0,.3);padding:10px;border:1px solid var(--line);border-radius:3px}.dstats b{display:block;font:700 18px "Orbitron",sans-serif;color:#fff}.dstats span{font-size:11px;color:var(--muted)}
+/* rich AI answers */
+.chat .msg.ai{white-space:normal;max-width:96%!important}.msg.ai p{margin:4px 0}.msg.ai ul,.msg.ai ol{margin:4px 0;padding-left:20px}.msg.ai strong{color:#fff}.msg.ai table{margin:6px 0;font-size:12px}.msg.ai h4,.msg.ai h5{margin:8px 0 2px;color:var(--accent)}
+.steps{list-style:none;margin:0;padding:0;font:12px ui-monospace,Consolas,monospace;color:var(--muted)}.steps li::before{content:"▸ ";color:var(--accent)}.steps li.done{color:var(--good)}.steps li.done::before{content:"✓ ";color:var(--good)}
+.att{margin-top:10px;padding:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);border-radius:3px}.att h5{margin:0 0 6px;font:600 10px "Orbitron",sans-serif;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase}
+.vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}.vcard{all:unset;cursor:pointer;display:grid;gap:4px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:rgba(0,0,0,.3)}.vcard:hover,.vcard:focus-visible{border-color:var(--accent)}
+.vcard img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}.vcard b{padding:0 8px;font-size:12px;color:#fff;line-height:1.3}.vcard span{padding:0 8px 8px;font-size:11px;color:var(--muted)}
+.followups{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.followups button{min-height:32px!important;font-size:10px!important;padding:4px 10px!important;text-transform:none!important;letter-spacing:.3px!important;font-family:"Rajdhani",sans-serif!important;font-size:13px!important}
+.suggest{display:grid;gap:8px}.suggest button{text-align:left;text-transform:none;font-family:"Rajdhani",sans-serif;font-size:14px;letter-spacing:.2px;min-height:44px}
 body .core{background:none!important;border:0!important;box-shadow:none!important;padding:0;min-height:0;border-radius:50%!important}
 header #built{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media(max-width:1099px){.intro{grid-template-columns:minmax(0,1fr) auto}.feed{display:none}.hud-clock,.view-nav a{display:none!important}}
 @media(max-width:699px){.intro{grid-template-columns:minmax(0,1fr) auto;gap:10px}.intro h2{font-size:24px!important}.core svg{width:84px;height:84px}.hud-clock,#uplink{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style></head><body>
-<aside class="sidebar"><div class="brand"><span class="brandmark">H</span>Histold</div><nav aria-label="Main navigation"><a href="#overview">◈ &nbsp; Overview</a><a href="#insights">✦ &nbsp; Content insights</a><a href="#videos">▤ &nbsp; Videos</a><a href="#ai">◎ &nbsp; AI assistant</a><a href="#controls">⚙ &nbsp; Controls</a><a href="#strategy-section">↗ &nbsp; Topic strategy</a><a href="#money-section">◉ &nbsp; Monetization</a></nav><footer><span class="status-dot"></span>Local AI workspace<br>Facebook · Instagram · YouTube</footer></aside>
-<header><div><h1>Channel overview</h1><div class="muted small" id="built"></div></div><div class="view-nav"><span id="uplink" class="hud-mono"><i class="status-dot"></i>Static snapshot</span><span class="hud-clock hud-mono" id="hudClock"></span><a href="#ai" class="small">Ask AI ↗</a><button id="topRefresh" aria-label="Refresh dashboard" title="Refresh dashboard" type="button">↻ <span>Refresh</span></button></div></header>
-<main id="overview">
-<div class="intro"><div><div class="eyebrow">Histold analytics</div><h2>Your channel, in focus.</h2><p id="cadenceSummary">Performance, content decisions and your next three posts.</p></div>
+<aside class="sidebar"><div class="brand"><span class="brandmark">H</span>Histold</div><nav aria-label="Main navigation"><a href="#/overview" data-nav="overview"><i>◈</i>Overview</a><a href="#/insights" data-nav="insights"><i>✦</i>Insights</a><a href="#/videos" data-nav="videos"><i>▤</i>Videos</a><a href="#/ai" data-nav="ai"><i>◎</i>AI assistant</a><a href="#/strategy" data-nav="strategy"><i>↗</i>Strategy</a><a href="#/earnings" data-nav="earnings"><i>◉</i>Earnings</a><a href="#/settings" data-nav="settings"><i>⚙</i>Settings</a></nav><footer><span class="status-dot"></span>Local AI workspace<br>Facebook · Instagram · YouTube</footer></aside>
+<header><div><h1 id="pageTitle">Mission overview</h1><div class="muted small" id="built"></div></div><div class="view-nav"><span id="uplink" class="hud-mono"><i class="status-dot"></i>Static snapshot</span><span class="hud-clock hud-mono" id="hudClock"></span><a href="#/ai" class="small">Ask AI ↗</a><button id="topRefresh" aria-label="Refresh dashboard" title="Refresh dashboard" type="button">↻ <span>Refresh</span></button></div></header>
+<main id="main">
+<div class="intro" data-page="overview"><div><div class="eyebrow">Histold analytics</div><h2>Your channel, in focus.</h2><p id="cadenceSummary">Performance, content decisions and your next three posts.</p></div>
 <ol class="feed" id="feed" aria-live="polite" aria-label="Live telemetry"></ol>
 <button class="core" id="core" type="button" aria-label="Talk to Histold AI"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><radialGradient id="hubg"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#9ff6ff"/><stop offset=".7" stop-color="#00e5ff" stop-opacity=".55"/><stop offset="1" stop-color="#00e5ff" stop-opacity="0"/></radialGradient></defs>
 <circle class="r1" cx="60" cy="60" r="56" fill="none" stroke-dasharray="3 7"/><circle class="r2" cx="60" cy="60" r="45" fill="none" stroke-dasharray="70 18 12 18"/>
 <circle class="r3" cx="60" cy="60" r="34" fill="none" stroke-dasharray="2 5"/><circle class="hub" cx="60" cy="60" r="24" fill="url(#hubg)"/></svg><span id="coreState" class="hud-mono">AI core · standby</span></button></div>
-<div class="kpis" id="kpis"></div>
-<section class="panel" id="insights"><div class="section-row"><h2>What’s working</h2><span id="insightsStamp" class="small muted"></span></div><p class="small muted" id="insightsScope"></p><div class="insight-grid"><div><h4 class="ok">Keep exploring</h4><div id="workingFindings" class="finding-list"></div></div><div><h4 class="warn">Needs attention</h4><div id="weakFindings" class="finding-list"></div></div></div><div id="aiTakeaway"></div></section>
-<section class="panel half"><div class="section-row"><h2>Content comparison</h2><div class="segmented" aria-label="Compare content"><button data-dim="region" aria-pressed="true">Regions</button><button data-dim="length" aria-pressed="false">Length</button><button data-dim="series" aria-pressed="false">Series</button></div></div><p class="small muted">Median Facebook views per video · minimum 6 videos for a finding</p><div id="contentCompare"></div></section>
-<section class="panel half"><h2>Videos to learn from</h2><div class="segmented" style="margin-bottom:14px"><button id="bestPicks" aria-pressed="true">Top performers</button><button id="weakPicks" aria-pressed="false">Lower reach</button></div><div id="videoPicks" class="video-picks"></div></section>
-__PANELS__
-<section class="panel twothird"><h2>Views by publish day (last 28 days)</h2>
+<div class="kpis" id="kpis" data-page="overview"></div>
+<section class="panel twothird" id="briefingPanel" data-page="overview"><div class="section-row"><h2>AI briefing</h2><button id="readBriefing" type="button">▶ Read aloud</button></div><div id="briefing"></div></section>
+<section class="panel third" data-page="overview"><h2>Publish schedule</h2><div id="schedule"></div></section>
+<section class="panel" data-page="overview"><h2>Views by publish day (last 28 days)</h2>
 <p class="small muted">Peak cumulative views on videos published that day, rather than views earned that day.</p>
 <div class="legend"><span><i class="sw" style="background:var(--fb)"></i>Facebook</span><span><i class="sw" style="background:var(--ig)"></i>Instagram</span><span><i class="sw" style="background:var(--yt)"></i>YouTube</span></div>
 <div id="daily"></div></section>
-<section class="panel third"><h2>Publish schedule</h2><div id="schedule"></div></section>
-<section class="panel"><h2>Reach by publish hour</h2><p class="muted small">Facebook views (double weight) + total views, as a 0-1 percentile score per hour the video was triggered. Filled bars are current publish hours; faded hours are outside the US/Europe window.</p><div id="hours"></div></section>
-<section class="panel" id="videos"><h2>Video library</h2><div class="toolbar"><input id="q" aria-label="Search video titles" placeholder="Search videos…" size="28"><select id="fSeries" aria-label="Filter series"></select><select id="fRegion" aria-label="Filter region"></select><select id="videoSort" aria-label="Sort videos"><option value="at">Latest first</option><option value="fb">Facebook views</option><option value="score">Overall score</option></select></div><div id="videoCount" class="table-caption"></div>
+<section class="panel" id="insights" data-page="insights"><div class="section-row"><h2>What’s working</h2><span id="insightsStamp" class="small muted"></span></div><p class="small muted" id="insightsScope"></p><div class="insight-grid"><div><h4 class="ok">Keep exploring</h4><div id="workingFindings" class="finding-list"></div></div><div><h4 class="warn">Needs attention</h4><div id="weakFindings" class="finding-list"></div></div></div><div id="aiTakeaway"></div></section>
+<section class="panel half" data-page="insights"><div class="section-row"><h2>Content comparison</h2><div class="segmented" aria-label="Compare content"><button data-dim="region" aria-pressed="true">Regions</button><button data-dim="length" aria-pressed="false">Length</button><button data-dim="series" aria-pressed="false">Series</button></div></div><p class="small muted">Median Facebook views per video · minimum 6 videos for a finding</p><div id="contentCompare"></div></section>
+<section class="panel half" data-page="insights"><h2>Videos to learn from</h2><div class="segmented" style="margin-bottom:14px"><button id="bestPicks" aria-pressed="true">Top performers</button><button id="weakPicks" aria-pressed="false">Lower reach</button></div><div id="videoPicks" class="video-picks"></div></section>
+<section class="panel" data-page="insights"><h2>Reach by publish hour</h2><p class="muted small">Facebook views (double weight) + total views, as a 0-1 percentile score per hour the video was triggered. Filled bars are current publish hours; faded hours are outside the US/Europe window.</p><div id="hours"></div></section>
+<p class="small muted" data-page="insights" style="grid-column:1/-1">Topic weights and manual pauses live on the <a href="#/strategy">Strategy</a> page.</p>
+<section class="panel" id="videos" data-page="videos"><h2>Video library</h2><div class="toolbar"><input id="q" aria-label="Search video titles" placeholder="Search videos…" size="28"><select id="fSeries" aria-label="Filter series"></select><select id="fRegion" aria-label="Filter region"></select><select id="videoSort" aria-label="Sort videos"><option value="at">Latest first</option><option value="fb">Facebook views</option><option value="score">Overall score</option></select></div><div id="videoCount" class="table-caption"></div>
 <div class="scroll desktop-videos" style="max-height:620px"><table id="vt"></table></div><div class="mobile-videos" id="videoCards"></div><button id="moreVideos" class="mobile-videos" style="width:100%;margin-top:12px">Show more videos</button></section>
-<section class="panel half" id="strategy-section"><h2>Topic strategy</h2><div id="strategy"></div></section>
-<section class="panel half" id="money-section"><h2>Monetization</h2><div id="money"></div></section>
-<section class="panel half review"><details><summary id="reviewTitle" style="font-weight:650;cursor:pointer">Weekly notes archive</summary><p class="small muted">Earlier model-written narrative. Use the measured content findings above for current decisions.</p><div id="review"></div></details></section>
-<section class="panel half"><h2>Data gaps</h2><div id="gaps"></div></section>
-<details class="panel health-details"><summary>System health &amp; data freshness</summary><div class="pills" id="pills"></div></details>
+__PANELS__
+<section class="panel half" id="strategy-section" data-page="strategy"><h2>Topic strategy</h2><div id="strategy"></div></section>
+<section class="panel half review" data-page="strategy"><details><summary id="reviewTitle" style="font-weight:650;cursor:pointer">Weekly notes archive</summary><p class="small muted">Earlier model-written narrative. Use the measured content findings above for current decisions.</p><div id="review"></div></details></section>
+<section class="panel" id="money-section" data-page="earnings"><h2>Monetization</h2><div id="money"></div></section>
+<section class="panel half" data-page="settings"><h2>Data gaps</h2><div id="gaps"></div></section>
+<section class="panel half" id="healthPanel" data-page="settings"><h2>System health &amp; data freshness</h2><div class="pills" id="pills"></div></section>
 </main>
-<nav class="mobile-nav" aria-label="Mobile navigation"><a href="#overview"><span>◈</span>Overview</a><a href="#videos"><span>▤</span>Videos</a><a href="#ai"><span>◎</span>Ask AI</a><a href="#controls"><span>⚙</span>Controls</a></nav>
+<div class="drawer" id="drawer" hidden><div class="drawer-card" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><button class="drawer-x" id="drawerClose" type="button" aria-label="Close">✕</button><div id="drawerBody"></div></div></div>
+<nav class="mobile-nav" aria-label="Mobile navigation"><a href="#/overview" data-nav="overview"><span>◈</span>Overview</a><a href="#/insights" data-nav="insights"><span>✦</span>Insights</a><a href="#/videos" data-nav="videos"><span>▤</span>Videos</a><a href="#/ai" data-nav="ai"><span>◎</span>Ask AI</a><a href="#/earnings" data-nav="earnings"><span>◉</span>Earnings</a><a href="#/settings" data-nav="settings"><span>⚙</span>Settings</a></nav>
 <script id="data" type="application/json">__DATA__</script>
 <script>
 const D=JSON.parse(document.getElementById('data').textContent);
@@ -379,7 +432,63 @@ $('topRefresh').onclick=()=>location.reload();
 const clock=()=>{const d=new Date();$('hudClock').innerHTML=d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})+'<small>UTC '+d.toISOString().slice(11,19)+'</small>'};clock();setInterval(clock,1000);
 const HUD={log(msg){const li=document.createElement('li');li.innerHTML='<b>'+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})+'</b> '+esc(msg);
  $('feed').prepend(li);while($('feed').children.length>6)$('feed').lastChild.remove()},renders:[],rerender(){V=D.videos;HUD.renders.forEach(f=>{try{f()}catch(e){console.error(e)}})}};
-window.HUD=HUD;$('core').onclick=()=>{location.hash='#ai'};
+window.HUD=HUD;$('core').onclick=()=>{location.hash='#/ai'};
+
+// ---- pages (hash router) ----
+const PAGES={overview:'Mission overview',insights:'Content intelligence',videos:'Video library',ai:'AI assistant',strategy:'Topic strategy',earnings:'Earnings',settings:'Settings & controls'};
+const LEGACY={controls:'settings','strategy-section':'strategy','money-section':'earnings',main:'overview'};
+function route(){let p=(location.hash.match(/^#\/?([\w-]+)/)||[])[1]||'overview';p=LEGACY[p]||p;
+ if(!PAGES[p]||!document.querySelector(`main>[data-page="${p}"]`))p='overview';
+ document.querySelectorAll('main>[data-page]').forEach(s=>s.classList.toggle('on',s.dataset.page===p));
+ document.querySelectorAll('[data-nav]').forEach(a=>{a.classList.toggle('active',a.dataset.nav===p);a.hidden=!document.querySelector(`main>[data-page="${a.dataset.nav}"]`)});
+ $('pageTitle').textContent=PAGES[p];document.title=PAGES[p]+' · Histold';HUD.page=p;scrollTo(0,0);dispatchEvent(new Event('hud-page'))}
+addEventListener('hashchange',route);
+
+// ---- videos: nicknames, chips, detail drawer ----
+const nick=v=>v?.nick||v?.title||'video';
+const thumb=v=>v?.yt_id?`https://i.ytimg.com/vi/${encodeURIComponent(v.yt_id)}/mqdefault.jpg`:'';
+const vidKey=v=>v.yt_id||v.fb_id||v.ig_id||v.title;
+HUD.findVideo=k=>D.videos.find(v=>[v.yt_id,v.fb_id,v.ig_id,v.title].some(x=>x!=null&&String(x)===String(k)));
+HUD.chip=v=>`<button type="button" class="vchip" data-video="${esc(vidKey(v))}" title="${esc(v.title)}">${thumb(v)?`<img src="${thumb(v)}" alt="" loading="lazy">`:''}<span>${esc(nick(v))}</span></button>`;
+HUD.openVideo=k=>{const v=HUD.findVideo(k);if(!v)return;const m=(n,l)=>`<div><b>${fmt(n)}</b><span>${l}</span></div>`;
+ $('drawerBody').innerHTML=`${thumb(v)?`<img class="thumb" src="${thumb(v).replace('mqdefault','hqdefault')}" alt="">`:''}<div class="eyebrow" style="margin-top:12px">${esc(nick(v))}</div><h3 id="drawerTitle">${esc(v.title)}</h3>
+ <div class="small muted">${local(v.at)} · ${esc(pretty(v.series))} · ${esc(pretty(v.region))} · ${esc(v.length)}</div>
+ <div class="dstats">${m(v.fb,'Facebook views')}${m(v.ig,'Instagram views')}${m(v.yt,'YouTube views')}${m(v.fb_likes,'FB likes')}${m(v.ig_likes,'IG likes')}${m(v.yt_likes,'YT likes')}</div>
+ <p class="small">${v.score!=null?`Overall score <b>${v.score.toFixed(2)}</b> (percentile vs recent videos)`:'Not scored yet (under 48 hours old or not an editorial Short).'}${v.yt_pct!=null?` · YouTube viewers watched ${Math.round(v.yt_pct)}% on average`:''}</p>
+ <div class="row">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">Open on YouTube ↗</a>`:''}${v.fb_id?` · <a href="https://www.facebook.com/${esc(v.fb_id)}" target="_blank" rel="noopener">Facebook ↗</a>`:''}${HUD.ask?` · <a href="#/ai" id="askAbout">Ask AI about this video</a>`:''}</div>`;
+ $('drawer').hidden=false;$('drawerClose').focus();const a=$('askAbout');if(a)a.onclick=()=>{$('drawer').hidden=true;HUD.ask(`Why did "${nick(v)}" perform the way it did, and what should I learn from it?`)}};
+$('drawerClose').onclick=()=>{$('drawer').hidden=true};$('drawer').onclick=e=>{if(e.target===$('drawer'))$('drawer').hidden=true};
+addEventListener('keydown',e=>{if(e.key==='Escape')$('drawer').hidden=true});
+document.addEventListener('click',e=>{const c=e.target.closest('[data-video]');if(c){e.preventDefault();HUD.openVideo(c.dataset.video)}});
+// Replace raw IDs, full titles and nicknames in text with video chips. Input is already-escaped HTML text.
+HUD.linkVideos=html=>{const keys=[];D.videos.forEach(v=>{[v.title,v.nick,v.yt_id,v.fb_id,v.ig_id].forEach(x=>{if(x&&String(x).length>=5)keys.push([esc(String(x)),v])})});
+ keys.sort((a,b)=>b[0].length-a[0].length);const slots=[];
+ for(const [k,v] of keys){if(!html.includes(k))continue;html=html.split(k).join('\u0001'+slots.length+'\u0001');slots.push(v)}
+ return html.replace(/(?:&quot;|[“'])?\u0001(\d+)\u0001(?:&quot;|[”'])?/g,(_,i)=>HUD.chip(slots[+i]))};
+
+// ---- AI briefing: what changed since the last visit (computed locally, no model call) ----
+HUD.address=()=>{let a='sir',n='';try{a=localStorage.getItem('hud-address')||'sir';n=localStorage.getItem('hud-name')||''}catch(e){}return a==='sir'?', sir':a==='maam'?', ma’am':a==='boss'?', boss':a==='name'&&n?', '+n:''};
+HUD.say=t=>{if('speechSynthesis' in window){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}};
+let briefText='';
+function renderBriefing(){const now=Date.now(),h=new Date().getHours(),hello=(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+HUD.address()+'.';
+ const tot={fb:sum(V,'fb'),ig:sum(V,'ig'),yt:sum(V,'yt'),n:V.length};let last=null;try{last=JSON.parse(localStorage.getItem('hud-last')||'null')}catch(e){}
+ const items=[],speech=[hello];const add=(cls,ic,html,say)=>{items.push(`<div class="brief-item ${cls}"><span class="ic">${ic}</span><div>${html}</div></div>`);speech.push(say)};
+ if(last&&last.t&&now-last.t>5*60e3){const d=k=>tot[k]-(last[k]||0),gain=d('fb')+d('ig')+d('yt');
+  add(gain>0?'up':'', gain>0?'▲':'•',`Since your last visit <b>${ago(new Date(last.t).toISOString())} ago</b>: <b>${gain>=0?'+':''}${fmt(gain)}</b> views (FB ${d('fb')>=0?'+':''}${fmt(d('fb'))}, IG ${d('ig')>=0?'+':''}${fmt(d('ig'))}, YT ${d('yt')>=0?'+':''}${fmt(d('yt'))})${d('n')>0?` and <b>${d('n')}</b> new video${d('n')>1?'s':''}`:''}.`,
+   `Since your last visit, ${gain>=0?'up':'down'} ${Math.abs(gain).toLocaleString()} views across platforms.`)}
+ const week=V.filter(v=>now-new Date(v.at)<7*864e5&&v.fb!=null).sort((a,b)=>b.fb-a.fb);
+ if(week[0])add('up','★',`Top video this week: ${HUD.chip(week[0])} with <b>${fmt(week[0].fb)}</b> Facebook views.`,`The standout this week is ${nick(week[0])}, with ${week[0].fb.toLocaleString()} Facebook views.`);
+ const W=(E.working||[])[0],N=(E.not_working||[])[0];
+ if(W)add('up','✦',`<b>${esc(pretty(W.option))}</b> ${esc(W.dimension)} is running <b>${W.fb_vs_baseline_pct>0?'+':''}${W.fb_vs_baseline_pct}%</b> above your channel median.`,`${pretty(W.option)} is running ${W.fb_vs_baseline_pct} percent above your median.`);
+ if(N)add('warn','▼',`<b>${esc(pretty(N.option))}</b> ${esc(N.dimension)} is <b>${N.fb_vs_baseline_pct}%</b> below median; worth a lighter touch.`,`${pretty(N.option)} is lagging, ${Math.abs(N.fb_vs_baseline_pct)} percent below median.`);
+ const stale=Object.entries(D.freshness).filter(([k,v])=>!v||(now-new Date(v))/36e5>limits[k]*4).map(([k])=>k);
+ if(stale.length)add('bad','!',`Stale data: ${stale.map(esc).join(', ')}. Numbers may lag.`,`One caveat: ${stale.join(' and ')} ${stale.length>1?'are':'is'} out of date.`);
+ if(D.health.problems.length)add('bad','!',`<b>${D.health.problems.length}</b> laptop errors in the last 24 hours. See <a href="#/settings">Settings → System health</a>.`,`There were ${D.health.problems.length} errors on the laptop runner today.`);
+ const nx=K0.next;if(nx)add('','◷',`Next publish <b>${local(nx.toISOString(),{weekday:'short',hour:'numeric',minute:'2-digit'})}</b> · ${D.posts_per_day} posts a day.`,`Next video goes out at ${local(nx.toISOString(),{hour:'numeric',minute:'2-digit'})}.`);
+ if(!stale.length&&!D.health.problems.length)speech.push('All systems nominal.');
+ $('briefing').innerHTML=`<div class="brief"><div class="brief-hello">${esc(hello)}</div>${items.join('')}</div>`;briefText=speech.join(' ')}
+$('readBriefing').onclick=()=>HUD.say(briefText);
+addEventListener('beforeunload',()=>{try{localStorage.setItem('hud-last',JSON.stringify({t:Date.now(),fb:sum(V,'fb'),ig:sum(V,'ig'),yt:sum(V,'yt'),n:V.length}))}catch(e){}});
 
 // health pills
 const limits={'YouTube export':3,'Facebook/Instagram export':3,'Topic strategy':6,'Growth plan':30,'Laptop dispatcher':2};
@@ -404,7 +513,7 @@ function comparison(dim){curDim=dim;const groups=(E.groups||[]).filter(g=>g.dime
  $('contentCompare').innerHTML=groups.map(g=>`<div class="compare-row"><div>${esc(pretty(g.option))}<div class="sample">${g.fb_n} measured${g.enough_data?'':' · early data'}</div></div><div class="track"><div class="fill" style="width:${(g.fb_median||0)/max*100}%;opacity:${g.enough_data?1:.3}"></div></div><div style="text-align:right"><b>${fmt(g.fb_median)}</b><div class="sample">median views</div></div></div>`).join('')||'<p class="empty">No comparison data yet.</p>';
  document.querySelectorAll('[data-dim]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dim===dim)))}
 document.querySelectorAll('[data-dim]').forEach(b=>b.onclick=()=>comparison(b.dataset.dim));comparison('region');
-function picks(weak=false){curWeak=weak;const rows=(weak?E.weak_videos:E.best_videos)||[];$('videoPicks').innerHTML=rows.slice(0,3).map((v,i)=>`<article class="pick"><span class="rank">${i+1}</span><div><div class="pick-title">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">${esc(v.title)}</a>`:esc(v.title)}</div><div class="small muted"><b>${fmt(v.fb)} Facebook views</b> · ${esc(pretty(v.region))} · ${esc(v.length)}</div></div></article>`).join('')+(weak?'<p class="small muted">Zero views may reflect distribution or reporting; check before judging content quality.</p>':'');$('bestPicks').setAttribute('aria-pressed',String(!weak));$('weakPicks').setAttribute('aria-pressed',String(weak))}
+function picks(weak=false){curWeak=weak;const rows=(weak?E.weak_videos:E.best_videos)||[];$('videoPicks').innerHTML=rows.slice(0,3).map(r=>HUD.findVideo(r.yt_id)||HUD.findVideo(r.title)||r).map((v,i)=>`<article class="pick"><span class="rank">${i+1}</span><div><div class="pick-title"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></div><div class="small muted"><b>${fmt(v.fb)} Facebook views</b> · ${esc(pretty(v.region))} · ${esc(v.length)}</div></div></article>`).join('')+(weak?'<p class="small muted">Zero views may reflect distribution or reporting; check before judging content quality.</p>':'');$('bestPicks').setAttribute('aria-pressed',String(!weak));$('weakPicks').setAttribute('aria-pressed',String(weak))}
 $('bestPicks').onclick=()=>picks();$('weakPicks').onclick=()=>picks(true);picks();
 HUD.renders.push(renderInsights,()=>comparison(curDim),()=>picks(curWeak));
 
@@ -433,6 +542,7 @@ HUD.log('Systems online · '+V.length+' videos in 28-day window');
 HUD.log('FB '+fmt(K0.fb)+' · IG '+fmt(K0.ig)+' · YT '+fmt(K0.yt)+' views');
 if(K0.next)HUD.log('Next publish '+local(K0.next.toISOString(),{weekday:'short',hour:'numeric',minute:'2-digit'}));
 HUD.log(D.health.problems.length?D.health.problems.length+' laptop errors in 24h':'Laptop runner: no errors in 24h');
+renderBriefing();HUD.renders.push(renderBriefing);
 
 // daily stacked bars
 function renderDaily(){const now=Date.now(),days=[];for(let i=27;i>=0;i--){const d=new Date(now-i*864e5);days.push(d.toISOString().slice(0,10))}
@@ -474,12 +584,12 @@ let sortK='at',sortD=-1,videoLimit=12;
 const opts=(id,k,label)=>{$(id).innerHTML=`<option value="">${label}</option>`+[...new Set(V.map(v=>v[k]).filter(Boolean))].sort().map(x=>`<option>${esc(x)}</option>`).join('')};
 opts('fSeries','series','All series');opts('fRegion','region','All regions');
 function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('fRegion').value;
- const rows=V.filter(v=>(!q||v.title.toLowerCase().includes(q))&&(!fs||v.series==fs)&&(!fr||v.region==fr))
+ const rows=V.filter(v=>(!q||(v.title+' '+(v.nick||'')).toLowerCase().includes(q))&&(!fs||v.series==fs)&&(!fr||v.region==fr))
   .sort((a,b)=>{const x=a[sortK],y=b[sortK];return x==null?1:y==null?-1:(x>y?1:x<y?-1:0)*sortD});
  $('vt').innerHTML='<thead><tr>'+cols.map(([k,l,c])=>`<th class="${c||''}" data-k="${k}">${l}${sortK==k?(sortD>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>'+
- rows.map(v=>`<tr><td>${local(v.at,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</td><td class="t">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">${esc(v.title)}</a>`:esc(v.title)}</td><td>${esc(v.series)}</td><td>${esc(v.region)}</td><td>${esc(v.length)}</td><td class="n">${fmt(v.fb)}</td><td class="n">${fmt(v.ig)}</td><td class="n">${fmt(v.yt)}</td><td class="n">${v.yt_pct==null?'–':Math.round(v.yt_pct)+'%'}</td><td class="n">${v.score==null?'<span class="muted" title="under 48h old or not an editorial Short">–</span>':v.score.toFixed(2)}</td></tr>`).join('')+'</tbody>';
+ rows.map(v=>`<tr><td>${local(v.at,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</td><td class="t"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></td><td>${esc(v.series)}</td><td>${esc(v.region)}</td><td>${esc(v.length)}</td><td class="n">${fmt(v.fb)}</td><td class="n">${fmt(v.ig)}</td><td class="n">${fmt(v.yt)}</td><td class="n">${v.yt_pct==null?'–':Math.round(v.yt_pct)+'%'}</td><td class="n">${v.score==null?'<span class="muted" title="under 48h old or not an editorial Short">–</span>':v.score.toFixed(2)}</td></tr>`).join('')+'</tbody>';
  $('videoCount').textContent=rows.length+' matching videos · views include the highest exported snapshot';
- $('videoCards').innerHTML=rows.slice(0,videoLimit).map(v=>`<article class="video-card"><div class="meta"><span>${local(v.at,{month:'short',day:'numeric'})}</span><span>${esc(pretty(v.region))} · ${esc(v.length)}</span></div><div class="title">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">${esc(v.title)}</a>`:esc(v.title)}</div><div class="video-metrics"><div><b>${fmt(v.fb)}</b><span>Facebook</span></div><div><b>${fmt(v.ig)}</b><span>Instagram</span></div><div><b>${fmt(v.yt)}</b><span>YouTube</span></div></div><div class="small muted" style="margin-top:9px">${esc(pretty(v.series))}${v.yt_pct!=null?' · YT viewed '+Math.round(v.yt_pct)+'%':''}</div></article>`).join('')||'<p class="empty">No videos match these filters.</p>';
+ $('videoCards').innerHTML=rows.slice(0,videoLimit).map(v=>`<article class="video-card"><div class="meta"><span>${local(v.at,{month:'short',day:'numeric'})}</span><span>${esc(pretty(v.region))} · ${esc(v.length)}</span></div><div class="title"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></div><div class="video-metrics"><div><b>${fmt(v.fb)}</b><span>Facebook</span></div><div><b>${fmt(v.ig)}</b><span>Instagram</span></div><div><b>${fmt(v.yt)}</b><span>YouTube</span></div></div><div class="small muted" style="margin-top:9px">${esc(pretty(v.series))}${v.yt_pct!=null?' · YT viewed '+Math.round(v.yt_pct)+'%':''}</div></article>`).join('')||'<p class="empty">No videos match these filters.</p>';
  $('moreVideos').hidden=rows.length<=videoLimit;
  document.querySelectorAll('#vt th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortD=sortK==k?-sortD:-1;sortK=k;table()})}
 ['q','fSeries','fRegion'].forEach(id=>$(id).oninput=()=>{videoLimit=12;table()});$('videoSort').onchange=()=>{sortK=$('videoSort').value;sortD=-1;table()};$('moreVideos').onclick=()=>{videoLimit+=12;table()};table();HUD.renders.push(table);
@@ -513,7 +623,8 @@ function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('
 })();
 if(D.review){$('reviewTitle').textContent='Weekly notes archive · '+D.review.name;$('review').innerHTML=D.review.html}else $('review').innerHTML='<p class="empty">The first review is written on the laptop\'s next weekly run.</p>';
 (()=>{const g=Object.entries(D.gaps);$('gaps').innerHTML=g.length?'<p class="small muted">Metrics the platform APIs did not return for at least one recent video:</p>'+g.map(([p,m])=>`<h4>${esc(p)}</h4><ul class="small">`+Object.entries(m).map(([k,why])=>`<li><code>${esc(k)}</code> — ${esc(why)}</li>`).join('')+'</ul>').join(''):'<p class="ok">No missing-metric flags in the available exports. This does not establish complete platform coverage.</p>'})();
-</script>__LIVE_JS__</body></html>
+route();
+</script>__LIVE_JS__<script>route()</script></body></html>
 """
 
 

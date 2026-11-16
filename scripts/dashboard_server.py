@@ -39,6 +39,8 @@ from src import control  # noqa: E402
 from src.config import load_config  # noqa: E402
 from src.growth import PLAN, propose, problem, settings  # noqa: E402
 from src.strategy import OVERRIDES, apply_overrides  # noqa: E402
+from src.assistant_voice import LocalVoice  # noqa: E402
+from src.ai_providers import Providers  # noqa: E402
 from weekly_review import ensure_server, ollama  # noqa: E402
 
 KEY_FILE = ROOT.parent / 'dashboard_key.txt'
@@ -46,6 +48,10 @@ LOG = ROOT.parent / 'strategist.log'
 REFRESH_SECONDS = 300  # server-side re-read of exports/plan; the page polls /api/pulse every 15 s
 MODEL = os.environ.get('REVIEW_MODEL', 'qwen3:8b')
 OLLAMA = os.environ.get('OLLAMA_HOST_URL', 'http://127.0.0.1:11434')
+VOICE = LocalVoice()
+PROVIDERS = Providers(None)  # local-only until main() points it at the settings file
+# Only messages that look like a change request go through the (local) action extractor.
+CHANGE_RE = re.compile(r'\b(pause|boost|reset|pin|unpin|avoid|stop|focus|more|less|fewer|prioriti[sz]e|change|set|switch|move|schedule|resume|refresh|disable|enable|let the agent|no more|increase|decrease|drop)\b', re.I)
 
 
 def server_config():
@@ -65,6 +71,7 @@ class State:
         self.lock = threading.Lock()
         self.refresh_lock = threading.Lock()
         self.chat_lock = threading.Lock()
+        self.chat_waiting = 0  # chats queued for the lock; background jobs back off while > 0
         self.data: dict | None = None
         self.built = 0.0
         self.raw_data: dict | None = None
@@ -145,12 +152,60 @@ class State:
         with self.lock:
             return copy.deepcopy(self.data)
 
+    def name_videos(self) -> int:
+        """Give each video a 2-4 word conversational nickname with the local model (cached; skipped while the AI is busy)."""
+        path = DATA_ROOT / build_dashboard.NICKNAMES
+        known = build_dashboard.read_json(path, {}) or {}
+        titles = [v['title'] for v in (self.raw_data or {}).get('videos', []) if v.get('title') and v['title'] not in known]
+        if not titles:
+            return 0
+        added = 0
+        ensure_server(OLLAMA)
+        for i in range(0, len(titles), 10):
+            # Background work yields to the owner: one small batch per lock hold, and stop if a chat is waiting.
+            if self.chat_waiting or not self.chat_lock.acquire(blocking=False):
+                break
+            try:
+                batch = titles[i:i + 10]
+                msg = ollama(OLLAMA, '/api/chat', {
+                    'model': MODEL, 'stream': False, 'think': False, 'format': 'json',
+                    'messages': [{'role': 'system', 'content': NICK_PROMPT},
+                                 {'role': 'user', 'content': json.dumps(batch, ensure_ascii=False)}],
+                    'options': {'temperature': 0.2, 'num_ctx': 4096, 'num_predict': 700}}, timeout=300).get('message', {})
+            finally:
+                self.chat_lock.release()
+            try:
+                names = json.loads(msg.get('content') or '{}').get('names') or {}
+            except ValueError:
+                continue
+            for title in batch:
+                name = names.get(title)
+                if isinstance(name, str) and 1 <= len(name.split()) <= 5 and len(name) <= 40:
+                    known[title] = name.strip().strip('"')
+                    added += 1
+        if added:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            tmp = path.with_suffix('.tmp')
+            tmp.write_text(json.dumps(known, ensure_ascii=False, indent=1), encoding='utf-8')
+            tmp.replace(path)
+            with self.refresh_lock:
+                for v in (self.raw_data or {}).get('videos', []):
+                    v['nick'] = known.get(v['title'], v.get('nick'))
+                self._refresh(overlay_only=True)
+        return added
+
     def loop(self):
+        try:
+            self.get()
+            self.name_videos()
+        except Exception:  # noqa: BLE001
+            traceback.print_exc()
         while True:
             time.sleep(REFRESH_SECONDS)
             try:
                 self.refresh_earnings_if_due()
                 self.refresh()
+                self.name_videos()
                 report = (self.data or {}).get('ai_insights') or {}
                 try:
                     old = datetime.now(timezone.utc) - datetime.fromisoformat(report['generated']) > timedelta(hours=24)
@@ -171,6 +226,15 @@ class State:
                        capture_output=True, timeout=600)
 
 
+NICK_PROMPT = """You name history videos for a channel owner's dashboard. For each title in the JSON list, give a 2-4 word nickname the owner would use in conversation, naming the concrete subject (people, place, object, era), in the style of "Roman Aqueducts" or "Viking Sunstones". No question words, no punctuation.
+Reply only with JSON: {"names": {"<exact title>": "<nickname>", ...}} covering every title."""
+
+
+def vid(x: dict) -> dict:
+    return {'video': x.get('nick') or x['title'], 'title': x['title'], 'series': x['series'], 'region': x['region'],
+            'published': x['at'][:10], 'fb_views': x['fb'], 'ig_views': x['ig'], 'yt_views': x['yt'], 'score': x['score']}
+
+
 def assistant_context(d: dict) -> str:
     v = d['videos']
     scored = sorted([x for x in v if x.get('score') is not None], key=lambda x: -x['score'])
@@ -188,8 +252,9 @@ def assistant_context(d: dict) -> str:
         'topic_weights': (d.get('strategy') or {}).get('weights'),
         'manual_overrides': d.get('overrides'),
         'options': d.get('options'),
-        'best_recent': [{'title': x['title'], 'series': x['series'], 'region': x['region'], 'fb_views': x['fb'], 'score': x['score']} for x in scored[:6]],
-        'worst_recent': [{'title': x['title'], 'series': x['series'], 'region': x['region'], 'fb_views': x['fb'], 'score': x['score']} for x in scored[-6:]],
+        'best_recent': [vid(x) for x in scored[:8]],
+        'worst_recent': [vid(x) for x in scored[-6:]],
+        'latest_published': [vid(x) for x in v[:8]],
         'data_gaps': {p: list(m) for p, m in (d.get('gaps') or {}).items()},
         'monetization_data': d.get('monetization_api') or ('imported report' if d.get('monetization') else 'no earnings snapshot'),
         'measured_content_patterns': {k: (d.get('content_evidence') or {}).get(k) for k in
@@ -199,6 +264,59 @@ def assistant_context(d: dict) -> str:
                                      for region in d.get('options', {}).get('region', [])},
     }
     return json.dumps(ctx, separators=(',', ':'), default=str)
+
+
+PERSONA = """Voice and manner: you are the owner's composed, highly capable AI butler. Speak in measured British English, courteous and unhurried, with dry, understated wit used sparingly (never at the expense of accuracy, and never when the news is bad).
+- Lead with the answer, phrased like a calm one-line status report built only from numbers in DATA.
+- Keep replies short: two to four sentences unless the owner asks for detail. Use **bold** for the key numbers; use a short bullet list only when comparing three or more things.
+- Refer to videos by the exact "video" nickname from DATA in double quotes, never by platform IDs, and only name videos that appear in DATA.
+- End with one concrete recommendation when the data supports one.
+- Anticipate: when DATA shows something the owner should know (an error, a stale export, a weak series), add one brief heads-up.
+- Understate rather than exaggerate; when a group has few videos, say the evidence is limited.
+- {address}
+- Never claim to be a film character or quote films. Never invent numbers to sound confident."""
+
+ADDRESS = {'sir': 'Address the owner as "sir", naturally and not in every sentence.',
+           'maam': 'Address the owner as "ma\'am", naturally and not in every sentence.',
+           'boss': 'Address the owner as "boss", naturally and not in every sentence.',
+           'none': 'Do not use an honorific; address the owner directly.'}
+
+
+def key_facts(d: dict) -> str:
+    """Pre-computed plain-English facts, so a small model never has to rank or read signs itself."""
+    now = datetime.now(timezone.utc)
+    vids = d.get('videos') or []
+    mature = [v for v in vids if v.get('fb') is not None and now - datetime.fromisoformat(v['at']) > timedelta(hours=48)]
+    name = lambda v: f'"{v.get("nick") or v["title"]}" ({v["fb"]:,} FB views, {v.get("region") or "?"}, published {v["at"][:10]})'  # noqa: E731
+    lines = ['KEY FACTS (computed exactly; use these for "best"/"worst" questions):']
+    top = sorted(mature, key=lambda v: -v['fb'])[:3]
+    low = sorted(mature, key=lambda v: v['fb'])[:3]
+    if top:
+        lines.append('Best videos by Facebook views (28 days): ' + '; '.join(name(v) for v in top) + '.')
+    if low:
+        lines.append('Lowest-reach videos (older than 48 h): ' + '; '.join(name(v) for v in low) + '.')
+    week = [v for v in mature if now - datetime.fromisoformat(v['at']) < timedelta(days=7)]
+    if week:
+        lines.append(f'Best video published in the last 7 days: {name(max(week, key=lambda v: v["fb"]))}.')
+    for g in (d.get('content_evidence') or {}).get('groups') or []:
+        pct = g.get('fb_vs_baseline_pct')
+        if pct is None or not g.get('enough_data'):
+            continue
+        side = 'ABOVE' if pct > 0 else 'BELOW' if pct < 0 else 'AT'
+        lines.append(f'{g["dimension"]} "{g["option"].replace("_", " ")}": {abs(pct)}% {side} the channel median '
+                     f'({g.get("fb_median")} median FB views over {g.get("fb_n")} videos).')
+    return '\n'.join(lines[:30])
+
+
+STYLE_LIMITS = """HARD LIMITS for this reply: at most 90 words unless the owner explicitly asks for detail. No headings, no emojis, no closing offers like "Let me know". At most one short bullet list.
+Judging performance: compare regions, series and lengths by fb_vs_baseline_pct / median views per video (measured_content_patterns), never by total views, because totals mostly reflect how many videos were posted. Week-over-week claims need dates in DATA; otherwise say what the 28-day data shows."""
+
+
+def persona(address: str | None, name: str | None = None) -> str:
+    name = re.sub(r'[^\w .\'-]', '', (name or ''))[:40].strip()
+    line = f'Address the owner as "{name}", naturally and not in every sentence.' if address == 'name' and name \
+        else ADDRESS.get(address or 'sir', ADDRESS['sir'])  # owner asked to be addressed as "sir"
+    return PERSONA.format(address=line)
 
 
 SYSTEM = """You are the Histold growth assistant, running locally on the owner's laptop. Histold posts history Shorts to Facebook (the only monetized platform, the priority), Instagram and YouTube; the target audience is the USA and Europe. The owner is in India (IST = UTC+5:30).
@@ -256,7 +374,36 @@ def recommend_schedule(d: dict, cfg, days: int = 14) -> tuple[list[dict], str]:
     return [{'name': 'pin_hours', 'args': args, 'summary': summary, 'details': details}], details
 
 
-def chat(state: State, messages: list[dict]) -> dict:
+FOLLOWUPS = {
+    'region': ['Which region should I post more of?', 'How is Europe doing versus the Americas?', 'Show me the weakest region and why'],
+    'series': ['Which series is working best right now?', 'Should I pause any series?', 'What new angle should I test next?'],
+    'length': ['Do longer or shorter videos do better?', 'Which length works on Facebook?', 'What should the next video\'s length be?'],
+    'hours': ['Analyze again and suggest better publish timings', 'When is my next post?', 'Which hour performs best?'],
+    'trend': ['How did this week compare with last week?', 'What was my best video this week?', 'Where is growth coming from?'],
+    'money': ['How much have I earned this month?', 'Which videos earn the most?', 'What is missing from the earnings data?'],
+}
+
+
+def attachments(d: dict, question: str, reply: str) -> dict:
+    text = f'{question}\n{reply}'.lower()
+    seen, refs = set(), []
+    for v in d.get('videos', []):
+        keys = [v.get('nick'), v.get('title'), v.get('yt_id'), v.get('fb_id'), v.get('ig_id')]
+        if any(k and len(str(k)) >= 5 and str(k).lower() in text for k in keys) and v['title'] not in seen:
+            seen.add(v['title'])
+            refs.append(v.get('yt_id') or v.get('fb_id') or v['title'])
+    q = question.lower()
+    chart = ('money' if re.search(r'earn|money|revenue|paid|payout|monetiz', q) else
+             'hours' if re.search(r'\bhour|timing|schedule|when .*post|publish time|posting time', q) else
+             'region' if re.search(r'region|country|europe|asia|america|africa|where', q) else
+             'series' if re.search(r'series|topic|theme|format|angle', q) else
+             'length' if re.search(r'length|duration|longer|shorter|concise', q) else
+             'trend' if re.search(r'view|grow|trend|perform|week|month|today|doing|best|worst|top', q) else None)
+    return {'videos': refs[:6], 'chart': chart if chart != 'money' else None,
+            'followups': FOLLOWUPS.get(chart or 'trend', FOLLOWUPS['trend'])}
+
+
+def chat(state: State, messages: list[dict], address: str | None = None, name: str | None = None) -> dict:
     d = state.get()
     history = [{'role': m['role'], 'content': m['content']} for m in messages[-12:]
                if isinstance(m, dict) and m.get('role') in ('user', 'assistant') and isinstance(m.get('content'), str)]
@@ -287,10 +434,12 @@ def chat(state: State, messages: list[dict]) -> dict:
         duration = re.search(r'\bfor\s+(\d+)\s+days?\b', last, re.I)
         cards, explanation = recommend_schedule(d, cfg, int(duration[1]) if duration else 14)
         return {'reply': prefix + explanation + ('\nReview the card and press Confirm to apply it. Nothing has changed yet.' if cards else ''), 'proposals': cards}
-    ensure_server(OLLAMA)
     opts = control.options(cfg)
     # Resolve and validate actions before writing any acknowledgement.
-    msg = ollama(OLLAMA, '/api/chat', {
+    msg = {}
+    if CHANGE_RE.search(last):  # questions skip the extractor and go straight to the answering provider
+        ensure_server(OLLAMA)
+        msg = ollama(OLLAMA, '/api/chat', {
         'model': MODEL, 'stream': False, 'think': False, 'tools': control.tools(),
         'messages': [{'role': 'system', 'content': EXTRACT.format(
             series=', '.join(opts['series']), region=', '.join(opts['region']), duration=', '.join(opts['duration_variant']),
@@ -320,11 +469,19 @@ def chat(state: State, messages: list[dict]) -> dict:
         return {'reply': prefix + 'I checked the requested changes. Review the cards below; nothing changes until you press Confirm.', 'proposals': proposals}
     if analyzed:
         return {'reply': prefix.strip() + '\nThe findings are updated in the dashboard. No settings were changed.', 'proposals': []}
-    answer = ollama(OLLAMA, '/api/chat', {
-        'model': MODEL, 'stream': False, 'think': False,
-        'messages': [{'role': 'system', 'content': SYSTEM + '\nNo action cards were produced for this message. Do not claim any action was proposed or performed.\n' + assistant_context(d)}] + history,
-        'options': {'temperature': 0.2, 'num_ctx': 8192, 'num_predict': 700}}, timeout=300).get('message', {})
-    return {'reply': (answer.get('content') or '').strip() or 'Please clarify the change you want; no action was identified.', 'proposals': []}
+    # Style rules go last: small local models follow the most recent instructions most reliably.
+    system = (SYSTEM + '\nNo action cards were produced for this message. Do not claim any action was proposed or performed.\n'
+              + assistant_context(d) + '\n\n' + key_facts(d) + '\n\n' + persona(address, name) + '\n' + STYLE_LIMITS)
+
+    def local_answer() -> str:
+        ensure_server(OLLAMA)
+        return (ollama(OLLAMA, '/api/chat', {
+            'model': MODEL, 'stream': False, 'think': False,
+            'messages': [{'role': 'system', 'content': system}] + history,
+            'options': {'temperature': 0.3, 'num_ctx': 8192, 'num_predict': 320}}, timeout=300).get('message', {}).get('content') or '')
+    text, used, notes = PROVIDERS.answer(system, history, local_answer)
+    return {'reply': text.strip() or 'Please clarify the change you want; no action was identified.', 'proposals': [],
+            'provider': used, 'provider_notes': notes}
 
 
 # ---------- app shell: manifest, service worker, icons ----------
@@ -378,20 +535,33 @@ button{font:inherit;padding:7px 14px;border-radius:8px;border:1px solid var(--li
 button.primary{background:var(--accent);border-color:var(--accent);color:#fff}button:disabled{opacity:.5;cursor:default}
 .hint{font-size:12px;color:var(--muted);margin:6px 0}.status{font-size:12px;margin-top:8px}</style>"""
 
-PANELS = """<section class="panel"><div class="row"><b>Histold app</b><button id="installApp" hidden>Install app</button><button id="reloadData">Refresh dashboard</button><button id="logout">Sign out</button><span class="small muted" id="connectionStatus"></span></div>
-<details class="hint"><summary>Use on another device</summary>Connect that device to your Tailscale account, open this laptop's HTTPS dashboard address and sign in with the dashboard key.
-Windows: Edge/Chrome menu → Install app. Mac: Safari → File → Add to Dock, or Chrome → Install. iPhone: Safari → Share → Add to Home Screen.</details></section>
-<section class="panel twothird" id="ai"><div class="section-row"><h2>Ask Histold AI <span class="muted small">· local qwen3:8b</span></h2><button id="voiceToggle" type="button" aria-pressed="false" title="Read AI answers aloud">Voice replies: off</button></div>
-<div class="chat" id="chat"><div class="msg ai">Ask about performance or tell me what to change. Try "Analyze again and suggest better publish timings", "Avoid unsolved stories", "Focus on European history", or "Pin 12, 18, 23 UTC". Tap the mic (or the glowing core at the top) to talk instead of typing. I will check requested changes and show you exactly what needs confirmation.</div></div>
+PANELS = """<section class="panel twothird" id="ai" data-page="ai"><div class="section-row"><h2>Histold AI <span class="muted small" id="aiBrain">· auto</span></h2><span class="small muted"><i class="status-dot"></i>Reading your live data</span></div>
+<div class="chat" id="chat"><div class="msg ai" id="aiWelcome">Ready when you are.</div></div>
 <form class="row" id="chatForm"><input class="grow" id="chatInput" placeholder="Ask or instruct…" autocomplete="off"><button type="button" id="chatMic" title="Speak your question" aria-label="Speak your question" hidden>🎙 Talk</button><button class="primary" id="chatSend">Send</button></form>
-<p class="hint">Changes are only proposed; nothing happens until you press Confirm, including requests made by voice. Videos per day can't be changed here. Voice uses your browser's built-in speech features (Chrome/Edge may send audio to their speech service).</p></section>
-<section class="panel third" id="controls"><h2>Controls</h2>
+<p class="hint">Changes are only proposed; nothing happens until you press Confirm, including requests made by voice. Videos per day can't be changed here.</p></section>
+<section class="panel third" data-page="ai"><h2>Ask me about</h2><div class="suggest">
+<button type="button" data-ask="How did this week go?">📈 How did this week go?</button>
+<button type="button" data-ask="Which videos are underperforming and why?">🔍 Which videos are underperforming, and why?</button>
+<button type="button" data-ask="Which region should I double down on?">🌍 Which region should I double down on?</button>
+<button type="button" data-ask="What should my next few videos be about?">💡 What should my next videos be about?</button>
+<button type="button" data-ask="Analyze again and suggest better publish timings">⏱ Re-analyze and suggest better publish times</button>
+<button type="button" data-ask="How much have I earned and what is missing from the earnings data?">💰 How much have I earned?</button>
+</div><h4>Briefing</h4><button type="button" id="aiBrief" style="width:100%">▶ Give me today's briefing</button></section>
+<section class="panel" id="brainSettings" data-page="settings"><div class="section-row"><h2>AI brain</h2><select id="aiMode" aria-label="Which AI answers"><option value="auto">Auto · Claude → Codex → local</option><option value="claude">Claude only (falls back to local)</option><option value="codex">Codex only (falls back to local)</option><option value="local">Local qwen3:8b only</option></select></div><div class="brain-grid" id="brainCards"></div><p class="hint">Claude and Codex answer through their CLIs on this laptop using your own plans, with no tools and no file access; setting changes still need your Confirm. The dashboard cannot see your plan's real remaining quota, so the caps below limit how much of it the dashboard uses (rolling 5 hours and 7 days). If a plan reports its limit, that provider rests until the reset time it gives and the next one answers.</p></section>
+<section class="panel half" id="assistantSettings" data-page="settings"><h2>Assistant &amp; voice</h2>
+<h4>How the AI addresses you</h4><div class="row"><select id="addressAs" aria-label="How the AI addresses you"><option value="sir" selected>Sir</option><option value="none">No honorific</option><option value="maam">Ma'am</option><option value="boss">Boss</option><option value="name">My name</option></select><input id="addressName" placeholder="Your name" size="12" aria-label="Your name" hidden></div>
+<h4>Spoken replies</h4><div class="row"><button id="voiceToggle" type="button" aria-pressed="false">Voice replies: off</button><select id="voiceEngine" aria-label="Voice engine"><option value="local">Local neural voice</option><option value="browser">Browser voice</option></select><button id="voiceTest" type="button">▶ Test voice</button></div>
+<p class="hint" id="voiceInfo">Spoken questions always get a spoken answer. The local neural voice runs on this laptop; if it is unavailable the browser voice is used. Speech-to-text uses your browser (Chrome/Edge may send audio to their speech service).</p></section>
+<section class="panel half" id="controls" data-page="settings"><h2>Channel controls</h2>
 <h4>Steer topics</h4><div class="row"><select id="cDim" aria-label="Topic dimension"><option value="series">series</option><option value="region">region</option><option value="duration_variant">length</option></select>
 <select id="cOpt" aria-label="Topic option"></select></div><div class="row" style="margin-top:6px"><select id="cAct" aria-label="Topic action"><option value="pause_option">Pause</option><option value="boost_option:1.5">Boost ×1.5</option>
 <option value="boost_option:2">Boost ×2</option><option value="reset_option">Reset</option></select><button id="cApply">Apply</button></div>
 <h4>Publish hours (UTC)</h4><div class="row"><input id="cHours" size="16" aria-label="Publish hours in UTC"><select id="cDays" aria-label="Pin duration in days"><option>3</option><option selected>7</option><option>14</option><option>30</option></select><span class="small muted">days</span></div>
 <div class="row" style="margin-top:6px"><button id="cPin">Pin</button><button id="cUnpin">Let agent decide</button></div>
-<h4>Data &amp; analysis</h4><div class="row"><button id="cRefresh">Refresh analytics</button><button id="cResearch">Analyze with Qwen</button></div><div class="status" id="cStatus"></div></section>"""
+<h4>Data &amp; analysis</h4><div class="row"><button id="cRefresh">Refresh analytics</button><button id="cResearch">Analyze with Qwen</button></div><div class="status" id="cStatus"></div></section>
+<section class="panel half" data-page="settings"><h2>App &amp; devices</h2><div class="row"><button id="installApp" hidden>Install app</button><button id="reloadData">Refresh dashboard</button><button id="logout">Sign out</button><span class="small muted" id="connectionStatus"></span></div>
+<details class="hint"><summary>Use on another device</summary>Connect that device to your Tailscale account, open this laptop's HTTPS dashboard address and sign in with the dashboard key.
+Windows: Edge/Chrome menu → Install app. Mac: Safari → File → Add to Dock, or Chrome → Install. iPhone: Safari → Share → Add to Home Screen.</details></section>"""
 
 LIVE_JS = """<script>
 if('serviceWorker' in navigator){
@@ -417,15 +587,58 @@ const msgs=[];
 function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;$('chat').appendChild(d);$('chat').scrollTop=1e9;return d}
 async function act(name,args,btn,out){btn&&(btn.disabled=true);try{const j=await api('/api/action',{name,args});out.innerHTML='<b class="ok">✓</b> '+esc(j.message);setTimeout(()=>location.reload(),2500)}
  catch(e){out.innerHTML='<b class="bad">✗</b> '+esc(e.message);btn&&(btn.disabled=false)}}
+// ---- rich answers: markdown, video chips, attachments, live working steps ----
+function md(src){const out=[];let list=null,table=[];
+ const inline=t=>HUD.linkVideos(esc(t).replace(/\\*\\*(.+?)\\*\\*/g,'<strong>$1</strong>').replace(/(^|[^*])\\*([^*\\s][^*]*?)\\*/g,'$1<em>$2</em>').replace(/`([^`]+)`/g,'<code>$1</code>'));
+ const flushList=()=>{if(list){out.push('<'+list.t+'>'+list.items.map(i=>'<li>'+inline(i)+'</li>').join('')+'</'+list.t+'>');list=null}};
+ const flushTable=()=>{if(table.length){const rows=table.filter(r=>!/^\\|?[\\s:|-]+\\|?$/.test(r)).map(r=>r.replace(/^\\||\\|$/g,'').split('|').map(c=>c.trim()));
+  if(rows.length)out.push('<div class="scroll"><table><thead><tr>'+rows[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');table=[]}};
+ for(const line of String(src||'').split('\\n')){const t=line.trim();
+  if(t.startsWith('|')){flushList();table.push(t);continue}flushTable();
+  const m=t.match(/^[-*•]\\s+(.*)/),n=t.match(/^\\d+[.)]\\s+(.*)/);
+  if(m||n){const type=m?'ul':'ol';if(!list||list.t!==type){flushList();list={t:type,items:[]}}list.items.push((m||n)[1]);continue}
+  flushList();if(!t)continue;const h=t.match(/^#{1,6}\\s+(.*)/);out.push(h?'<h5>'+inline(h[1])+'</h5>':'<p>'+inline(t)+'</p>')}
+ flushList();flushTable();return out.join('')}
+function working(el,t){const deep=/analy[sz]e|recheck|research|timings|posting times/i.test(t);
+ const steps=deep?['Re-reading the latest platform exports','Recomputing medians by region, series and length','Running the local content analysis','Testing publish hours against reach scores','Preparing a recommendation']
+  :['Scanning '+D.videos.length+' videos from the last 28 days','Comparing Facebook, Instagram and YouTube reach','Checking topic weights and publish hours','Composing the answer'];
+ let i=0;const draw=()=>{el.innerHTML='<ul class="steps">'+steps.slice(0,i+1).map((x,k)=>'<li class="'+(k<i?'done':'')+'">'+esc(x)+(k===i?'…':'')+'</li>').join('')+'</ul>';$('chat').scrollTop=1e9};draw();
+ const timer=setInterval(()=>{if(i<steps.length-1){i++;draw()}},deep?9000:2600);return()=>clearInterval(timer)}
+function miniChart(kind){
+ if(kind==='hours'){const W=300,H=70,bw=W/24;let s='<svg viewBox="0 0 '+W+' '+(H+14)+'" role="img" aria-label="Reach score by publish hour">';
+  for(let h=0;h<24;h++){const st=D.hour_stats[h],bh=st?st.shrunk*H:2,on=D.hours.includes(h);
+   s+='<rect x="'+(h*bw+1)+'" y="'+(H-bh)+'" width="'+(bw-2)+'" height="'+bh+'" fill="var(--accent)" opacity="'+(on?1:.3)+'"><title>'+h+':00 UTC'+(st?' · score '+st.shrunk+' · '+st.n+' videos':' · no data')+'</title></rect>';
+   if(h%6==0)s+='<text x="'+(h*bw)+'" y="'+(H+12)+'">'+h+'h</text>'}return s+'</svg><p class="small muted">Bright bars are your current publish hours.</p>'}
+ if(kind==='trend'){const n=14,now=Date.now(),W=300,H=80,ser={fb:Array(n).fill(0),ig:Array(n).fill(0),yt:Array(n).fill(0)};
+  V.forEach(v=>{const i=n-1-Math.floor((now-new Date(v.at))/864e5);if(i>=0&&i<n)for(const k in ser)ser[k][i]+=v[k]||0});
+  const max=Math.max(1,...Object.values(ser).flat());let s='<svg viewBox="0 0 '+W+' '+(H+14)+'" role="img" aria-label="Views by publish day">';
+  for(const [k,c] of [['fb','var(--fb)'],['ig','var(--ig)'],['yt','var(--yt)']])s+='<polyline fill="none" stroke="'+c+'" stroke-width="2" points="'+ser[k].map((y,i)=>(i/(n-1)*W).toFixed(1)+','+(H-y/max*(H-4)).toFixed(1)).join(' ')+'"/>';
+  return s+'<text x="0" y="'+(H+12)+'">14 days ago</text><text x="'+W+'" y="'+(H+12)+'" text-anchor="end">today</text></svg><div class="legend"><span><i class="sw" style="background:var(--fb)"></i>Facebook</span><span><i class="sw" style="background:var(--ig)"></i>Instagram</span><span><i class="sw" style="background:var(--yt)"></i>YouTube</span></div>'}
+ const groups=(E.groups||[]).filter(g=>g.dimension===kind).sort((a,b)=>(b.fb_median??-1)-(a.fb_median??-1)).slice(0,8),max=Math.max(1,...groups.map(g=>g.fb_median||0));
+ return groups.map(g=>'<div class="compare-row"><div>'+esc(pretty(g.option))+'<div class="sample">'+g.fb_n+' videos</div></div><div class="track"><div class="fill" style="width:'+((g.fb_median||0)/max*100)+'%;opacity:'+(g.enough_data?1:.35)+'"></div></div><div style="text-align:right"><b>'+fmt(g.fb_median)+'</b></div></div>').join('')||'<p class="empty small">No comparison data yet.</p>'}
+const CHART_TITLE={region:'Median Facebook views by region',series:'Median Facebook views by series',length:'Median Facebook views by length',hours:'Reach score by publish hour (UTC)',trend:'Views by publish day · last 14 days'};
+function attach(el,a){if(!a)return;let h='';
+ if(a.chart)h+='<div class="att"><h5>'+CHART_TITLE[a.chart]+'</h5>'+miniChart(a.chart)+'</div>';
+ const vids=(a.videos||[]).map(HUD.findVideo).filter(Boolean);
+ if(vids.length)h+='<div class="att"><h5>Videos mentioned</h5><div class="vcards">'+vids.map(v=>'<button type="button" class="vcard" data-video="'+esc(vidKey(v))+'">'+(thumb(v)?'<img src="'+thumb(v)+'" alt="" loading="lazy">':'')+'<b>'+esc(nick(v))+'</b><span>FB '+fmt(v.fb)+' · IG '+fmt(v.ig)+' · YT '+fmt(v.yt)+'</span></button>').join('')+'</div></div>';
+ if(a.followups&&a.followups.length)h+='<div class="followups">'+a.followups.map(f=>'<button type="button" data-ask="'+esc(f)+'">'+esc(f)+'</button>').join('')+'</div>';
+ el.insertAdjacentHTML('beforeend',h)}
+HUD.ask=t=>{if(location.hash!=='#/ai')location.hash='#/ai';$('chatInput').value=t;$('chatForm').requestSubmit()};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ask]');if(b&&!$('chatSend').disabled)HUD.ask(b.dataset.ask)});
+$('aiWelcome').innerHTML=md((()=>{const h=new Date().getHours();return (h<12?'Good morning':h<18?'Good afternoon':'Good evening')+HUD.address()+'. I am watching **'+D.videos.length+'** videos across Facebook, Instagram and YouTube. Ask me anything, pick a suggestion, or tap the core to talk. If you ask for a change, I will show you exactly what needs your Confirm.'})());
+$('aiBrief').onclick=()=>{if(location.hash!=='#/ai')location.hash='#/ai';bubble('ai',$('briefing').innerHTML);speak(briefText)};
 $('chatForm').onsubmit=async e=>{e.preventDefault();const t=$('chatInput').value.trim();if(!t)return;$('chatInput').value='';const spoken=viaVoice;viaVoice=false;coreState('thinking','processing');HUD.log('Query: '+t.slice(0,60));
- msgs.push({role:'user',content:t});bubble('me',esc(t));const wait=bubble('ai','<span class="muted">'+(/analy[sz]e|recheck|research|timings|posting times/i.test(t)?'Rechecking analytics and running local analysis. This can take about a minute…':'Checking your request… (first answer can take ~40 s while the model loads)')+'</span>');$('chatSend').disabled=true;
- try{const j=await api('/api/chat',{messages:msgs});msgs.push({role:'assistant',content:j.reply,proposals:j.proposals});wait.innerHTML=esc(j.reply);HUD.log('AI answered'+(j.proposals.length?' · '+j.proposals.length+' proposal(s) awaiting Confirm':''));if(spoken||voiceOn)speak(j.reply+(j.proposals.length?' Review the proposal card and press Confirm if you want it applied.':''));else coreState('','standby');
+ msgs.push({role:'user',content:t});bubble('me',esc(t));const wait=bubble('ai','');const stop=working(wait,t);$('chatSend').disabled=true;
+ try{const j=await api('/api/chat',{messages:msgs,address:$('addressAs').value,name:$('addressName').value});stop();msgs.push({role:'assistant',content:j.reply,proposals:j.proposals});
+  wait.innerHTML=md(j.reply);attach(wait,j.attachments);if(j.provider)wait.insertAdjacentHTML('beforeend','<div class="via">via '+esc(BRAIN[j.provider]||j.provider)+((j.provider_notes||[]).length?' · '+esc(j.provider_notes.join('; ')):'')+'</div>');if(j.provider&&j.provider!=='local')loadBrain();
+  HUD.log('AI answered'+(j.proposals.length?' · '+j.proposals.length+' proposal(s) awaiting Confirm':''));
+  if(spoken||voiceOn)speak(j.reply+(j.proposals.length?' Review the proposal card and press Confirm if you want it applied.':''));else coreState('','standby');
   j.proposals.forEach(p=>{const c=document.createElement('div');c.className='prop'+(p.error?' err':'');
-   if(p.error){c.innerHTML='<b class="bad">Can\\'t do:</b> '+esc(p.name)+' — '+esc(p.error)}
+   if(p.error){c.innerHTML='<b class="bad">Can’t do:</b> '+esc(p.name)+' — '+esc(p.error)}
    else{c.innerHTML='<div><b>Proposed:</b> '+esc(p.summary)+'</div>'+(p.details?'<p class="small">'+esc(p.details)+'</p>':'')+'<div class="row" style="margin-top:6px"><button class="primary">Confirm</button><button>Dismiss</button></div><div class="status"></div>';
     const [ok,no]=c.querySelectorAll('button'),st=c.querySelector('.status');ok.onclick=()=>act(p.name,p.args,ok,st);no.onclick=()=>c.remove()}
    wait.appendChild(c)});$('chat').scrollTop=1e9}
- catch(e){wait.innerHTML='<b class="bad">Error:</b> '+esc(e.message);coreState('','standby')}finally{$('chatSend').disabled=false}};
+ catch(e){stop();wait.innerHTML='<b class="bad">Error:</b> '+esc(e.message);coreState('','standby')}finally{$('chatSend').disabled=false}};
 // ---- live telemetry: cheap /api/pulse poll; full data only when the server rebuilt it ----
 let version=null,lastSync=Date.now(),online=true;
 function uplink(ok){online=ok;const m=Math.round((Date.now()-lastSync)/6e4);
@@ -444,17 +657,46 @@ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let viaVoice=f
 let voiceOn=false;try{voiceOn=localStorage.getItem('hud-voice')==='1'}catch(e){}
 function coreState(cls,label){$('core').className='core'+(cls?' '+cls:'');$('coreState').textContent='AI core · '+label}
 function setVoice(on){voiceOn=on;try{localStorage.setItem('hud-voice',on?'1':'0')}catch(e){}
- $('voiceToggle').textContent='Voice replies: '+(on?'on':'off');$('voiceToggle').setAttribute('aria-pressed',String(on));$('voiceToggle').classList.toggle('on',on);if(!on&&window.speechSynthesis)speechSynthesis.cancel()}
-setVoice(voiceOn);if(!('speechSynthesis' in window))$('voiceToggle').hidden=true;
+ $('voiceToggle').textContent='Voice replies: '+(on?'on':'off');$('voiceToggle').setAttribute('aria-pressed',String(on));$('voiceToggle').classList.toggle('on',on);if(!on)stopAudio()}
 $('voiceToggle').onclick=()=>setVoice(!voiceOn);
+try{$('addressAs').value=localStorage.getItem('hud-address')||'sir';$('addressName').value=localStorage.getItem('hud-name')||''}catch(e){}
+const addrUI=()=>{$('addressName').hidden=$('addressAs').value!=='name'};addrUI();
+$('addressAs').onchange=()=>{addrUI();try{localStorage.setItem('hud-address',$('addressAs').value)}catch(e){}};
+$('addressName').oninput=()=>{try{localStorage.setItem('hud-name',$('addressName').value)}catch(e){}};
+
+// ---- speech out: local neural voice (sentence by sentence, light HUD audio treatment), browser voice as fallback ----
+let voiceEngine='local',ttsVoice='',localVoice=null,playing=null,actx=null,speakGen=0;
+try{voiceEngine=localStorage.getItem('hud-engine')||'local';ttsVoice=localStorage.getItem('hud-tts-voice')||''}catch(e){}
+$('voiceEngine').value=voiceEngine;
+$('voiceEngine').onchange=()=>{voiceEngine=$('voiceEngine').value;try{localStorage.setItem('hud-engine',voiceEngine)}catch(e){}voiceUI()};
+const voiceSel=document.createElement('select');voiceSel.id='voiceName';voiceSel.setAttribute('aria-label','Neural voice');$('voiceEngine').after(voiceSel);
+voiceSel.onchange=()=>{ttsVoice=voiceSel.value;try{localStorage.setItem('hud-tts-voice',ttsVoice)}catch(e){}};
+function voiceUI(){voiceSel.hidden=voiceEngine!=='local'||!localVoice?.available;
+ $('voiceInfo').textContent=(voiceEngine==='local'?(localVoice?.available?'Local neural voice (Kokoro) runs on this laptop; nothing is sent anywhere. ':'Local neural voice unavailable ('+(localVoice?.error||'checking')+'); using the browser voice. '):'Browser voice selected. ')+'Spoken questions always get a spoken answer. Speech-to-text uses your browser (Chrome/Edge may send audio to their speech service).'}
+fetch('/api/voice',{cache:'no-store'}).then(r=>r.json()).then(j=>{localVoice=j;voiceSel.innerHTML=Object.entries(j.voices||{}).map(([k,l])=>'<option value="'+esc(k)+'">'+esc(l)+'</option>').join('');
+ voiceSel.value=ttsVoice&&j.voices?.[ttsVoice]?ttsVoice:j.default;ttsVoice=voiceSel.value;voiceUI()}).catch(()=>{localVoice={available:false,error:'server unreachable'};voiceUI()});voiceUI();
+$('voiceTest').onclick=()=>speak((()=>{const h=new Date().getHours();return (h<12?'Good morning':h<18?'Good afternoon':'Good evening')+HUD.address()+'. All systems are online. Facebook is carrying the week, and your next video goes out on schedule.'})());
+function stopAudio(){speakGen++;if(playing){playing.pause();playing=null}if(window.speechSynthesis)speechSynthesis.cancel()}
+function hudChain(el){if(!window.AudioContext)return;actx=actx||new AudioContext();if(actx.state==='suspended')actx.resume();
+ const src=actx.createMediaElementSource(el),hp=actx.createBiquadFilter(),pk=actx.createBiquadFilter(),comp=actx.createDynamicsCompressor(),dl=actx.createDelay(),wet=actx.createGain();
+ hp.type='highpass';hp.frequency.value=110;pk.type='peaking';pk.frequency.value=2800;pk.gain.value=3;pk.Q.value=.9;dl.delayTime.value=.028;wet.gain.value=.14;
+ src.connect(hp);hp.connect(pk);pk.connect(comp);comp.connect(actx.destination);comp.connect(dl);dl.connect(wet);wet.connect(actx.destination)}
+function sentences(t){const parts=String(t).replace(/[*_`#|]/g,' ').split(/(?<=[.!?])\\s+/),out=[];let cur='';
+ for(const x of parts){if((cur+' '+x).length>220&&cur){out.push(cur);cur=x}else cur=(cur?cur+' ':'')+x}if(cur.trim())out.push(cur);return out.slice(0,8)}
+const tts=t=>fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json','X-Histold':'1'},body:JSON.stringify({text:t,voice:ttsVoice})}).then(r=>{if(!r.ok)throw new Error('voice '+r.status);return r.blob()});
+const play=blob=>new Promise(res=>{const a=new Audio(URL.createObjectURL(blob));playing=a;try{hudChain(a)}catch(e){}a.onended=a.onerror=()=>{URL.revokeObjectURL(a.src);res()};a.play().catch(res)});
+async function speakLocal(text,gen){const parts=sentences(text);if(!parts.length)return;let next=tts(parts[0]);
+ for(let i=0;i<parts.length;i++){const blob=await next;if(gen!==speakGen)return;if(i+1<parts.length)next=tts(parts[i+1]).catch(()=>null);if(blob)await play(blob);if(gen!==speakGen)return}}
 function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
  return vs.find(v=>/Google UK English Male|Ryan|Guy|Daniel|Brian/i.test(v.name))||vs.find(v=>/Natural|Online/i.test(v.name))||vs.find(v=>/en-GB/i.test(v.lang))||vs[0]}
-function speak(text){if(!('speechSynthesis' in window)){coreState('','standby');return}speechSynthesis.cancel();
+function speakBrowser(text,done){if(!('speechSynthesis' in window))return done();
  const clean=String(text).replace(/[*_`#|]/g,' ').replace(/\\s+/g,' ').trim(),u=new SpeechSynthesisUtterance(clean.length>700?clean.slice(0,700)+'… The full answer is on screen.':clean);
- const v=pickVoice();if(v)u.voice=v;u.rate=1.03;u.pitch=.92;
- u.onstart=()=>coreState('speaking','speaking');u.onend=u.onerror=()=>coreState('','standby');speechSynthesis.speak(u)}
-function listen(){if(!SR){document.getElementById('ai').scrollIntoView({behavior:'smooth'});$('chatInput').focus();return}
- if(rec){rec.stop();return}if(window.speechSynthesis)speechSynthesis.cancel();
+ const v=pickVoice();if(v)u.voice=v;u.rate=1.03;u.pitch=.92;u.onend=u.onerror=done;speechSynthesis.speak(u)}
+function speak(text){stopAudio();const gen=speakGen;coreState('speaking','speaking');const done=()=>{if(gen===speakGen)coreState('','standby')};
+ if(voiceEngine==='local'&&localVoice?.available)speakLocal(text,gen).then(done,()=>{if(gen===speakGen)speakBrowser(text,done)});else speakBrowser(text,done)}
+setVoice(voiceOn);
+function listen(){if(!SR){location.hash='#/ai';$('chatInput').focus();return}
+ if(rec){rec.stop();return}stopAudio();
  rec=new SR();rec.lang=navigator.language||'en-US';rec.interimResults=true;rec.maxAlternatives=1;
  let finalText='';coreState('listening','listening');$('chatMic').classList.add('on');$('chatMic').textContent='■ Stop';
  rec.onresult=e=>{let t='';for(const r of e.results){t+=r[0].transcript;if(r.isFinal)finalText=t}$('chatInput').value=t};
@@ -463,7 +705,27 @@ function listen(){if(!SR){document.getElementById('ai').scrollIntoView({behavior
   const t=(finalText||$('chatInput').value).trim();if(t&&navigator.onLine){$('chatInput').value=t;viaVoice=true;$('chatForm').requestSubmit()}else coreState('','standby')};
  rec.start()}
 if(SR)$('chatMic').hidden=false;$('chatMic').onclick=listen;
-$('core').onclick=()=>{document.getElementById('ai').scrollIntoView({behavior:'smooth',block:'center'});listen()};
+$('core').onclick=()=>{if(location.hash!=='#/ai')location.hash='#/ai';listen()};HUD.say=t=>speak(t);
+// ---- AI brain: provider status, usage meters and caps ----
+const BRAIN={claude:'Claude',codex:'Codex',local:'Local qwen3:8b'};
+function meter(u,c){const pct=c?Math.min(100,u/c*100):100;return '<div class="track"><div class="fill" style="width:'+pct+'%;'+(pct>=100?'background:var(--bad)!important':pct>=75?'background:var(--warn)!important':'')+'"></div></div>'}
+function renderBrain(j){$('aiMode').value=j.mode;$('aiBrain').textContent='· '+(j.mode==='auto'?'auto':BRAIN[j.mode]);
+ $('brainCards').innerHTML=Object.entries(j.providers).map(([k,p])=>{
+  const state=!p.installed?'<b class="bad">Not installed</b>':p.resting_until?'<b class="warn">Resting until '+new Date(p.resting_until*1000).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+'</b>':p.ready?'<b class="ok">Ready</b>':'<b class="warn">Cap reached</b>';
+  let h='<div class="brain"><div class="section-row" style="margin:0"><h4 style="margin:0">'+esc(p.label)+'</h4><span class="small">'+state+'</span></div>';
+  if(k==='local')return h+'<p class="small muted">Always available on this laptop (GPU). Used for setting-change detection and as the final fallback.</p></div>';
+  h+='<div class="small" style="margin-top:8px">Last 5 h: <b>'+p.used_5h+'</b> / <input type="number" min="0" max="1000" value="'+p.per_5h+'" data-cap="'+k+'.per_5h" aria-label="'+esc(p.label)+' 5 hour cap" style="width:70px;min-height:30px;padding:2px 6px"></div>'+meter(p.used_5h,p.per_5h)
+   +'<div class="small" style="margin-top:8px">Last 7 days: <b>'+p.used_week+'</b> / <input type="number" min="0" max="1000" value="'+p.per_week+'" data-cap="'+k+'.per_week" aria-label="'+esc(p.label)+' weekly cap" style="width:70px;min-height:30px;padding:2px 6px"></div>'+meter(p.used_week,p.per_week);
+  if(!p.installed&&k==='claude')h+='<p class="small">Install the Claude Code CLI once in a terminal: <code>npm install -g @anthropic-ai/claude-code</code>, then run <code>claude</code> and sign in with your Claude plan.</p>';
+  if(!p.installed&&k==='codex')h+='<p class="small">Install the Codex desktop app or CLI and sign in.</p>';
+  if(p.last_error)h+='<p class="small muted">'+esc(p.last_error)+'</p>';
+  if(p.resting_until)h+='<button type="button" data-unrest="'+k+'" style="min-height:32px">Try it again now</button>';
+  return h+'</div>'}).join('')}
+async function loadBrain(){try{const r=await fetch('/api/ai',{cache:'no-store'});if(r.ok)renderBrain(await r.json())}catch(e){}}
+$('aiMode').onchange=async()=>renderBrain(await api('/api/ai',{mode:$('aiMode').value}));
+$('brainCards').addEventListener('change',async e=>{const c=e.target.dataset.cap;if(!c)return;const [prov,k]=c.split('.');renderBrain(await api('/api/ai',{[prov]:{[k]:+e.target.value}}))});
+$('brainCards').addEventListener('click',async e=>{const k=e.target.dataset.unrest;if(k)renderBrain(await api('/api/ai',{[k]:{clear_cooldown:true}}))});
+loadBrain();setInterval(loadBrain,60000);addEventListener('hud-page',()=>{if(HUD.page==='settings')loadBrain()});
 function fillOpts(){$('cOpt').innerHTML=(D.options[$('cDim').value]||[]).map(o=>`<option>${esc(o)}</option>`).join('')}
 $('cDim').onchange=fillOpts;fillOpts();$('cHours').value=D.hours.join(', ');
 $('cApply').onclick=()=>{const [name,f]=$('cAct').value.split(':'),args={dimension:$('cDim').value,option:$('cOpt').value};if(f)args.factor=+f;
@@ -547,6 +809,10 @@ def make_handler(state: State, key: str, icons: dict):
                 return self.send(200, json.dumps(state.get(), default=str), 'application/json')
             if path == '/api/research':
                 return self.send(200, json.dumps(state.research_status), 'application/json')
+            if path == '/api/ai':
+                return self.send(200, json.dumps(PROVIDERS.status()), 'application/json')
+            if path == '/api/voice':
+                return self.send(200, json.dumps(VOICE.status()), 'application/json')
             self.send(404, 'not found', 'text/plain')
 
         def do_POST(self):
@@ -570,14 +836,30 @@ def make_handler(state: State, key: str, icons: dict):
                 if path == '/api/refresh':
                     state.refresh()
                     return self.send(200, '{}', 'application/json')
+                if path == '/api/ai':
+                    return self.send(200, json.dumps(PROVIDERS.update_settings(body)), 'application/json')
+                if path == '/api/tts':
+                    if not VOICE.status()['available']:
+                        return self.send(503, json.dumps({'error': VOICE.error}), 'application/json')
+                    audio = VOICE.synth(str(body.get('text') or ''), body.get('voice'), body.get('speed') or 1.0)
+                    return self.send(200, audio, 'audio/wav')
                 if path == '/api/research':
                     state.start_research()
                     return self.send(202, json.dumps(state.research_status), 'application/json')
                 if path == '/api/chat':
-                    if not state.chat_lock.acquire(blocking=False):
-                        return self.send(429, json.dumps({'error': 'AI is answering another request. Try again shortly.'}), 'application/json')
+                    state.chat_waiting += 1  # background jobs see this and stop after their current small batch
                     try:
-                        return self.send(200, json.dumps(chat(state, body.get('messages') or [])), 'application/json')
+                        got = state.chat_lock.acquire(timeout=240)
+                    finally:
+                        state.chat_waiting -= 1
+                    if not got:
+                        return self.send(429, json.dumps({'error': 'The AI is still finishing a long analysis. Try again in a minute.'}), 'application/json')
+                    try:
+                        result = chat(state, body.get('messages') or [], body.get('address'), body.get('name'))
+                        last = next((m.get('content') for m in reversed(body.get('messages') or [])
+                                     if isinstance(m, dict) and m.get('role') == 'user'), '') or ''
+                        result['attachments'] = attachments(state.get(), str(last), result.get('reply') or '')
+                        return self.send(200, json.dumps(result), 'application/json')
                     finally:
                         state.chat_lock.release()
                 if path == '/api/action':
@@ -611,6 +893,8 @@ def main() -> int:
         args.key_file.write_text(secrets.token_urlsafe(18) + '\n')
     key = args.key_file.read_text().strip()
     from dispatch import repo_slug
+    global PROVIDERS
+    PROVIDERS = Providers(args.key_file.parent / 'ai_settings.json', sandbox=args.key_file.parent)
     state = State(control.GitHub(gh_exe(), repo_slug()))
     threading.Thread(target=state.loop, daemon=True).start()
     icons = {'/icon-192.png': png_icon(192), '/icon-512.png': png_icon(512)}
