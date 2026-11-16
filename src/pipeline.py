@@ -121,6 +121,11 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
             if ordinal < cfg.get('editorial.experiment_posts', 56):
                 state.update(experiment=cfg.get('editorial.experiment_id', 'facebook-world-history-4w'),
                              experiment_slot=ordinal + 1)
+            arm = ab_arm(cfg, ordinal)
+            if arm:
+                state.update(ab_test=arm)
+                snapshot.setdefault('script', {})['title_style'] = arm['title_style']
+                snapshot.setdefault('tts', {})['provider'] = arm['voice']
         elif cfg.get('production.experiment', False):
             from .experiments import select_slot
             manifest_path = base_dir() / 'data/experiments/histold-six-reels.json'
@@ -141,6 +146,21 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
                 state['experiment_hook'] = slot['hook']
     save_state(stage, state)
     return stage
+
+
+def ab_arm(cfg: Config, ordinal: int) -> dict | None:
+    """2x2 title-style x voice arm for editorial slot `ordinal`, or None outside the test window.
+
+    Arms rotate every post (title) and every two posts (voice), so each block of
+    four consecutive Shorts covers all four cells.
+    """
+    test = cfg.get('ab_test') or {}
+    start = test.get('start_slot')
+    if not test.get('enabled') or not isinstance(start, int) or not start <= ordinal < start + test.get('posts', 48):
+        return None
+    i = ordinal - start
+    return {'id': test.get('id', 'voice-title-2x2'), 'index': i,
+            'title_style': ('question', 'statement')[i % 2], 'voice': ('kokoro', 'edge')[(i // 2) % 2]}
 
 
 def stage_path(cfg: Config, name: str) -> Path:
@@ -352,6 +372,7 @@ def _step_voiceover(cfg: Config, stage: Path, st: dict) -> None:
         "duration": vo.duration,
         "words": [[w.word, w.start, w.end] for w in vo.words],
         "timing_source": vo.timing_source,
+        "provider": vo.provider,
     }
 
 
@@ -705,6 +726,8 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             "republished_as": None,
             'experiment': st.get('experiment'),
             'experiment_slot': st.get('experiment_slot'),
+            'ab_test': st.get('ab_test'),
+            'voice': st.get('voiceover', {}).get('provider'),
             'category': st.get('category'),
             'editorial_slot': st.get('editorial_slot'),
             'editorial_region': st.get('editorial_region'),

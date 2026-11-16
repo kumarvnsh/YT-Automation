@@ -147,6 +147,25 @@ _CLOSING_QUESTION = """- The FINAL segment MUST end on a direct question that as
 """
 
 
+# A/B arm (data/experiments/voice-title-2x2): force one title shape so arms differ cleanly.
+_TITLE_STYLE_RULES = {
+    'statement': ('\n- TITLE STYLE (required): a declarative statement, NOT a question, never ending in "?". '
+                  'Name a concrete subject and the surprising turn, often as "X — then Y". Shape examples: '
+                  '"Australia Declared War on Birds in 1932 — and the Birds Won", '
+                  '"Austria Sent One Letter — and 20 Million People Died".'),
+    'question': '\n- TITLE STYLE (required): one question ending in "?".',
+}
+
+
+def title_style_error(title: str, style: str | None) -> str | None:
+    asks = title.split('|')[0].rstrip().endswith('?')
+    if style == 'statement' and asks:
+        return 'title must be a declarative statement, not a question'
+    if style == 'question' and not asks:
+        return 'title must be a question ending in "?"'
+    return None
+
+
 def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> str:
     persona = cfg.get("channel.persona", "").strip()
     niche = (cfg.get("channel.niche") or "history / did-you-know").strip()
@@ -209,6 +228,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         "and the whole thing (episode title + suffix) must still fit in 80 characters."
         if series else ""
     )
+    series_title_rule += _TITLE_STYLE_RULES.get(cfg.get('script.title_style'), '')
 
     # The four-beat structure was derived from Histold's retention data and is
     # opt-in per channel. Everything else — long-form, and any channel that has
@@ -788,6 +808,8 @@ def generate_script(cfg: Config, fmt: str, topic_override: str | None = None) ->
             if fmt == "short" and enforce_beats(cfg)
             else None
         )
+        if not structure_error and fmt == 'short':
+            structure_error = title_style_error(last.title, cfg.get('script.title_style'))
         if structure_error:
             word_count = None
             continue

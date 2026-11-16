@@ -39,6 +39,16 @@ series:
   every: 3                       # 1 = every video, 3 = every third
   direction: ""                  # blank = built-in counterfactual brief
 
+# 2x2 A/B on automatic editorial Shorts: title style (question vs statement) x
+# voice (kokoro vs edge = the pre-Oct-20 Edge GuyNeural). Arms rotate per slot so
+# every 4 consecutive posts cover all cells. Judge with scripts/report_ab.py on
+# YouTube % viewed + like-rate, never views alone.
+ab_test:
+  enabled: true
+  id: "voice-title-2x2"
+  start_slot: 122               # first editorial_slot in the test (121 was the last before it)
+  posts: 48                     # 12 per cell, about 10 days at 5/day
+
 editorial:
   enabled: true                 # new automatic Histold Shorts only; manual topics stay fixed
   primary_platform: "facebook"

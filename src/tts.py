@@ -35,6 +35,7 @@ class Voiceover:
     duration: float
     words: list[WordTiming]
     timing_source: str = "estimated"
+    provider: str = ""           # TTS engine actually used (Kokoro can fall back to Edge)
 
 
 def _ffprobe_duration(path: Path) -> float:
@@ -173,6 +174,7 @@ def synthesize(cfg: Config, text: str, out_path: Path) -> Voiceover:
         except Exception as exc:
             print(f"  ! Kokoro unavailable or invalid ({type(exc).__name__}); using Edge voiceover.")
             voiceover = _synthesize_edge(cfg, text, out_path)
+            provider = "edge"
     elif provider == "edge":
         voiceover = _synthesize_edge(cfg, text, out_path)
     elif provider == "elevenlabs":
@@ -195,6 +197,7 @@ def synthesize(cfg: Config, text: str, out_path: Path) -> Voiceover:
             voiceover = align_voiceover(voiceover)
             build_storyboard([{"narration": text}], voiceover.words, voiceover.duration,
                              30, voiceover.timing_source, strict=True)
+    voiceover.provider = provider
     return voiceover
 
 
