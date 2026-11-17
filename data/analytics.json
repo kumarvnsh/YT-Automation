@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-17T11:00:40.249427+00:00",
+      "updated": "2026-11-17T12:00:34.623088+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "Z6w2dgH6oOk",
+          "title": "Edo Japan's Prized Pale Face Powder Hid a Poison",
+          "description": "In Edo-period Japan, pale skin was admired, and women used white face powder every day. Many of these powders contained lead, a toxic metal whose harm built up slowly and was hard to see. #JapaneseHistory #EdoPeriod #HiddenHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "did you know",
+            "edo japan",
+            "edo period",
+            "education",
+            "everyday origins",
+            "forgotten history",
+            "historical facts",
+            "history facts",
+            "history shorts",
+            "japanese beauty history",
+            "japanese history",
+            "lead poisoning",
+            "oshiroi",
+            "secretly deadly",
+            "traditional japan",
+            "white face powder",
+            "world history"
+          ],
+          "publishedAt": "2026-11-17T11:07:01Z",
+          "thumbnail": "https://i.ytimg.com/vi/Z6w2dgH6oOk/mqdefault.jpg",
+          "views": 6,
+          "likes": 0,
+          "comments": 1,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-12",
+            "end_date": "2026-11-17",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "kItjTLy7eiw",
           "title": "Were the Pyramids of Giza Really Built by Enslaved People?",
           "description": "Many school lessons taught that enslaved people built Egypt's pyramids. Archaeology at Giza points to a different picture of skilled, fed workers. Follow the story from a Greek writer's account to the excavated workers' town.\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -66,7 +110,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -102,14 +146,14 @@
           ],
           "publishedAt": "2026-11-16T18:50:32Z",
           "thumbnail": "https://i.ytimg.com/vi/2pxxM-WFU7o/mqdefault.jpg",
-          "views": 7,
+          "views": 8,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -152,7 +196,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -197,7 +241,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -240,7 +284,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -283,7 +327,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -326,7 +370,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -369,7 +413,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -412,7 +456,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -454,7 +498,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -497,7 +541,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -541,7 +585,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -586,7 +630,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -631,7 +675,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -674,7 +718,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -716,7 +760,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -759,7 +803,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -807,7 +851,7 @@
           "shares": 0,
           "analytics_views": 5,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -848,7 +892,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -890,7 +934,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -932,7 +976,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -972,7 +1016,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1014,7 +1058,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1057,7 +1101,7 @@
           "shares": 0,
           "analytics_views": 11,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1099,7 +1143,7 @@
           "shares": 0,
           "analytics_views": 18,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1140,7 +1184,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1184,7 +1228,7 @@
           "shares": 0,
           "analytics_views": 13,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1226,7 +1270,7 @@
           "shares": 0,
           "analytics_views": 11,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1268,7 +1312,7 @@
           "shares": 0,
           "analytics_views": 6,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1306,7 +1350,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1353,7 +1397,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1394,7 +1438,7 @@
           "shares": 0,
           "analytics_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1439,7 +1483,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1481,7 +1525,7 @@
           "shares": 0,
           "analytics_views": 6,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1524,7 +1568,7 @@
           "shares": 0,
           "analytics_views": 29,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1565,7 +1609,7 @@
           "shares": 0,
           "analytics_views": 8,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1601,7 +1645,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1649,7 +1693,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1690,7 +1734,7 @@
           "shares": 0,
           "analytics_views": 5,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1732,7 +1776,7 @@
           "shares": 0,
           "analytics_views": 9,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1774,7 +1818,7 @@
           "shares": 0,
           "analytics_views": 42,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1817,7 +1861,7 @@
           "shares": 0,
           "analytics_views": 14,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1857,7 +1901,7 @@
           "shares": 0,
           "analytics_views": 10,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1901,7 +1945,7 @@
           "shares": 0,
           "analytics_views": 2,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1942,7 +1986,7 @@
           "shares": 0,
           "analytics_views": 25,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1986,7 +2030,7 @@
           "shares": 0,
           "analytics_views": 11,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2027,7 +2071,7 @@
           "shares": 0,
           "analytics_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2067,9 +2111,9 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 7.0,
           "shares": 0,
-          "analytics_views": 41,
+          "analytics_views": 40,
           "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2107,53 +2151,13 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 41.44,
+          "avg_view_pct": 40.63,
           "subs_gained": 0,
           "average_watch_time_seconds": 21.0,
           "shares": 0,
-          "analytics_views": 57,
+          "analytics_views": 36,
           "analytics_period": {
-            "start_date": "2026-11-11",
-            "end_date": "2026-11-17",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "WrsGC03_Prc",
-          "title": "Your Garden Wheelbarrow's Surprising Ancestor: Where Did It Start?",
-          "description": "A single wheel under a load, shown in carvings from Han dynasty China, helps explain the wheelbarrow you still use today. This short history follows the tool's ancient roots. Follow for more everyday history.\n#WorldHistory #ChineseHistory #DidYouKnow",
-          "tags": [
-            "ancient china",
-            "ancient technology",
-            "chinese history",
-            "did you know",
-            "education",
-            "everyday inventions",
-            "everyday origins",
-            "han dynasty",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "wheelbarrow",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-11-11T18:10:45Z",
-          "thumbnail": "https://i.ytimg.com/vi/WrsGC03_Prc/mqdefault.jpg",
-          "views": 38,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 24.17,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 7.0,
-          "shares": 0,
-          "analytics_views": 38,
-          "analytics_period": {
-            "start_date": "2026-11-11",
+            "start_date": "2026-11-12",
             "end_date": "2026-11-17",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
