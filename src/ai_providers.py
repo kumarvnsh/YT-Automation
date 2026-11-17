@@ -22,7 +22,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 LABELS = {'local': 'Local qwen3:8b', 'claude': 'Claude (your plan)', 'codex': 'Codex (your plan)'}
-DEFAULTS = {'mode': 'auto', 'order': ['claude', 'codex', 'local'],
+DEFAULTS = {'mode': 'auto', 'order': ['codex', 'claude', 'local'],
             'claude': {'per_5h': 20, 'per_week': 120},
             'codex': {'per_5h': 20, 'per_week': 120}}
 WINDOW_5H, WINDOW_WEEK = 5 * 3600, 7 * 86400
