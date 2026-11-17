@@ -16,6 +16,14 @@ $Prior = $null
 if (Test-Path $MetaPath) { try { $Prior = Get-Content $MetaPath -Raw | ConvertFrom-Json } catch {} }
 if ($Prior) {
     $Proc = Get-CimInstance Win32_Process -Filter "ProcessId=$([int]$Prior.pid)" -ErrorAction SilentlyContinue
+    if (-not $Proc) {
+        # A venv launcher can exit while its Python child keeps serving the port.
+        $Listener = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+        if ($Listener) {
+            $Candidate = Get-CimInstance Win32_Process -Filter "ProcessId=$($Listener[0].OwningProcess)" -ErrorAction SilentlyContinue
+            if ($Candidate.ParentProcessId -eq [int]$Prior.pid) { $Proc = $Candidate }
+        }
+    }
     if ($Proc -and $Proc.CommandLine -and $Proc.CommandLine.Contains('dashboard_server.py')) {
         if ($Prior.digest -eq $Digest -and $Prior.repo -eq $Repo -and $Prior.port -eq $Port) {
             try {

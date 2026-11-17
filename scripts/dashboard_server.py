@@ -487,12 +487,12 @@ def chat(state: State, messages: list[dict], address: str | None = None, name: s
 # ---------- app shell: manifest, service worker, icons ----------
 
 MANIFEST = {'name': 'Histold', 'short_name': 'Histold', 'start_url': '/', 'scope': '/', 'display': 'standalone',
-            'background_color': '#030a14', 'theme_color': '#030a14', 'description': 'Histold growth dashboard',
+            'background_color': '#111827', 'theme_color': '#111827', 'description': 'Histold growth dashboard',
             'icons': [{'src': '/icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
                       {'src': '/icon-512.png', 'sizes': '512x512', 'type': 'image/png'},
                       {'src': '/icon-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]}
 
-SW = """const C='histold-v3';
+SW = """const C='histold-v4';
 self.addEventListener('install',e=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
  await Promise.all((await caches.keys()).filter(k=>k.startsWith('histold-')&&k!==C).map(k=>caches.delete(k)));
@@ -506,8 +506,8 @@ self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET'||new URL
 
 
 def png_icon(size: int) -> bytes:
-    """Dark rounded tile with a cyan 'H', drawn without an image library."""
-    bg, fg = (3, 10, 20), (0, 229, 255)
+    """Charcoal rounded tile with a slate-blue 'H', drawn without an image library."""
+    bg, fg = (17, 24, 39), (167, 187, 213)
     r, rows = size * 0.2, []
     for y in range(size):
         row = bytearray([0])
@@ -525,7 +525,7 @@ def png_icon(size: int) -> bytes:
             + chunk(b'IDAT', zlib.compress(b''.join(rows), 9)) + chunk(b'IEND', b''))
 
 
-HEAD = """<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#030a14">
+HEAD = """<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#111827">
 <link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes">
 <style>.chat{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto;padding:4px 2px;margin-bottom:10px}
 .msg{padding:9px 12px;border-radius:12px;max-width:88%;white-space:pre-wrap}.me{align-self:flex-end;background:var(--accent);color:#fff}
