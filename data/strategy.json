@@ -1,56 +1,56 @@
 {
-  "updated": "2026-11-17T11:00:24.008114+00:00",
-  "videos_scored": 115,
+  "updated": "2026-11-17T15:00:32.684925+00:00",
+  "videos_scored": 117,
   "weights": {
     "series": {
-      "school_myths": 0.0566,
-      "mistakes": 0.0816,
-      "almost": 0.0723,
-      "erased": 0.0794,
-      "unsolved": 0.0665,
-      "weird_dark": 0.0741,
-      "photo_story": 0.0781,
-      "spy_gadgets": 0.0781,
-      "animals": 0.0781,
-      "secretly_deadly": 0.0781,
-      "worst_jobs": 0.0781,
-      "forgotten_rules": 0.065,
-      "behind_legend": 0.059,
-      "found_by_accident": 0.0548
+      "school_myths": 0.0535,
+      "mistakes": 0.0819,
+      "almost": 0.0725,
+      "erased": 0.0796,
+      "unsolved": 0.0666,
+      "weird_dark": 0.0742,
+      "photo_story": 0.0782,
+      "spy_gadgets": 0.0782,
+      "animals": 0.0782,
+      "secretly_deadly": 0.0782,
+      "worst_jobs": 0.0782,
+      "forgotten_rules": 0.0651,
+      "behind_legend": 0.0591,
+      "found_by_accident": 0.0565
     },
     "region": {
-      "india": 0.1102,
-      "africa": 0.087,
-      "japan": 0.0931,
-      "china": 0.107,
-      "russia": 0.1294,
-      "middle_east": 0.1158,
-      "europe": 0.1178,
-      "americas": 0.124,
-      "asia_pacific": 0.1157
+      "india": 0.1094,
+      "africa": 0.0852,
+      "japan": 0.0935,
+      "china": 0.1073,
+      "russia": 0.1297,
+      "middle_east": 0.1161,
+      "europe": 0.1183,
+      "americas": 0.1244,
+      "asia_pacific": 0.1161
     },
     "duration_variant": {
-      "concise": 0.5147,
-      "story": 0.4853
+      "concise": 0.5127,
+      "story": 0.4873
     }
   },
   "stats": {
     "series": {
       "school_myths": {
-        "n": 2,
-        "mean_score": 0.235
+        "n": 3,
+        "mean_score": 0.252
       },
       "mistakes": {
         "n": 1,
-        "mean_score": 0.561
+        "mean_score": 0.564
       },
       "almost": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.436
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.523
+        "mean_score": 0.524
       },
       "unsolved": {
         "n": 2,
@@ -58,7 +58,7 @@
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.428
+        "mean_score": 0.429
       },
       "photo_story": {
         "n": 0,
@@ -86,59 +86,59 @@
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.268
+        "mean_score": 0.269
       },
       "found_by_accident": {
-        "n": 2,
-        "mean_score": 0.21
+        "n": 3,
+        "mean_score": 0.286
       }
     },
     "region": {
       "india": {
-        "n": 13,
-        "mean_score": 0.5
+        "n": 14,
+        "mean_score": 0.497
       },
       "africa": {
-        "n": 14,
-        "mean_score": 0.4
+        "n": 15,
+        "mean_score": 0.393
       },
       "japan": {
         "n": 13,
-        "mean_score": 0.427
+        "mean_score": 0.429
       },
       "china": {
         "n": 12,
-        "mean_score": 0.487
+        "mean_score": 0.488
       },
       "russia": {
         "n": 13,
-        "mean_score": 0.572
+        "mean_score": 0.574
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.522
+        "mean_score": 0.524
       },
       "europe": {
         "n": 14,
-        "mean_score": 0.529
+        "mean_score": 0.532
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.554
+        "mean_score": 0.556
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.522
+        "mean_score": 0.524
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 58,
-        "mean_score": 0.511
+        "n": 59,
+        "mean_score": 0.509
       },
       "story": {
-        "n": 57,
-        "mean_score": 0.489
+        "n": 58,
+        "mean_score": 0.49
       }
     }
   },
