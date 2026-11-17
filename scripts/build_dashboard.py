@@ -204,6 +204,8 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
         'monetization_api': summarize_api(read_json(root / 'data/private/facebook-api-live.json') or read_json(root / 'data/private/facebook-api-monetization.json'),
                                          read_json(root / 'data/private/facebook-api-live.json') or read_json(root / 'data/private/facebook-api-bonus-probe.json')),
         'earnings_status': read_json(root / 'data/private/earnings-status.json'),
+        'operations': read_json(root / 'data/private/operations.json'),
+        'audience': read_json(root / 'data/private/audience.json'),
         'youtube_earnings': read_json(root / 'data/private/youtube-earnings.json'),
         'overrides': read_json(root / 'data/growth_overrides.json', {}),
         'options': {'series': [x['id'] for x in cfg.get('editorial.series') or []],
@@ -432,6 +434,10 @@ __PANELS__
 <section class="panel" id="money-section" data-page="earnings"><h2>Monetization</h2><div id="money"></div></section>
 <section class="panel half" data-page="settings"><h2>Data gaps</h2><div id="gaps"></div></section>
 <section class="panel half" id="healthPanel" data-page="settings"><h2>System health &amp; data freshness</h2><div class="pills" id="pills"></div></section>
+<section class="panel half" data-page="overview"><h2>Operations alerts</h2><div id="operationsAlerts"></div></section>
+<section class="panel half" data-page="insights"><h2>USA &amp; Europe audience</h2><div id="audienceReport"></div></section>
+<section class="panel" data-page="strategy"><h2>Weekly growth review</h2><div id="weeklyOperations"></div></section>
+<section class="panel half" data-page="settings"><h2>WhatsApp updates</h2><div id="whatsappStatus"></div></section>
 </main>
 <div class="drawer" id="drawer" hidden><div class="drawer-card" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><button class="drawer-x" id="drawerClose" type="button" aria-label="Close">✕</button><div id="drawerBody"></div></div></div>
 <nav class="mobile-nav" aria-label="Mobile navigation"><a href="#/overview" data-nav="overview"><span>◈</span>Overview</a><a href="#/insights" data-nav="insights"><span>✦</span>Insights</a><a href="#/videos" data-nav="videos"><span>▤</span>Videos</a><a href="#/ai" data-nav="ai"><span>◎</span>Ask AI</a><a href="#/earnings" data-nav="earnings"><span>◉</span>Earnings</a><a href="#/settings" data-nav="settings"><span>⚙</span>Settings</a></nav>
@@ -635,6 +641,14 @@ function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('
  $('money').innerHTML='<pre class="small" style="white-space:pre-wrap">'+esc(JSON.stringify(m,null,2)).slice(0,4000)+'</pre>'})();
 
 // review & gaps
+function renderOperations(){const o=D.operations||{},a=D.audience||{},w=o.weekly_review||{};
+ $('operationsAlerts').innerHTML=o.generated?'<p class="small muted">Checked '+esc(local(o.generated))+' · workflow checks '+esc(o.workflow_check)+'</p>'+(o.alerts?.length?o.alerts.map(x=>'<div class="finding"><b class="'+(x.severity==='error'?'bad':'warn')+'">'+esc(x.message)+'</b></div>').join(''):'<p class="ok">No active alerts in the monitored checks.</p>'):'<p class="muted">First monitoring check pending.</p>';
+ const summaries=w.audience||{};
+ $('audienceReport').innerHTML='<p class="small muted">Actual audience locations, separate from the historical region a video discusses. Europe uses a broad reporting-country group including UK, Russia and Turkey.</p>'+Object.entries(summaries).map(([p,r])=>'<div class="finding"><b>'+esc(p)+'</b><p>'+esc(r.basis||r.status)+' · '+(r.usa_europe_share_of_reported==null?'Unavailable':(r.usa_europe_share_of_reported*100).toFixed(1)+'% USA + Europe of reported countries')+'</p><p class="small muted">'+esc(r.reason||r.note||'')+'</p></div>').join('')+(Object.keys(summaries).length?'':'<p>Audience collection pending.</p>');
+ const trend=w.youtube_week_comparison,group=g=>esc(g.option)+' ('+g.n+' videos; median Facebook views '+fmt(g.fb_median)+')';
+ $('weeklyOperations').innerHTML=w.generated?'<p class="small muted">Updated '+esc(local(w.generated))+' · advisory only</p><h4>Working</h4><p>'+((w.working||[]).slice(0,3).map(group).join('<br>')||'Insufficient measured evidence.')+'</p><h4>Underperforming</h4><p>'+((w.not_working||[]).slice(0,3).map(group).join('<br>')||'Insufficient measured evidence.')+'</p>'+(trend?'<h4>YouTube weekly comparison</h4><p>'+esc(trend.current.start)+'–'+esc(trend.current.end)+': '+fmt(trend.current.views)+' views; +'+fmt(trend.current.subscribersGained)+' subscribers, −'+fmt(trend.current.subscribersLost)+' lost. Previous window: '+fmt(trend.previous.views)+' views; +'+fmt(trend.previous.subscribersGained)+' gained, −'+fmt(trend.previous.subscribersLost)+' lost.</p><p class="small muted">'+(trend.complete?'Both windows contain seven returned days.':'Incomplete reporting windows; do not treat differences as a full-week comparison.')+'</p><details><summary>Daily retention values</summary><pre class="small">'+esc(JSON.stringify(trend.current.daily_retention,null,2))+'</pre></details>':'<p>Daily audience report pending.</p>')+'<h4>Recommendations to review</h4><ul>'+(w.proposals||[]).map(p=>'<li>'+esc(p)+'</li>').join('')+'</ul><p class="small muted">Earnings stay in the Earnings page; unverified bonuses are excluded. Apply changes through the existing confirmation controls.</p>':'<p>First weekly review pending.</p>';
+ $('whatsappStatus').innerHTML='<p><b>'+esc(o.notification?.status||'Not configured')+'</b> · daily briefing at 9:00 AM IST.</p><p class="small muted">Uses only your configured recipient. Gateway acceptance is not proof of delivery. Calls and remote publishing commands are not enabled.</p>';
+}renderOperations();HUD.renders.push(renderOperations);
 (()=>{const s=D.earnings_status,y=D.youtube_earnings;
  if(s){const box=document.createElement('div');box.className='finding';box.innerHTML='<b>Automatic earnings collection</b><p class="small">Last attempt '+esc(local(s.checked))+'</p>'+['facebook','youtube'].map(p=>'<p class="small"><b>'+esc(p)+': '+esc(s[p]?.status||'unknown')+'</b> · '+esc(s[p]?.message||'Read-only report collected; estimates may be revised.')+'</p>').join('');$('money').appendChild(box)}
  if(y){const rows=y.data?.rows||[],sum=rows.reduce((n,r)=>n+Number(r[1]||0),0),box=document.createElement('div');box.className='finding';box.innerHTML='<b>YouTube estimated revenue: '+esc(new Intl.NumberFormat(undefined,{style:'currency',currency:y.currency}).format(sum))+'</b><p class="small">Requested '+esc(y.requested_start)+'–'+esc(y.requested_end)+' · latest returned day '+esc(y.latest_returned_day||'none')+'. Not a payout statement.</p>';$('money').appendChild(box)}

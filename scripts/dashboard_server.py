@@ -204,6 +204,7 @@ class State:
             time.sleep(REFRESH_SECONDS)
             try:
                 self.refresh_earnings_if_due()
+                self.operations_if_due()
                 self.refresh()
                 self.name_videos()
                 report = (self.data or {}).get('ai_insights') or {}
@@ -224,6 +225,13 @@ class State:
         subprocess.run([sys.executable, str(ROOT / 'scripts/refresh_private_earnings.py'),
                         '--config', str(ROOT / 'config.yaml'), '--data-root', str(DATA_ROOT)],
                        capture_output=True, timeout=600)
+
+    def operations_if_due(self):
+        report = DATA_ROOT / 'data/private/operations.json'
+        if report.exists() and time.time() - report.stat().st_mtime < 300:
+            return
+        subprocess.run([sys.executable, str(ROOT / 'scripts/operations_tick.py'), '--data-root', str(DATA_ROOT)],
+                       capture_output=True, timeout=300)
 
 
 NICK_PROMPT = """You name history videos for a channel owner's dashboard. For each title in the JSON list, give a 2-4 word nickname the owner would use in conversation, naming the concrete subject (people, place, object, era), in the style of "Roman Aqueducts" or "Viking Sunstones". No question words, no punctuation.

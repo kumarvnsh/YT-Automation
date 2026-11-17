@@ -412,3 +412,47 @@ must be verified before combining amounts. The public API may not expose every b
 
 These exporter changes must be deployed to GitHub before hourly Actions collect the
 new engagement fields. Local commits alone do not update the Actions runner.
+
+## Jarvis operations and owner updates (local)
+
+The local monitoring worker checks export freshness and the latest completed workflow
+results. A deliberate cancelled publish (such as the daily cap) is not a failure alert.
+Reports, snapshots, audience data and notification state stay in `data/private/`.
+
+- Audience: YouTube viewer-country views use a separate Analytics report. Facebook
+  Page-like geography and Instagram follower geography are distinctly labelled and
+  may be unavailable. Video subject region is never treated as viewer location.
+- Country percentages use returned countries only; suppressed locations are not
+  inferred. The broad Europe reporting group includes UK, Russia and Turkey.
+- Weekly review: measured content groups, returned YouTube daily views/subscribers,
+  daily retention, private earnings sources, and the existing local-AI analysis.
+  New daily snapshot comparisons need seven days to build a baseline and compare only
+  matching IDs; lifetime view counts are not mislabelled as new weekly views.
+- Recommendations remain advisory and use the existing confirmation controls.
+
+OpenWA is installed separately under `D:\histold\OpenWA` from
+https://github.com/rmyndharis/OpenWA, with a checksum-verified portable Node runtime.
+The gateway is bound to `127.0.0.1:2785`, uses the Baileys engine and persistent SQLite,
+and keeps its credentials/session files outside this repository. It is an unofficial
+WhatsApp Web gateway. Its documented call support is inbound events/rejection, not
+outbound conversational AI calling. Do not confuse it with the different openwa.dev package.
+
+WhatsApp briefings target 09:00 Asia/Kolkata and catch up after a missed start.
+Only the configured owner recipient is allowed by the scoped gateway API key.
+A send is deduplicated persistently; uncertain network outcomes are not retried
+blindly. Gateway acceptance is distinct from WhatsApp delivery/read receipts.
+No incoming chat command can publish content or change strategy.
+
+Run once in Administrator PowerShell to install the separate logged-off monitoring
+and gateway-watchdog task (does not alter the publishing task):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File D:\YT-Automation\scripts\install_operations_task.ps1
+powershell -ExecutionPolicy Bypass -File D:\YT-Automation\scripts\start_dashboard.ps1
+```
+
+Outbound updates currently use the owner-approved personal session and appear in the Message yourself chat; the dedicated-number request was withdrawn.
+A random local identifier is not a WhatsApp number: the owner must obtain and verify
+an eligible SIM/eSIM or business-provider number. Rented provider numbers may require
+an official WhatsApp Business API integration instead of this linked-device gateway.
+Never enable the personal session when a dedicated sender was requested.
