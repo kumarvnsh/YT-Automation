@@ -1,48 +1,48 @@
 {
-  "updated": "2026-11-17T07:00:24.105433+00:00",
-  "videos_scored": 114,
+  "updated": "2026-11-17T11:00:24.008114+00:00",
+  "videos_scored": 115,
   "weights": {
     "series": {
-      "school_myths": 0.0567,
-      "mistakes": 0.0817,
-      "almost": 0.0724,
-      "erased": 0.0795,
+      "school_myths": 0.0566,
+      "mistakes": 0.0816,
+      "almost": 0.0723,
+      "erased": 0.0794,
       "unsolved": 0.0665,
-      "weird_dark": 0.0738,
+      "weird_dark": 0.0741,
       "photo_story": 0.0781,
       "spy_gadgets": 0.0781,
       "animals": 0.0781,
       "secretly_deadly": 0.0781,
       "worst_jobs": 0.0781,
       "forgotten_rules": 0.065,
-      "behind_legend": 0.0591,
+      "behind_legend": 0.059,
       "found_by_accident": 0.0548
     },
     "region": {
-      "india": 0.1101,
-      "africa": 0.0869,
+      "india": 0.1102,
+      "africa": 0.087,
       "japan": 0.0931,
       "china": 0.107,
-      "russia": 0.1293,
-      "middle_east": 0.1156,
-      "europe": 0.1185,
+      "russia": 0.1294,
+      "middle_east": 0.1158,
+      "europe": 0.1178,
       "americas": 0.124,
-      "asia_pacific": 0.1156
+      "asia_pacific": 0.1157
     },
     "duration_variant": {
-      "concise": 0.5152,
-      "story": 0.4848
+      "concise": 0.5147,
+      "story": 0.4853
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 2,
-        "mean_score": 0.236
+        "mean_score": 0.235
       },
       "mistakes": {
         "n": 1,
-        "mean_score": 0.562
+        "mean_score": 0.561
       },
       "almost": {
         "n": 2,
@@ -50,7 +50,7 @@
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.524
+        "mean_score": 0.523
       },
       "unsolved": {
         "n": 2,
@@ -58,7 +58,7 @@
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.422
+        "mean_score": 0.428
       },
       "photo_story": {
         "n": 0,
@@ -90,7 +90,7 @@
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.209
+        "mean_score": 0.21
       }
     },
     "region": {
@@ -119,8 +119,8 @@
         "mean_score": 0.522
       },
       "europe": {
-        "n": 13,
-        "mean_score": 0.532
+        "n": 14,
+        "mean_score": 0.529
       },
       "americas": {
         "n": 12,
@@ -133,8 +133,8 @@
     },
     "duration_variant": {
       "concise": {
-        "n": 57,
-        "mean_score": 0.512
+        "n": 58,
+        "mean_score": 0.511
       },
       "story": {
         "n": 57,
