@@ -104,3 +104,41 @@ class RecoveryTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ShotsnipKeepaliveTests(unittest.TestCase):
+    def setUp(self):
+        import tempfile
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.root = Path(tmp.name) / 'clip'
+        (self.root / 'work' / 'dashboard').mkdir(parents=True)
+        (self.root / 'watch_service.py').write_text('', encoding='utf-8')
+        self.state = Path(tmp.name) / 'state.json'
+        self.now = datetime(2026, 11, 17, 12, tzinfo=timezone.utc)
+
+    def run_tick(self, now=None):
+        from unittest.mock import MagicMock, patch
+        from src.recovery import shotsnip_keepalive
+        with patch('src.recovery.subprocess.run', return_value=MagicMock(returncode=0)) as run:
+            return shotsnip_keepalive(Path('repo'), self.root, self.state, now or self.now), run
+
+    def test_restarts_dead_worker_with_cooldown(self):
+        actions, run = self.run_tick()
+        self.assertEqual(actions[0]['status'], 'restart_requested')
+        self.assertIn('start_shotsnip_worker.ps1', run.call_args.args[0][-1])
+        self.assertEqual(self.run_tick(self.now + timedelta(minutes=5))[0], [])
+        self.assertEqual(len(self.run_tick(self.now + timedelta(minutes=11))[0]), 1)
+
+    def test_respects_owner_stop(self):
+        (self.root / 'work' / 'dashboard' / 'stop-worker').write_text('stop', encoding='utf-8')
+        actions, run = self.run_tick()
+        self.assertEqual(actions, [])
+        run.assert_not_called()
+
+    def test_running_worker_is_left_alone(self):
+        from unittest.mock import patch
+        with patch('src.recovery._lock_held', return_value=True):
+            actions, run = self.run_tick()
+        self.assertEqual(actions, [])
+        run.assert_not_called()

@@ -205,7 +205,10 @@ acknowledgement such as **"Yes, do that"** re-shows the previous validated card.
 Independent clauses are checked separately, so **"Don't change the schedule; boost
 Europe"** can still produce the requested Europe boost.
 
-The **Histold Dashboard** login task starts the app. The hourly runner also invokes
+The **Histold Dashboard** login task runs `scripts/autostart.ps1`: it starts the dashboard,
+the WhatsApp gateway and the Shotsnip clipping worker, then opens the installed Histold
+app (log: `D:\histold\autostart.log`). The operations tick restarts a dead Shotsnip
+worker unless **Stop local clipping** was pressed. The hourly runner also invokes
 `start_dashboard.ps1`, checking its process and restarting it when code changes.
 For remote access, install Tailscale on both devices and sign in to the same account.
 Run `tailscale serve --bg 8787` on the laptop and enable Serve at the URL it prints.

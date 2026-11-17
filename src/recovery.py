@@ -1,5 +1,6 @@
 """Bounded operational recovery. Never publishes videos, modifies code or changes credentials."""
 import json
+import os
 import subprocess
 import requests
 from datetime import datetime, timedelta, timezone
@@ -79,6 +80,53 @@ def recover(alerts, runs, github, state_path, now, verified=False, auto_republis
     state_path.write_text(json.dumps({'attempts': attempts}), encoding='utf-8')
     actions.append({'action': 'refresh_analytics', 'status': attempt['status'], 'message': message})
     return actions
+
+
+def _lock_held(path):
+    """True when another process holds the worker's FileLock (Windows byte lock)."""
+    if not path.exists():
+        return False
+    try:
+        import msvcrt
+    except ImportError:
+        return True  # cannot probe off Windows; never risk a duplicate start
+    try:
+        fd = os.open(str(path), os.O_RDWR)
+    except OSError:
+        return True
+    try:
+        msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+        msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+        return False
+    except OSError:
+        return True
+    finally:
+        os.close(fd)
+
+
+def shotsnip_keepalive(repo, clip_root, state_path, now):
+    """Restart the Shotsnip clipping worker if it died (e.g. a dashboard restart killed
+    it), unless the owner pressed Stop. Bounded to one attempt per 10 minutes."""
+    work = clip_root/'work'/'dashboard'
+    if not (clip_root/'watch_service.py').exists() or (work/'stop-worker').exists() or _lock_held(work/'worker.lock'):
+        return []
+    try:
+        state = json.loads(state_path.read_text(encoding='utf-8'))
+        if now - datetime.fromisoformat(state['shotsnip worker']) < timedelta(minutes=10):
+            return []
+    except (OSError, ValueError, KeyError, TypeError):
+        state = {}
+    state['shotsnip worker'] = now.isoformat()
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    state_path.write_text(json.dumps(state), encoding='utf-8')
+    try:
+        result = subprocess.run(['powershell', '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass',
+                                 '-File', str(repo/'scripts'/'start_shotsnip_worker.ps1')], capture_output=True, timeout=90)
+        status = 'restart_requested' if result.returncode == 0 else 'restart_failed'
+    except (OSError, subprocess.TimeoutExpired):
+        status = 'restart_failed'
+    return [{'action': 'restart shotsnip worker', 'status': status,
+             'message': 'Shotsnip clipping worker was not running; clips stay local.'}]
 
 
 def service_watchdog(repo, state_path, now):
