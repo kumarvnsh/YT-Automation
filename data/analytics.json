@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-17T17:00:42.937159+00:00",
+      "updated": "2026-11-17T19:00:39.143179+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,49 @@
       },
       "videos": [
         {
+          "id": "jCPbacI0r5Q",
+          "title": "How Did Indian Cloth Win Buyers From Japan to West Africa?",
+          "description": "Indian weavers did not sell one design to the world. They studied each market and changed their cloth to suit it, a practice that shaped centuries of global trade. Follow for more surprising world history. #WorldHistory #IndianHistory #TextileHistory",
+          "tags": [
+            "chintz",
+            "cotton history",
+            "did you know",
+            "education",
+            "everyday origins",
+            "global trade",
+            "gujarat history",
+            "historical facts",
+            "history documentary",
+            "history facts",
+            "history shorts",
+            "indian history",
+            "indian textiles",
+            "textile history",
+            "trade history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-17T17:11:29Z",
+          "thumbnail": "https://i.ytimg.com/vi/jCPbacI0r5Q/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-12",
+            "end_date": "2026-11-17",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "Z6w2dgH6oOk",
           "title": "Edo Japan's Prized Pale Face Powder Hid a Poison",
           "description": "In Edo-period Japan, pale skin was admired, and women used white face powder every day. Many of these powders contained lead, a toxic metal whose harm built up slowly and was hard to see. #JapaneseHistory #EdoPeriod #HiddenHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -59,7 +102,7 @@
           ],
           "publishedAt": "2026-11-17T11:07:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Z6w2dgH6oOk/mqdefault.jpg",
-          "views": 23,
+          "views": 29,
           "likes": 0,
           "comments": 1,
           "playlist_ids": [],
@@ -534,7 +577,7 @@
           ],
           "publishedAt": "2026-11-15T18:16:18Z",
           "thumbnail": "https://i.ytimg.com/vi/S7egTTzf3qc/mqdefault.jpg",
-          "views": 30,
+          "views": 28,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1131,7 +1174,7 @@
           ],
           "publishedAt": "2026-11-14T15:24:52Z",
           "thumbnail": "https://i.ytimg.com/vi/hk8oGsZj7I4/mqdefault.jpg",
-          "views": 24,
+          "views": 23,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2112,50 +2155,6 @@
           "average_watch_time_seconds": 7.0,
           "shares": 0,
           "analytics_views": 40,
-          "analytics_period": {
-            "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "gcL_hEeV_JE",
-          "title": "What Made One Siberian Border Town Russia's Tea Gateway?",
-          "description": "A large share of Russia's tea once passed through Kyakhta, a remote border town in southern Siberia. Here is how a 1727 treaty and long caravan routes shaped that trade. #HistoryGotThisWrong #RussianHistory #TeaHistory",
-          "tags": [
-            "18th century russia",
-            "buriat republic",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "kyakhta",
-            "mongolia history",
-            "russia china border",
-            "russian history",
-            "siberia",
-            "silk road",
-            "tea trade",
-            "trade caravans",
-            "world history"
-          ],
-          "publishedAt": "2026-11-12T04:13:34Z",
-          "thumbnail": "https://i.ytimg.com/vi/gcL_hEeV_JE/mqdefault.jpg",
-          "views": 56,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 40.63,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 21.0,
-          "shares": 0,
-          "analytics_views": 36,
           "analytics_period": {
             "start_date": "2026-11-12",
             "end_date": "2026-11-17",
