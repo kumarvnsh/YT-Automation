@@ -456,3 +456,17 @@ A random local identifier is not a WhatsApp number: the owner must obtain and ve
 an eligible SIM/eSIM or business-provider number. Rented provider numbers may require
 an official WhatsApp Business API integration instead of this linked-device gateway.
 Never enable the personal session when a dedicated sender was requested.
+
+### Automatic operational recovery
+
+The monitor checks GitHub's current index and analytics exports, cached privately for
+up to three minutes, rather than assuming the dedicated clone is current. If exports
+are genuinely stale and no analytics job is active, it can dispatch analytics.yml
+at most twice/hour, at least 15 minutes apart. It refuses that action if automatic
+republishing is enabled. Network uncertainty is not treated as confirmed success.
+Dashboard and OpenWA process health are probed independently; known local launchers
+can be retried at most once per 15 minutes. An OS permission failure remains visible.
+Concurrent checks share an OS file lock. Actions and verified resolutions are logged
+privately in data/private/recovery-history.json and exposed in the monitoring report.
+No recovery action publishes videos, modifies source code, changes credentials,
+retries an ambiguous WhatsApp send or resets the dedicated publishing clone.
