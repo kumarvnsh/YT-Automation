@@ -50,10 +50,15 @@ the job before script generation. Recovery can add research API cost.
 Workflow failures identify the affected claim and source IDs.
 
 `storyboard.json` records measured word timing, frame boundaries and reveal cues.
-Edge supplies native word boundaries. If these are absent/inconsistent,
-`tts.alignment_provider: openai` enables measured Whisper transcription timestamps
-and validates text agreement; estimated timing cannot pass strict production.
-Web research and optional transcription add API cost.
+Kokoro and Edge supply native word boundaries. If these are absent/inconsistent
+(including a timing chunk that crosses a scene boundary),
+`tts.alignment_provider: local` force-aligns the known script on CPU with
+torchaudio's English wav2vec2 model (`src/forced_align.py`, run under
+`KOKORO_PYTHON`; needs `torchaudio==2.6.0`, model cached in `~/.cache/torch`).
+Words with low acoustic confidence fail the alignment rather than pass silently.
+If the local worker fails and `OPENAI_API_KEY` is set, Whisper transcription
+timestamps are tried instead (`openai` uses Whisper directly); estimated timing
+cannot pass strict production. Web research and Whisper fallback add API cost.
 
 Conservative silence diagnostics warn without trimming audio. Exact intentional
 pause windows can be recorded in the storyboard's `allowed_pauses`; rerun the

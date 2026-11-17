@@ -1,4 +1,6 @@
-# CPU torch is installed separately from the official PyTorch CPU wheel index.
+# CPU torch==2.6.0 and torchaudio==2.6.0 (local forced alignment, src/forced_align.py)
+# are installed separately from the official PyTorch CPU wheel index. Keep torchaudio
+# below 2.8: forced_align is deprecated there and scheduled for removal in 2.9.
 kokoro==0.9.4
 misaki[en]==0.9.4
 numpy==1.26.4
