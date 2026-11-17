@@ -3265,5 +3265,14 @@
     "slot": "morning",
     "date": "2026-11-16",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261117_110154_408345_short",
+    "title": "Edo Japan's Prized Pale Face Powder Hid a Poison",
+    "fingerprint": "edo_face_hid_japan_pale_poison_powder_prized_s",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-17",
+    "status": "reserved"
   }
 ]

@@ -7203,5 +7203,39 @@
     "production_profile": 2,
     "facebook_id": "1714386230110231",
     "instagram_id": "17973382644192321"
+  },
+  {
+    "video_id": "Z6w2dgH6oOk",
+    "run_id": "44069960406",
+    "stage_dir_name": "20261117_110154_408345_short",
+    "title": "Edo Japan's Prized Pale Face Powder Hid a Poison",
+    "published_at": "2026-11-17T11:06:41.543892+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "ab_test": {
+      "id": "voice-title-2x2",
+      "index": 3,
+      "title_style": "statement",
+      "voice": "edge"
+    },
+    "voice": "edge",
+    "category": "secretly_deadly",
+    "editorial_slot": 125,
+    "editorial_region": "japan",
+    "editorial_series": "It Was Secretly Deadly",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Women in Edo Japan painted their faces white with a powder that contained lead.",
+    "duration": 24.984,
+    "production_profile": 2,
+    "facebook_id": "1459528303050294",
+    "instagram_id": "18120572345605218"
   }
 ]
