@@ -1,60 +1,60 @@
 {
-  "updated": "2026-11-17T19:00:25.102787+00:00",
+  "updated": "2026-11-17T23:00:41.507931+00:00",
   "videos_scored": 118,
   "weights": {
     "series": {
-      "school_myths": 0.0542,
-      "mistakes": 0.0708,
-      "almost": 0.0734,
-      "erased": 0.0807,
-      "unsolved": 0.0674,
-      "weird_dark": 0.0752,
-      "photo_story": 0.0791,
-      "spy_gadgets": 0.0791,
-      "animals": 0.0791,
-      "secretly_deadly": 0.0791,
-      "worst_jobs": 0.0791,
-      "forgotten_rules": 0.0658,
-      "behind_legend": 0.0598,
-      "found_by_accident": 0.0571
+      "school_myths": 0.0519,
+      "mistakes": 0.0768,
+      "almost": 0.0724,
+      "erased": 0.0806,
+      "unsolved": 0.0663,
+      "weird_dark": 0.0742,
+      "photo_story": 0.0779,
+      "spy_gadgets": 0.0779,
+      "animals": 0.0779,
+      "secretly_deadly": 0.0779,
+      "worst_jobs": 0.0779,
+      "forgotten_rules": 0.0648,
+      "behind_legend": 0.063,
+      "found_by_accident": 0.0603
     },
     "region": {
-      "india": 0.1097,
-      "africa": 0.0855,
-      "japan": 0.0907,
-      "china": 0.1076,
-      "russia": 0.1301,
-      "middle_east": 0.1165,
-      "europe": 0.1187,
-      "americas": 0.1247,
-      "asia_pacific": 0.1164
+      "india": 0.1134,
+      "africa": 0.0843,
+      "japan": 0.0929,
+      "china": 0.1073,
+      "russia": 0.1293,
+      "middle_east": 0.1156,
+      "europe": 0.1171,
+      "americas": 0.1243,
+      "asia_pacific": 0.1158
     },
     "duration_variant": {
-      "concise": 0.5157,
-      "story": 0.4843
+      "concise": 0.5119,
+      "story": 0.4881
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 3,
-        "mean_score": 0.253
+        "mean_score": 0.235
       },
       "mistakes": {
         "n": 2,
-        "mean_score": 0.407
+        "mean_score": 0.487
       },
       "almost": {
         "n": 2,
-        "mean_score": 0.437
+        "mean_score": 0.438
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.527
+        "mean_score": 0.547
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.365
+        "mean_score": 0.364
       },
       "weird_dark": {
         "n": 1,
@@ -86,25 +86,25 @@
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.27
+        "mean_score": 0.322
       },
       "found_by_accident": {
         "n": 3,
-        "mean_score": 0.287
+        "mean_score": 0.329
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.498
+        "mean_score": 0.514
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.395
+        "mean_score": 0.39
       },
       "japan": {
         "n": 14,
-        "mean_score": 0.418
+        "mean_score": 0.429
       },
       "china": {
         "n": 12,
@@ -112,15 +112,15 @@
       },
       "russia": {
         "n": 13,
-        "mean_score": 0.576
+        "mean_score": 0.574
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.526
+        "mean_score": 0.523
       },
       "europe": {
         "n": 14,
-        "mean_score": 0.533
+        "mean_score": 0.528
       },
       "americas": {
         "n": 12,
@@ -128,17 +128,17 @@
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.525
+        "mean_score": 0.524
       }
     },
     "duration_variant": {
       "concise": {
         "n": 59,
-        "mean_score": 0.511
+        "mean_score": 0.509
       },
       "story": {
         "n": 59,
-        "mean_score": 0.487
+        "mean_score": 0.491
       }
     }
   },
@@ -146,8 +146,8 @@
     "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
     "Why Did One Emperor Dig a Canal Across Half of China?",
     "Why Did Bristol's Clocks Refuse to Match London's?",
-    "What Did Ancient Indian Cities Hide Under Their Streets?",
-    "Who Really Owned the Land Everyone Thought Was Public?"
+    "Who Really Owned the Land Everyone Thought Was Public?",
+    "What Did Ancient Indian Cities Hide Under Their Streets?"
   ],
   "losers": [
     "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
