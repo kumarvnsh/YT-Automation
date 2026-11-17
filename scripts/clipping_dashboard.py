@@ -226,6 +226,7 @@ def collect():
         game = schedule.get('before_switch','gta5') if datetime.now(timezone.utc) < cutoff else schedule.get('from_switch','gta6')
         return {'channel':'shotsnip','name':'Shotsnip','identity':credentials,
                 'analytics':snapshot, 'evidence':evidence(snapshot), 'targets':watchlist['creators'],
+                'facebook_analytics':read(CLIP_ROOT/'work/dashboard/facebook-analytics.json',{}),
                 'age_performance':read(CLIP_ROOT/'work/dashboard/age-performance.json',{}),
                 'schedule':{**schedule,'active_game':game},'runs':clip_runs(),
                 'policy':policy(), 'agent':read(CLIP_ROOT / 'work/dashboard/agent-review.json', {}),
@@ -235,7 +236,7 @@ def collect():
                 'scheduler_config':read(CLIP_ROOT/'scheduler.json',{}),
                 'connections':{'youtube_upload':read(CLIP_ROOT/'work/dashboard/upload-identity.json',{}).get('status','token_saved_identity_not_verified') if (CLIP_ROOT/'token.json').exists() else 'not_connected',
                                'youtube_analytics':snapshot.get('owner_analytics',{}).get('status','not_connected'),
-                               'facebook':'not_connected','instagram':'not_connected',
+                               'facebook':read(CLIP_ROOT/'work/dashboard/facebook-analytics.json',{}).get('status','not_connected'),'instagram':'not_connected',
                                'twitch':read(CLIP_ROOT/'work/dashboard/twitch-identity.json',{}).get('status',
                                    'anonymous_capture_tested' if (CLIP_ROOT/'work/scheduler/twitch-proof/capture.mp4').exists() else 'watchlist_only'),
                                'clips_kitty':'installed_local_api' if Path('D:/Clips-Kitty/.venv/Scripts/python.exe').exists() else 'not_installed'},
