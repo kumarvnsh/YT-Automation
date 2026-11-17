@@ -111,6 +111,51 @@ class FacebookInsightsTests(unittest.TestCase):
         self.assertEqual(export_meta_analytics._insight_views(insights), 0)
 
 
+def _resp(status: int, body: dict) -> Mock:
+    import json
+    r = Mock(ok=200 <= status < 300, status_code=status, text=json.dumps(body))
+    r.json.return_value = body
+    return r
+
+
+@patch("scripts.export_meta_analytics.time.sleep")
+class GraphRetryTests(unittest.TestCase):
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_transient_500_is_retried_then_succeeds(self, get: Mock, sleep: Mock) -> None:
+        get.side_effect = [_resp(500, {"error": {"code": 2, "is_transient": True}}), _resp(200, {"data": []})]
+        r = export_meta_analytics._graph_get("https://x", params={})
+        self.assertTrue(r.ok)
+        self.assertEqual(get.call_count, 2)
+
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_permission_error_is_not_retried(self, get: Mock, sleep: Mock) -> None:
+        get.return_value = _resp(403, {"error": {"code": 200, "message": "denied"}})
+        r = export_meta_analytics._graph_get("https://x", params={})
+        self.assertFalse(r.ok)
+        self.assertEqual(get.call_count, 1)
+        sleep.assert_not_called()
+
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_gives_up_after_three_transient_failures(self, get: Mock, sleep: Mock) -> None:
+        get.return_value = _resp(500, {"error": {"code": 2, "is_transient": True}})
+        self.assertFalse(export_meta_analytics._graph_get("https://x", params={}).ok)
+        self.assertEqual(get.call_count, 3)
+
+    @patch("scripts.export_meta_analytics._facebook_reel_insights", return_value={})
+    @patch("scripts.export_meta_analytics._page_access_token", return_value="page")
+    @patch("scripts.export_meta_analytics.requests.get")
+    def test_facebook_videos_are_fetched_in_pages(self, get: Mock, _tok, _ins, sleep: Mock) -> None:
+        views = {"data": [{"name": "total_video_views", "values": [{"value": 5}]}]}
+        page = lambda ids, after=None: _resp(200, {  # noqa: E731
+            "data": [{"id": i, "video_insights": views} for i in ids],
+            "paging": {"cursors": {"after": after}, "next": "more" if after else None}})
+        get.side_effect = [page(["a", "b"], after="c1"), page(["c"])]
+        vids = export_meta_analytics.fetch_facebook("token", "pg", "v21.0", 100)
+        self.assertEqual([v["id"] for v in vids], ["a", "b", "c"])
+        self.assertEqual(get.call_args_list[1].kwargs["params"]["after"], "c1")
+        self.assertEqual(get.call_args_list[0].kwargs["params"]["limit"], export_meta_analytics.FB_PAGE_SIZE)
+
+
 class ExportCommandTests(unittest.TestCase):
     @patch("scripts.export_meta_analytics.env", return_value=None)
     def test_missing_token_returns_failure(self, _env: Mock) -> None:

@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -28,6 +29,41 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import load_config, base_dir, env  # noqa: E402
 from src.meta_uploader import GRAPH, _page_access_token, _raise_graph  # noqa: E402
+
+
+# Graph error codes Meta documents as temporary (unknown / service / rate limits).
+_TRANSIENT_CODES = {1, 2, 4, 17, 32, 341, 613}
+FB_PAGE_SIZE = 25  # smaller pages keep the heavy video_insights expansion from timing out
+
+
+def _is_transient(resp: requests.Response) -> bool:
+    if resp.status_code in (429, 500, 502, 503, 504):
+        return True
+    try:
+        body = json.loads(resp.text or "")
+    except (TypeError, ValueError):
+        return False
+    err = body.get("error") if isinstance(body, dict) else None
+    if not isinstance(err, dict):
+        return False
+    return err.get("is_transient") is True or err.get("code") in _TRANSIENT_CODES
+
+
+def _graph_get(url: str, *, params: dict, timeout: int = 60, attempts: int = 3,
+               backoff: float = 10.0) -> requests.Response:
+    """GET with retries for Meta's temporary failures; permanent errors return at once."""
+    for attempt in range(1, attempts + 1):
+        try:
+            resp = requests.get(url, params=params, timeout=timeout)
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt == attempts:
+                raise
+        else:
+            if resp.ok or not _is_transient(resp) or attempt == attempts:
+                return resp
+            print(f"  transient Graph error [{resp.status_code}], retry {attempt}/{attempts - 1}")
+        time.sleep(backoff * attempt)
+    raise AssertionError("unreachable")
 
 
 def _experiment_metrics(video: dict, platform: str) -> dict:
@@ -108,19 +144,24 @@ def _insight_views(insights: dict) -> int:
 
 def fetch_facebook(token: str, page_id: str, ver: str, limit: int) -> list[dict]:
     page_token = _page_access_token(token, page_id, ver)
-    r = requests.get(
-        f"{GRAPH}/{ver}/{page_id}/videos",
-        params={
-            "fields": "id,description,created_time,permalink_url,picture,"
-                      "likes.summary(true),comments.summary(true),video_insights",
-            "limit": limit,
-            "access_token": page_token,
-        },
-        timeout=60,
-    )
-    _raise_graph(r, "Facebook video analytics")
+    rows: list[dict] = []
+    params = {
+        "fields": "id,description,created_time,permalink_url,picture,"
+                  "likes.summary(true),comments.summary(true),video_insights",
+        "limit": min(limit, FB_PAGE_SIZE),
+        "access_token": page_token,
+    }
+    while len(rows) < limit:
+        r = _graph_get(f"{GRAPH}/{ver}/{page_id}/videos", params=params)
+        _raise_graph(r, "Facebook video analytics")
+        body = r.json()
+        rows.extend(body.get("data", []))
+        after = ((body.get("paging") or {}).get("cursors") or {}).get("after")
+        if not after or not (body.get("paging") or {}).get("next") or not body.get("data"):
+            break
+        params = {**params, "after": after}
     videos = []
-    for v in r.json().get("data", []):
+    for v in rows[:limit]:
         permalink = v.get("permalink_url", "")
         videos.append({
             "id": v["id"],
@@ -178,7 +219,7 @@ def _ig_reel_insights(media_id: str, token: str, ver: str) -> dict:
 
 
 def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[dict]:
-    r = requests.get(
+    r = _graph_get(
         f"{GRAPH}/{ver}/{ig_user_id}/media",
         params={
             "fields": "id,caption,media_type,timestamp,permalink,thumbnail_url,"
@@ -186,7 +227,6 @@ def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[d
             "limit": limit,
             "access_token": token,
         },
-        timeout=60,
     )
     _raise_graph(r, "Instagram media list")
     videos = []
