@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-16T17:26:12.163313+00:00",
-  "status": "Owner requested three daily posts; measuring US/Europe schedule for 14 days",
+  "updated": "2026-11-17T05:08:54.401303+00:00",
+  "status": "pinned by you until 2026-12-01T05:08 UTC",
   "hours_utc": [
-    12,
+    11,
     18,
     23
   ],
   "posts_per_day": 3,
-  "changed_at": "2026-11-16T17:26:12.163313+00:00",
+  "changed_at": "2026-11-17T05:08:54.401303+00:00",
   "history": [
     {
       "at": "2026-11-16T16:55:56.883305+00:00",
@@ -25,6 +25,15 @@
         23
       ],
       "reason": "Owner requested three posts/day. Europe lunchtime, Europe evening/US lunch, and US evening; hold 14 days."
+    },
+    {
+      "at": "2026-11-17T05:08:54.401303+00:00",
+      "pinned": [
+        11,
+        18,
+        23
+      ],
+      "reason": "pinned by you for 14 days"
     }
   ],
   "hour_stats": {
@@ -59,5 +68,6 @@
       "shrunk": 0.668
     }
   },
-  "method": "Growth agent (laptop, daily): picks the UTC publish hours in data/growth_plan.json."
+  "method": "Growth agent (laptop, daily): picks the UTC publish hours in data/growth_plan.json.",
+  "pinned_until": "2026-12-01T05:08:54.401303+00:00"
 }
