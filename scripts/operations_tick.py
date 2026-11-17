@@ -2,6 +2,7 @@
 """Local monitoring, weekly advisory reports and owner-approved WhatsApp updates."""
 import argparse
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
@@ -13,7 +14,7 @@ from src.operations import IST, health_alerts, snapshot, weekly_review, daily_br
 from src.whatsapp_updates import send_update
 from src.control import GitHub
 from src.config import load_config
-from src.recovery import latest_exports, recover, service_watchdog
+from src.recovery import latest_exports, recover, service_watchdog, shotsnip_keepalive
 
 
 def tick(root, now=None):
@@ -61,6 +62,10 @@ def _tick(root, now=None):
     alerts = health_alerts(data, runs, now)
     service_repairs, service_alerts = service_watchdog(Path(__file__).resolve().parent.parent,
                                                      private/'service-recovery.json', now)
+    if not any(a['id'] == 'service:dashboard' for a in service_alerts):  # worker starts via the dashboard
+        clip_root = Path(os.environ.get('SHOTSNIP_ROOT', r'D:\YT-Cliping-Automation'))
+        service_repairs += shotsnip_keepalive(Path(__file__).resolve().parent.parent, clip_root,
+                                              private/'service-recovery.json', now)
     alerts.extend(service_alerts)
     config_values = load_config(root/'config.yaml')
     repairs = recover(alerts, runs, github, private/'recovery-state.json', now,

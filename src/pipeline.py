@@ -345,11 +345,34 @@ def _step_align(cfg: Config, stage: Path, st: dict) -> None:
     try:
         st['storyboard'] = build_storyboard(*args, strict=True)
     except ValueError as exc:
-        print(f'  ! strict alignment failed ({exc}); using approximate timing')
-        st['storyboard'] = build_storyboard(*args, strict=False)
+        args = _realign(cfg, stage, st, args, exc)
+        try:
+            st['storyboard'] = build_storyboard(*args, strict=True)
+        except ValueError as exc:
+            print(f'  ! strict alignment failed ({exc}); using approximate timing')
+            st['storyboard'] = build_storyboard(*args, strict=False)
     from .quality_gate import file_hash
     st['storyboard']['audio_sha256'] = file_hash(stage / vo['path'])
     _write_report(stage, 'storyboard', st['storyboard'])
+
+
+def _realign(cfg: Config, stage: Path, st: dict, args: tuple, exc: ValueError) -> tuple:
+    """Per-scene timing failed; force-align the script once before approximating."""
+    from .tts import ALIGNERS, Voiceover, WordTiming, align_voiceover
+    vo = st['voiceover']
+    if cfg.get('tts.alignment_provider', '') not in ALIGNERS or vo.get('timing_source') == 'forced_aligned':
+        return args
+    print(f'  ! scene timing failed ({exc}); force-aligning the narration')
+    text = ' '.join(s['narration'].strip() for s in st['script']['segments']).strip()
+    try:
+        aligned = align_voiceover(Voiceover(stage / vo['path'], vo['duration'], list(args[1]),
+                                            vo.get('timing_source', 'estimated')), cfg, text)
+    except Exception as err:
+        print(f'  ! forced alignment unavailable ({type(err).__name__}: {err})')
+        return args
+    vo['words'] = [[w.word, w.start, w.end] for w in aligned.words]
+    vo['timing_source'] = aligned.timing_source
+    return (args[0], [WordTiming(*w) for w in vo['words']], *args[2:4], aligned.timing_source)
 
 
 def _step_audio_check(cfg: Config, stage: Path, st: dict) -> None:

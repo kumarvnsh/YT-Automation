@@ -184,24 +184,62 @@ def synthesize(cfg: Config, text: str, out_path: Path) -> Voiceover:
     else:
         raise ValueError(f"Unknown tts.provider: {provider}")
     strict = cfg.get("production.strict_timing", False)
-    if voiceover.timing_source == "estimated" and cfg.get("tts.alignment_provider", "") == "openai":
-        voiceover = align_voiceover(voiceover)
+    aligner = cfg.get("tts.alignment_provider", "")
+    if voiceover.timing_source == "estimated" and aligner in ALIGNERS:
+        voiceover = align_voiceover(voiceover, cfg, text)
     if strict:
         from .alignment import build_storyboard
         try:
             build_storyboard([{"narration": text}], voiceover.words, voiceover.duration,
                              30, voiceover.timing_source, strict=True)
         except ValueError:
-            if cfg.get("tts.alignment_provider", "") != "openai" or voiceover.timing_source == "forced_aligned":
+            if aligner not in ALIGNERS or voiceover.timing_source == "forced_aligned":
                 raise
-            voiceover = align_voiceover(voiceover)
+            voiceover = align_voiceover(voiceover, cfg, text)
             build_storyboard([{"narration": text}], voiceover.words, voiceover.duration,
                              30, voiceover.timing_source, strict=True)
     voiceover.provider = provider
     return voiceover
 
 
-def align_voiceover(voiceover: Voiceover) -> Voiceover:
+ALIGNERS = ("local", "openai")
+
+
+def align_voiceover(voiceover: Voiceover, cfg: Config | None = None, text: str = "") -> Voiceover:
+    """Measured word timing for existing narration audio.
+
+    `local` force-aligns the known script on CPU (no API cost); if that worker
+    fails and an OpenAI key exists, Whisper transcription is tried instead.
+    """
+    if cfg is not None and cfg.get("tts.alignment_provider", "") == "local":
+        try:
+            return _align_local(cfg, voiceover, text)
+        except Exception as exc:
+            if not env("OPENAI_API_KEY"):
+                raise
+            print(f"  ! local alignment failed ({type(exc).__name__}: {exc}); trying OpenAI Whisper")
+    return _align_openai(voiceover)
+
+
+def _align_local(cfg: Config, voiceover: Voiceover, text: str) -> Voiceover:
+    if not text.strip():
+        raise ValueError("Local alignment needs the narration text")
+    with tempfile.TemporaryDirectory(prefix="histold-align-") as scratch:
+        request = Path(scratch) / "request.json"
+        result = Path(scratch) / "result.json"
+        request.write_text(json.dumps({"text": text, "audio": str(voiceover.audio_path.resolve())}),
+                           encoding="utf-8")
+        subprocess.run([
+            os.environ.get("KOKORO_PYTHON", sys.executable), "-m", "src.forced_align",
+            str(request), str(result),
+        ], cwd=Path(__file__).resolve().parent.parent, check=True,
+            timeout=float(cfg.get("tts.alignment_timeout", 300)))
+        data = json.loads(result.read_text(encoding="utf-8"))
+    words = [WordTiming(w["word"], w["start"], w["end"]) for w in data["words"]]
+    return Voiceover(voiceover.audio_path, voiceover.duration, words, "forced_aligned", voiceover.provider)
+
+
+def _align_openai(voiceover: Voiceover) -> Voiceover:
     """Obtain measured ASR word timestamps; text agreement is validated downstream.
 
     OpenAI documents word timestamps for whisper-1 + verbose_json:

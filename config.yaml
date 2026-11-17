@@ -184,7 +184,11 @@ script:
   longform_target_seconds: 180   # 3 minutes; daily YouTube-only long-form (cron-job.org)
 
 tts:
-  alignment_provider: "openai" # Used only if measured native timing is absent/inconsistent
+  # Used only if measured native timing is absent/inconsistent. "local" force-aligns
+  # the script on CPU (wav2vec2, no API cost) and tries OpenAI Whisper only if that
+  # worker fails and OPENAI_API_KEY is set; "openai" uses Whisper transcription.
+  alignment_provider: "local"
+  alignment_timeout: 300       # seconds, including the one-time ~360 MB model download
   provider: "kokoro"           # CPU open-weight narrator; Edge fallback
   kokoro_voice: "am_michael"
   kokoro_speed: 0.95
