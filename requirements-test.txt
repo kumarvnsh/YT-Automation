@@ -1,0 +1,4 @@
+-r requirements.txt
+
+# Pytest also runs the existing unittest suite; v9 includes native subtest support.
+pytest>=9,<10
