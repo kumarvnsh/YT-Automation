@@ -16,6 +16,8 @@ CLIP_ROOT = Path(os.environ.get('SHOTSNIP_ROOT', r'D:\YT-Cliping-Automation')).r
 LOCK = threading.RLock()
 JOB = {'running': False}
 WORKER = None
+DISPATCHER = None
+SCHEDULER_WAKE = threading.Event()
 MIN_SOURCE_SAMPLE = 3
 
 
@@ -135,6 +137,12 @@ def review():
                 continue
             if 2 <= age <= 28:
                 groups[provenance[video['id']]].append(video['views'] / age)
+        groups.clear()
+        for row in read(CLIP_ROOT/'work/dashboard/age-performance.json',{}).get('videos',[]):
+            point=row.get('checkpoints',{}).get('24')
+            creator=provenance.get(row['id'])
+            if creator and point:
+                groups[creator].append(point['views'])
         mature = [value for values in groups.values() for value in values]
         baseline = median(mature) if len(mature) >= 6 else None
         priorities, findings = {}, []
@@ -143,7 +151,7 @@ def review():
                 factor = round(min(1.5, max(.5, median(values)/baseline)), 2)
                 priorities[creator] = factor
                 findings.append({'creator':creator, 'n':len(values), 'priority':factor,
-                                 'median_views_per_day_since_upload':round(median(values),2)})
+                                 'median_views_near_24_hours':round(median(values),2)})
         current = policy()
         if current['learning_enabled']:
             # Recompute from evidence; don't compound boosts or keep unsupported weights.
@@ -155,8 +163,8 @@ def review():
                   'learning_enabled':current['learning_enabled'],
                   'actions': ([f'Updated {len(priorities)} measured source priorities (0.5–1.5).' ] if priorities and current['learning_enabled'] else []),
                   'next_steps': ['Connect source metadata to uploaded video IDs before learning source preferences.'] if not findings else ['Keep testing alternatives; these associations are not causal proof.'],
-                  'sample_rule':'At least 6 linked uploads overall and 3 per creator, aged 2–28 days.',
-                  'comparison':'Median lifetime views divided by days since upload; not matched-age retention or causal impact.',
+                  'sample_rule':'At least 6 uploads with observations within one hour of 24h, and 3 per creator.',
+                  'comparison':'Median observed views near 24 hours; associations, not causal impact.',
                   'automation_scope':'Refresh analytics, diagnose capture errors, recompute bounded local source priorities. No publishing, account changes, or code edits.'}
         write(CLIP_ROOT / 'work/dashboard/agent-review.json', report)
         return report
@@ -218,10 +226,12 @@ def collect():
         game = schedule.get('before_switch','gta5') if datetime.now(timezone.utc) < cutoff else schedule.get('from_switch','gta6')
         return {'channel':'shotsnip','name':'Shotsnip','identity':credentials,
                 'analytics':snapshot, 'evidence':evidence(snapshot), 'targets':watchlist['creators'],
+                'age_performance':read(CLIP_ROOT/'work/dashboard/age-performance.json',{}),
                 'schedule':{**schedule,'active_game':game},'runs':clip_runs(),
                 'policy':policy(), 'agent':read(CLIP_ROOT / 'work/dashboard/agent-review.json', {}),
                 'job':dict(JOB), 'service':read(CLIP_ROOT / 'work/dashboard/worker.json', {'status':'not_started'}),
                 'scheduler':read(CLIP_ROOT / 'work/scheduler/state.json', {}),
+                'scheduler_service':read(CLIP_ROOT/'work/dashboard/dispatcher.json',{}),
                 'scheduler_config':read(CLIP_ROOT/'scheduler.json',{}),
                 'connections':{'youtube_upload':read(CLIP_ROOT/'work/dashboard/upload-identity.json',{}).get('status','token_saved_identity_not_verified') if (CLIP_ROOT/'token.json').exists() else 'not_connected',
                                'youtube_analytics':snapshot.get('owner_analytics',{}).get('status','not_connected'),
@@ -258,6 +268,9 @@ def action(body):
     global WORKER
     name = body.get('name')
     with LOCK:
+        if name == 'scheduler_due':
+            SCHEDULER_WAKE.set()
+            return 'Dashboard timer checked; due work starts automatically.'
         if name == 'set_scheduler':
             config=read(CLIP_ROOT/'scheduler.json',{})
             config['enabled']=bool(body.get('enabled'))
@@ -303,7 +316,46 @@ def action(body):
     raise ValueError('Unknown Shotsnip action; Histold actions cannot run here')
 
 
+def dispatch_loop():
+    process=None
+    retry_at=0
+    while True:
+        try:
+            if process is not None and process.poll() is not None:
+                if process.returncode:
+                    retry_at=time.time()+300
+                process=None
+            write(CLIP_ROOT/'work/dashboard/dispatcher.json',{'checked_at':time.time(),
+                'status':'running' if process else 'retry_wait' if time.time()<retry_at else 'online',
+                'retry_at':retry_at})
+            stamp=time.time()
+            config=read(CLIP_ROOT/'scheduler.json',{})
+            state=read(CLIP_ROOT/'work/scheduler/state.json',{})
+            running=process is not None and process.poll() is None
+            write(CLIP_ROOT/'work/dashboard/dispatcher.json',{'checked_at':stamp,'status':'running' if running else 'watching'})
+            busy=state.get('phase') in ('scanning','capturing','analyzing','finishing','uploading') and stamp-state.get('heartbeat_at',0)<1800
+            scan_due=stamp-state.get('last_scan_at',0)>=config.get('scan_minutes',30)*60
+            post_due=bool(state.get('ready_clips')) and stamp-state.get('last_upload_at',0)>=max(0,config.get('post_minutes',120)-config.get('early_publish_minutes',0))*60
+            held=any(row.get('status') in ('pending','uncertain') for row in state.get('uploads',[]))
+            if config.get('mode')=='scan_capture_upload':
+                scan_due=stamp-max(state.get('last_cycle_at',0),state.get('last_upload_at',0))>=config.get('scan_minutes',90)*60
+                post_due=False
+            if config.get('enabled') and time.time()>=retry_at and not running and not busy and not held and (scan_due or post_due):
+                folder=CLIP_ROOT/'work/dashboard'; folder.mkdir(parents=True,exist_ok=True)
+                with (folder/'scheduler.log').open('a',encoding='utf-8') as log:
+                    process=subprocess.Popen([str(CLIP_ROOT/'.venv/Scripts/python.exe'),'-u',str(CLIP_ROOT/'scheduled_clips.py'),'--tick'],
+                        cwd=CLIP_ROOT,stdout=log,stderr=log,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+        except Exception as exc:
+            write(CLIP_ROOT/'work/dashboard/dispatcher.json',{'checked_at':time.time(),'status':'error','error':str(exc)})
+        SCHEDULER_WAKE.wait(10)
+        SCHEDULER_WAKE.clear()
+
+
 def tick():
+    global DISPATCHER
+    if DISPATCHER is None or not DISPATCHER.is_alive():
+        DISPATCHER=threading.Thread(target=dispatch_loop,daemon=True)
+        DISPATCHER.start()
     path = CLIP_ROOT / 'work/dashboard/analytics.json'
     if not JOB['running'] and (not path.exists() or time.time()-path.stat().st_mtime > 1800):
         launch_job('refresh')
