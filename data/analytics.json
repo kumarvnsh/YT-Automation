@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-17T20:00:43.174394+00:00",
+      "updated": "2026-11-17T21:00:48.641235+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -58,7 +58,7 @@
           ],
           "publishedAt": "2026-11-17T17:11:29Z",
           "thumbnail": "https://i.ytimg.com/vi/jCPbacI0r5Q/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -320,7 +320,7 @@
           ],
           "publishedAt": "2026-11-16T16:17:48Z",
           "thumbnail": "https://i.ytimg.com/vi/3itSrNpadaE/mqdefault.jpg",
-          "views": 5,
+          "views": 7,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
