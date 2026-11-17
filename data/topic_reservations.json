@@ -3283,5 +3283,14 @@
     "slot": "evening",
     "date": "2026-11-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261117_230228_946981_short",
+    "title": "Russia Fought Over Church Rights \u2014 and Pulled in Several Powers",
+    "fingerprint": "church_fought_over_powers_pulled_rights_russia_several",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-17",
+    "status": "reserved"
   }
 ]
