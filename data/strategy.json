@@ -1,64 +1,64 @@
 {
-  "updated": "2026-11-17T02:00:27.081501+00:00",
-  "videos_scored": 113,
+  "updated": "2026-11-17T07:00:24.105433+00:00",
+  "videos_scored": 114,
   "weights": {
     "series": {
-      "school_myths": 0.0559,
-      "mistakes": 0.0805,
-      "almost": 0.0845,
-      "erased": 0.0783,
-      "unsolved": 0.0656,
-      "weird_dark": 0.0727,
-      "photo_story": 0.0772,
-      "spy_gadgets": 0.0772,
-      "animals": 0.0772,
-      "secretly_deadly": 0.0772,
-      "worst_jobs": 0.0772,
-      "forgotten_rules": 0.0642,
-      "behind_legend": 0.0584,
-      "found_by_accident": 0.054
+      "school_myths": 0.0567,
+      "mistakes": 0.0817,
+      "almost": 0.0724,
+      "erased": 0.0795,
+      "unsolved": 0.0665,
+      "weird_dark": 0.0738,
+      "photo_story": 0.0781,
+      "spy_gadgets": 0.0781,
+      "animals": 0.0781,
+      "secretly_deadly": 0.0781,
+      "worst_jobs": 0.0781,
+      "forgotten_rules": 0.065,
+      "behind_legend": 0.0591,
+      "found_by_accident": 0.0548
     },
     "region": {
-      "india": 0.1093,
-      "africa": 0.0862,
-      "japan": 0.0923,
-      "china": 0.1061,
-      "russia": 0.1358,
-      "middle_east": 0.1148,
-      "europe": 0.1177,
-      "americas": 0.1231,
-      "asia_pacific": 0.1147
+      "india": 0.1101,
+      "africa": 0.0869,
+      "japan": 0.0931,
+      "china": 0.107,
+      "russia": 0.1293,
+      "middle_east": 0.1156,
+      "europe": 0.1185,
+      "americas": 0.124,
+      "asia_pacific": 0.1156
     },
     "duration_variant": {
-      "concise": 0.5184,
-      "story": 0.4816
+      "concise": 0.5152,
+      "story": 0.4848
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 2,
-        "mean_score": 0.232
+        "mean_score": 0.236
       },
       "mistakes": {
         "n": 1,
-        "mean_score": 0.558
+        "mean_score": 0.562
       },
       "almost": {
-        "n": 1,
-        "mean_score": 0.627
+        "n": 2,
+        "mean_score": 0.435
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.52
+        "mean_score": 0.524
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.362
+        "mean_score": 0.365
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.418
+        "mean_score": 0.422
       },
       "photo_story": {
         "n": 0,
@@ -82,70 +82,70 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.252
+        "mean_score": 0.254
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.267
+        "mean_score": 0.268
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.206
+        "mean_score": 0.209
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.498
+        "mean_score": 0.5
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.397
+        "mean_score": 0.4
       },
       "japan": {
         "n": 13,
-        "mean_score": 0.424
+        "mean_score": 0.427
       },
       "china": {
         "n": 12,
-        "mean_score": 0.484
+        "mean_score": 0.487
       },
       "russia": {
-        "n": 12,
-        "mean_score": 0.598
+        "n": 13,
+        "mean_score": 0.572
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.52
+        "mean_score": 0.522
       },
       "europe": {
         "n": 13,
-        "mean_score": 0.53
+        "mean_score": 0.532
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.552
+        "mean_score": 0.554
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.519
+        "mean_score": 0.522
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 56,
-        "mean_score": 0.514
+        "n": 57,
+        "mean_score": 0.512
       },
       "story": {
         "n": 57,
-        "mean_score": 0.486
+        "mean_score": 0.489
       }
     }
   },
   "winners": [
     "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-    "Why Did Bristol's Clocks Refuse to Match London's?",
     "Why Did One Emperor Dig a Canal Across Half of China?",
+    "Why Did Bristol's Clocks Refuse to Match London's?",
     "What Did Ancient Indian Cities Hide Under Their Streets?",
     "Who Really Owned the Land Everyone Thought Was Public?"
   ],
