@@ -662,8 +662,15 @@ route();
 
 def render(data: dict, head: str = '', panels: str = '', live_js: str = '') -> str:
     blob = json.dumps(data, separators=(',', ':'), default=str).replace('</', '<\\/')
-    return (PAGE.replace('__HEAD__', head).replace('__PANELS__', panels)
-            .replace('__LIVE_JS__', live_js).replace('__DATA__', blob))
+    document = (PAGE.replace('__HEAD__', head).replace('__PANELS__', panels)
+                .replace('__LIVE_JS__', live_js).replace('__DATA__', blob))
+    switcher = ('<label for="dashboardChannel" class="small">Channel</label>'
+                '<select id="dashboardChannel" aria-label="Switch channel" '
+                'onchange="location.assign(\'/?channel=\'+this.value)">'
+                '<option value="histold" selected>Histold</option><option value="shotsnip">Shotsnip</option></select>')
+    document = document.replace('<span class="brandmark">H</span>Histold', switcher)
+    document = document.replace('<h1 id="pageTitle">', '<select aria-label="Switch channel on mobile" class="channel-mobile" onchange="location.assign(\'/?channel=\'+this.value)"><option value="histold">Histold</option><option value="shotsnip">Shotsnip</option></select><h1 id="pageTitle">')
+    return document.replace('</head>', '<style>.brand{display:grid;gap:5px}.brand select{max-width:165px;font-size:17px}.channel-mobile{display:none}@media(max-width:699px){.channel-mobile{display:block;margin-bottom:8px}}</style></head>')
 
 
 def main() -> int:

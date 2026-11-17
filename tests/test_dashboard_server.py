@@ -109,6 +109,28 @@ class DashboardTests(unittest.TestCase):
             server.server_close()
             thread.join()
 
+    def test_shotsnip_api_is_isolated_and_rejects_histold_mutations(self):
+        state = Mock()
+        state.get.return_value = {'channel':'histold','videos':[]}
+        with patch.object(dashboard.clipping_dashboard,'collect',return_value={'channel':'shotsnip','videos':[]}):
+            server=ThreadingHTTPServer(('127.0.0.1',0),dashboard.make_handler(state,'test-key',{}))
+            thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+            base=f'http://127.0.0.1:{server.server_port}'
+            opener=urllib.request.build_opener(urllib.request.ProxyHandler({}))
+            try:
+                for path,label in [('/api/data?channel=shotsnip','shotsnip'),('/api/data','histold')]:
+                    req=urllib.request.Request(base+path,headers={'Cookie':'hk=test-key'})
+                    self.assertEqual(json.load(opener.open(req))['channel'],label)
+                req=urllib.request.Request(base+'/api/action',data=json.dumps({'channel':'shotsnip','name':'pause_option'}).encode(),
+                    headers={'Cookie':'hk=test-key','X-Histold':'1'})
+                with self.assertRaises(urllib.error.HTTPError) as caught:
+                    opener.open(req)
+                self.assertEqual(caught.exception.code,400)
+                state.github.run_workflow.assert_not_called()
+                state.github.update_json.assert_not_called()
+            finally:
+                server.shutdown();server.server_close();thread.join()
+
 
 if __name__ == '__main__':
     unittest.main()

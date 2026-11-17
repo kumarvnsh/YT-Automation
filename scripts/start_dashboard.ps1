@@ -9,7 +9,7 @@ $HomeDir = Split-Path -Parent $DataRoot
 $Py = Join-Path $DataRoot '.venv\Scripts\python.exe'
 $Script = Join-Path $Repo 'scripts\dashboard_server.py'
 $MetaPath = Join-Path $HomeDir 'dashboard_server.json'
-$CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/weekly_review.py',
+$CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/clipping_dashboard.py','scripts/shotsnip_page.html','scripts/weekly_review.py',
     'scripts/content_insights.py','scripts/refresh_private_earnings.py','scripts/operations_tick.py','scripts/export_audience.py','src/operations.py','src/whatsapp_updates.py','src/insights.py','src/facebook_monetization.py','src/control.py','src/strategy.py','src/growth.py')
 $Digest = ($CodeFiles | ForEach-Object { (Get-FileHash (Join-Path $Repo $_) -Algorithm SHA256).Hash }) -join ''
 $Prior = $null
@@ -24,7 +24,28 @@ if ($Prior) {
             if ($Candidate.ParentProcessId -eq [int]$Prior.pid) { $Proc = $Candidate }
         }
     }
-    if ($Proc -and $Proc.CommandLine -and $Proc.CommandLine.Contains('dashboard_server.py')) {
+    $ManagedDashboard = $Proc -and $Proc.CommandLine -and $Proc.CommandLine.Contains('dashboard_server.py')
+    # Some scheduled-task processes hide CommandLine from a normal shell. Only
+    # recognize one through BOTH the recorded parent/child PID and authenticated
+    # dashboard response; never kill an unrelated listener just because of its port.
+    if (-not $ManagedDashboard) {
+        $KnownListener = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+        if ($KnownListener) {
+            $KnownProcess = Get-CimInstance Win32_Process -Filter "ProcessId=$($KnownListener[0].OwningProcess)" -ErrorAction SilentlyContinue
+            if ($KnownProcess -and ($KnownProcess.ProcessId -eq [int]$Prior.pid -or $KnownProcess.ParentProcessId -eq [int]$Prior.pid)) {
+                try {
+                    $LocalKey = (Get-Content -LiteralPath (Join-Path $HomeDir 'dashboard_key.txt') -Raw).Trim()
+                    $Proof = Invoke-WebRequest "http://127.0.0.1:$Port/api/data" -Headers @{ Cookie = "hk=$LocalKey" } -UseBasicParsing -TimeoutSec 5
+                    $ProofData = $Proof.Content | ConvertFrom-Json
+                    if ($Proof.StatusCode -eq 200 -and $null -ne $ProofData.videos -and $ProofData.built) {
+                        $ManagedDashboard = $true
+                        $Proc = $KnownProcess
+                    }
+                } catch {}
+            }
+        }
+    }
+    if ($ManagedDashboard) {
         if ($Prior.digest -eq $Digest -and $Prior.repo -eq $Repo -and $Prior.port -eq $Port) {
             try {
                 $Response = Invoke-WebRequest "http://127.0.0.1:$Port/login" -UseBasicParsing -TimeoutSec 3

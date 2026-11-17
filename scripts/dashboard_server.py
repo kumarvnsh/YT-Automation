@@ -35,6 +35,7 @@ DATA_ROOT = ROOT
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'scripts'))
 import build_dashboard  # noqa: E402
+import clipping_dashboard  # noqa: E402
 from src import control  # noqa: E402
 from src.config import load_config  # noqa: E402
 from src.growth import PLAN, propose, problem, settings  # noqa: E402
@@ -196,6 +197,10 @@ class State:
 
     def loop(self):
         try:
+            clipping_dashboard.tick()
+        except Exception:
+            traceback.print_exc()
+        try:
             self.get()
             self.name_videos()
         except Exception:  # noqa: BLE001
@@ -203,6 +208,7 @@ class State:
         while True:
             time.sleep(REFRESH_SECONDS)
             try:
+                clipping_dashboard.tick()
                 self.refresh_earnings_if_due()
                 self.operations_if_due()
                 self.refresh()
@@ -797,6 +803,8 @@ def make_handler(state: State, key: str, icons: dict):
 
         def do_GET(self):
             path = urllib.parse.urlparse(self.path).path
+            params = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            selected_channel = (params.get('channel') or ['histold'])[0]
             if path == '/manifest.webmanifest':
                 return self.send(200, json.dumps(MANIFEST), 'application/manifest+json')
             if path == '/sw.js':
@@ -808,12 +816,55 @@ def make_handler(state: State, key: str, icons: dict):
             if not self.authed():
                 return self.send(302, '', headers={'Location': '/login'})
             if path == '/':
+                if selected_channel == 'shotsnip':
+                    return self.send(200, clipping_dashboard.render(clipping_dashboard.collect(), build_dashboard.PAGE))
                 return self.send(200, build_dashboard.render(state.get(), HEAD, PANELS, LIVE_JS))
+            if path == '/api/shotsnip/media':
+                try:
+                    file = clipping_dashboard.media_file((params.get('file') or [''])[0])
+                except ValueError:
+                    return self.send(404, 'Clip not found', 'text/plain')
+                size = file.stat().st_size
+                start, end = 0, size-1
+                range_header = self.headers.get('Range')
+                if range_header:
+                    match = re.fullmatch(r'bytes=(\d+)-(\d*)',range_header)
+                    if not match:
+                        return self.send(416,'','text/plain',{'Content-Range':f'bytes */{size}'})
+                    start = int(match[1])
+                    end = min(size-1,int(match[2])) if match[2] else size-1
+                    if start > end:
+                        return self.send(416,'','text/plain',{'Content-Range':f'bytes */{size}'})
+                self.send_response(206 if range_header else 200)
+                self.send_header('Content-Type','video/mp4')
+                self.send_header('Content-Length',str(end-start+1))
+                self.send_header('Accept-Ranges','bytes')
+                self.send_header('Cache-Control','private, no-store')
+                self.send_header('X-Content-Type-Options','nosniff')
+                if range_header:
+                    self.send_header('Content-Range',f'bytes {start}-{end}/{size}')
+                self.end_headers()
+                if not getattr(self,'_head_only',False):
+                    with file.open('rb') as stream:
+                        stream.seek(start)
+                        remaining = end-start+1
+                        try:
+                            while remaining:
+                                chunk = stream.read(min(65536,remaining))
+                                if not chunk:
+                                    break
+                                self.wfile.write(chunk)
+                                remaining -= len(chunk)
+                        except (BrokenPipeError,ConnectionResetError,ConnectionAbortedError):
+                            pass
+                return
             if path == '/api/pulse':
                 return self.send(200, json.dumps({'version': state.built, 'built': (state.data or {}).get('built'),
                                                   'refresh_seconds': REFRESH_SECONDS, 'research': state.research_status,
                                                   'live_note': (state.data or {}).get('live_note')}), 'application/json')
             if path == '/api/data':
+                if selected_channel == 'shotsnip':
+                    return self.send(200,json.dumps(clipping_dashboard.collect(),default=str),'application/json')
                 return self.send(200, json.dumps(state.get(), default=str), 'application/json')
             if path == '/api/research':
                 return self.send(200, json.dumps(state.research_status), 'application/json')
@@ -839,6 +890,20 @@ def make_handler(state: State, key: str, icons: dict):
                 return self.send(401, json.dumps({'error': 'sign in again'}), 'application/json')
             try:
                 body = self.body_json()
+                if path == '/api/shotsnip/action':
+                    message = clipping_dashboard.action(body)
+                    return self.send(200,json.dumps({'message':message}),'application/json')
+                if body.get('channel') == 'shotsnip':
+                    if path != '/api/chat':
+                        raise ValueError('Shotsnip requests must use the Shotsnip action endpoint')
+                    def local_answer(system,history):
+                        ensure_server(OLLAMA)
+                        return ollama(OLLAMA,'/api/chat',{'model':MODEL,'stream':False,'think':False,
+                            'messages':[{'role':'system','content':system}]+history,
+                            'options':{'temperature':.3,'num_ctx':8192,'num_predict':450}},timeout=300).get('message',{}).get('content','')
+                    with state.chat_lock:
+                        result = clipping_dashboard.chat(body.get('messages') or [],PROVIDERS,local_answer)
+                    return self.send(200,json.dumps(result),'application/json')
                 if path == '/api/logout':
                     return self.send(200, '{}', 'application/json', {'Set-Cookie': 'hk=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'})
                 if path == '/api/refresh':
