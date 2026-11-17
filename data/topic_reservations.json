@@ -3274,5 +3274,14 @@
     "slot": "evening",
     "date": "2026-11-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261117_170054_812600_short",
+    "title": "How Did Indian Cloth Win Buyers From Japan to West Africa?",
+    "fingerprint": "africa_buyers_cloth_did_from_indian_japan_west_win",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-17",
+    "status": "reserved"
   }
 ]
