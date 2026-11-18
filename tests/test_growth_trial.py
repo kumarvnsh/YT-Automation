@@ -41,6 +41,7 @@ def test_new_stages_freeze_other_tests_and_manual_topics_remain_explicit(tmp_pat
     state=pipeline.load_state(stage)
     assert state['growth_trial']['index']==0 and 'ab_test' not in state and 'creative_test' not in state
     assert state['production_config']['script']['shorts_target_seconds']==35
+    assert state['production_config']['script']['title_style']=='statement'
     manual=pipeline._new_stage(config(),'short',no_upload=True,dry_run=True,topic='Chosen manually')
     assert 'growth_trial' not in pipeline.load_state(manual)
 
@@ -100,3 +101,21 @@ def test_trial_script_keeps_opening_visual_and_payoff_without_legacy_feedback(mo
     prompt=_build_prompt(cfg,'short','Selected supported premise')
     assert 'YouTube Shorts is the primary audience' in prompt and 'First-scene keywords' in prompt
     assert 'Facebook is the primary audience' not in prompt and "TODAY'S DATE" not in prompt
+
+
+def test_selected_opening_visual_reaches_cinematic_scene_request():
+    from types import SimpleNamespace as NS
+    from unittest.mock import MagicMock,patch
+    from src.claude_motion import _request_scenes
+    response=NS(stop_reason='end_turn',content=[NS(type='text',text='<scene index="0"><html>cutaway</html></scene>')],
+                usage=NS(input_tokens=10,output_tokens=20))
+    client=MagicMock();client.beta.messages.stream.return_value.__enter__.return_value.get_final_message.return_value=response
+    cfg=config();cfg.raw['production']['editorial']=trial.assignment(cfg,129)
+    cfg.raw['production']['editorial_opening_visual']='Cutaway of the ice compartment and airflow'
+    cfg.raw['video']={'claude_motion':{'style':'cinematic_2d'}}
+    segment=NS(narration='Ice cooled the food',keywords=['icebox'],beat='hook')
+    with patch('anthropic.Anthropic',return_value=client):
+        _request_scenes(cfg,'Icebox',[segment],[(0,3)],540,960)
+    prompt=client.beta.messages.stream.call_args.kwargs['messages'][0]['content']
+    assert 'Cutaway of the ice compartment and airflow' in prompt
+    assert 'YouTube Shorts world-history' in prompt and 'Do not start with a series card' in prompt

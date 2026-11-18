@@ -229,7 +229,9 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         "and the whole thing (episode title + suffix) must still fit in 80 characters."
         if series else ""
     )
-    series_title_rule += _TITLE_STYLE_RULES.get(cfg.get('script.title_style'), '')
+    series_title_rule += ('\n- TITLE STYLE (required): one factual declarative statement, not a question. '
+                         'Name the concrete subject and its supported surprise; never overstate the evidence.'
+                         if growth_trial else _TITLE_STYLE_RULES.get(cfg.get('script.title_style'), ''))
 
     # The four-beat structure was derived from Histold's retention data and is
     # opt-in per channel. Everything else — long-form, and any channel that has
@@ -269,6 +271,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
                 'First-scene keywords must describe a concrete subject or explanatory diagram, never generic scenery. '
                 'No end-card, follow invitation, forced comment question or series suffix in the spoken payoff. '
                 'Use the selected editorial premise, opening visual and payoff from the evidence packet. '
+                'Stay on that explanation; omit unrelated price statistics and modern inflation equivalents. '
                 'These are editorial hypotheses, not proof that the video will be popular.')
         if editorial.get('this_week'):
             structure_block += ('\nThis is a weekly anniversary episode: hook with the surprising detail, then say the '

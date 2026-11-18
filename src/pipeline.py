@@ -121,6 +121,7 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
             snapshot.setdefault('production', {})['editorial'] = editorial
             if editorial.get('growth_trial'):
                 state['growth_trial']=editorial['growth_trial']
+                snapshot['script']['title_style']='statement'
                 state.update(experiment=editorial['growth_trial']['id'],experiment_slot=editorial['growth_trial']['index']+1)
             elif ordinal < cfg.get('editorial.experiment_posts', 56):
                 state.update(experiment=cfg.get('editorial.experiment_id', 'facebook-world-history-4w'),

@@ -434,12 +434,19 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     maps = cfg.get('production.map_assets', [])
     editorial = cfg.get('production.editorial')
     if editorial:
-        lines.append('Facebook world-history series: ' + editorial['series']['name'] +
+        trial=bool(editorial.get('growth_trial'))
+        lines.append(('YouTube Shorts' if editorial.get('primary_platform')=='youtube' else 'Facebook')+
+                     ' world-history series: ' + editorial['series']['name'] +
                      '. Establish the specific opening subject immediately with a readable map, object, '
                      'diagram or meaningful comparison. Prefer original explanatory visuals to generic stock. '
                      'Use large high-contrast labels, hold important labels long enough to read and avoid flashing '
-                     'or decorative rapid cuts. Keep the series name as a short readable opening label. '
+                     'or decorative rapid cuts. '+('Do not start with a series card; show the subject from the first frame. ' if trial else
+                     'Keep the series name as a short readable opening label. ')+
                      'Distinguish illustrative reconstructions from archival evidence; never invent archival photographs.')
+        opening=cfg.get('production.editorial_opening_visual')
+        if trial and opening:
+            lines.append('Selected opening visual (editorial suggestion, not historical evidence): '+str(opening)+
+                         '. Build this clear explanatory view in scene 0, aligned with the narration. Avoid generic scenery.')
     if maps:
         lines.append('Verified map IDs: ' + ', '.join(a['map_id'] for a in maps) +
                      '. In scene 0 establish ALL these locations with exact placeholders '
@@ -707,6 +714,9 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         cfg.raw.setdefault('production', {})['storyboard'] = board
         cfg.raw['production']['map_assets'] = [{k: v for k, v in a.items() if k != 'svg'} for a in maps]
         cfg.raw['production']['portraits'] = st.get('portraits', [])
+        selection=st.get('editorial_selection') or {}
+        if st.get('growth_trial') and selection.get('candidates'):
+            cfg.raw['production']['editorial_opening_visual']=selection['candidates'][selection['selected_index']]['opening_visual']
 
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
