@@ -75,16 +75,17 @@ def bot_workspace(state):
                 return {'channel':channel,'built':d.get('built'),'hours':d.get('hours'),
                         'freshness':d.get('freshness'),'content_evidence':d.get('content_evidence'),
                         'videos':[{k:v.get(k) for k in ('title','at','fb','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
-            def analyst(prompt):
+            def analyst(prompt, *, order=None):
                 def local():
                     ensure_server(OLLAMA)
                     return ollama(OLLAMA,'/api/chat',{'model':MODEL,'stream':False,'think':False,
                         'messages':[{'role':'user','content':prompt}],
                         'options':{'temperature':.2,'num_ctx':16384,'num_predict':900}},timeout=240).get('message',{}).get('content','')
                 with state.chat_lock:
-                    text,provider,notes=PROVIDERS.answer(prompt,[{'role':'user','content':'Complete the assigned analysis.'}],local)
+                    text,provider,notes=PROVIDERS.answer(prompt,[{'role':'user','content':'Complete the assigned analysis.'}],local,
+                        order=order or ['codex','claude','local'])
                 if not text:raise RuntimeError('The analyst returned no report')
-                return text+'\n\nAnalyst provider: '+provider
+                return text+'\n\nAnalyst provider: '+provider+ ('\nFallback notes: '+'; '.join(notes) if notes else '')
             BOT_WORKSPACE=Workspace(DATA_ROOT.parent/'bot-workspace',evidence,analyst)
             BOT_WORKSPACE.start()
         return BOT_WORKSPACE

@@ -160,11 +160,11 @@ class Providers:
         return [p for p in order if p in LABELS] + (['local'] if 'local' not in order else [])
 
     # ---------- answering ----------
-    def answer(self, system: str, history: list[dict], local) -> tuple[str, str, list[str]]:
+    def answer(self, system: str, history: list[dict], local, *, order=None) -> tuple[str, str, list[str]]:
         """Returns (reply, provider used, notes about skipped providers)."""
         notes = []
         st = self.status()['providers']
-        for p in self.chain():
+        for p in (order if order is not None else self.chain()):
             if p == 'local':
                 return local(), 'local', notes
             info = st[p]

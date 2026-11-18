@@ -173,7 +173,7 @@ class Workspace:
             notes={r['bot']:r['text'] for r in db.execute('SELECT bot,text FROM notes WHERE channel=?',(channel,))}
             routines=[dict(r) for r in db.execute('SELECT * FROM routines WHERE channel=?',(channel,))]
         return {'bots':[b for b in BOTS if b['scope'] in ('both',channel)],'tasks':tasks,'notes':notes,'routines':routines,
-                'runtime':self.runtime(),'built':time.time(),'scope':'Analysis and recommendations; no publishing or code execution through the dashboard bridge.'}
+                'runtime':{**self.runtime(),'fallback_enabled':bool(self.analyst)},'built':time.time(),'scope':'Analysis and recommendations; no publishing or code execution through the dashboard bridge.'}
 
     def claim(self):
         remote_ready=self.runtime().get('ready')
@@ -181,7 +181,7 @@ class Workspace:
             db.execute('BEGIN IMMEDIATE')
             rows=db.execute("SELECT * FROM tasks WHERE status='queued' ORDER BY created").fetchall()
             for row in rows:
-                if row['engine']=='superbot' and not remote_ready:continue
+                if row['engine']=='superbot' and not remote_ready and not self.analyst:continue
                 db.execute("UPDATE tasks SET status='running',stage='Reading channel evidence',updated=? WHERE id=?",(time.time(),row['id']))
                 return dict(row)
 
@@ -231,12 +231,32 @@ class Workspace:
                 finished=bool(remote_bot) and not remote_bot.get('working',False)
             if finished:
                 if not replies:raise RuntimeError('Superbot finished without an answer')
-                if any(m.get('error') for m in replies):raise RuntimeError('Superbot reported an agent error; check Linux login and provider availability')
+                failed=next((m for m in replies if m.get('error')),None)
+                if failed:
+                    detail=' '.join(str(failed.get('text') or '').split())[:140]
+                    if 'usage limit' in detail.lower():raise RuntimeError('Superbot Codex usage limit reached: '+detail)
+                    raise RuntimeError('Superbot reported an agent error: '+(detail or 'no detail; check Linux login and provider availability'))
                 return '\n\n'.join(m['text'] for m in replies)
             if owner.get('status') in ('failed','interrupted','cancelled','error'):raise RuntimeError('Superbot task '+owner['status'])
             self.wake.wait(3);self.wake.clear()
         self.remote('POST','/api/bots/'+bot_id+'/stop',{})
         raise RuntimeError('Superbot assignment reached its 20-minute limit')
+
+    def run_assignment(self, task, prompt):
+        if task['engine']=='superbot' and self.runtime().get('ready'):
+            try:
+                result=self.run_remote(task,prompt)
+                return result+'\n\nAnalyst provider: Codex (Superbot)' if result is not None else None
+            except (requests.RequestException,RuntimeError,ValueError):
+                # These assignments produce advisory text only. Never resubmit
+                # to the remote agent after an uncertain submission.
+                if self.task(task['id'])['cancel']:return None
+                if not self.analyst:raise
+                self.update(task['id'],stage='Superbot unavailable or failed; trying Claude, then local Qwen')
+                return self.analyst(prompt,order=['claude','local'])
+        self.update(task['id'],stage='Trying Codex, then Claude, then local Qwen')
+        if not self.analyst:raise RuntimeError('Dashboard analyst is unavailable')
+        return self.analyst(prompt)
 
     def scheduled(self):
         with self.db() as db:
@@ -255,11 +275,7 @@ class Workspace:
                 self.scheduled();task=self.claim()
                 if task:
                     prompt=self.prompt(task)
-                    if task['engine']=='superbot':result=self.run_remote(task,prompt)
-                    else:
-                        self.update(task['id'],stage='Dashboard analyst is reviewing the evidence')
-                        if not self.analyst:raise RuntimeError('Dashboard analyst is unavailable')
-                        result=self.analyst(prompt)
+                    result=self.run_assignment(task,prompt)
                     if self.task(task['id'])['cancel'] or result is None:self.update(task['id'],status='cancelled',stage='Stopped; no actions applied')
                     else:self.update(task['id'],status='completed',stage='Report ready; recommendations only',result=str(result)[:30000])
                     continue

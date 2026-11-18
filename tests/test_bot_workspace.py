@@ -79,3 +79,45 @@ def test_native_worker_finishes_advisory_report_without_actions(tmp_path):
     task=w.task(identity)
     assert task['status']=='completed'
     assert 'No actions applied' in task['result']
+
+
+def test_remote_failure_falls_back_to_claude_then_local(tmp_path):
+    calls=[]
+    def analyst(prompt, **kwargs):
+        calls.append(kwargs.get('order'))
+        return 'Fallback report'
+    w=Workspace(tmp_path,analyst=analyst)
+    w.runtime=lambda:{'ready':True}
+    def fail(*args):raise RuntimeError('Provider unavailable')
+    w.run_remote=fail
+    identity=w.enqueue({'bot':'jarvis','channel':'histold','engine':'superbot'})
+    assert w.run_assignment(w.claim(),'Evidence')=='Fallback report'
+    assert calls==[['claude','local']]
+    assert 'Claude' in w.task(identity)['stage']
+
+
+def test_offline_remote_uses_full_dashboard_chain(tmp_path):
+    w=Workspace(tmp_path,analyst=lambda prompt:'Dashboard fallback')
+    w.runtime=lambda:{'ready':False}
+    identity=w.enqueue({'bot':'jarvis','channel':'histold','engine':'superbot'})
+    task=w.claim()
+    assert task['id']==identity
+    assert w.run_assignment(task,'Evidence')=='Dashboard fallback'
+
+
+def test_codex_usage_limit_is_named_and_falls_back(tmp_path):
+    limit='You have hit your usage limit. Try again at 7:29 PM.'
+    def remote(method,path,payload=None):
+        if path=='/api/bots':return {'id':'bridgebot'}
+        if path=='/api/state':return {'bots':[{'id':'bridgebot','working':False}]}
+        if method=='POST':return {'id':10}
+        return [{'id':10,'role':'user'},{'id':11,'role':'bot','text':limit,'error':True}]
+    w=Workspace(tmp_path);w.remote=remote
+    task=w.task(w.enqueue({'bot':'operations','channel':'shotsnip','engine':'superbot'}))
+    with pytest.raises(RuntimeError,match='usage limit reached.*7:29 PM'):w.run_remote(task,'Evidence')
+    calls=[]
+    w=Workspace(tmp_path/'b',analyst=lambda prompt,**kw:calls.append(kw.get('order')) or 'Claude report')
+    w.remote=remote;w.runtime=lambda:{'ready':True}
+    w.enqueue({'bot':'operations','channel':'shotsnip','engine':'superbot'})
+    assert w.run_assignment(w.claim(),'Evidence')=='Claude report'
+    assert calls==[['claude','local']]
