@@ -169,3 +169,23 @@ def test_notify_without_pairing_and_token_never_in_errors(tmp_path):
     assert TOKEN not in str(err.value)
     with pytest.raises(ValueError):
         tc.Telegram('not-a-token')
+
+
+def test_late_button_answer_still_runs_the_action(tmp_path):
+    c = controller(tmp_path)
+    c.handle(message('/operator'))
+    def too_late(callback_id, text=''):
+        raise RuntimeError('Telegram answerCallbackQuery failed: query is too old')
+    c.telegram.answer = too_late
+    c.handle(press(buttons(c)[0]))
+    assert c.ran == [['schtasks', '/Run', '/TN', 'Histold Operator']]
+    assert c.telegram.sent[-1][1].startswith('Done:')
+
+
+def test_ipv4_only_is_scoped():
+    import socket
+    import urllib3.util.connection as connection
+    before = connection.allowed_gai_family
+    with tc.ipv4_only():
+        assert connection.allowed_gai_family() == socket.AF_INET
+    assert connection.allowed_gai_family is before

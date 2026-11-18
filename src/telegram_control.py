@@ -84,6 +84,20 @@ def save_config(config: dict, path: Path = CONFIG) -> None:
     path.write_text(json.dumps(config, indent=2), encoding='utf-8')
 
 
+@contextmanager
+def ipv4_only():
+    """This laptop's IPv6 route to Telegram is broken: each IPv6 attempt stalls ~21 s before
+    falling back, which makes Telegram expire button presses. Telegram calls use IPv4 only."""
+    import socket
+    import urllib3.util.connection as connection
+    original = connection.allowed_gai_family
+    connection.allowed_gai_family = lambda: socket.AF_INET
+    try:
+        yield
+    finally:
+        connection.allowed_gai_family = original
+
+
 class Telegram:
     def __init__(self, token: str, session=requests):
         if not re.fullmatch(r'\d{5,15}:[A-Za-z0-9_-]{30,64}', token or ''):
@@ -91,8 +105,9 @@ class Telegram:
         self.base = 'https://api.telegram.org/bot' + token + '/'
         self.session = session
 
-    def call(self, method: str, http_timeout: float = 75, **params):  # this network can take ~20s to reach Telegram
-        response = self.session.post(self.base + method, json=params, timeout=http_timeout)
+    def call(self, method: str, http_timeout: float = 75, **params):
+        with ipv4_only():
+            response = self.session.post(self.base + method, json=params, timeout=http_timeout)
         try:
             data = response.json()
         except ValueError:
@@ -318,17 +333,24 @@ class Controller:
         if not self.config.get('owner_id') or sender != int(self.config['owner_id']):
             return  # not the owner: no answer, no action
         match = re.fullmatch(r'a:([a-f0-9]{16}):([yn])', str(query.get('data') or ''))
-        if not match:
-            return self.telegram.answer(query['id'], 'Unknown button')
         try:
-            approval = self.approvals.decide(match.group(1), match.group(2) == 'y')
+            approval = self.approvals.decide(match.group(1), match.group(2) == 'y') if match else None
+            note = 'Unknown button' if not match else ('Dismissed' if match.group(2) == 'n' else 'Working on it...')
         except ValueError as exc:
-            return self.telegram.answer(query['id'], str(exc))
+            approval, note = None, str(exc)
+        # Stop the button spinner right away. This is cosmetic: a late or failed answer must
+        # never stop an approved action from running.
+        try:
+            self.telegram.answer(query['id'], note)
+        except Exception:
+            pass
+        if not approval:
+            if match and note != 'Unknown button':
+                self.send(note + '.')
+            return
         if match.group(2) == 'n':
-            self.telegram.answer(query['id'], 'Dismissed')
             return self._edit(message, (message.get('text') or '') + '\n\nDismissed.')
-        self.telegram.answer(query['id'], 'Working on it')
-        self._edit(message, (message.get('text') or '') + '\n\nApproved: ' + approval['summary'] + ' ...')
+        self._edit(message, (message.get('text') or '') + '\n\nApproved: ' + approval['summary'] + ' (running)')
         try:
             ok, result = self.execute(approval['action'], approval['args'])
         except Exception as exc:
