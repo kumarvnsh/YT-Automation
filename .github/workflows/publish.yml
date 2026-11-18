@@ -165,7 +165,16 @@ jobs:
 
       - name: Install ffmpeg
         if: github.event.inputs.dry_run != 'true'
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+        timeout-minutes: 4
+        run: |
+          if command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null; then
+            echo "Using the runner's existing FFmpeg installation."
+            ffmpeg -version
+            exit 0
+          fi
+          timeout 90 sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15 update
+          timeout 90 sudo apt-get -o DPkg::Lock::Timeout=30 -o Acquire::Retries=1 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15 install -y ffmpeg
+          command -v ffmpeg && command -v ffprobe
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
