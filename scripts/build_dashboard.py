@@ -139,7 +139,7 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
             if platform=='fb' or (record.get('views') or 0) >= (prior.get('views') or 0):
                 best[platform][str(record['id'])] = record
     scored = rows(index, best, now)
-    score(scored)
+    score(scored,cfg.get('editorial.primary_platform','combined'))
     scores = {v['title']: round(v['score'], 3) for v in scored}
 
     nicknames = read_json(root / NICKNAMES, {}) or {}
@@ -189,6 +189,7 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
     hours, hours_source = active_hours(root, cfg, now)
     return {
         'built': now.isoformat(),
+        'strategy_primary_platform':cfg.get('editorial.primary_platform','combined'),
         'growth_trial':{'configuration':cfg.get('editorial.growth_trial') or {},
                        'report':read_json(root/'data/private/growth-trial-report.json',{}) or {}},
         'videos': videos,
@@ -487,7 +488,7 @@ HUD.openVideo=k=>{const v=HUD.findVideo(k);if(!v)return;const m=(n,l)=>`<div><b>
  $('drawerBody').innerHTML=`${thumb(v)?`<img class="thumb" src="${thumb(v).replace('mqdefault','hqdefault')}" alt="">`:''}<div class="eyebrow" style="margin-top:12px">${esc(nick(v))}</div><h3 id="drawerTitle">${esc(v.title)}</h3>
  <div class="small muted">${local(v.at)} · ${esc(pretty(v.series))} · ${esc(pretty(v.region))} · ${esc(v.length)}</div>
  <div class="dstats">${m(v.fb,'Facebook count')}${m(v.fb_plays,'FB Reel plays')}${m(v.fb_initial_plays,'FB initial plays')}${m(v.fb_replays,'FB replays')}${m(v.fb_watch_seconds,'FB average watch seconds')}${m(v.ig,'Instagram views')}${m(v.yt,'YouTube views')}${m(v.fb_likes,'FB likes')}${m(v.ig_likes,'IG likes')}${m(v.yt_likes,'YT likes')}</div>
- <p class="small muted">Facebook measure: ${esc(v.fb_views_metric||'legacy exported views')} · ${esc(v.fb_insight_status||'legacy export')}. Reel plays include replays; initial plays exclude replays. Missing values are unavailable, not zero.</p><p class="small">${v.score!=null?`Overall score <b>${v.score.toFixed(2)}</b> (percentile vs recent videos)`:'Not scored yet (under 48 hours old or not an editorial Short).'}${v.yt_pct!=null?` · YouTube viewers watched ${Math.round(v.yt_pct)}% on average`:''}</p>
+ <p class="small muted">Facebook measure: ${esc(v.fb_views_metric||'legacy exported views')} · ${esc(v.fb_insight_status||'legacy export')}. Reel plays include replays; initial plays exclude replays. Missing values are unavailable, not zero.</p><p class="small">${v.score!=null?`${D.strategy_primary_platform==='youtube'?'YouTube score':'Overall score'} <b>${v.score.toFixed(2)}</b> (percentile vs recent videos)`:'Not scored yet (under 48 hours old or not an editorial Short).'}${v.yt_pct!=null?` · YouTube viewers watched ${Math.round(v.yt_pct)}% on average`:''}</p>
  <div class="row">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">Open on YouTube ↗</a>`:''}${v.fb_id?` · <a href="https://www.facebook.com/${esc(v.fb_id)}" target="_blank" rel="noopener">Facebook ↗</a>`:''}${HUD.ask?` · <a href="#/ai" id="askAbout">Ask AI about this video</a>`:''}</div>`;
  $('drawer').hidden=false;$('drawerClose').focus();const a=$('askAbout');if(a)a.onclick=()=>{$('drawer').hidden=true;HUD.ask(`Why did "${nick(v)}" perform the way it did, and what should I learn from it?`)}};
 $('drawerClose').onclick=()=>{$('drawer').hidden=true};$('drawer').onclick=e=>{if(e.target===$('drawer'))$('drawer').hidden=true};
