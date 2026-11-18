@@ -1,11 +1,10 @@
 """Data-driven topic strategist: scores recent editorial Shorts across platforms and
 turns the scores into sampling weights for the next topic assignments.
 
-A video's score is the weighted mean percentile rank of the metrics it has: YouTube
-% viewed (counted twice: it is the cleanest content signal), Facebook views (counted
-twice: Facebook is the only monetized platform, and its API exposes no per-Reel watch
-time or shares), YouTube like-rate, Instagram like-rate and log views summed over all
-platforms.
+YouTube-primary assignments use YouTube reach, engaged views, like-rate and retention only.
+Retention enters that ranking only after at least 50 reported engaged views; this is a
+sample guard, not a virality threshold. Facebook is evaluated separately using Reel plays.
+Legacy channels without a platform choice retain their combined scoring for compatibility.
 
 Per option (a series, region or length) the mean score is shrunk toward 0.5 by
 SHRINK pseudo-videos so two lucky posts cannot take over, then weights mix 30%
@@ -49,9 +48,9 @@ def peaks(root: Path, since: str) -> dict:
 
     def keep(platform, video):
         row = best[platform].setdefault(str(video['id']), {})
-        if (video.get('views') or 0) >= row.get('views', -1):
+        if (platform=='fb' and video.get('views_metric')) or (video.get('views') or 0) >= row.get('views', -1):
             row.update({k: video.get(k) for k in ('views', 'likes', 'avg_view_pct', 'skip_rate',
-                                                  'average_watch_time_seconds')})
+                                                  'average_watch_time_seconds','engaged_views','plays','initial_plays','replays','views_metric')})
 
     for data in snapshots('data/analytics.json'):
         for video in data.get('channels', {}).get('histold', {}).get('videos', []):
@@ -80,6 +79,10 @@ def rows(index: list[dict], best: dict, now: datetime) -> list[dict]:
             'title': entry.get('title', ''),
             **{dim: entry.get(field) for dim, field in DIMENSIONS.items()},
             'yt_pct': yt.get('avg_view_pct'),
+            'yt_views':math.log1p(yt['views']) if yt.get('views') is not None else None,
+            'yt_engaged':math.log1p(yt['engaged_views']) if yt.get('engaged_views') is not None else None,
+            'yt_engaged_count':yt.get('engaged_views'),
+            'fb_plays':math.log1p(fb['plays']) if fb.get('plays') is not None else None,
             'yt_like_rate': yt['likes'] / yt['views'] if yt.get('views') else None,
             'ig_like_rate': ig['likes'] / ig['views'] if ig.get('views') else None,
             'fb_views': math.log1p(fb['views']) if fb.get('views') is not None else None,
@@ -91,15 +94,20 @@ def rows(index: list[dict], best: dict, now: datetime) -> list[dict]:
 METRIC_WEIGHTS = {'yt_pct': 2, 'fb_views': 2, 'yt_like_rate': 1, 'ig_like_rate': 1, 'log_views': 1}
 
 
-def score(videos: list[dict]) -> None:
+def score(videos: list[dict], platform='combined') -> None:
     """Add 'score' in [0, 1]: weighted mean percentile rank of each video's available metrics."""
+    metric_weights={'yt_pct':2,'yt_engaged':2,'yt_views':1,'yt_like_rate':1} if platform=='youtube' else (
+        {'fb_plays':1} if platform=='facebook' else METRIC_WEIGHTS)
+    if platform=='youtube':
+        for video in videos:
+            if (video.get('yt_engaged_count') or 0)<50: video['yt_pct']=None
     ranks = {}
-    for metric in METRIC_WEIGHTS:
-        values = sorted(v[metric] for v in videos if v[metric] is not None)
+    for metric in metric_weights:
+        values = sorted(v[metric] for v in videos if v.get(metric) is not None)
         if len(values) > 1:
             ranks[metric] = lambda x, vs=values: (sum(y < x for y in vs) + sum(y == x for y in vs) / 2) / len(vs)
     for video in videos:
-        parts = [(METRIC_WEIGHTS[m], rank(video[m])) for m, rank in ranks.items() if video[m] is not None]
+        parts = [(metric_weights[m], rank(video[m])) for m, rank in ranks.items() if video.get(m) is not None]
         total = sum(w for w, _ in parts)
         video['score'] = sum(w * r for w, r in parts) / total if total else 0.5
 
@@ -118,7 +126,15 @@ def weights(videos: list[dict], dim: str, options: list[str]) -> dict:
 def build(cfg, index: list[dict], best: dict, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     videos = rows(index, best, now)
-    score(videos)
+    platform=cfg.get('editorial.primary_platform','combined')
+    import copy
+    platform_results={}
+    for name in ('youtube','facebook'):
+        metric='yt_views' if name=='youtube' else 'fb_plays'
+        separate=copy.deepcopy([v for v in videos if v.get(metric) is not None]);score(separate,name)
+        platform_results[name]={'winners':[v['title'] for v in sorted(separate,key=lambda v:v['score'],reverse=True)[:5]],
+                                'measured_videos':sum(v.get('yt_views' if name=='youtube' else 'fb_plays') is not None for v in separate)}
+    score(videos,platform)
     options = {'series': [s['id'] for s in cfg.get('editorial.series') or []],
                'region': [r['id'] for r in cfg.get('editorial.regions') or []],
                'duration_variant': [v['id'] for v in cfg.get('editorial.duration_variants') or []]}
@@ -132,6 +148,7 @@ def build(cfg, index: list[dict], best: dict, now: datetime | None = None) -> di
                       for o in opts}
     return {
         'updated': now.isoformat(),
+        'primary_platform':platform,'platforms':platform_results,
         'videos_scored': len(videos),
         'weights': {dim: weights(videos, dim, opts) for dim, opts in options.items() if opts},
         'stats': stats,

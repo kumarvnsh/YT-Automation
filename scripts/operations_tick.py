@@ -43,11 +43,23 @@ def _tick(root, now=None):
     private = root/'data/private'
     private.mkdir(parents=True, exist_ok=True)
     audience = private/'audience.json'
+    reels=private/'facebook-reel-analytics.json'
+    if not reels.exists() or now.timestamp()-reels.stat().st_mtime>3600:
+        try:
+            subprocess.run([sys.executable,str(Path(__file__).with_name('refresh_facebook_reels.py')),
+                            '--data-root',str(root)],timeout=240,capture_output=True)
+        except subprocess.TimeoutExpired:
+            pass  # Previous snapshot remains available; never fabricate zeroes.
     if not audience.exists() or now.timestamp() - audience.stat().st_mtime > 86400:
         subprocess.run([sys.executable, str(Path(__file__).with_name('export_audience.py')), '--data-root', str(root)],
                        timeout=180, capture_output=True)
     github = GitHub('gh', 'kumarvnsh/YT-Automation')
     exports, export_source = latest_exports(github, private/'live-exports.json', now)
+    from src.growth_trial import record as record_trial
+    trial_report=record_trial(root,exports.get('index',read_json(root/'data/published_index.json',[])),
+        exports.get('analytics',{}).get('channels',{}).get('histold',{}),
+        read_json(private/'facebook-reel-analytics.json',{}) or {},now)
+    (private/'growth-trial-report.json').write_text(json.dumps(trial_report,indent=2),encoding='utf-8')
     data = collect(now, root.parent/'strategist.log', root, exports)
     data['audience'] = read_json(audience, {})
     runs, run_status = [], 'unavailable'

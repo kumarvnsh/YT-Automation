@@ -73,7 +73,8 @@ def test_youtube_report_exports_its_own_view_denominator():
     class Client:
         def reports(self): return self
         def query(self, **kwargs):
-            assert kwargs['metrics'].endswith(',views')
+            assert 'views' in kwargs['metrics'].split(',') and 'engagedViews' in kwargs['metrics'].split(',')
             return self
-        def execute(self): return {'rows':[['v',90,2,12.5,5,100]]}
-    assert _retention_and_subs(Client(),['v'],'2026-10-01','2026-10-02')['v']['analytics_views']==100
+        def execute(self): return {'rows':[['v',90,2,12.5,5,100,60]]}
+    row=_retention_and_subs(Client(),['v'],'2026-10-01','2026-10-02')['v']
+    assert row['analytics_views']==100 and row['engaged_views']==60

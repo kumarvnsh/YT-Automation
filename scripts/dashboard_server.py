@@ -76,8 +76,8 @@ def bot_workspace(state):
                             'target_creators':[{'name':t['name'],'enabled':t.get('enabled')} for t in d.get('targets',[])]}
                 d=state.get()
                 return {'channel':channel,'built':d.get('built'),'hours':d.get('hours'),
-                        'freshness':d.get('freshness'),'content_evidence':d.get('content_evidence'),
-                        'videos':[{k:v.get(k) for k in ('yt_id','title','at','fb','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
+                        'freshness':d.get('freshness'),'content_evidence':d.get('content_evidence'),'growth_trial':d.get('growth_trial'),
+                        'videos':[{k:v.get(k) for k in ('yt_id','title','at','fb','fb_plays','fb_initial_plays','fb_replays','fb_views_metric','fb_insight_status','fb_watch_seconds','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
             def analyst(prompt, *, order=None):
                 def local():
                     ensure_server(OLLAMA)

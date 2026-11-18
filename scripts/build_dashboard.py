@@ -128,12 +128,15 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
     best = peaks(root, (now - timedelta(days=WINDOW_DAYS + 3)).date().isoformat())
     analytics = exports.get('analytics', read_json(root / 'data/analytics.json', {}))
     meta = exports.get('meta', read_json(root / 'data/meta_analytics.json', {}))
+    local_fb=read_json(root/'data/private/facebook-reel-analytics.json',{}) or {}
+    if local_fb.get('status')=='connected' and local_fb.get('updated','')>meta.get('facebook',{}).get('updated',''):
+        meta={**meta,'facebook':local_fb}
     for platform, records in [('yt', analytics.get('channels', {}).get('histold', {}).get('videos', [])),
                               ('fb', meta.get('facebook', {}).get('videos', [])),
                               ('ig', meta.get('instagram', {}).get('videos', []))]:
         for record in records:
             prior = best[platform].get(str(record['id']), {})
-            if (record.get('views') or 0) >= (prior.get('views') or 0):
+            if platform=='fb' or (record.get('views') or 0) >= (prior.get('views') or 0):
                 best[platform][str(record['id'])] = record
     scored = rows(index, best, now)
     score(scored)
@@ -155,6 +158,9 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
             'series': e.get('category') or '', 'region': e.get('editorial_region') or '',
             'length': e.get('duration_variant') or '', 'scheduled': bool(e.get('scheduled')),
             'fb': num(fb.get('views')), 'fb_likes': num(fb.get('likes')),
+            'fb_plays':fb.get('plays'),'fb_initial_plays':fb.get('initial_plays'),'fb_replays':fb.get('replays'),
+            'fb_views_metric':fb.get('views_metric'),'fb_insight_status':fb.get('insight_status'),
+            'fb_watch_seconds':fb.get('average_watch_time_seconds'),
             'ig': num(ig.get('views')), 'ig_likes': num(ig.get('likes')), 'ig_skip': ig.get('skip_rate'),
             'yt': num(yt.get('views')), 'yt_likes': num(yt.get('likes')), 'yt_pct': yt.get('avg_view_pct'),
             'score': scores.get(e.get('title', '')),
@@ -183,6 +189,8 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
     hours, hours_source = active_hours(root, cfg, now)
     return {
         'built': now.isoformat(),
+        'growth_trial':{'configuration':cfg.get('editorial.growth_trial') or {},
+                       'report':read_json(root/'data/private/growth-trial-report.json',{}) or {}},
         'videos': videos,
         'content_evidence': evidence(videos, now),
         'ai_insights': read_json(root / 'data/private/content-insights.json'),
@@ -422,6 +430,7 @@ body .me{background:#344e70}body .ai{background:#162131}.chat .msg{border-radius
 <div class="legend"><span><i class="sw" style="background:var(--fb)"></i>Facebook</span><span><i class="sw" style="background:var(--ig)"></i>Instagram</span><span><i class="sw" style="background:var(--yt)"></i>YouTube</span></div>
 <div id="daily"></div></section>
 <section class="panel" id="insights" data-page="insights"><div class="section-row"><h2>What’s working</h2><span id="insightsStamp" class="small muted"></span></div><p class="small muted" id="insightsScope"></p><div class="insight-grid"><div><h4 class="ok">Keep exploring</h4><div id="workingFindings" class="finding-list"></div></div><div><h4 class="warn">Needs attention</h4><div id="weakFindings" class="finding-list"></div></div></div><div id="aiTakeaway"></div></section>
+<section class="panel" data-page="insights"><h2>Histold growth experiment</h2><div id="growthTrial"></div></section>
 <section class="panel half" data-page="insights"><div class="section-row"><h2>Content comparison</h2><div class="segmented" aria-label="Compare content"><button data-dim="region" aria-pressed="true">Regions</button><button data-dim="length" aria-pressed="false">Length</button><button data-dim="series" aria-pressed="false">Series</button></div></div><p class="small muted">Median Facebook views per video · minimum 6 videos for a finding</p><div id="contentCompare"></div></section>
 <section class="panel half" data-page="insights"><h2>Videos to learn from</h2><div class="segmented" style="margin-bottom:14px"><button id="bestPicks" aria-pressed="true">Top performers</button><button id="weakPicks" aria-pressed="false">Lower reach</button></div><div id="videoPicks" class="video-picks"></div></section>
 <section class="panel" data-page="insights"><h2>Reach by publish hour</h2><p class="muted small">Facebook views (double weight) + total views, as a 0-1 percentile score per hour the video was triggered. Filled bars are current publish hours; faded hours are outside the US/Europe window.</p><div id="hours"></div></section>
@@ -477,8 +486,8 @@ HUD.chip=v=>`<button type="button" class="vchip" data-video="${esc(vidKey(v))}" 
 HUD.openVideo=k=>{const v=HUD.findVideo(k);if(!v)return;const m=(n,l)=>`<div><b>${fmt(n)}</b><span>${l}</span></div>`;
  $('drawerBody').innerHTML=`${thumb(v)?`<img class="thumb" src="${thumb(v).replace('mqdefault','hqdefault')}" alt="">`:''}<div class="eyebrow" style="margin-top:12px">${esc(nick(v))}</div><h3 id="drawerTitle">${esc(v.title)}</h3>
  <div class="small muted">${local(v.at)} · ${esc(pretty(v.series))} · ${esc(pretty(v.region))} · ${esc(v.length)}</div>
- <div class="dstats">${m(v.fb,'Facebook views')}${m(v.ig,'Instagram views')}${m(v.yt,'YouTube views')}${m(v.fb_likes,'FB likes')}${m(v.ig_likes,'IG likes')}${m(v.yt_likes,'YT likes')}</div>
- <p class="small">${v.score!=null?`Overall score <b>${v.score.toFixed(2)}</b> (percentile vs recent videos)`:'Not scored yet (under 48 hours old or not an editorial Short).'}${v.yt_pct!=null?` · YouTube viewers watched ${Math.round(v.yt_pct)}% on average`:''}</p>
+ <div class="dstats">${m(v.fb,'Facebook count')}${m(v.fb_plays,'FB Reel plays')}${m(v.fb_initial_plays,'FB initial plays')}${m(v.fb_replays,'FB replays')}${m(v.fb_watch_seconds,'FB average watch seconds')}${m(v.ig,'Instagram views')}${m(v.yt,'YouTube views')}${m(v.fb_likes,'FB likes')}${m(v.ig_likes,'IG likes')}${m(v.yt_likes,'YT likes')}</div>
+ <p class="small muted">Facebook measure: ${esc(v.fb_views_metric||'legacy exported views')} · ${esc(v.fb_insight_status||'legacy export')}. Reel plays include replays; initial plays exclude replays. Missing values are unavailable, not zero.</p><p class="small">${v.score!=null?`Overall score <b>${v.score.toFixed(2)}</b> (percentile vs recent videos)`:'Not scored yet (under 48 hours old or not an editorial Short).'}${v.yt_pct!=null?` · YouTube viewers watched ${Math.round(v.yt_pct)}% on average`:''}</p>
  <div class="row">${v.yt_id?`<a href="https://youtube.com/shorts/${esc(v.yt_id)}" target="_blank" rel="noopener">Open on YouTube ↗</a>`:''}${v.fb_id?` · <a href="https://www.facebook.com/${esc(v.fb_id)}" target="_blank" rel="noopener">Facebook ↗</a>`:''}${HUD.ask?` · <a href="#/ai" id="askAbout">Ask AI about this video</a>`:''}</div>`;
  $('drawer').hidden=false;$('drawerClose').focus();const a=$('askAbout');if(a)a.onclick=()=>{$('drawer').hidden=true;HUD.ask(`Why did "${nick(v)}" perform the way it did, and what should I learn from it?`)}};
 $('drawerClose').onclick=()=>{$('drawer').hidden=true};$('drawer').onclick=e=>{if(e.target===$('drawer'))$('drawer').hidden=true};
@@ -553,14 +562,15 @@ function spark(k,color){const n=14,now=Date.now(),pts=Array(n).fill(0);V.forEach
  return `<svg class="spark" viewBox="0 0 100 32" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,32 ${xy} 100,32" fill="${color}"/><polyline points="${xy}" stroke="${color}"/></svg>`}
 function renderKpis(){const now=Date.now(),in7=V.filter(v=>now-new Date(v.at)<7*864e5);
  const next=(()=>{for(let i=0;i<48;i++){const d=new Date();d.setUTCMinutes(0,0,0);d.setUTCHours(d.getUTCHours()+i+1);if(D.hours.includes(d.getUTCHours()))return d}})();
- const kpis=[['fb','Facebook views',sum(V,'fb'),V.filter(v=>v.fb!=null).length+' measured videos · monetization reported active','var(--fb)'],
+ const reelRows=V.filter(v=>v.fb_plays!=null),fbTotal=reelRows.length?sum(reelRows,'fb_plays'):sum(V,'fb');
+ const kpis=[['fb',reelRows.length?'Facebook Reel plays':'Facebook legacy views',fbTotal,reelRows.length?reelRows.length+' of '+V.length+' videos measured · includes replays; missing excluded':V.filter(v=>v.fb!=null).length+' measured videos · legacy count definition','var(--fb)'],
   ['ig','Instagram views',sum(V,'ig'),V.filter(v=>v.ig!=null).length+' measured videos','var(--ig)'],
   ['yt','YouTube views',sum(V,'yt'),V.filter(v=>v.yt!=null).length+' measured videos','var(--yt)'],
   ['next','Next publish',next?local(next.toISOString(),{hour:'numeric',minute:'2-digit'}):'–',(next?local(next.toISOString(),{weekday:'short'})+' · ':'')+D.posts_per_day+' posts per day']];
- $('kpis').innerHTML=kpis.map(([k,l,v,s,c])=>`<div class="kpi"><div class="l">${l}</div><div class="v" data-k="${k}">${typeof v=='number'?fmt(prevK[k]??0):esc(v)}</div><div class="s">${esc(s)}</div>${c?spark(k,c):''}</div>`).join('');
+ $('kpis').innerHTML=kpis.map(([k,l,v,s,c])=>`<div class="kpi"><div class="l">${l}</div><div class="v" data-k="${k}">${typeof v=='number'?fmt(prevK[k]??0):esc(v)}</div><div class="s">${esc(s)}</div>${c&&k!=='fb'?spark(k,c):''}</div>`).join('');
  kpis.forEach(([k,,v])=>{if(typeof v=='number')countTo(document.querySelector(`.kpi .v[data-k="${k}"]`),k,v)});
  $('cadenceSummary').textContent=`${D.posts_per_day} scheduled posts daily · ${in7.length} videos published in 7 days · ${V.length} in this 28-day view`;
- return {fb:sum(V,'fb'),ig:sum(V,'ig'),yt:sum(V,'yt'),next,in7:in7.length}}
+ return {fb:fbTotal,ig:sum(V,'ig'),yt:sum(V,'yt'),next,in7:in7.length}}
 const K0=renderKpis();HUD.renders.push(renderKpis);
 HUD.log('Systems online · '+V.length+' videos in 28-day window');
 HUD.log('FB '+fmt(K0.fb)+' · IG '+fmt(K0.ig)+' · YT '+fmt(K0.yt)+' views');
@@ -602,8 +612,13 @@ function renderHours(){const W=760,H=150,bw=W/24;let s=`<svg viewBox="0 0 ${W} $
  $('hours').innerHTML=s+'<p class="small muted">Row 1: UTC hour (numbers above bars = videos). Row 2: your local time.</p>'}
 renderHours();HUD.renders.push(renderHours);
 
+function renderGrowthTrial(){const t=D.growth_trial||{},c=t.configuration||{},r=t.report||{},rows=r.lanes||[];
+ const names={ingenious_solutions:'Ingenious solutions',decisions:'Decisions with consequences',everyday_origins:'Everyday objects'};
+ $('growthTrial').innerHTML=`<p>${esc(c.id||'No trial configured')} · ${c.enabled?'Enabled':'Inactive'} · ${fmt(c.posts)} planned assignments</p><p class="small muted">Three content lanes · fixed 35-second target · first observations at 24 hours, 72 hours and seven days. Columns below compare only recorded 72-hour observations. Missing values are unavailable.</p><div class="scroll"><table><thead><tr><th>Lane</th><th>Published</th><th>YouTube median views at 72h</th><th>YT measured</th><th>Facebook median plays at 72h</th><th>FB measured</th></tr></thead><tbody>`+Object.entries(names).map(([key,label])=>{const v=rows.find(x=>x.id===c.id&&x.lane===key)||{};return `<tr><td>${esc(label)}</td><td>${fmt(v.published??0)}</td><td>${fmt(v.youtube?.median_72h)}</td><td>${fmt(v.youtube?.measured_72h??0)}</td><td>${fmt(v.facebook?.median_72h)}</td><td>${fmt(v.facebook?.measured_72h??0)}</td></tr>`}).join('')+`</tbody></table></div><p class="small muted">${esc(r.note||'Collecting observations. No winner is declared from a tiny sample, and older lifetime counts are never backfilled as historical checkpoints.')}</p>`;
+}renderGrowthTrial();HUD.renders.push(renderGrowthTrial);
+
 // video table
-const cols=[['at','Published'],['title','Title'],['series','Series'],['region','Region'],['length','Length'],['fb','FB views','n'],['ig','IG views','n'],['yt','YT views','n'],['yt_pct','YT % viewed','n'],['score','Score','n']];
+const cols=[['at','Published'],['title','Title'],['series','Series'],['region','Region'],['length','Length'],['fb','FB count','n'],['fb_plays','FB Reel plays','n'],['fb_initial_plays','FB initial plays','n'],['fb_replays','FB replays','n'],['ig','IG views','n'],['yt','YT views','n'],['yt_pct','YT % viewed','n'],['score','Score','n']];
 let sortK='at',sortD=-1,videoLimit=12;
 const opts=(id,k,label)=>{$(id).innerHTML=`<option value="">${label}</option>`+[...new Set(V.map(v=>v[k]).filter(Boolean))].sort().map(x=>`<option>${esc(x)}</option>`).join('')};
 opts('fSeries','series','All series');opts('fRegion','region','All regions');
@@ -611,9 +626,9 @@ function table(){const q=$('q').value.toLowerCase(),fs=$('fSeries').value,fr=$('
  const rows=V.filter(v=>(!q||(v.title+' '+(v.nick||'')).toLowerCase().includes(q))&&(!fs||v.series==fs)&&(!fr||v.region==fr))
   .sort((a,b)=>{const x=a[sortK],y=b[sortK];return x==null?1:y==null?-1:(x>y?1:x<y?-1:0)*sortD});
  $('vt').innerHTML='<thead><tr>'+cols.map(([k,l,c])=>`<th class="${c||''}" data-k="${k}">${l}${sortK==k?(sortD>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>'+
- rows.map(v=>`<tr><td>${local(v.at,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</td><td class="t"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></td><td>${esc(v.series)}</td><td>${esc(v.region)}</td><td>${esc(v.length)}</td><td class="n">${fmt(v.fb)}</td><td class="n">${fmt(v.ig)}</td><td class="n">${fmt(v.yt)}</td><td class="n">${v.yt_pct==null?'–':Math.round(v.yt_pct)+'%'}</td><td class="n">${v.score==null?'<span class="muted" title="under 48h old or not an editorial Short">–</span>':v.score.toFixed(2)}</td></tr>`).join('')+'</tbody>';
- $('videoCount').textContent=rows.length+' matching videos · views include the highest exported snapshot';
- $('videoCards').innerHTML=rows.slice(0,videoLimit).map(v=>`<article class="video-card"><div class="meta"><span>${local(v.at,{month:'short',day:'numeric'})}</span><span>${esc(pretty(v.region))} · ${esc(v.length)}</span></div><div class="title"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></div><div class="video-metrics"><div><b>${fmt(v.fb)}</b><span>Facebook</span></div><div><b>${fmt(v.ig)}</b><span>Instagram</span></div><div><b>${fmt(v.yt)}</b><span>YouTube</span></div></div><div class="small muted" style="margin-top:9px">${esc(pretty(v.series))}${v.yt_pct!=null?' · YT viewed '+Math.round(v.yt_pct)+'%':''}</div></article>`).join('')||'<p class="empty">No videos match these filters.</p>';
+ rows.map(v=>`<tr><td>${local(v.at,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</td><td class="t"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></td><td>${esc(v.series)}</td><td>${esc(v.region)}</td><td>${esc(v.length)}</td><td class="n">${fmt(v.fb)}</td><td class="n">${fmt(v.fb_plays)}</td><td class="n">${fmt(v.fb_initial_plays)}</td><td class="n">${fmt(v.fb_replays)}</td><td class="n">${fmt(v.ig)}</td><td class="n">${fmt(v.yt)}</td><td class="n">${v.yt_pct==null?'–':Math.round(v.yt_pct)+'%'}</td><td class="n">${v.score==null?'<span class="muted" title="under 48h old or not an editorial Short">–</span>':v.score.toFixed(2)}</td></tr>`).join('')+'</tbody>';
+ $('videoCount').textContent=rows.length+' matching videos · Facebook uses latest export; other counts use highest snapshots. Reel plays include replays; legacy counts differ.';
+ $('videoCards').innerHTML=rows.slice(0,videoLimit).map(v=>`<article class="video-card"><div class="meta"><span>${local(v.at,{month:'short',day:'numeric'})}</span><span>${esc(pretty(v.region))} · ${esc(v.length)}</span></div><div class="title"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></div><div class="video-metrics"><div><b>${fmt(v.fb)}</b><span>Facebook</span></div><div><b>${fmt(v.ig)}</b><span>Instagram</span></div><div><b>${fmt(v.yt)}</b><span>YouTube</span></div></div><div class="small muted" style="margin-top:9px">${esc(pretty(v.series))} · FB plays ${fmt(v.fb_plays)} · initial ${fmt(v.fb_initial_plays)} · replays ${fmt(v.fb_replays)}${v.yt_pct!=null?' · YT viewed '+Math.round(v.yt_pct)+'%':''}</div></article>`).join('')||'<p class="empty">No videos match these filters.</p>';
  $('moreVideos').hidden=rows.length<=videoLimit;
  document.querySelectorAll('#vt th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortD=sortK==k?-sortD:-1;sortK=k;table()})}
 ['q','fSeries','fRegion'].forEach(id=>$(id).oninput=()=>{videoLimit=12;table()});$('videoSort').onchange=()=>{sortK=$('videoSort').value;sortD=-1;table()};$('moreVideos').onclick=()=>{videoLimit+=12;table()};table();HUD.renders.push(table);

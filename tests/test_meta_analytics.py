@@ -92,12 +92,26 @@ class FacebookInsightsTests(unittest.TestCase):
             {'name': 'total_video_views', 'values': [{'value': 20}]}]}), 20)
     @patch("scripts.export_meta_analytics.requests.get")
     def test_watch_time_ms_and_raw_retention_graph(self, get):
-        get.side_effect = [InstagramInsightsTests._insights(total_video_avg_time_watched=12340),
-                           InstagramInsightsTests._insights(total_video_retention_graph={'0': 100, '5': 70})]
+        get.side_effect = [InstagramInsightsTests._insights(post_video_avg_time_watched=12340),
+                           InstagramInsightsTests._insights(post_video_retention_graph={'0': 100, '5': 70}),
+                           InstagramInsightsTests._insights(fb_reels_total_plays=120),
+                           InstagramInsightsTests._insights(blue_reels_play_count=100),
+                           InstagramInsightsTests._insights(fb_reels_replay_count=20)]
         result = export_meta_analytics._facebook_reel_insights('1', 'token', 'v21.0')
         self.assertEqual(result['average_watch_time_seconds'], 12.34)
         self.assertEqual(result['retention_graph']['5'], 70)
         self.assertNotIn('completion_rate', result)
+        self.assertEqual((result['plays'],result['initial_plays'],result['replays']),(120,100,20))
+
+    def test_reel_plays_override_legacy_zero_without_inventing_missing_values(self):
+        legacy={'data':[{'name':'total_video_views','values':[{'value':0}]}]}
+        result=export_meta_analytics.facebook_view_fields(legacy,{'plays':120,'initial_plays':100,'replays':20})
+        self.assertEqual(result['views'],120)
+        self.assertEqual(result['views_metric'],'fb_reels_total_plays')
+        self.assertEqual(result['three_second_views'],0)
+        result=export_meta_analytics.facebook_view_fields({}, {'plays':None,'initial_plays':None,'replays':None})
+        self.assertIsNone(result['views'])
+        self.assertEqual(result['insight_status'],'unavailable')
     def test_missing_video_insights_is_not_reported_as_zero(self) -> None:
         with self.assertRaisesRegex(RuntimeError, "no recognizable view metric"):
             export_meta_analytics._insight_views({})

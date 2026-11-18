@@ -25,6 +25,20 @@ def entry(i, region, views, pct):
 
 
 class StrategyTests(unittest.TestCase):
+    def test_youtube_primary_is_independent_of_facebook_and_ignores_tiny_retention(self):
+        pairs=[entry(i,'japan',100,50) for i in range(6)]+[entry(i+6,'india',100,50) for i in range(6)]
+        index=[e for e,_ in pairs]
+        for e in index:e['facebook_id']='fb-'+e['video_id']
+        best={'yt':{e['video_id']:{**m,'engaged_views':60} for e,m in pairs},'ig':{},
+              'fb':{'fb-'+e['video_id']:{'views':900 if e['editorial_region']=='india' else 30,
+                                        'plays':900 if e['editorial_region']=='india' else 30} for e in index}}
+        chosen=cfg();chosen.raw['editorial']['primary_platform']='youtube'
+        plan=strategy.build(chosen,index,best,NOW)
+        self.assertEqual(plan['weights']['region']['india'],plan['weights']['region']['japan'])
+        self.assertEqual(plan['primary_platform'],'youtube')
+        tiny=[{'yt_pct':1800,'yt_engaged_count':2,'yt_views':1,'yt_like_rate':None,'yt_engaged':1}]
+        strategy.score(tiny,'youtube');self.assertIsNone(tiny[0]['yt_pct'])
+
     def build(self):
         pairs = [entry(i, 'japan', 400, 70) for i in range(6)] + [entry(i + 6, 'india', 20, 25) for i in range(6)]
         best = {'yt': {e['video_id']: m for e, m in pairs}, 'ig': {}, 'fb': {}}
@@ -74,7 +88,7 @@ class StrategyTests(unittest.TestCase):
         text = brief(first, [])
 
         self.assertEqual(first, again)
-        self.assertIn('Our audience watched and liked', text)
+        self.assertIn('Recent stories with stronger observed performance', text)
         self.assertNotIn('audience', brief(assignment(cfg(), 7), []).lower())
 
     def test_overrides_pause_and_boost_then_renormalize(self):

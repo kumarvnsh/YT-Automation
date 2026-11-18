@@ -51,7 +51,12 @@ ab_test:
 
 editorial:
   enabled: true                 # new automatic Histold Shorts only; manual topics stay fixed
-  primary_platform: "facebook"
+  primary_platform: "youtube"
+  growth_trial:
+    enabled: true
+    id: "histold-clear-stories-v1"
+    start_slot: 129
+    posts: 42                   # 14 assignments per lane, approximately 14 days at 3/day
   experiment_id: "facebook-world-history-4w"
   experiment_posts: 56          # first 56 reserved automatic assignments, about four weeks at 2/day
   regions:

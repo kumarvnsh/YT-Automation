@@ -82,10 +82,24 @@ def _experiment_metrics(video: dict, platform: str) -> dict:
     return video
 
 
-def _metric_values(node, edge, token, ver, metrics):
+def _metric_values(node, edge, token, ver, metrics, batch=False):
     """Isolate metric failures; never expose a credential or replace missing data with zero."""
     values, errors = {}, {}
+    if batch:
+        try:
+            response=requests.get(f'{GRAPH}/{ver}/{node}/{edge}',
+                headers={'Authorization':f'Bearer {token}'},
+                params={'metric':','.join(metrics),'period':'lifetime'},timeout=30)
+            payload=response.json()
+            if response.ok and not payload.get('error'):
+                for item in payload.get('data',[]):
+                    rows=item.get('values') or []
+                    if item.get('name') in metrics and rows and rows[-1].get('value') is not None:
+                        values[item['name']]=rows[-1]['value']
+        except (requests.RequestException,ValueError):
+            pass  # Older metric surfaces can reject a combined list.
     for metric in metrics:
+        if metric in values: continue
         try:
             response = requests.get(f"{GRAPH}/{ver}/{node}/{edge}",
                                     headers={"Authorization": f"Bearer {token}"},
@@ -110,14 +124,39 @@ def _metric_values(node, edge, token, ver, metrics):
 
 
 def _facebook_reel_insights(media_id, token, ver):
-    metrics = ("total_video_avg_time_watched", "total_video_retention_graph")
-    values, errors = _metric_values(media_id, "video_insights", token, ver, metrics)
+    metrics = ("post_video_avg_time_watched", "post_video_retention_graph",
+               "fb_reels_total_plays", "blue_reels_play_count", "fb_reels_replay_count")
+    values, errors = _metric_values(media_id, "video_insights", token, ver, metrics,batch=True)
+    for metric,legacy in zip(metrics[:2],('total_video_avg_time_watched','total_video_retention_graph')):
+        if metric not in values:
+            fallback,_=_metric_values(media_id,'video_insights',token,ver,(legacy,))
+            if legacy in fallback:
+                values[metric]=fallback[legacy];errors.pop(metric,None)
     watch = values.get(metrics[0])
     result = {"average_watch_time_seconds": watch / 1000 if isinstance(watch, (int, float)) and not isinstance(watch, bool) else None,
               "retention_graph": values.get(metrics[1]),
               "unavailable_metrics": {("average_watch_time_seconds" if k == metrics[0] else "retention_graph"): v
                                       for k, v in errors.items()}}
+    for field,metric in [('plays','fb_reels_total_plays'),('initial_plays','blue_reels_play_count'),('replays','fb_reels_replay_count')]:
+        value=values.get(metric)
+        result[field]=int(value) if isinstance(value,(int,float)) and not isinstance(value,bool) and value>=0 else None
     # Retention graph samples are not a unique-view completion rate or a 3-second start rate.
+    return result
+
+
+def facebook_view_fields(insights, reel):
+    """Keep Reel starts/replays separate from legacy three-second video views."""
+    result=dict(reel)
+    try: legacy=_insight_views(insights)
+    except RuntimeError: legacy=None
+    metric=next((key for key in ('plays','initial_plays') if reel.get(key) is not None),None)
+    result.update(views=reel.get(metric) if metric else legacy,
+                  views_metric={'plays':'fb_reels_total_plays','initial_plays':'blue_reels_play_count'}.get(metric,'legacy_video_views' if legacy is not None else None),
+                  three_second_views=next((v.get('values',[{}])[-1].get('value') for v in (insights or {}).get('data',[])
+                                           if v.get('name')=='total_video_views' and v.get('values')),None))
+    result['insight_status']='available' if result['views'] is not None else 'unavailable'
+    if result['views'] is None:
+        result.setdefault('unavailable_metrics',{})['views']='Meta returned no supported per-video count; not treated as zero.'
     return result
 
 
@@ -128,7 +167,7 @@ def _first_line(text: str) -> str:
 def _insight_views(insights: dict) -> int:
     """Prefer explicitly recognized video views; never mistake ad views for video views."""
     by_name = {item.get('name'): item for item in (insights or {}).get('data', [])}
-    for metric in ("total_video_views", "blue_reels_play_count", "total_video_plays"):
+    for metric in ("fb_reels_total_plays", "blue_reels_play_count", "total_video_plays", "total_video_views"):
         item = by_name.get(metric)
         if item:
             values = item.get("values", [])
@@ -160,21 +199,21 @@ def fetch_facebook(token: str, page_id: str, ver: str, limit: int) -> list[dict]
         if not after or not (body.get("paging") or {}).get("next") or not body.get("data"):
             break
         params = {**params, "after": after}
-    videos = []
-    for v in rows[:limit]:
+    def build_video(v):
         permalink = v.get("permalink_url", "")
-        videos.append({
+        return _experiment_metrics({
             "id": v["id"],
             "title": _first_line(v.get("description", "")),
             "publishedAt": v.get("created_time", ""),
             "thumbnail": v.get("picture", ""),
-            "views": _insight_views(v.get("video_insights")),
             "likes": ((v.get("likes") or {}).get("summary") or {}).get("total_count", 0),
             "comments": ((v.get("comments") or {}).get("summary") or {}).get("total_count", 0),
             "url": f"https://www.facebook.com{permalink}" if permalink.startswith("/") else permalink,
-            **_facebook_reel_insights(v["id"], page_token, ver),
-        })
-    return [_experiment_metrics(video, "facebook") for video in videos]
+            **facebook_view_fields(v.get('video_insights'),_facebook_reel_insights(v["id"], page_token, ver)),
+        }, "facebook")
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        return list(pool.map(build_video,rows[:limit]))
 
 
 def _ig_media_views(media_id: str, token: str, ver: str, metric: str) -> tuple[int, str]:

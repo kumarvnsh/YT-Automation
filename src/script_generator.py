@@ -180,8 +180,9 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     )
     today = date.today()
     facebook_editorial = cfg.get('production.editorial.primary_platform') == 'facebook'
+    growth_trial=bool(cfg.get('production.editorial.growth_trial'))
     task_context = ('EVERGREEN WORLD HISTORY: choose for curiosity and evidence, independent of today\'s anniversary.'
-                    if facebook_editorial else f"TODAY'S DATE: {today.day} {today:%B %Y}")
+                    if facebook_editorial or growth_trial else f"TODAY'S DATE: {today.day} {today:%B %Y}")
     if channel_rules:
         task_context += f"\n{channel_rules}"
     beats_on = fmt == "short" and enforce_beats(cfg)
@@ -258,8 +259,17 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
     closing_rule = _CLOSING_QUESTION if (fmt == "short" and not beats_on and not consequence and not evergreen) else ""
     editorial = cfg.get('production.editorial')
     if editorial and fmt == 'short':
-        structure_block += ('\nFacebook is the primary audience. Recurring series: ' + editorial['series']['name'] +
-                            '. Make the video independently satisfying; never send viewers away to YouTube.')
+        platform=editorial.get('primary_platform','facebook')
+        structure_block += ('\n'+('YouTube Shorts' if platform=='youtube' else 'Facebook')+
+                            ' is the primary audience. Recurring series: ' + editorial['series']['name'] +
+                            '. Make the video independently satisfying with a complete answer.')
+        if growth_trial:
+            structure_block += ('\nGROWTH TRIAL: Keep the first hook concise, ideally 5-8 spoken words, conveying '
+                'the surprising object, action or consequence immediately. Explain one causal sequence, not unrelated facts. '
+                'First-scene keywords must describe a concrete subject or explanatory diagram, never generic scenery. '
+                'No end-card, follow invitation, forced comment question or series suffix in the spoken payoff. '
+                'Use the selected editorial premise, opening visual and payoff from the evidence packet. '
+                'These are editorial hypotheses, not proof that the video will be popular.')
         if editorial.get('this_week'):
             structure_block += ('\nThis is a weekly anniversary episode: hook with the surprising detail, then say the '
                                 'anniversary date naturally in the setup segment so viewers know why it is this week.')
@@ -287,7 +297,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         segment_schema = segment_schema[:-1] + ', "claim_ids": ["c1"]}'
 
     # Retention feedback: what this channel's audience actually watched through.
-    winners, losers = ([], []) if facebook_editorial else performance_examples()
+    winners, losers = ([], []) if facebook_editorial or growth_trial else performance_examples()
     perf_block = ""
     if winners:
         perf_block = ("\n\nThese past videos held viewers LONGEST (highest average view "

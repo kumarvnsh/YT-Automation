@@ -108,7 +108,7 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
             from .strategy import load as load_strategy
             editorial = assignment(cfg, ordinal, load_strategy(base_dir()))
             from .editorial import this_week
-            weekly = this_week(cfg, date.today(), state['slot'], entries)
+            weekly = None if editorial.get('growth_trial') else this_week(cfg, date.today(), state['slot'], entries)
             if weekly:
                 editorial.update(weekly)
                 state['this_week_event'] = weekly['this_week'].get('event')
@@ -119,20 +119,23 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
             snapshot.setdefault('script', {}).update(shorts_target_seconds=editorial['target_seconds'],
                                                     story_profile=editorial['story_profile'], enforce_beats=True)
             snapshot.setdefault('production', {})['editorial'] = editorial
-            if ordinal < cfg.get('editorial.experiment_posts', 56):
+            if editorial.get('growth_trial'):
+                state['growth_trial']=editorial['growth_trial']
+                state.update(experiment=editorial['growth_trial']['id'],experiment_slot=editorial['growth_trial']['index']+1)
+            elif ordinal < cfg.get('editorial.experiment_posts', 56):
                 state.update(experiment=cfg.get('editorial.experiment_id', 'facebook-world-history-4w'),
                              experiment_slot=ordinal + 1)
-            arm = ab_arm(cfg, ordinal)
+            arm = None if editorial.get('growth_trial') else ab_arm(cfg, ordinal)
             if arm:
                 state.update(ab_test=arm)
                 snapshot.setdefault('script', {})['title_style'] = arm['title_style']
                 snapshot.setdefault('tts', {})['provider'] = arm['voice']
             from . import creative
             guidance = creative.load(base_dir())
-            creative_arm = None if arm else creative.arm(guidance, ordinal)  # never mix with an owner A/B test
+            creative_arm = None if arm or editorial.get('growth_trial') else creative.arm(guidance, ordinal)
             if creative_arm:
                 state.update(creative_test={'id': creative_arm['id'], 'arm': creative_arm['arm']})
-            editorial['creative_guidance'] = creative.prompt_instructions(guidance, creative_arm)
+            editorial['creative_guidance'] = [] if editorial.get('growth_trial') else creative.prompt_instructions(guidance, creative_arm)
         elif cfg.get('production.experiment', False):
             from .experiments import select_slot
             manifest_path = base_dir() / 'data/experiments/histold-six-reels.json'
@@ -335,6 +338,12 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
     st['research'] = report
     _write_report(stage, 'research_attempt_1', report)
     _write_report(stage, 'research', report)
+    if st.get('growth_trial'):
+        from .growth_trial import validate_selection
+        selection=validate_selection(report)
+        st['editorial_selection']=selection
+        if report.get('status')!='supported':
+            raise ValueError('Growth trial story needs supported research before script and rendering')
     if report.get('status') != 'supported':
         details = report.get('error') or '; '.join(report.get('errors', [])) or report.get('status')
         print(f'  ! research not fully verified ({details}); continuing — see research.json')
@@ -758,6 +767,8 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             'experiment_slot': st.get('experiment_slot'),
             'ab_test': st.get('ab_test'),
             'creative_test': st.get('creative_test'),
+            'growth_trial': st.get('growth_trial'),
+            'editorial_selection': st.get('editorial_selection'),
             'voice': st.get('voiceover', {}).get('provider'),
             'category': st.get('category'),
             'editorial_slot': st.get('editorial_slot'),

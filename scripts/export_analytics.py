@@ -187,7 +187,7 @@ def _retention_and_subs(
             ids="channel==MINE",
             startDate=start_date,
             endDate=end_date,
-            metrics="averageViewPercentage,subscribersGained,averageViewDuration,shares,views",
+            metrics="averageViewPercentage,subscribersGained,averageViewDuration,shares,views,engagedViews",
             dimensions="video",
             filters=f"video=={','.join(video_ids)}",
             maxResults=len(video_ids),
@@ -206,6 +206,7 @@ def _retention_and_subs(
             "average_watch_time_seconds": float(row[3]) if len(row) > 3 and row[3] is not None else None,
             "shares": int(row[4]) if len(row) > 4 and row[4] is not None else None,
             "analytics_views": int(row[5]) if len(row) > 5 and row[5] is not None else None,
+            "engaged_views": int(row[6]) if len(row)>6 and row[6] is not None else None,
         }
     return out
 
@@ -248,7 +249,7 @@ def main() -> int:
         video["analytics_period"] = {"start_date": start_date, "end_date": today, "note": "Rates use views from this same Analytics report; Data API counts may differ."}
         video["unavailable_metrics"] = {
             key: "YouTube Analytics permission, report delay, or missing response row."
-            for key in ("avg_view_pct", "subs_gained", "average_watch_time_seconds", "shares", "analytics_views")
+            for key in ("avg_view_pct", "subs_gained", "average_watch_time_seconds", "shares", "analytics_views", "engaged_views")
             if video.get(key) is None
         }
     videos.sort(key=lambda v: v["publishedAt"], reverse=True)
