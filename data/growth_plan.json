@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T05:08:54.401303+00:00",
+  "updated": "2026-11-18T02:00:10.470125+00:00",
   "status": "pinned by you until 2026-12-01T05:08 UTC",
   "hours_utc": [
     11,
@@ -8,6 +8,7 @@
   ],
   "posts_per_day": 3,
   "changed_at": "2026-11-17T05:08:54.401303+00:00",
+  "pinned_until": "2026-12-01T05:08:54.401303+00:00",
   "history": [
     {
       "at": "2026-11-16T16:55:56.883305+00:00",
@@ -39,35 +40,34 @@
   "hour_stats": {
     "04": {
       "n": 26,
-      "mean": 0.425,
-      "shrunk": 0.433
+      "mean": 0.438,
+      "shrunk": 0.444
     },
     "07": {
       "n": 15,
-      "mean": 0.547,
-      "shrunk": 0.539
+      "mean": 0.562,
+      "shrunk": 0.552
     },
     "12": {
-      "n": 14,
-      "mean": 0.455,
-      "shrunk": 0.463
+      "n": 15,
+      "mean": 0.449,
+      "shrunk": 0.457
     },
     "16": {
-      "n": 21,
-      "mean": 0.466,
-      "shrunk": 0.47
+      "n": 20,
+      "mean": 0.467,
+      "shrunk": 0.471
     },
     "17": {
       "n": 1,
-      "mean": 0.265,
-      "shrunk": 0.441
+      "mean": 0.291,
+      "shrunk": 0.448
     },
     "18": {
-      "n": 12,
-      "mean": 0.71,
-      "shrunk": 0.668
+      "n": 13,
+      "mean": 0.678,
+      "shrunk": 0.645
     }
   },
-  "method": "Growth agent (laptop, daily): picks the UTC publish hours in data/growth_plan.json.",
-  "pinned_until": "2026-12-01T05:08:54.401303+00:00"
+  "method": "Growth agent (laptop, daily): picks the UTC publish hours in data/growth_plan.json."
 }
