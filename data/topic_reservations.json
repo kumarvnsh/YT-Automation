@@ -3301,5 +3301,14 @@
     "slot": "evening",
     "date": "2026-11-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261118_174449_779733_short",
+    "title": "How Did Kitchens Stay Cold Before Electricity?",
+    "fingerprint": "before_cold_did_electricity_kitchens_stay",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-18",
+    "status": "reserved"
   }
 ]
