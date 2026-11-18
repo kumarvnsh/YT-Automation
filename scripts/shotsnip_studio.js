@@ -3,7 +3,7 @@ function initStudio(){
   titles.studio='Create clip';titles.jobs='Work queue';
   const nav=document.querySelector('.shot-nav');
   for(const [id,label] of [['studio','Create clip'],['jobs','Work queue']]){const a=document.createElement('a');a.href='#'+id;a.textContent=label;nav.insertBefore(a,nav.children[2]);const o=document.createElement('option');o.value=id;o.textContent=label;$('mobileView').appendChild(o)}
-  const overview=$('overview'),hero=document.createElement('div');hero.className='control-hero';hero.innerHTML='<div><span class="eyebrow">SHOTSNIP / CONTROL ROOM</span><h2>Catch the moment. Keep it moving.</h2><p>Your hourly pipeline and manual clips, together in one place.</p></div><div class="control-actions"><a class="primary" href="#studio">Create a clip</a><button id="autoNow">Run now &amp; publish</button><button id="autoPause"></button></div>';overview.prepend(hero);
+  const overview=$('overview'),hero=document.createElement('div');hero.className='control-hero';hero.innerHTML='<div><span class="eyebrow">SHOTSNIP / CONTROL ROOM</span><h2>Catch the moment. Keep it moving.</h2><p>Your automatic pipeline and manual clips, together in one place.</p></div><div class="control-actions"><a class="primary" href="#studio">Create a clip</a><button id="autoNow">Create clip now</button><button id="autoPause"></button></div>';overview.prepend(hero);
   const ops=document.createElement('div');ops.className='ops-layout';hero.after(ops);ops.appendChild($('liveOps').closest('section'));
   const preview=document.createElement('section');preview.className='panel preview-stage';preview.id='latestPreview';ops.appendChild(preview);
   overview.appendChild($('publicActivity').closest('section'));
