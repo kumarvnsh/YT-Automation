@@ -17,6 +17,17 @@ def test_small_code_fix_is_allowed():
     assert op.check_diff(diff_for('src/captions.py', 'return words[:limit]')) == []
 
 
+def test_failed_preview_is_not_a_production_failure_but_real_failure_is():
+    from src.operations import health_alerts
+    preview={'workflowName':'Publish Video','displayTitle':'Histold script preview','status':'completed',
+             'conclusion':'failure','databaseId':1,'createdAt':NOW.isoformat()}
+    assert op.failed_workflows('histold',[preview])==[]
+    assert not any(a.get('severity')=='error' for a in health_alerts({},[preview],NOW))
+    real={**preview,'displayTitle':'Publish Video','databaseId':2}
+    assert op.failed_workflows('histold',[preview,real])[0]['run_id']==2
+    assert any(a.get('id')=='run:2' for a in health_alerts({},[real,preview],NOW))
+
+
 def test_protected_files_are_rejected():
     for path in ('.github/workflows/publish.yml', 'scripts/publish_gate.py', 'src/quality_gate.py',
                  'requirements.txt', 'client_secret.json', 'src/operator_agent.py', 'token.json'):

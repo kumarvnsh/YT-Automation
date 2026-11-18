@@ -17,3 +17,6 @@ class ResearchSourceSelectionTests(unittest.TestCase):
             self.assertIn('loc.gov',prompt)
             self.assertIn('site:',prompt)
             self.assertIn('exactly one JSON',prompt)
+            self.assertIn('genuine HTTPS subdomains are accepted',prompt)
+            self.assertTrue(research._authority(cfg,'https://tile.loc.gov/example.pdf'))
+            self.assertFalse(research._authority(cfg,'https://loc.gov.example.com/example.pdf'))

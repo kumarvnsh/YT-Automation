@@ -65,7 +65,7 @@ def _tick(root, now=None):
     runs, run_status = [], 'unavailable'
     try:
         result = subprocess.run(['gh', 'run', 'list', '-R', 'kumarvnsh/YT-Automation', '--branch', 'master',
-                                 '--limit', '30', '--json', 'databaseId,workflowName,status,conclusion,url,createdAt'],
+                                 '--limit', '30', '--json', 'databaseId,workflowName,displayTitle,status,conclusion,url,createdAt'],
                                 capture_output=True, text=True, timeout=45)
         if result.returncode == 0:
             runs, run_status = json.loads(result.stdout), 'checked'

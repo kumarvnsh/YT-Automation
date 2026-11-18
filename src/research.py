@@ -74,9 +74,12 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         tool['allowed_domains'] = domains
     approved = cfg.get('research.authoritative_domains', _DEFAULT_AUTHORITIES)
     source_policy = (
-        'APPROVED SOURCE HOSTS (all production claims are checked against this exact list): '
-        + ', '.join(approved) + '. Use site:HOST in each search query to target these institutions explicitly. '
-        'A returned search result is not automatically approved: discard sources outside this list, including '
+        'APPROVED SOURCE INSTITUTIONS (parent hosts and their genuine HTTPS subdomains are accepted): '
+        + ', '.join(approved) + '. For example tile.loc.gov and www.loc.gov belong to loc.gov; '
+        'cdn.nationalarchives.gov.uk belongs to nationalarchives.gov.uk. Subdomains count as the SAME '
+        'institution, not independent corroboration. Lookalike domains such as loc.gov.example.com are NOT approved. '
+        'Use site:HOST in each search query to target these institutions explicitly. '
+        'A returned search result is not automatically approved: discard sources outside these institutions, including '
         'arXiv, patent filings and unrelated repositories. Choose the story from evidence available on approved '
         'pages, rather than choosing a famous origin claim first and trying to justify it. '
         'If a core claim cannot be supported here, report it unresolved; do not invent support. '

@@ -91,7 +91,7 @@ def gh_json(args, timeout=60):
 
 def recent_runs(slug, commit=None):
     args = ['run', 'list', '-R', slug, '--limit', '40', '--json',
-            'databaseId,workflowName,status,conclusion,url,createdAt,headSha,event']
+            'databaseId,workflowName,displayTitle,status,conclusion,url,createdAt,headSha,event']
     if commit:
         args += ['--commit', commit]
     else:

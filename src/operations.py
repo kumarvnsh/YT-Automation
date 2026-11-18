@@ -33,6 +33,8 @@ def health_alerts(data, runs=None, now=None):
     # A daily-cap cancellation is not a failed publish. Inspect only actual failure states.
     latest = {}
     for run in runs or []:
+        if run.get('displayTitle') in ('Histold script preview','Histold render preview'):
+            continue  # Draft validation is not a failed public posting cycle.
         workflow = run.get('workflowName', '')
         if run.get('status') != 'completed' or workflow in latest:
             continue

@@ -95,6 +95,8 @@ def failed_workflows(repo: str, runs: list[dict]) -> list[dict]:
     """Workflows whose most recent completed run failed (a later success means it is resolved)."""
     latest = {}
     for run in sorted(runs, key=lambda r: r.get('createdAt', '')):
+        if run.get('displayTitle') in ('Histold script preview','Histold render preview'):
+            continue
         if run.get('status') == 'completed' and run.get('conclusion') in ('success', 'failure', 'timed_out', 'startup_failure'):
             latest[run['workflowName']] = run
     return [{'id': fingerprint(repo, 'workflow', name), 'repo': repo, 'kind': 'workflow', 'title': f'{name} failed',
