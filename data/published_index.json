@@ -7403,5 +7403,68 @@
     "production_profile": 2,
     "facebook_id": "1470547249473164",
     "instagram_id": "17954947272341764"
+  },
+  {
+    "video_id": "Z6HHB0Fv22g",
+    "run_id": "44416797366",
+    "stage_dir_name": "20261118_230215_900761_short",
+    "title": "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
+    "published_at": "2026-11-18T23:12:40.891819+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 2,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 1,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Ohio's state planners routed a canal through the Cuyahoga Valley in the 1820s, partly under pressure from landowners. Nearly a century later, the abandoned canal corridor became the spine of a national park.",
+          "opening_visual": "A present-day Ohio outline (united_states map) with the canal corridor from Cleveland to Akron highlighted, beside the NPS Collection photo of the canal boat Charlotta carrying lumber.",
+          "payoff": "The old towpath now carries hikers, cyclists and horse riders instead of mule-drawn boats. Limitation: the sources credit the flood with damage and abandonment but also say the canals had already fallen into disuse and decay, so the flood is not presented as the sole cause.",
+          "viewer_reason": "It turns an ordinary-looking trail into a clear, map-based chain of decisions and consequences.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "A 1917 family icebox preserved in a presidential birthplace shows how food was kept cold before refrigerators.",
+          "opening_visual": "NPS photo of the Bohn Syphon icebox in the Kennedy kitchen.",
+          "payoff": "Explains icebox mechanics and the decline of iceman deliveries.",
+          "viewer_reason": "Familiar daily-life curiosity.",
+          "rejection_reason": "Rejected: matches the avoided recent subject on how kitchens stayed cold before electricity, and it is mainly a how-it-worked explainer rather than a choice-and-consequence story."
+        },
+        {
+          "premise": "Frederic Tudor's ice shipped by train and ship to cities across the US and abroad in the 1840s and 1850s.",
+          "opening_visual": "NPS-hosted 1852 Gleason's engraving of ice harvesting in Massachusetts.",
+          "payoff": "Shows how a regional ice trade grew into a long-distance business.",
+          "viewer_reason": "Surprising scale of an everyday commodity.",
+          "rejection_reason": "Rejected: overlaps the avoided ice-storage and cold-food subjects, and the supported consequence depends on the icebox story rather than a distinct documented choice."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The Ohio & Erie route premise has an approved-source chain of choice, abandonment and later park designation, supports a map-based opening, and avoids the recent subjects. It keeps the flood and disuse as qualified causes rather than a single sole cause."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 130,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Mule-drawn boats once ran where hikers walk today.",
+    "duration": 39.65,
+    "production_profile": 2,
+    "facebook_id": "1071221712605837",
+    "instagram_id": "18466324225187196"
   }
 ]
