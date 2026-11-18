@@ -29,11 +29,13 @@ INTERVALS = (0,3600,21600,86400)
 
 
 class Workspace:
-    def __init__(self, directory, evidence=None, analyst=None, notify=None):
+    def __init__(self, directory, evidence=None, analyst=None, notify=None, repair=None):
         self.directory=Path(directory)
         self.evidence=evidence
         self.analyst=analyst
         self.notify=notify
+        self.repair=repair
+        self.repair_at=0
         self.wake=threading.Event()
         self.thread=None
         self.thread_lock=threading.Lock()
@@ -175,6 +177,7 @@ class Workspace:
             notes={r['bot']:r['text'] for r in db.execute('SELECT bot,text FROM notes WHERE channel=?',(channel,))}
             routines=[dict(r) for r in db.execute('SELECT * FROM routines WHERE channel=?',(channel,))]
         return {'bots':[b for b in BOTS if b['scope'] in ('both',channel)],'tasks':tasks,'notes':notes,'routines':routines,
+                'problems':bot_findings.problems(self.directory,self.directory.parent/'operator',channel),
                 'runtime':{**self.runtime(),'fallback_enabled':bool(self.analyst)},'built':time.time(),'scope':'Analysis and recommendations; no publishing or code execution through the dashboard bridge.'}
 
     def claim(self):
@@ -203,7 +206,7 @@ class Workspace:
                 'Return recommendations only; report inability to perform requested actions honestly.\n'
                 'OWNER NOTES: '+(note[0] if note else '')+'\nPREVIOUS RESULTS: '+json.dumps([r[0][:3000] for r in previous])+
                 '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction']+bot_findings.PROMPT+
-                bot_findings.known_keys(self.directory,task['channel']))
+                bot_findings.known_keys(self.directory,task['channel'],self.directory.parent/'operator'))
 
     def run_remote(self, task, prompt):
         with self.db() as db:
@@ -245,6 +248,22 @@ class Workspace:
         self.remote('POST','/api/bots/'+bot_id+'/stop',{})
         raise RuntimeError('Superbot assignment reached its 20-minute limit')
 
+    REPAIR_STATES=('queued','reverted','rejected','tests_failed','deploy_failed')
+    REPAIR_GAP=1200
+
+    def request_repair(self, task):
+        """Start the Operator right away when a confirmed problem is waiting for a fix, instead of
+        leaving it to the Operator's 2-hour schedule. Its own caps and cooldowns still decide."""
+        waiting=[p for p in bot_findings.problems(self.directory,self.directory.parent/'operator',task['channel'])
+                 if p['fix']['state'] in self.REPAIR_STATES]
+        if not waiting or not self.repair or time.time()-self.repair_at<self.REPAIR_GAP:return
+        self.repair_at=time.time()
+        try:
+            self.repair()
+            self.update(task['id'],stage='Operator started to fix '+str(len(waiting))+' confirmed problem(s)')
+        except Exception as exc:
+            self.update(task['id'],stage='Operator could not be started ('+type(exc).__name__+'); it will pick this up on its schedule')
+
     def share(self, task, findings):
         """Publish validated findings to findings.json; alert the owner about new active failures.
         A failure here never changes the task outcome: the report is already saved."""
@@ -254,6 +273,7 @@ class Workspace:
             self.update(task['id'],stage='Report saved; findings not shared ('+type(exc).__name__+')');return
         self.update(task['id'],stage='Findings shared: '+str(len(findings['active_failures']))+' active failure(s), '+
                     str(len(findings['suspect_metrics']))+' suspect metric(s)')
+        if task['bot']=='operations':self.request_repair(task)
         if new and self.notify:
             channel=task['channel'].capitalize()
             lines=['- '+f['title']+(' ('+f['evidence'][:160]+')' if f['evidence'] else '') for f in new[:3]]

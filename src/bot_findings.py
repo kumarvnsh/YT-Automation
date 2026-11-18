@@ -14,6 +14,7 @@ Consumers:
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 import re
@@ -134,11 +135,57 @@ def record(directory, channel: str, bot: str, task: str, findings: dict, now: da
     return new
 
 
-def known_keys(directory, channel: str) -> str:
-    """Prompt suffix listing open failure keys, so the same problem keeps the same key."""
+def issue_id(channel: str, key: str) -> str:
+    """The Operator's issue id for a finding (same as operator_agent.fingerprint(channel, 'bot', key))."""
+    return hashlib.sha1('|'.join((channel, 'bot', key)).encode()).hexdigest()[:12]
+
+
+FIX_LABELS = {
+    'deployed': 'Fix deployed; watching that it holds',
+    'verified': 'Fixed and verified',
+    'reverted': 'Fix rolled back because the problem came back; will retry',
+    'revert_failed': 'Fix needs rolling back; owner alerted',
+    'no_code_fix': 'Not fixable in code; owner action needed',
+    'rejected': 'Proposed fix broke a safety rule; will retry',
+    'tests_failed': 'Proposed fix failed tests; will retry',
+    'deploy_failed': 'Fix could not be deployed; will retry',
+}
+
+
+def fix_status(operator_dir, channel: str, item: dict) -> dict:
+    """What the Operator has done about one active failure, from its ledger."""
+    try:
+        entries = json.loads((Path(operator_dir) / 'ledger.json').read_text(encoding='utf-8')).get('entries') or []
+    except (OSError, ValueError, AttributeError):
+        entries = []
+    mine = [e for e in entries if isinstance(e, dict) and e.get('issue') == issue_id(channel, item['key'])]
+    if any(e.get('kind') == 'escalation' for e in mine[-3:]):
+        return {'state': 'escalated', 'label': 'The Operator could not fix it after repeated attempts; owner alerted'}
+    attempt = next((e for e in reversed(mine) if e.get('kind') == 'fix_attempt'), None)
+    if attempt:
+        state = attempt.get('status') or 'unknown'
+        detail = attempt.get('owner_action') if state == 'no_code_fix' else attempt.get('summary')
+        return {'state': state, 'label': FIX_LABELS.get(state, 'Fix attempt: ' + state),
+                'detail': _clean(detail, 300), 'at': attempt.get('deployed_at') or attempt.get('at')}
+    if int(item.get('streak') or 0) >= 2:
+        return {'state': 'queued', 'label': 'Confirmed; queued for the Operator to fix'}
+    return {'state': 'confirming', 'label': 'Waiting for the next Operations review to confirm it'}
+
+
+def problems(directory, operator_dir, channel: str) -> list[dict]:
+    """Open active failures with the Operator's progress, for Bot Office and bot prompts."""
     state = (load(directory).get('channels') or {}).get(channel) or {}
-    items = [k + ' (' + v.get('title', '')[:80] + ')' for k, v in (state.get('active_failures') or {}).items()]
-    return (' Currently open failure keys, reuse them if the same problem is still active: ' + '; '.join(items) + '.') if items else ''
+    return [{**item, 'fix': fix_status(operator_dir, channel, item)} for item in (state.get('active_failures') or {}).values()]
+
+
+def known_keys(directory, channel: str, operator_dir=None) -> str:
+    """Prompt suffix listing open failure keys and repair progress, so the bot keeps keys
+    stable and can say whether a deployed fix actually worked."""
+    items = [p['key'] + ' (' + p.get('title', '')[:80] + '; Operator: ' + p['fix']['label'] +
+             (': ' + p['fix']['detail'][:160] if p['fix'].get('detail') else '') + ')'
+             for p in problems(directory, operator_dir or Path(directory).parent / 'operator', channel)]
+    return (' Currently open failure keys, reuse them if the same problem is still active, and drop them if the '
+            'evidence shows it is resolved (say so in the report): ' + '; '.join(items) + '.') if items else ''
 
 
 def persistent_failures(directory, channel: str, now: datetime | None = None,

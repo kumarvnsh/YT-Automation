@@ -75,7 +75,7 @@ def test_workspace_shares_findings_and_alerts_once_per_new_failure(tmp_path):
     assert len(sent) == 1 and 'Mythpat lock' in sent[0][0] and sent[0][1].startswith('bot-ops:')
     assert bf.MARKER not in w.task(identity)['result']
     assert bf.load(tmp_path)['channels']['shotsnip']['active_failures']['lock']['streak'] >= 2
-    assert 'lock (Mythpat lock)' in w.prompt(w.task(w.enqueue({'bot': 'operations', 'channel': 'shotsnip'})))
+    assert 'lock (Mythpat lock; Operator:' in w.prompt(w.task(w.enqueue({'bot': 'operations', 'channel': 'shotsnip'})))
 
 
 def test_operator_turns_findings_into_guarded_issues():
@@ -88,3 +88,39 @@ def test_operator_turns_findings_into_guarded_issues():
     later = {**issue, 'finding': {**finding, 'last_seen': (NOW + timedelta(hours=3)).isoformat()}}
     assert 'still reports' in op.fix_regressed(entry, [later], [], NOW + timedelta(hours=3))
     assert 'src/bot_findings.py' in op.PROTECTED_FILES
+
+
+def test_fix_status_follows_the_operator_ledger(tmp_path):
+    work, operator = tmp_path / 'bot-workspace', tmp_path / 'operator'
+    operator.mkdir()
+    item = {'key': 'lock', 'title': 'Lock', 'streak': 1}
+    assert bf.issue_id('shotsnip', 'lock') == op.fingerprint('shotsnip', 'bot', 'lock')
+    assert bf.fix_status(operator, 'shotsnip', item)['state'] == 'confirming'
+    assert bf.fix_status(operator, 'shotsnip', {**item, 'streak': 2})['state'] == 'queued'
+    issue = bf.issue_id('shotsnip', 'lock')
+    ledger = {'entries': [{'kind': 'fix_attempt', 'issue': issue, 'status': 'no_code_fix', 'owner_action': 'Close the open CSV',
+                           'at': NOW.isoformat()}]}
+    (operator / 'ledger.json').write_text(json.dumps(ledger))
+    status = bf.fix_status(operator, 'shotsnip', item)
+    assert status['state'] == 'no_code_fix' and status['detail'] == 'Close the open CSV'
+    ledger['entries'].append({'kind': 'escalation', 'issue': issue})
+    (operator / 'ledger.json').write_text(json.dumps(ledger))
+    assert bf.fix_status(operator, 'shotsnip', item)['state'] == 'escalated'
+
+
+def test_confirmed_problem_starts_operator_once_and_reaches_snapshot(tmp_path):
+    started = []
+    report = 'Report\n' + line({'active_failures': [{'key': 'lock', 'title': 'Mythpat lock', 'evidence': 'e'}], 'suspect_metrics': []})
+    work = tmp_path / 'bot-workspace'
+    w = Workspace(work, analyst=lambda prompt, **kw: report, repair=lambda: started.append(1))
+    for expected in ('Findings shared', 'Operator started'):  # first report only confirms; the second triggers
+        task = w.task(w.enqueue({'bot': 'operations', 'channel': 'shotsnip'}))
+        w.claim()
+        text, findings = bf.parse(w.run_assignment(task, 'Evidence'))
+        w.update(task['id'], status='completed', result=text)
+        w.share(task, findings)
+        assert any(e['note'].startswith(expected) for e in w.snapshot('shotsnip')['tasks'][0]['events'])
+    w.share(task, findings)   # throttled: no second start within REPAIR_GAP
+    assert started == [1]
+    [problem] = w.snapshot('shotsnip')['problems']
+    assert problem['fix']['state'] == 'queued' and 'Operator: Confirmed' in w.prompt(task)

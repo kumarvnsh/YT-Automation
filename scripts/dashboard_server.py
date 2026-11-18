@@ -90,7 +90,12 @@ def bot_workspace(state):
             def notify(text, logical_id):
                 config=json.loads((DATA_ROOT.parent/'secrets/whatsapp-updates.json').read_text(encoding='utf-8'))
                 return send_update(config,text,logical_id,DATA_ROOT.parent/'bot-workspace/notify-state.json').get('status')
-            BOT_WORKSPACE=Workspace(DATA_ROOT.parent/'bot-workspace',evidence,analyst,notify)
+            def repair():
+                # The Operator's own scheduled task (owner account, limited rights); its lock,
+                # PAUSE file, caps and cooldowns decide whether it acts.
+                result=subprocess.run(['schtasks','/Run','/TN','Histold Operator'],capture_output=True,text=True,timeout=30)
+                if result.returncode:raise RuntimeError('schtasks exit '+str(result.returncode))
+            BOT_WORKSPACE=Workspace(DATA_ROOT.parent/'bot-workspace',evidence,analyst,notify,repair)
             BOT_WORKSPACE.start()
         return BOT_WORKSPACE
 # Only messages that look like a change request go through the (local) action extractor.
