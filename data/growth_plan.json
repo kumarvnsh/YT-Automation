@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T02:00:10.470125+00:00",
+  "updated": "2026-11-18T22:00:11.518144+00:00",
   "status": "pinned by you until 2026-12-01T05:08 UTC",
   "hours_utc": [
     11,
@@ -40,34 +40,96 @@
   "hour_stats": {
     "04": {
       "n": 26,
-      "mean": 0.438,
-      "shrunk": 0.444
+      "mean": 0.418,
+      "shrunk": 0.426
     },
     "07": {
       "n": 15,
-      "mean": 0.562,
-      "shrunk": 0.552
+      "mean": 0.567,
+      "shrunk": 0.556
     },
     "12": {
-      "n": 15,
-      "mean": 0.449,
-      "shrunk": 0.457
+      "n": 16,
+      "mean": 0.471,
+      "shrunk": 0.476
     },
     "16": {
-      "n": 20,
-      "mean": 0.467,
-      "shrunk": 0.471
+      "n": 21,
+      "mean": 0.442,
+      "shrunk": 0.449
     },
     "17": {
       "n": 1,
-      "mean": 0.291,
-      "shrunk": 0.448
+      "mean": 0.298,
+      "shrunk": 0.449
     },
     "18": {
       "n": 13,
-      "mean": 0.678,
-      "shrunk": 0.645
+      "mean": 0.693,
+      "shrunk": 0.657
     }
   },
+  "masked_metrics": [
+    {
+      "video_id": "g4aOe5vcitA",
+      "platform": "fb",
+      "views": 2,
+      "reason": "2 FB views vs 137 IG"
+    },
+    {
+      "video_id": "lCQJdMRx814",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 FB views vs 124 IG"
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "2 FB views vs 139 IG"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 3,
+      "reason": "3 FB views vs 129 IG"
+    },
+    {
+      "video_id": "yUDJaAj3Zvg",
+      "platform": "fb",
+      "views": 3,
+      "reason": "3 FB views vs 107 IG and 40 YT"
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "yt",
+      "views": 5,
+      "reason": "0.0% viewed despite 5 YT views"
+    },
+    {
+      "video_id": "sMUpVI79w2M",
+      "platform": "yt",
+      "views": 4,
+      "reason": "0.0% viewed despite 4 YT views"
+    },
+    {
+      "video_id": "2aRdkpMSsVY",
+      "platform": "yt",
+      "views": 3,
+      "reason": "Viewed percentage remained unavailable at nearly 50 hours despite three recorded views."
+    },
+    {
+      "video_id": "N12YUvX0VQE",
+      "platform": "fb",
+      "views": 0,
+      "reason": "Zero Facebook views more than two weeks after posting while Instagram recorded 123."
+    },
+    {
+      "video_id": "XoeVilvOqLo",
+      "platform": "fb",
+      "views": 0,
+      "reason": "Zero Facebook views more than a week after posting while Instagram recorded 113."
+    }
+  ],
   "method": "Growth agent (laptop, daily): picks the UTC publish hours in data/growth_plan.json."
 }
