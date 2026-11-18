@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T07:00:18.237476+00:00",
+  "updated": "2026-11-18T11:00:29.229477+00:00",
   "videos_scored": 120,
   "weights": {
     "series": {
@@ -14,12 +14,12 @@
       "animals": 0.0792,
       "secretly_deadly": 0.0792,
       "worst_jobs": 0.0792,
-      "forgotten_rules": 0.066,
+      "forgotten_rules": 0.0659,
       "behind_legend": 0.0642,
       "found_by_accident": 0.0615
     },
     "region": {
-      "india": 0.1144,
+      "india": 0.1145,
       "africa": 0.0852,
       "japan": 0.0942,
       "china": 0.0988,
@@ -58,7 +58,7 @@
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.436
       },
       "photo_story": {
         "n": 0,
