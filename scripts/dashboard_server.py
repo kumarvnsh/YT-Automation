@@ -66,6 +66,8 @@ def bot_workspace(state):
                     return {'channel':channel,'built':d.get('built'),'agent_review':d.get('agent'),
                             'analytics':{k:d.get('analytics',{}).get(k) for k in ('checked_at','channel_stats','videos')},
                             'age_performance':d.get('age_performance'),
+                            'facebook_analytics':{k:d.get('facebook_analytics',{}).get(k) for k in
+                                ('status','name','checked_at','followers','page_likes','video_views','window_views','view_definition','coverage','videos','daily')},
                             'pipeline':{k:s.get(k) for k in ('phase','note','last_upload_at','last_cycle_at')},
                             'uploads':[{k:u.get(k) for k in ('status','video_id','rejection_reason','started_at')} for u in s.get('uploads',[])[-12:]],
                             'target_creators':[{'name':t['name'],'enabled':t.get('enabled')} for t in d.get('targets',[])]}

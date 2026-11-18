@@ -30,9 +30,8 @@ $DashboardScript = Join-Path $Here 'start_dashboard.ps1'
 
 Start-Sleep -Seconds 20   # let networking and disks settle after boot
 Step 'dashboard' {
-    $Up = $false
-    try { $Up = (Invoke-WebRequest "http://127.0.0.1:$Port/login" -UseBasicParsing -TimeoutSec 3).StatusCode -eq 200 } catch {}
-    if ($Up) { 'already running' } else { Invoke-Script $DashboardScript }
+    # The launcher checks both health and source fingerprints under a shared lock.
+    Invoke-Script $DashboardScript @('-DataRoot', (Join-Path $HomeDir 'YT-Automation'), '-Port', "$Port")
 }
 Step 'whatsapp'  { Invoke-Script (Join-Path $Here 'start_openwa.ps1') @('-HomeDir', $HomeDir) }
 Step 'shotsnip'  { Invoke-Script (Join-Path $Here 'start_shotsnip_worker.ps1') @('-HomeDir', $HomeDir, '-Port', "$Port", '-Force') }
