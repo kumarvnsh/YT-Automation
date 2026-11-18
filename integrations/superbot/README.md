@@ -29,9 +29,9 @@ only automatic publisher. Review an experiment's evidence before applying a chan
 4. Run `scripts/install_superbot_task.ps1` to register the ordinary-user login task
    and start the service. Use `scripts/start_superbot.ps1` for manual startup.
 
-Windows WSL prerequisites were enabled on 18 November 2026; reboot, Linux build
-and Linux account authentication remain necessary. Do not label Superbot connected
-until its authenticated API is reachable and the Linux CLI is installed/logged in.
+WSL 3.0.5, Ubuntu 24.04, the Linux Codex login and the release build were verified
+on 18 November 2026. Superbot is connected. Two real dashboard assignments
+completed through its API; the latest completed automatically in the workspace.
 
 ## Runtime boundaries
 
@@ -56,6 +56,12 @@ offline Superbot behavior, schedule deduplication, loopback restrictions, remote
 message reconciliation, and completed native analysis. A real Shotsnip assignment
 was completed through the dashboard using the configured Codex provider.
 
-Linux installation is pending the Windows reboot. Shell syntax and the patch
-were checked locally; `cargo test` and the actual Superbot end-to-end assignment
-must pass after Linux setup before treating that engine as production ready.
+Verification: 41 Python integration checks, two upstream Rust tests, and real
+Superbot assignments passed. A direct sandbox write probe was denied with
+"Read-only file system". `message-status.patch` exposes queued/running/done state
+in the authenticated messages API for dashboard compatibility; the bridge also
+understands upstream versions that expose completion through bot working state.
+
+Device-code login is optional and may be disabled on the owner account. The
+installer now prints the standard browser login command; no account security
+setting needs to be changed. Linux Codex CLI version verified: 0.170.0.

@@ -1,0 +1,29 @@
+diff --git a/server/src/db.rs b/server/src/db.rs
+index ffb2cd6..3c6d8e1 100644
+--- a/server/src/db.rs
++++ b/server/src/db.rs
+@@ -35,7 +35,7 @@ pub struct Message {
+     pub question: Option<Value>,
+     pub error: bool,
+     /// "queued" | "running" | "done" for user and routine messages
+-    #[serde(skip)]
++    #[serde(skip_serializing_if = "Option::is_none")]
+     pub status: Option<String>,
+     /// For "peer" and "reply" messages: the other Bot's id.
+     #[serde(rename = "fromBot")]
+@@ -326,3 +326,15 @@ impl Db {
+         self.c().execute("DELETE FROM routines WHERE id = ?", [id]).unwrap();
+     }
+ }
++
++#[cfg(test)]
++mod dashboard_contract_tests {
++    use super::*;
++    #[test]
++    fn message_status_is_available_to_dashboard_clients() {
++        let message=Message {id:1,bot_id:"test".into(),role:"user".into(),text:"test".into(),
++            question:None,error:false,status:Some("done".into()),from_bot:None,created_at:0};
++        let value=serde_json::to_value(message).unwrap();
++        assert_eq!(value["status"],"done");
++    }
++}

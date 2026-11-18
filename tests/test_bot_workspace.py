@@ -61,8 +61,9 @@ def test_superbot_submission_and_report_are_reconciled_by_message_id(tmp_path):
     def remote(method,path,payload=None):
         calls.append((method,path,payload))
         if path=='/api/bots':return {'id':'bridgebot'}
+        if path=='/api/state':return {'bots':[{'id':'bridgebot','working':False}]}
         if method=='POST':return {'id':10}
-        return [{'id':10,'role':'user','status':'done'}, {'id':12,'role':'bot','text':'Second'}, {'id':11,'role':'bot','text':'First'}]
+        return [{'id':10,'role':'user'}, {'id':12,'role':'bot','text':'Second'}, {'id':11,'role':'bot','text':'First'}]
     w.remote=remote
     assert w.run_remote(task,'Evidence and assignment')=='First\n\nSecond'
     assert w.task(identity)['remote_message']==10

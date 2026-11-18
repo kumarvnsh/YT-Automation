@@ -1,4 +1,4 @@
-param([string]$Distribution='Ubuntu-24.04')
+param([ValidatePattern('^[a-zA-Z0-9_.-]+$')][string]$Distribution='Ubuntu-24.04')
 $ErrorActionPreference='Stop'
 $Repo=Split-Path -Parent $PSScriptRoot
 $Private='D:\histold\bot-workspace'
@@ -30,8 +30,21 @@ try {
     $Bootstrap=(Get-Content -LiteralPath (Join-Path $Repo 'integrations/superbot/install-linux.sh') -Raw).Replace("`r`n","`n")
     $PatchBytes=[IO.File]::ReadAllBytes((Join-Path $Repo 'integrations/superbot/codex-read-only.patch'))
     $Bootstrap=$Bootstrap.Replace('__PATCH_B64__',[Convert]::ToBase64String($PatchBytes))
-    $Bootstrap | & wsl.exe --distribution $Distribution --user root -- bash -s
-    if ($LASTEXITCODE -ne 0) { throw 'Linux setup did not complete. Inspect the output; the runtime remains disconnected.' }
+    $StatusPatch=[IO.File]::ReadAllBytes((Join-Path $Repo 'integrations/superbot/message-status.patch'))
+    $Bootstrap=$Bootstrap.Replace('__STATUS_PATCH_B64__',[Convert]::ToBase64String($StatusPatch))
+    # A PowerShell native pipeline adds a final CRLF, which Bash can interpret as
+    # a stray carriage-return command. Write exact LF-only script bytes to stdin.
+    $Info=New-Object Diagnostics.ProcessStartInfo
+    $Info.FileName='wsl.exe'
+    $Info.Arguments='--distribution '+$Distribution+' --user root -- bash -s'
+    $Info.UseShellExecute=$false
+    $Info.CreateNoWindow=$true
+    $Info.RedirectStandardInput=$true
+    $Linux=[Diagnostics.Process]::Start($Info)
+    $Linux.StandardInput.Write($Bootstrap.TrimEnd()+"`n")
+    $Linux.StandardInput.Close()
+    $Linux.WaitForExit()
+    if ($Linux.ExitCode -ne 0) { throw 'Linux setup did not complete. Inspect the output; the runtime remains disconnected.' }
     $Settings.restricted_adapter_verified=$true
     $Settings | ConvertTo-Json | Set-Content -LiteralPath $ConfigPath -Encoding utf8
 } finally {
@@ -39,5 +52,5 @@ try {
     $env:WSLENV=$OldWslEnv
 }
 Write-Output 'Build complete. Sign in to Codex inside the new Linux account:'
-Write-Output 'wsl -d Ubuntu-24.04 -u histold-bots -- /home/histold-bots/.local/bin/codex login --device-auth'
+Write-Output 'wsl -d Ubuntu-24.04 -u histold-bots -- /home/histold-bots/.local/bin/codex login'
 Write-Output 'Then run scripts/start_superbot.ps1. Dashboard Superbot assignments will become available.'

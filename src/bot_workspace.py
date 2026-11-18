@@ -222,7 +222,14 @@ class Workspace:
             messages=self.remote('GET','/api/bots/'+bot_id+'/messages')
             owner=next((m for m in messages if m['id']==message['id']),{})
             replies=sorted([m for m in messages if m['id']>message['id'] and m.get('role')=='bot' and m.get('text')],key=lambda m:m['id'])
-            if owner.get('status')=='done':
+            # Upstream's Message.status is #[serde(skip)]; completion is exposed
+            # through the bot's working flag, not the messages endpoint.
+            finished=owner.get('status')=='done'
+            if replies and not finished:
+                state=self.remote('GET','/api/state')
+                remote_bot=next((b for b in state.get('bots',[]) if b['id']==bot_id),{})
+                finished=bool(remote_bot) and not remote_bot.get('working',False)
+            if finished:
                 if not replies:raise RuntimeError('Superbot finished without an answer')
                 if any(m.get('error') for m in replies):raise RuntimeError('Superbot reported an agent error; check Linux login and provider availability')
                 return '\n\n'.join(m['text'] for m in replies)

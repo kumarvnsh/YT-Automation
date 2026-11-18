@@ -58,8 +58,15 @@ if ($Prior) {
                 if ($Response.StatusCode -eq 200) { Write-Output "dashboard: running at http://localhost:$Port"; exit 0 }
             } catch {}
         }
-        # Windows venv launchers spawn a second Python process; end both together.
-        & taskkill.exe /PID $Proc.ProcessId /T /F | Out-Null
+        # Stop only the verified dashboard listener and its venv launcher.
+        # Capture/analysis workers spawned by the server must survive UI updates.
+        foreach ($Entry in @(Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue)) {
+            $Serving=Get-CimInstance Win32_Process -Filter ('ProcessId='+[string]$Entry.OwningProcess) -ErrorAction SilentlyContinue
+            if ($Serving -and ($Serving.ProcessId -eq $Proc.ProcessId -or $Serving.ParentProcessId -eq $Proc.ProcessId -or $Serving.ParentProcessId -eq [int]$Prior.pid)) {
+                Stop-Process -Id $Serving.ProcessId -Force -ErrorAction Stop
+            }
+        }
+        if (Get-Process -Id $Proc.ProcessId -ErrorAction SilentlyContinue) { Stop-Process -Id $Proc.ProcessId -Force -ErrorAction Stop }
         Start-Sleep -Seconds 1
     }
 }

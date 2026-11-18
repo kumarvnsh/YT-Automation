@@ -25,8 +25,9 @@ if [[ ! -x /opt/histold-node/bin/node ]]; then
   tar -xJf "$NODE_ARCHIVE" --strip-components=1 -C /opt/histold-node
 fi
 cd "$BOT_HOME"
+if [[ ! -e /usr/local/bin/node ]]; then ln -s /opt/histold-node/bin/node /usr/local/bin/node; fi
 export PATH="/opt/histold-node/bin:$BOT_HOME/.local/bin:$PATH"
-runuser -u "$BOT_USER" -- env PATH="$PATH" npm install --prefix "$BOT_HOME/.local" @openai/codex
+runuser -u "$BOT_USER" -- env PATH="$PATH" npm install --global --prefix "$BOT_HOME/.local" @openai/codex
 if [[ ! -x "$BOT_HOME/.cargo/bin/cargo" ]]; then
   runuser -u "$BOT_USER" -- bash -c 'curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal'
 fi
@@ -37,11 +38,15 @@ if [[ ! -d "$BOT_HOME/superbot/.git" ]]; then
   runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" checkout --detach FETCH_HEAD
 fi
 printf '%s' '__PATCH_B64__' | base64 -d > /tmp/histold-superbot-read-only.patch
-if runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" apply --check /tmp/histold-superbot-read-only.patch; then
-  runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" apply /tmp/histold-superbot-read-only.patch
-elif ! runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" apply --reverse --check /tmp/histold-superbot-read-only.patch; then
-  echo 'Pinned Superbot source does not match the reviewed adapter patch.'; exit 1
-fi
+printf '%s' '__STATUS_PATCH_B64__' | base64 -d > /tmp/histold-superbot-message-status.patch
+for PATCH in /tmp/histold-superbot-read-only.patch /tmp/histold-superbot-message-status.patch; do
+  if runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" apply --reverse --check "$PATCH" >/dev/null 2>&1; then
+    echo 'Reviewed integration patch is already present.'
+  else
+    runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" apply --check "$PATCH"
+    runuser -u "$BOT_USER" -- git -C "$BOT_HOME/superbot" apply "$PATCH"
+  fi
+done
 [[ $(git -c safe.directory="$BOT_HOME/superbot" -C "$BOT_HOME/superbot" rev-parse HEAD) == "$PIN" ]] || { echo 'Unexpected Superbot revision; inspect before upgrading.'; exit 1; }
 runuser -u "$BOT_USER" -- env PATH="$BOT_HOME/.cargo/bin:$PATH" bash -c "cd '$BOT_HOME/superbot' && cargo test --locked && cargo build --release --locked"
 export BOT_HOME BOT_USER
