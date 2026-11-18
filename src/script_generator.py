@@ -267,6 +267,8 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
             structure_block += '\nAfter delivering the payoff, add this brief invitation within the final segment: "Follow for more surprising world history." Count it in the narration budget.'
         elif editorial.get('discussion_question'):
             structure_block += '\nAfter the payoff, you may ask one specific thoughtful question about this story. No "comment YES", forced sides or generic engagement requests.'
+        from .creative import prompt_block
+        structure_block += prompt_block(editorial.get('creative_guidance') or [])
     segment_schema = (
         '{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}'
         if beats_on or consequence

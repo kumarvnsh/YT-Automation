@@ -127,6 +127,12 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
                 state.update(ab_test=arm)
                 snapshot.setdefault('script', {})['title_style'] = arm['title_style']
                 snapshot.setdefault('tts', {})['provider'] = arm['voice']
+            from . import creative
+            guidance = creative.load(base_dir())
+            creative_arm = None if arm else creative.arm(guidance, ordinal)  # never mix with an owner A/B test
+            if creative_arm:
+                state.update(creative_test={'id': creative_arm['id'], 'arm': creative_arm['arm']})
+            editorial['creative_guidance'] = creative.prompt_instructions(guidance, creative_arm)
         elif cfg.get('production.experiment', False):
             from .experiments import select_slot
             manifest_path = base_dir() / 'data/experiments/histold-six-reels.json'
@@ -751,6 +757,7 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             'experiment': st.get('experiment'),
             'experiment_slot': st.get('experiment_slot'),
             'ab_test': st.get('ab_test'),
+            'creative_test': st.get('creative_test'),
             'voice': st.get('voiceover', {}).get('provider'),
             'category': st.get('category'),
             'editorial_slot': st.get('editorial_slot'),
