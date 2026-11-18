@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from scripts.build_dashboard import collect, read_json
-from src.operations import IST, health_alerts, snapshot, weekly_review, daily_briefing
+from src.operations import IST, health_alerts, snapshot, weekly_review, daily_briefing, alert_message
 from src.whatsapp_updates import send_update
 from src.control import GitHub
 from src.config import load_config
@@ -106,7 +106,7 @@ def _tick(root, now=None):
         if config.get('send_alerts', True):
             for alert in alerts:
                 if alert['severity'] == 'error':
-                    send_update(config, 'Jarvis alert: '+alert['message'], 'alert:'+alert['id'], private/'notification-state.json')
+                    send_update(config, alert_message(alert, now), 'alert:'+alert['id'], private/'notification-state.json')
     report = {'generated': now.isoformat(), 'alerts': alerts, 'workflow_check': run_status,
               'export_source': export_source, 'repairs': repairs, 'recent_repairs': recent,
               'weekly_review': review, 'notification': notification, 'daily_briefing': briefing}

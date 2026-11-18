@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
-from src.operations import health_alerts, snapshot, observed_change, audience_summary, weekly_review
+from src.operations import health_alerts, snapshot, observed_change, audience_summary, weekly_review, daily_briefing, alert_message
 from src.whatsapp_updates import send_update
 
 
@@ -43,6 +43,28 @@ class OperationsTests(unittest.TestCase):
     def test_disabled_delivery_never_sends(self, post):
         self.assertEqual(send_update({}, 'test', 'daily', 'unused')['status'], 'disabled')
         post.assert_not_called()
+
+
+    def test_briefing_separates_accumulated_views_and_local_publish_slots(self):
+        now = datetime(2026, 11, 18, 6, 45, tzinfo=timezone.utc)
+        text = daily_briefing({'hours': [11, 18, 23], 'videos': [
+            {'at': '2026-11-17T23:00:00Z', 'yt': 12, 'fb': 100},
+            {'at': '2026-11-17T12:00:00Z', 'yt': 8, 'fb': None}]}, [], now)
+        self.assertIn('18 Nov, 04:30 PM IST', text)
+        self.assertIn('Published today: 1 tracked video(s)', text)
+        self.assertIn('YouTube: 20 views (2 measured videos)', text)
+        self.assertIn('Instagram: unavailable', text)
+        self.assertIn('not views earned today', text)
+        self.assertIn('*NEXT ACTION*', text)
+        self.assertNotIn('Local AI hypothesis', text)
+
+    def test_error_takes_priority_over_a_suggested_experiment(self):
+        now = datetime(2026, 11, 18, tzinfo=timezone.utc)
+        alert = {'severity': 'error', 'message': 'Upload failed'}
+        text = daily_briefing({'ai_insights': {'interpretation': {'next_test': 'Try objects'}}}, [alert], now)
+        self.assertIn('Check the issues above', text)
+        self.assertNotIn('Try objects', text)
+        self.assertIn('*Issue needing attention*', alert_message(alert, now))
 
 
 if __name__ == '__main__':

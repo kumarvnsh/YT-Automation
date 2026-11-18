@@ -136,7 +136,7 @@ def service_watchdog(repo, state_path, now):
     except (OSError, ValueError):
         state = {}
     actions, alerts = [], []
-    for service, url, script in [('dashboard', 'http://127.0.0.1:8787/login', 'start_dashboard.ps1'),
+    for service, url, script in [('dashboard', 'http://127.0.0.1:8799/login', 'start_dashboard.ps1'),
                                  ('WhatsApp gateway', 'http://127.0.0.1:2785/', 'start_openwa.ps1')]:
         try:
             response = requests.get(url, timeout=4)

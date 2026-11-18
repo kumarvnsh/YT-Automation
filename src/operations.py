@@ -108,27 +108,71 @@ def weekly_review(data, now, current, previous=None):
 
 
 def daily_briefing(data, alerts, now):
-    lines = [f'Jarvis · Histold · {now.astimezone(IST):%d %b %Y}',
-             'Automatic schedule: ' + ', '.join(f'{(h*60+330)//60%24:02d}:{(h*60+330)%60:02d} IST' for h in data.get('hours', [])),
-             f'Health: {len(alerts)} active alert(s).']
-    lines.extend('• ' + a['message'] for a in alerts[:5])
-    for platform, audience in audience_summary(data.get('audience') or {}).items():
-        share = audience.get('usa_europe_share_of_reported')
-        if share is not None:
-            lines.append(f'{platform}: USA + Europe {share:.1%} of reported {audience.get("basis", "country observations")}.')
-    insights = data.get('ai_insights') or {}
+    """Compact WhatsApp briefing with explicit metric periods and local times."""
+    local = now.astimezone(IST)
+    lines = ['*JARVIS | HISTOLD*', local.strftime('%a, %d %b %Y | %I:%M %p IST'), '', '*SYSTEM STATUS*']
+    errors = sum(a.get('severity') == 'error' for a in alerts)
+    warnings = len(alerts) - errors
+    lines.append(f'{errors} issue(s) need attention; {warnings} warning(s).' if alerts else 'All monitored checks passed.')
+    lines.extend('- ' + a['message'] for a in alerts[:3])
+    if len(alerts) > 3:
+        lines.append(f'+ {len(alerts)-3} more in the dashboard.')
+    hours = sorted(data.get('hours') or [])
+    lines.extend(['', '*PUBLISHING*'])
+    if hours:
+        candidates = [now.astimezone(timezone.utc).replace(hour=h, minute=0, second=0, microsecond=0) for h in hours]
+        candidates = [at if at > now else at + timedelta(days=1) for at in candidates]
+        upcoming = min(candidates).astimezone(IST)
+        lines.append('Next scheduled slot: ' + upcoming.strftime('%d %b, %I:%M %p IST'))
+        times = sorted((h*60+330) % 1440 for h in hours)
+        lines.append('Daily slots: ' + ', '.join(f'{m//60:02d}:{m%60:02d}' for m in times) + ' IST')
+    else:
+        lines.append('No posting slots available in this snapshot.')
+    videos = data.get('videos') or []
+    today = 0
+    for video in videos:
+        try:
+            if datetime.fromisoformat(video['at'].replace('Z', '+00:00')).astimezone(IST).date() == local.date():
+                today += 1
+        except (KeyError, TypeError, ValueError):
+            pass
+    lines.append(f'Published today: {today} tracked video(s)')
+    lines.extend(['', '*PERFORMANCE SNAPSHOT*', 'Views on videos published in the last 28 days:'])
+    for name, key in [('YouTube', 'yt'), ('Facebook', 'fb'), ('Instagram', 'ig')]:
+        values = [v[key] for v in videos if isinstance(v.get(key), (int, float))]
+        lines.append(f'- {name}: {sum(values):,.0f} views ({len(values)} measured videos)' if values else f'- {name}: unavailable')
+    lines.append('These are accumulated video views, not views earned today.')
     evidence = data.get('content_evidence') or {}
-    for label, groups in [('Working signal', evidence.get('working') or []),
-                          ('Weaker signal', evidence.get('not_working') or [])]:
-        for group in groups[:1]:
-            lines.append(f'{label}: {group["option"]}; {group["n"]} videos, median Facebook views {group.get("fb_median")}. Observational, not causal.')
-    interpretation = insights.get('interpretation') or {}
-    if interpretation.get('title_hypothesis'):
-        lines.append('Local AI hypothesis: ' + str(interpretation['title_hypothesis'])[:280])
-    if interpretation.get('next_test'):
-        lines.append('Suggested test (needs your approval): ' + str(interpretation['next_test'])[:280])
-    lines.append('Open the dashboard for measured content findings and the weekly advisory review.')
-    if insights.get('generated'):
-        lines.append('Local AI analysis updated: ' + str(insights['generated']))
-    lines.append('Earnings exclude unverified bonuses. No changes were applied by this briefing.')
+    lines.extend(['', '*CONTENT SIGNALS*'])
+    found = False
+    for label, groups in [('Stronger', evidence.get('working') or []), ('Weaker', evidence.get('not_working') or [])]:
+        if groups:
+            group = groups[0]
+            median_views = group.get('fb_median')
+            measured = f'{median_views:,.0f}' if isinstance(median_views, (int, float)) else 'unavailable'
+            lines.append(f"- {label}: {str(group.get('option', '')).replace('_', ' ').title()} | median FB views {measured} | {group.get('n', 0)} videos")
+            found = True
+    if not found:
+        lines.append('Not enough comparable evidence to name a stronger format yet.')
+    else:
+        lines.append('Observed associations; results are not proof of cause.')
+    interpretation = (data.get('ai_insights') or {}).get('interpretation') or {}
+    lines.extend(['', '*NEXT ACTION*'])
+    if errors:
+        lines.append('Check the issues above in the dashboard.')
+    elif interpretation.get('next_test'):
+        lines.append(str(interpretation['next_test'])[:240] + ' (approval needed)')
+    elif alerts:
+        lines.append('Review the warnings above in the dashboard.')
+    else:
+        lines.append('Keep the current schedule and collect more comparable results.')
+    lines.extend(['', 'Dashboard: https://vnsh.tail9bdcf7.ts.net/#/overview', 'Briefing only; no strategy changes applied.'])
     return '\n'.join(lines)
+
+
+def alert_message(alert, now):
+    return '\n'.join(['*JARVIS | HISTOLD ALERT*',
+                      now.astimezone(IST).strftime('%d %b, %I:%M %p IST'),
+                      '', '*Issue needing attention*', str(alert['message']),
+                      '', 'Check current status and recovery details:',
+                      'https://vnsh.tail9bdcf7.ts.net/#/overview'])

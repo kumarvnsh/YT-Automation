@@ -1,5 +1,7 @@
 param([string]$HomeDir = 'D:\histold')
 $ErrorActionPreference = 'Stop'
+# Restore the existing authenticated WhatsApp session after a gateway restart.
+$env:AUTO_START_SESSIONS = 'true'
 if (Get-NetTCPConnection -LocalPort 2785 -State Listen -ErrorAction SilentlyContinue) { exit 0 }
 $Node = Join-Path $HomeDir 'tools\node-v24.22.3-win-x64\node.exe'
 $Gateway = Join-Path $HomeDir 'OpenWA'
