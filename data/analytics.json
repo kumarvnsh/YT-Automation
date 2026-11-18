@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-17T23:00:49.174596+00:00",
+      "updated": "2026-11-18T00:00:37.828024+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "Tc6Wlh01qas",
+          "title": "Russia Fought Over Church Rights \u2014 and Pulled in Several Powers",
+          "description": "A quarrel over the rights of Orthodox Christians under Ottoman rule grew into a costly war across Europe. The Library of Congress describes many poor decisions by several powers rather than one cause. Britain's concern for routes to India shaped its own choices.\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "19th century europe",
+            "black sea",
+            "british empire",
+            "crimea",
+            "crimean war",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history explained",
+            "history shorts",
+            "mistakes that changed history",
+            "orthodox church",
+            "ottoman empire",
+            "russian history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-17T23:11:48Z",
+          "thumbnail": "https://i.ytimg.com/vi/Tc6Wlh01qas/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-12",
+            "end_date": "2026-11-18",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "jCPbacI0r5Q",
           "title": "How Did Indian Cloth Win Buyers From Japan to West Africa?",
           "description": "Indian weavers did not sell one design to the world. They studied each market and changed their cloth to suit it, a practice that shaped centuries of global trade. Follow for more surprising world history. #WorldHistory #IndianHistory #TextileHistory",
@@ -66,7 +110,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -110,7 +154,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -154,7 +198,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -197,7 +241,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -240,7 +284,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -285,7 +329,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -328,7 +372,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -371,7 +415,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -414,7 +458,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -457,7 +501,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -505,7 +549,7 @@
           "analytics_views": 19,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -541,7 +585,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -589,7 +633,7 @@
           "analytics_views": 14,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -632,7 +676,7 @@
           "analytics_views": 14,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -676,7 +720,7 @@
           "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -720,7 +764,7 @@
           "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -762,7 +806,7 @@
           "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -803,7 +847,7 @@
           "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -845,7 +889,7 @@
           "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -887,7 +931,7 @@
           "analytics_views": 8,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -928,7 +972,7 @@
           "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -957,7 +1001,7 @@
           ],
           "publishedAt": "2026-11-14T16:39:35Z",
           "thumbnail": "https://i.ytimg.com/vi/SfvGGm6eaok/mqdefault.jpg",
-          "views": 5,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -970,7 +1014,7 @@
           "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1012,7 +1056,7 @@
           "analytics_views": 7,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1052,7 +1096,7 @@
           "analytics_views": 12,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1094,7 +1138,7 @@
           "analytics_views": 13,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1137,7 +1181,7 @@
           "analytics_views": 12,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1166,7 +1210,7 @@
           ],
           "publishedAt": "2026-11-14T15:24:52Z",
           "thumbnail": "https://i.ytimg.com/vi/hk8oGsZj7I4/mqdefault.jpg",
-          "views": 25,
+          "views": 24,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1179,7 +1223,7 @@
           "analytics_views": 21,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1220,7 +1264,7 @@
           "analytics_views": 10,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1264,7 +1308,7 @@
           "analytics_views": 13,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1306,7 +1350,7 @@
           "analytics_views": 12,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1348,7 +1392,7 @@
           "analytics_views": 15,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1386,7 +1430,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -1433,7 +1477,7 @@
           "analytics_views": 5,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1474,7 +1518,7 @@
           "analytics_views": 1,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1519,7 +1563,7 @@
           "analytics_views": 4,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1561,7 +1605,7 @@
           "analytics_views": 9,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1604,7 +1648,7 @@
           "analytics_views": 39,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1645,7 +1689,7 @@
           "analytics_views": 9,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1681,7 +1725,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -1729,7 +1773,7 @@
           "analytics_views": 9,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1770,7 +1814,7 @@
           "analytics_views": 6,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1812,7 +1856,7 @@
           "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1854,7 +1898,7 @@
           "analytics_views": 42,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1897,7 +1941,7 @@
           "analytics_views": 16,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1937,7 +1981,7 @@
           "analytics_views": 14,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1981,7 +2025,7 @@
           "analytics_views": 3,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2022,7 +2066,7 @@
           "analytics_views": 25,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2066,7 +2110,7 @@
           "analytics_views": 11,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2107,49 +2151,7 @@
           "analytics_views": 4,
           "analytics_period": {
             "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "vTPNWAPSbvE",
-          "title": "Who Mailed Letters Wrapped in Clay 4,000 Years Ago?",
-          "description": "Merchants in ancient Mesopotamia and Anatolia sent letters on clay tablets, and some were sealed inside a second clay envelope. The envelope carried both names and helped keep the message inside safe. Surviving letters show what everyday trade looked like.\n#AncientHistory #MesopotamianHistory #HiddenHistory",
-          "tags": [
-            "anatolia",
-            "ancient history",
-            "ancient iraq",
-            "ancient letters",
-            "ancient merchants",
-            "ancient trade",
-            "ancient turkey",
-            "clay tablets",
-            "cuneiform",
-            "did you know",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "mesopotamia",
-            "world history"
-          ],
-          "publishedAt": "2026-11-12T07:11:05Z",
-          "thumbnail": "https://i.ytimg.com/vi/vTPNWAPSbvE/mqdefault.jpg",
-          "views": 40,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 24.98,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 7.0,
-          "shares": 0,
-          "analytics_views": 40,
-          "analytics_period": {
-            "start_date": "2026-11-12",
-            "end_date": "2026-11-17",
+            "end_date": "2026-11-18",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
