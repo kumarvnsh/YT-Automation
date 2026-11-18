@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-18T18:25:33.218321+00:00",
+      "updated": "2026-11-18T19:00:40.723501+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "ZE9tGMBB7Fg",
+          "title": "A Supreme Court Justice Answered a Road Plan With a Hike",
+          "description": "In 1954, a proposal to turn the Chesapeake and Ohio Canal into a road drew a challenge from Justice William O. Douglas. He invited newspaper editors to walk the canal, and the National Park Service says the walk changed the Washington Post's position. #ChesapeakeAndOhioCanal #WorldHistory #DidYouKnow\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "1954 history",
+            "american history",
+            "canal history",
+            "chesapeake and ohio canal",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "ingenious solutions",
+            "national park history",
+            "potomac river",
+            "washington dc history",
+            "william o douglas",
+            "world history"
+          ],
+          "publishedAt": "2026-11-18T18:45:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/ZE9tGMBB7Fg/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-12",
+            "end_date": "2026-11-18",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "A8P0T0TA-5I",
           "title": "Was the Lady With the Lamp Really a Statistician?",
@@ -192,7 +236,7 @@
           ],
           "publishedAt": "2026-11-17T11:07:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Z6w2dgH6oOk/mqdefault.jpg",
-          "views": 40,
+          "views": 38,
           "likes": 0,
           "comments": 1,
           "playlist_ids": [],
@@ -371,7 +415,7 @@
           ],
           "publishedAt": "2026-11-16T16:59:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Chyn8YLkKO0/mqdefault.jpg",
-          "views": 2,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -677,7 +721,7 @@
           ],
           "publishedAt": "2026-11-15T18:16:18Z",
           "thumbnail": "https://i.ytimg.com/vi/S7egTTzf3qc/mqdefault.jpg",
-          "views": 38,
+          "views": 35,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2155,51 +2199,6 @@
           "average_watch_time_seconds": 23.0,
           "shares": 0,
           "analytics_views": 25,
-          "engaged_views": 4,
-          "analytics_period": {
-            "start_date": "2026-11-12",
-            "end_date": "2026-11-18",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "zQEXjUnu_dA",
-          "title": "Could an Empire Run Its Records on Knots Alone?",
-          "description": "The Inca Empire had no written language, yet its officials recorded information on knotted cords called quipus. Here is how those cords held numbers through knot position, cord color, and cord type. Which do you think would be harder to read, a written page or a knotted string?\n#HistoryGotThisWrong #IncaHistory #AncientWriting",
-          "tags": [
-            "ancient records",
-            "ancient writing",
-            "andes",
-            "did you know",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "inca",
-            "inca empire",
-            "indigenous history",
-            "khipu",
-            "knots",
-            "peru",
-            "quipu",
-            "south american history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-12T16:10:58Z",
-          "thumbnail": "https://i.ytimg.com/vi/zQEXjUnu_dA/mqdefault.jpg",
-          "views": 11,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 81.01,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 25.0,
-          "shares": 0,
-          "analytics_views": 11,
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-12",
