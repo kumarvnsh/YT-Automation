@@ -1,64 +1,64 @@
 {
-  "updated": "2026-11-18T03:00:19.673273+00:00",
-  "videos_scored": 119,
+  "updated": "2026-11-18T07:00:18.237476+00:00",
+  "videos_scored": 120,
   "weights": {
     "series": {
-      "school_myths": 0.0525,
-      "mistakes": 0.0682,
-      "almost": 0.0732,
-      "erased": 0.0817,
-      "unsolved": 0.0669,
-      "weird_dark": 0.0748,
-      "photo_story": 0.0786,
-      "spy_gadgets": 0.0786,
-      "animals": 0.0786,
-      "secretly_deadly": 0.0786,
-      "worst_jobs": 0.0786,
-      "forgotten_rules": 0.0654,
-      "behind_legend": 0.0635,
-      "found_by_accident": 0.0609
+      "school_myths": 0.053,
+      "mistakes": 0.0693,
+      "almost": 0.0644,
+      "erased": 0.0825,
+      "unsolved": 0.0677,
+      "weird_dark": 0.0755,
+      "photo_story": 0.0792,
+      "spy_gadgets": 0.0792,
+      "animals": 0.0792,
+      "secretly_deadly": 0.0792,
+      "worst_jobs": 0.0792,
+      "forgotten_rules": 0.066,
+      "behind_legend": 0.0642,
+      "found_by_accident": 0.0615
     },
     "region": {
-      "india": 0.1139,
-      "africa": 0.0847,
-      "japan": 0.0934,
-      "china": 0.103,
-      "russia": 0.1299,
-      "middle_east": 0.1161,
-      "europe": 0.1177,
-      "americas": 0.1249,
-      "asia_pacific": 0.1163
+      "india": 0.1144,
+      "africa": 0.0852,
+      "japan": 0.0942,
+      "china": 0.0988,
+      "russia": 0.1303,
+      "middle_east": 0.1167,
+      "europe": 0.1181,
+      "americas": 0.1254,
+      "asia_pacific": 0.1169
     },
     "duration_variant": {
-      "concise": 0.5148,
-      "story": 0.4852
+      "concise": 0.5114,
+      "story": 0.4886
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 3,
-        "mean_score": 0.237
+        "mean_score": 0.239
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.405
+        "mean_score": 0.41
       },
       "almost": {
-        "n": 2,
-        "mean_score": 0.44
+        "n": 3,
+        "mean_score": 0.363
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.554
+        "mean_score": 0.556
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.366
+        "mean_score": 0.369
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.433
+        "mean_score": 0.435
       },
       "photo_story": {
         "n": 0,
@@ -82,63 +82,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.255
+        "mean_score": 0.256
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.323
+        "mean_score": 0.325
       },
       "found_by_accident": {
         "n": 3,
-        "mean_score": 0.332
+        "mean_score": 0.333
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.516
+        "mean_score": 0.518
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.391
+        "mean_score": 0.394
       },
       "japan": {
         "n": 14,
-        "mean_score": 0.431
+        "mean_score": 0.434
       },
       "china": {
-        "n": 13,
-        "mean_score": 0.472
+        "n": 14,
+        "mean_score": 0.455
       },
       "russia": {
         "n": 13,
-        "mean_score": 0.575
+        "mean_score": 0.578
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.525
+        "mean_score": 0.527
       },
       "europe": {
         "n": 14,
-        "mean_score": 0.53
+        "mean_score": 0.532
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.558
+        "mean_score": 0.561
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.526
+        "mean_score": 0.528
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 59,
-        "mean_score": 0.511
+        "n": 60,
+        "mean_score": 0.508
       },
       "story": {
         "n": 60,
-        "mean_score": 0.489
+        "mean_score": 0.491
       }
     }
   },
@@ -150,8 +150,8 @@
     "What Did Ancient Indian Cities Hide Under Their Streets?"
   ],
   "losers": [
-    "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
     "Why Did a British Governor Demand a Seat on Asante's Golden Stool?",
+    "Why Did One Drink Deserve Its Own Book in Tang China?",
     "Was Japan Really Locked Shut for 200 Years?",
     "What Did a Farmer's Plow Turn Up in Nara in 1831?",
     "Where Did Your Notebook Page Really Start?"
