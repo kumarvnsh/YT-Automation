@@ -66,7 +66,7 @@ if ($Prior) {
                 Stop-Process -Id $Serving.ProcessId -Force -ErrorAction Stop
             }
         }
-        if (Get-Process -Id $Proc.ProcessId -ErrorAction SilentlyContinue) { Stop-Process -Id $Proc.ProcessId -Force -ErrorAction Stop }
+        if (Get-Process -Id $Proc.ProcessId -ErrorAction SilentlyContinue) { try { Stop-Process -Id $Proc.ProcessId -Force -ErrorAction Stop } catch [Microsoft.PowerShell.Commands.ProcessCommandException] { } }  # it may exit once its child stops
         Start-Sleep -Seconds 1
     }
 }
