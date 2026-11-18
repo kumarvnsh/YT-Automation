@@ -150,7 +150,7 @@ FIX_LABELS = {
     'verified': 'Fixed, and it has stayed fixed',
     'reverted': 'The fix did not work, so it was undone. Trying again',
     'revert_failed': 'The fix did not work and could not be undone. You have been alerted',
-    'no_code_fix': 'This needs you. It cannot be fixed automatically',
+    'no_code_fix': 'No software fix was applied; the cause still needs verification',
     'rejected': 'The first fix was not safe enough. Trying again',
     'tests_failed': 'The first fix did not pass checks. Trying again',
     'deploy_failed': 'The fix could not be put live. Trying again',

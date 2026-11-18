@@ -130,11 +130,15 @@ def evidence_for(issue):
         return f"Workflow: {issue['workflow']}\nRun: {issue.get('url')}\nCommit: {issue.get('sha')}\n\nFailed step logs:\n{out[-12000:]}"
     if issue['kind'] == 'bot_finding':
         f = issue['finding']
+        runtime = ''
+        if issue.get('repo') == 'shotsnip':
+            from src.clipper_diagnostics import snapshot
+            runtime = '\nCurrent clipping-computer evidence:\n' + snapshot(REPOS['shotsnip']['venv'].parent)
         return ("Lead from the Bot Office Operations monitor, an AI-written report over the dashboard snapshot. "
                 "It is unverified: confirm it against this repository and real logs before changing anything, "
                 "and report no_code_fix if it is not a code problem.\n"
                 f"Finding: {f['title']}\nWhat the report cited: {f.get('evidence', '')}\n"
-                f"Seen in {f.get('streak')} consecutive reports since {f.get('first_seen')}.")
+                f"Seen in {f.get('streak')} consecutive reports since {f.get('first_seen')}." + runtime)
     tail = ''
     try:
         tail = (HOME / 'operations.log').read_text(encoding='utf-8', errors='replace')[-4000:]
@@ -476,8 +480,8 @@ def tick(dry_run=False):
                        f"What I changed: {outcome['summary']}\n\nIt passed all checks. If the problem comes back, "
                        "I will undo the change by myself.", 'fix:' + outcome['commit'][:12])
             elif outcome.get('owner_action'):
-                notify(f"🙋 Sir, this one needs you ({channel_name(issue['repo'])}):\n{plain_problem(issue)}\n\n"
-                       f"It cannot be fixed automatically. What to do: {outcome['owner_action']}",
+                notify(f"⚠️ Review needed ({channel_name(issue['repo'])}):\n{plain_problem(issue)}\n\n"
+                       f"No software fix was applied. Suggested next check: {outcome['owner_action']}",
                        'owner:' + issue['id'] + now.strftime('%Y%m%d'))
     if not issue:  # repairs come first; creative tests run on quiet ticks
         try:

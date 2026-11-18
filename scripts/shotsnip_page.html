@@ -54,12 +54,12 @@ $('facebookHeading').textContent='Facebook · '+(fb.name||'Shotsnip Clips');$('f
 function render(){const a=D.analytics||{},o=a.owner_analytics||{},e=D.evidence||{},ag=D.agent||{},running=D.job.running;
 renderLive();
 renderStudio();
-if(D.scheduler?.selected?.archive){const p=[...$('liveOps').querySelectorAll('p')].find(p=>p.textContent.startsWith('Selected:'));if(p)p.textContent='Yesterday’s replay: '+D.scheduler.selected.channel+' · '+fmt(D.scheduler.selected.viewers)+' total views';}
+if(D.scheduler?.selected?.archive){const p=[...$('liveOps').querySelectorAll('p')].find(p=>p.textContent.startsWith('Selected:'));if(p)p.textContent='Recent replay: '+D.scheduler.selected.channel+' · '+fmt(D.scheduler.selected.viewers)+' total views';}
 if(!$('facebook'))$('overview').insertAdjacentHTML('beforeend','<section class="panel" id="facebook"></section>');
 renderFacebook(D.facebook_analytics||{});
 if(!$('ageTable'))$('performance').insertAdjacentHTML('beforeend','<section class="panel" id="ageTable"></section>');
 $('ageTable').innerHTML='<h2>Views at similar upload ages</h2><p>Actual observations near 1, 6 and 24 hours. Each cell shows its age.</p><table><tr><th>Video</th><th>1h</th><th>6h</th><th>24h</th></tr>'+((D.age_performance?.videos||[]).map(v=>'<tr><td>'+esc(v.title)+'</td>'+['1','6','24'].map(h=>'<td>'+ (v.checkpoints[h]?fmt(v.checkpoints[h].views)+' ('+v.checkpoints[h].age_hours.toFixed(1)+'h)':'Unavailable')+'</td>').join('')+'</tr>').join('')||'<tr><td>No age checkpoints collected yet.</td></tr>')+'</table>';
-$('liveOps').insertAdjacentHTML('beforeend','<p class="shot-muted">Targets get priority and may play any GTA game. Other channels follow the scheduled GTA version.</p>');
+$('liveOps').insertAdjacentHTML('beforeend','<p class="shot-muted">Missed target broadcasts from the last eight hours get first priority, then live streams and other recent replays. Targets may play any GTA game; other channels follow the scheduled version.</p>');
 $('liveOps').insertAdjacentHTML('beforeend','<p>Reserve: '+(D.scheduler.ready_clips||[]).length+' / '+(D.scheduler_config.max_ready_clips||5)+' ready clips · expires at midnight IST</p>');
 $('liveOps').insertAdjacentHTML('beforeend','<p>Every '+(D.scheduler_config.scan_minutes||30)+' minutes: find a stream, capture, finish and upload. Existing reserves are a fallback if no suitable new clip is found.</p>');
 $('liveOps').insertAdjacentHTML('beforeend','<p>Local scheduler: '+esc(D.scheduler_service?.status||'starting')+'</p>');

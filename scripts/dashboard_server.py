@@ -42,6 +42,7 @@ from src.growth import PLAN, propose, problem, settings  # noqa: E402
 from src.strategy import OVERRIDES, apply_overrides  # noqa: E402
 from src.assistant_voice import LocalVoice  # noqa: E402
 from src.ai_providers import Providers  # noqa: E402
+from src.ollama_policy import compact_local_prompt  # noqa: E402
 from src.bot_workspace import Workspace  # noqa: E402
 from src.whatsapp_updates import send_update  # noqa: E402
 from src import telegram_control  # noqa: E402
@@ -80,9 +81,11 @@ def bot_workspace(state):
             def analyst(prompt, *, order=None):
                 def local():
                     ensure_server(OLLAMA)
-                    return ollama(OLLAMA,'/api/chat',{'model':MODEL,'stream':False,'think':False,
-                        'messages':[{'role':'user','content':prompt}],
-                        'options':{'temperature':.2,'num_ctx':16384,'num_predict':900}},timeout=240).get('message',{}).get('content','')
+                    compact=compact_local_prompt(prompt)
+                    text=ollama(OLLAMA,'/api/chat',{'model':MODEL,'stream':False,'think':False,
+                        'messages':[{'role':'user','content':compact}],
+                        'options':{'temperature':.2,'num_ctx':8192,'num_predict':900}},timeout=240).get('message',{}).get('content','')
+                    return text+ ('\n\nLocal evidence was abbreviated for memory limits.' if compact!=prompt else '')
                 with state.chat_lock:
                     text,provider,notes=PROVIDERS.answer(prompt,[{'role':'user','content':'Complete the assigned analysis.'}],local,
                         order=order or ['codex','claude','local'])

@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from src.config import load_config  # noqa: E402
 from src.strategy import WINDOW_DAYS, build, peaks, rows, score  # noqa: E402
+from src.ollama_policy import bounded_request,server_environment  # noqa: E402
 
 MIN_VIDEOS = 10
 EACH_END = 25        # rows sent to the model: best 25 + worst 25 (stats still cover every video)
@@ -32,6 +33,8 @@ NUM_PREDICT = 2000   # hard stop: a full answer is ~800 tokens; small models can
 
 
 def ollama(host: str, path: str, payload: dict | None = None, timeout: int = 10) -> dict:
+    if payload is not None and path in ('/api/chat','/api/generate'):
+        payload=bounded_request(payload)
     data = json.dumps(payload).encode() if payload is not None else None
     req = urllib.request.Request(host + path, data=data, headers={'Content-Type': 'application/json'})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -52,7 +55,7 @@ def ensure_server(host: str) -> None:
     if os.name == 'nt':
         flags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW
     subprocess.Popen([exe, 'serve'], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
-                     stderr=subprocess.DEVNULL, creationflags=flags, close_fds=True)
+                     stderr=subprocess.DEVNULL, creationflags=flags, close_fds=True,env=server_environment(os.environ))
     for _ in range(60):
         time.sleep(1)
         try:

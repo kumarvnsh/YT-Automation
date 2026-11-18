@@ -265,6 +265,9 @@ Find the root cause in this repository and fix it with the smallest safe code ch
 reproduces the problem when practical. If the cause is outside the code (expired login or credentials, API quota,
 an external outage, an account setting, or anything that needs a human), make NO changes and explain what the
 owner must do.
+Missing logs are an unknown cause, not proof of expired credentials. Never tell the owner to refresh cookies
+or sign in based only on a generic DownloadError. Distinguish a failed manual request from the automatic
+schedule and check whether a later publication succeeded before calling the pipeline blocked.
 
 {RULES}
 
