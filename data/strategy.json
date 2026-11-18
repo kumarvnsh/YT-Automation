@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T18:25:24.519719+00:00",
+  "updated": "2026-11-18T23:00:23.652638+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -13,73 +13,79 @@
       "measured_videos": 121
     },
     "facebook": {
-      "winners": [],
-      "measured_videos": 0
+      "winners": [
+        "Who Mailed Letters Wrapped in Clay 4,000 Years Ago?",
+        "Who Was Bouncing Rubber Balls Long Before Europeans Arrived?",
+        "Your Garden Wheelbarrow's Surprising Ancestor: Where Did It Start?",
+        "How Did India's Blue Stick to Cloth Without a Binder?",
+        "What Were Edo Summer Nights Hiding in a Paper Cage?"
+      ],
+      "measured_videos": 53
     }
   },
   "videos_scored": 125,
   "weights": {
     "series": {
-      "school_myths": 0.0724,
-      "mistakes": 0.0737,
-      "almost": 0.0741,
-      "erased": 0.0705,
-      "unsolved": 0.0627,
-      "weird_dark": 0.0638,
-      "photo_story": 0.0598,
-      "spy_gadgets": 0.082,
-      "animals": 0.082,
-      "secretly_deadly": 0.082,
-      "worst_jobs": 0.082,
-      "forgotten_rules": 0.058,
-      "behind_legend": 0.0653,
-      "found_by_accident": 0.0717
+      "school_myths": 0.0719,
+      "mistakes": 0.0679,
+      "almost": 0.0857,
+      "erased": 0.0756,
+      "unsolved": 0.0652,
+      "weird_dark": 0.0656,
+      "photo_story": 0.0589,
+      "spy_gadgets": 0.0803,
+      "animals": 0.0803,
+      "secretly_deadly": 0.0803,
+      "worst_jobs": 0.0803,
+      "forgotten_rules": 0.0578,
+      "behind_legend": 0.057,
+      "found_by_accident": 0.073
     },
     "region": {
-      "india": 0.1031,
-      "africa": 0.0942,
-      "japan": 0.1199,
-      "china": 0.1417,
-      "russia": 0.1073,
-      "middle_east": 0.0952,
-      "europe": 0.1253,
-      "americas": 0.0978,
-      "asia_pacific": 0.1154
+      "india": 0.094,
+      "africa": 0.1013,
+      "japan": 0.1167,
+      "china": 0.1344,
+      "russia": 0.106,
+      "middle_east": 0.0983,
+      "europe": 0.1299,
+      "americas": 0.1045,
+      "asia_pacific": 0.1149
     },
     "duration_variant": {
-      "concise": 0.5199,
-      "story": 0.4801
+      "concise": 0.5197,
+      "story": 0.4803
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.428
+        "mean_score": 0.435
       },
       "mistakes": {
-        "n": 3,
-        "mean_score": 0.428
+        "n": 4,
+        "mean_score": 0.403
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.433
+        "mean_score": 0.545
       },
       "erased": {
         "n": 3,
-        "mean_score": 0.399
+        "mean_score": 0.459
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.281
+        "mean_score": 0.328
       },
       "weird_dark": {
         "n": 2,
-        "mean_score": 0.295
+        "mean_score": 0.332
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.091
+        "mean_score": 0.096
       },
       "spy_gadgets": {
         "n": 0,
@@ -99,63 +105,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.054
+        "mean_score": 0.072
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.314
+        "mean_score": 0.222
       },
       "found_by_accident": {
         "n": 3,
-        "mean_score": 0.41
+        "mean_score": 0.436
       }
     },
     "region": {
       "india": {
-        "n": 15,
-        "mean_score": 0.471
+        "n": 14,
+        "mean_score": 0.447
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.433
+        "mean_score": 0.479
       },
       "japan": {
         "n": 14,
-        "mean_score": 0.536
+        "mean_score": 0.542
       },
       "china": {
         "n": 14,
-        "mean_score": 0.613
+        "mean_score": 0.608
       },
       "russia": {
         "n": 14,
-        "mean_score": 0.488
+        "mean_score": 0.499
       },
       "middle_east": {
         "n": 13,
-        "mean_score": 0.436
+        "mean_score": 0.465
       },
       "europe": {
         "n": 14,
-        "mean_score": 0.556
+        "mean_score": 0.591
       },
       "americas": {
-        "n": 13,
-        "mean_score": 0.448
+        "n": 14,
+        "mean_score": 0.493
       },
       "asia_pacific": {
         "n": 13,
-        "mean_score": 0.52
+        "mean_score": 0.535
       }
     },
     "duration_variant": {
       "concise": {
         "n": 61,
-        "mean_score": 0.515
+        "mean_score": 0.533
       },
       "story": {
         "n": 64,
-        "mean_score": 0.485
+        "mean_score": 0.503
       }
     }
   },
@@ -167,7 +173,7 @@
     "What Did Ancient Indian Cities Hide Under Their Streets?"
   ],
   "losers": [
-    "The Paper Money Experiment That Made Everyone Want Silver Again",
+    "Ancient Writers Got the Torc Wrong, and a Curator Says Why",
     "What Else Did Rice Do in a Philippine Mountain Culture?",
     "What Did a Farmer's Plow Turn Up in Nara in 1831?",
     "The Ancient Trade Secret Hidden Where No Customs Officer Would Look",
@@ -178,7 +184,7 @@
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
-      "views": 1,
+      "views": 2,
       "reason": "2 FB views vs 137 IG"
     },
     {
@@ -196,13 +202,13 @@
     {
       "video_id": "-cPiNs-0pLA",
       "platform": "fb",
-      "views": 2,
+      "views": 3,
       "reason": "3 FB views vs 129 IG"
     },
     {
       "video_id": "yUDJaAj3Zvg",
       "platform": "fb",
-      "views": 2,
+      "views": 3,
       "reason": "3 FB views vs 107 IG and 40 YT"
     },
     {
