@@ -328,6 +328,8 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
         from .editorial import brief
         topic = brief(st['editorial'], topics.recent_titles())
         leads = cfg.get('research.regional_source_leads', {}).get(st['editorial_region'], [])
+        if st.get('growth_trial'):
+            leads=cfg.get('research.growth_source_leads') or leads
     # Fetched leads go to the model as page text (free); only unfetchable ones become search hints.
     if not begin_step(cfg, leads) and leads:
         topic += ('\nStart by searching these approved museum collection pages for a narrow, supported story. '

@@ -2,6 +2,7 @@
 from datetime import datetime,timezone
 import json
 import statistics
+import re
 from pathlib import Path
 
 LANES=(
@@ -52,6 +53,8 @@ def validate_selection(packet):
         required=('premise','opening_visual','payoff','viewer_reason') if i==index else ('premise','rejection_reason')
         if not isinstance(item,dict) or any(not isinstance(item.get(k),str) or not item[k].strip() for k in required):
             raise ValueError('Editorial selection is missing a premise, opening visual, payoff or rejection reason')
+        if re.search(r'candidate\s*\d|not researched|not determined|a (?:second|third) original premise',item['premise'],re.I):
+            raise ValueError('Candidate placeholders are not real editorial alternatives')
     if len({item['premise'].strip().casefold() for item in candidates})!=3:
         raise ValueError('Candidate premises must be distinct')
     if not isinstance(selection.get('selection_reason'),str) or not selection['selection_reason'].strip():

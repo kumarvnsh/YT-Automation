@@ -52,6 +52,8 @@ def test_candidate_gate_and_script_only_receive_selected_candidate():
     assert 'Alternative one' not in json.dumps(context)
     for broken in [{}, {'editorial_selection':{'candidates':[],'selected_index':0}}]:
         with pytest.raises(ValueError):trial.validate_selection(broken)
+    placeholder=selection();placeholder['editorial_selection']['candidates'][1]['premise']='Candidate 2 (not researched)'
+    with pytest.raises(ValueError,match='placeholders'):trial.validate_selection(placeholder)
 
 
 def test_research_preserves_candidate_selection_in_saved_packet(monkeypatch):
