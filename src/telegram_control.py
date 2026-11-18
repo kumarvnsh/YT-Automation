@@ -91,7 +91,7 @@ class Telegram:
         self.base = 'https://api.telegram.org/bot' + token + '/'
         self.session = session
 
-    def call(self, method: str, http_timeout: float = 30, **params):
+    def call(self, method: str, http_timeout: float = 75, **params):  # this network can take ~20s to reach Telegram
         response = self.session.post(self.base + method, json=params, timeout=http_timeout)
         try:
             data = response.json()
