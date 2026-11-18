@@ -3292,5 +3292,14 @@
     "slot": "morning",
     "date": "2026-11-17",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261118_110147_100092_short",
+    "title": "Was the Lady With the Lamp Really a Statistician?",
+    "fingerprint": "lady_lamp_really_statistician_was_with",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-18",
+    "status": "reserved"
   }
 ]

@@ -7305,5 +7305,40 @@
     "production_profile": 2,
     "facebook_id": "959641410318389",
     "instagram_id": "18097775681700847"
+  },
+  {
+    "video_id": "A8P0T0TA-5I",
+    "run_id": "44290621822",
+    "stage_dir_name": "20261118_110147_100092_short",
+    "title": "Was the Lady With the Lamp Really a Statistician?",
+    "published_at": "2026-11-18T11:12:09.835870+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": null,
+    "experiment_slot": null,
+    "ab_test": {
+      "id": "voice-title-2x2",
+      "index": 6,
+      "title_style": "question",
+      "voice": "edge"
+    },
+    "creative_test": null,
+    "voice": "edge",
+    "category": "behind_legend",
+    "editorial_slot": 128,
+    "editorial_region": "europe",
+    "editorial_series": "Behind the Legend",
+    "this_week_event": null,
+    "duration_variant": "story",
+    "hook": "Florence Nightingale, the lady with the lamp, was also a serious statistician.",
+    "duration": 42.984,
+    "production_profile": 2,
+    "facebook_id": "2032201367466997",
+    "instagram_id": "18002364120010661"
   }
 ]
