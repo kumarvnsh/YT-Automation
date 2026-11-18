@@ -22,6 +22,7 @@ sys.path.insert(0, str(CODE))
 from src import operator_agent as op  # noqa: E402
 from src.whatsapp_updates import send_update  # noqa: E402
 from src import bot_findings  # noqa: E402
+from src import telegram_control  # noqa: E402
 
 HOME = Path(os.environ.get('HISTOLD_HOME', r'D:\histold'))
 STATE = HOME / 'operator'
@@ -61,6 +62,7 @@ def tool_env(repo):
 
 
 def notify(text, key):
+    log('telegram', key, telegram_control.notify(text))
     try:
         config = json.loads((HOME / 'secrets/whatsapp-updates.json').read_text(encoding='utf-8'))
         result = send_update(config, text, 'operator:' + key, STATE / 'notify-state.json')

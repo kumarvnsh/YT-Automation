@@ -280,7 +280,8 @@ class Workspace:
             text=('Sir, the '+channel+' Operations monitor found '+('a new active failure' if len(new)==1 else str(len(new))+' new active failures')+
                   ':\n'+'\n'.join(lines)+'\nFull report in Bot Office. If it persists for another review, the Operator will investigate it.')
             try:
-                status=self.notify(text,'bot-ops:'+task['id'])
+                offers=[('fix_problem',{'channel':task['channel'],'key':f['key']},'Fix now: '+f['title'][:45]) for f in new[:3]]
+                status=self.notify(text,'bot-ops:'+task['id'],offers=offers)
                 self.update(task['id'],stage='Owner alerted on WhatsApp ('+str(status)+')')
             except Exception as exc:  # an alert failure must never fail the report
                 self.update(task['id'],stage='WhatsApp alert failed ('+type(exc).__name__+')')

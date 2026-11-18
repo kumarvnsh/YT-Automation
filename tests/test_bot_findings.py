@@ -62,7 +62,7 @@ def test_workspace_shares_findings_and_alerts_once_per_new_failure(tmp_path):
     sent = []
     report = 'Report\n' + line({'active_failures': [{'key': 'lock', 'title': 'Mythpat lock', 'evidence': 'PermissionError'}],
                                 'suspect_metrics': []})
-    w = Workspace(tmp_path, analyst=lambda prompt, **kw: report, notify=lambda text, key: sent.append((text, key)) or 'accepted')
+    w = Workspace(tmp_path, analyst=lambda prompt, **kw: report, notify=lambda text, key, offers=None: sent.append((text, key, offers)) or 'accepted')
     probe = Workspace(tmp_path / 'probe')
     assert bf.MARKER in probe.prompt(probe.task(probe.enqueue({'bot': 'operations', 'channel': 'shotsnip'})))
     w.start()
@@ -73,6 +73,7 @@ def test_workspace_shares_findings_and_alerts_once_per_new_failure(tmp_path):
             time.sleep(.02)
         assert w.task(identity)['stage'].startswith(expected)
     assert len(sent) == 1 and 'Mythpat lock' in sent[0][0] and sent[0][1].startswith('bot-ops:')
+    assert sent[0][2] == [('fix_problem', {'channel': 'shotsnip', 'key': 'lock'}, 'Fix now: Mythpat lock')]
     assert bf.MARKER not in w.task(identity)['result']
     assert bf.load(tmp_path)['channels']['shotsnip']['active_failures']['lock']['streak'] >= 2
     assert 'lock (Mythpat lock; Operator:' in w.prompt(w.task(w.enqueue({'bot': 'operations', 'channel': 'shotsnip'})))

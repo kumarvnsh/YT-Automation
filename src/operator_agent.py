@@ -28,10 +28,11 @@ ALERT_PERSIST = timedelta(hours=2)  # local alerts must persist before the agent
 MAX_FILES = 8
 MAX_CHANGED_LINES = 400
 
-PROTECTED_PREFIXES = ('.github/', 'secrets/', 'data/', 'output/', 'channels/', '.env')
+PROTECTED_PREFIXES = ('.github/', 'secrets/', 'data/', 'output/', 'channels/', '.env', 'admin/')
 PROTECTED_FILES = {
     'scripts/publish_gate.py', 'src/quality_gate.py', 'src/recovery.py', 'media_safety.py',
-    'src/operator_agent.py', 'src/bot_findings.py', 'scripts/operator_tick.py', 'scripts/run_operator.ps1',
+    'src/operator_agent.py', 'src/bot_findings.py', 'src/telegram_control.py', 'scripts/telegram_bot.py',
+    'scripts/setup_telegram.ps1', 'scripts/install_admin_runner.ps1', 'scripts/operator_tick.py', 'scripts/run_operator.ps1',
     'scripts/install_operator_task.ps1', 'tests/test_operator_agent.py',
     'token.json', 'client_secret.json', 'analytics_token.json', 'facebook.json', 'channel.json',
 }

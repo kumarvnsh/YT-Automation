@@ -121,6 +121,8 @@ def record(directory, channel: str, bot: str, task: str, findings: dict, now: da
             old = previous.get(item['key'])
             current[item['key']] = {**item, 'first_seen': old['first_seen'] if old else stamp, 'last_seen': stamp,
                                     'streak': old['streak'] + 1 if old else 1, 'task': task}
+            if old and old.get('owner_approved'):
+                current[item['key']]['owner_approved'] = old['owner_approved']
             if not old:
                 new.append(current[item['key']])
         state['active_failures'] = current
@@ -167,6 +169,8 @@ def fix_status(operator_dir, channel: str, item: dict) -> dict:
         detail = attempt.get('owner_action') if state == 'no_code_fix' else attempt.get('summary')
         return {'state': state, 'label': FIX_LABELS.get(state, 'Fix attempt: ' + state),
                 'detail': _clean(detail, 300), 'at': attempt.get('deployed_at') or attempt.get('at')}
+    if _owner_approved(item, datetime.now(timezone.utc)):
+        return {'state': 'queued', 'label': 'You approved a fix; queued for the Operator'}
     if int(item.get('streak') or 0) >= 2:
         return {'state': 'queued', 'label': 'Confirmed; queued for the Operator to fix'}
     return {'state': 'confirming', 'label': 'Waiting for the next Operations review to confirm it'}
@@ -188,9 +192,33 @@ def known_keys(directory, channel: str, operator_dir=None) -> str:
             'evidence shows it is resolved (say so in the report): ' + '; '.join(items) + '.') if items else ''
 
 
+OWNER_APPROVAL_TTL = timedelta(hours=24)
+
+
+def _owner_approved(item: dict, now: datetime) -> bool:
+    try:
+        return now - datetime.fromisoformat(item['owner_approved']) <= OWNER_APPROVAL_TTL
+    except (KeyError, TypeError, ValueError):
+        return False
+
+
+def approve(directory, channel: str, key: str, now: datetime | None = None) -> dict:
+    """The owner asked for this failure to be fixed now (from Telegram): skip the wait for a
+    second confirming report. Only an open failure can be approved."""
+    now = now or datetime.now(timezone.utc)
+    data = load(directory)
+    item = ((data.get('channels') or {}).get(channel) or {}).get('active_failures', {}).get(key)
+    if not item:
+        raise ValueError('That problem is no longer open')
+    item['owner_approved'] = now.isoformat()
+    _save(directory, data)
+    return item
+
+
 def persistent_failures(directory, channel: str, now: datetime | None = None,
                         min_streak: int = 2, max_age: timedelta = timedelta(hours=3)) -> list[dict]:
-    """Active failures confirmed by consecutive Operations reports, from a recent report."""
+    """Active failures confirmed by consecutive Operations reports (or approved by the owner),
+    from a recent report."""
     now = now or datetime.now(timezone.utc)
     state = (load(directory).get('channels') or {}).get(channel) or {}
     out = []
@@ -199,7 +227,7 @@ def persistent_failures(directory, channel: str, now: datetime | None = None,
             fresh = now - datetime.fromisoformat(item['last_seen']) <= max_age
         except (KeyError, TypeError, ValueError):
             continue
-        if fresh and int(item.get('streak') or 0) >= min_streak:
+        if fresh and (int(item.get('streak') or 0) >= min_streak or _owner_approved(item, now)):
             out.append(item)
     return out
 
