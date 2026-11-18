@@ -8,6 +8,20 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 class WorkflowRegressionTests(unittest.TestCase):
+    def test_histold_script_previews_skip_render_setup_and_do_not_block_real_slots(self):
+        import yaml
+        workflow=(ROOT/'.github/workflows/publish.yml').read_text()
+        data=yaml.safe_load(workflow)
+        names={'Install pinned 3D renderer','Install ffmpeg','Cache Kokoro and alignment models',
+               'Install CPU Kokoro worker','Install Chromium'}
+        for step in data['jobs']['publish']['steps']:
+            if step.get('name') in names:
+                self.assertEqual(step.get('if'),"github.event.inputs.dry_run != 'true'")
+        guard=next(s['run'] for s in data['jobs']['publish']['steps'] if s.get('name')=='Duplicate-slot guard')
+        self.assertIn('.display_title != "Histold script preview"',guard)
+        self.assertIn('.display_title != "Histold render preview"',guard)
+        self.assertIn('inputs.dry_run',data['run-name'])
+
     def test_astrotold_publish_workflow_is_channel_isolated(self) -> None:
         workflow = (ROOT / ".github/workflows/publish-astrotold.yml").read_text()
         required_fragments = (

@@ -1,4 +1,5 @@
 name: Publish Video
+run-name: ${{ inputs.dry_run && 'Histold script preview' || inputs.no_upload && 'Histold render preview' || 'Publish Video' }}
 
 on:
   # Scheduling is handled by the always-on laptop (scripts/dispatch.py, hourly), which
@@ -97,7 +98,7 @@ jobs:
           WINDOW_MIN=45
           NOW=$(date -u +%s)
           RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/publish.yml/runs?per_page=20" \
-            --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | "\(.status) \(.conclusion) \(.created_at)"')
+            --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | select(.display_title != "Histold script preview" and .display_title != "Histold render preview") | "\(.status) \(.conclusion) \(.created_at)"')
           while read -r STATUS CONCLUSION CREATED; do
             [ -z "$STATUS" ] && continue
             if [ "$STATUS" = "queued" ] || [ "$STATUS" = "in_progress" ]; then
@@ -151,22 +152,26 @@ jobs:
           echo "No recent publish for this slot and daily cap OK ($COUNT/$DAILY_CAP) — proceeding."
 
       - uses: actions/setup-node@v4
+        if: github.event.inputs.dry_run != 'true'
         with:
           node-version: "22"
           cache: npm
 
       - name: Install pinned 3D renderer
+        if: github.event.inputs.dry_run != 'true'
         run: |
           npm ci
           echo "HYPERFRAMES_CLI=$GITHUB_WORKSPACE/node_modules/.bin/hyperframes" >> "$GITHUB_ENV"
 
       - name: Install ffmpeg
+        if: github.event.inputs.dry_run != 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
       - name: Cache Kokoro and alignment models
+        if: github.event.inputs.dry_run != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -175,6 +180,7 @@ jobs:
           key: kokoro-v2-${{ runner.os }}-${{ hashFiles('requirements-kokoro.txt') }}
 
       - name: Install CPU Kokoro worker
+        if: github.event.inputs.dry_run != 'true'
         id: kokoro_setup
         continue-on-error: true # Edge remains available if optional model setup fails.
         timeout-minutes: 10
@@ -190,6 +196,7 @@ jobs:
 
       # Both 2D scenes and HyperFrames use Chromium.
       - name: Install Chromium
+        if: github.event.inputs.dry_run != 'true'
         run: python -m playwright install --with-deps chromium
 
       - name: Reconstruct YouTube credentials
