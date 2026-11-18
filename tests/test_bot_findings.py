@@ -75,6 +75,7 @@ def test_workspace_shares_findings_and_alerts_once_per_new_failure(tmp_path):
     assert len(sent) == 1 and 'Mythpat lock' in sent[0][0] and sent[0][1].startswith('bot-ops:')
     assert bf.MARKER not in w.task(identity)['result']
     assert bf.load(tmp_path)['channels']['shotsnip']['active_failures']['lock']['streak'] >= 2
+    assert 'lock (Mythpat lock)' in w.prompt(w.task(w.enqueue({'bot': 'operations', 'channel': 'shotsnip'})))
 
 
 def test_operator_turns_findings_into_guarded_issues():

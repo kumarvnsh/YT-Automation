@@ -202,7 +202,8 @@ class Workspace:
                 'Do not run commands, inspect other files, publish, send messages, change accounts, or modify code. '
                 'Return recommendations only; report inability to perform requested actions honestly.\n'
                 'OWNER NOTES: '+(note[0] if note else '')+'\nPREVIOUS RESULTS: '+json.dumps([r[0][:3000] for r in previous])+
-                '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction']+bot_findings.PROMPT)
+                '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction']+bot_findings.PROMPT+
+                bot_findings.known_keys(self.directory,task['channel']))
 
     def run_remote(self, task, prompt):
         with self.db() as db:

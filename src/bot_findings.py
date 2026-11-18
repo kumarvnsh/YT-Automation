@@ -134,6 +134,13 @@ def record(directory, channel: str, bot: str, task: str, findings: dict, now: da
     return new
 
 
+def known_keys(directory, channel: str) -> str:
+    """Prompt suffix listing open failure keys, so the same problem keeps the same key."""
+    state = (load(directory).get('channels') or {}).get(channel) or {}
+    items = [k + ' (' + v.get('title', '')[:80] + ')' for k, v in (state.get('active_failures') or {}).items()]
+    return (' Currently open failure keys, reuse them if the same problem is still active: ' + '; '.join(items) + '.') if items else ''
+
+
 def persistent_failures(directory, channel: str, now: datetime | None = None,
                         min_streak: int = 2, max_age: timedelta = timedelta(hours=3)) -> list[dict]:
     """Active failures confirmed by consecutive Operations reports, from a recent report."""
