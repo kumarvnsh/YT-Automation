@@ -58,7 +58,7 @@ def test_pairing_needs_the_one_time_code(tmp_path):
     assert not c.telegram.sent and 'owner_id' not in c.config
     c.handle(message('/pair 424242', sender=OWNER))
     saved = json.loads((tmp_path / 'telegram.json').read_text())
-    assert saved['owner_id'] == OWNER and 'pair_code' not in saved and 'Paired' in c.telegram.sent[0][1]
+    assert saved['owner_id'] == OWNER and 'pair_code' not in saved and 'Connected' in c.telegram.sent[0][1]
 
 
 def test_expired_pairing_code_is_ignored(tmp_path):
@@ -84,7 +84,7 @@ def test_buttons_run_fixed_actions_once(tmp_path):
     run_button = buttons(c)[0]
     c.handle(press(run_button))
     assert c.ran == [['schtasks', '/Run', '/TN', 'Histold Operator']]
-    assert c.telegram.sent[-1][1].startswith('Done:')
+    assert c.telegram.sent[-1][1].startswith('✅ Done.')
     c.handle(press(run_button))               # replay
     assert len(c.ran) == 1 and c.telegram.answers[-1] == 'This button was already used'
     c.handle(press('a:' + 'f' * 16 + ':y'))   # forged id
@@ -179,7 +179,7 @@ def test_late_button_answer_still_runs_the_action(tmp_path):
     c.telegram.answer = too_late
     c.handle(press(buttons(c)[0]))
     assert c.ran == [['schtasks', '/Run', '/TN', 'Histold Operator']]
-    assert c.telegram.sent[-1][1].startswith('Done:')
+    assert c.telegram.sent[-1][1].startswith('✅ Done.')
 
 
 def test_ipv4_only_is_scoped():
@@ -189,3 +189,16 @@ def test_ipv4_only_is_scoped():
     with tc.ipv4_only():
         assert connection.allowed_gai_family() == socket.AF_INET
     assert connection.allowed_gai_family is before
+
+
+def test_messages_use_the_plain_explanation(tmp_path):
+    c = controller(tmp_path)
+    bf.record(tmp_path / 'workspace', 'shotsnip', 'operations', 't',
+              {'active_failures': [{'key': 'lock', 'title': 'PermissionError on segments.csv',
+                                    'plain': 'Recording of one streamer keeps stopping, so fewer clips get made.', 'evidence': ''}],
+               'suspect_metrics': []})
+    c.handle(message('/status'))
+    c.handle(message('/problems'))
+    status, problem = c.telegram.sent[0][1], c.telegram.sent[1][1]
+    assert 'Recording of one streamer keeps stopping' in status and 'PermissionError' not in status
+    assert 'What is wrong: Recording of one streamer' in problem and 'Spotted once' in problem

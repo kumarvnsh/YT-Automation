@@ -269,7 +269,7 @@ owner must do.
 {RULES}
 
 End your reply with exactly one line of JSON and nothing after it:
-{{"status": "fixed" or "no_code_fix", "root_cause": "...", "summary": "one sentence for the owner", "owner_action": "what the owner must do, or empty"}}"""
+{{"status": "fixed" or "no_code_fix", "root_cause": "...", "summary": "one short sentence in everyday words for a non-technical owner: what was wrong and what you changed (no file names, function names or jargon)", "owner_action": "simple step-by-step words a non-technical owner can follow, or empty"}}"""
 
 
 def creative_prompt(strategy: dict, guidance: dict) -> str:

@@ -22,7 +22,7 @@ def test_parse_strips_marker_keeps_provider_line_and_sanitizes():
     }) + '\n\nAnalyst provider: claude'
     text, findings = bf.parse(report)
     assert bf.MARKER not in text and text.endswith('Analyst provider: claude') and 'Findings here' in text
-    assert findings['active_failures'] == [{'key': 'mythpat-segments', 'title': 'Mythpat capture fails', 'evidence': 'x' * 400}]
+    assert findings['active_failures'] == [{'key': 'mythpat-segments', 'title': 'Mythpat capture fails', 'plain': 'Mythpat capture fails', 'evidence': 'x' * 400}]
     assert findings['suspect_metrics'] == [{'video_id': 'abcDEF123_-', 'platform': 'fb', 'reason': 'near zero'}]
 
 
@@ -73,7 +73,7 @@ def test_workspace_shares_findings_and_alerts_once_per_new_failure(tmp_path):
             time.sleep(.02)
         assert w.task(identity)['stage'].startswith(expected)
     assert len(sent) == 1 and 'Mythpat lock' in sent[0][0] and sent[0][1].startswith('bot-ops:')
-    assert sent[0][2] == [('fix_problem', {'channel': 'shotsnip', 'key': 'lock'}, 'Fix now: Mythpat lock')]
+    assert sent[0][2] == [('fix_problem', {'channel': 'shotsnip', 'key': 'lock'}, '🔧 Fix it now')]
     assert bf.MARKER not in w.task(identity)['result']
     assert bf.load(tmp_path)['channels']['shotsnip']['active_failures']['lock']['streak'] >= 2
     assert 'lock (Mythpat lock; Operator:' in w.prompt(w.task(w.enqueue({'bot': 'operations', 'channel': 'shotsnip'})))

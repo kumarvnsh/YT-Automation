@@ -50,19 +50,27 @@ ACTIONS = {
     'admin': {'label': 'Run an admin action', 'args': {'name': '^(ping|stop-elevated-dashboard|stop-stale-monitors|restart-tailscale)$'}},
 }
 ADMIN_ACTIONS = {
-    'ping': 'Check the admin runner works (no changes)',
-    'stop-elevated-dashboard': 'Stop a dashboard left running as Administrator, then restart it normally',
-    'stop-stale-monitors': 'Stop stuck Jarvis monitoring processes older than 10 minutes',
-    'restart-tailscale': 'Restart the Tailscale service (phone access to the dashboard)',
+    'ping': 'Test that admin access works (changes nothing)',
+    'stop-elevated-dashboard': 'Unstick the dashboard and restart it',
+    'stop-stale-monitors': 'Stop stuck background checks',
+    'restart-tailscale': 'Reconnect phone access to the dashboard',
 }
-HELP = ('Histold control\n'
-        '/status - pipeline, problems and Operator\n'
-        '/problems - open problems with Fix buttons\n'
-        '/review - run an Operations review now\n'
-        '/operator - run, pause or resume the Operator\n'
-        '/dashboard - restart the dashboard\n'
-        '/admin - allowlisted admin actions\n'
-        'Buttons expire after an hour and work once.')
+# What a successful admin action means, in plain words.
+ADMIN_DONE = {
+    'ping': 'Admin access is working.',
+    'stop-elevated-dashboard': 'The stuck dashboard was stopped.',
+    'stop-stale-monitors': 'Stuck background checks were cleared.',
+    'restart-tailscale': 'Phone access was reconnected.',
+}
+HELP = ('Here is what I can do, sir:\n\n'
+        '/status - Is everything OK? A quick summary\n'
+        '/problems - What is broken right now, with a Fix button\n'
+        '/review - Ask the checker to look at a channel now\n'
+        '/operator - Start, pause or resume the auto-fixer\n'
+        '/dashboard - Restart the dashboard if it is stuck\n'
+        '/admin - Laptop maintenance that needs admin rights\n\n'
+        'Each button works once and stops working after an hour.')
+NAMES = {'histold': 'Histold (history channel)', 'shotsnip': 'Shotsnip (gaming clips)'}
 
 
 def now_utc() -> datetime:
@@ -263,7 +271,7 @@ class Controller:
         self.config.pop('pair_code', None)
         self.config.pop('pair_expires', None)
         save_config(self.config, self.config_path)
-        self.send('Paired. This Telegram account now controls Histold.\n\n' + HELP, chat_id=chat['id'])
+        self.send('Connected. From now on I only take orders from this Telegram account.\n\n' + HELP, chat_id=chat['id'])
 
     def send(self, text: str, buttons=None, chat_id: int | None = None):
         return self.telegram.send(chat_id or int(self.config['owner_id']), text, buttons)
@@ -273,22 +281,25 @@ class Controller:
         self.send(HELP)
 
     def status(self):
-        lines = []
+        lines, trouble = [], False
         for channel in CHANNELS:
             open_problems = bot_findings.problems(self.workspace, self.operator, channel)
-            lines.append(f'{channel.capitalize()}: ' + (f'{len(open_problems)} open problem(s)' if open_problems else 'no open problems'))
-            lines += [f"  - {p['title'][:90]} [{p['fix']['label']}]" for p in open_problems[:4]]
+            if not open_problems:
+                lines.append(f'✅ {NAMES[channel]}: all good, no problems found.')
+                continue
+            trouble = True
+            lines.append(f'⚠️ {NAMES[channel]}: {len(open_problems)} problem(s)')
+            lines += [f"   • {(p.get('plain') or p['title'])[:120]}\n     → {p['fix']['label']}" for p in open_problems[:4]]
         paused = (self.operator / 'PAUSE').exists()
-        try:
-            op_status = json.loads((self.operator / 'status.json').read_text(encoding='utf-8'))
-            last = (op_status.get('action') or {})
-            lines.append(f"Operator: {'PAUSED' if paused else 'active'}; last check {str(op_status.get('checked'))[:16]} UTC"
-                         + (f"; last action {last.get('status')}: {str(last.get('summary') or '')[:120]}" if last else ''))
-        except (OSError, ValueError):
-            lines.append('Operator: ' + ('PAUSED' if paused else 'no status yet'))
+        lines.append('')
+        lines.append('🔧 Auto-fixer: ' + ('PAUSED. It will not fix anything until you turn it back on (/operator).'
+                                         if paused else 'on. It repairs problems by itself and tells you.'))
         code, _ = self.run(['curl.exe', '-s', '-o', 'NUL', '-w', '%{http_code}', DASHBOARD + '/login'], timeout=15)
-        lines.append('Dashboard: ' + ('up' if code == 0 else 'not responding'))
-        lines.append('Admin runner: ' + ('installed' if (self.admin / 'runner.ps1').exists() else 'not installed'))
+        lines.append('🖥️ Dashboard: ' + ('working.' if code == 0 else 'not responding. Try /dashboard.'))
+        if not (self.admin / 'runner.ps1').exists():
+            lines.append('🔒 Admin helper: not set up yet.')
+        if trouble:
+            lines.append('\nTap /problems to see each one with a Fix button.')
         self.send('\n'.join(lines))
 
     def problems(self):
@@ -298,32 +309,33 @@ class Controller:
                 found = True
                 buttons = None
                 if p['fix']['state'] not in ('deployed', 'verified'):
-                    buttons = [offer(self.approvals, 'fix_problem', {'channel': channel, 'key': p['key']}, 'Fix now')]
-                self.send(f"{channel.capitalize()}: {p['title']}\nStatus: {p['fix']['label']}"
-                          + (f"\n{p['fix']['detail']}" if p['fix'].get('detail') else '')
-                          + f"\nSeen in {p.get('streak')} review(s).", buttons)
+                    buttons = [offer(self.approvals, 'fix_problem', {'channel': channel, 'key': p['key']}, '🔧 Fix it now')]
+                self.send(f"⚠️ {NAMES[channel]}\n\nWhat is wrong: {p.get('plain') or p['title']}\n\n"
+                          f"Status: {p['fix']['label']}"
+                          + (f"\nNote: {p['fix']['detail']}" if p['fix'].get('detail') else ''), buttons)
         if not found:
-            self.send('No open problems from the Operations monitor.')
+            self.send('✅ Nothing is broken right now.')
 
     def review_menu(self):
-        self.send('Run an Operations review now?', [offer(self.approvals, 'review', {'channel': c}, 'Review ' + c.capitalize())[:1]
-                                                    for c in CHANNELS])
+        self.send('Which channel should the checker look at now? It takes a few minutes and tells you here if it finds anything.',
+                  [offer(self.approvals, 'review', {'channel': c}, 'Check ' + NAMES[c])[:1] for c in CHANNELS])
 
     def operator_menu(self):
         paused = (self.operator / 'PAUSE').exists()
-        rows = [offer(self.approvals, 'operator_run', {}, 'Run Operator now')[:1],
-                offer(self.approvals, 'operator_resume' if paused else 'operator_pause', {}, 'Resume Operator' if paused else 'Pause Operator')[:1]]
-        self.send('The Operator is ' + ('PAUSED.' if paused else 'active (fixes deploy automatically).'), rows)
+        rows = [offer(self.approvals, 'operator_run', {}, '▶️ Fix problems now')[:1],
+                offer(self.approvals, 'operator_resume' if paused else 'operator_pause', {},
+                      '✅ Turn auto-fixing back on' if paused else '⏸️ Pause auto-fixing')[:1]]
+        self.send('The auto-fixer finds broken things and repairs them by itself.\n\nRight now it is '
+                  + ('PAUSED.' if paused else 'ON.'), rows)
 
     def dashboard_menu(self):
-        self.send('Restart the dashboard? A copy stuck as Administrator is stopped through the admin runner first.',
-                  [offer(self.approvals, 'restart_dashboard', {}, 'Restart dashboard')])
+        self.send('Restart the dashboard? Use this if the dashboard page is stuck or not loading.',
+                  [offer(self.approvals, 'restart_dashboard', {}, '🔄 Restart dashboard')])
 
     def admin_menu(self):
         if not (self.admin / 'runner.ps1').exists():
-            return self.send('The admin runner is not installed. On the laptop, run scripts\\install_admin_runner.ps1 '
-                             'in an Administrator PowerShell once.')
-        self.send('Allowlisted admin actions. Each runs once, elevated, and reports back:',
+            return self.send('The admin helper is not set up on the laptop yet.')
+        self.send('Laptop maintenance (needs admin rights). Tap one:',
                   [offer(self.approvals, 'admin', {'name': n}, d[:58])[:1] for n, d in ADMIN_ACTIONS.items()])
 
     # ------------------------------------------------------------ buttons
@@ -335,7 +347,7 @@ class Controller:
         match = re.fullmatch(r'a:([a-f0-9]{16}):([yn])', str(query.get('data') or ''))
         try:
             approval = self.approvals.decide(match.group(1), match.group(2) == 'y') if match else None
-            note = 'Unknown button' if not match else ('Dismissed' if match.group(2) == 'n' else 'Working on it...')
+            note = 'Unknown button' if not match else ('OK, ignored' if match.group(2) == 'n' else 'On it, sir...')
         except ValueError as exc:
             approval, note = None, str(exc)
         # Stop the button spinner right away. This is cosmetic: a late or failed answer must
@@ -349,14 +361,14 @@ class Controller:
                 self.send(note + '.')
             return
         if match.group(2) == 'n':
-            return self._edit(message, (message.get('text') or '') + '\n\nDismissed.')
-        self._edit(message, (message.get('text') or '') + '\n\nApproved: ' + approval['summary'] + ' (running)')
+            return self._edit(message, (message.get('text') or '') + '\n\nIgnored.')
+        self._edit(message, (message.get('text') or '') + '\n\n⏳ Working on it...')
         try:
             ok, result = self.execute(approval['action'], approval['args'])
         except Exception as exc:
-            ok, result = False, type(exc).__name__ + ': ' + str(exc)[:300]
+            ok, result = False, 'Something went wrong: ' + str(exc)[:300]
         self.approvals.finish(approval['id'], 'done' if ok else 'failed', result)
-        self.send(('Done: ' if ok else 'Failed: ') + approval['summary'] + '\n' + result)
+        self.send(('✅ Done. ' if ok else '❌ That did not work. ') + result)
 
     def _edit(self, message: dict, text: str) -> None:
         try:
@@ -370,38 +382,39 @@ class Controller:
         if action == 'fix_problem':
             item = bot_findings.approve(self.workspace, args['channel'], args['key'])
             ok, out = self.start_operator()
-            return ok, f"Approved '{item['title'][:100]}'. " + out
+            return ok, f"Fixing: {(item.get('plain') or item['title'])[:150]}\n\n" + out
         if action == 'operator_run':
             return self.start_operator()
         if action == 'operator_pause':
             self.operator.mkdir(parents=True, exist_ok=True)
             (self.operator / 'PAUSE').write_text('Paused from Telegram ' + now_utc().isoformat(), encoding='utf-8')
-            return True, 'The Operator is paused. It will make no changes until resumed.'
+            return True, 'Auto-fixing is paused. Nothing will be changed until you turn it back on.'
         if action == 'operator_resume':
             (self.operator / 'PAUSE').unlink(missing_ok=True)
-            return True, 'The Operator is active again.'
+            return True, 'Auto-fixing is back on.'
         if action == 'review':
             body = {'action': 'assign', 'bot': 'operations', 'channel': args['channel'], 'engine': 'superbot',
                     'instruction': 'Review current pipeline health, recent upload outcomes and data freshness. Separate '
                                    'active failures from historical errors. Recommend the next recovery check and explain '
                                    'whether publishing is progressing. Do not execute changes.'}
             self.dashboard_post('/api/bots/action', body)
-            return True, 'Review queued. New problems will be reported here.'
+            return True, 'The checker is looking now. If it finds anything, I will tell you here within a few minutes.'
         if action == 'restart_dashboard':
             return self.restart_dashboard()
         if action == 'admin':
             ok, out = self.admin_request(args['name'])
             if ok and args['name'] == 'stop-elevated-dashboard':
                 ok2, out2 = self.restart_dashboard(allow_admin=False)
-                return ok2, out + '\n' + out2
-            return ok, out
+                return ok2, ADMIN_DONE[args['name']] + ' ' + out2
+            return ok, ADMIN_DONE[args['name']] if ok else out
         raise ValueError('Action is not allowlisted')
 
     def start_operator(self) -> tuple[bool, str]:
         if (self.operator / 'PAUSE').exists():
-            return False, 'The Operator is paused; resume it first with /operator.'
+            return False, 'Auto-fixing is paused. Turn it back on first with /operator.'
         code, out = self.run(['schtasks', '/Run', '/TN', 'Histold Operator'], timeout=30)
-        return code == 0, 'Operator started; it reports fixes here and on WhatsApp.' if code == 0 else 'Could not start the Operator: ' + out[-200:]
+        return code == 0, ('The auto-fixer has started. I will message you when it is fixed, or if it needs your help.'
+                           if code == 0 else 'The auto-fixer could not start (' + out[-150:] + ').')
 
     def restart_dashboard(self, allow_admin: bool = True) -> tuple[bool, str]:
         script = str(CODE / 'scripts' / 'start_dashboard.ps1')
@@ -410,16 +423,17 @@ class Controller:
         if code != 0 and 'unmanaged process' in out and allow_admin:
             ok, admin_out = self.admin_request('stop-elevated-dashboard')
             if not ok:
-                return False, 'The dashboard is held by an elevated copy and the admin runner could not stop it: ' + admin_out
+                return False, 'The dashboard is stuck and the admin helper could not unstick it (' + admin_out[-150:] + ').'
             code, out = self.run(command, timeout=180)
-        return code == 0, (out.splitlines() or ['no output'])[-1][:300]
+        return code == 0, ('The dashboard is running again.' if code == 0 else
+                           'The dashboard did not restart (' + (out.splitlines() or ['no details'])[-1][:200] + ').')
 
     def admin_request(self, name: str) -> tuple[bool, str]:
         if name not in ADMIN_ACTIONS:
             raise ValueError('Admin action is not allowlisted')
         requests_dir, results_dir = self.admin / 'requests', self.admin / 'results'
         if not (self.admin / 'runner.ps1').exists() or not requests_dir.is_dir():
-            return False, 'Admin runner not installed (run scripts\\install_admin_runner.ps1 as Administrator).'
+            return False, 'The admin helper is not set up on the laptop yet.'
         identity = uuid.uuid4().hex
         temp = requests_dir / (identity + '.tmp')
         temp.write_text(json.dumps({'id': identity, 'action': name, 'created': now_utc().isoformat()}), encoding='utf-8')
@@ -435,7 +449,7 @@ class Controller:
                     continue
                 return result.get('status') == 'ok', str(result.get('output') or '')[-1500:]
             self.sleep(3)
-        return False, 'No answer from the admin runner within 3 minutes; it will still run the request on its next pass.'
+        return False, 'The admin helper did not answer within 3 minutes. It will still do it shortly.'
 
     def _dashboard_post(self, path: str, body: dict) -> dict:
         key = (HOME / 'dashboard_key.txt').read_text(encoding='utf-8').strip()

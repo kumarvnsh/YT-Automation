@@ -275,12 +275,13 @@ class Workspace:
                     str(len(findings['suspect_metrics']))+' suspect metric(s)')
         if task['bot']=='operations':self.request_repair(task)
         if new and self.notify:
-            channel=task['channel'].capitalize()
-            lines=['- '+f['title']+(' ('+f['evidence'][:160]+')' if f['evidence'] else '') for f in new[:3]]
-            text=('Sir, the '+channel+' Operations monitor found '+('a new active failure' if len(new)==1 else str(len(new))+' new active failures')+
-                  ':\n'+'\n'.join(lines)+'\nFull report in Bot Office. If it persists for another review, the Operator will investigate it.')
+            channel={'histold':'Histold (history channel)','shotsnip':'Shotsnip (gaming clips)'}.get(task['channel'],task['channel'])
+            lines=['• '+(f.get('plain') or f['title']) for f in new[:3]]
+            text=('⚠️ Sir, something needs fixing on '+channel+':\n\n'+'\n'.join(lines)+
+                  '\n\nIf it is still happening at the next hourly check, it will be fixed automatically. '
+                  'Tap "Fix it now" if you do not want to wait.')
             try:
-                offers=[('fix_problem',{'channel':task['channel'],'key':f['key']},'Fix now: '+f['title'][:45]) for f in new[:3]]
+                offers=[('fix_problem',{'channel':task['channel'],'key':f['key']},'🔧 Fix it now'+(': '+f['title'][:30] if len(new)>1 else '')) for f in new[:3]]
                 status=self.notify(text,'bot-ops:'+task['id'],offers=offers)
                 self.update(task['id'],stage='Owner alerted on WhatsApp ('+str(status)+')')
             except Exception as exc:  # an alert failure must never fail the report

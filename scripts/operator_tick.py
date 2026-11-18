@@ -61,6 +61,15 @@ def tool_env(repo):
     return env
 
 
+def channel_name(repo):
+    return {'histold': 'Histold (history channel)', 'shotsnip': 'Shotsnip (gaming clips)'}.get(repo, repo)
+
+
+def plain_problem(issue):
+    """The everyday-words description when a bot supplied one, else the technical title."""
+    return (issue.get('finding') or {}).get('plain') or issue.get('title', '')
+
+
 def notify(text, key):
     log('telegram', key, telegram_control.notify(text))
     try:
@@ -284,9 +293,10 @@ def watch_fixes(ledger, issues, now, dry_run):
             ok, detail = revert(entry, reason)
             entry['status'] = 'reverted' if ok else 'revert_failed'
             entry['revert_reason'] = reason if ok else detail
-            notify(f"Sir, I rolled back my {entry['repo']} fix ({entry.get('summary')}) because {reason}."
-                   if ok else f"Sir, my {entry['repo']} fix needs rolling back ({reason}) but the revert failed: {detail}. "
-                   "Please take a look.", 'revert:' + entry['commit'][:12])
+            notify(f"↩️ Sir, my earlier fix on {channel_name(entry['repo'])} did not work, so I undid it "
+                   f"({reason}). I will try a different fix." if ok else
+                   f"⚠️ Sir, my earlier fix on {channel_name(entry['repo'])} did not work and I could not undo it "
+                   f"by myself ({detail}). Please have someone look at it.", 'revert:' + entry['commit'][:12])
         elif not reason and now - op.parse_time(entry['deployed_at']) > op.FIX_WATCH:
             entry['status'] = 'verified'
 
@@ -447,8 +457,9 @@ def tick(dry_run=False):
     for item in escalate:
         last = ledger.recent(now - op.ISSUE_COOLDOWN, kind='fix_attempt', issue=item['id'])[-1:]
         hint = (last[0].get('owner_action') or last[0].get('root_cause') or '') if last else ''
-        notify(f"Sir, I could not fix '{item['title']}' ({item['repo']}) after {op.MAX_ATTEMPTS_PER_ISSUE} attempts. "
-               f"{hint}".strip(), 'escalate:' + item['id'])
+        notify(f"❌ Sir, I tried {op.MAX_ATTEMPTS_PER_ISSUE} times but could not fix this on {channel_name(item['repo'])}:\n"
+               f"{plain_problem(item)}\n\n" + (f"What you can do: {hint}" if hint else 'It needs a person to look at it.'),
+               'escalate:' + item['id'])
         if not dry_run:
             ledger.add(kind='escalation', issue=item['id'], repo=item['repo'], title=item['title'])
 
@@ -461,10 +472,12 @@ def tick(dry_run=False):
         if not dry_run:
             did = ledger.add(kind='fix_attempt', issue=issue['id'], repo=issue['repo'], title=issue['title'], **outcome)
             if outcome['status'] == 'deployed':
-                notify(f"Sir, {issue['repo']} had a problem ({issue['title']}). Fixed and deployed: {outcome['summary']} "
-                       f"Tests passed; I'll roll it back automatically if it recurs.", 'fix:' + outcome['commit'][:12])
+                notify(f"✅ Fixed, sir, on {channel_name(issue['repo'])}.\n\nThe problem: {plain_problem(issue)}\n\n"
+                       f"What I changed: {outcome['summary']}\n\nIt passed all checks. If the problem comes back, "
+                       "I will undo the change by myself.", 'fix:' + outcome['commit'][:12])
             elif outcome.get('owner_action'):
-                notify(f"Sir, '{issue['title']}' ({issue['repo']}) is not a code problem: {outcome['owner_action']}",
+                notify(f"🙋 Sir, this one needs you ({channel_name(issue['repo'])}):\n{plain_problem(issue)}\n\n"
+                       f"It cannot be fixed automatically. What to do: {outcome['owner_action']}",
                        'owner:' + issue['id'] + now.strftime('%Y%m%d'))
     if not issue:  # repairs come first; creative tests run on quiet ticks
         try:

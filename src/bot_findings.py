@@ -35,7 +35,9 @@ OTHER_MIN_VIEWS = 50
 
 PROMPT = (
     '\nAfter the report, add exactly one final line that starts with ' + MARKER + ' followed by compact JSON: '
-    '{"active_failures":[{"key":"short-kebab-id","title":"one line","evidence":"what in the snapshot shows it"}],'
+    '{"active_failures":[{"key":"short-kebab-id","title":"one line","plain":"one short sentence in everyday words for a '
+    'non-technical owner: what is going wrong and what it affects (no error names, file names or jargon)",'
+    '"evidence":"what in the snapshot shows it"}],'
     '"suspect_metrics":[{"video_id":"the yt_id from the evidence","platform":"fb|ig|yt","reason":"one line"}]}. '
     'active_failures lists only problems the evidence shows are still happening now, not historical errors; '
     'use the same key for the same problem across reports. suspect_metrics lists per-video platform numbers '
@@ -76,7 +78,8 @@ def validate(raw) -> dict | None:
         title = _clean(item.get('title'), 120)
         if key and title and key not in seen:
             seen.add(key)
-            failures.append({'key': key, 'title': title, 'evidence': _clean(item.get('evidence'), 400)})
+            failures.append({'key': key, 'title': title, 'plain': _clean(item.get('plain'), 200) or title,
+                             'evidence': _clean(item.get('evidence'), 400)})
     suspects, pairs = [], set()
     for item in raw.get('suspect_metrics') or []:
         if not isinstance(item, dict):
@@ -143,14 +146,14 @@ def issue_id(channel: str, key: str) -> str:
 
 
 FIX_LABELS = {
-    'deployed': 'Fix deployed; watching that it holds',
-    'verified': 'Fixed and verified',
-    'reverted': 'Fix rolled back because the problem came back; will retry',
-    'revert_failed': 'Fix needs rolling back; owner alerted',
-    'no_code_fix': 'Not fixable in code; owner action needed',
-    'rejected': 'Proposed fix broke a safety rule; will retry',
-    'tests_failed': 'Proposed fix failed tests; will retry',
-    'deploy_failed': 'Fix could not be deployed; will retry',
+    'deployed': 'Fixed. Keeping an eye on it to make sure it stays fixed',
+    'verified': 'Fixed, and it has stayed fixed',
+    'reverted': 'The fix did not work, so it was undone. Trying again',
+    'revert_failed': 'The fix did not work and could not be undone. You have been alerted',
+    'no_code_fix': 'This needs you. It cannot be fixed automatically',
+    'rejected': 'The first fix was not safe enough. Trying again',
+    'tests_failed': 'The first fix did not pass checks. Trying again',
+    'deploy_failed': 'The fix could not be put live. Trying again',
 }
 
 
@@ -162,7 +165,7 @@ def fix_status(operator_dir, channel: str, item: dict) -> dict:
         entries = []
     mine = [e for e in entries if isinstance(e, dict) and e.get('issue') == issue_id(channel, item['key'])]
     if any(e.get('kind') == 'escalation' for e in mine[-3:]):
-        return {'state': 'escalated', 'label': 'The Operator could not fix it after repeated attempts; owner alerted'}
+        return {'state': 'escalated', 'label': 'Could not be fixed automatically after several tries. It needs you'}
     attempt = next((e for e in reversed(mine) if e.get('kind') == 'fix_attempt'), None)
     if attempt:
         state = attempt.get('status') or 'unknown'
@@ -170,10 +173,10 @@ def fix_status(operator_dir, channel: str, item: dict) -> dict:
         return {'state': state, 'label': FIX_LABELS.get(state, 'Fix attempt: ' + state),
                 'detail': _clean(detail, 300), 'at': attempt.get('deployed_at') or attempt.get('at')}
     if _owner_approved(item, datetime.now(timezone.utc)):
-        return {'state': 'queued', 'label': 'You approved a fix; queued for the Operator'}
+        return {'state': 'queued', 'label': 'You asked for a fix. It is next in line'}
     if int(item.get('streak') or 0) >= 2:
-        return {'state': 'queued', 'label': 'Confirmed; queued for the Operator to fix'}
-    return {'state': 'confirming', 'label': 'Waiting for the next Operations review to confirm it'}
+        return {'state': 'queued', 'label': 'Confirmed. A fix is next in line'}
+    return {'state': 'confirming', 'label': 'Spotted once. Checking again within the hour before fixing'}
 
 
 def problems(directory, operator_dir, channel: str) -> list[dict]:
