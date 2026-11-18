@@ -1,68 +1,85 @@
 {
-  "updated": "2026-11-18T11:00:29.229477+00:00",
-  "videos_scored": 120,
+  "updated": "2026-11-18T18:25:24.519719+00:00",
+  "primary_platform": "youtube",
+  "platforms": {
+    "youtube": {
+      "winners": [
+        "Why Would a Japanese Official Hand Over a Banned Map?",
+        "How Did a Medieval English Jug Reach a West African King?",
+        "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
+        "The Sikh Princess Who Ran a Refuge in England, How?",
+        "What Did Ancient Indian Cities Hide Under Their Streets?"
+      ],
+      "measured_videos": 121
+    },
+    "facebook": {
+      "winners": [],
+      "measured_videos": 0
+    }
+  },
+  "videos_scored": 125,
   "weights": {
     "series": {
-      "school_myths": 0.053,
-      "mistakes": 0.0693,
-      "almost": 0.0644,
-      "erased": 0.0825,
-      "unsolved": 0.0677,
-      "weird_dark": 0.0755,
-      "photo_story": 0.0792,
-      "spy_gadgets": 0.0792,
-      "animals": 0.0792,
-      "secretly_deadly": 0.0792,
-      "worst_jobs": 0.0792,
-      "forgotten_rules": 0.0659,
-      "behind_legend": 0.0642,
-      "found_by_accident": 0.0615
+      "school_myths": 0.0724,
+      "mistakes": 0.0737,
+      "almost": 0.0741,
+      "erased": 0.0705,
+      "unsolved": 0.0627,
+      "weird_dark": 0.0638,
+      "photo_story": 0.0598,
+      "spy_gadgets": 0.082,
+      "animals": 0.082,
+      "secretly_deadly": 0.082,
+      "worst_jobs": 0.082,
+      "forgotten_rules": 0.058,
+      "behind_legend": 0.0653,
+      "found_by_accident": 0.0717
     },
     "region": {
-      "india": 0.1145,
-      "africa": 0.0852,
-      "japan": 0.0942,
-      "china": 0.0988,
-      "russia": 0.1303,
-      "middle_east": 0.1167,
-      "europe": 0.1181,
-      "americas": 0.1254,
-      "asia_pacific": 0.1169
+      "india": 0.1031,
+      "africa": 0.0942,
+      "japan": 0.1199,
+      "china": 0.1417,
+      "russia": 0.1073,
+      "middle_east": 0.0952,
+      "europe": 0.1253,
+      "americas": 0.0978,
+      "asia_pacific": 0.1154
     },
     "duration_variant": {
-      "concise": 0.5114,
-      "story": 0.4886
+      "concise": 0.5199,
+      "story": 0.4801
     }
   },
   "stats": {
     "series": {
       "school_myths": {
-        "n": 3,
-        "mean_score": 0.239
+        "n": 4,
+        "mean_score": 0.428
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.41
+        "mean_score": 0.428
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.363
+        "mean_score": 0.433
       },
       "erased": {
-        "n": 1,
-        "mean_score": 0.556
+        "n": 3,
+        "mean_score": 0.399
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.369
+        "mean_score": 0.281
       },
       "weird_dark": {
-        "n": 1,
-        "mean_score": 0.436
+        "n": 2,
+        "mean_score": 0.295
       },
       "photo_story": {
-        "n": 0,
-        "mean_score": null
+        "n": 1,
+        "mean_score": 0.091
       },
       "spy_gadgets": {
         "n": 0,
@@ -82,79 +99,141 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.256
+        "mean_score": 0.054
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.325
+        "mean_score": 0.314
       },
       "found_by_accident": {
         "n": 3,
-        "mean_score": 0.333
+        "mean_score": 0.41
       }
     },
     "region": {
       "india": {
-        "n": 14,
-        "mean_score": 0.518
+        "n": 15,
+        "mean_score": 0.471
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.394
+        "mean_score": 0.433
       },
       "japan": {
         "n": 14,
-        "mean_score": 0.434
+        "mean_score": 0.536
       },
       "china": {
         "n": 14,
-        "mean_score": 0.455
+        "mean_score": 0.613
       },
       "russia": {
-        "n": 13,
-        "mean_score": 0.578
+        "n": 14,
+        "mean_score": 0.488
       },
       "middle_east": {
-        "n": 12,
-        "mean_score": 0.527
+        "n": 13,
+        "mean_score": 0.436
       },
       "europe": {
         "n": 14,
-        "mean_score": 0.532
+        "mean_score": 0.556
       },
       "americas": {
-        "n": 12,
-        "mean_score": 0.561
+        "n": 13,
+        "mean_score": 0.448
       },
       "asia_pacific": {
-        "n": 12,
-        "mean_score": 0.528
+        "n": 13,
+        "mean_score": 0.52
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 60,
-        "mean_score": 0.508
+        "n": 61,
+        "mean_score": 0.515
       },
       "story": {
-        "n": 60,
-        "mean_score": 0.491
+        "n": 64,
+        "mean_score": 0.485
       }
     }
   },
   "winners": [
-    "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-    "Why Did One Emperor Dig a Canal Across Half of China?",
-    "Why Did Bristol's Clocks Refuse to Match London's?",
-    "Who Really Owned the Land Everyone Thought Was Public?",
+    "Why Would a Japanese Official Hand Over a Banned Map?",
+    "How Did a Medieval English Jug Reach a West African King?",
+    "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
+    "The Sikh Princess Who Ran a Refuge in England, How?",
     "What Did Ancient Indian Cities Hide Under Their Streets?"
   ],
   "losers": [
-    "Why Did a British Governor Demand a Seat on Asante's Golden Stool?",
-    "Why Did One Drink Deserve Its Own Book in Tang China?",
-    "Was Japan Really Locked Shut for 200 Years?",
+    "The Paper Money Experiment That Made Everyone Want Silver Again",
+    "What Else Did Rice Do in a Philippine Mountain Culture?",
     "What Did a Farmer's Plow Turn Up in Nara in 1831?",
-    "Where Did Your Notebook Page Really Start?"
+    "The Ancient Trade Secret Hidden Where No Customs Officer Would Look",
+    "Your Lipstick Might Be Crawling With This Cactus Bug"
   ],
-  "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and"
+  "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
+  "masked_metrics": [
+    {
+      "video_id": "g4aOe5vcitA",
+      "platform": "fb",
+      "views": 1,
+      "reason": "2 FB views vs 137 IG"
+    },
+    {
+      "video_id": "lCQJdMRx814",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 FB views vs 124 IG"
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "2 FB views vs 139 IG"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 2,
+      "reason": "3 FB views vs 129 IG"
+    },
+    {
+      "video_id": "yUDJaAj3Zvg",
+      "platform": "fb",
+      "views": 2,
+      "reason": "3 FB views vs 107 IG and 40 YT"
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "yt",
+      "views": 5,
+      "reason": "0.0% viewed despite 5 YT views"
+    },
+    {
+      "video_id": "sMUpVI79w2M",
+      "platform": "yt",
+      "views": 4,
+      "reason": "0.0% viewed despite 4 YT views"
+    },
+    {
+      "video_id": "2aRdkpMSsVY",
+      "platform": "yt",
+      "views": 3,
+      "reason": "Viewed percentage remained unavailable at nearly 50 hours despite three recorded views."
+    },
+    {
+      "video_id": "N12YUvX0VQE",
+      "platform": "fb",
+      "views": 0,
+      "reason": "Zero Facebook views more than two weeks after posting while Instagram recorded 123."
+    },
+    {
+      "video_id": "XoeVilvOqLo",
+      "platform": "fb",
+      "views": 0,
+      "reason": "Zero Facebook views more than a week after posting while Instagram recorded 113."
+    }
+  ]
 }
