@@ -19,6 +19,30 @@ WORKER = None
 DISPATCHER = None
 SCHEDULER_WAKE = threading.Event()
 MIN_SOURCE_SAMPLE = 3
+MANUAL = None
+
+
+def manual_module():
+    global MANUAL
+    if MANUAL is None:
+        path=CLIP_ROOT/'manual_jobs.py'
+        if not path.exists(): return None
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('shotsnip_manual_jobs',path)
+        MANUAL=importlib.util.module_from_spec(spec); spec.loader.exec_module(MANUAL)
+    return MANUAL
+
+
+def manual_snapshot():
+    module=manual_module()
+    if not module: return []
+    result=module.list_jobs(CLIP_ROOT)
+    for job in result:
+        path=job.get('result',{}).get('file')
+        if path:
+            candidate=Path(path).resolve()
+            job['result']['file']=candidate.relative_to(CLIP_ROOT/'work').as_posix() if candidate.is_relative_to(CLIP_ROOT/'work') else None
+    return result
 
 
 def read(path, default=None):
@@ -226,6 +250,7 @@ def collect():
         game = schedule.get('before_switch','gta5') if datetime.now(timezone.utc) < cutoff else schedule.get('from_switch','gta6')
         return {'channel':'shotsnip','name':'Shotsnip','identity':credentials,
                 'analytics':snapshot, 'evidence':evidence(snapshot), 'targets':watchlist['creators'],
+                'manual_jobs':manual_snapshot(),
                 'facebook_analytics':read(CLIP_ROOT/'work/dashboard/facebook-analytics.json',{}),
                 'age_performance':read(CLIP_ROOT/'work/dashboard/age-performance.json',{}),
                 'schedule':{**schedule,'active_game':game},'runs':clip_runs(),
@@ -269,9 +294,25 @@ def action(body):
     global WORKER
     name = body.get('name')
     with LOCK:
+        if name in ('create_clip','manual_control'):
+            module=manual_module()
+            if not module: raise ValueError('Manual clipping worker is not installed')
+            if name=='create_clip':
+                ids=module.enqueue(body,CLIP_ROOT)
+                SCHEDULER_WAKE.set()
+                return f'Queued {len(ids)} manual job(s). The active clip finishes first.'
+            module.control(str(body.get('id','')),body.get('action'),CLIP_ROOT)
+            SCHEDULER_WAKE.set()
+            return 'Job updated.'
         if name == 'scheduler_due':
             SCHEDULER_WAKE.set()
             return 'Dashboard timer checked; due work starts automatically.'
+        if name == 'stop_auto_after_stage':
+            state=read(CLIP_ROOT/'work/scheduler/state.json',{})
+            if state.get('phase') not in ('capturing','analyzing','finishing'):
+                raise ValueError('No interruptible automatic stage is running')
+            (CLIP_ROOT/'work/scheduler/stop-after-stage').write_text('stop',encoding='utf-8')
+            return 'Automatic job will stop after this stage.'
         if name == 'set_scheduler':
             config=read(CLIP_ROOT/'scheduler.json',{})
             config['enabled']=bool(body.get('enabled'))
@@ -338,13 +379,18 @@ def dispatch_loop():
             scan_due=stamp-state.get('last_scan_at',0)>=config.get('scan_minutes',30)*60
             post_due=bool(state.get('ready_clips')) and stamp-state.get('last_upload_at',0)>=max(0,config.get('post_minutes',120)-config.get('early_publish_minutes',0))*60
             held=any(row.get('status') in ('pending','uncertain') for row in state.get('uploads',[]))
+            module=manual_module()
+            manual_pending=bool(module and module.pending(CLIP_ROOT))
             if config.get('mode')=='scan_capture_upload':
                 scan_due=stamp-max(state.get('last_cycle_at',0),state.get('last_upload_at',0))>=config.get('scan_minutes',90)*60
                 post_due=False
-            if config.get('enabled') and time.time()>=retry_at and not running and not busy and not held and (scan_due or post_due):
+            auto_due=config.get('enabled') and not held and (scan_due or post_due)
+            if time.time()>=retry_at and not running and not busy and (manual_pending or auto_due):
                 folder=CLIP_ROOT/'work/dashboard'; folder.mkdir(parents=True,exist_ok=True)
                 with (folder/'scheduler.log').open('a',encoding='utf-8') as log:
-                    process=subprocess.Popen([str(CLIP_ROOT/'.venv/Scripts/python.exe'),'-u',str(CLIP_ROOT/'scheduled_clips.py'),'--tick'],
+                    command=[str(CLIP_ROOT/'.venv/Scripts/python.exe'),'-u',str(CLIP_ROOT/('manual_worker.py' if manual_pending else 'scheduled_clips.py'))]
+                    if not manual_pending: command.append('--tick')
+                    process=subprocess.Popen(command,
                         cwd=CLIP_ROOT,stdout=log,stderr=log,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
         except Exception as exc:
             write(CLIP_ROOT/'work/dashboard/dispatcher.json',{'checked_at':time.time(),'status':'error','error':str(exc)})
@@ -377,6 +423,10 @@ def media_file(relative):
 def render(data, page):
     styles = ''.join(re.findall(r'<style>.*?</style>', page, flags=re.S))
     document = (Path(__file__).parent / 'shotsnip_page.html').read_text(encoding='utf-8')
+    folder=Path(__file__).parent
+    document=document.replace('</style>','\n'+(folder/'shotsnip_studio.css').read_text(encoding='utf-8')+'\n</style>',1)
+    document=document.replace('__STUDIO_HTML__',(folder/'shotsnip_studio.html').read_text(encoding='utf-8'))
+    document=document.replace('__STUDIO_JS__',(folder/'shotsnip_studio.js').read_text(encoding='utf-8'))
     return document.replace('__STYLES__', styles).replace('__DATA__', json.dumps(data, default=str).replace('<','\\u003c'))
 
 

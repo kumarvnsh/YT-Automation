@@ -1,7 +1,7 @@
 # Start/restart only our dashboard when its code changes. Used at login and hourly.
 param(
     [string]$DataRoot = 'D:\histold\YT-Automation',
-    [int]$Port = 8787
+    [int]$Port = 8799
 )
 $ErrorActionPreference = 'Stop'
 $Repo = Split-Path -Parent $PSScriptRoot
@@ -9,7 +9,7 @@ $HomeDir = Split-Path -Parent $DataRoot
 $Py = Join-Path $DataRoot '.venv\Scripts\python.exe'
 $Script = Join-Path $Repo 'scripts\dashboard_server.py'
 $MetaPath = Join-Path $HomeDir 'dashboard_server.json'
-$CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/clipping_dashboard.py','scripts/shotsnip_page.html','scripts/weekly_review.py',
+$CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/clipping_dashboard.py','scripts/shotsnip_page.html','scripts/shotsnip_studio.html','scripts/shotsnip_studio.css','scripts/shotsnip_studio.js','scripts/weekly_review.py',
     'scripts/content_insights.py','scripts/refresh_private_earnings.py','scripts/operations_tick.py','scripts/export_audience.py','src/operations.py','src/recovery.py','src/whatsapp_updates.py','src/insights.py','src/facebook_monetization.py','src/control.py','src/strategy.py','src/growth.py')
 $Digest = ($CodeFiles | ForEach-Object { (Get-FileHash (Join-Path $Repo $_) -Algorithm SHA256).Hash }) -join ''
 $Prior = $null

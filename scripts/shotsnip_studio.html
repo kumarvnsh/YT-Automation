@@ -1,0 +1,24 @@
+<div id="studio" class="shot-section">
+  <section class="panel studio-intro"><span class="eyebrow">MANUAL STUDIO</span><h2>One link. Your next highlight.</h2><p>Pick the source and the moment. Preview it first, or let this job publish when it is ready.</p></section>
+  <div class="studio-layout">
+    <form id="createClipForm" class="panel studio-form">
+      <div class="form-step"><span class="step-number">01</span><div><h2>Choose your source</h2><p class="shot-muted">Manual work runs after the active clip finishes.</p></div></div>
+      <label for="clipMode">Clipping mode</label>
+      <select id="clipMode"><option value="auto">Find a stream for me</option><option value="live">Live stream — find a highlight</option><option value="replay">Old stream — find a highlight</option><option value="exact">Exact timestamps — replay or supported live DVR</option></select>
+      <div id="clipUrlGroup"><label for="clipUrl">YouTube or Twitch link</label><input id="clipUrl" type="url" placeholder="https://www.youtube.com/watch?v=…" autocomplete="off"><p class="field-help">YouTube video/live link, Twitch channel, or Twitch VOD.</p></div>
+      <div id="clipRangesGroup"><label for="clipRanges">Moments to clip</label><textarea id="clipRanges" rows="4" placeholder="00:12:30 - 00:13:00&#10;01:04:10 - 01:04:40"></textarea><p class="field-help">Start → end, one pair per line. Up to five clips, each 5–60 seconds. Live timestamps are measured from broadcast start and require DVR.</p></div>
+      <div id="clipCaptureGroup"><label for="clipCapture">Window to analyse</label><select id="clipCapture"><option value="120">2 minutes — quicker</option><option value="300" selected>5 minutes — balanced</option><option value="600">10 minutes — more footage</option></select></div>
+      <div class="form-step"><span class="step-number">02</span><div><h2>Make it yours</h2><p class="shot-muted">Large gameplay layout, speech captions and source credit.</p></div></div>
+      <label for="clipHook">Hook / title <span class="shot-muted">optional</span></label><input id="clipHook" maxlength="85" placeholder="Leave blank for a neutral source title">
+      <label for="clipLanguage">Caption language</label><select id="clipLanguage"><option value="auto">Detect automatically</option><option value="en">English</option><option value="hi">Hindi</option><option value="es">Spanish</option><option value="pt">Portuguese</option><option value="id">Indonesian</option></select>
+      <div class="form-step"><span class="step-number">03</span><div><h2>Choose what happens next</h2></div></div>
+      <label for="clipOutcome">When the clip is ready</label><select id="clipOutcome"><option value="preview">Save a preview — I will publish later</option><option value="publish">Publish automatically for this job</option></select>
+      <fieldset><legend>Publish destinations</legend><label class="check-label"><input id="clipYoutube" type="checkbox" checked>YouTube</label><label class="check-label"><input id="clipFacebook" type="checkbox" checked>Facebook</label></fieldset>
+      <label for="clipPrivacy">YouTube visibility</label><select id="clipPrivacy"><option value="public">Public</option><option value="unlisted">Unlisted — YouTube only</option><option value="private">Private — YouTube only</option></select>
+      <p class="field-help">Facebook Reels are public. Preview jobs upload nothing until you press Publish.</p>
+      <button class="primary" id="submitClip" type="submit">Create preview</button><p id="createFeedback" role="status"></p>
+    </form>
+    <aside class="panel studio-guide"><span class="eyebrow">HOW IT WORKS</span><h2>You choose the moment.</h2><ol><li><b>Find it</b><p>Use automatic discovery, a live URL, a replay, or exact moments.</p></li><li><b>Finish it</b><p>We cut, caption and apply your large-gameplay template.</p></li><li><b>Review or release</b><p>Watch the preview in Work queue. Publish to your selected platforms when ready.</p></li></ol><div class="guide-note"><b>The hourly flow stays on.</b><p>Manual jobs take the next free slot. A successful manual publication restarts the hourly timer; previews do not.</p></div><p class="shot-muted">Replay chat and live DVR are best effort. When a source cannot provide the requested interval, the job shows a clear failure instead of publishing a different moment.</p></aside>
+  </div>
+</div>
+<div id="jobs" class="shot-section"><section class="panel"><div class="section-heading"><div><span class="eyebrow">WORK QUEUE</span><h2>From source to published.</h2></div><a class="button-link" href="#studio">Create a clip</a></div><p>Queued manual jobs run before the next automatic job. Running recordings finish their current stage before stopping.</p><div id="jobQueue"></div></section></div>
