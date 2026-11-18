@@ -5,11 +5,17 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $Repo = Split-Path -Parent $PSScriptRoot
+# Both login and strategist callers use one installed dashboard checkout.
+if (Test-Path 'D:\YT-Automation\scripts\dashboard_server.py') { $Repo='D:\YT-Automation' }
 $HomeDir = Split-Path -Parent $DataRoot
+$StartupLock=$null
+try { $StartupLock=[IO.File]::Open((Join-Path $HomeDir 'dashboard-start.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None) }
+catch [IO.IOException] { Write-Output 'Another dashboard startup check is running.'; exit 0 }
+try {
 $Py = Join-Path $DataRoot '.venv\Scripts\python.exe'
 $Script = Join-Path $Repo 'scripts\dashboard_server.py'
 $MetaPath = Join-Path $HomeDir 'dashboard_server.json'
-$CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/clipping_dashboard.py','scripts/shotsnip_page.html','scripts/shotsnip_studio.html','scripts/shotsnip_studio.css','scripts/shotsnip_studio.js','scripts/weekly_review.py',
+$CodeFiles = @('scripts/dashboard_server.py','scripts/build_dashboard.py','scripts/clipping_dashboard.py','scripts/shotsnip_page.html','scripts/shotsnip_studio.html','scripts/shotsnip_studio.css','scripts/shotsnip_studio.js','scripts/bot_workspace.html','src/bot_workspace.py','scripts/weekly_review.py',
     'scripts/content_insights.py','scripts/refresh_private_earnings.py','scripts/operations_tick.py','scripts/export_audience.py','src/operations.py','src/recovery.py','src/whatsapp_updates.py','src/insights.py','src/facebook_monetization.py','src/control.py','src/strategy.py','src/growth.py')
 $Digest = ($CodeFiles | ForEach-Object { (Get-FileHash (Join-Path $Repo $_) -Algorithm SHA256).Hash }) -join ''
 $Prior = $null
@@ -69,7 +75,10 @@ $Arguments = @('"' + $Script + '"', '--port', "$Port", '--data-root', '"' + $Dat
 $Child = Start-Process -FilePath $Py -ArgumentList $Arguments -WorkingDirectory $Repo -WindowStyle Hidden -PassThru `
     -RedirectStandardOutput (Join-Path $HomeDir 'dashboard-server.log') `
     -RedirectStandardError (Join-Path $HomeDir 'dashboard-server.err')
-@{pid=$Child.Id; digest=$Digest; repo=$Repo; port=$Port} | ConvertTo-Json | Set-Content $MetaPath -Encoding UTF8
+$Metadata=@{pid=$Child.Id; digest=$Digest; repo=$Repo; port=$Port} | ConvertTo-Json
+$TempMeta=$MetaPath+'.'+[guid]::NewGuid().ToString('N')+'.tmp'
+[IO.File]::WriteAllText($TempMeta,$Metadata,(New-Object Text.UTF8Encoding $false))
+Move-Item -LiteralPath $TempMeta -Destination $MetaPath -Force
 for ($Attempt=0; $Attempt -lt 15; $Attempt++) {
     Start-Sleep -Seconds 1
     try {
@@ -79,3 +88,4 @@ for ($Attempt=0; $Attempt -lt 15; $Attempt++) {
     } catch {}
 }
 throw 'Dashboard did not start; inspect dashboard-server.err'
+} finally { if ($StartupLock) { $StartupLock.Dispose() } }

@@ -3,7 +3,7 @@
 # Each step is independent so one failure does not block the others.
 param(
     [string]$HomeDir = 'D:\histold',
-    [int]$Port = 8787,
+    [int]$Port = 8799,
     [switch]$NoBrowser
 )
 $Log = Join-Path $HomeDir 'autostart.log'
@@ -24,10 +24,9 @@ function Invoke-Script($Path, [string[]]$Arguments = @()) {
     'done'
 }
 $Here = $PSScriptRoot
-# Use the strategist clone's copy when present: its hourly run checks the dashboard
-# from that repo, and starting from the same repo avoids a needless restart.
-$DashboardScript = Join-Path $HomeDir 'YT-Automation\scripts\start_dashboard.ps1'
-if (-not (Test-Path $DashboardScript)) { $DashboardScript = Join-Path $Here 'start_dashboard.ps1' }
+# Keep the installed dashboard on this checkout and the Tailscale proxy's port.
+# The strategist clone supplies analytics, not a competing dashboard executable.
+$DashboardScript = Join-Path $Here 'start_dashboard.ps1'
 
 Start-Sleep -Seconds 20   # let networking and disks settle after boot
 Step 'dashboard' {

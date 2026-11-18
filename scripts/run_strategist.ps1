@@ -5,11 +5,13 @@
 # and rebuilds the local dashboard.
 param(
     [string]$Log = 'D:\histold\strategist.log',
-    [string]$OllamaExe = 'D:\Ollama\app\ollama.exe'
+    [string]$OllamaExe = 'D:\Ollama\app\ollama.exe',
+    [string]$DataRoot = 'D:\histold\YT-Automation'
 )
 
 $ErrorActionPreference = 'Continue'
-$Repo = Split-Path -Parent $PSScriptRoot
+$Repo = (Resolve-Path -LiteralPath $DataRoot).Path
+if ($Repo -eq (Split-Path -Parent $PSScriptRoot)) { throw 'The strategist must use its dedicated data clone, not the dashboard source checkout.' }
 $Py = Join-Path $Repo '.venv\Scripts\python.exe'
 $env:PYTHONUTF8 = '1'
 $env:PYTHONIOENCODING = 'utf-8'
@@ -44,7 +46,7 @@ if ((Invoke-Logged git @('reset', '-q', '--hard', 'origin/master')) -ne 0) { Fin
 $Failed = @()
 
 # Keep the dashboard available while logged off too, and restart it on code updates.
-if ((Invoke-Logged powershell @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'scripts\start_dashboard.ps1', '-DataRoot', $Repo)) -ne 0) { $Failed += 'dashboard server' }
+if ((Invoke-Logged powershell @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'start_dashboard.ps1'), '-DataRoot', $Repo)) -ne 0) { $Failed += 'dashboard server' }
 
 # 1. Dispatch first: it is the time-critical step (publish only in the hour's first 20 min).
 if ((Invoke-Logged $Py @('scripts\dispatch.py')) -ne 0) { $Failed += 'dispatch' }

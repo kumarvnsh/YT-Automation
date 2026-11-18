@@ -42,6 +42,7 @@ from src.growth import PLAN, propose, problem, settings  # noqa: E402
 from src.strategy import OVERRIDES, apply_overrides  # noqa: E402
 from src.assistant_voice import LocalVoice  # noqa: E402
 from src.ai_providers import Providers  # noqa: E402
+from src.bot_workspace import Workspace  # noqa: E402
 from weekly_review import ensure_server, ollama  # noqa: E402
 
 KEY_FILE = ROOT.parent / 'dashboard_key.txt'
@@ -51,6 +52,40 @@ MODEL = os.environ.get('REVIEW_MODEL', 'qwen3:8b')
 OLLAMA = os.environ.get('OLLAMA_HOST_URL', 'http://127.0.0.1:11434')
 VOICE = LocalVoice()
 PROVIDERS = Providers(None)  # local-only until main() points it at the settings file
+BOT_WORKSPACE = None
+BOT_WORKSPACE_LOCK = threading.Lock()
+
+
+def bot_workspace(state):
+    global BOT_WORKSPACE
+    with BOT_WORKSPACE_LOCK:
+        if BOT_WORKSPACE is None:
+            def evidence(channel):
+                if channel == 'shotsnip':
+                    d=clipping_dashboard.collect();s=d.get('scheduler',{})
+                    return {'channel':channel,'built':d.get('built'),'agent_review':d.get('agent'),
+                            'analytics':{k:d.get('analytics',{}).get(k) for k in ('checked_at','channel_stats','videos')},
+                            'age_performance':d.get('age_performance'),
+                            'pipeline':{k:s.get(k) for k in ('phase','note','last_upload_at','last_cycle_at')},
+                            'uploads':[{k:u.get(k) for k in ('status','video_id','rejection_reason','started_at')} for u in s.get('uploads',[])[-12:]],
+                            'target_creators':[{'name':t['name'],'enabled':t.get('enabled')} for t in d.get('targets',[])]}
+                d=state.get()
+                return {'channel':channel,'built':d.get('built'),'hours':d.get('hours'),
+                        'freshness':d.get('freshness'),'content_evidence':d.get('content_evidence'),
+                        'videos':[{k:v.get(k) for k in ('title','at','fb','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
+            def analyst(prompt):
+                def local():
+                    ensure_server(OLLAMA)
+                    return ollama(OLLAMA,'/api/chat',{'model':MODEL,'stream':False,'think':False,
+                        'messages':[{'role':'user','content':prompt}],
+                        'options':{'temperature':.2,'num_ctx':16384,'num_predict':900}},timeout=240).get('message',{}).get('content','')
+                with state.chat_lock:
+                    text,provider,notes=PROVIDERS.answer(prompt,[{'role':'user','content':'Complete the assigned analysis.'}],local)
+                if not text:raise RuntimeError('The analyst returned no report')
+                return text+'\n\nAnalyst provider: '+provider
+            BOT_WORKSPACE=Workspace(DATA_ROOT.parent/'bot-workspace',evidence,analyst)
+            BOT_WORKSPACE.start()
+        return BOT_WORKSPACE
 # Only messages that look like a change request go through the (local) action extractor.
 CHANGE_RE = re.compile(r'\b(pause|boost|reset|pin|unpin|avoid|stop|focus|more|less|fewer|prioriti[sz]e|change|set|switch|move|schedule|resume|refresh|disable|enable|let the agent|no more|increase|decrease|drop)\b', re.I)
 
@@ -815,10 +850,19 @@ def make_handler(state: State, key: str, icons: dict):
                 return self.send(200, LOGIN.replace('__ERR__', ''))
             if not self.authed():
                 return self.send(302, '', headers={'Location': '/login'})
+            if path == '/bots':
+                return self.send(200,(ROOT/'scripts/bot_workspace.html').read_text(encoding='utf-8'))
+            if path == '/api/bots':
+                try:
+                    return self.send(200,json.dumps(bot_workspace(state).snapshot(selected_channel)), 'application/json')
+                except ValueError as exc:
+                    return self.send(400,json.dumps({'error':str(exc)}),'application/json')
             if path == '/':
                 if selected_channel == 'shotsnip':
                     return self.send(200, clipping_dashboard.render(clipping_dashboard.collect(), build_dashboard.PAGE))
-                return self.send(200, build_dashboard.render(state.get(), HEAD, PANELS, LIVE_JS))
+                page=build_dashboard.render(state.get(), HEAD, PANELS, LIVE_JS)
+                page=page.replace('</nav>','<a href="/bots?channel=histold">Bot workspace</a></nav>',1)
+                return self.send(200,page)
             if path == '/api/shotsnip/media':
                 try:
                     file = clipping_dashboard.media_file((params.get('file') or [''])[0])
@@ -890,6 +934,16 @@ def make_handler(state: State, key: str, icons: dict):
                 return self.send(401, json.dumps({'error': 'sign in again'}), 'application/json')
             try:
                 body = self.body_json()
+                if path == '/api/bots/action':
+                    workspace=bot_workspace(state)
+                    action=body.get('action')
+                    if action=='assign':result={'id':workspace.enqueue(body),'message':'Assignment queued'}
+                    elif action in ('cancel','retry'):result={'id':workspace.control(body),'message':'Task updated'}
+                    elif action=='memory':workspace.memory(body);result={'message':'Bot notes saved'}
+                    elif action=='routine':workspace.routine(body);result={'message':'Routine updated'}
+                    else:raise ValueError('Unknown bot action')
+                    workspace.wake.set()
+                    return self.send(200,json.dumps(result),'application/json')
                 if path == '/api/shotsnip/action':
                     message = clipping_dashboard.action(body)
                     return self.send(200,json.dumps({'message':message}),'application/json')
@@ -972,6 +1026,7 @@ def main() -> int:
     threading.Thread(target=state.loop, daemon=True).start()
     icons = {'/icon-192.png': png_icon(192), '/icon-512.png': png_icon(512)}
     server = ThreadingHTTPServer((args.host, args.port), make_handler(state, key, icons))
+    bot_workspace(state)
     print(f'Histold dashboard on http://{args.host}:{args.port} (key in {args.key_file})', flush=True)
     server.serve_forever()
     return 0

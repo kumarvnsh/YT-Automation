@@ -1,0 +1,28 @@
+diff --git a/server/src/adapters/codex.rs b/server/src/adapters/codex.rs
+index c8f17e8..60fbf98 100644
+--- a/server/src/adapters/codex.rs
++++ b/server/src/adapters/codex.rs
+@@ -14,10 +14,9 @@ impl Adapter for Codex {
+ 
+     fn args(&mut self, input: &RunInput, _out: &mut Vec<AgentEvent>) -> Vec<String> {
+         let mut a: Vec<String> = vec!["exec".into()];
+-        if input.session_id.is_some() {
+-            a.push("resume".into());
+-        }
+-        a.extend(["--json", "--skip-git-repo-check", "--dangerously-bypass-approvals-and-sandbox", "-c"].map(String::from));
++        // Dashboard bridge tasks are advisory. Fresh read-only sessions cannot
++        // inherit broader access or stale instructions from a previous task.
++        a.extend(["--json", "--skip-git-repo-check", "--sandbox", "read-only", "--ephemeral", "-c"].map(String::from));
+         a.push(format!("developer_instructions={}", Value::String(input.system.clone())));
+         if let Some(m) = &input.model {
+             a.extend(["-m".into(), m.clone()]);
+@@ -26,9 +25,6 @@ impl Adapter for Codex {
+             a.extend(["-c".into(), format!("model_reasoning_effort={}", Value::String(e.clone()))]);
+         }
+         a.push("--".into());
+-        if let Some(id) = &input.session_id {
+-            a.push(id.clone());
+-        }
+         a.push(input.prompt.clone());
+         a
+     }

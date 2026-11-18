@@ -10,6 +10,7 @@ from statistics import median
 import subprocess
 import threading
 import time
+import uuid
 from urllib.parse import urlparse
 
 CLIP_ROOT = Path(os.environ.get('SHOTSNIP_ROOT', r'D:\YT-Cliping-Automation')).resolve()
@@ -54,9 +55,18 @@ def read(path, default=None):
 
 def write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_suffix('.tmp')
-    temp.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding='utf-8')
-    temp.replace(path)
+    temp = path.with_name(path.name+'.'+uuid.uuid4().hex+'.tmp')
+    try:
+        temp.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding='utf-8')
+        for attempt in range(8):
+            try:
+                temp.replace(path)
+                return
+            except PermissionError:
+                if attempt==7:raise
+                time.sleep(.1*(attempt+1))
+    finally:
+        temp.unlink(missing_ok=True)
 
 
 def policy():
