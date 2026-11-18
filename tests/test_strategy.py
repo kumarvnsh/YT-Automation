@@ -37,7 +37,7 @@ class StrategyTests(unittest.TestCase):
         self.assertEqual(plan['weights']['region']['india'],plan['weights']['region']['japan'])
         self.assertEqual(plan['primary_platform'],'youtube')
         tiny=[{'yt_pct':1800,'yt_engaged_count':2,'yt_views':1,'yt_like_rate':None,'yt_engaged':1}]
-        strategy.score(tiny,'youtube');self.assertIsNone(tiny[0]['yt_pct'])
+        strategy.score(tiny,'youtube');self.assertIsNone(tiny[0]['yt_pct']);self.assertIsNone(tiny[0]['yt_like_rate'])
 
     def build(self):
         pairs = [entry(i, 'japan', 400, 70) for i in range(6)] + [entry(i + 6, 'india', 20, 25) for i in range(6)]

@@ -100,7 +100,9 @@ def score(videos: list[dict], platform='combined') -> None:
         {'fb_plays':1} if platform=='facebook' else METRIC_WEIGHTS)
     if platform=='youtube':
         for video in videos:
-            if (video.get('yt_engaged_count') or 0)<50: video['yt_pct']=None
+            if (video.get('yt_engaged_count') or 0)<50:
+                video['yt_pct']=None
+                video['yt_like_rate']=None
     ranks = {}
     for metric in metric_weights:
         values = sorted(v[metric] for v in videos if v.get(metric) is not None)
