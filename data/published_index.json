@@ -7340,5 +7340,68 @@
     "production_profile": 2,
     "facebook_id": "2032201367466997",
     "instagram_id": "18002364120010661"
+  },
+  {
+    "video_id": "ZE9tGMBB7Fg",
+    "run_id": "44371402438",
+    "stage_dir_name": "20261118_183751_669748_short",
+    "title": "A Supreme Court Justice Answered a Road Plan With a Hike",
+    "published_at": "2026-11-18T18:45:25.121736+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 1,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 0,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Ohio's Ohio & Erie Canal crossed a continental divide at its summit, and its planners planned to feed the summit with water from the Cuyahoga River and nearby Portage Lakes.",
+          "opening_visual": "Present-day outline map of northern Ohio with the canal route and the summit area marked.",
+          "payoff": "Route choice and a local water source solved the summit's supply problem.",
+          "viewer_reason": "Canal engineering is easy to picture, but the divide-and-water detail is less familiar.",
+          "rejection_reason": "Too close to the banned canal-lift and Hudson-to-Lake-Erie subject family, and the approved page only says the rivers 'could supply' water, so the mechanism is less certain than the selected story."
+        },
+        {
+          "premise": "Boston's Frederic Tudor shipped New England pond ice to India in 1834, and his storage methods kept much of it intact.",
+          "opening_visual": "Simple map of the Boston-to-Calcutta sea route.",
+          "payoff": "Insulated storage let a shipment survive a long voyage.",
+          "viewer_reason": "A surprising export story with broad appeal.",
+          "rejection_reason": "Sits too close to the banned icebox and cold-storage subject family, and the only approved evidence is a short book-description excerpt that does not explain the storage method in enough detail to render."
+        },
+        {
+          "premise": "In 1954, a proposed road along the C&O Canal was answered by a 185-mile walk that changed a newspaper's position and helped start canal preservation.",
+          "opening_visual": "Present-day outline map of the Potomac corridor from Washington, D.C. to Cumberland, Maryland, with the canal line drawn over it.",
+          "payoff": "A Supreme Court justice's challenge turned into an eight-day hike; the NPS account says the walk moved the Washington Post's editors to back preservation, and Congress passed the park act in 1971. Limitation: the approved source is a single NPS account, the 1954 parkway was a feasibility study rather than a finished road plan, and the hike's influence on the editors is the NPS's own characterization.",
+          "viewer_reason": "A concrete, unexpected mechanism (a long walk used as a public argument) with a clear before-and-after.",
+          "rejection_reason": null
+        }
+      ],
+      "selected_index": 2,
+      "selection_reason": "This is the only candidate where every production claim is supported by an approved page already supplied (nps.gov). It has a concrete map opening and a narrow payoff. It avoids the banned canal and icebox subjects. Its limitations are recorded rather than overstated."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 129,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "A Supreme Court justice dared newspaper editors to hike.",
+    "duration": 35.05,
+    "production_profile": 2,
+    "facebook_id": "1470547249473164",
+    "instagram_id": "17954947272341764"
   }
 ]

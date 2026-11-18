@@ -3310,5 +3310,14 @@
     "slot": "evening",
     "date": "2026-11-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261118_183751_669748_short",
+    "title": "A Supreme Court Justice Answered a Road Plan With a Hike",
+    "fingerprint": "answered_court_hike_justice_plan_road_supreme_with",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-18",
+    "status": "reserved"
   }
 ]
