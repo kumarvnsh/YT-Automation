@@ -43,6 +43,7 @@ from src.strategy import OVERRIDES, apply_overrides  # noqa: E402
 from src.assistant_voice import LocalVoice  # noqa: E402
 from src.ai_providers import Providers  # noqa: E402
 from src.bot_workspace import Workspace  # noqa: E402
+from src.whatsapp_updates import send_update  # noqa: E402
 from weekly_review import ensure_server, ollama  # noqa: E402
 
 KEY_FILE = ROOT.parent / 'dashboard_key.txt'
@@ -74,7 +75,7 @@ def bot_workspace(state):
                 d=state.get()
                 return {'channel':channel,'built':d.get('built'),'hours':d.get('hours'),
                         'freshness':d.get('freshness'),'content_evidence':d.get('content_evidence'),
-                        'videos':[{k:v.get(k) for k in ('title','at','fb','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
+                        'videos':[{k:v.get(k) for k in ('yt_id','title','at','fb','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
             def analyst(prompt, *, order=None):
                 def local():
                     ensure_server(OLLAMA)
@@ -86,7 +87,10 @@ def bot_workspace(state):
                         order=order or ['codex','claude','local'])
                 if not text:raise RuntimeError('The analyst returned no report')
                 return text+'\n\nAnalyst provider: '+provider+ ('\nFallback notes: '+'; '.join(notes) if notes else '')
-            BOT_WORKSPACE=Workspace(DATA_ROOT.parent/'bot-workspace',evidence,analyst)
+            def notify(text, logical_id):
+                config=json.loads((DATA_ROOT.parent/'secrets/whatsapp-updates.json').read_text(encoding='utf-8'))
+                return send_update(config,text,logical_id,DATA_ROOT.parent/'bot-workspace/notify-state.json').get('status')
+            BOT_WORKSPACE=Workspace(DATA_ROOT.parent/'bot-workspace',evidence,analyst,notify)
             BOT_WORKSPACE.start()
         return BOT_WORKSPACE
 # Only messages that look like a change request go through the (local) action extractor.

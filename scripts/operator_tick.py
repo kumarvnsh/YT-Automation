@@ -21,6 +21,7 @@ CODE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(CODE))
 from src import operator_agent as op  # noqa: E402
 from src.whatsapp_updates import send_update  # noqa: E402
+from src import bot_findings  # noqa: E402
 
 HOME = Path(os.environ.get('HISTOLD_HOME', r'D:\histold'))
 STATE = HOME / 'operator'
@@ -103,6 +104,11 @@ def detect_issues(ledger, now):
             issues += op.persistent_alerts(ledger, report.get('alerts', []), now)
     except (OSError, ValueError, KeyError):
         errors.append('Jarvis operations report unavailable')
+    try:
+        issues += op.bot_finding_issues({repo: bot_findings.persistent_failures(HOME / 'bot-workspace', repo, now)
+                                         for repo in REPOS})
+    except Exception as exc:  # findings are an extra signal; never block the other checks
+        errors.append(f'Bot Office findings unavailable ({type(exc).__name__})')
     return issues, errors
 
 
@@ -111,6 +117,13 @@ def evidence_for(issue):
         slug = REPOS[issue['repo']]['slug']
         _, out = run(['gh', 'run', 'view', str(issue['run_id']), '-R', slug, '--log-failed'], timeout=120)
         return f"Workflow: {issue['workflow']}\nRun: {issue.get('url')}\nCommit: {issue.get('sha')}\n\nFailed step logs:\n{out[-12000:]}"
+    if issue['kind'] == 'bot_finding':
+        f = issue['finding']
+        return ("Lead from the Bot Office Operations monitor, an AI-written report over the dashboard snapshot. "
+                "It is unverified: confirm it against this repository and real logs before changing anything, "
+                "and report no_code_fix if it is not a code problem.\n"
+                f"Finding: {f['title']}\nWhat the report cited: {f.get('evidence', '')}\n"
+                f"Seen in {f.get('streak')} consecutive reports since {f.get('first_seen')}.")
     tail = ''
     try:
         tail = (HOME / 'operations.log').read_text(encoding='utf-8', errors='replace')[-4000:]

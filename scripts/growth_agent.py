@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from src import bot_findings  # noqa: E402
 from src.config import load_config  # noqa: E402
 from src.growth import PLAN, WINDOW_DAYS, hour_stats, problem, propose, settings  # noqa: E402
 from src.strategy import peaks  # noqa: E402
@@ -45,6 +46,7 @@ def main() -> int:
 
     index = json.loads((ROOT / 'data/published_index.json').read_text())
     best = peaks(ROOT, (now - timedelta(days=WINDOW_DAYS + 3)).date().isoformat())
+    best, masked = bot_findings.mask_suspect_metrics(ROOT.parent / 'bot-workspace', 'histold', index, best, now)
     stats = hour_stats(index, best, now)
 
     current = prev.get('hours_utc') if not problem(prev.get('hours_utc'), s) else s['default_hours_utc']
@@ -78,6 +80,7 @@ def main() -> int:
         'pinned_until': pinned_until,
         'history': history,
         'hour_stats': {f'{h:02d}': stats[h] for h in sorted(stats)},
+        'masked_metrics': masked,
         'method': __doc__.strip().splitlines()[0],
     }
     print(f"growth: {status}")

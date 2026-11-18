@@ -31,7 +31,7 @@ MAX_CHANGED_LINES = 400
 PROTECTED_PREFIXES = ('.github/', 'secrets/', 'data/', 'output/', 'channels/', '.env')
 PROTECTED_FILES = {
     'scripts/publish_gate.py', 'src/quality_gate.py', 'src/recovery.py', 'media_safety.py',
-    'src/operator_agent.py', 'scripts/operator_tick.py', 'scripts/run_operator.ps1',
+    'src/operator_agent.py', 'src/bot_findings.py', 'scripts/operator_tick.py', 'scripts/run_operator.ps1',
     'scripts/install_operator_task.ps1', 'tests/test_operator_agent.py',
     'token.json', 'client_secret.json', 'analytics_token.json', 'facebook.json', 'channel.json',
 }
@@ -118,6 +118,17 @@ def persistent_alerts(ledger: Ledger, alerts: list[dict], now: datetime) -> list
         if now - first >= ALERT_PERSIST:
             out.append({'id': fingerprint('histold', 'alert', alert['id']), 'repo': 'histold', 'kind': 'alert',
                         'title': alert.get('title') or alert['id'], 'alert': alert})
+    return out
+
+
+def bot_finding_issues(failures: dict[str, list[dict]]) -> list[dict]:
+    """Operations-monitor findings (already confirmed by consecutive reports) as issue leads.
+    The text comes from an AI report, so the fix prompt marks it as an unverified lead."""
+    out = []
+    for repo, items in failures.items():
+        for item in items:
+            out.append({'id': fingerprint(repo, 'bot', item['key']), 'repo': repo, 'kind': 'bot_finding',
+                        'title': 'Operations monitor: ' + item['title'], 'finding': item})
     return out
 
 
@@ -214,6 +225,8 @@ def fix_regressed(entry: dict, issues: list[dict], ci_runs: list[dict], now: dat
             return 'the same workflow failed again after the fix'
         if issue['kind'] == 'alert' and now - deployed > ALERT_PERSIST + timedelta(hours=1):
             return 'the alert is still active after the fix'
+        if issue['kind'] == 'bot_finding' and parse_time(issue['finding']['last_seen']) > deployed + timedelta(hours=3):
+            return 'the Operations monitor still reports the failure after the fix'
     return None
 
 

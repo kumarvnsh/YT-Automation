@@ -12,6 +12,7 @@ import threading
 import time
 import uuid
 import requests
+from src import bot_findings
 
 BOTS = [
     {'id':'jarvis','name':'Jarvis','role':'Coordinator','scope':'both',
@@ -28,10 +29,11 @@ INTERVALS = (0,3600,21600,86400)
 
 
 class Workspace:
-    def __init__(self, directory, evidence=None, analyst=None):
+    def __init__(self, directory, evidence=None, analyst=None, notify=None):
         self.directory=Path(directory)
         self.evidence=evidence
         self.analyst=analyst
+        self.notify=notify
         self.wake=threading.Event()
         self.thread=None
         self.thread_lock=threading.Lock()
@@ -200,7 +202,7 @@ class Workspace:
                 'Do not run commands, inspect other files, publish, send messages, change accounts, or modify code. '
                 'Return recommendations only; report inability to perform requested actions honestly.\n'
                 'OWNER NOTES: '+(note[0] if note else '')+'\nPREVIOUS RESULTS: '+json.dumps([r[0][:3000] for r in previous])+
-                '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction'])
+                '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction']+bot_findings.PROMPT)
 
     def run_remote(self, task, prompt):
         with self.db() as db:
@@ -242,6 +244,26 @@ class Workspace:
         self.remote('POST','/api/bots/'+bot_id+'/stop',{})
         raise RuntimeError('Superbot assignment reached its 20-minute limit')
 
+    def share(self, task, findings):
+        """Publish validated findings to findings.json; alert the owner about new active failures.
+        A failure here never changes the task outcome: the report is already saved."""
+        try:
+            new=bot_findings.record(self.directory,task['channel'],task['bot'],task['id'],findings)
+        except (OSError,ValueError) as exc:
+            self.update(task['id'],stage='Report saved; findings not shared ('+type(exc).__name__+')');return
+        self.update(task['id'],stage='Findings shared: '+str(len(findings['active_failures']))+' active failure(s), '+
+                    str(len(findings['suspect_metrics']))+' suspect metric(s)')
+        if new and self.notify:
+            channel=task['channel'].capitalize()
+            lines=['- '+f['title']+(' ('+f['evidence'][:160]+')' if f['evidence'] else '') for f in new[:3]]
+            text=('Sir, the '+channel+' Operations monitor found '+('a new active failure' if len(new)==1 else str(len(new))+' new active failures')+
+                  ':\n'+'\n'.join(lines)+'\nFull report in Bot Office. If it persists for another review, the Operator will investigate it.')
+            try:
+                status=self.notify(text,'bot-ops:'+task['id'])
+                self.update(task['id'],stage='Owner alerted on WhatsApp ('+str(status)+')')
+            except Exception as exc:  # an alert failure must never fail the report
+                self.update(task['id'],stage='WhatsApp alert failed ('+type(exc).__name__+')')
+
     def run_assignment(self, task, prompt):
         if task['engine']=='superbot' and self.runtime().get('ready'):
             try:
@@ -277,7 +299,10 @@ class Workspace:
                     prompt=self.prompt(task)
                     result=self.run_assignment(task,prompt)
                     if self.task(task['id'])['cancel'] or result is None:self.update(task['id'],status='cancelled',stage='Stopped; no actions applied')
-                    else:self.update(task['id'],status='completed',stage='Report ready; recommendations only',result=str(result)[:30000])
+                    else:
+                        text,findings=bot_findings.parse(str(result))
+                        self.update(task['id'],status='completed',stage='Report ready; recommendations only',result=text[:30000])
+                        if findings is not None:self.share(task,findings)
                     continue
             except Exception as exc:
                 if task:self.update(task['id'],status='failed',stage='Assignment needs attention',error=str(exc)[:200] if isinstance(exc,RuntimeError) else 'Task failed; inspect the private runtime log')
