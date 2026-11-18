@@ -11,7 +11,18 @@ param(
 
 $ErrorActionPreference = 'Continue'
 $Repo = (Resolve-Path -LiteralPath $DataRoot).Path
-if ($Repo -eq (Split-Path -Parent $PSScriptRoot)) { throw 'The strategist must use its dedicated data clone, not the dashboard source checkout.' }
+if ($Repo -eq (Split-Path -Parent $PSScriptRoot)) {
+    # Older scheduled tasks point into the dedicated clone. Delegate before
+    # the source-checkout guard; changing their stored task credentials is unnecessary.
+    $CanonicalRunner='D:\YT-Automation\scripts\run_strategist.ps1'
+    if ((Test-Path -LiteralPath $CanonicalRunner) -and
+        ((Resolve-Path -LiteralPath $CanonicalRunner).Path -ne $PSCommandPath)) {
+        & powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden `
+            -File $CanonicalRunner -DataRoot $Repo -Log $Log -OllamaExe $OllamaExe
+        exit $LASTEXITCODE
+    }
+    throw 'The strategist must use its dedicated data clone, not the dashboard source checkout.'
+}
 $Py = Join-Path $Repo '.venv\Scripts\python.exe'
 $env:PYTHONUTF8 = '1'
 $env:PYTHONIOENCODING = 'utf-8'
@@ -45,11 +56,11 @@ if ((Invoke-Logged git @('fetch', '-q', 'origin')) -ne 0) { Finish 1 'fetch fail
 if ((Invoke-Logged git @('reset', '-q', '--hard', 'origin/master')) -ne 0) { Finish 1 'reset failed' }
 $Failed = @()
 
-# Keep the dashboard available while logged off too, and restart it on code updates.
-if ((Invoke-Logged powershell @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'start_dashboard.ps1'), '-DataRoot', $Repo)) -ne 0) { $Failed += 'dashboard server' }
-
 # 1. Dispatch first: it is the time-critical step (publish only in the hour's first 20 min).
 if ((Invoke-Logged $Py @('scripts\dispatch.py')) -ne 0) { $Failed += 'dispatch' }
+
+# Dashboard restart failures must never delay the time-critical dispatch.
+if ((Invoke-Logged powershell @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'start_dashboard.ps1'), '-DataRoot', $Repo)) -ne 0) { $Failed += 'dashboard server' }
 
 # 2. Topic strategy every 4 hours.
 $StrategyAgeH = 99
