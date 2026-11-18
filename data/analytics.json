@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-18T11:00:42.191225+00:00",
+      "updated": "2026-11-18T14:01:43.566020+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,49 @@
         ]
       },
       "videos": [
+        {
+          "id": "A8P0T0TA-5I",
+          "title": "Was the Lady With the Lamp Really a Statistician?",
+          "description": "Florence Nightingale is remembered as a gentle nurse with a lamp, but her own records told a different story about Crimean War hospitals. Her charts and statistics helped her argue for better hospital conditions. Behind the Legend looks at what the famous image leaves out.\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "behind the legend",
+            "crimean war",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "florence nightingale",
+            "historical facts",
+            "history",
+            "history shorts",
+            "medical history",
+            "nursing history",
+            "scutari hospital",
+            "statistics history",
+            "victorian britain",
+            "world history"
+          ],
+          "publishedAt": "2026-11-18T11:12:34Z",
+          "thumbnail": "https://i.ytimg.com/vi/A8P0T0TA-5I/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-12",
+            "end_date": "2026-11-18",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "Tc6Wlh01qas",
           "title": "Russia Fought Over Church Rights \u2014 and Pulled in Several Powers",
@@ -146,7 +189,7 @@
           ],
           "publishedAt": "2026-11-17T11:07:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Z6w2dgH6oOk/mqdefault.jpg",
-          "views": 34,
+          "views": 37,
           "likes": 0,
           "comments": 1,
           "playlist_ids": [],
@@ -2108,47 +2151,6 @@
           "average_watch_time_seconds": 25.0,
           "shares": 0,
           "analytics_views": 11,
-          "analytics_period": {
-            "start_date": "2026-11-12",
-            "end_date": "2026-11-18",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "sMUpVI79w2M",
-          "title": "Did English Coffeehouses Once Make Their Own Money?",
-          "description": "In the mid-1600s, England lacked enough small coins, so shops, inns and coffeehouses issued their own tokens. These tokens worked as money and advertised the businesses that made them. Discover how this everyday shortage shaped English street life.\n#EnglishHistory #CoffeeHistory #WorldHistory",
-          "tags": [
-            "17th century",
-            "coffeehouse history",
-            "did you know",
-            "education",
-            "english history",
-            "everyday origins",
-            "forgotten history",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "london history",
-            "old money",
-            "tokens",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-11-12T12:13:05Z",
-          "thumbnail": "https://i.ytimg.com/vi/sMUpVI79w2M/mqdefault.jpg",
-          "views": 4,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
-          "shares": 0,
-          "analytics_views": 4,
           "analytics_period": {
             "start_date": "2026-11-12",
             "end_date": "2026-11-18",
