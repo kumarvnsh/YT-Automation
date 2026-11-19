@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-19T11:00:36.499555+00:00",
+      "updated": "2026-11-19T12:00:34.618690+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "ZCiEp4qArkg",
+          "title": "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
+          "description": "Today's tomato ketchup descends from older salty fermented sauces from Asia, which were closer to soy or fish sauce. After the Civil War, canners began making ketchup for home use, and USDA Bulletin 119 by Katherine and Arvill Bitting published preservative-free methods in 1909. #ketchup #foodhistory #everydayobjects\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "canned food history",
+            "condiments",
+            "did you know",
+            "education",
+            "everyday objects",
+            "everyday origins",
+            "fermented sauce",
+            "food history",
+            "historical facts",
+            "history shorts",
+            "ketchup",
+            "ketchup history",
+            "tomato ketchup",
+            "unexpected histories",
+            "usda",
+            "world history"
+          ],
+          "publishedAt": "2026-11-19T11:46:57Z",
+          "thumbnail": "https://i.ytimg.com/vi/ZCiEp4qArkg/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-19",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "Z6HHB0Fv22g",
           "title": "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
@@ -2151,51 +2195,6 @@
           "shares": 0,
           "analytics_views": 16,
           "engaged_views": 10,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-19",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "o2MACyaI07w",
-          "title": "Why Did a Freedom Movement Put a Spinning Wheel on Its Flag?",
-          "description": "India's independence movement chose a spinning wheel as a symbol of resistance in 1921. Here is how British cloth trade, the swadeshi movement, and Gandhi's Khadi cloth explain that choice. #IndianHistory #WorldHistory #HistoryGotThisWrong",
-          "tags": [
-            "british india",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "gandhi",
-            "historical facts",
-            "history got this wrong",
-            "history shorts",
-            "indian flag",
-            "indian history",
-            "indian independence",
-            "khadi",
-            "spinning wheel",
-            "surprising history",
-            "swadeshi movement",
-            "textile history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T04:10:07Z",
-          "thumbnail": "https://i.ytimg.com/vi/o2MACyaI07w/mqdefault.jpg",
-          "views": 5,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 19.44,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 7.0,
-          "shares": 0,
-          "analytics_views": 5,
-          "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
             "end_date": "2026-11-19",
