@@ -1,91 +1,118 @@
 {
-  "updated": "2026-11-19T03:00:24.249817+00:00",
+  "updated": "2026-11-19T07:00:23.627110+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
       "winners": [
-        "Why Would a Japanese Official Hand Over a Banned Map?",
-        "How Did a Medieval English Jug Reach a West African King?",
-        "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
-        "The Sikh Princess Who Ran a Refuge in England, How?",
-        "What Did Ancient Indian Cities Hide Under Their Streets?"
+        "Why Does the Rickshaw Carry a Japanese Name?",
+        "Why Did a Burning City Leave Its Books Behind?",
+        "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
+        "Where Did the Dutch Tulip Really Come From?",
+        "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 122
+      "measured_videos": 116
     },
     "facebook": {
       "winners": [
-        "Who Mailed Letters Wrapped in Clay 4,000 Years Ago?",
-        "Who Was Bouncing Rubber Balls Long Before Europeans Arrived?",
-        "Your Garden Wheelbarrow's Surprising Ancestor: Where Did It Start?",
-        "How Did India's Blue Stick to Cloth Without a Binder?",
-        "What Were Edo Summer Nights Hiding in a Paper Cage?"
+        "Could an Empire Run Its Records on Knots Alone?",
+        "Why Did Britain Turn Away the Nurse Who Fed Its Soldiers?",
+        "Why Did China's Money Start as a Receipt?",
+        "Before Paper, What Were Ancient Egyptians Writing On?",
+        "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 54
+      "measured_videos": 112
     }
   },
-  "videos_scored": 126,
+  "evaluation_metric": "likes / views",
+  "design_like_rates": {
+    "short": {
+      "Unassigned": {
+        "yt": {
+          "measured_videos": 118,
+          "mean_like_rate": 0.003737
+        },
+        "fb": {
+          "measured_videos": 111,
+          "mean_like_rate": 0.001809
+        },
+        "ig": {
+          "measured_videos": 124,
+          "mean_like_rate": 0.137526
+        }
+      }
+    },
+    "long": {
+      "Unassigned": {
+        "yt": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        }
+      }
+    }
+  },
+  "videos_scored": 116,
   "weights": {
     "series": {
-      "school_myths": 0.0786,
-      "mistakes": 0.0669,
-      "almost": 0.0846,
-      "erased": 0.0753,
-      "unsolved": 0.0643,
-      "weird_dark": 0.0651,
-      "photo_story": 0.0586,
-      "spy_gadgets": 0.08,
-      "animals": 0.08,
-      "secretly_deadly": 0.08,
-      "worst_jobs": 0.08,
-      "forgotten_rules": 0.0575,
-      "behind_legend": 0.0565,
-      "found_by_accident": 0.0724
+      "school_myths": 0.0681,
+      "mistakes": 0.0672,
+      "almost": 0.0681,
+      "erased": 0.0717,
+      "unsolved": 0.0695,
+      "weird_dark": 0.0717,
+      "photo_story": 0.0717,
+      "spy_gadgets": 0.0753,
+      "animals": 0.0753,
+      "secretly_deadly": 0.0753,
+      "worst_jobs": 0.0753,
+      "forgotten_rules": 0.0717,
+      "behind_legend": 0.0695,
+      "found_by_accident": 0.0695
     },
     "region": {
-      "india": 0.0935,
-      "africa": 0.1048,
-      "japan": 0.1163,
-      "china": 0.1336,
-      "russia": 0.1058,
-      "middle_east": 0.0978,
-      "europe": 0.1297,
-      "americas": 0.104,
-      "asia_pacific": 0.1144
+      "india": 0.1126,
+      "africa": 0.1091,
+      "japan": 0.1145,
+      "china": 0.1111,
+      "russia": 0.1023,
+      "middle_east": 0.1161,
+      "europe": 0.1256,
+      "americas": 0.0943,
+      "asia_pacific": 0.1145
     },
     "duration_variant": {
-      "concise": 0.5211,
-      "story": 0.4789
+      "concise": 0.4935,
+      "story": 0.5065
     }
   },
   "stats": {
     "series": {
       "school_myths": {
-        "n": 5,
-        "mean_score": 0.49
+        "n": 3,
+        "mean_score": 0.431
       },
       "mistakes": {
         "n": 4,
-        "mean_score": 0.396
+        "mean_score": 0.431
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.538
+        "mean_score": 0.431
       },
       "erased": {
-        "n": 3,
-        "mean_score": 0.459
+        "n": 1,
+        "mean_score": 0.431
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.319
+        "mean_score": 0.431
       },
       "weird_dark": {
-        "n": 2,
-        "mean_score": 0.33
+        "n": 1,
+        "mean_score": 0.431
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.093
+        "mean_score": 0.431
       },
       "spy_gadgets": {
         "n": 0,
@@ -105,79 +132,79 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.07
+        "mean_score": 0.431
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.217
+        "mean_score": 0.431
       },
       "found_by_accident": {
-        "n": 3,
-        "mean_score": 0.433
+        "n": 2,
+        "mean_score": 0.431
       }
     },
     "region": {
       "india": {
-        "n": 14,
-        "mean_score": 0.443
+        "n": 13,
+        "mean_score": 0.508
       },
       "africa": {
-        "n": 16,
-        "mean_score": 0.493
+        "n": 15,
+        "mean_score": 0.494
       },
       "japan": {
-        "n": 14,
-        "mean_score": 0.539
+        "n": 12,
+        "mean_score": 0.515
       },
       "china": {
         "n": 14,
-        "mean_score": 0.603
+        "mean_score": 0.502
       },
       "russia": {
-        "n": 14,
-        "mean_score": 0.497
+        "n": 13,
+        "mean_score": 0.466
       },
       "middle_east": {
-        "n": 13,
-        "mean_score": 0.462
+        "n": 12,
+        "mean_score": 0.522
       },
       "europe": {
-        "n": 14,
-        "mean_score": 0.589
+        "n": 12,
+        "mean_score": 0.557
       },
       "americas": {
-        "n": 14,
-        "mean_score": 0.489
+        "n": 13,
+        "mean_score": 0.431
       },
       "asia_pacific": {
-        "n": 13,
-        "mean_score": 0.532
+        "n": 12,
+        "mean_score": 0.515
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 62,
-        "mean_score": 0.533
+        "n": 61,
+        "mean_score": 0.495
       },
       "story": {
-        "n": 64,
-        "mean_score": 0.5
+        "n": 55,
+        "mean_score": 0.505
       }
     }
   },
   "winners": [
-    "Why Would a Japanese Official Hand Over a Banned Map?",
-    "How Did a Medieval English Jug Reach a West African King?",
-    "Why Would Russian Colonists Teach Alaskans to Grow Potatoes?",
-    "The Sikh Princess Who Ran a Refuge in England, How?",
-    "What Did Ancient Indian Cities Hide Under Their Streets?"
+    "Why Does the Rickshaw Carry a Japanese Name?",
+    "Why Did a Burning City Leave Its Books Behind?",
+    "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
+    "Where Did the Dutch Tulip Really Come From?",
+    "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
   ],
   "losers": [
-    "Ancient Writers Got the Torc Wrong, and a Curator Says Why",
-    "What Else Did Rice Do in a Philippine Mountain Culture?",
-    "What Did a Farmer's Plow Turn Up in Nara in 1831?",
-    "The Ancient Trade Secret Hidden Where No Customs Officer Would Look",
-    "Your Lipstick Might Be Crawling With This Cactus Bug"
+    "Was Zimbabwe's Stone City Really Built by Outsiders?",
+    "Why Were Japan's Masterpieces Once Used as Packing Paper?",
+    "Why Did One Drink Deserve Its Own Book in Tang China?",
+    "Minnesota's Lone Surviving Agency Building Held Food, and a Broken Promise",
+    "Were the Pyramids of Giza Really Built by Enslaved People?"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -185,55 +212,61 @@
       "video_id": "ZE9tGMBB7Fg",
       "platform": "yt",
       "views": 0,
-      "reason": "Viewing percentage is unavailable in the recent export gap."
-    },
-    {
-      "video_id": "A8P0T0TA-5I",
-      "platform": "yt",
-      "views": 3,
-      "reason": "Viewing percentage is unavailable despite 3 recorded views."
-    },
-    {
-      "video_id": "Tc6Wlh01qas",
-      "platform": "yt",
-      "views": 5,
-      "reason": "Viewing percentage is unavailable despite 5 recorded views."
-    },
-    {
-      "video_id": "jCPbacI0r5Q",
-      "platform": "yt",
-      "views": 5,
-      "reason": "Viewing percentage is unavailable despite 5 recorded views."
-    },
-    {
-      "video_id": "g4aOe5vcitA",
-      "platform": "fb",
-      "views": 2,
-      "reason": "Logged 2 plays alongside 137 Instagram views during the near-zero Facebook cluster."
+      "reason": "0 YouTube views at ~11h across consecutive exports while the same post has 225 FB plays; confirm it is public"
     },
     {
       "video_id": "lCQJdMRx814",
       "platform": "fb",
       "views": 0,
-      "reason": "Logged 0 plays alongside 124 Instagram views during the near-zero Facebook cluster."
+      "reason": "0 FB plays while Instagram shows 124 views; unverified zero"
     },
     {
-      "video_id": "SfvGGm6eaok",
-      "platform": "fb",
-      "views": 2,
-      "reason": "Logged 2 plays alongside 139 Instagram views during the near-zero Facebook cluster."
+      "video_id": "3itSrNpadaE",
+      "platform": "yt",
+      "views": 10,
+      "reason": "Viewing percentage 0.0 with 10 views; likely missing value stored as zero"
+    },
+    {
+      "video_id": "A8P0T0TA-5I",
+      "platform": "yt",
+      "views": 3,
+      "reason": "Viewing percentage is missing in the recent export gap."
+    },
+    {
+      "video_id": "Tc6Wlh01qas",
+      "platform": "yt",
+      "views": 5,
+      "reason": "Viewing percentage is missing in the recent export gap."
+    },
+    {
+      "video_id": "jCPbacI0r5Q",
+      "platform": "yt",
+      "views": 5,
+      "reason": "Viewing percentage is missing in the recent export gap."
     },
     {
       "video_id": "-cPiNs-0pLA",
       "platform": "fb",
       "views": 3,
-      "reason": "Logged 3 plays alongside 129 Instagram views during the near-zero Facebook cluster."
+      "reason": "Three exported plays in a near-simultaneous cluster of two-to-three-play counts, with 129 Instagram views."
     },
     {
       "video_id": "yUDJaAj3Zvg",
       "platform": "fb",
       "views": 3,
-      "reason": "Logged 3 plays alongside 107 Instagram views during the near-zero Facebook cluster."
+      "reason": "Three exported plays in the same near-simultaneous cluster, with 107 Instagram views."
+    },
+    {
+      "video_id": "g4aOe5vcitA",
+      "platform": "fb",
+      "views": 2,
+      "reason": "Two Facebook plays alongside 137 Instagram views fits the older near-zero cluster."
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "Two Facebook plays alongside 139 Instagram views fits the older near-zero cluster."
     },
     {
       "video_id": "SfvGGm6eaok",
