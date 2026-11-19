@@ -89,14 +89,22 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
         "no_upload": no_upload,
         "overrides": {"topic": topic, "privacy": privacy},
     }
-    if cfg.get('production.enabled', False) and fmt == 'short':
+    if cfg.get('production.enabled', False) and (fmt == 'short' or state['visual_mode'] == 'cinematic_2d'):
         state['pipeline_version'] = 2
         state['production_config'] = copy.deepcopy(cfg.raw)
         state['target_steps'] = ['research', 'script'] if dry_run else list(PRODUCTION_STEPS)
-        if cfg.get('editorial.enabled', False) and not topic:
-            from .editorial import assignment
+        rotate = cfg.get('editorial.rotate_design', False)
+        auto_editorial = fmt == 'short' and cfg.get('editorial.enabled', False) and not topic
+        if rotate or auto_editorial:
             index_path = base_dir() / 'data/published_index.json'
             entries = json.loads(index_path.read_text()) if index_path.exists() else []
+        if rotate:
+            from .editorial import DESIGNS, design
+            latest = next((entry['design'] for entry in reversed(entries) if entry.get('design')), None)
+            current = next((i for i, treatment in enumerate(DESIGNS) if treatment[0] == latest), -1)
+            state['design'] = design(current + 1)
+        if auto_editorial:
+            from .editorial import assignment
             for previous in _out_root(cfg).glob('*/state.json'):
                 try:
                     entries.append(json.loads(previous.read_text()))
@@ -155,6 +163,8 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
             if slot:
                 state.update(experiment=manifest['id'], experiment_slot=slot['slot'], category=slot['category'])
                 state['experiment_hook'] = slot['hook']
+    if state.get('design'):
+        state['production_config'].setdefault('production', {})['design'] = state['design']
     save_state(stage, state)
     return stage
 
@@ -251,14 +261,11 @@ def _rebuild_assets(stage: Path, state: dict):
 
 
 def _effective_mode(cfg: Config, fmt: str, st: dict | None = None) -> str:
-    """Visual mode for this format. Long-form always b-roll (mascot render too heavy).
-
-    Shorts honor config video.mode: 'broll' | 'mascot' | 'captions_only'.
-    """
-    if fmt != "short":
-        return "broll"
+    """Resolve the renderer, honoring the checkpoint for existing stages."""
     if st is not None and st.get("visual_mode"):
         return st["visual_mode"]
+    if fmt != "short":
+        return cfg.get("video.long_mode", "broll")
     # Only new stages opt into 3D; old checkpoints keep their original behavior.
     toggle = env("VIDEO_3D")
     enabled = (toggle.lower() in ("on", "true", "1")) if toggle is not None else cfg.get("video.three_d.enabled", False)
@@ -331,6 +338,10 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
         leads = cfg.get('research.regional_source_leads', {}).get(st['editorial_region'], [])
         if st.get('growth_trial'):
             leads=cfg.get('research.growth_source_leads') or leads
+    if st.get("fmt") == "long":
+        topic += "\nFind a recognizable historical subject or a documented twist with evidence for a three-minute causal story."
+        cfg = Config(copy.deepcopy(cfg.raw))
+        cfg.raw.setdefault('research', {})['longform'] = True
     # Fetched leads go to the model as page text (free); only unfetchable ones become search hints.
     if not begin_step(cfg, leads) and leads:
         topic += ('\nStart by searching these approved museum collection pages for a narrow, supported story. '
@@ -611,6 +622,8 @@ def _step_upload(cfg: Config, stage: Path, st: dict) -> None:
         )
         st["youtube_id"] = vid
         st["youtube_url"] = f"https://youtu.be/{vid}"
+        save_state(stage, st)
+        _record_published(cfg, stage, st)
     elif not cfg.get('youtube.enabled', False):
         st["upload_skipped"] = "youtube.enabled=false"
 
@@ -762,6 +775,9 @@ def _record_published(cfg: Config, stage: Path, st: dict) -> None:
             "channel": env("CHANNEL_LABEL") or "histold",
             "slot": st.get("slot") or env("PUBLISH_SLOT") or "manual",
             "scheduled": env("PUBLISH_SCHEDULED") == "true",
+            "format": st.get("fmt", "short"),
+            "publish_claim": env("PUBLISH_CLAIM"),
+            "design": (st.get("design") or {}).get("name"),
             "workflow": env("PUBLISH_WORKFLOW") or "publish",
             "retitled_at": None,
             "republished_from": None,

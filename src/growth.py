@@ -30,6 +30,15 @@ MIN_AGE_HOURS = 48
 # This Week in History runs in the Sunday IST evening slot (14:00-24:00 IST); keep at
 # least one hour there (09-18 UTC) so that slot still exists.
 IST_EVENING_UTC = range(9, 19)
+IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def scheduled_format(root: Path, cfg, now: datetime) -> tuple[str | None, str]:
+    weekly = cfg.get('growth.weekly_longform')
+    if weekly and now.astimezone(IST).weekday() == weekly['weekday'] and now.hour == weekly['hour_utc']:
+        return 'long', 'weekly long-form'
+    hours, source = active_hours(root, cfg, now)
+    return ('short' if now.hour in hours else None), source
 
 
 def settings(cfg) -> dict:
@@ -119,7 +128,7 @@ def _rank(values: list[float]):
     return lambda x: (sum(y < x for y in vs) + sum(y == x for y in vs) / 2) / len(vs)
 
 
-def hour_stats(index: list[dict], best: dict, now: datetime) -> dict[int, dict]:
+def hour_stats(index: list[dict], best: dict, now: datetime, *, like_rate_only=False) -> dict[int, dict]:
     """Per dispatch hour: how scheduled Shorts published then did on reach.
 
     Posting time mostly moves early reach, so the score is reach only: Facebook views
@@ -130,8 +139,16 @@ def hour_stats(index: list[dict], best: dict, now: datetime) -> dict[int, dict]:
     for e in dedupe(index):
         if not e.get('scheduled') or e.get('channel', 'histold') != 'histold' or not e.get('published_at'):
             continue
+        if e.get('format') == 'long' or str(e.get('stage_dir_name', '')).endswith('_long'):
+            continue
         age = (now - datetime.fromisoformat(e['published_at'].replace('Z', '+00:00'))).total_seconds() / 3600
         if not MIN_AGE_HOURS <= age <= WINDOW_DAYS * 24:
+            continue
+        if like_rate_only:
+            from .strategy import like_rate
+            videos.append({'hour': dispatch_hour(e['published_at']),
+                           'fb': like_rate(best['fb'].get(str(e.get('facebook_id')), {})),
+                           'total': like_rate(best['yt'].get(e.get('video_id'), {}))})
             continue
         fb = best['fb'].get(str(e.get('facebook_id')), {}).get('views')
         total = [p.get('views') for p in (best['yt'].get(e.get('video_id'), {}),

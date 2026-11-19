@@ -34,6 +34,10 @@ on:
         description: "Set by the external cron trigger — enables the duplicate-slot guard"
         type: boolean
         default: false
+      dispatch_slot:
+        description: "Original UTC dispatch hour"
+        type: string
+        default: ""
 
 concurrency:
   group: publish-histold
@@ -67,89 +71,17 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      # The laptop dispatcher triggers scheduled runs at the growth plan's hours; this
-      # re-checks the hour (and that the run started before :40) against the same plan
-      # (src/growth.py), so stray, late or legacy cron-job.org triggers cannot publish.
-      # Anything but a clear "publish" verdict cancels the run.
-      - name: Publish-hour gate
-        if: github.event.inputs.scheduled == 'true'
+      - name: Claim publication
+        if: inputs.dry_run != true && inputs.no_upload != true
         env:
-          GH_TOKEN: ${{ github.token }}
+          DISPATCH_SLOT: ${{ inputs.dispatch_slot }}
+          PUBLISH_SCHEDULED: ${{ inputs.scheduled }}
+          VIDEO_FORMAT: ${{ inputs.format }}
         run: |
           python -c 'import yaml' 2>/dev/null || python -m pip install --quiet pyyaml
-          set +e
-          python scripts/publish_gate.py
-          VERDICT=$?
-          set -e
-          if [ "$VERDICT" -ne 0 ]; then
-            echo "Not a publish hour (gate exit $VERDICT) — skipping."
-            gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
-            sleep 60; exit 1
-          fi
-
-      # Protects against double-fire of the external cron trigger (retries,
-      # accidental double dispatch). Applies only to dispatches marked
-      # scheduled=true — manual dashboard runs are never skipped.
-      - name: Duplicate-slot guard
-        if: github.event.inputs.scheduled == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          WINDOW_MIN=45
-          NOW=$(date -u +%s)
-          RUNS=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/publish.yml/runs?per_page=20" \
-            --jq '.workflow_runs[] | select(.id != '"${GITHUB_RUN_ID}"') | select(.display_title != "Histold script preview" and .display_title != "Histold render preview") | "\(.status) \(.conclusion) \(.created_at)"')
-          while read -r STATUS CONCLUSION CREATED; do
-            [ -z "$STATUS" ] && continue
-            if [ "$STATUS" = "queued" ] || [ "$STATUS" = "in_progress" ]; then
-              echo "Another publish run is already active ($CREATED) — skipping this one."
-              gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
-              sleep 60; exit 1
-            fi
-            if [ "$STATUS" = "completed" ] && [ "$CONCLUSION" = "success" ]; then
-              AGE_MIN=$(( (NOW - $(date -u -d "$CREATED" +%s)) / 60 ))
-              if [ "$AGE_MIN" -lt "$WINDOW_MIN" ]; then
-                echo "Slot already published ${AGE_MIN}min ago ($CREATED) — skipping duplicate."
-                gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
-                sleep 60; exit 1
-              fi
-            fi
-          done <<< "$RUNS"
-
-          # Daily cap from config.yaml, counted per IST day. Counts
-          # entries recorded by the pipeline in data/published_index.json.
-          TODAY_IST=$(TZ=Asia/Kolkata date +%F)
-          COUNT=$(python3 - "$TODAY_IST" <<'PY'
-          import json, sys, pathlib
-          from datetime import datetime, timezone, timedelta
-          p = pathlib.Path("data/published_index.json")
-          entries = json.loads(p.read_text()) if p.exists() else []
-          ist = timezone(timedelta(hours=5, minutes=30))
-          n = 0
-          seen = set()
-          for e in entries:
-              if not e.get("scheduled") or e.get("channel", "histold") != "histold":
-                  continue
-              key = e.get("video_id") or (e.get("job_id"), e.get("published_at"), e.get("title"))
-              if key in seen:
-                  continue
-              seen.add(key)
-              try:
-                  day = datetime.fromisoformat(e["published_at"]).astimezone(ist).date().isoformat()
-              except (KeyError, ValueError):
-                  continue
-              if day == sys.argv[1]:
-                  n += 1
-          print(n)
-          PY
-          )
-          DAILY_CAP=$(python3 -c 'import yaml; g=yaml.safe_load(open("config.yaml"))["growth"]; print(int(g.get("daily_publish_cap", g["posts_per_day"])))')
-          if [ "$COUNT" -ge "$DAILY_CAP" ]; then
-            echo "Daily cap reached ($COUNT scheduled uploads today IST) — skipping."
-            gh run cancel "$GITHUB_RUN_ID" -R "$GITHUB_REPOSITORY"
-            sleep 60; exit 1
-          fi
-          echo "No recent publish for this slot and daily cap OK ($COUNT/$DAILY_CAP) — proceeding."
+          CLAIM="run-$GITHUB_RUN_ID"
+          if [ "$PUBLISH_SCHEDULED" = true ]; then CLAIM="slot-$DISPATCH_SLOT"; fi
+          python scripts/claim_histold_publish.py "$VIDEO_FORMAT" "$CLAIM"
 
       - uses: actions/setup-node@v4
         if: github.event.inputs.dry_run != 'true'
@@ -304,7 +236,7 @@ jobs:
           PYEOF
 
       - name: Commit dedup state
-        if: always()
+        if: always() && steps.run_pipeline.outcome != 'skipped'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

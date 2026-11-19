@@ -306,18 +306,16 @@ def watch_fixes(ledger, issues, now, dry_run):
 
 
 def creative_scores(test, now):
-    """Percentile scores for a creative test's variant and control Shorts, ranked against all
-    recent editorial Shorts in one pass. Returns (variant, control, assigned, still_maturing)."""
-    from src.strategy import peaks, rows, score
+    """Return YouTube like rates for each creative arm and counts of its assignments."""
+    from src.strategy import peaks, rows
     index = json.loads((DATA_ROOT / 'data/published_index.json').read_text(encoding='utf-8'))
     best = peaks(DATA_ROOT, (now - timedelta(days=40)).strftime('%Y-%m-%d'))
     window = [e for e in index if (e.get('creative_test') or {}).get('id') == test['id']]
     variant = rows([e for e in window if e['creative_test'].get('arm') == 'variant'], best, now)
     control = rows([e for e in window if e['creative_test'].get('arm') == 'control'], best, now)
-    others = rows([e for e in index if e not in window], best, now)
-    score(variant + control + others)
     maturing = sum(1 for e in window if now - op.parse_time(e['published_at']) < timedelta(hours=48))
-    return [v['score'] for v in variant], [v['score'] for v in control], len(window), maturing
+    return ([v['yt_like_rate'] for v in variant if v['yt_like_rate'] is not None],
+            [v['yt_like_rate'] for v in control if v['yt_like_rate'] is not None], len(window), maturing)
 
 
 def propose_instruction(guidance, strategy):
@@ -388,8 +386,9 @@ def run_creative(ledger, now, dry_run):
         if not dry_run:
             did = ledger.add(kind='creative_test', status=decision, test=test['id'], summary=test['instruction'], **stats)
         notes.append(f"Sir, creative test result on Histold: '{test['instruction']}' "
-                     + (f"beat the control by {lift:+.2f} and is now a permanent rule." if decision == 'promote'
-                        else f"did not beat the control (lift {lift if lift is not None else 'n/a, too few videos'}); dropped."))
+                     + (f"improved mean like rate by {lift * 100:+.1f} percentage points and is now a permanent rule."
+                        if decision == 'promote' else
+                        f"missed the like-rate threshold ({f'{lift * 100:+.1f} percentage points' if lift is not None else 'too few videos'})."))
 
     if guidance['active'] is None:
         if manual_ab_test_running():

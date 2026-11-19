@@ -424,6 +424,11 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     import anthropic
 
     lines = [f"Video title: {title}", ""]
+    design = cfg.get('production.design')
+    if design:
+        lines.append(f"Episode design: {design['name']}. {design['visuals']}. Use this treatment "
+                     "throughout, with varied compositions. Show the twist in scene zero at time 0 "
+                     "with a concrete visual already on screen. Skip introductory title cards.")
     board = cfg.get('production.storyboard')
     if board:
         board = {**board, 'scenes': [{**scene, 'scene_id': scene['segment_id']} for scene in board['scenes']]}
@@ -440,7 +445,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      '. Establish the specific opening subject immediately with a readable map, object, '
                      'diagram or meaningful comparison. Prefer original explanatory visuals to generic stock. '
                      'Use large high-contrast labels, hold important labels long enough to read and avoid flashing '
-                     'or decorative rapid cuts. '+('Do not start with a series card; show the subject from the first frame. ' if trial else
+                     'or decorative rapid cuts. '+('Do not start with a series card; show the subject from the first frame. ' if trial or design else
                      'Keep the series name as a short readable opening label. ')+
                      'Distinguish illustrative reconstructions from archival evidence; never invent archival photographs.')
         opening=cfg.get('production.editorial_opening_visual')
@@ -480,7 +485,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     system = _SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), w_text=w - 72, example=_EXAMPLE.strip())
     if cfg.get('video.claude_motion.style') == 'cinematic_2d':
         from .cinematic_motion import system_prompt
-        system = system_prompt(w, h)
+        system = system_prompt(w, h, design)
     with client.beta.messages.stream(
         model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
         max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
@@ -608,7 +613,7 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
     repair_system = _REPAIR_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7))
     if cfg.get("video.claude_motion.style") == "cinematic_2d":
         from .cinematic_motion import system_prompt
-        repair_system = system_prompt(w, h) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
+        repair_system = system_prompt(w, h, cfg.get('production.design')) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
     msg = client.messages.create(
         model=cfg.get("video.claude_motion.repair_model", "claude-haiku-5-5"),
         max_tokens=16000,
@@ -732,7 +737,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
         if cinematic:
             from .cinematic_motion import prepare_html
-            return prepare_html(bound, index)
+            return prepare_html(bound, index, landscape=cw > ch,
+                                theme_offset=(st.get('design') or {}).get('palette'))
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
         return apply_palette(bound, palette)
 

@@ -138,8 +138,8 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
             prior = best[platform].get(str(record['id']), {})
             if platform=='fb' or (record.get('views') or 0) >= (prior.get('views') or 0):
                 best[platform][str(record['id'])] = record
-    scored = rows(index, best, now)
-    score(scored,cfg.get('editorial.primary_platform','combined'))
+    scored = [video for video in rows(index, best, now) if video['yt_like_rate'] is not None]
+    score(scored, 'youtube', like_rate_only=True)
     scores = {v['title']: round(v['score'], 3) for v in scored}
 
     nicknames = read_json(root / NICKNAMES, {}) or {}
@@ -157,6 +157,8 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
             'at': at.isoformat(), 'title': e.get('title', ''), 'yt_id': e.get('video_id'),
             'series': e.get('category') or '', 'region': e.get('editorial_region') or '',
             'length': e.get('duration_variant') or '', 'scheduled': bool(e.get('scheduled')),
+            'design': e.get('design'),
+            'format': e.get('format') or ('long' if str(e.get('stage_dir_name', '')).endswith('_long') else 'short'),
             'fb': num(fb.get('views')), 'fb_likes': num(fb.get('likes')),
             'fb_plays':fb.get('plays'),'fb_initial_plays':fb.get('initial_plays'),'fb_replays':fb.get('replays'),
             'fb_views_metric':fb.get('views_metric'),'fb_insight_status':fb.get('insight_status'),
@@ -193,7 +195,7 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
         'growth_trial':{'configuration':cfg.get('editorial.growth_trial') or {},
                        'report':read_json(root/'data/private/growth-trial-report.json',{}) or {}},
         'videos': videos,
-        'content_evidence': evidence(videos, now),
+        'content_evidence': evidence(videos, now, like_rate_only=True),
         'ai_insights': read_json(root / 'data/private/content-insights.json'),
         'freshness': {
             'YouTube export': analytics.get('channels', {}).get('histold', {}).get('updated'),
@@ -434,7 +436,7 @@ body .me{background:#344e70}body .ai{background:#162131}.chat .msg{border-radius
 <section class="panel" data-page="insights"><h2>Histold growth experiment</h2><div id="growthTrial"></div></section>
 <section class="panel half" data-page="insights"><div class="section-row"><h2>Content comparison</h2><div class="segmented" aria-label="Compare content"><button data-dim="region" aria-pressed="true">Regions</button><button data-dim="length" aria-pressed="false">Length</button><button data-dim="series" aria-pressed="false">Series</button></div></div><p class="small muted">Median Facebook views per video · minimum 6 videos for a finding</p><div id="contentCompare"></div></section>
 <section class="panel half" data-page="insights"><h2>Videos to learn from</h2><div class="segmented" style="margin-bottom:14px"><button id="bestPicks" aria-pressed="true">Top performers</button><button id="weakPicks" aria-pressed="false">Lower reach</button></div><div id="videoPicks" class="video-picks"></div></section>
-<section class="panel" data-page="insights"><h2>Reach by publish hour</h2><p class="muted small">Facebook views (double weight) + total views, as a 0-1 percentile score per hour the video was triggered. Filled bars are current publish hours; faded hours are outside the US/Europe window.</p><div id="hours"></div></section>
+<section class="panel" data-page="insights"><h2>Like rate by publish hour</h2><p class="muted small">Facebook and YouTube likes per view, converted to a percentile score for each publish hour. Filled bars are current publish hours; faded hours are outside the US/Europe window.</p><div id="hours"></div></section>
 <p class="small muted" data-page="insights" style="grid-column:1/-1">Topic weights and manual pauses live on the <a href="#/strategy">Strategy</a> page.</p>
 <section class="panel" id="videos" data-page="videos"><h2>Video library</h2><div class="toolbar"><input id="q" aria-label="Search video titles" placeholder="Search videos…" size="28"><select id="fSeries" aria-label="Filter series"></select><select id="fRegion" aria-label="Filter region"></select><select id="videoSort" aria-label="Sort videos"><option value="at">Latest first</option><option value="fb">Facebook views</option><option value="score">Overall score</option></select></div><div id="videoCount" class="table-caption"></div>
 <div class="scroll desktop-videos" style="max-height:620px"><table id="vt"></table></div><div class="mobile-videos" id="videoCards"></div><button id="moreVideos" class="mobile-videos" style="width:100%;margin-top:12px">Show more videos</button></section>
@@ -510,8 +512,8 @@ function renderBriefing(){const now=Date.now(),h=new Date().getHours(),hello=(h<
  if(last&&last.t&&now-last.t>5*60e3){const d=k=>tot[k]-(last[k]||0),gain=d('fb')+d('ig')+d('yt');
   add(gain>0?'up':'', gain>0?'▲':'•',`Since your last visit <b>${ago(new Date(last.t).toISOString())} ago</b>: <b>${gain>=0?'+':''}${fmt(gain)}</b> views (FB ${d('fb')>=0?'+':''}${fmt(d('fb'))}, IG ${d('ig')>=0?'+':''}${fmt(d('ig'))}, YT ${d('yt')>=0?'+':''}${fmt(d('yt'))})${d('n')>0?` and <b>${d('n')}</b> new video${d('n')>1?'s':''}`:''}.`,
    `Since your last visit, ${gain>=0?'up':'down'} ${Math.abs(gain).toLocaleString()} views across platforms.`)}
- const week=V.filter(v=>now-new Date(v.at)<7*864e5&&v.fb!=null).sort((a,b)=>b.fb-a.fb);
- if(week[0])add('up','★',`Top video this week: ${HUD.chip(week[0])} with <b>${fmt(week[0].fb)}</b> Facebook views.`,`The standout this week is ${nick(week[0])}, with ${week[0].fb.toLocaleString()} Facebook views.`);
+ const week=V.filter(v=>now-new Date(v.at)<7*864e5&&v.fb>0&&v.fb_likes!=null).sort((a,b)=>b.fb_likes/b.fb-a.fb_likes/a.fb);
+ if(week[0])add('up','★',`Top video this week: ${HUD.chip(week[0])} with <b>${(100*week[0].fb_likes/week[0].fb).toFixed(2)}%</b> Facebook like rate.`,`The standout this week is ${nick(week[0])}, with a ${(100*week[0].fb_likes/week[0].fb).toFixed(2)} percent Facebook like rate.`);
  const W=(E.working||[])[0],N=(E.not_working||[])[0];
  if(W)add('up','✦',`<b>${esc(pretty(W.option))}</b> ${esc(W.dimension)} is running <b>${W.fb_vs_baseline_pct>0?'+':''}${W.fb_vs_baseline_pct}%</b> above your channel median.`,`${pretty(W.option)} is running ${W.fb_vs_baseline_pct} percent above your median.`);
  if(N)add('warn','▼',`<b>${esc(pretty(N.option))}</b> ${esc(N.dimension)} is <b>${N.fb_vs_baseline_pct}%</b> below median; worth a lighter touch.`,`${pretty(N.option)} is lagging, ${Math.abs(N.fb_vs_baseline_pct)} percent below median.`);
@@ -535,19 +537,20 @@ renderPills();HUD.renders.push(renderPills,builtLine);
 // Local-AI selections use only evidence IDs validated against computed statistics.
 const pretty=s=>String(s||'').replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
 let E,AI,AE,choice;
-function renderInsights(){E=D.content_evidence||{};AI=D.ai_insights;AE=AI?.evidence||E;choice=AI?.interpretation;
+function renderInsights(){E=D.content_evidence||{};AI=D.ai_insights?.evidence?.metric===E.metric?D.ai_insights:null;AE=AI?.evidence||E;choice=AI?.interpretation;
 $('insightsStamp').textContent=AI?`${AI.model} · ${ago(AI.generated)} ago`:'Measured analytics';
-$('insightsScope').textContent=`${AE.mature_videos||0} videos aged 48 hours–28 days · channel median ${fmt(AE.fb_baseline_median)} Facebook views. Findings require ${AE.min_sample||6} videos; small gaps remain exploratory.`;
+function rate(value){return value==null?'–':(100*value).toFixed(2)+'%'}
+$('insightsScope').textContent=`${AE.mature_videos||0} videos aged 48 hours–28 days · channel median ${rate(AE.fb_baseline_median)} Facebook like rate. Findings require ${AE.min_sample||6} videos; small gaps remain exploratory.`;
 findings('workingFindings',AE.working||[],false);findings('weakFindings',AE.not_working||[],true);
 $('aiTakeaway').innerHTML=(choice?`<div class="ai-note"><div class="eyebrow">Qwen’s interpretation · hypothesis</div><p>${esc(choice.title_hypothesis)}</p><b>Next test:</b> ${esc(choice.next_test)}</div>`:'')+`<details class="small muted" style="margin-top:13px"><summary>How to read these findings</summary><p>${(AE.limitations||[]).map(esc).join('</p><p>')}</p><p>New series with fewer than six measured videos are exploratory; do not pause them on this evidence alone.</p></details>`}
-function findings(id,list,weak){$(id).innerHTML=list.length?list.slice(0,3).map(g=>`<article class="finding ${weak?'weak':''}"><b>${esc(pretty(g.option))} <span class="muted small">${esc(g.dimension)}</span></b><span class="delta">${g.fb_vs_baseline_pct>0?'+':''}${g.fb_vs_baseline_pct}%</span> <span class="small">vs channel median</span><p>${fmt(g.fb_median)} median FB views · ${g.fb_n} measured videos</p></article>`).join(''):'<p class="empty small">No supported finding yet. Keep gathering data.</p>'}
+function findings(id,list,weak){$(id).innerHTML=list.length?list.slice(0,3).map(g=>`<article class="finding ${weak?'weak':''}"><b>${esc(pretty(g.option))} <span class="muted small">${esc(g.dimension)}</span></b><span class="delta">${g.fb_vs_baseline_pct>0?'+':''}${g.fb_vs_baseline_pct}%</span> <span class="small">vs channel median</span><p>${rate(g.fb_median)} median Facebook like rate · ${g.fb_n} measured videos</p></article>`).join(''):'<p class="empty small">No supported finding yet. Keep gathering data.</p>'}
 renderInsights();
 let curDim='region',curWeak=false;
-function comparison(dim){curDim=dim;const groups=(E.groups||[]).filter(g=>g.dimension===dim).sort((a,b)=>(b.fb_median??-1)-(a.fb_median??-1)),max=Math.max(1,...groups.map(g=>g.fb_median||0));
- $('contentCompare').innerHTML=groups.map(g=>`<div class="compare-row"><div>${esc(pretty(g.option))}<div class="sample">${g.fb_n} measured${g.enough_data?'':' · early data'}</div></div><div class="track"><div class="fill" style="width:${(g.fb_median||0)/max*100}%;opacity:${g.enough_data?1:.3}"></div></div><div style="text-align:right"><b>${fmt(g.fb_median)}</b><div class="sample">median views</div></div></div>`).join('')||'<p class="empty">No comparison data yet.</p>';
+function comparison(dim){curDim=dim;const groups=(E.groups||[]).filter(g=>g.dimension===dim).sort((a,b)=>(b.fb_median??-1)-(a.fb_median??-1)),max=Math.max(.0001,...groups.map(g=>g.fb_median||0));
+ $('contentCompare').innerHTML=groups.map(g=>`<div class="compare-row"><div>${esc(pretty(g.option))}<div class="sample">${g.fb_n} measured${g.enough_data?'':' · early data'}</div></div><div class="track"><div class="fill" style="width:${(g.fb_median||0)/max*100}%;opacity:${g.enough_data?1:.3}"></div></div><div style="text-align:right"><b>${rate(g.fb_median)}</b><div class="sample">median like rate</div></div></div>`).join('')||'<p class="empty">No comparison data yet.</p>';
  document.querySelectorAll('[data-dim]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dim===dim)))}
 document.querySelectorAll('[data-dim]').forEach(b=>b.onclick=()=>comparison(b.dataset.dim));comparison('region');
-function picks(weak=false){curWeak=weak;const rows=(weak?E.weak_videos:E.best_videos)||[];$('videoPicks').innerHTML=rows.slice(0,3).map(r=>HUD.findVideo(r.yt_id)||HUD.findVideo(r.title)||r).map((v,i)=>`<article class="pick"><span class="rank">${i+1}</span><div><div class="pick-title"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></div><div class="small muted"><b>${fmt(v.fb)} Facebook views</b> · ${esc(pretty(v.region))} · ${esc(v.length)}</div></div></article>`).join('')+(weak?'<p class="small muted">Zero views may reflect distribution or reporting; check before judging content quality.</p>':'');$('bestPicks').setAttribute('aria-pressed',String(!weak));$('weakPicks').setAttribute('aria-pressed',String(weak))}
+function picks(weak=false){curWeak=weak;const rows=(weak?E.weak_videos:E.best_videos)||[];$('videoPicks').innerHTML=rows.slice(0,3).map(r=>HUD.findVideo(r.yt_id)||HUD.findVideo(r.title)||r).map((v,i)=>`<article class="pick"><span class="rank">${i+1}</span><div><div class="pick-title"><a href="#" data-video="${esc(vidKey(v))}"><b>${esc(nick(v))}</b></a><div class="small muted">${esc(v.title)}</div></div><div class="small muted"><b>${rate(v.fb_like_rate ?? (v.fb>0&&v.fb_likes!=null?v.fb_likes/v.fb:null))} Facebook like rate</b> · ${esc(pretty(v.region))} · ${esc(v.length)}</div></div></article>`).join('')+(weak?'<p class="small muted">Zero views may reflect distribution or reporting; check before judging content quality.</p>':'');$('bestPicks').setAttribute('aria-pressed',String(!weak));$('weakPicks').setAttribute('aria-pressed',String(weak))}
 $('bestPicks').onclick=()=>picks();$('weakPicks').onclick=()=>picks(true);picks();
 HUD.renders.push(renderInsights,()=>comparison(curDim),()=>picks(curWeak));
 
@@ -602,7 +605,7 @@ renderDaily();HUD.renders.push(renderDaily);
  $('schedule').innerHTML=s})();
 
 // reach by hour
-function renderHours(){const W=760,H=150,bw=W/24;let s=`<svg viewBox="0 0 ${W} ${H+44}" role="img" aria-label="Reach by publish hour">`;
+function renderHours(){const W=760,H=150,bw=W/24;let s=`<svg viewBox="0 0 ${W} ${H+44}" role="img" aria-label="Like rate by publish hour">`;
  for(let h=0;h<24;h++){const st=D.hour_stats[h],x=h*bw+3,w=bw-6,on=D.hours.includes(h),ok=D.allowed_hours.includes(h);
   if(st){const bh=st.shrunk*H;s+=`<rect x="${x}" y="${H-bh}" width="${w}" height="${bh}" rx="3" fill="var(--accent)" opacity="${on?1:ok?.45:.18}"><title>${h}:00 UTC · score ${st.shrunk} · ${st.n} videos</title></rect><text x="${x+w/2}" y="${H-bh-4}" text-anchor="middle">${st.n}</text>`}
   else s+=`<rect x="${x}" y="${H-4}" width="${w}" height="4" fill="var(--line)"><title>${h}:00 UTC · no data</title></rect>`;
@@ -615,7 +618,7 @@ renderHours();HUD.renders.push(renderHours);
 
 function renderGrowthTrial(){const t=D.growth_trial||{},c=t.configuration||{},r=t.report||{},rows=r.lanes||[];
  const names={ingenious_solutions:'Ingenious solutions',decisions:'Decisions with consequences',everyday_origins:'Everyday objects'};
- $('growthTrial').innerHTML=`<p>${esc(c.id||'No trial configured')} · ${c.enabled?'Enabled':'Inactive'} · ${fmt(c.posts)} planned assignments</p><p class="small muted">Three content lanes · fixed 35-second target · first observations at 24 hours, 72 hours and seven days. Columns below compare only recorded 72-hour observations. Missing values are unavailable.</p><div class="scroll"><table><thead><tr><th>Lane</th><th>Published</th><th>YouTube median views at 72h</th><th>YT measured</th><th>Facebook median plays at 72h</th><th>FB measured</th></tr></thead><tbody>`+Object.entries(names).map(([key,label])=>{const v=rows.find(x=>x.id===c.id&&x.lane===key)||{};return `<tr><td>${esc(label)}</td><td>${fmt(v.published??0)}</td><td>${fmt(v.youtube?.median_72h)}</td><td>${fmt(v.youtube?.measured_72h??0)}</td><td>${fmt(v.facebook?.median_72h)}</td><td>${fmt(v.facebook?.measured_72h??0)}</td></tr>`}).join('')+`</tbody></table></div><p class="small muted">${esc(r.note||'Collecting observations. No winner is declared from a tiny sample, and older lifetime counts are never backfilled as historical checkpoints.')}</p>`;
+ $('growthTrial').innerHTML=`<p>${esc(c.id||'No trial configured')} · ${c.enabled?'Enabled':'Inactive'} · ${fmt(c.posts)} planned assignments</p><p class="small muted">Three content lanes · fixed 35-second target · first observations at 24 hours, 72 hours and seven days. Columns below compare only recorded 72-hour observations. Missing values are unavailable.</p><div class="scroll"><table><thead><tr><th>Lane</th><th>Published</th><th>YouTube median like rate at 72h</th><th>YT measured</th><th>Facebook median like rate at 72h</th><th>FB measured</th></tr></thead><tbody>`+Object.entries(names).map(([key,label])=>{const v=rows.find(x=>x.id===c.id&&x.lane===key)||{};return `<tr><td>${esc(label)}</td><td>${fmt(v.published??0)}</td><td>${rate(v.youtube?.median_like_rate_72h)}</td><td>${fmt(v.youtube?.like_rate_samples_72h??0)}</td><td>${rate(v.facebook?.median_like_rate_72h)}</td><td>${fmt(v.facebook?.like_rate_samples_72h??0)}</td></tr>`}).join('')+`</tbody></table></div><p class="small muted">${esc(r.note||'Collecting observations. No winner is declared from a tiny sample, and older lifetime counts are never backfilled as historical checkpoints.')}</p>`;
 }renderGrowthTrial();HUD.renders.push(renderGrowthTrial);
 
 // video table

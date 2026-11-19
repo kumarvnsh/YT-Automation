@@ -28,9 +28,9 @@ class WorkflowRegressionTests(unittest.TestCase):
         for step in data['jobs']['publish']['steps']:
             if step.get('name') in names:
                 self.assertEqual(step.get('if'),"github.event.inputs.dry_run != 'true'")
-        guard=next(s['run'] for s in data['jobs']['publish']['steps'] if s.get('name')=='Duplicate-slot guard')
-        self.assertIn('.display_title != "Histold script preview"',guard)
-        self.assertIn('.display_title != "Histold render preview"',guard)
+        guard=next(s for s in data['jobs']['publish']['steps'] if s.get('name')=='Claim publication')
+        self.assertEqual(guard['if'], 'inputs.dry_run != true && inputs.no_upload != true')
+        self.assertIn('slot-$DISPATCH_SLOT', guard['run'])
         self.assertIn('inputs.dry_run',data['run-name'])
 
     def test_astrotold_publish_workflow_is_channel_isolated(self) -> None:

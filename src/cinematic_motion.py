@@ -21,8 +21,17 @@ _THEMES = (
 )
 
 
-def system_prompt(w: int, h: int) -> str:
-    return _HERE.joinpath('cinematic_2d_prompt.txt').read_text().format(width=w, height=h)
+def system_prompt(w: int, h: int, design: dict | None = None) -> str:
+    prompt = _HERE.joinpath('cinematic_2d_prompt.txt').read_text().format(width=w, height=h)
+    if design:
+        prompt += '\nUse the specified episode art direction in place of the default warm-paper look. The scene palette will match that direction.'
+    if w > h:
+        prompt += ('\nLandscape layout: use the extra width for side-by-side art and labels. '
+                   'Start below the small branding rectangle, with a 48px top inset and an 88px caption band. '
+                   'Size art to fit the available height and keep the main illustration visible at frame zero.')
+        prompt = prompt.replace('bottom 180 CSS pixels', 'bottom 88 CSS pixels').replace('Start content below 124px.', 'Start content below 48px.')
+        prompt = prompt.replace('about 420px wide and 350–440px tall', 'about 500–650px wide and 230–330px tall')
+    return prompt
 
 
 @lru_cache(maxsize=1)
@@ -39,7 +48,7 @@ def _base_css() -> str:
     return ''.join(faces) + _HERE.joinpath('cinematic_2d.css').read_text()
 
 
-def prepare_html(html: str, index: int) -> str:
+def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None) -> str:
     """Prefix helpers so authored layouts and keyframes retain precedence."""
     html = re.sub(r'<style id="cinematic-2d">.*?</style>', '', html, flags=re.S)
     # Asset binding replaces custom tags with SVG/figure elements. Preserve
@@ -49,10 +58,22 @@ def prepare_html(html: str, index: int) -> str:
         css = re.sub(r'\bhistold-photo\b', '.k-photo', css)
         return match.group(1) + css + match.group(3)
     html = re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', bound_selectors, html, flags=re.S | re.I)
-    paper, ink, bone, accent, dim = _THEMES[index % len(_THEMES)]
+    palettes = (
+        _THEMES[0],
+        ('#f7eedf', '#1a1618', '#dbcbc3', '#a62936', '#524148'),
+        ('#173565', '#fff2d1', '#304f7d', '#f3b857', '#d9e3fb'),
+        ('#252627', '#f7f2e8', '#414244', '#e6ad53', '#dfd9cc'),
+        ('#253437', '#e0fcf0', '#395052', '#b3eac8', '#c3ddd5'),
+        ('#142844', '#e0f6ff', '#2d4465', '#73dffc', '#c2daee'),
+        ('#f4eee2', '#332044', '#d3c3da', '#a24b36', '#594669'),
+        ('#f4e5b1', '#25272a', '#d9c991', '#904634', '#4f4739'),
+    )
+    palette = _THEMES[index % len(_THEMES)] if theme_offset is None else palettes[theme_offset % len(palettes)]
+    paper, ink, bone, accent, dim = palette
     theme = (f':root{{--parch:{paper};--ink:{ink};--bone:{bone};'
              f'--accent:{accent};--dim:{dim}}}')
-    style = '<style id="cinematic-2d">' + _base_css() + theme + '</style>'
+    geometry = ':root{--caption-reserve:88px}.k-stage{inset:0 0 88px!important;padding-top:48px!important}' if landscape else ''
+    style = '<style id="cinematic-2d">' + _base_css() + theme + geometry + '</style>'
     head = re.search(r'<head\b[^>]*>', html, flags=re.I)
     if head:
         return html[:head.end()] + style + html[head.end():]

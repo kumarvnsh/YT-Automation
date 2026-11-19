@@ -102,6 +102,10 @@ def _host_video(video_path: Path) -> tuple[str, callable]:
 # --------------------------------------------------------------------------- #
 # Instagram Reels
 # --------------------------------------------------------------------------- #
+class InstagramPublishUnconfirmed(RuntimeError):
+    """The publish request may have succeeded even if no media ID was returned."""
+
+
 def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str,
                        ver: str, timeout_s: int = 300, media_type: str = "REELS",
                        trial: bool = False) -> str:
@@ -131,12 +135,15 @@ def _publish_instagram(token: str, ig_user_id: str, video_url: str, caption: str
     else:
         raise RuntimeError("IG container did not finish processing in time.")
 
-    pub = requests.post(f"{base}/media_publish", data={
-        "creation_id": creation_id,
-        "access_token": token,
-    }, timeout=60)
-    _raise_graph(pub, "IG media_publish")
-    media_id = pub.json()["id"]
+    try:
+        pub = requests.post(f"{base}/media_publish", data={
+            "creation_id": creation_id,
+            "access_token": token,
+        }, timeout=60)
+        _raise_graph(pub, "IG media_publish")
+        media_id = pub.json()["id"]
+    except (requests.RequestException, RuntimeError, ValueError, KeyError) as exc:
+        raise InstagramPublishUnconfirmed(f"Instagram publication unconfirmed for container {creation_id}") from exc
     print(f"  ✓ Instagram {'Trial ' if trial else ''}{media_type.title()} published: {media_id}")
     return media_id
 
@@ -164,7 +171,7 @@ def _page_access_token(user_token: str, page_id: str, ver: str) -> str:
 
 
 def _publish_facebook_reel(token: str, page_id: str, video_url: str, description: str,
-                           ver: str, timeout_s: int = 300) -> str:
+                           ver: str, timeout_s: int = 300, *, title: str = "") -> str:
     token = _page_access_token(token, page_id, ver)  # switch to the Page token
 
     # 1. start — reserve a video id + upload url
@@ -192,16 +199,21 @@ def _publish_facebook_reel(token: str, page_id: str, video_url: str, description
         if up == "error":
             raise RuntimeError(f"FB reel upload failed: {status}")
         time.sleep(5)
+    else:
+        raise RuntimeError("Facebook Reel transfer did not finish in time")
 
     # 4. finish + publish
     finish = requests.post(f"{GRAPH}/{ver}/{page_id}/video_reels", data={
         "upload_phase": "finish",
         "video_id": video_id,
         "video_state": "PUBLISHED",
-        "description": description,
+        "title": title.strip(),
+        "description": description.strip(),
         "access_token": token,
     }, timeout=60)
     _raise_graph(finish, "FB reel finish")
+    if finish.json().get("success") is not True:
+        raise RuntimeError("Facebook did not confirm Reel publication")
     print(f"  ✓ Facebook Reel published: {video_id}")
     return video_id
 
@@ -274,11 +286,10 @@ def _raise_graph(resp: requests.Response, what: str) -> None:
 def _build_caption(cfg: Config, title: str, description: str, *, platform='instagram', question='') -> str:
     if platform == 'facebook' and cfg.get('meta.facebook_caption.enabled', False):
         import re
-        lines = [line.strip() for line in description.splitlines() if line.strip() and
-                 not re.search(r'https?://|youtube|subscribe|#', line, re.I)]
-        summary = ' '.join(lines)[:320]
-        if len(' '.join(lines)) > 320:
-            summary = summary.rsplit(' ', 1)[0].rstrip('.,;:') + '…'
+        lines = [re.sub(r'https?://\S+|#\w+', '', line).strip() for line in description.splitlines()
+                 if not re.match(r'^\s*(?:subscribe|watch on youtube)\b', line, re.I)]
+        body = ' '.join(filter(None, lines))
+        summary = body if len(body) <= 320 else body[:319].rsplit(' ', 1)[0].rstrip('.,;:') + '…'
         parts = [title.strip(), summary]
         editorial = cfg.get('production.editorial', {})
         if editorial:
@@ -327,7 +338,8 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
     ig_user_id = str(cfg.get("meta.ig_user_id", "")).strip()
     results: dict = dict(existing_results or {})
     need_facebook = cfg.get('meta.post_to_facebook', True) and page_id and not results.get('facebook')
-    need_instagram = cfg.get('meta.post_to_instagram', True) and ig_user_id and not results.get('instagram')
+    need_instagram = (cfg.get('meta.post_to_instagram', True) and ig_user_id
+                      and not results.get('instagram') and not results.get('instagram_publish_unconfirmed'))
     need_stories = cfg.get('meta.stories', False) and (
         (results.get('instagram') and not results.get('instagram_story')) or
         (results.get('facebook') and not results.get('facebook_story')))
@@ -338,7 +350,7 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
         if need_facebook and cfg.get('meta.primary', False):
             try:
                 caption = _build_caption(cfg, title, description, platform='facebook')
-                results['facebook'] = _publish_facebook_reel(token, page_id, url, caption, ver)
+                results['facebook'] = _publish_facebook_reel(token, page_id, url, caption, ver, title=title)
                 results.pop('facebook_error', None)
             except Exception as exc:
                 results['facebook_error'] = str(exc)
@@ -355,7 +367,9 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
                         results["instagram"] = _publish_instagram(token, ig_user_id, url, caption,
                                                                   _TRIAL_VER, trial=True)
                         results["instagram_trial"] = True
-                    except Exception as exc:  # noqa: BLE001 - not eligible etc.: post a normal Reel
+                    except InstagramPublishUnconfirmed:
+                        raise
+                    except Exception as exc:  # noqa: BLE001 - rejected before publishing
                         print(f"  ! Instagram trial reel failed ({exc}) — posting a normal Reel")
                 if not results.get("instagram"):
                     results["instagram"] = _publish_instagram(token, ig_user_id, url, caption, ver)
@@ -363,12 +377,14 @@ def publish_reel(cfg: Config, video_path: Path, title: str, description: str, *,
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Instagram cross-post failed: {exc}")
                 results["instagram_error"] = str(exc)
+                if isinstance(exc, InstagramPublishUnconfirmed):
+                    results["instagram_publish_unconfirmed"] = True
             if on_progress is not None:
                 on_progress(dict(results))
         if need_facebook and not cfg.get('meta.primary', False):
             try:
                 caption = _build_caption(cfg, title, description, platform='facebook')
-                results["facebook"] = _publish_facebook_reel(token, page_id, url, caption, ver)
+                results["facebook"] = _publish_facebook_reel(token, page_id, url, caption, ver, title=title)
                 results.pop('facebook_error', None)
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! Facebook cross-post failed: {exc}")

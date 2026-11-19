@@ -47,7 +47,7 @@ def main() -> int:
     index = json.loads((ROOT / 'data/published_index.json').read_text())
     best = peaks(ROOT, (now - timedelta(days=WINDOW_DAYS + 3)).date().isoformat())
     best, masked = bot_findings.mask_suspect_metrics(ROOT.parent / 'bot-workspace', 'histold', index, best, now)
-    stats = hour_stats(index, best, now)
+    stats = hour_stats(index, best, now, like_rate_only=cfg.get('editorial.like_rate_only', False))
 
     current = prev.get('hours_utc') if not problem(prev.get('hours_utc'), s) else s['default_hours_utc']
     changed_at = prev.get('changed_at')

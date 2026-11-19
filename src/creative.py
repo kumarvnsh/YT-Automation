@@ -18,9 +18,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PATH = 'data/creative_guidance.json'
-POSTS = 20              # ~3 days at the current pace; 10 per arm
+POSTS = 20              # about one week; 10 per arm
 MIN_PER_ARM = 6
-PROMOTE_LIFT = 0.05     # variant mean percentile score must beat control by this much
+PROMOTE_LIFT = 0.005    # minimum lift of 0.5 percentage points in mean like rate
 MAX_LEARNED = 12
 MAX_CHARS = 300
 FORBIDDEN = re.compile(r'(https?://|www\.|ignore|disregard|invent|fabricat|exaggerat|made[- ]up|clickbait|lie\b|'
@@ -99,7 +99,7 @@ def start_test(guidance: dict, instruction: str, hypothesis: str, start_slot: in
 
 
 def judge(variant: list[float], control: list[float]) -> tuple[str, float | None]:
-    """('promote' | 'drop' | 'wait', lift). Scores are percentile ranks from one scoring pass."""
+    """Return the decision and the absolute difference in mean like rates."""
     if len(variant) < MIN_PER_ARM or len(control) < MIN_PER_ARM:
         return 'wait', None
     lift = sum(variant) / len(variant) - sum(control) / len(control)

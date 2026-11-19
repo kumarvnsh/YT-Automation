@@ -52,6 +52,8 @@ ab_test:
 editorial:
   enabled: true                 # new automatic Histold Shorts only; manual topics stay fixed
   primary_platform: "youtube"
+  like_rate_only: true
+  rotate_design: true
   growth_trial:
     enabled: true
     id: "histold-clear-stories-v1"
@@ -137,7 +139,8 @@ editorial:
 # hours, never how many videos a day are made.
 growth:
   posts_per_day: 3                       # fixed daily volume requested by the owner
-  daily_publish_cap: 6                   # safety ceiling; leaves room for extra manual runs
+  daily_publish_cap: 3                   # Histold Shorts per IST day
+  weekly_longform: {weekday: 6, hour_utc: 5}  # Sunday 10:30 IST
   default_hours_utc: [12, 18, 23]         # Europe lunch, Europe evening/US lunch, US evening
   # Target audience: USA + Europe. Excluded 05-10 UTC = midnight-6am US Eastern while
   # Europe is only at breakfast/work start. Allowed: 11-23 UTC (Europe noon to late
@@ -261,7 +264,8 @@ video:
     preset: "veryfast"         # ffmpeg x264 preset; faster = quicker render, slightly larger file
     crf: 23                    # 18-28; lower = higher quality/larger. 23 is a good balance
   # Shorts: cinematic_2d = illustrated documentary scenes; claude_motion = legacy.
-  # Long-form always uses b-roll. VIDEO_MODE overrides an individual run.
+  # VIDEO_MODE overrides an individual Short run.
+  long_mode: "cinematic_2d"
   # Cinematic scenes fail closed if visual checks fail, without old-style fallback.
   mode: "cinematic_2d"
   # 3D off uses the approved cinematic illustrated 2D style.
@@ -349,7 +353,7 @@ republish:
   min_age_hours: 30       # ...this long after publish (24h rule + 6h analytics lag)
   max_age_days: 13        # repost needs the render artifact (14d retention, 1d margin)
   max_per_check: 1        # dispatch at most this many republishes per analytics run
-  mode: repost            # repost (delete + re-upload, new title) | retitle (title swap only)
+  mode: retitle           # update the original video in place
 
 meta:
   # Cross-post rendered shorts to Facebook Reels + Instagram Reels via the Graph

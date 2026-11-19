@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from src.config import load_config  # noqa: E402
-from src.growth import active_hours  # noqa: E402
+from src.growth import scheduled_format  # noqa: E402
 
 DEFAULT_STATE = ROOT.parent / 'dispatch_state.json'
 PUBLISH_WINDOW_MIN = 20   # a late catch-up run (e.g. after sleep) must not publish mid-hour
@@ -70,16 +70,16 @@ def main() -> int:
         state = json.loads(args.state.read_text())
     except (OSError, ValueError):
         state = {}
-    hours, source = active_hours(ROOT, load_config(), now)
-    print(f'dispatch: {now:%H:%M} UTC; publish hours {hours} from {source}')
+    fmt, source = scheduled_format(ROOT, load_config(), now)
+    print(f'dispatch: {now:%H:%M} UTC; format {fmt or "none"} from {source}')
 
     ok = True
-    if now.hour in hours and now.minute >= PUBLISH_WINDOW_MIN:
+    if fmt and now.minute >= PUBLISH_WINDOW_MIN:
         print(f'  publish: missed this hour (now :{now.minute:02d}, window is :00-:{PUBLISH_WINDOW_MIN - 1})')
-    elif now.hour in hours:
+    elif fmt:
         if state.get('publish') == slot:
             print('  publish: already dispatched this hour')
-        elif run_workflow('publish.yml', {'format': 'short', 'scheduled': 'true'}, args.dry_run):
+        elif run_workflow('publish.yml', {'format': fmt, 'scheduled': 'true', 'dispatch_slot': slot}, args.dry_run):
             state['publish'] = slot
         else:
             ok = False

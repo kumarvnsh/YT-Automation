@@ -300,4 +300,4 @@ Already tested (do not retest; learn from the results):
 Propose the single most promising untested instruction, grounded in the winners vs losers. It must be one line of
 20-300 characters, about style only, and must not touch factual accuracy, sourcing, links, calls to subscribe or
 comment bait. Reply with exactly one line of JSON and nothing else:
-{{"instruction": "...", "hypothesis": "why this should lift retention or views"}}"""
+{{"instruction": "...", "hypothesis": "why this should improve likes per view"}}"""

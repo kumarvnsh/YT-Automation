@@ -81,7 +81,8 @@ def collect(cfg, now: datetime) -> tuple[list[dict], dict]:
     index = json.loads((ROOT / 'data/published_index.json').read_text())
     best = peaks(ROOT, since)
     videos = rows(index, best, now)
-    score(videos)
+    videos = [v for v in videos if v['yt_like_rate'] is not None]
+    score(videos, 'youtube', like_rate_only=True)
     unique = {}
     for v in videos:  # republished titles appear twice in the index; keep the better copy
         if v['title'] not in unique or v['score'] > unique[v['title']]['score']:
@@ -111,7 +112,7 @@ def prompt_for(cfg, videos: list[dict], strategy: dict) -> str:
     stats = json.dumps(strategy['stats'], separators=(',', ':'))
     return f"""You analyse performance data for Histold, a history Shorts channel on Facebook, YouTube and Instagram. Facebook is the priority: it is the only monetized platform. The target audience is in the USA and Europe.
 
-Score is 0-1: weighted percentile ranks of Facebook views (double weight), YouTube % viewed (double weight), YouTube like rate, Instagram like rate and total views across platforms. Higher is better. "new" marks videos published in the last 7 days.
+Score is the percentile rank of YouTube likes per view. Evaluate changes by likes per view on each platform; reach and retention are context. "new" marks videos published in the last 7 days.
 
 Series:
 {series}

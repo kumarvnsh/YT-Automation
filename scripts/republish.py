@@ -184,6 +184,8 @@ def main() -> None:
     args = ap.parse_args()
 
     cfg = load_config(args.config)
+    if args.mode == 'repost' and cfg.get('republish.mode') == 'retitle':
+        ap.error('This channel permits title edits on the original upload only')
     if args.mode == "retitle":
         do_retitle(cfg, args.video_id)
     else:

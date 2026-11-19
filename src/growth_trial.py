@@ -89,8 +89,10 @@ def record(root,index,youtube,facebook,now=None):
                 checkpoint=video['checkpoints'].setdefault(name,{})
                 if platform in checkpoint: continue
                 fields=('views','engaged_views','avg_view_pct','average_watch_time_seconds','subs_gained','shares') if platform=='youtube' else ('plays','initial_plays','replays','average_watch_time_seconds','shares','views_metric')
+                from .strategy import like_rate
                 checkpoint[platform]={'observed_at':stamp.isoformat(),'age_hours':round(age,2),
-                    'metrics':{k:row.get(k) for k in fields},'note':'Observed export; detailed platform analytics may still be processing.'}
+                    'metrics':{**{k:row.get(k) for k in fields}, 'like_rate': like_rate(row)},
+                    'note':'Observed export; detailed platform analytics may still be processing.'}
     data['updated']=now.isoformat()
     path.parent.mkdir(parents=True,exist_ok=True)
     temp=path.with_suffix('.tmp');temp.write_text(json.dumps(data,indent=2),encoding='utf-8');temp.replace(path)
@@ -101,16 +103,22 @@ def summarize(data,now=None):
     now=now or datetime.now(timezone.utc)
     groups={}
     for video in data.get('videos',{}).values():
-        trial=video['trial'];group=groups.setdefault((trial['id'],trial['lane']),{'id':trial['id'],'lane':trial['lane'],'published':0,'youtube':[],'facebook':[]})
+        trial=video['trial'];group=groups.setdefault((trial['id'],trial['lane']),{'id':trial['id'],'lane':trial['lane'],'published':0,'youtube':[],'facebook':[],'youtube_rates':[],'facebook_rates':[]})
         group['published']+=1
         for platform,metric in [('youtube','views'),('facebook','plays')]:
-            value=video.get('checkpoints',{}).get('72h',{}).get(platform,{}).get('metrics',{}).get(metric)
+            metrics = video.get('checkpoints',{}).get('72h',{}).get(platform,{}).get('metrics',{})
+            value = metrics.get(metric)
             if isinstance(value,(int,float)) and not isinstance(value,bool): group[platform].append(value)
+            if metrics.get('like_rate') is not None:
+                group[platform + '_rates'].append(metrics['like_rate'])
     rows=[]
     for group in groups.values():
         row={k:group[k] for k in ('id','lane','published')}
         for platform in ('youtube','facebook'):
             vals=group[platform];row[platform]={'measured_72h':len(vals),'median_72h':statistics.median(vals) if vals else None}
+            rates = group[platform + '_rates']
+            row[platform].update(like_rate_samples_72h=len(rates),
+                                 median_like_rate_72h=statistics.median(rates) if rates else None)
         rows.append(row)
     return {'updated':now.isoformat(),'lanes':rows,'status':'collecting',
             'note':'No automatic winner or schedule change. Compare platforms separately; missing checkpoints are unknown, not zero.'}

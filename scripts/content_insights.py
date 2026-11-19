@@ -32,7 +32,7 @@ def main():
             pass
     data = json.loads(args.snapshot.read_text(encoding='utf-8')) if args.snapshot else collect(
         now, args.data_root.parent / 'strategist.log', args.data_root)
-    facts = evidence(data['videos'], now)
+    facts = evidence(data['videos'], now, like_rate_only=True)
     if facts['fb_coverage'] < 10:
         raise RuntimeError('Need at least ten mature videos with Facebook data.')
     host = os.environ.get('OLLAMA_HOST_URL', 'http://127.0.0.1:11434')
@@ -48,7 +48,7 @@ def main():
         'next_test': {'type': 'string', 'enum': ['Compare concrete objects vs broad topics',
             'Compare named-place questions vs general questions', 'Hold the current mix and gather more data']}},
         'required': ['working_ids', 'weak_ids', 'title_hypothesis', 'next_test']}
-    prompt = ('Review Histold history Shorts for its owner. Facebook is the monetized priority; target US and Europe. '
+    prompt = ('Review Histold history Shorts for its owner. Judge changes by Facebook likes per view. '
               'Select up to three working and three weak evidence IDs from the supplied lists. Prefer useful patterns '
               'with adequate samples. Exact numbers are already computed. Do not invent numbers, revenue, causes, '
               'viewer locations, new historical facts or titles. Give one short title-pattern hypothesis from the '

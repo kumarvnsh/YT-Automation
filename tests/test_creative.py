@@ -58,7 +58,7 @@ def test_window_and_new_test_moves_previous_to_measuring():
 def test_judge_and_conclude():
     assert creative.judge([0.6] * 5, [0.5] * 9) == ('wait', None)
     assert creative.judge([0.6] * 7, [0.5] * 7) == ('promote', 0.1)
-    assert creative.judge([0.52] * 7, [0.5] * 7)[0] == 'drop'
+    assert creative.judge([0.022] * 7, [0.02] * 7)[0] == 'drop'
     g = started()
     g['measuring'].append(g['active'])
     g['active'] = None

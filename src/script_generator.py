@@ -179,6 +179,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         if rule
     )
     today = date.today()
+    design = cfg.get('production.design')
     facebook_editorial = cfg.get('production.editorial.primary_platform') == 'facebook'
     growth_trial=bool(cfg.get('production.editorial.growth_trial'))
     task_context = ('EVERGREEN WORLD HISTORY: choose for curiosity and evidence, independent of today\'s anniversary.'
@@ -243,8 +244,9 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         concise = cfg.get('script.story_profile') == 'evergreen_concise'
         structure_block = (
             'EVERGREEN WORLD HISTORY: Use ' + ('exactly 5 segments: hook, setup, pivot, fact, callback.' if concise else
-            'exactly 7 segments: hook, setup, pivot, fact, fact, fact, callback.') +
-            '\nState the specific surprise in the first 2–3 spoken seconds, roughly the first 5-8 words. '
+            'exactly 7 segments: hook, setup, pivot, fact, fact, fact, callback.')
+            + ('\nOpen on the specific surprise in the first second. ' if design else
+               '\nState the specific surprise in the first 2–3 spoken seconds, roughly the first 5-8 words. ') +
             'Never open with a date or a generic "Did you know?" introduction. '
             'Explain the everyday origin, misconception or decision clearly, using only cited production facts. '
             'Do not manufacture a disaster, a dramatic twist, or an unresolved mystery. '
@@ -282,6 +284,18 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
             structure_block += '\nAfter the payoff, you may ask one specific thoughtful question about this story. No "comment YES", forced sides or generic engagement requests.'
         from .creative import prompt_block
         structure_block += prompt_block(editorial.get('creative_guidance') or [])
+    if design:
+        structure_block += (
+            '\nOpen with the documented reversal or consequence. Put the decisive words at '
+            'the start of the first spoken clause so the twist begins in the first second. '
+            'Skip greetings, introductory questions and spoken title cards. '
+            'Choose a recognizable subject or a sharply surprising sourced twist. '
+            'Use concrete verbs, subject-specific detail and varied cadence. '
+            'Avoid stock phrases like "but here is the twist" and "changed history forever". '
+            'Make the first visual keywords depict the twist itself. '
+            f"Narration approach for this episode: {design['narration']}. "
+            'Write a readable standalone description paragraph before any links or hashtags.'
+        )
     segment_schema = (
         '{"beat": "hook", "narration": "...", "keywords": ["...", "..."]}'
         if beats_on or consequence

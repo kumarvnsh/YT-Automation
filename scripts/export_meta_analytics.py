@@ -185,7 +185,7 @@ def fetch_facebook(token: str, page_id: str, ver: str, limit: int) -> list[dict]
     page_token = _page_access_token(token, page_id, ver)
     rows: list[dict] = []
     params = {
-        "fields": "id,description,created_time,permalink_url,picture,"
+        "fields": "id,title,description,created_time,permalink_url,picture,"
                   "likes.summary(true),comments.summary(true),video_insights",
         "limit": min(limit, FB_PAGE_SIZE),
         "access_token": page_token,
@@ -203,7 +203,7 @@ def fetch_facebook(token: str, page_id: str, ver: str, limit: int) -> list[dict]
         permalink = v.get("permalink_url", "")
         return _experiment_metrics({
             "id": v["id"],
-            "title": _first_line(v.get("description", "")),
+            "title": (v.get("title") or "").strip() or _first_line(v.get("description", "")),
             "publishedAt": v.get("created_time", ""),
             "thumbnail": v.get("picture", ""),
             "likes": ((v.get("likes") or {}).get("summary") or {}).get("total_count", 0),
