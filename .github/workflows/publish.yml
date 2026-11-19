@@ -268,3 +268,11 @@ jobs:
           path: ${{ steps.stage.outputs.stage_dir }}
           retention-days: 14
           if-no-files-found: ignore
+
+      # A run that fails before anything is uploaded gives its daily slot back.
+      # The script keeps the claim if the stage or index shows any platform ID.
+      - name: Release unused publication claim
+        if: failure() && env.PUBLISH_CLAIM != ''
+        env:
+          STAGE_DIR: ${{ steps.stage.outputs.stage_dir }}
+        run: python scripts/claim_histold_publish.py --release "$PUBLISH_CLAIM" "$STAGE_DIR"

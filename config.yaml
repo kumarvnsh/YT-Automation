@@ -139,7 +139,7 @@ editorial:
 # hours, never how many videos a day are made.
 growth:
   posts_per_day: 3                       # fixed daily volume requested by the owner
-  daily_publish_cap: 3                   # Histold Shorts per IST day
+  daily_publish_cap: 6                   # Histold Shorts per IST day (schedule posts 3; headroom for reruns)
   weekly_longform: {weekday: 6, hour_utc: 5}  # Sunday 10:30 IST
   default_hours_utc: [12, 18, 23]         # Europe lunch, Europe evening/US lunch, US evening
   # Target audience: USA + Europe. Excluded 05-10 UTC = midnight-6am US Eastern while

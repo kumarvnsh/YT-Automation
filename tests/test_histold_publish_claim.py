@@ -47,3 +47,39 @@ def test_weekly_research_records_partial_verification_without_blocking(tmp_path)
     assert stage['research'] == unsupported
     research.assert_called_once()
     assert (tmp_path / 'research.json').exists()
+
+
+def test_failed_run_without_uploads_has_no_upload_evidence(tmp_path):
+    from scripts.claim_histold_publish import release, upload_evidence
+    import json
+    (tmp_path / 'state.json').write_text(json.dumps({'done': ['research'], 'meta': {}}))
+    assert upload_evidence('slot-2026-11-19T11', str(tmp_path), []) == []
+    assert upload_evidence('run-1', '', []) == []  # failed before any stage existed
+    claims = [{'key': 'slot-2026-11-19T11', 'day': '2026-11-19', 'week': '2026-W47', 'format': 'short'},
+              {'key': 'run-2', 'day': '2026-11-19', 'week': '2026-W47', 'format': 'short'}]
+    assert [c['key'] for c in release(claims, 'slot-2026-11-19T11')] == ['run-2']
+
+
+@pytest.mark.parametrize('state,index', [
+    ({'youtube_id': 'abc'}, []),
+    ({'meta': {'facebook': '123'}}, []),
+    ({'done': ['research', 'upload']}, []),
+    ({}, [{'publish_claim': 'run-9', 'video_id': 'v1'}]),
+])
+def test_any_sign_of_publishing_keeps_the_claim(tmp_path, state, index):
+    from scripts.claim_histold_publish import upload_evidence
+    import json
+    (tmp_path / 'state.json').write_text(json.dumps(state))
+    assert upload_evidence('run-9', str(tmp_path), index)
+
+
+def test_meta_errors_alone_do_not_count_as_published(tmp_path):
+    from scripts.claim_histold_publish import upload_evidence
+    import json
+    (tmp_path / 'state.json').write_text(json.dumps({'meta': {'facebook_error': 'token expired'}}))
+    assert upload_evidence('run-9', str(tmp_path), []) == []
+
+
+def test_configured_cap_has_headroom_for_reruns():
+    from src.config import load_config
+    assert int(load_config().get('growth.daily_publish_cap')) == 6

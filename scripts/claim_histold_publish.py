@@ -65,11 +65,68 @@ def claim(fmt, key):
     return 0
 
 
+def upload_evidence(key, stage_dir, index):
+    """Reasons to believe a claimed run reached a platform; empty means nothing was published."""
+    reasons = [f"published_index entry {e.get('video_id') or e.get('facebook_id')}" for e in index
+               if e.get('publish_claim') == key]
+    state_path = Path(stage_dir or '') / 'state.json'
+    if stage_dir and state_path.exists():
+        try:
+            state = json.loads(state_path.read_text(encoding='utf-8'))
+        except ValueError:
+            return reasons + ['unreadable stage state']
+        if state.get('youtube_id'):
+            reasons.append(f"youtube_id {state['youtube_id']}")
+        meta = state.get('meta') or {}
+        reasons += [f'{k} {v}' for k, v in meta.items() if v and not k.endswith('_error')]
+        if 'upload' in (state.get('done') or []):
+            reasons.append('upload step completed')
+    return reasons
+
+
+def release(claims, key):
+    return [row for row in claims if row['key'] != key]
+
+
 def git(*args, check=True):
     return subprocess.run(('git', *args), check=check).returncode
 
 
+def release_main(key, stage_dir):
+    """Give a failed run's slot back, but only when nothing reached YouTube/Meta."""
+    index_path = Path('data/published_index.json')
+    index = json.loads(index_path.read_text(encoding='utf-8')) if index_path.exists() else []
+    evidence = upload_evidence(key, stage_dir, index)
+    if evidence:
+        print(f'Keeping claim {key}: the run may have published ({"; ".join(evidence)})')
+        return 0
+    # Read stage state before resetting the checkout (output/ is untracked and survives).
+    git('config', 'user.name', 'github-actions[bot]')
+    git('config', 'user.email', 'github-actions[bot]@users.noreply.github.com')
+    for _ in range(3):
+        git('fetch', 'origin', 'master')
+        git('reset', '--hard', 'origin/master')
+        claims = json.loads(LEDGER.read_text()) if LEDGER.exists() else []
+        index = json.loads(index_path.read_text(encoding='utf-8')) if index_path.exists() else []
+        if upload_evidence(key, None, index):
+            print(f'Keeping claim {key}: a published entry appeared')
+            return 0
+        updated = release(claims, key)
+        if updated == claims:
+            print(f'Claim {key} is not in the ledger; nothing to release')
+            return 0
+        LEDGER.write_text(json.dumps(updated, indent=2) + '\n')
+        git('add', str(LEDGER))
+        git('commit', '-m', f'chore: release unused Histold claim {key} [skip ci]')
+        if git('push', 'origin', 'HEAD:master', check=False) == 0:
+            print(f'Released unused claim {key}')
+            return 0
+    return 1
+
+
 def main():
+    if sys.argv[1:2] == ['--release']:
+        return release_main(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else '')
     fmt, key = sys.argv[1:3]
     if os.environ.get('GITHUB_RUN_ATTEMPT') != '1':
         print('Use a fresh dispatch. Rerunning a publication can repeat an upload.')
