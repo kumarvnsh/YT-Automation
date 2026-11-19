@@ -92,6 +92,10 @@ def _new_stage(cfg: Config, fmt: str, *, no_upload: bool, dry_run: bool,
     if cfg.get('production.enabled', False) and (fmt == 'short' or state['visual_mode'] == 'cinematic_2d'):
         state['pipeline_version'] = 2
         state['production_config'] = copy.deepcopy(cfg.raw)
+        if fmt == 'long':
+            # Give the weekly script the direct response budget instead of letting
+            # adaptive thinking exhaust it before any script JSON is emitted.
+            state['production_config'].setdefault('script', {})['anthropic_effort'] = ''
         state['target_steps'] = ['research', 'script'] if dry_run else list(PRODUCTION_STEPS)
         rotate = cfg.get('editorial.rotate_design', False)
         auto_editorial = fmt == 'short' and cfg.get('editorial.enabled', False) and not topic
