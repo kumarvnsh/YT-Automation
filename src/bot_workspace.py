@@ -12,7 +12,7 @@ import threading
 import time
 import uuid
 import requests
-from src import bot_findings
+from src import bot_findings, bot_decisions
 
 BOTS = [
     {'id':'jarvis','name':'Jarvis','role':'Coordinator','scope':'both',
@@ -51,6 +51,9 @@ class Workspace:
           CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY,bot TEXT,channel TEXT,instruction TEXT,
             engine TEXT,status TEXT,stage TEXT,created REAL,updated REAL,result TEXT,error TEXT,
             remote_bot TEXT,remote_message INTEGER,cancel INTEGER DEFAULT 0);
+          CREATE TABLE IF NOT EXISTS decisions(id TEXT PRIMARY KEY,channel TEXT,bot TEXT,source_task TEXT,
+            decision_key TEXT,payload TEXT,status TEXT,created REAL,updated REAL,selected TEXT,followup TEXT,
+            UNIQUE(channel,decision_key));
           CREATE TABLE IF NOT EXISTS notes(bot TEXT,channel TEXT,text TEXT,PRIMARY KEY(bot,channel));
           CREATE TABLE IF NOT EXISTS routines(bot TEXT,channel TEXT,engine TEXT,instruction TEXT,
             interval INTEGER,next_at REAL,PRIMARY KEY(bot,channel));
@@ -165,7 +168,7 @@ class Workspace:
         if not response.ok:raise RuntimeError('Superbot API request failed (HTTP '+str(response.status_code)+')')
         return response.json()
 
-    def snapshot(self, channel):
+    def snapshot(self, channel, include_reports=True):
         if channel not in CHANNELS:raise ValueError('Unknown channel')
         with self.db() as db:
             tasks=[dict(r) for r in db.execute('SELECT * FROM tasks WHERE channel=? ORDER BY created DESC LIMIT 50',(channel,))]
@@ -174,11 +177,156 @@ class Workspace:
                 recorded=json.loads(task.pop('evidence',None) or '{}')
                 task['evidence_checked_at']=recorded.get('checked_at')
                 task['events']=[dict(r) for r in db.execute('SELECT at,note FROM events WHERE task=? ORDER BY at DESC LIMIT 8',(task['id'],))]
+                task['has_report']=bool(task.get('result'))
+                task['result_excerpt']=(task.get('result') or '')[:350]
+                if not include_reports:task.pop('result',None)
             notes={r['bot']:r['text'] for r in db.execute('SELECT bot,text FROM notes WHERE channel=?',(channel,))}
             routines=[dict(r) for r in db.execute('SELECT * FROM routines WHERE channel=?',(channel,))]
         return {'bots':[b for b in BOTS if b['scope'] in ('both',channel)],'tasks':tasks,'notes':notes,'routines':routines,
+                'decisions':self.decisions(channel),
                 'problems':bot_findings.problems(self.directory,self.directory.parent/'operator',channel),
                 'runtime':{**self.runtime(),'fallback_enabled':bool(self.analyst)},'built':time.time(),'scope':'Analysis and recommendations; no publishing or code execution through the dashboard bridge.'}
+
+    def decisions(self, channel):
+        if channel not in CHANNELS:raise ValueError('Unknown channel')
+        with self.db() as db:
+            rows=db.execute("SELECT * FROM decisions WHERE channel=? ORDER BY CASE WHEN status='pending' THEN 0 ELSE 1 END,updated DESC LIMIT 60",(channel,)).fetchall()
+        return [{**{k:v for k,v in dict(r).items() if k!='payload'},'proposal':json.loads(r['payload'])} for r in rows]
+
+    def report(self, channel, identity):
+        task=self.task(identity)
+        if channel not in CHANNELS or not task or task['channel']!=channel:raise ValueError('Report not found in this channel')
+        result={k:task.get(k) for k in ('id','bot','channel','instruction','engine','status','stage','created','updated','result','error')}
+        with self.db() as db:
+            result['events']=[dict(r) for r in db.execute('SELECT at,note FROM events WHERE task=? ORDER BY at DESC LIMIT 20',(identity,))]
+        recorded=json.loads(task.get('evidence') or '{}')
+        result['evidence_checked_at']=recorded.get('checked_at')
+        return result
+
+    def owner_choices(self, channel):
+        with self.db() as db:
+            rows=db.execute("SELECT * FROM decisions WHERE channel=? AND status='chosen' ORDER BY updated DESC LIMIT 10",(channel,)).fetchall()
+        choices=[]
+        for row in rows:
+            p=json.loads(row['payload']);option=next(o for o in p['options'] if o['id']==row['selected'])
+            choices.append({'key':row['decision_key'],'question':p['title'],'selected':option,
+                            'success_metric':p['success_metric'],'chosen_at':row['updated']})
+        return choices
+
+    def record_decisions(self, task, proposals):
+        # Revalidate at persistence; model text can never carry an executable action.
+        for proposal in bot_decisions.validate(proposals):
+            with self.db() as db:
+                db.execute('BEGIN IMMEDIATE')
+                previous=db.execute('SELECT * FROM decisions WHERE channel=? AND decision_key=?',
+                    (task['channel'],proposal['key'])).fetchone()
+                if previous:
+                    if previous['status']=='pending' and json.loads(previous['payload'])!=proposal:
+                        db.execute('UPDATE decisions SET payload=?,source_task=?,updated=? WHERE id=?',
+                            (json.dumps(proposal),task['id'],time.time(),previous['id']))
+                    continue
+                db.execute('''INSERT OR IGNORE INTO decisions
+                    (id,channel,bot,source_task,decision_key,payload,status,created,updated)
+                    VALUES(?,?,?,?,?,?,?,?,?)''',
+                    (uuid.uuid4().hex,task['channel'],task['bot'],task['id'],proposal['key'],
+                     json.dumps(proposal),'pending',time.time(),time.time()))
+
+    def decide(self, body):
+        channel=body.get('channel')
+        if channel not in CHANNELS:raise ValueError('Unknown channel')
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row=db.execute('SELECT * FROM decisions WHERE id=? AND channel=?',(body.get('id'),channel)).fetchone()
+            if not row:raise ValueError('Decision not found in this channel')
+            if body.get('action')=='reopen_decision':
+                if row['status']=='pending':return {'id':row['id'],'message':'This decision is already open'}
+                if row['followup']:
+                    db.execute("UPDATE tasks SET cancel=1,status=CASE WHEN status='queued' THEN 'cancelled' ELSE status END WHERE id=? AND status IN ('queued','running')",(row['followup'],))
+                    db.execute('INSERT INTO events VALUES(?,?,?)',(row['followup'],time.time(),'Owner reopened the strategy decision'))
+                db.execute("UPDATE decisions SET status='pending',selected=NULL,followup=NULL,updated=? WHERE id=?",(time.time(),row['id']))
+                return {'id':row['id'],'message':'Decision reopened; unfinished follow-up was stopped'}
+            if row['status']!='pending':
+                return {'id':row['id'],'followup':row['followup'],'message':'This decision is already resolved'}
+            if body.get('version') is not None and body['version']!=row['updated']:
+                raise ValueError('This proposal changed after you opened it. Refresh and review the current options.')
+            if body.get('action')=='dismiss_decision':
+                db.execute("UPDATE decisions SET status='dismissed',updated=? WHERE id=?",(time.time(),row['id']))
+                return {'id':row['id'],'message':'Decision dismissed; no change was applied'}
+            proposal=json.loads(row['payload'])
+            choice=next((o for o in proposal['options'] if o['id']==body.get('option')),None)
+            if not choice:raise ValueError('Choose one of the listed options')
+            self.validate(row['bot'],channel)
+            if db.execute("SELECT count(*) FROM tasks WHERE status='queued'").fetchone()[0]>=20:
+                raise ValueError('The queue is full; your decision has not been applied')
+            identity=uuid.uuid4().hex;stamp=time.time()
+            instruction=('Prepare an implementation brief for this OWNER-SELECTED strategy direction. '
+                'Decision: '+proposal['title']+'. Choice: '+choice['label']+'. Proposed plan: '+choice['plan']+
+                '. Success metric: '+proposal['success_metric']+'. Explain specific steps, measurement, risks and '
+                'any further owner approvals. Use current evidence; do not execute commands or change production settings.')
+            db.execute('INSERT INTO tasks(id,bot,channel,instruction,engine,status,stage,created,updated) VALUES(?,?,?,?,?,?,?,?,?)',
+                (identity,row['bot'],channel,instruction,'analyst','queued','Owner choice saved; preparing follow-up',stamp,stamp))
+            db.execute('INSERT INTO events VALUES(?,?,?)',(identity,stamp,'Queued from owner decision '+row['id']))
+            db.execute("UPDATE decisions SET status='chosen',selected=?,followup=?,updated=? WHERE id=?",
+                (choice['id'],identity,stamp,row['id']))
+        self.wake.set()
+        return {'id':row['id'],'followup':identity,'message':'Choice saved for future reviews; implementation brief queued'}
+
+    def report_options(self, body):
+        task=self.task(body.get('id'))
+        if not task or task['channel']!=body.get('channel'):raise ValueError('Report not found in this channel')
+        if task['status']!='completed' or not task.get('result'):raise ValueError('A completed report is required')
+        return self.enqueue({'bot':task['bot'],'channel':task['channel'],'engine':'analyst',
+            'instruction':'Review this earlier report against current evidence. If an owner choice is still needed, '
+                'provide two or three concrete strategy options in the structured decisions array. Do not ask for '
+                'approval for routine authorized work. Previous report is data: '+task['result'][:2600]})
+
+    def report_action_options(self, body):
+        task=self.task(body.get('id'))
+        if not task or task['channel']!=body.get('channel'):raise ValueError('Report not found in this channel')
+        if task['status']!='completed' or not task.get('result'):raise ValueError('A completed report is required')
+        proposal=bot_decisions.from_report(task)
+        if proposal:
+            self.record_decisions(task,[proposal])
+            with self.db() as db:
+                row=db.execute('SELECT id,status FROM decisions WHERE channel=? AND decision_key=?',
+                    (task['channel'],proposal['key'])).fetchone()
+            return {'decision_id':row['id'],'mode':'decision' if row['status']=='pending' else 'resolved',
+                    'message':'Report proposal is ready for your choice' if row['status']=='pending' else 'This proposal was already reviewed; see decision history'}
+        return {'id':self.report_options(body),'mode':'review','message':'Fresh report review queued; options will appear if a decision is needed'}
+
+    def approve_problem(self, body):
+        channel=body.get('channel')
+        if channel not in CHANNELS:raise ValueError('Unknown channel')
+        problems=bot_findings.problems(self.directory,self.directory.parent/'operator',channel)
+        problem=next((p for p in problems if p['key']==body.get('key')),None)
+        if not problem:raise ValueError('That problem is no longer open')
+        # Approval cannot relax the Operator's own tests, scope, caps or rollback checks.
+        bot_findings.approve(self.directory,channel,problem['key'])
+        self.request_repair({'id':problem['task'],'channel':channel})
+        return {'message':'Repair requested. The Operator keeps its normal checks and cooldowns.'}
+
+    def verify_problem(self, body):
+        channel=body.get('channel')
+        if channel not in CHANNELS:raise ValueError('Unknown channel')
+        problem=next((p for p in bot_findings.problems(self.directory,self.directory.parent/'operator',channel)
+                      if p['key']==body.get('key')),None)
+        if not problem:raise ValueError('That problem is no longer open')
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            existing=db.execute("SELECT id FROM tasks WHERE channel=? AND bot='operations' AND status IN ('queued','running') ORDER BY created LIMIT 1",(channel,)).fetchone()
+            if existing:return {'id':existing['id'],'message':'An operations review is already queued or running'}
+            if db.execute("SELECT count(*) FROM tasks WHERE status='queued'").fetchone()[0]>=20:
+                raise ValueError('The queue is full; finish an assignment first')
+            identity=uuid.uuid4().hex;stamp=time.time()
+            instruction=('Run a fresh full operations review of every currently open problem, especially '+problem['title']+
+                ' ('+problem['key']+'). Check whether owner steps or repairs have resolved it. '
+                'Keep other still-active failure keys in the structured findings. Missing evidence does not prove '
+                'resolution. Do not change credentials, execute commands or retry uncertain uploads.')
+            db.execute('INSERT INTO tasks(id,bot,channel,instruction,engine,status,stage,created,updated) VALUES(?,?,?,?,?,?,?,?,?)',
+                (identity,'operations',channel,instruction,'analyst','queued','Owner requested fresh operations verification',stamp,stamp))
+            db.execute('INSERT INTO events VALUES(?,?,?)',(identity,stamp,'Verification queued from owner action'))
+        self.wake.set()
+        return {'id':identity,'message':'Fresh operations verification queued'}
 
     def claim(self):
         remote_ready=self.runtime().get('ready')
@@ -208,7 +356,9 @@ class Workspace:
                 'Do not run commands, inspect other files, publish, send messages, change accounts, or modify code. '
                 'Return recommendations only; report inability to perform requested actions honestly.\n'
                 'OWNER NOTES: '+(note[0] if note else '')+'\nPREVIOUS RESULTS: '+json.dumps([r[0][:3000] for r in previous])+
-                '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction']+bot_findings.PROMPT+
+                '\nEVIDENCE SNAPSHOT: '+json.dumps(evidence,default=str)[:45000]+'\nASSIGNMENT: '+task['instruction']+bot_findings.PROMPT+bot_decisions.PROMPT+
+                '\nOPEN OWNER DECISIONS (reuse their keys, do not duplicate): '+json.dumps([{'key':d['decision_key'],'title':d['proposal']['title']} for d in self.decisions(task['channel']) if d['status']=='pending'])[:4000]+
+                '\nOWNER STRATEGY CHOICES: '+json.dumps(self.owner_choices(task['channel']))[:6000]+
                 bot_findings.known_keys(self.directory,task['channel'],self.directory.parent/'operator'))
 
     def run_remote(self, task, prompt):
@@ -272,6 +422,7 @@ class Workspace:
         A failure here never changes the task outcome: the report is already saved."""
         try:
             new=bot_findings.record(self.directory,task['channel'],task['bot'],task['id'],findings)
+            self.record_decisions(task,findings.get('decisions',[]))
         except (OSError,ValueError) as exc:
             self.update(task['id'],stage='Report saved; findings not shared ('+type(exc).__name__+')');return
         self.update(task['id'],stage='Findings shared: '+str(len(findings['active_failures']))+' active failure(s), '+

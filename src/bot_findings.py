@@ -13,6 +13,8 @@ Consumers:
 """
 from __future__ import annotations
 
+from src import bot_decisions
+
 import copy
 import hashlib
 import json
@@ -88,7 +90,8 @@ def validate(raw) -> dict | None:
         if re.fullmatch(r'[A-Za-z0-9_-]{6,20}', video) and platform in PLATFORMS and (video, platform) not in pairs:
             pairs.add((video, platform))
             suspects.append({'video_id': video, 'platform': platform, 'reason': _clean(item.get('reason'), 200)})
-    return {'active_failures': failures[:MAX_FAILURES], 'suspect_metrics': suspects[:MAX_SUSPECTS]}
+    return {'active_failures': failures[:MAX_FAILURES], 'suspect_metrics': suspects[:MAX_SUSPECTS],
+            'decisions':bot_decisions.validate(raw.get('decisions'))}
 
 
 def load(directory) -> dict:

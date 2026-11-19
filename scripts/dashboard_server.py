@@ -874,9 +874,15 @@ def make_handler(state: State, key: str, icons: dict):
                 return self.send(302, '', headers={'Location': '/login'})
             if path == '/bots':
                 return self.send(200,(ROOT/'scripts/bot_workspace.html').read_text(encoding='utf-8'))
+            if path == '/api/bots/report':
+                try:
+                    report=bot_workspace(state).report(selected_channel,(params.get('id') or [''])[0])
+                    return self.send(200,json.dumps(report),'application/json')
+                except ValueError as exc:
+                    return self.send(400,json.dumps({'error':str(exc)}),'application/json')
             if path == '/api/bots':
                 try:
-                    return self.send(200,json.dumps(bot_workspace(state).snapshot(selected_channel)), 'application/json')
+                    return self.send(200,json.dumps(bot_workspace(state).snapshot(selected_channel,include_reports=False)), 'application/json')
                 except ValueError as exc:
                     return self.send(400,json.dumps({'error':str(exc)}),'application/json')
             if path == '/':
@@ -961,6 +967,10 @@ def make_handler(state: State, key: str, icons: dict):
                     action=body.get('action')
                     if action=='assign':result={'id':workspace.enqueue(body),'message':'Assignment queued'}
                     elif action in ('cancel','retry'):result={'id':workspace.control(body),'message':'Task updated'}
+                    elif action in ('choose_decision','dismiss_decision','reopen_decision'):result=workspace.decide(body)
+                    elif action=='report_options':result=workspace.report_action_options(body)
+                    elif action=='approve_problem':result=workspace.approve_problem(body)
+                    elif action=='verify_problem':result=workspace.verify_problem(body)
                     elif action=='memory':workspace.memory(body);result={'message':'Bot notes saved'}
                     elif action=='routine':workspace.routine(body);result={'message':'Routine updated'}
                     else:raise ValueError('Unknown bot action')
