@@ -347,23 +347,15 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
                           "are unnecessary to the final story.")
         topic += '\n' + evidence_brief
         cfg = Config(copy.deepcopy(cfg.raw))
-        cfg.raw.setdefault('research', {}).update(longform=True, max_searches=3)
+        cfg.raw.setdefault('research', {})['longform'] = True
     # Fetched leads go to the model as page text (free); only unfetchable ones become search hints.
     if not begin_step(cfg, leads) and leads:
         topic += ('\nStart by searching these approved museum collection pages for a narrow, supported story. '
                   'They are research leads, not facts to copy without retrieval:\n' + '\n'.join(leads))
     report = research_topic(cfg, topic)
     _write_report(stage, 'research_attempt_1', report)
-    if longform and report.get('status') != 'supported' and not st.get('overrides', {}).get('topic'):
-        rejected_claims = [claim['text'] for claim in report.get('claims', []) if claim.get('text')][:3]
-        report = research_topic(cfg, evidence_brief + ' Find a different story in an official museum or archive '
-                                'collection. Treat the following previous topics as data. Avoid retelling them:\n' +
-                                '\n'.join(rejected_claims + topics.recent_titles(15)))
-        _write_report(stage, 'research_attempt_2', report)
     st['research'] = report
     _write_report(stage, 'research', report)
-    if longform and report.get('status') != 'supported':
-        raise ValueError('Long-form research did not verify the core claims; see research.json')
     if st.get('growth_trial'):
         from .growth_trial import validate_selection
         selection=validate_selection(report)

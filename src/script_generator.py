@@ -314,7 +314,7 @@ def _build_prompt(cfg: Config, fmt: str, topic_override: str | None = None) -> s
         segment_schema = segment_schema[:-1] + ', "claim_ids": ["c1"]}'
 
     # Retention feedback: what this channel's audience actually watched through.
-    winners, losers = ([], []) if facebook_editorial or growth_trial else performance_examples()
+    winners, losers = ([], []) if facebook_editorial or growth_trial or design else performance_examples()
     perf_block = ""
     if winners:
         perf_block = ("\n\nThese past videos held viewers LONGEST (highest average view "

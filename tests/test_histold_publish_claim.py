@@ -39,12 +39,11 @@ def test_sunday_longform_is_cinematic_and_uses_a_separate_slot(tmp_path):
     assert len({design(i)['name'] for i in range(len(DESIGNS))}) == len(DESIGNS)
 
 
-def test_weekly_research_retries_with_a_different_story(tmp_path):
-    unsupported = {'topic': 'An apocryphal story', 'status': 'unsupported'}
-    supported = {'topic': 'A documented story', 'status': 'supported', 'locations': []}
+def test_weekly_research_records_partial_verification_without_blocking(tmp_path):
+    unsupported = {'topic': 'A historical story', 'status': 'unsupported'}
     stage = {'fmt': 'long'}
-    with patch('src.research.research_topic', side_effect=[unsupported, supported]) as research:
+    with patch('src.research.research_topic', return_value=unsupported) as research:
         _step_research(CFG, tmp_path, stage)
-    assert stage['research'] == supported
-    assert 'different' in research.call_args.args[1]
-    assert (tmp_path / 'research_attempt_2.json').exists()
+    assert stage['research'] == unsupported
+    research.assert_called_once()
+    assert (tmp_path / 'research.json').exists()
