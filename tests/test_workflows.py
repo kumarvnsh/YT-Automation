@@ -13,11 +13,14 @@ class WorkflowRegressionTests(unittest.TestCase):
         data=yaml.safe_load((ROOT/'.github/workflows/publish.yml').read_text())
         step=next(s for s in data['jobs']['publish']['steps'] if s.get('name')=='Install ffmpeg')
         script=step['run']
-        self.assertEqual(step['timeout-minutes'],4)
+        self.assertEqual(step['timeout-minutes'],6)
         self.assertLess(script.index('command -v ffmpeg'),script.index('apt-get'))
         self.assertIn('command -v ffprobe',script)
         self.assertEqual(script.count('timeout 90 sudo apt-get'),2)
         self.assertIn('Acquire::https::Timeout=15',script)
+        # A stalled Ubuntu mirror falls back to a static ffmpeg+ffprobe build.
+        self.assertLess(script.index('apt-get'),script.index('FFmpeg-Builds'))
+        self.assertIn("'*/bin/ffprobe'",script)
 
     def test_histold_script_previews_skip_render_setup_and_do_not_block_real_slots(self):
         import yaml
