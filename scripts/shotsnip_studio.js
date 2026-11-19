@@ -20,6 +20,7 @@ function renderStudio(){
   const jobs=D.manual_jobs||[];
   if(typeof renderQueue==='function')renderQueue();
   if(typeof renderInsights==='function')renderInsights();
+  if(typeof renderLibraryPages==='function')renderLibraryPages();
   let current=jobs.find(j=>j.result?.file),file=current?.result.file,title=current?.result.title;
   if(!file){for(const run of D.runs||[]){const clip=(run.clips||[]).find(c=>c.finished);if(clip){file=clip.file;title=clip.title;break}}}
   const previewKey=JSON.stringify([file,title]);if(previewKey!==studioPreviewSignature){studioPreviewSignature=previewKey;$('latestPreview').innerHTML='<span class="eyebrow">LATEST FINISHED CLIP</span><h2>'+esc(title||'A preview will appear here')+'</h2>'+(file?'<video controls preload="metadata" src="/api/shotsnip/media?file='+encodeURIComponent(file)+'"></video>':'<div class="empty-state"><span class="empty-symbol">▷</span><p>Finished clips appear here.<br>The active run is shown in Live operations.</p></div>')+'<p class="shot-muted">This is saved output, not a live stream preview.</p><a href="#jobs">Open work queue →</a>'}

@@ -123,3 +123,20 @@ def test_latest_clip_is_newest_file_from_any_source_with_honest_publish_state(tm
         newest=clipping.latest_clip(state,[])
         assert newest['file'].endswith('commentary-short.mp4')
         assert newest['published']=={'status':'uploaded','video_id':'yt1','reel_id':'fb1'}
+
+
+def test_clip_library_merges_sources_newest_first_with_publish_state(tmp_path):
+    import os
+    work=tmp_path/'work'
+    auto=work/'scheduler/20261119-205514-x/highlight-finished';auto.mkdir(parents=True)
+    (auto/'commentary-short.mp4').write_bytes(b'0');os.utime(auto/'commentary-short.mp4',(100,100))
+    live=work/'live/20261119-230001-y/clip-1-finished';live.mkdir(parents=True)
+    (live/'finished-short.mp4').write_bytes(b'0');os.utime(live/'finished-short.mp4',(200,200))
+    runs=[{'run':'20261119-230001-y','creator':'Speed','worker':'live','clips':[{'file':'live/20261119-230001-y/clip-1-finished/finished-short.mp4','finished':True,'title':'Live one'}]},
+          {'run':'20261119-205514-x','creator':'Auron','worker':'automatic','clips':[{'file':'scheduler/20261119-205514-x/highlight-finished/commentary-short.mp4','finished':True,'title':'Auto one'}]}]
+    state={'uploads':[{'status':'uploaded','video_id':'yt9','file':str(auto/'commentary-short.mp4')}]}
+    with patch.object(clipping,'CLIP_ROOT',tmp_path):
+        rows=clipping.clip_library(runs,state,[])
+    assert [r['title'] for r in rows]==['Live one','Auto one']
+    assert rows[0]['origin']=='Live chat-spike monitor' and rows[0]['published'] is None
+    assert rows[1]['origin']=='Automatic cycle' and rows[1]['published']['video_id']=='yt9'

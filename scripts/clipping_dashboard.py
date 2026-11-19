@@ -90,7 +90,7 @@ def clip_runs():
         runs.append({'run':path.parent.name,'creator':source.get('channel'),
             'source_url':source.get('url'),'channel_id':None,'clips':clips,
             'chat_messages':read(path.parent/'chat-signals.json',{}).get('messages'),
-            'errors':[],'elapsed_seconds':None})
+            'errors':[],'elapsed_seconds':None,'worker':'automatic'})
     for path in sorted((CLIP_ROOT / 'work/live').glob('*/summary.json'), reverse=True)[:100]:
         summary = read(path, {})
         clips = []
@@ -127,10 +127,56 @@ def clip_runs():
                      'channel_id': summary.get('channel_id'), 'source_url': summary.get('source_url'),
                      'clips': clips, 'chat_messages': summary.get('chat_messages'),
                      'errors': ([summary['error']] if summary.get('error') else []) + summary.get('chat_errors', []),
-                     'elapsed_seconds': summary.get('elapsed_seconds')})
+                     'elapsed_seconds': summary.get('elapsed_seconds'), 'worker': 'live'})
     # Run folders start with YYYYMMDD-HHMMSS: newest first across scheduled and live-monitor runs.
     runs.sort(key=lambda r: r['run'][:15], reverse=True)
     return runs
+
+
+def clip_library(runs, state, manual_jobs, limit=80):
+    """Every finished clip, newest first, with where it came from and what happened to it."""
+    work = (CLIP_ROOT/'work').resolve()
+    uploads = {}
+    for upload in state.get('uploads', []):
+        try:
+            uploads[str(Path(upload['file']).resolve()).lower()] = upload
+        except (KeyError, OSError, TypeError):
+            continue
+    rows = []
+    def add(relative, title, creator, origin, run, source_url=None, publication=None, error=None):
+        path = (work/relative)
+        try:
+            stamp = path.stat().st_mtime
+        except OSError:
+            return
+        upload = uploads.get(str(path.resolve()).lower())
+        if upload:
+            publication = {'status': upload.get('status'), 'video_id': upload.get('video_id'),
+                           'reel_id': (upload.get('facebook') or {}).get('reel_id')}
+        metadata = read(path.parent/'metadata.json', {})
+        rows.append({'file': relative, 'title': title or metadata.get('title') or 'Finished clip', 'creator': creator,
+                     'origin': origin, 'run': run, 'source_url': source_url,
+                     'at': datetime.fromtimestamp(stamp, timezone.utc).isoformat(),
+                     'intro': (metadata.get('commentary') or {}).get('script', {}).get('hook'),
+                     'published': publication, 'error': error})
+    for run in runs:
+        origin = 'Automatic cycle' if run.get('worker') == 'automatic' else 'Live chat-spike monitor'
+        for clip in run.get('clips', []):
+            if clip.get('finished'):
+                add(clip['file'], clip.get('title'), run.get('creator'), origin, run['run'], run.get('source_url'),
+                    error=clip.get('finishing_error'))
+    seen = {row['file'] for row in rows}
+    for job in manual_jobs:
+        result = job.get('result') or {}
+        if result.get('file') and result['file'] not in seen:
+            publication = result.get('publication') or {}
+            published = ({'status': 'uploaded', 'video_id': publication.get('youtube_id'),
+                          'reel_id': (publication.get('facebook') or {}).get('reel_id')}
+                         if publication.get('youtube_id') or (publication.get('facebook') or {}).get('reel_id') else None)
+            add(result['file'], result.get('title'), (result.get('source') or {}).get('channel'), 'Manual job',
+                job.get('id'), (job.get('options') or {}).get('url'), published)
+    rows.sort(key=lambda row: row['at'], reverse=True)
+    return rows[:limit]
 
 
 def latest_clip(state, manual_jobs):
@@ -343,12 +389,13 @@ def collect():
                 'manual_jobs':(manual := manual_snapshot()),
                 'facebook_analytics':read(CLIP_ROOT/'work/dashboard/facebook-analytics.json',{}),
                 'age_performance':read(CLIP_ROOT/'work/dashboard/age-performance.json',{}),
-                'schedule':{**schedule,'active_game':game},'runs':clip_runs(),
+                'schedule':{**schedule,'active_game':game},'runs':(runs := clip_runs()),
                 'policy':policy(), 'agent':read(CLIP_ROOT / 'work/dashboard/agent-review.json', {}),
                 'job':dict(JOB), 'service':read(CLIP_ROOT / 'work/dashboard/worker.json', {'status':'not_started'}),
                 'scheduler':(scheduler := read(CLIP_ROOT / 'work/scheduler/state.json', {})),
                 'auto_history':auto_history(scheduler),
                 'latest_clip':latest_clip(scheduler, manual),
+                'clip_library':clip_library(runs, scheduler, manual),
                 'run_now_requested':(CLIP_ROOT/'work/dashboard/run-now').exists(),
                 'scheduler_service':read(CLIP_ROOT/'work/dashboard/dispatcher.json',{}),
                 'scheduler_config':read(CLIP_ROOT/'scheduler.json',{}),
@@ -564,7 +611,8 @@ def render(data, page):
     document=document.replace('__STUDIO_HTML__',(folder/'shotsnip_studio.html').read_text(encoding='utf-8'))
     document=document.replace('__STUDIO_JS__',(folder/'shotsnip_studio.js').read_text(encoding='utf-8')+'\n'
                               +(folder/'shotsnip_queue.js').read_text(encoding='utf-8')+'\n'
-                              +(folder/'shotsnip_insights.js').read_text(encoding='utf-8'))
+                              +(folder/'shotsnip_insights.js').read_text(encoding='utf-8')+'\n'
+                              +(folder/'shotsnip_library.js').read_text(encoding='utf-8'))
     return document.replace('__STYLES__', styles).replace('__DATA__', json.dumps(data, default=str).replace('<','\\u003c'))
 
 
