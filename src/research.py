@@ -131,7 +131,10 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         ('Research one tightly focused three-minute history episode, using web search now: '
          if cfg.get('research.longform') else 'Research only the narrow core of this topic for ONE short video, using web search now: ') + topic +
         '\nUse authoritative archives, government records, museums, and original records. ' +
-        ('Find 6-10 directly supported claims across the opening twist, historical context, cause and consequence. '
+        ('Find 5-9 directly cited claims across the opening twist, historical context, cause and consequence. '
+         'Review the evidence before locking in the angle. If an appealing premise fails, choose a distinct angle '
+         'fully supported by the evidence. For an artifact, institution or decision story, a place mentioned in '
+         'a date or label alone does not require a map. Include such a place with requires_map:false. '
          if cfg.get('research.longform') else
          'Find only 3-6 directly supported claims sufficient to explain the surprising fact, context and payoff. ') +
         'For origins, inventions, daily life and misconceptions, do not force a disaster or single historical cause. '
