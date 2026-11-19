@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19T07:00:23.627110+00:00",
+  "updated": "2026-11-19T11:00:29.866621+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Where Did the Dutch Tulip Really Come From?",
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 116
+      "measured_videos": 117
     },
     "facebook": {
       "winners": [
@@ -28,8 +28,8 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 118,
-          "mean_like_rate": 0.003737
+          "measured_videos": 119,
+          "mean_like_rate": 0.003705
         },
         "fb": {
           "measured_videos": 111,
@@ -50,69 +50,69 @@
       }
     }
   },
-  "videos_scored": 116,
+  "videos_scored": 117,
   "weights": {
     "series": {
-      "school_myths": 0.0681,
-      "mistakes": 0.0672,
-      "almost": 0.0681,
+      "school_myths": 0.0673,
+      "mistakes": 0.0673,
+      "almost": 0.0682,
       "erased": 0.0717,
-      "unsolved": 0.0695,
+      "unsolved": 0.0696,
       "weird_dark": 0.0717,
       "photo_story": 0.0717,
-      "spy_gadgets": 0.0753,
-      "animals": 0.0753,
-      "secretly_deadly": 0.0753,
-      "worst_jobs": 0.0753,
+      "spy_gadgets": 0.0754,
+      "animals": 0.0754,
+      "secretly_deadly": 0.0754,
+      "worst_jobs": 0.0754,
       "forgotten_rules": 0.0717,
-      "behind_legend": 0.0695,
-      "found_by_accident": 0.0695
+      "behind_legend": 0.0696,
+      "found_by_accident": 0.0696
     },
     "region": {
-      "india": 0.1126,
-      "africa": 0.1091,
-      "japan": 0.1145,
-      "china": 0.1111,
-      "russia": 0.1023,
-      "middle_east": 0.1161,
-      "europe": 0.1256,
-      "americas": 0.0943,
-      "asia_pacific": 0.1145
+      "india": 0.1114,
+      "africa": 0.1092,
+      "japan": 0.1146,
+      "china": 0.1113,
+      "russia": 0.1025,
+      "middle_east": 0.1162,
+      "europe": 0.1257,
+      "americas": 0.0944,
+      "asia_pacific": 0.1146
     },
     "duration_variant": {
-      "concise": 0.4935,
-      "story": 0.5065
+      "concise": 0.4944,
+      "story": 0.5056
     }
   },
   "stats": {
     "series": {
       "school_myths": {
-        "n": 3,
-        "mean_score": 0.431
+        "n": 4,
+        "mean_score": 0.432
       },
       "mistakes": {
         "n": 4,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "spy_gadgets": {
         "n": 0,
@@ -132,21 +132,21 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.432
       }
     },
     "region": {
       "india": {
-        "n": 13,
-        "mean_score": 0.508
+        "n": 14,
+        "mean_score": 0.503
       },
       "africa": {
         "n": 15,
@@ -154,7 +154,7 @@
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.515
+        "mean_score": 0.516
       },
       "china": {
         "n": 14,
@@ -170,25 +170,25 @@
       },
       "europe": {
         "n": 12,
-        "mean_score": 0.557
+        "mean_score": 0.558
       },
       "americas": {
         "n": 13,
-        "mean_score": 0.431
+        "mean_score": 0.432
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.515
+        "mean_score": 0.516
       }
     },
     "duration_variant": {
       "concise": {
         "n": 61,
-        "mean_score": 0.495
+        "mean_score": 0.496
       },
       "story": {
-        "n": 55,
-        "mean_score": 0.505
+        "n": 56,
+        "mean_score": 0.504
       }
     }
   },
@@ -200,49 +200,61 @@
     "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
   ],
   "losers": [
-    "Was Zimbabwe's Stone City Really Built by Outsiders?",
     "Why Were Japan's Masterpieces Once Used as Packing Paper?",
     "Why Did One Drink Deserve Its Own Book in Tang China?",
+    "Why Did British Lawmakers Try to Ban a Flowery Indian Cotton?",
     "Minnesota's Lone Surviving Agency Building Held Food, and a Broken Promise",
     "Were the Pyramids of Giza Really Built by Enslaved People?"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
     {
+      "video_id": "SfvGGm6eaok",
+      "platform": "yt",
+      "views": 6,
+      "reason": "Exactly 0.0% viewing percentage despite recorded views."
+    },
+    {
+      "video_id": "sMUpVI79w2M",
+      "platform": "yt",
+      "views": 4,
+      "reason": "Exactly 0.0% viewing percentage despite recorded views."
+    },
+    {
+      "video_id": "2aRdkpMSsVY",
+      "platform": "yt",
+      "views": 3,
+      "reason": "Exactly 0.0% viewing percentage despite recorded views."
+    },
+    {
       "video_id": "ZE9tGMBB7Fg",
       "platform": "yt",
       "views": 0,
-      "reason": "0 YouTube views at ~11h across consecutive exports while the same post has 225 FB plays; confirm it is public"
-    },
-    {
-      "video_id": "lCQJdMRx814",
-      "platform": "fb",
-      "views": 0,
-      "reason": "0 FB plays while Instagram shows 124 views; unverified zero"
-    },
-    {
-      "video_id": "3itSrNpadaE",
-      "platform": "yt",
-      "views": 10,
-      "reason": "Viewing percentage 0.0 with 10 views; likely missing value stored as zero"
+      "reason": "Viewing percentage missing in the recent export gap."
     },
     {
       "video_id": "A8P0T0TA-5I",
       "platform": "yt",
-      "views": 3,
-      "reason": "Viewing percentage is missing in the recent export gap."
+      "views": 4,
+      "reason": "Viewing percentage missing in the recent export gap."
     },
     {
       "video_id": "Tc6Wlh01qas",
       "platform": "yt",
       "views": 5,
-      "reason": "Viewing percentage is missing in the recent export gap."
+      "reason": "Viewing percentage missing in the recent export gap."
     },
     {
       "video_id": "jCPbacI0r5Q",
       "platform": "yt",
       "views": 5,
-      "reason": "Viewing percentage is missing in the recent export gap."
+      "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "lCQJdMRx814",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 Facebook plays while Instagram shows 124 views; unverified"
     },
     {
       "video_id": "-cPiNs-0pLA",
@@ -267,24 +279,6 @@
       "platform": "fb",
       "views": 2,
       "reason": "Two Facebook plays alongside 139 Instagram views fits the older near-zero cluster."
-    },
-    {
-      "video_id": "SfvGGm6eaok",
-      "platform": "yt",
-      "views": 5,
-      "reason": "0.0% viewed despite 5 YT views"
-    },
-    {
-      "video_id": "sMUpVI79w2M",
-      "platform": "yt",
-      "views": 4,
-      "reason": "0.0% viewed despite 4 YT views"
-    },
-    {
-      "video_id": "2aRdkpMSsVY",
-      "platform": "yt",
-      "views": 3,
-      "reason": "Viewed percentage remained unavailable at nearly 50 hours despite three recorded views."
     },
     {
       "video_id": "N12YUvX0VQE",
