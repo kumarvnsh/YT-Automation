@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19T11:00:29.866621+00:00",
+  "updated": "2026-11-19T15:00:26.417512+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Where Did the Dutch Tulip Really Come From?",
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 117
+      "measured_videos": 118
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 112
+      "measured_videos": 113
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 119,
-          "mean_like_rate": 0.003705
+          "measured_videos": 120,
+          "mean_like_rate": 0.003674
         },
         "fb": {
-          "measured_videos": 111,
-          "mean_like_rate": 0.001809
+          "measured_videos": 112,
+          "mean_like_rate": 0.001793
         },
         "ig": {
-          "measured_videos": 124,
-          "mean_like_rate": 0.137526
+          "measured_videos": 125,
+          "mean_like_rate": 0.138026
         }
       }
     },
@@ -50,38 +50,38 @@
       }
     }
   },
-  "videos_scored": 117,
+  "videos_scored": 118,
   "weights": {
     "series": {
-      "school_myths": 0.0673,
-      "mistakes": 0.0673,
-      "almost": 0.0682,
-      "erased": 0.0717,
-      "unsolved": 0.0696,
-      "weird_dark": 0.0717,
-      "photo_story": 0.0717,
-      "spy_gadgets": 0.0754,
-      "animals": 0.0754,
-      "secretly_deadly": 0.0754,
-      "worst_jobs": 0.0754,
-      "forgotten_rules": 0.0717,
-      "behind_legend": 0.0696,
-      "found_by_accident": 0.0696
+      "school_myths": 0.0675,
+      "mistakes": 0.0675,
+      "almost": 0.0685,
+      "erased": 0.072,
+      "unsolved": 0.0699,
+      "weird_dark": 0.072,
+      "photo_story": 0.072,
+      "spy_gadgets": 0.0756,
+      "animals": 0.0756,
+      "secretly_deadly": 0.072,
+      "worst_jobs": 0.0756,
+      "forgotten_rules": 0.072,
+      "behind_legend": 0.0699,
+      "found_by_accident": 0.0699
     },
     "region": {
-      "india": 0.1114,
-      "africa": 0.1092,
-      "japan": 0.1146,
-      "china": 0.1113,
-      "russia": 0.1025,
-      "middle_east": 0.1162,
-      "europe": 0.1257,
-      "americas": 0.0944,
-      "asia_pacific": 0.1146
+      "india": 0.1116,
+      "africa": 0.1094,
+      "japan": 0.1132,
+      "china": 0.1115,
+      "russia": 0.1027,
+      "middle_east": 0.1164,
+      "europe": 0.1259,
+      "americas": 0.0946,
+      "asia_pacific": 0.1148
     },
     "duration_variant": {
-      "concise": 0.4944,
-      "story": 0.5056
+      "concise": 0.4937,
+      "story": 0.5063
     }
   },
   "stats": {
@@ -123,8 +123,8 @@
         "mean_score": null
       },
       "secretly_deadly": {
-        "n": 0,
-        "mean_score": null
+        "n": 1,
+        "mean_score": 0.432
       },
       "worst_jobs": {
         "n": 0,
@@ -150,27 +150,27 @@
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.494
+        "mean_score": 0.495
       },
       "japan": {
-        "n": 12,
-        "mean_score": 0.516
+        "n": 13,
+        "mean_score": 0.51
       },
       "china": {
         "n": 14,
-        "mean_score": 0.502
+        "mean_score": 0.503
       },
       "russia": {
         "n": 13,
-        "mean_score": 0.466
+        "mean_score": 0.467
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.522
+        "mean_score": 0.523
       },
       "europe": {
         "n": 12,
-        "mean_score": 0.558
+        "mean_score": 0.559
       },
       "americas": {
         "n": 13,
@@ -183,12 +183,12 @@
     },
     "duration_variant": {
       "concise": {
-        "n": 61,
-        "mean_score": 0.496
+        "n": 62,
+        "mean_score": 0.495
       },
       "story": {
         "n": 56,
-        "mean_score": 0.504
+        "mean_score": 0.505
       }
     }
   },
@@ -200,11 +200,11 @@
     "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
   ],
   "losers": [
-    "Why Were Japan's Masterpieces Once Used as Packing Paper?",
     "Why Did One Drink Deserve Its Own Book in Tang China?",
     "Why Did British Lawmakers Try to Ban a Flowery Indian Cotton?",
     "Minnesota's Lone Surviving Agency Building Held Food, and a Broken Promise",
-    "Were the Pyramids of Giza Really Built by Enslaved People?"
+    "Were the Pyramids of Giza Really Built by Enslaved People?",
+    "Edo Japan's Prized Pale Face Powder Hid a Poison"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -212,19 +212,19 @@
       "video_id": "SfvGGm6eaok",
       "platform": "yt",
       "views": 6,
-      "reason": "Exactly 0.0% viewing percentage despite recorded views."
+      "reason": "Viewing percentage is 0.0% with 6 recorded views."
     },
     {
       "video_id": "sMUpVI79w2M",
       "platform": "yt",
       "views": 4,
-      "reason": "Exactly 0.0% viewing percentage despite recorded views."
+      "reason": "Viewing percentage is 0.0% with 4 recorded views."
     },
     {
       "video_id": "2aRdkpMSsVY",
       "platform": "yt",
       "views": 3,
-      "reason": "Exactly 0.0% viewing percentage despite recorded views."
+      "reason": "Viewing percentage is 0.0% with 3 recorded views."
     },
     {
       "video_id": "ZE9tGMBB7Fg",
