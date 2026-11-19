@@ -3328,5 +3328,14 @@
     "slot": "morning",
     "date": "2026-11-18",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261119_044543_528622_long",
+    "title": "Why Did Abraham Lincoln's Son Keep Standing Near Gunfire?",
+    "fingerprint": "abraham_did_gunfire_keep_lincoln_near_s_son_standing",
+    "format": "long",
+    "slot": "morning",
+    "date": "2026-11-19",
+    "status": "reserved"
   }
 ]
