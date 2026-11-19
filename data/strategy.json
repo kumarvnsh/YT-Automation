@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19T15:00:26.417512+00:00",
+  "updated": "2026-11-19T19:00:23.443176+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Where Did the Dutch Tulip Really Come From?",
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 118
+      "measured_videos": 117
     },
     "facebook": {
       "winners": [
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 120,
-          "mean_like_rate": 0.003674
+          "measured_videos": 119,
+          "mean_like_rate": 0.003705
         },
         "fb": {
           "measured_videos": 112,
-          "mean_like_rate": 0.001793
+          "mean_like_rate": 0.001833
         },
         "ig": {
           "measured_videos": 125,
-          "mean_like_rate": 0.138026
+          "mean_like_rate": 0.137349
         }
       }
     },
@@ -50,7 +50,7 @@
       }
     }
   },
-  "videos_scored": 118,
+  "videos_scored": 117,
   "weights": {
     "series": {
       "school_myths": 0.0675,
@@ -69,19 +69,19 @@
       "found_by_accident": 0.0699
     },
     "region": {
-      "india": 0.1116,
-      "africa": 0.1094,
-      "japan": 0.1132,
-      "china": 0.1115,
-      "russia": 0.1027,
-      "middle_east": 0.1164,
-      "europe": 0.1259,
-      "americas": 0.0946,
-      "asia_pacific": 0.1148
+      "india": 0.1114,
+      "africa": 0.1092,
+      "japan": 0.1146,
+      "china": 0.1113,
+      "russia": 0.1025,
+      "middle_east": 0.1162,
+      "europe": 0.1257,
+      "americas": 0.0944,
+      "asia_pacific": 0.1146
     },
     "duration_variant": {
-      "concise": 0.4937,
-      "story": 0.5063
+      "concise": 0.4944,
+      "story": 0.5056
     }
   },
   "stats": {
@@ -150,27 +150,27 @@
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.495
+        "mean_score": 0.494
       },
       "japan": {
-        "n": 13,
-        "mean_score": 0.51
+        "n": 12,
+        "mean_score": 0.516
       },
       "china": {
         "n": 14,
-        "mean_score": 0.503
+        "mean_score": 0.502
       },
       "russia": {
         "n": 13,
-        "mean_score": 0.467
+        "mean_score": 0.466
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.523
+        "mean_score": 0.522
       },
       "europe": {
         "n": 12,
-        "mean_score": 0.559
+        "mean_score": 0.558
       },
       "americas": {
         "n": 13,
@@ -183,12 +183,12 @@
     },
     "duration_variant": {
       "concise": {
-        "n": 62,
-        "mean_score": 0.495
+        "n": 61,
+        "mean_score": 0.496
       },
       "story": {
         "n": 56,
-        "mean_score": 0.505
+        "mean_score": 0.504
       }
     }
   },
@@ -241,7 +241,7 @@
     {
       "video_id": "Tc6Wlh01qas",
       "platform": "yt",
-      "views": 5,
+      "views": 7,
       "reason": "Viewing percentage missing in the recent export gap."
     },
     {

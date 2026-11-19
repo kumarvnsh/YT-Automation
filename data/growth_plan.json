@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T22:00:11.518144+00:00",
+  "updated": "2026-11-19T19:00:23.678412+00:00",
   "status": "pinned by you until 2026-12-01T05:08 UTC",
   "hours_utc": [
     11,
@@ -40,83 +40,117 @@
   "hour_stats": {
     "04": {
       "n": 26,
-      "mean": 0.418,
-      "shrunk": 0.426
+      "mean": 0.539,
+      "shrunk": 0.535
     },
     "07": {
       "n": 15,
-      "mean": 0.567,
-      "shrunk": 0.556
+      "mean": 0.477,
+      "shrunk": 0.481
+    },
+    "11": {
+      "n": 1,
+      "mean": 0.372,
+      "shrunk": 0.468
     },
     "12": {
       "n": 16,
-      "mean": 0.471,
-      "shrunk": 0.476
+      "mean": 0.516,
+      "shrunk": 0.513
     },
     "16": {
-      "n": 21,
-      "mean": 0.442,
-      "shrunk": 0.449
+      "n": 20,
+      "mean": 0.478,
+      "shrunk": 0.481
     },
     "17": {
       "n": 1,
-      "mean": 0.298,
-      "shrunk": 0.449
+      "mean": 0.372,
+      "shrunk": 0.468
     },
     "18": {
       "n": 13,
-      "mean": 0.693,
-      "shrunk": 0.657
+      "mean": 0.496,
+      "shrunk": 0.496
+    },
+    "23": {
+      "n": 1,
+      "mean": 0.372,
+      "shrunk": 0.468
     }
   },
   "masked_metrics": [
     {
-      "video_id": "g4aOe5vcitA",
-      "platform": "fb",
-      "views": 2,
-      "reason": "2 FB views vs 137 IG"
-    },
-    {
-      "video_id": "lCQJdMRx814",
-      "platform": "fb",
-      "views": 0,
-      "reason": "0 FB views vs 124 IG"
-    },
-    {
-      "video_id": "SfvGGm6eaok",
-      "platform": "fb",
-      "views": 2,
-      "reason": "2 FB views vs 139 IG"
-    },
-    {
-      "video_id": "-cPiNs-0pLA",
-      "platform": "fb",
-      "views": 3,
-      "reason": "3 FB views vs 129 IG"
-    },
-    {
-      "video_id": "yUDJaAj3Zvg",
-      "platform": "fb",
-      "views": 3,
-      "reason": "3 FB views vs 107 IG and 40 YT"
-    },
-    {
       "video_id": "SfvGGm6eaok",
       "platform": "yt",
-      "views": 5,
-      "reason": "0.0% viewed despite 5 YT views"
+      "views": 6,
+      "reason": "Viewing percentage is 0.0% with 6 recorded views."
     },
     {
       "video_id": "sMUpVI79w2M",
       "platform": "yt",
       "views": 4,
-      "reason": "0.0% viewed despite 4 YT views"
+      "reason": "Viewing percentage is 0.0% with 4 recorded views."
     },
     {
       "video_id": "2aRdkpMSsVY",
       "platform": "yt",
       "views": 3,
-      "reason": "Viewed percentage remained unavailable at nearly 50 hours despite three recorded views."
+      "reason": "Viewing percentage is 0.0% with 3 recorded views."
+    },
+    {
+      "video_id": "ZE9tGMBB7Fg",
+      "platform": "yt",
+      "views": 0,
+      "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "A8P0T0TA-5I",
+      "platform": "yt",
+      "views": 4,
+      "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "Tc6Wlh01qas",
+      "platform": "yt",
+      "views": 7,
+      "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "jCPbacI0r5Q",
+      "platform": "yt",
+      "views": 5,
+      "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "lCQJdMRx814",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 Facebook plays while Instagram shows 124 views; unverified"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 3,
+      "reason": "Three exported plays in a near-simultaneous cluster of two-to-three-play counts, with 129 Instagram views."
+    },
+    {
+      "video_id": "yUDJaAj3Zvg",
+      "platform": "fb",
+      "views": 3,
+      "reason": "Three exported plays in the same near-simultaneous cluster, with 107 Instagram views."
+    },
+    {
+      "video_id": "g4aOe5vcitA",
+      "platform": "fb",
+      "views": 2,
+      "reason": "Two Facebook plays alongside 137 Instagram views fits the older near-zero cluster."
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "Two Facebook plays alongside 139 Instagram views fits the older near-zero cluster."
     },
     {
       "video_id": "N12YUvX0VQE",
