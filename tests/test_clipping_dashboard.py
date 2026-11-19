@@ -63,3 +63,63 @@ def test_no_source_learning_from_unlinked_uploads_and_no_compounding():
         assert clipping.policy()['source_priorities']=={}
         clipping.review()
         assert clipping.policy()['source_priorities']=={}
+
+
+def test_queue_plan_controls_write_only_the_bounded_settings(tmp_path):
+    with patch.object(clipping,'CLIP_ROOT',tmp_path):
+        (tmp_path/'scheduler.json').write_text(json.dumps({'enabled':True,'scan_minutes':180,'post_minutes':180,
+            'commentary':{'enabled':True,'mode':'intro','voice':'chatterbox:0.7:0.4'}}))
+        clipping.action({'name':'set_cadence','minutes':360})
+        clipping.action({'name':'set_commentary','mode':'off'})
+        config=json.loads((tmp_path/'scheduler.json').read_text())
+        assert config['scan_minutes']==config['post_minutes']==360
+        assert config['commentary']=={'enabled':False,'mode':'intro','voice':'chatterbox:0.7:0.4'}
+        clipping.action({'name':'set_commentary','mode':'full'})
+        assert json.loads((tmp_path/'scheduler.json').read_text())['commentary']['mode']=='full'
+        for bad in ({'name':'set_cadence','minutes':5},{'name':'set_cadence','minutes':'60'},{'name':'set_commentary','mode':'loud'}):
+            with pytest.raises(ValueError):clipping.action(bad)
+
+
+def test_run_now_needs_auto_on_and_no_held_upload(tmp_path):
+    with patch.object(clipping,'CLIP_ROOT',tmp_path):
+        (tmp_path/'scheduler.json').write_text(json.dumps({'enabled':False}))
+        with pytest.raises(ValueError,match='Resume'):clipping.action({'name':'run_auto_now'})
+        (tmp_path/'scheduler.json').write_text(json.dumps({'enabled':True}))
+        (tmp_path/'work/scheduler').mkdir(parents=True)
+        (tmp_path/'work/scheduler/state.json').write_text(json.dumps({'uploads':[{'status':'uncertain'}]}))
+        with pytest.raises(ValueError,match='held'):clipping.action({'name':'run_auto_now'})
+        (tmp_path/'work/scheduler/state.json').write_text(json.dumps({'uploads':[{'status':'uploaded'}]}))
+        clipping.action({'name':'run_auto_now'})
+        assert (tmp_path/'work/dashboard/run-now').exists()
+        clipping.action({'name':'cancel_run_now'})
+        assert not (tmp_path/'work/dashboard/run-now').exists()
+
+
+def test_auto_history_uses_finished_titles_newest_first(tmp_path):
+    folder=tmp_path/'run/highlight-finished';folder.mkdir(parents=True)
+    (folder/'metadata.json').write_text(json.dumps({'title':'Own title','commentary':{'script':{'hook':'Wait, what?'}}}))
+    state={'uploads':[{'status':'uploaded','video_id':'old','file':str(folder/'x.mp4'),'source':{'channel':'A'}},
+                      {'status':'uploaded','video_id':'new','file':str(folder/'commentary-short.mp4'),'source':{'channel':'B'},
+                       'facebook':{'status':'published','reel_id':'9'}}]}
+    rows=clipping.auto_history(state)
+    assert [r['video_id'] for r in rows]==['new','old']
+    assert rows[0]['title']=='Own title' and rows[0]['intro']=='Wait, what?' and rows[0]['facebook']['reel_id']=='9'
+
+
+def test_latest_clip_is_newest_file_from_any_source_with_honest_publish_state(tmp_path):
+    import os
+    work=tmp_path/'work'
+    sched=work/'scheduler/20261119-205514-x/highlight-finished';sched.mkdir(parents=True)
+    (sched/'finished-short.mp4').write_bytes(b'0');(sched/'commentary-short.mp4').write_bytes(b'0')
+    (sched/'metadata.json').write_text(json.dumps({'title':'Scheduled one'}))
+    live=work/'live/20261119-230001-y/clip-chat-spike-1-finished';live.mkdir(parents=True)
+    (live/'finished-short.mp4').write_bytes(b'0');(live/'metadata.json').write_text(json.dumps({'title':'Live one'}))
+    os.utime(sched/'commentary-short.mp4',(1000,1000));os.utime(sched/'finished-short.mp4',(900,900));os.utime(live/'finished-short.mp4',(2000,2000))
+    state={'uploads':[{'status':'uploaded','video_id':'yt1','file':str(sched/'commentary-short.mp4'),'facebook':{'reel_id':'fb1'}}]}
+    with patch.object(clipping,'CLIP_ROOT',tmp_path):
+        newest=clipping.latest_clip(state,[])
+        assert newest['title']=='Live one' and newest['origin']=='Live chat-spike monitor' and newest['published'] is None
+        os.utime(live/'finished-short.mp4',(10,10))
+        newest=clipping.latest_clip(state,[])
+        assert newest['file'].endswith('commentary-short.mp4')
+        assert newest['published']=={'status':'uploaded','video_id':'yt1','reel_id':'fb1'}

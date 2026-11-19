@@ -21,4 +21,57 @@
     <aside class="panel studio-guide"><span class="eyebrow">HOW IT WORKS</span><h2>You choose the moment.</h2><ol><li><b>Find it</b><p>Use automatic discovery, a live URL, a replay, or exact moments.</p></li><li><b>Finish it</b><p>We cut, caption and apply your large-gameplay template.</p></li><li><b>Review or release</b><p>Watch the preview in Work queue. Publish to your selected platforms when ready.</p></li></ol><div class="guide-note"><b>The automatic flow stays on.</b><p>Manual jobs take the next free slot. Manual publications share the configured posting window and reset its timer; previews do not.</p></div><p class="shot-muted">Replay chat and live DVR are best effort. When a source cannot provide the requested interval, the job shows a clear failure instead of publishing a different moment.</p></aside>
   </div>
 </div>
-<div id="jobs" class="shot-section"><section class="panel"><div class="section-heading"><div><span class="eyebrow">WORK QUEUE</span><h2>From source to published.</h2></div><a class="button-link" href="#studio">Create a clip</a></div><p>Queued manual jobs run before the next automatic job. Running recordings finish their current stage before stopping.</p><div id="jobQueue"></div></section></div>
+<div id="jobs" class="shot-section">
+  <div class="q-hero">
+    <div><span class="eyebrow">SHOTSNIP / WORK QUEUE</span><h2>What's running, what's next.</h2><p>One worker handles one clip at a time. Manual jobs go first, then the automatic plan picks up.</p></div>
+    <div class="control-actions"><button id="qRunNow" class="primary" type="button">Run a cycle now</button><a class="button-link" href="#studio">Create a clip</a></div>
+  </div>
+  <div id="qBlockers" class="q-blockers" role="status" aria-live="polite"></div>
+  <div class="q-layout">
+    <div class="q-main">
+      <section class="panel q-now" id="qNow" aria-live="polite"></section>
+      <section class="panel">
+        <div class="section-heading"><div><span class="eyebrow">UP NEXT</span><h2>The plan for the next 24 hours</h2></div><span class="shot-muted" id="qPlanNote"></span></div>
+        <ol id="qPlan" class="q-plan"></ol>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><span class="eyebrow">MANUAL JOBS</span><h2>Your requests</h2></div><div class="q-tabs" id="qTabs" role="tablist" aria-label="Filter manual jobs"></div></div>
+        <div id="jobQueue"></div>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><span class="eyebrow">HISTORY</span><h2>Recent automatic uploads</h2></div><a class="button-link" href="#performance">Performance →</a></div>
+        <div id="qHistory" class="q-history"></div>
+      </section>
+    </div>
+    <aside class="q-side">
+      <section class="panel q-controls" aria-labelledby="qControlsHeading">
+        <span class="eyebrow">QUEUE PLAN</span><h2 id="qControlsHeading">Controls</h2>
+        <label class="learning-switch"><input id="qAuto" type="checkbox"><span>Automatic clipping</span></label>
+        <p class="shot-muted" id="qAutoNote"></p>
+        <label class="q-label" for="qCadence">Make a new clip every</label>
+        <select id="qCadence">
+          <option value="60">1 hour</option><option value="120">2 hours</option><option value="180">3 hours</option>
+          <option value="240">4 hours</option><option value="360">6 hours</option><option value="480">8 hours</option>
+          <option value="720">12 hours</option><option value="1440">24 hours</option>
+        </select>
+        <p class="shot-muted" id="qCadenceNote"></p>
+        <fieldset class="q-segment"><legend class="q-label">Spoken intro on automatic clips</legend>
+          <label><input type="radio" name="qVoice" value="off"><span>Off</span></label>
+          <label><input type="radio" name="qVoice" value="intro"><span>Intro line</span></label>
+          <label><input type="radio" name="qVoice" value="full"><span>Full breakdown</span></label>
+        </fieldset>
+        <p class="shot-muted" id="qVoiceNote"></p>
+        <button id="qStop" type="button" class="q-wide">Stop after this stage</button>
+      </section>
+      <section class="panel">
+        <span class="eyebrow">HOW TO READ IT</span><h2>Queue rules</h2>
+        <ol class="q-rules">
+          <li><b>One at a time.</b> A running job finishes its current stage before anything else starts.</li>
+          <li><b>Manual first.</b> Waiting manual jobs run before the next automatic cycle. Use <i>Move to front</i> to reorder them.</li>
+          <li><b>Cycles can be skipped.</b> If no stream has a good enough moment, that cycle posts nothing and the next one tries again.</li>
+          <li><b>Uncertain uploads hold publishing.</b> If YouTube didn't confirm an upload, nothing else publishes until it's checked.</li>
+        </ol>
+      </section>
+    </aside>
+  </div>
+</div>

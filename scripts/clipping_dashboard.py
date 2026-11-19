@@ -78,7 +78,10 @@ def clip_runs():
     runs = []
     for path in sorted((CLIP_ROOT/'work/scheduler').glob('*/source.json'),reverse=True)[:50]:
         source=read(path,{})
-        candidate=path.parent/'highlight-finished/finished-short.mp4'
+        # The published version carries the spoken intro when one was added.
+        candidate=path.parent/'highlight-finished/commentary-short.mp4'
+        if not candidate.is_file():
+            candidate=path.parent/'highlight-finished/finished-short.mp4'
         clips=[]
         if candidate.is_file():
             metadata=read(candidate.parent/'metadata.json',{})
@@ -125,7 +128,52 @@ def clip_runs():
                      'clips': clips, 'chat_messages': summary.get('chat_messages'),
                      'errors': ([summary['error']] if summary.get('error') else []) + summary.get('chat_errors', []),
                      'elapsed_seconds': summary.get('elapsed_seconds')})
+    # Run folders start with YYYYMMDD-HHMMSS: newest first across scheduled and live-monitor runs.
+    runs.sort(key=lambda r: r['run'][:15], reverse=True)
     return runs
+
+
+def latest_clip(state, manual_jobs):
+    """The newest finished clip from any source, and whether it actually went out."""
+    work = (CLIP_ROOT/'work').resolve()
+    found = []
+    for folder in (work/'scheduler').glob('*/highlight-finished'):
+        clip = folder/'commentary-short.mp4'
+        clip = clip if clip.is_file() else folder/'finished-short.mp4'
+        if clip.is_file():
+            found.append((clip, 'Automatic cycle'))
+    for clip in (work/'live').glob('*/*-finished/finished-short.mp4'):
+        found.append((clip, 'Live chat-spike monitor'))
+    for job in manual_jobs:
+        relative = (job.get('result') or {}).get('file')
+        if relative and (work/relative).is_file():
+            found.append((work/relative, 'Manual job'))
+    if not found:
+        return None
+    clip, origin = max(found, key=lambda item: item[0].stat().st_mtime)
+    metadata = read(clip.parent/'metadata.json', {})
+    relative = clip.relative_to(work).as_posix()
+    published = None
+    for upload in reversed(state.get('uploads', [])):
+        try:
+            same = upload.get('file') and Path(upload['file']).resolve() == clip.resolve()
+        except OSError:
+            same = False
+        if same:
+            published = {'status': upload.get('status'), 'video_id': upload.get('video_id'),
+                         'reel_id': (upload.get('facebook') or {}).get('reel_id')}
+            break
+    if published is None:
+        job = next((j for j in manual_jobs if (j.get('result') or {}).get('file') == relative), None)
+        publication = ((job or {}).get('result') or {}).get('publication') or {}
+        if publication.get('youtube_id') or (publication.get('facebook') or {}).get('reel_id'):
+            published = {'status': 'uploaded', 'video_id': publication.get('youtube_id'),
+                         'reel_id': (publication.get('facebook') or {}).get('reel_id')}
+    source = read(clip.parent.parent/'source.json', {}) if origin == 'Automatic cycle' else {}
+    return {'file': relative, 'title': metadata.get('title') or metadata.get('hook') or 'Finished clip',
+            'creator': metadata.get('creator') or source.get('channel'), 'origin': origin,
+            'finished_at': datetime.fromtimestamp(clip.stat().st_mtime, timezone.utc).isoformat(),
+            'intro': (metadata.get('commentary') or {}).get('script', {}).get('hook'), 'published': published}
 
 
 def evidence(snapshot):
@@ -250,6 +298,38 @@ def add_target(url):
     return f'Added {name} to the {platform} target list.'
 
 
+CADENCE_MINUTES = (60, 120, 180, 240, 360, 480, 720, 1440)
+VOICE_MODES = ('off', 'intro', 'full')
+
+
+def auto_history(state, limit=15):
+    """Recent automatic uploads with their finished titles, newest first."""
+    rows = []
+    for upload in reversed(state.get('uploads', [])[-limit:]):
+        folder = Path(upload.get('file') or '').parent
+        metadata = read(folder/'metadata.json', {}) if upload.get('file') else {}
+        source = upload.get('source') or {}
+        facebook = upload.get('facebook') or {}
+        media = None
+        if upload.get('file'):
+            try:
+                candidate = Path(upload['file']).resolve()
+                if candidate.is_file() and candidate.is_relative_to((CLIP_ROOT/'work').resolve()):
+                    media = candidate.relative_to((CLIP_ROOT/'work').resolve()).as_posix()
+            except (OSError, ValueError):
+                media = None
+        rows.append({'status': upload.get('status'), 'video_id': upload.get('video_id'), 'file': media,
+                     'title': metadata.get('title') or source.get('title'),
+                     'creator': source.get('channel'), 'source_url': source.get('url'),
+                     'game': source.get('game'), 'at': upload.get('finished_at') or upload.get('started_at'),
+                     'privacy': upload.get('returned_privacy') or upload.get('requested_privacy'),
+                     'rejection_reason': upload.get('rejection_reason'),
+                     'facebook': {'status': facebook.get('status'), 'reel_id': facebook.get('reel_id'),
+                                  'error': facebook.get('error')},
+                     'intro': (metadata.get('commentary') or {}).get('script', {}).get('hook')})
+    return rows
+
+
 def collect():
     with LOCK:
         snapshot = read(CLIP_ROOT / 'work/dashboard/analytics.json', {})
@@ -260,13 +340,16 @@ def collect():
         game = schedule.get('before_switch','gta5') if datetime.now(timezone.utc) < cutoff else schedule.get('from_switch','gta6')
         return {'channel':'shotsnip','name':'Shotsnip','identity':credentials,
                 'analytics':snapshot, 'evidence':evidence(snapshot), 'targets':watchlist['creators'],
-                'manual_jobs':manual_snapshot(),
+                'manual_jobs':(manual := manual_snapshot()),
                 'facebook_analytics':read(CLIP_ROOT/'work/dashboard/facebook-analytics.json',{}),
                 'age_performance':read(CLIP_ROOT/'work/dashboard/age-performance.json',{}),
                 'schedule':{**schedule,'active_game':game},'runs':clip_runs(),
                 'policy':policy(), 'agent':read(CLIP_ROOT / 'work/dashboard/agent-review.json', {}),
                 'job':dict(JOB), 'service':read(CLIP_ROOT / 'work/dashboard/worker.json', {'status':'not_started'}),
-                'scheduler':read(CLIP_ROOT / 'work/scheduler/state.json', {}),
+                'scheduler':(scheduler := read(CLIP_ROOT / 'work/scheduler/state.json', {})),
+                'auto_history':auto_history(scheduler),
+                'latest_clip':latest_clip(scheduler, manual),
+                'run_now_requested':(CLIP_ROOT/'work/dashboard/run-now').exists(),
                 'scheduler_service':read(CLIP_ROOT/'work/dashboard/dispatcher.json',{}),
                 'scheduler_config':read(CLIP_ROOT/'scheduler.json',{}),
                 'connections':{'youtube_upload':read(CLIP_ROOT/'work/dashboard/upload-identity.json',{}).get('status','token_saved_identity_not_verified') if (CLIP_ROOT/'token.json').exists() else 'not_connected',
@@ -328,6 +411,43 @@ def action(body):
             config['enabled']=bool(body.get('enabled'))
             write(CLIP_ROOT/'scheduler.json',config)
             return 'Automatic posting enabled.' if config['enabled'] else 'Automatic posting paused.'
+        if name == 'set_cadence':
+            minutes=body.get('minutes')
+            if type(minutes) is not int or minutes not in CADENCE_MINUTES:
+                raise ValueError('Choose a cadence between 1 and 24 hours')
+            config=read(CLIP_ROOT/'scheduler.json',{})
+            config['scan_minutes']=config['post_minutes']=minutes
+            write(CLIP_ROOT/'scheduler.json',config)
+            SCHEDULER_WAKE.set()
+            hours=minutes/60
+            return f'Automatic clips every {hours:g} hour{"s" if hours!=1 else ""}.'
+        if name == 'set_commentary':
+            mode=body.get('mode')
+            if mode not in VOICE_MODES:
+                raise ValueError('Choose off, intro or full')
+            config=read(CLIP_ROOT/'scheduler.json',{})
+            commentary=config.setdefault('commentary',{})
+            commentary['enabled']=mode!='off'
+            if mode!='off':
+                commentary['mode']=mode
+            write(CLIP_ROOT/'scheduler.json',config)
+            return {'off':'Spoken intro turned off for automatic clips.',
+                    'intro':'Automatic clips open with one spoken intro line.',
+                    'full':'Automatic clips get the full narrated breakdown.'}[mode]
+        if name == 'run_auto_now':
+            config=read(CLIP_ROOT/'scheduler.json',{})
+            if not config.get('enabled'):
+                raise ValueError('Resume automatic clipping before running a cycle')
+            state=read(CLIP_ROOT/'work/scheduler/state.json',{})
+            if any(row.get('status') in ('pending','uncertain') for row in state.get('uploads',[])):
+                raise ValueError('An upload result is unresolved; publishing is held until it is checked')
+            folder=CLIP_ROOT/'work/dashboard'; folder.mkdir(parents=True,exist_ok=True)
+            (folder/'run-now').write_text(datetime.now(timezone.utc).isoformat(),encoding='utf-8')
+            SCHEDULER_WAKE.set()
+            return 'Automatic cycle requested. It starts as soon as the worker is free.'
+        if name == 'cancel_run_now':
+            (CLIP_ROOT/'work/dashboard/run-now').unlink(missing_ok=True)
+            return 'Run-now request withdrawn.'
         if name == 'start_worker':
             if WORKER is not None and WORKER.poll() is None:
                 return 'Shotsnip local clipping worker is already running.'
@@ -395,11 +515,17 @@ def dispatch_loop():
                 scan_due=stamp-max(state.get('last_cycle_at',0),state.get('last_upload_at',0))>=config.get('scan_minutes',90)*60
                 post_due=False
             auto_due=config.get('enabled') and not held and (scan_due or post_due)
-            if time.time()>=retry_at and not running and not busy and (manual_pending or auto_due):
+            run_now_flag=CLIP_ROOT/'work/dashboard/run-now'
+            run_now=run_now_flag.exists() and config.get('enabled') and not held and not manual_pending
+            if time.time()>=retry_at and not running and not busy and (manual_pending or auto_due or run_now):
                 folder=CLIP_ROOT/'work/dashboard'; folder.mkdir(parents=True,exist_ok=True)
                 with (folder/'scheduler.log').open('a',encoding='utf-8') as log:
                     command=[str(CLIP_ROOT/'.venv/Scripts/python.exe'),'-u',str(CLIP_ROOT/('manual_worker.py' if manual_pending else 'scheduled_clips.py'))]
                     if not manual_pending: command.append('--tick')
+                    if run_now and not manual_pending:
+                        # One explicit cycle that skips the cadence wait; all content and duplicate guards stay on.
+                        command.append('--run-now')
+                        run_now_flag.unlink(missing_ok=True)
                     process=subprocess.Popen(command,
                         cwd=CLIP_ROOT,stdout=log,stderr=log,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
         except Exception as exc:
@@ -436,7 +562,9 @@ def render(data, page):
     folder=Path(__file__).parent
     document=document.replace('</style>','\n'+(folder/'shotsnip_studio.css').read_text(encoding='utf-8')+'\n</style>',1)
     document=document.replace('__STUDIO_HTML__',(folder/'shotsnip_studio.html').read_text(encoding='utf-8'))
-    document=document.replace('__STUDIO_JS__',(folder/'shotsnip_studio.js').read_text(encoding='utf-8'))
+    document=document.replace('__STUDIO_JS__',(folder/'shotsnip_studio.js').read_text(encoding='utf-8')+'\n'
+                              +(folder/'shotsnip_queue.js').read_text(encoding='utf-8')+'\n'
+                              +(folder/'shotsnip_insights.js').read_text(encoding='utf-8'))
     return document.replace('__STYLES__', styles).replace('__DATA__', json.dumps(data, default=str).replace('<','\\u003c'))
 
 
