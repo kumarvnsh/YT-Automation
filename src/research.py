@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import json
 import copy
+import re
 from datetime import datetime, timezone
 from urllib.parse import urlparse, urldefrag, urljoin
 from html.parser import HTMLParser
@@ -280,6 +281,7 @@ def research_topic(cfg, topic: str, *, recovery_request=None) -> dict:
         result['errors'] = validate_research(cfg, result)
         result['status'] = 'unsupported' if result['errors'] else 'supported'
         result = repair_evidence(cfg, result)
+        result = prune_weak_claims(cfg, result)
     except Exception as exc:
         result['error'] = str(exc)
     return result
@@ -400,6 +402,45 @@ def repair_evidence(cfg, packet):
     # No paid model repair: re-asking only to satisfy the citation check burned credits.
     attempts.append({'status': 'unsupported', 'errors': packet['errors'], 'fetch_errors': fetch_errors})
     return packet
+
+_CLAIM_SOURCE_ERROR = re.compile(r'^Claim (\S+): lacks authoritative directly cited support')
+
+
+def prune_weak_claims(cfg, packet, *, min_core=3, max_fraction=1 / 3):
+    """Drop a few claims whose ONLY problem is source strength, when the story stands without them.
+
+    Free and conservative: never applies to disputed/unsupported claims, contradictions,
+    geography or malformed packets, and never leaves fewer than ``min_core`` core claims.
+    Dropped claims are kept in ``excluded_claims`` so the script cannot use them.
+    """
+    if packet.get('status') != 'unsupported' or not packet.get('errors'):
+        return packet
+    failing = []
+    for error in packet['errors']:
+        match = _CLAIM_SOURCE_ERROR.match(error)
+        if not match:
+            return packet  # Other policy failures are not ours to relax.
+        failing.append(match.group(1))
+    claims = packet.get('claims', [])
+    dropped = [c for c in claims if str(c.get('id')) in failing]
+    if len(dropped) != len(set(failing)) or any(c.get('status') != 'supported' for c in dropped):
+        return packet  # A disputed or model-unsupported claim is a real story problem.
+    kept = [c for c in claims if c not in dropped]
+    core_left = [c for c in kept if c.get('material_to_core_story') is not False]
+    if len(core_left) < min_core or len(dropped) > max(1, int(len(claims) * max_fraction)):
+        return packet
+    pruned = copy.deepcopy(packet)
+    pruned['claims'] = copy.deepcopy(kept)
+    excluded = [{**copy.deepcopy(c), 'excluded_reason': 'weak_source_pruned'} for c in dropped]
+    pruned.setdefault('excluded_claims', []).extend(excluded)
+    pruned['errors'] = validate_research(cfg, pruned)
+    if pruned['errors']:
+        return packet
+    pruned['status'] = 'supported'
+    pruned['pruned_claims'] = {'claim_ids': [c['id'] for c in dropped], 'reason':
+                               'Only source strength failed; the remaining supported claims carry the story.'}
+    return pruned
+
 
 def evidence_for_model(packet):
     # Audit records stay on disk; sending their duplicate page bodies inflates every model call.

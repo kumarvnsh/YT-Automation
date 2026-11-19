@@ -358,6 +358,21 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
                   'They are research leads, not facts to copy without retrieval:\n' + '\n'.join(leads))
     report = research_topic(cfg, topic)
     _write_report(stage, 'research_attempt_1', report)
+    if st.get('growth_trial'):
+        # Growth-trial stories stop on unsupported research, so give them one
+        # targeted recovery attempt (the errors are passed back) before failing a slot.
+        retries = int(cfg.get('research.growth_retry_attempts', 1))
+        for attempt in range(2, 2 + max(0, retries)):
+            if report.get('status') == 'supported':
+                break
+            reason = report.get('error') or '; '.join(report.get('errors', [])) or report.get('status')
+            print(f'  ! research attempt {attempt - 1} not supported ({reason}); retrying with feedback')
+            previous = report
+            report = research_topic(cfg, topic, recovery_request=previous)
+            if not report.get('editorial_selection') and previous.get('editorial_selection'):
+                # Same-topic recovery keeps the premise it was asked to repair.
+                report['editorial_selection'] = copy.deepcopy(previous['editorial_selection'])
+            _write_report(stage, f'research_attempt_{attempt}', report)
     st['research'] = report
     _write_report(stage, 'research', report)
     if st.get('growth_trial'):
