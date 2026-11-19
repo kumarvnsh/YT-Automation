@@ -7466,5 +7466,71 @@
     "production_profile": 2,
     "facebook_id": "1071221712605837",
     "instagram_id": "18466324225187196"
+  },
+  {
+    "video_id": "ZCiEp4qArkg",
+    "run_id": "44515681675",
+    "stage_dir_name": "20261119_113614_791710_short",
+    "title": "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
+    "published_at": "2026-11-19T11:46:38.678014+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": "run-44515681675",
+    "design": "Museum object",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 3,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 2,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Ketchup's ancestor was a salty fermented Asian sauce, and the tomato version's preservative-free methods were made public through 1900s US research.",
+          "opening_visual": "A tomato-red ketchup bottle beside a plain text card reading 'salty fermented sauce'; a simple two-panel diagram comparing a fermented-sauce jar with a tomato bottle.",
+          "payoff": "The familiar tomato condiment descends from a fermented Asian sauce, and the 1909 USDA research by Katherine and Arvill Bitting published methods for preservative-free tomato ketchup. Limitation: the approved sources do not date the Asian sauces, and they say the Bittings were not the first to make preservative-free ketchup.",
+          "viewer_reason": "Most viewers assume ketchup has always been a tomato product, so the fermented-sauce origin is a concrete, checkable surprise.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "After the Civil War canned-food boom, American canners sold ketchup for home use, often made from tomato-canning waste.",
+          "opening_visual": "Archival factory photograph of bottled catsup being inspected, shown on the approved LOC blog page.",
+          "payoff": "Early home ketchup was often made from canning waste, with preservatives added only during cooking.",
+          "viewer_reason": "Viewers would recognize the product, but the approved pages support this only as a thin background chain, not a complete sourced payoff.",
+          "rejection_reason": "Rejected: the approved pages give background on waste and home sales, but they do not supply a narrow, self-contained surprise that fits a 35-second explanation. Additional searches were unavailable to build it out."
+        },
+        {
+          "premise": "A 1920s pantry shelf of ordinary grocery brands shows how household foods became popular.",
+          "opening_visual": "A pantry shelf of brand-name grocery products.",
+          "payoff": "Some grocery items spread through shipping and storage advances, and others through advertising.",
+          "viewer_reason": "Broadly relatable, but it is a general trend rather than a single surprising object origin.",
+          "rejection_reason": "Rejected: the Library of Congress record describes a hypothetical pantry shelf, which cannot support a documented claim about a specific object's history."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The Asian fermented-sauce origin is a concrete, surprising, and object-specific premise, and two approved Library of Congress pages support a narrow chain from that origin to the 1909 Bitting research. The topic is not on the recent-titles list. Limitation: I could not run further searches, so the sourced chain relies on two approved pages and is narrower than a full history of ketchup."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 131,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Ketchup started as a salty fermented Asian sauce.",
+    "duration": 40.397042,
+    "production_profile": 2,
+    "facebook_id": "1148431548187915",
+    "instagram_id": "18446844718183998"
   }
 ]
