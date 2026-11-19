@@ -420,10 +420,19 @@ def ensure_opening_maps(html: str, maps: list[dict]) -> str:
     return re.sub(r'(<div[^>]*class="[^"]*\bk-stage\b[^"]*"[^>]*>)', lambda m: m.group(1) + missing, html, count=1)
 
 
-def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int) -> dict[int, str]:
+def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int, indices=None) -> dict[int, str]:
     import anthropic
 
+    if indices is None and w > h and cfg.get('video.claude_motion.style') == 'cinematic_2d' and len(segs) > 3:
+        scenes = {}
+        for start in range(0, len(segs), 3):
+            selected = range(start, min(start + 3, len(segs)))
+            scenes.update(_request_scenes(cfg, title, segs, windows, w, h, selected))
+        return scenes
+    requested = list(range(len(segs)) if indices is None else indices)
     lines = [f"Video title: {title}", ""]
+    if indices is not None:
+        lines.append(f'Return only scenes {requested}, using these original episode indices.')
     design = cfg.get('production.design')
     if design:
         lines.append(f"Episode design: {design['name']}. {design['visuals']}. Use this treatment "
@@ -431,7 +440,8 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                      "with a concrete visual already on screen. Skip introductory title cards.")
     board = cfg.get('production.storyboard')
     if board:
-        board = {**board, 'scenes': [{**scene, 'scene_id': scene['segment_id']} for scene in board['scenes']]}
+        board = {**board, 'scenes': [{**scene, 'scene_id': scene['segment_id']} for scene in board['scenes']
+                                    if scene['segment_id'] in requested]}
         lines.append('Measured storyboard with ZERO-BASED scene IDs (scene-local word/cue seconds drive animation delays):\n' + json.dumps(board))
         lines.append('Use reveal cues for meaningful development every 2–4 seconds. Hold key labels at least two seconds. '
                      'Reserve upper-left x=4.5%-17%, y=4.5%-12% for the small translucent HISTOLD logo. '
@@ -452,7 +462,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         if trial and opening:
             lines.append('Selected opening visual (editorial suggestion, not historical evidence): '+str(opening)+
                          '. Build this clear explanatory view in scene 0, aligned with the narration. Avoid generic scenery.')
-    if maps:
+    if maps and 0 in requested:
         lines.append('Verified map IDs: ' + ', '.join(a['map_id'] for a in maps) +
                      '. In scene 0 establish ALL these locations with exact placeholders '
                      '<histold-map id="MAP_ID"></histold-map> inside .k-stage, at readable size. '
@@ -473,7 +483,8 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     icons = candidate_icons([title] + [f"{seg.narration} {' '.join(seg.keywords)}" for seg in segs])
     lines.append('Icon list for <histold-icon name="...">: ' + ', '.join(icons) +
                  '. Aim for an icon or explainer layout in most scenes.')
-    for i, (seg, (s, e)) in enumerate(zip(segs, windows)):
+    for i in requested:
+        seg, (s, e) = segs[i], windows[i]
         lines.append(
             f"Segment {i} — beat: {seg.beat or 'n/a'} — duration: {e - s:.1f}s\n"
             f"Narration: {seg.narration.strip()}\n"
@@ -500,10 +511,10 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     if msg.stop_reason == "refusal":
         raise RuntimeError(f"refused: {msg.stop_details}")
     text = "".join(b.text for b in msg.content if b.type == "text")
-    scenes = parse_scenes(text, len(segs))
+    scenes = {i: html for i, html in parse_scenes(text, len(segs)).items() if i in requested}
     print(f"  claude_motion: {len(scenes)}/{len(segs)} scenes, stop={msg.stop_reason}, "
           f"in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
-    missing = sorted(set(range(len(segs))) - scenes.keys())
+    missing = sorted(set(requested) - scenes.keys())
     if missing and cfg.get('video.claude_motion.style') == 'cinematic_2d':
         # Recover individually: batching missing scenes can exhaust the token budget again.
         for index in missing:
@@ -604,6 +615,14 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
                    w: int, h: int) -> dict[int, str]:
     """One cheap call that fixes only the flagged scenes. Failure = keep originals."""
     import anthropic
+
+    if w > h and len(issues) > 2:
+        fixed = {}
+        ids = list(issues)
+        for start in range(0, len(ids), 2):
+            batch = {i: issues[i] for i in ids[start:start + 2]}
+            fixed.update(_repair_scenes(cfg, raw, batch, w, h))
+        return fixed
 
     parts = []
     for i, probs in issues.items():

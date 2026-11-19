@@ -46,6 +46,21 @@ class CinematicMotionTests(unittest.TestCase):
         self.assertIn('--parch:#f1eadb', prepare_html('<head></head>', 0))
         self.assertIn('--parch:#153c3a', prepare_html('<head></head>', 1))
 
+    def test_landscape_recovery_keeps_action_clear_of_branding_and_captions(self):
+        from playwright.sync_api import sync_playwright
+        from src.claude_motion import house_scene, inspect_scene
+        from src.icon_assets import bind_icons
+
+        narration = ('In July 1881, Robert Todd Lincoln was due to join the president '
+                     'at the railway station. The train was bound for New Jersey.')
+        html, _ = bind_icons(house_scene(narration, [], 12))
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page(viewport={'width': 960, 'height': 540})
+            report = inspect_scene(page, prepare_html(html, 1, landscape=True), 12, 30, [], True)
+            browser.close()
+        self.assertEqual(report['errors'], [])
+
     def test_prompt_has_parser_and_safe_area_contract(self):
         prompt = system_prompt(540, 960)
         self.assertIn('540 x 960', prompt)

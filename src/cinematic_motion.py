@@ -27,9 +27,9 @@ def system_prompt(w: int, h: int, design: dict | None = None) -> str:
         prompt += '\nUse the specified episode art direction in place of the default warm-paper look. The scene palette will match that direction.'
     if w > h:
         prompt += ('\nLandscape layout: use the extra width for side-by-side art and labels. '
-                   'Start below the small branding rectangle, with a 48px top inset and an 88px caption band. '
+                   'Use a 76px top inset below the branding rectangle and an 88px caption band. '
                    'Size art to fit the available height and keep the main illustration visible at frame zero.')
-        prompt = prompt.replace('bottom 180 CSS pixels', 'bottom 88 CSS pixels').replace('Start content below 124px.', 'Start content below 48px.')
+        prompt = prompt.replace('bottom 180 CSS pixels', 'bottom 88 CSS pixels').replace('Start content below 124px.', 'Start content below 76px.')
         prompt = prompt.replace('about 420px wide and 350–440px tall', 'about 500–650px wide and 230–330px tall')
     return prompt
 
@@ -72,7 +72,24 @@ def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None) -
     paper, ink, bone, accent, dim = palette
     theme = (f':root{{--parch:{paper};--ink:{ink};--bone:{bone};'
              f'--accent:{accent};--dim:{dim}}}')
-    geometry = ':root{--caption-reserve:88px}.k-stage{inset:0 0 88px!important;padding-top:48px!important}' if landscape else ''
+    geometry = '''
+:root{--caption-reserve:88px}
+.k-stage{inset:0 0 88px!important;padding-top:76px!important}
+.k-stage:has(.house-art){display:grid;grid-template-columns:1fr 1.45fr;grid-template-rows:1fr 8px;
+  align-items:center;gap:24px;padding:76px 48px 24px!important}
+.k-stage .house-copy{height:158px}
+.k-stage .house-beat{font-size:32px}
+.k-stage .house-art{display:flex;align-items:center;justify-content:center;gap:12px;
+  min-width:0;max-height:280px;animation:none}
+.k-stage .house-art>svg{width:160px;max-height:148px}
+.k-stage .house-art>.k-photo{width:126px!important;flex:0 0 126px;margin:0}
+.k-stage .house-art>.k-icon{width:92px!important;height:92px}
+.k-stage .house-art>.house-facts{min-width:0;gap:8px}
+.k-stage .house-art .house-fact div{font-size:25px!important;line-height:1.12}
+.k-stage .house-art>.house-facts+svg{display:none}
+.k-stage .histold-map svg{width:100%;max-height:162px}
+.k-stage .house-rail{grid-column:1/-1}
+''' if landscape else ''
     style = '<style id="cinematic-2d">' + _base_css() + theme + geometry + '</style>'
     head = re.search(r'<head\b[^>]*>', html, flags=re.I)
     if head:
