@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from unittest.mock import patch
 
 import pytest
 
@@ -6,7 +7,7 @@ from scripts.claim_histold_publish import reserve
 from src.config import Config
 from src.editorial import DESIGNS, design
 from src.growth import scheduled_format
-from src.pipeline import _effective_mode
+from src.pipeline import _effective_mode, _step_research
 
 
 CFG = Config({'growth': {'default_hours_utc': [11, 18, 23], 'daily_publish_cap': 3,
@@ -36,3 +37,14 @@ def test_sunday_longform_is_cinematic_and_uses_a_separate_slot(tmp_path):
     assert _effective_mode(CFG, 'long') == 'cinematic_2d'
     assert _effective_mode(CFG, 'long', {'visual_mode': 'broll'}) == 'broll'
     assert len({design(i)['name'] for i in range(len(DESIGNS))}) == len(DESIGNS)
+
+
+def test_weekly_research_retries_with_a_different_story(tmp_path):
+    unsupported = {'topic': 'An apocryphal story', 'status': 'unsupported'}
+    supported = {'topic': 'A documented story', 'status': 'supported', 'locations': []}
+    stage = {'fmt': 'long'}
+    with patch('src.research.research_topic', side_effect=[unsupported, supported]) as research:
+        _step_research(CFG, tmp_path, stage)
+    assert stage['research'] == supported
+    assert 'different' in research.call_args.args[1]
+    assert (tmp_path / 'research_attempt_2.json').exists()

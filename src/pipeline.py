@@ -338,20 +338,28 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
         leads = cfg.get('research.regional_source_leads', {}).get(st['editorial_region'], [])
         if st.get('growth_trial'):
             leads=cfg.get('research.growth_source_leads') or leads
-    if st.get("fmt") == "long":
-        topic += "\nFind a recognizable historical subject or a documented twist with evidence for a three-minute causal story."
+    longform = st.get("fmt") == "long"
+    if longform:
+        topic += ("\nFind a recognizable historical subject or a documented twist with evidence for a three-minute causal story. "
+                  "Build the story around records with direct support for the whole payoff. "
+                  "Drop exact distances, disputed anecdotes and claims that cannot be independently corroborated.")
         cfg = Config(copy.deepcopy(cfg.raw))
-        cfg.raw.setdefault('research', {})['longform'] = True
+        cfg.raw.setdefault('research', {}).update(longform=True, max_searches=3)
     # Fetched leads go to the model as page text (free); only unfetchable ones become search hints.
     if not begin_step(cfg, leads) and leads:
         topic += ('\nStart by searching these approved museum collection pages for a narrow, supported story. '
                   'They are research leads, not facts to copy without retrieval:\n' + '\n'.join(leads))
-    # One call, never abort: a packet the citation check rejects still feeds the
-    # script, because re-researching only to pass that check burned credits.
     report = research_topic(cfg, topic)
-    st['research'] = report
     _write_report(stage, 'research_attempt_1', report)
+    if longform and report.get('status') != 'supported' and not st.get('overrides', {}).get('topic'):
+        report = research_topic(cfg, 'Choose a different, well-documented historical story for a three-minute '
+                                'episode. Look for a famous subject and a sourced turning point in an official '
+                                'museum or archive collection. Avoid retelling this earlier topic: ' + report['topic'])
+        _write_report(stage, 'research_attempt_2', report)
+    st['research'] = report
     _write_report(stage, 'research', report)
+    if longform and report.get('status') != 'supported':
+        raise ValueError('Long-form research did not verify the core claims; see research.json')
     if st.get('growth_trial'):
         from .growth_trial import validate_selection
         selection=validate_selection(report)
