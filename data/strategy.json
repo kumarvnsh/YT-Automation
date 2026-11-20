@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T15:00:23.315553+00:00",
+  "updated": "2026-11-20T19:00:22.195085+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Where Did the Dutch Tulip Really Come From?",
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 116
+      "measured_videos": 115
     },
     "facebook": {
       "winners": [
@@ -28,8 +28,8 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 118,
-          "mean_like_rate": 0.003737
+          "measured_videos": 117,
+          "mean_like_rate": 0.003769
         },
         "fb": {
           "measured_videos": 113,
@@ -37,7 +37,7 @@
         },
         "ig": {
           "measured_videos": 126,
-          "mean_like_rate": 0.136203
+          "mean_like_rate": 0.13659
         }
       }
     },
@@ -50,14 +50,14 @@
       }
     }
   },
-  "videos_scored": 116,
+  "videos_scored": 115,
   "weights": {
     "series": {
-      "school_myths": 0.0675,
-      "mistakes": 0.0675,
-      "almost": 0.0685,
+      "school_myths": 0.0674,
+      "mistakes": 0.0674,
+      "almost": 0.0684,
       "erased": 0.072,
-      "unsolved": 0.0699,
+      "unsolved": 0.0698,
       "weird_dark": 0.072,
       "photo_story": 0.072,
       "spy_gadgets": 0.0757,
@@ -65,54 +65,54 @@
       "secretly_deadly": 0.072,
       "worst_jobs": 0.0757,
       "forgotten_rules": 0.072,
-      "behind_legend": 0.0699,
-      "found_by_accident": 0.0699
+      "behind_legend": 0.0698,
+      "found_by_accident": 0.0698
     },
     "region": {
-      "india": 0.1112,
-      "africa": 0.1091,
-      "japan": 0.1145,
-      "china": 0.1125,
-      "russia": 0.1023,
-      "middle_east": 0.1161,
-      "europe": 0.1256,
-      "americas": 0.0943,
-      "asia_pacific": 0.1145
+      "india": 0.1111,
+      "africa": 0.109,
+      "japan": 0.1144,
+      "china": 0.1124,
+      "russia": 0.103,
+      "middle_east": 0.116,
+      "europe": 0.1255,
+      "americas": 0.0942,
+      "asia_pacific": 0.1144
     },
     "duration_variant": {
-      "concise": 0.4935,
-      "story": 0.5065
+      "concise": 0.4942,
+      "story": 0.5058
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "mistakes": {
         "n": 4,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "spy_gadgets": {
         "n": 0,
@@ -124,7 +124,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "worst_jobs": {
         "n": 0,
@@ -132,15 +132,15 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.43
       }
     },
     "region": {
@@ -150,23 +150,23 @@
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.494
+        "mean_score": 0.493
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.515
+        "mean_score": 0.514
       },
       "china": {
         "n": 13,
         "mean_score": 0.507
       },
       "russia": {
-        "n": 13,
-        "mean_score": 0.466
+        "n": 12,
+        "mean_score": 0.468
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.522
+        "mean_score": 0.521
       },
       "europe": {
         "n": 12,
@@ -174,17 +174,17 @@
       },
       "americas": {
         "n": 13,
-        "mean_score": 0.431
+        "mean_score": 0.43
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.515
+        "mean_score": 0.514
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 61,
-        "mean_score": 0.495
+        "n": 60,
+        "mean_score": 0.496
       },
       "story": {
         "n": 55,
