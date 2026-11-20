@@ -3364,5 +3364,14 @@
     "slot": "evening",
     "date": "2026-11-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261120_180300_768304_short",
+    "title": "Apollo 13's Square Air Canisters Did Not Fit the Round Openings",
+    "fingerprint": "13_air_apollo_canisters_did_fit_not_openings_round_s_square",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-20",
+    "status": "reserved"
   }
 ]

@@ -7664,5 +7664,71 @@
     "production_profile": 2,
     "facebook_id": "1193358609872668",
     "instagram_id": "18048465275829664"
+  },
+  {
+    "video_id": "UEqFpOBSXdU",
+    "run_id": "44788594945",
+    "stage_dir_name": "20261120_180300_768304_short",
+    "title": "Apollo 13's Square Air Canisters Did Not Fit the Round Openings",
+    "published_at": "2026-11-20T18:11:51.069801+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "format": "short",
+    "publish_claim": "slot-2026-11-20T18",
+    "design": "Archive dossier",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 6,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 5,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "In April 1970, Apollo 13 engineers and astronauts used plastic bags, duct tape and a suit hose to make square Command Module CO2 canisters work in the Lunar Module's round scrubber openings.",
+          "opening_visual": "Simple diagram: a square canister beside a round port, with a taped bag-and-hose adapter bridging the gap. Any photo must be a NASA-credited image, not an illustration presented as evidence.",
+          "payoff": "After the rig was installed, CO2 levels dropped. NASA's technical brief records CO2 falling to 1 mmHg. Sources describe the rig's life-saving effect with qualifiers, and a second canister was later taped on for added capacity.",
+          "viewer_reason": "The 'square peg, round hole' mismatch is easy to grasp, and the fix uses household materials, so the reversal of a crisis into an improvised working device is immediately understandable.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Chicago engineers reversed the flow of a river to carry city sewage away from its drinking water.",
+          "opening_visual": "Map-style diagram of a river with an arrow reversing direction.",
+          "payoff": "Not verified in this pass.",
+          "viewer_reason": "Familiar subject with a surprising mechanism.",
+          "rejection_reason": "Rejected: not researched in this pass. No approved-host page was retrieved for it, and the search budget was exhausted, so it cannot be supported here."
+        },
+        {
+          "premise": "A Dutch polder community used windmill-driven pumps to keep low land dry for farming.",
+          "opening_visual": "Simple cross-section diagram of a polder between dikes and a canal.",
+          "payoff": "Not verified in this pass.",
+          "viewer_reason": "Broadly relevant water-management subject.",
+          "rejection_reason": "Rejected: the Netherlands has no approved institution on the list, and no approved page was retrieved, so the premise cannot be supported with approved sources."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The Apollo 13 premise is a documented mechanism with a clear before-and-after: an unexpected improvised adapter, a renderable diagram, and multiple NASA pages that agree on its core facts. It is not extraordinary, so it does not need a second independent publisher. Its limitation is that every source is NASA, so the outcome figures come from one publisher family."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 134,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Duct tape and plastic bags cut carbon dioxide.",
+    "duration": 40.925,
+    "production_profile": 2,
+    "facebook_id": "1867935487591237",
+    "instagram_id": "18060470603799355"
   }
 ]
