@@ -3373,5 +3373,14 @@
     "slot": "evening",
     "date": "2026-11-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261120_230157_995301_short",
+    "title": "The Automobile Has No Single, Simple Inventor Story",
+    "fingerprint": "automobile_has_inventor_no_simple_single_story",
+    "format": "short",
+    "slot": "morning",
+    "date": "2026-11-20",
+    "status": "reserved"
   }
 ]

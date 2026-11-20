@@ -7730,5 +7730,65 @@
     "production_profile": 2,
     "facebook_id": "1867935487591237",
     "instagram_id": "18060470603799355"
+  },
+  {
+    "video_id": "l63EqXUSzEc",
+    "run_id": "44833426371",
+    "stage_dir_name": "20261120_230157_995301_short",
+    "title": "The Automobile Has No Single, Simple Inventor Story",
+    "published_at": "2026-11-20T23:09:46.063209+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "format": "short",
+    "publish_claim": "slot-2026-11-20T23",
+    "design": "Paper theater",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 7,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 6,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A 1917 Kennedy family kitchen used an icebox instead of an electric refrigerator, and the ice came from frozen ponds (NPS, John Fitzgerald Kennedy National Historic Site).",
+          "rejection_reason": "Rejected. 'How Did Kitchens Stay Cold Before Electricity?' is on the avoid list, so this subject is a repeat."
+        },
+        {
+          "premise": "The Ohio & Erie Canal's route through the Cuyahoga Valley was chosen in part because landowners offered free land and the state chose that route (NPS, History of the Ohio & Erie Canal).",
+          "rejection_reason": "Rejected. 'Ohio's 1820s Canal Route Was Shaped by Landowner Pressure' is on the avoid list, so this subject is a repeat."
+        },
+        {
+          "premise": "The car has no single inventor: the Library of Congress says the question of who invented the automobile has no straightforward answer, with design work reaching back to 15th-century Leonardo da Vinci sketches and models, and an 1885 Benz three-wheeler shown as a photograph.",
+          "opening_visual": "The 1885 Benz three-wheeler photograph, as captioned on the Library of Congress 'Who invented the automobile?' entry. The production team must confirm the image's rights and retrieve it from loc.gov before use. Nothing has been verified about the image beyond its caption.",
+          "payoff": "A familiar object's origin is spread across centuries of design work rather than one invention moment. Limitations: this rests on one approved source, a truncated Q&A entry. The source describes da Vinci's work as designs and models, not built automobiles, and it does not in the retrieved text name who should be credited as the inventor. Those points are not verified here.",
+          "viewer_reason": "Most viewers assume the car was invented by one person on one day, so a short, sourced correction is easy to follow and check.",
+          "rejection_reason": null
+        }
+      ],
+      "selected_index": 2,
+      "selection_reason": "The only premise I could support on approved pages is the automobile premise, and it rests on one loc.gov entry. The NPS premises repeat avoided subjects. The selected premise makes a narrow, non-inventor claim rather than a first-invention claim. Research is thin: after the first search, further searches were refused, so only one approved search result was obtained."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 135,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "The car's inventor has no straightforward answer.",
+    "duration": 37.375,
+    "production_profile": 2,
+    "facebook_id": "2451714528990790",
+    "instagram_id": "18020689877956779"
   }
 ]
