@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-20T06:00:33.448859+00:00",
+      "updated": "2026-11-20T07:00:45.233782+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -102,7 +102,7 @@
           ],
           "publishedAt": "2026-11-19T11:46:57Z",
           "thumbnail": "https://i.ytimg.com/vi/ZCiEp4qArkg/mqdefault.jpg",
-          "views": 10,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -769,7 +769,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 8.0,
           "shares": 0,
-          "analytics_views": 21,
+          "analytics_views": 24,
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
@@ -801,7 +801,7 @@
           ],
           "publishedAt": "2026-11-16T00:30:54Z",
           "thumbnail": "https://i.ytimg.com/vi/wUYjpa6ICeU/mqdefault.jpg",
-          "views": 2,
+          "views": 3,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -854,7 +854,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 25.0,
           "shares": 0,
-          "analytics_views": 32,
+          "analytics_views": 33,
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
@@ -988,7 +988,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 12,
+          "analytics_views": 13,
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
@@ -1287,7 +1287,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 6.0,
           "shares": 0,
-          "analytics_views": 17,
+          "analytics_views": 18,
           "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-13",
@@ -1631,7 +1631,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 6.0,
           "shares": 0,
-          "analytics_views": 15,
+          "analytics_views": 16,
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
