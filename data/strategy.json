@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T03:00:21.841293+00:00",
+  "updated": "2026-11-20T07:00:30.489073+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Where Did the Dutch Tulip Really Come From?",
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 117
+      "measured_videos": 116
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 114
+      "measured_videos": 113
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 119,
-          "mean_like_rate": 0.003705
+          "measured_videos": 118,
+          "mean_like_rate": 0.003737
         },
         "fb": {
-          "measured_videos": 113,
-          "mean_like_rate": 0.001817
+          "measured_videos": 112,
+          "mean_like_rate": 0.001833
         },
         "ig": {
-          "measured_videos": 126,
-          "mean_like_rate": 0.136326
+          "measured_videos": 125,
+          "mean_like_rate": 0.136972
         }
       }
     },
@@ -50,7 +50,7 @@
       }
     }
   },
-  "videos_scored": 117,
+  "videos_scored": 116,
   "weights": {
     "series": {
       "school_myths": 0.0675,
@@ -60,59 +60,59 @@
       "unsolved": 0.0699,
       "weird_dark": 0.072,
       "photo_story": 0.072,
-      "spy_gadgets": 0.0756,
-      "animals": 0.0756,
+      "spy_gadgets": 0.0757,
+      "animals": 0.0757,
       "secretly_deadly": 0.072,
-      "worst_jobs": 0.0756,
+      "worst_jobs": 0.0757,
       "forgotten_rules": 0.072,
       "behind_legend": 0.0699,
       "found_by_accident": 0.0699
     },
     "region": {
-      "india": 0.1114,
-      "africa": 0.1092,
-      "japan": 0.1146,
-      "china": 0.1113,
-      "russia": 0.1025,
-      "middle_east": 0.1162,
-      "europe": 0.1257,
-      "americas": 0.0944,
-      "asia_pacific": 0.1146
+      "india": 0.1112,
+      "africa": 0.1091,
+      "japan": 0.1145,
+      "china": 0.1125,
+      "russia": 0.1023,
+      "middle_east": 0.1161,
+      "europe": 0.1256,
+      "americas": 0.0943,
+      "asia_pacific": 0.1145
     },
     "duration_variant": {
-      "concise": 0.4944,
-      "story": 0.5056
+      "concise": 0.4935,
+      "story": 0.5065
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "mistakes": {
         "n": 4,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "spy_gadgets": {
         "n": 0,
@@ -124,7 +124,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "worst_jobs": {
         "n": 0,
@@ -132,21 +132,21 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.432
+        "mean_score": 0.431
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.503
+        "mean_score": 0.502
       },
       "africa": {
         "n": 15,
@@ -154,11 +154,11 @@
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.516
+        "mean_score": 0.515
       },
       "china": {
-        "n": 14,
-        "mean_score": 0.502
+        "n": 13,
+        "mean_score": 0.507
       },
       "russia": {
         "n": 13,
@@ -170,25 +170,25 @@
       },
       "europe": {
         "n": 12,
-        "mean_score": 0.558
+        "mean_score": 0.557
       },
       "americas": {
         "n": 13,
-        "mean_score": 0.432
+        "mean_score": 0.431
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.516
+        "mean_score": 0.515
       }
     },
     "duration_variant": {
       "concise": {
         "n": 61,
-        "mean_score": 0.496
+        "mean_score": 0.495
       },
       "story": {
-        "n": 56,
-        "mean_score": 0.504
+        "n": 55,
+        "mean_score": 0.505
       }
     }
   },
@@ -235,7 +235,7 @@
     {
       "video_id": "A8P0T0TA-5I",
       "platform": "yt",
-      "views": 4,
+      "views": 5,
       "reason": "Viewing percentage missing in the recent export gap."
     },
     {
