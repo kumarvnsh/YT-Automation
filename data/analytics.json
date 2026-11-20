@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-20T00:00:29.363837+00:00",
+      "updated": "2026-11-20T00:53:50.028244+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -103,7 +103,7 @@
           ],
           "publishedAt": "2026-11-18T23:13:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Z6HHB0Fv22g/mqdefault.jpg",
-          "views": 23,
+          "views": 28,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
