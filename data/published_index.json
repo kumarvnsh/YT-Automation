@@ -7598,5 +7598,71 @@
     "production_profile": 2,
     "facebook_id": "2232107237689911",
     "instagram_id": "18083306951745888"
+  },
+  {
+    "video_id": "xUjS9nrz7tY",
+    "run_id": "44723904818",
+    "stage_dir_name": "20261120_110135_123392_short",
+    "title": "Bubble Wrap Kept One Framed Photo Afloat in a New Orleans Flood",
+    "published_at": "2026-11-20T11:09:11.738891+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "format": "short",
+    "publish_claim": "slot-2026-11-20T11",
+    "design": "Moving atlas",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 5,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 4,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Bubble wrap began as a textured wallpaper, so the everyday packing material was once a home-decor product.",
+          "opening_visual": "A sheet of bubble wrap beside a wallpaper sample; no approved image was retrieved.",
+          "payoff": "Would have shown a reversal from wall covering to packaging.",
+          "viewer_reason": "Most people know bubble wrap only as packing material.",
+          "rejection_reason": "Only a reader comment on an approved Smithsonian Libraries blog repeats the wallpaper origin. The blog post itself does not state it, and no second approved publisher was retrieved. Unsupported, so rejected."
+        },
+        {
+          "premise": "Bubble wrap, the packing material, kept at least one framed 1948 photograph afloat during the 2005 Katrina flooding in New Orleans, though water still dissolved the print's emulsion at its edges.",
+          "opening_visual": "A bubble-wrapped framed print in flood water. The Smithsonian record describes this scene; any image must come from an approved page or be rendered as a labeled diagram, not invented.",
+          "payoff": "A packing material that floated a frame also let water in, so it protected the print only partly. The support is a single documented New Orleans studio case, not a general claim about flood performance.",
+          "viewer_reason": "Viewers recognize bubble wrap and can picture a flood without needing prior history.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "The QWERTY keyboard layout was shaped by 1870s typewriter design, so a modern keyboard carries a 19th-century machine constraint.",
+          "opening_visual": "A keyboard beside an 1870s typewriter image; none retrieved from approved pages.",
+          "payoff": "Would have explained the layout's origin in typewriter mechanics.",
+          "viewer_reason": "Almost everyone uses a QWERTY keyboard daily.",
+          "rejection_reason": "Not verified: the search budget ran out before any approved-host page on typewriter or keyboard history was retrieved, so the premise cannot be checked here."
+        }
+      ],
+      "selected_index": 1,
+      "selection_reason": "Selected because the approved Smithsonian National Museum of American History record directly documents a concrete, narrow reversal: bubble wrap helped a framed print float in a flood, and water still damaged it. The other candidates lacked approved evidence. The premise is limited to this single documented case, and its payoff records the limitation."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 133,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Bubble wrap kept a framed photo afloat.",
+    "duration": 36.75,
+    "production_profile": 2,
+    "facebook_id": "1193358609872668",
+    "instagram_id": "18048465275829664"
   }
 ]
