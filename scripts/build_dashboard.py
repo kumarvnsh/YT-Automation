@@ -537,9 +537,9 @@ renderPills();HUD.renders.push(renderPills,builtLine);
 // Local-AI selections use only evidence IDs validated against computed statistics.
 const pretty=s=>String(s||'').replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
 let E,AI,AE,choice;
+function rate(value){return value==null?'–':(100*value).toFixed(2)+'%'}
 function renderInsights(){E=D.content_evidence||{};AI=D.ai_insights?.evidence?.metric===E.metric?D.ai_insights:null;AE=AI?.evidence||E;choice=AI?.interpretation;
 $('insightsStamp').textContent=AI?`${AI.model} · ${ago(AI.generated)} ago`:'Measured analytics';
-function rate(value){return value==null?'–':(100*value).toFixed(2)+'%'}
 $('insightsScope').textContent=`${AE.mature_videos||0} videos aged 48 hours–28 days · channel median ${rate(AE.fb_baseline_median)} Facebook like rate. Findings require ${AE.min_sample||6} videos; small gaps remain exploratory.`;
 findings('workingFindings',AE.working||[],false);findings('weakFindings',AE.not_working||[],true);
 $('aiTakeaway').innerHTML=(choice?`<div class="ai-note"><div class="eyebrow">Qwen’s interpretation · hypothesis</div><p>${esc(choice.title_hypothesis)}</p><b>Next test:</b> ${esc(choice.next_test)}</div>`:'')+`<details class="small muted" style="margin-top:13px"><summary>How to read these findings</summary><p>${(AE.limitations||[]).map(esc).join('</p><p>')}</p><p>New series with fewer than six measured videos are exploratory; do not pause them on this evidence alone.</p></details>`}
