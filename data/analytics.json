@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-20T04:00:26.693186+00:00",
+      "updated": "2026-11-20T05:00:35.064930+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "wVpETSM4egg",
+          "title": "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
+          "description": "In the early 1900s, the US canal project in Panama faced yellow fever and malaria among its workers. Investigators had linked the fever to mosquitoes breeding in standing water, and the Isthmian Canal Commission chose to pay for wire screens rather than save the money. Sources credit the sanitation program led by William Gorgas as a major factor in completing the canal, though not its only cause. #PanamaCanal #WorldHistory #Sanitation\n\nPortrait of William Crawford Gorgas: Harris & Ewing, Public domain, via Wikimedia Commons",
+          "tags": [
+            "canal zone",
+            "decisions with consequences",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "malaria",
+            "mosquito control",
+            "panama canal",
+            "panama history",
+            "public health history",
+            "william gorgas",
+            "world history",
+            "yellow fever"
+          ],
+          "publishedAt": "2026-11-20T04:30:40Z",
+          "thumbnail": "https://i.ytimg.com/vi/wVpETSM4egg/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-20",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "ZCiEp4qArkg",
           "title": "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
           "description": "Today's tomato ketchup descends from older salty fermented sauces from Asia, which were closer to soy or fish sauce. After the Civil War, canners began making ketchup for home use, and USDA Bulletin 119 by Katherine and Arvill Bitting published preservative-free methods in 1909. #ketchup #foodhistory #everydayobjects\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -58,7 +102,7 @@
           ],
           "publishedAt": "2026-11-19T11:46:57Z",
           "thumbnail": "https://i.ytimg.com/vi/ZCiEp4qArkg/mqdefault.jpg",
-          "views": 10,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2151,47 +2195,6 @@
           "shares": 0,
           "analytics_views": 16,
           "engaged_views": 7,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-20",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "jkyJh0XeuDg",
-          "title": "Why Did Italy's Army Lose to an African Empire in 1896?",
-          "description": "In 1896, Ethiopia's army defeated an invading Italian force at Adwa, and the empire kept its independence. This short story explains why Italy's colonial plans stalled and what the 1896 peace treaty confirmed. #EthiopianHistory #AfricanHistory #WorldHistory",
-          "tags": [
-            "adwa",
-            "african history",
-            "colonial history",
-            "did you know",
-            "education",
-            "eritrea",
-            "ethiopia",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "italy",
-            "menelik ii",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T07:11:39Z",
-          "thumbnail": "https://i.ytimg.com/vi/jkyJh0XeuDg/mqdefault.jpg",
-          "views": 16,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 33.83,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 19.0,
-          "shares": 0,
-          "analytics_views": 16,
-          "engaged_views": 10,
           "analytics_period": {
             "start_date": "2026-11-13",
             "end_date": "2026-11-20",
