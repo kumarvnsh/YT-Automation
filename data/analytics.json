@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-20T11:00:35.724861+00:00",
+      "updated": "2026-11-20T12:00:39.190675+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "xUjS9nrz7tY",
+          "title": "Bubble Wrap Kept One Framed Photo Afloat in a New Orleans Flood",
+          "description": "Weeks after Hurricane Katrina in 2005, water filled photographer Herman Leonard's New Orleans studio. Some framed prints there had been bubble-wrapped for shipping, and the wrap helped keep them from sinking, though water still damaged the edges. This is one documented studio case, not proof of how bubble wrap performs in floods generally.\n#BubbleWrap #HurricaneKatrina #NewOrleansHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "2005 flood",
+            "bubble wrap",
+            "did you know",
+            "education",
+            "everyday objects",
+            "everyday origins",
+            "flood history",
+            "herman leonard",
+            "historical facts",
+            "history shorts",
+            "hurricane katrina",
+            "miles davis",
+            "new orleans",
+            "packing materials",
+            "unexpected histories",
+            "world history"
+          ],
+          "publishedAt": "2026-11-20T11:09:42Z",
+          "thumbnail": "https://i.ytimg.com/vi/xUjS9nrz7tY/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-20",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "wVpETSM4egg",
           "title": "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
           "description": "In the early 1900s, the US canal project in Panama faced yellow fever and malaria among its workers. Investigators had linked the fever to mosquitoes breeding in standing water, and the Isthmian Canal Commission chose to pay for wire screens rather than save the money. Sources credit the sanitation program led by William Gorgas as a major factor in completing the canal, though not its only cause. #PanamaCanal #WorldHistory #Sanitation\n\nPortrait of William Crawford Gorgas: Harris & Ewing, Public domain, via Wikimedia Commons",
@@ -58,7 +102,7 @@
           ],
           "publishedAt": "2026-11-20T04:30:40Z",
           "thumbnail": "https://i.ytimg.com/vi/wVpETSM4egg/mqdefault.jpg",
-          "views": 1,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -367,7 +411,7 @@
           ],
           "publishedAt": "2026-11-17T11:07:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Z6w2dgH6oOk/mqdefault.jpg",
-          "views": 52,
+          "views": 53,
           "likes": 0,
           "comments": 1,
           "playlist_ids": [],
@@ -2151,50 +2195,6 @@
           "shares": 0,
           "analytics_views": 41,
           "engaged_views": 3,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-20",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "0_CL-f7OWcY",
-          "title": "Why Does the Rickshaw Carry a Japanese Name?",
-          "description": "The word rickshaw comes from the Japanese jinrikisha, a small cart pulled by a person. Library of Congress photographs from the 1890s show these carts in Japan, and the design later spread across much of Asia. #YouUseItEveryDay #JapaneseHistory #WorldHistory",
-          "tags": [
-            "asian history",
-            "did you know",
-            "education",
-            "everyday history",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "human powered vehicle",
-            "japanese history",
-            "japanese words",
-            "jinrikisha",
-            "library of congress",
-            "meiji japan",
-            "rickshaw",
-            "transport history",
-            "word origins",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T12:11:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/0_CL-f7OWcY/mqdefault.jpg",
-          "views": 16,
-          "likes": 2,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 60.15999999999999,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 18.0,
-          "shares": 0,
-          "analytics_views": 16,
-          "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-13",
             "end_date": "2026-11-20",
