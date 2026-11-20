@@ -368,8 +368,22 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
             reason = report.get('error') or '; '.join(report.get('errors', [])) or report.get('status')
             print(f'  ! research attempt {attempt - 1} not supported ({reason}); retrying with feedback')
             previous = report
-            report = research_topic(cfg, topic, recovery_request=previous)
-            if not report.get('editorial_selection') and previous.get('editorial_selection'):
+            blocked_core = any(f.get('material_to_core_story') is True and f.get('status') != 'supported'
+                               for f in previous.get('findings', []) if isinstance(f, dict))
+            if blocked_core and not st.get('overrides', {}).get('topic'):
+                # A different story needs a fresh evidence packet. Never carry unrelated
+                # contradictions into it, or erase them from the archived failed packet.
+                rejected = previous.get('editorial_selection', {})
+                fresh_topic = (topic + '\nThe previous story could not be established. Select a DISTINCT '
+                               'story from the approved retrieved pages; do not reuse any rejected premise. '
+                               'Return a complete independent evidence packet and three fresh candidates. '
+                               'Rejected candidates (context only, not evidence): ' + json.dumps(rejected))
+                report = research_topic(cfg, fresh_topic)
+                st['research_reselection'] = {'attempt': attempt, 'reason': reason,
+                                             'rejected_selection': copy.deepcopy(rejected)}
+            else:
+                report = research_topic(cfg, topic, recovery_request=previous)
+            if not blocked_core and not report.get('editorial_selection') and previous.get('editorial_selection'):
                 # Same-topic recovery keeps the premise it was asked to repair.
                 report['editorial_selection'] = copy.deepcopy(previous['editorial_selection'])
             _write_report(stage, f'research_attempt_{attempt}', report)

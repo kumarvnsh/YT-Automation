@@ -119,6 +119,7 @@ def _retrieve(cfg, topic, *, evidence_request=None, recovery_request=None):
         recovery_prompt = (
             'A previous research packet for this same topic failed validation. Research it again using the errors below. '
             'Return a complete replacement packet with retained web citations. Obtain approved authoritative support '
+            'for the SAME selected premise. Do not switch to an unrelated story during this repair; '
             'for core claims. Move ONLY nonessential disputed/unsupported details to findings with '
             'material_to_core_story:false, preserving their exact text; exclude them from production claims. Never relabel a disputed claim '
             'as supported or hide a material contradiction to make validation pass. If the core story cannot '

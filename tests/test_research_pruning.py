@@ -109,3 +109,21 @@ def test_retry_can_be_disabled(tmp_path, monkeypatch):
     with pytest.raises(ValueError):
         pipeline._step_research(Config({'research': {'growth_retry_attempts': 0}}), tmp_path, growth_state())
     assert len(calls) == 1
+
+def test_material_failure_reselects_independent_story_without_carryover(tmp_path, monkeypatch):
+    bad = {'status': 'unsupported', 'findings': [{'text': 'Old story contradiction',
+           'status': 'unsupported', 'material_to_core_story': True}], 'editorial_selection': SELECTION}
+    good = {'status': 'supported', 'claims': [], 'sources': [], 'editorial_selection': SELECTION}
+    calls = []
+    def fake(cfg, topic, recovery_request=None):
+        calls.append((topic, recovery_request))
+        return bad if len(calls) == 1 else good
+    monkeypatch.setattr(research, 'begin_step', lambda *a: [])
+    monkeypatch.setattr(research, 'research_topic', fake)
+    monkeypatch.setattr('src.map_assets.required_maps', lambda r: [])
+    state = {'growth_trial': {'id': 'trial'}, 'category': 'history', 'overrides': {}}
+    pipeline._step_research(Config({}), tmp_path, state)
+    assert len(calls) == 2 and calls[1][1] is None
+    assert 'DISTINCT' in calls[1][0]
+    assert state['research']['status'] == 'supported'
+    assert json.loads((tmp_path / 'research_attempt_1.json').read_text())['findings'] == bad['findings']
