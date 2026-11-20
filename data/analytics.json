@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-20T18:00:35.774128+00:00",
+      "updated": "2026-11-20T19:00:40.441799+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,51 @@
         ]
       },
       "videos": [
+        {
+          "id": "UEqFpOBSXdU",
+          "title": "Apollo 13's Square Air Canisters Did Not Fit the Round Openings",
+          "description": "On Apollo 13 in 1970, spare square carbon dioxide canisters from the command module could not connect to the lunar module's round scrubber ports. Houston teams tested a workaround in an altitude chamber, and the crew built it from a suit hose, plastic bags, a cue card and duct tape. NASA's technical brief records that carbon dioxide then fell to 1 mmHg.\n#Apollo13 #SpaceHistory #NASAHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "1970 space mission",
+            "apollo 13",
+            "apollo missions",
+            "carbon dioxide",
+            "did you know",
+            "duct tape",
+            "education",
+            "engineering fix",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "ingenious solutions",
+            "lunar module",
+            "nasa history",
+            "space history",
+            "space history facts",
+            "world history"
+          ],
+          "publishedAt": "2026-11-20T18:12:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/UEqFpOBSXdU/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-20",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "xUjS9nrz7tY",
           "title": "Bubble Wrap Kept One Framed Photo Afloat in a New Orleans Flood",
@@ -146,7 +191,7 @@
           ],
           "publishedAt": "2026-11-19T11:46:57Z",
           "thumbnail": "https://i.ytimg.com/vi/ZCiEp4qArkg/mqdefault.jpg",
-          "views": 16,
+          "views": 15,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2152,49 +2197,6 @@
           "shares": 0,
           "analytics_views": 11,
           "engaged_views": 1,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-20",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "sSDW2obwQ2U",
-          "title": "What Was Hiding in Your Toothbrush's Ancestor?",
-          "description": "Your toothbrush has an early ancestor that looks surprisingly familiar. Library of Congress sources describe stiff hog-neck bristles set into bone or bamboo handles, and the chew sticks that came before them. History Got This Wrong explores what everyday tools reveal about daily life. #WorldHistory #ChineseHistory #DidYouKnow",
-          "tags": [
-            "ancient china",
-            "chew sticks",
-            "chinese history",
-            "daily life history",
-            "did you know",
-            "education",
-            "everyday history",
-            "everyday origins",
-            "hidden history",
-            "historical facts",
-            "history facts",
-            "history got this wrong",
-            "history shorts",
-            "surprising history",
-            "toothbrush history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T15:09:01Z",
-          "thumbnail": "https://i.ytimg.com/vi/sSDW2obwQ2U/mqdefault.jpg",
-          "views": 41,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 13.47,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 6.0,
-          "shares": 0,
-          "analytics_views": 41,
-          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
             "end_date": "2026-11-20",
