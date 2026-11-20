@@ -7532,5 +7532,71 @@
     "production_profile": 2,
     "facebook_id": "1148431548187915",
     "instagram_id": "18446844718183998"
+  },
+  {
+    "video_id": "wVpETSM4egg",
+    "run_id": "44673317125",
+    "stage_dir_name": "20261120_041844_348219_short",
+    "title": "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
+    "published_at": "2026-11-20T04:30:13.733505+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": "run-44673317125",
+    "design": "Graphic novel",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 4,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 3,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "In Panama, the US canal project chose to fund mosquito-focused sanitation, including wire screens, rather than save a small sum, and that choice is credited with making the canal workable.",
+          "opening_visual": "Archival photograph or drawing of the Panama Canal Zone, then a labeled diagram of the yellow fever mosquito's breeding pools.",
+          "payoff": "A supported chain: the commission accepted the costlier screening and mosquito control, Gorgas's work is credited with banishing yellow fever and malaria, and the canal could be built with a healthier workforce. Limitation: the sources credit Gorgas's program as a major factor, not the sole cause; the sources' exact date for disease elimination is not verified here.",
+          "viewer_reason": "A small budget decision with a life-or-death trade-off is easy to grasp and makes an unexpected link between a mosquito and a canal.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Ohio's 1820s canal route was shaped by landowner pressure and water supply, not just geography.",
+          "opening_visual": "Map of the Ohio & Erie Canal route (no supported map ID for this exact period).",
+          "payoff": "Landowners offered free land and the Cuyahoga River supplied water, which shaped the route.",
+          "viewer_reason": "Canal-route politics is a niche topic.",
+          "rejection_reason": "Rejected: this subject is on the do-not-repeat list, and its supplied NPS page centers a route decision with no sharp reversal. It also needs a historical border-style map this pipeline cannot render."
+        },
+        {
+          "premise": "Before electric refrigerators, a middle-class 1917 household kept food cold with a wooden icebox supplied by ice harvested from frozen ponds.",
+          "opening_visual": "Photograph of the icebox in the Kennedy birthplace kitchen (NPS-supplied, but display image rights would need checking).",
+          "payoff": "Ice came from frozen ponds and was delivered by iceman; electric refrigerators later replaced the icebox.",
+          "viewer_reason": "Relatable everyday object, but the story is descriptive rather than a documented choice with a surprising consequence.",
+          "rejection_reason": "Rejected: this subject is on the do-not-repeat list (kitchens staying cold before electricity), and the supplied page describes daily life and gradual change rather than one documented choice with a reversal."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The Panama premise is the only candidate with a documented choice (the commission's spending decision), a concrete archival opening visual, and approved loc.gov sources. It is not on the do-not-repeat list. Panama has no supported present-day map ID, so the story is set with no map and requires no historical overlay."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 132,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Canal builders spent extra on wire screens. In Panama, yellow fever and malaria threatened the workers.",
+    "duration": 46.325,
+    "production_profile": 2,
+    "facebook_id": "2232107237689911",
+    "instagram_id": "18083306951745888"
   }
 ]
