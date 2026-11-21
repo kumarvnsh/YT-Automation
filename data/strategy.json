@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T15:00:28.580922+00:00",
+  "updated": "2026-11-21T19:00:30.803455+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -7,10 +7,10 @@
         "Why Does the Rickshaw Carry a Japanese Name?",
         "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
-        "Where Did the Dutch Tulip Really Come From?",
-        "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
+        "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
+        "Why Did One Emperor Dig a Canal Across Half of China?"
       ],
-      "measured_videos": 116
+      "measured_videos": 115
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 115
+      "measured_videos": 114
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 117,
-          "mean_like_rate": 0.003297
+          "measured_videos": 116,
+          "mean_like_rate": 0.003028
         },
         "fb": {
-          "measured_videos": 113,
-          "mean_like_rate": 0.001859
+          "measured_videos": 112,
+          "mean_like_rate": 0.001876
         },
         "ig": {
-          "measured_videos": 126,
-          "mean_like_rate": 0.135003
+          "measured_videos": 125,
+          "mean_like_rate": 0.136017
         }
       },
       "Museum object": {
@@ -64,69 +64,69 @@
       }
     }
   },
-  "videos_scored": 116,
+  "videos_scored": 115,
   "weights": {
     "series": {
-      "school_myths": 0.0675,
-      "mistakes": 0.0675,
-      "almost": 0.0685,
+      "school_myths": 0.0677,
+      "mistakes": 0.0677,
+      "almost": 0.0686,
       "erased": 0.072,
       "unsolved": 0.0699,
       "weird_dark": 0.072,
       "photo_story": 0.072,
-      "spy_gadgets": 0.0757,
-      "animals": 0.0757,
+      "spy_gadgets": 0.0754,
+      "animals": 0.0754,
       "secretly_deadly": 0.072,
-      "worst_jobs": 0.0757,
+      "worst_jobs": 0.0754,
       "forgotten_rules": 0.072,
       "behind_legend": 0.0699,
       "found_by_accident": 0.0699
     },
     "region": {
-      "india": 0.1123,
-      "africa": 0.1101,
-      "japan": 0.1156,
-      "china": 0.1136,
-      "russia": 0.1041,
-      "middle_east": 0.1067,
-      "europe": 0.1268,
-      "americas": 0.0951,
-      "asia_pacific": 0.1157
+      "india": 0.1135,
+      "africa": 0.1113,
+      "japan": 0.1166,
+      "china": 0.1148,
+      "russia": 0.1051,
+      "middle_east": 0.1078,
+      "europe": 0.118,
+      "americas": 0.0961,
+      "asia_pacific": 0.1168
     },
     "duration_variant": {
-      "concise": 0.5045,
-      "story": 0.4955
+      "concise": 0.4993,
+      "story": 0.5007
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "mistakes": {
         "n": 4,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "spy_gadgets": {
         "n": 0,
@@ -138,7 +138,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "worst_jobs": {
         "n": 0,
@@ -146,63 +146,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.431
+        "mean_score": 0.435
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.502
+        "mean_score": 0.507
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.494
+        "mean_score": 0.498
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.515
+        "mean_score": 0.519
       },
       "china": {
         "n": 13,
-        "mean_score": 0.507
+        "mean_score": 0.512
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.469
+        "mean_score": 0.473
       },
       "middle_east": {
         "n": 11,
-        "mean_score": 0.479
+        "mean_score": 0.483
       },
       "europe": {
-        "n": 12,
-        "mean_score": 0.557
+        "n": 11,
+        "mean_score": 0.525
       },
       "americas": {
         "n": 13,
-        "mean_score": 0.431
+        "mean_score": 0.435
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.516
+        "mean_score": 0.52
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 62,
-        "mean_score": 0.503
+        "n": 61,
+        "mean_score": 0.5
       },
       "story": {
         "n": 54,
-        "mean_score": 0.496
+        "mean_score": 0.501
       }
     }
   },
@@ -210,8 +210,8 @@
     "Why Does the Rickshaw Carry a Japanese Name?",
     "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
     "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
-    "Where Did the Dutch Tulip Really Come From?",
-    "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
+    "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
+    "Why Did One Emperor Dig a Canal Across Half of China?"
   ],
   "losers": [
     "Why Did British Lawmakers Try to Ban a Flowery Indian Cotton?",
@@ -261,7 +261,7 @@
     {
       "video_id": "jCPbacI0r5Q",
       "platform": "yt",
-      "views": 6,
+      "views": 7,
       "reason": "Viewing percentage missing in the recent export gap."
     },
     {
