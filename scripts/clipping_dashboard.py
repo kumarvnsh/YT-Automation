@@ -389,6 +389,7 @@ def collect():
                 'manual_jobs':(manual := manual_snapshot()),
                 'facebook_analytics':read(CLIP_ROOT/'work/dashboard/facebook-analytics.json',{}),
                 'age_performance':read(CLIP_ROOT/'work/dashboard/age-performance.json',{}),
+                'growth_experiment':read(CLIP_ROOT/'work/dashboard/growth-experiment.json',{}),
                 'schedule':{**schedule,'active_game':game},'runs':(runs := clip_runs()),
                 'policy':policy(), 'agent':read(CLIP_ROOT / 'work/dashboard/agent-review.json', {}),
                 'job':dict(JOB), 'service':read(CLIP_ROOT / 'work/dashboard/worker.json', {'status':'not_started'}),

@@ -29,7 +29,7 @@ function clipRows() {
     const f = fb.get(v.id), h = history.get(v.id), checks = ages.get(v.id) || {};
     const at = Date.parse(v.published_at) || 0;
     return {id: v.id, title: v.title || 'Untitled clip', url: v.url, at, yt: v.views ?? null, likes: v.likes ?? null,
-      comments: v.comments ?? null, fb: f ? (f.plays ?? f.initial_plays ?? null) : null, fbReplays: f?.replays ?? null,
+      comments: v.comments ?? null, fb: f?.plays ?? null, fbReplays: f?.replays ?? null,
       fbId: f?.id, fbUrl: f ? facebookUrl(f) : null, creator: h?.creator || f?.creator || null, intro: h?.intro || null,
       game: gameOf(v.title, h?.game), h1: checks['1']?.views ?? null, h24: checks['24']?.views ?? null};
   }).sort((a, b) => b.at - a.at);
@@ -226,12 +226,44 @@ function renderLiveOps() {
   for (const id of ['autoPause', 'autoStop']) { const b = $(id); if (b && b.parentElement !== actions) actions.insertBefore(b, actions.lastElementChild); }
 }
 
+// Uses backend checkpoint windows and published platform IDs, never lifetime counts.
+function renderPacingTrial() {
+  const out = $('pfPacingTrial');
+  if (!out) return;
+  const r = D.growth_experiment;
+  if (!r?.id || !r.checkpoints) {
+    out.textContent = 'No age-aligned experiment report yet. Missing is not zero.';
+    return;
+  }
+  const formats = [['youtube', 'YouTube views'], ['facebook', 'Facebook Reel plays']];
+  const arms = [['tight_20s', '20s gameplay'], ['context_30s', '30s gameplay']];
+  const tables = formats.map(([key, label]) => {
+    const rows = arms.flatMap(([id, arm]) => [24, 72].map(hour => {
+      const v = r.checkpoints?.[key]?.[id]?.[hour];
+      return '<tr><td>' + arm + '</td><td>' + hour + 'h</td><td>' + n0(v?.published) + '</td><td>' +
+        n0(v?.eligible) + '</td><td>' + n0(v?.measured) + '</td><td>' + n0(v?.missing) + '</td><td>' +
+        n0(v?.unverified_time) + '</td><td>' + n0(v?.median) + '</td><td>' + n0(v?.reached_1k) + '</td></tr>';
+    })).join('');
+    return '<h3>' + label + '</h3><p class="shot-muted">Snapshot cutoff: ' +
+      esc(r.platform_checked_at?.[key] ? date(r.platform_checked_at[key]) : 'unavailable') +
+      '</p><div class="shot-table"><table><thead><tr><th scope="col">Variant</th><th scope="col">Age</th>' +
+      '<th scope="col">Published</th><th scope="col">Eligible</th><th scope="col">Measured</th>' +
+      '<th scope="col">Missing</th><th scope="col">Time unverified</th><th scope="col">Median</th>' +
+      '<th scope="col">At least 1K</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+  }).join('');
+  out.innerHTML = '<p>' + n0(r.published) + ' of ' + n0(r.target_clips) +
+    ' tagged clips published on YouTube. Facebook counts only confirmed published Reels.</p>' + tables +
+    '<p class="shot-muted">Closest real readings within 24h +/-1h or 72h +/-2h after each platform publication. ' +
+    'Eligible starts at the lower edge of that window. Missing means eligible with no valid reading; dash means no statistic. ' +
+    'Facebook plays include repeats and are not the same as YouTube views. No winner is declared.</p>';
+}
+
 function renderInsights() {
   renderLiveOps();
-  const signature = JSON.stringify([D.analytics?.checked_at, D.facebook_analytics?.checked_at, (D.auto_history || []).length, D.analytics?.videos?.length]);
+  const signature = JSON.stringify([D.analytics?.checked_at, D.facebook_analytics?.checked_at, D.growth_experiment?.checked_at, (D.auto_history || []).length, D.analytics?.videos?.length]);
   if (signature === insightsSignature) return;
   insightsSignature = signature;
-  renderOverview(); videos();
+  renderOverview(); videos(); renderPacingTrial();
 }
 
 function initInsights() {
