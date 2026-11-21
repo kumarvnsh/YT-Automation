@@ -1284,19 +1284,6 @@
     "republished_as": null
   },
   {
-    "video_id": "Q3QOhpdSJuM",
-    "run_id": "30599967647",
-    "stage_dir_name": "20260729_160202_short",
-    "title": "Norway's King Lost His Throne, His Life \u2014 Then Won Forever",
-    "published_at": "2026-07-31T02:49:44.577072+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "cI78ylaKXZM",
-    "republished_as": null
-  },
-  {
     "video_id": "amMgq4voErU",
     "run_id": "30603022275",
     "stage_dir_name": "20260731_040116_short",
@@ -5526,19 +5513,6 @@
     "auto_dispatched_at": "2026-11-10T00:55:43.518023+00:00"
   },
   {
-    "video_id": "TcrAytevFAc",
-    "run_id": "42538988190",
-    "stage_dir_name": "20261107_180258_844643_short",
-    "title": "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?",
-    "published_at": "2026-11-09T00:13:52.243599+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "utnb_IsgCXk",
-    "republished_as": null
-  },
-  {
     "video_id": "RBrsabhs4MM",
     "run_id": "42559435976",
     "stage_dir_name": "20261109_040223_593317_short",
@@ -5667,19 +5641,6 @@
     "production_profile": 2,
     "facebook_id": "2838301563211835",
     "instagram_id": "18114919553617423"
-  },
-  {
-    "video_id": "OAT6m7tPTaY",
-    "run_id": "42732009046",
-    "stage_dir_name": "20261108_180231_526880_short",
-    "title": "Ancient Writers Got the Torc Wrong, and a Curator Says Why",
-    "published_at": "2026-11-10T00:56:14.555223+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "CLFOEpLnopY",
-    "republished_as": null
   },
   {
     "video_id": "nLSJjS0kQHo",
@@ -6253,32 +6214,6 @@
     "production_profile": 2,
     "facebook_id": "3568280993342757",
     "instagram_id": "17922363939460863"
-  },
-  {
-    "video_id": "sMUpVI79w2M",
-    "run_id": "43214101962",
-    "stage_dir_name": "20261112_120249_099454_short",
-    "title": "Did English Coffeehouses Once Make Their Own Money?",
-    "published_at": "2026-11-12T12:12:38.545478+00:00",
-    "channel": "histold",
-    "scheduled": true,
-    "workflow": "publish",
-    "retitled_at": null,
-    "republished_from": null,
-    "republished_as": null,
-    "slot": "evening",
-    "experiment": null,
-    "experiment_slot": null,
-    "category": "everyday_origins",
-    "editorial_slot": 87,
-    "editorial_region": "europe",
-    "editorial_series": "You Use It Every Day",
-    "duration_variant": "story",
-    "hook": "English coffeehouses once made their own money, and the reason is surprisingly ordinary.",
-    "duration": 60.504,
-    "production_profile": 2,
-    "facebook_id": "1203918048973238",
-    "instagram_id": "17945097465382398"
   },
   {
     "video_id": "KSKTU3S1aKo",
@@ -6984,19 +6919,6 @@
     "instagram_id": "17998451247062160"
   },
   {
-    "video_id": "wUYjpa6ICeU",
-    "run_id": "43780709580",
-    "stage_dir_name": "20261114_180305_062105_short",
-    "title": "The Paper Money Experiment That Made Everyone Want Silver Again",
-    "published_at": "2026-11-16T00:30:31.366553+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "8tA4rackeYA",
-    "republished_as": null
-  },
-  {
     "video_id": "MiE8p9Ihz8o",
     "run_id": "43801493368",
     "stage_dir_name": "20261116_040237_520262_short",
@@ -7051,32 +6973,6 @@
     "instagram_id": "17907574086671622"
   },
   {
-    "video_id": "bLKPvWMmM4g",
-    "run_id": "43893860073",
-    "stage_dir_name": "20261115_070306_414133_short",
-    "title": "The Ancient Trade Secret Hidden Where No Customs Officer Would Look",
-    "published_at": "2026-11-16T15:13:06.813587+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "MnAdN0TEL38",
-    "republished_as": null
-  },
-  {
-    "video_id": "bLKPvWMmM4g",
-    "run_id": "43893860073",
-    "stage_dir_name": "20261115_070306_414133_short",
-    "title": "The Ancient Trade Secret Hidden Where No Customs Officer Would Look",
-    "published_at": "2026-11-16T15:13:06.813587+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "MnAdN0TEL38",
-    "republished_as": null
-  },
-  {
     "video_id": "3itSrNpadaE",
     "run_id": "43902813331",
     "stage_dir_name": "20261116_160307_159318_short",
@@ -7109,32 +7005,6 @@
     "production_profile": 2,
     "facebook_id": "1691422212331131",
     "instagram_id": "18469965052136852"
-  },
-  {
-    "video_id": "Chyn8YLkKO0",
-    "run_id": "43913289180",
-    "stage_dir_name": "20261115_104751_928254_short",
-    "title": "The Caption Calls Them Rebels Turned Loyal. Can a 1901 Photo Prove It?",
-    "published_at": "2026-11-16T16:58:35.346309+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "T2PhQx-4814",
-    "republished_as": null
-  },
-  {
-    "video_id": "_LG3VzPRgp0",
-    "run_id": "43913947269",
-    "stage_dir_name": "20261115_102753_850627_short",
-    "title": "Your Lipstick Might Be Crawling With This Cactus Bug",
-    "published_at": "2026-11-16T17:02:09.901561+00:00",
-    "channel": "histold",
-    "scheduled": false,
-    "workflow": "republish",
-    "retitled_at": null,
-    "republished_from": "G5y0NwWtlyI",
-    "republished_as": null
   },
   {
     "video_id": "2pxxM-WFU7o",
@@ -7922,5 +7792,71 @@
     "production_profile": 2,
     "facebook_id": "2252833388616948",
     "instagram_id": "18114834050227962"
+  },
+  {
+    "video_id": "i8oWcZUKfJA",
+    "run_id": "44959565663",
+    "stage_dir_name": "20261121_230158_557948_short",
+    "title": "Sichuan's Ancient Water Scheme Manages a River Without Blocking It",
+    "published_at": "2026-11-21T23:13:50.186800+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": true,
+    "format": "short",
+    "publish_claim": "slot-2026-11-21T23",
+    "design": "Illustrated newsreel",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 10,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 9,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A river-control scheme on China's Chengdu Plain divides the Minjiang River's flow and irrigates farmland without building a dam across the river.",
+          "opening_visual": "Map of Sichuan showing the Minjiang River leaving the mountains and reaching the Chengdu Plain, with Dujiangyan marked at the junction.",
+          "payoff": "The river is split by dikes, gates and a diversion passage, so the plain's water supply is regulated. Limitation: the dam-free design rests on UNESCO pages only, and the 'automatic' claim is the nomination's own description.",
+          "viewer_reason": "A problem most people assume needs a dam is handled by terrain and water-splitting structures.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "A 1900 Chicago engineering project reversed the Chicago River to move sewage away from the lake that supplied drinking water.",
+          "opening_visual": "Map of Chicago's river and lakeshore.",
+          "payoff": "Not researched. No approved-host page was retrieved for this premise in this session.",
+          "viewer_reason": "Would be relatable if approved evidence were available.",
+          "rejection_reason": "Rejected: needs corroboration from approved hosts that I could not obtain in this session, so it fails the evidence requirement."
+        },
+        {
+          "premise": "Persian builders used wind-catching towers to cool buildings in hot desert cities.",
+          "opening_visual": "Diagram of a wind tower over a courtyard.",
+          "payoff": "Not researched; no approved-host evidence retrieved.",
+          "viewer_reason": "Cooling without electricity is broadly relatable.",
+          "rejection_reason": "Rejected: too close to the avoided Persian ice-store subject and to the avoided 'kitchens before electricity' cooling theme, and no approved evidence was retrieved."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Dujiangyan is the only candidate with approved-host evidence retrieved in this session. It has a concrete, renderable map and a clear mechanism. It avoids the recent subjects, and its limitations are stated in the payoff."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 138,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "No dam holds back this river.",
+    "duration": 32.325,
+    "production_profile": 2,
+    "facebook_id": "1487070236629271",
+    "instagram_id": "18005309120797865"
   }
 ]
