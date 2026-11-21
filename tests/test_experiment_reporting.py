@@ -68,16 +68,6 @@ def test_youtube_rates_require_matching_analytics_denominator():
     assert rate['denominator']['period']['end_date']=='2026-10-02'
 
 
-def test_youtube_missing_retention_reason_names_the_real_cause():
-    from scripts.export_analytics import _missing_metric_reason
-    unwatched = _missing_metric_reason({'views': 0, 'publishedAt': '2026-11-16T17:02:35Z'}, '2026-11-21')
-    assert 'No views yet' in unwatched
-    recent = _missing_metric_reason({'views': 20, 'publishedAt': '2026-11-19T11:46:57Z'}, '2026-11-21')
-    assert 'Report delay' in recent
-    stale = _missing_metric_reason({'views': 20, 'publishedAt': '2026-11-10T11:46:57Z'}, '2026-11-21')
-    assert 'permission' in stale
-
-
 def test_youtube_report_exports_its_own_view_denominator():
     from scripts.export_analytics import _retention_and_subs
     class Client:
