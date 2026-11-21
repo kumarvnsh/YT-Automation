@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T19:00:30.803455+00:00",
+  "updated": "2026-11-21T23:00:27.398360+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -261,7 +261,7 @@
     {
       "video_id": "jCPbacI0r5Q",
       "platform": "yt",
-      "views": 7,
+      "views": 9,
       "reason": "Viewing percentage missing in the recent export gap."
     },
     {
