@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-21T18:00:38.628538+00:00",
+      "updated": "2026-11-21T19:00:32.780417+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "0xHy2ZVArUg",
+          "title": "Yellowstone Chose to Fight Every Fire in 1988",
+          "description": "In July 1988, Yellowstone National Park managers decided to suppress all fires during a record drought. The firefight had little effect on the fires, which September rain and snow finally stopped. The episode also raised public understanding of fire's role in wild landscapes.\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "decisions with consequences",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "forest fire management",
+            "historical facts",
+            "history shorts",
+            "national park history",
+            "nps history",
+            "us national parks",
+            "wildfire history",
+            "world history",
+            "wyoming history",
+            "yellowstone",
+            "yellowstone 1988"
+          ],
+          "publishedAt": "2026-11-21T18:10:38Z",
+          "thumbnail": "https://i.ytimg.com/vi/0xHy2ZVArUg/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "4U8amYJZRCs",
           "title": "Coal Miners Sent a Caged Canary Underground Before Going Back In",
           "description": "After a blast or fire in a coal mine, a caged canary was taken underground. If the bird survived, the mine was considered safe to re-enter. This short explainer covers the mechanism using a Library of Congress record of a canary statue.\n#CoalMining #IngeniousSolutions #WorldHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -58,8 +102,8 @@
           ],
           "publishedAt": "2026-11-21T11:55:53Z",
           "thumbnail": "https://i.ytimg.com/vi/4U8amYJZRCs/mqdefault.jpg",
-          "views": 12,
-          "likes": 0,
+          "views": 17,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -148,7 +192,7 @@
           ],
           "publishedAt": "2026-11-20T18:12:25Z",
           "thumbnail": "https://i.ytimg.com/vi/UEqFpOBSXdU/mqdefault.jpg",
-          "views": 1,
+          "views": 0,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -280,7 +324,7 @@
           ],
           "publishedAt": "2026-11-19T11:46:57Z",
           "thumbnail": "https://i.ytimg.com/vi/ZCiEp4qArkg/mqdefault.jpg",
-          "views": 20,
+          "views": 21,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2162,49 +2206,6 @@
             "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
             "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
-        },
-        {
-          "id": "yKweCJSpQUg",
-          "title": "Who Really Owned the Land Everyone Thought Was Public?",
-          "description": "Many people assume common land belongs to everyone and can be used freely. Historical records show it was private property, usually owned by a lord, with commoners holding limited rights to use it. Follow for more surprising world history.\n#History #CommonLand #Didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "common land",
-            "did you know",
-            "education",
-            "european history",
-            "everyday origins",
-            "historic rights",
-            "historical facts",
-            "history",
-            "history got this wrong",
-            "history misconceptions",
-            "history shorts",
-            "land ownership",
-            "manor life",
-            "medieval history",
-            "surprising history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T16:43:47Z",
-          "thumbnail": "https://i.ytimg.com/vi/yKweCJSpQUg/mqdefault.jpg",
-          "views": 13,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 145.37,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 43.0,
-          "shares": 0,
-          "analytics_views": 12,
-          "engaged_views": 4,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
         }
       ]
     }
