@@ -361,7 +361,7 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
     if st.get('growth_trial'):
         # Growth-trial stories stop on unsupported research, so give them one
         # targeted recovery attempt (the errors are passed back) before failing a slot.
-        retries = int(cfg.get('research.growth_retry_attempts', 1))
+        retries = int(cfg.get('research.growth_retry_attempts', 1)) if cfg.get('research.enforce_evidence_checks',True) else 0
         for attempt in range(2, 2 + max(0, retries)):
             if report.get('status') == 'supported':
                 break
@@ -394,8 +394,12 @@ def _step_research(cfg: Config, stage: Path, st: dict) -> None:
         from .growth_trial import validate_selection
         selection=validate_selection(report)
         st['editorial_selection']=selection
-        if report.get('status')!='supported':
+        if report.get('status')!='supported' and cfg.get('research.enforce_evidence_checks',True):
             raise ValueError('Growth trial story needs supported research before script and rendering')
+        if not cfg.get('research.enforce_evidence_checks',True):
+            st['evidence_policy']='advisory_owner_override'
+            if not report.get('claims'):
+                raise ValueError('Research returned no usable claims; cannot create a history script from an empty response')
     if report.get('status') != 'supported':
         details = report.get('error') or '; '.join(report.get('errors', [])) or report.get('status')
         print(f'  ! research not fully verified ({details}); continuing — see research.json')

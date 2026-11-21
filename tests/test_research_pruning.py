@@ -110,6 +110,20 @@ def test_retry_can_be_disabled(tmp_path, monkeypatch):
         pipeline._step_research(Config({'research': {'growth_retry_attempts': 0}}), tmp_path, growth_state())
     assert len(calls) == 1
 
+
+def test_owner_can_make_evidence_checks_advisory(tmp_path,monkeypatch):
+    packet={'status':'unsupported','claims':[{'id':'c1','text':'A historical claim','status':'supported'}],
+            'sources':[],'errors':['Citation could not be verified'],'editorial_selection':SELECTION}
+    calls=[]
+    monkeypatch.setattr(research,'begin_step',lambda *a:[])
+    monkeypatch.setattr(research,'research_topic',lambda *a,**k:calls.append(1) or packet)
+    monkeypatch.setattr('src.map_assets.required_maps',lambda r:[])
+    state=growth_state()
+    pipeline._step_research(Config({'research':{'enforce_evidence_checks':False}}),tmp_path,state)
+    assert len(calls)==1
+    assert state['research']['status']=='unsupported'
+    assert state['evidence_policy']=='advisory_owner_override'
+
 def test_material_failure_reselects_independent_story_without_carryover(tmp_path, monkeypatch):
     bad = {'status': 'unsupported', 'findings': [{'text': 'Old story contradiction',
            'status': 'unsupported', 'material_to_core_story': True}], 'editorial_selection': SELECTION}
