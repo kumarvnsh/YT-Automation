@@ -135,6 +135,7 @@ class IdeaTraceTests(unittest.TestCase):
             self.assertEqual(trace['idea']['rejected'], [{'premise': 'Icebox', 'reason': 'Recently covered.'}])
             self.assertEqual(trace['run']['url'], 'https://github.com/owner/repo/actions/runs/44900498335')
             self.assertEqual(len(trace['publications']), 2)
+            self.assertFalse(any('publication record for' in gap for gap in trace['gaps']))
             self.assertEqual(trace['publications'][1]['republished_from'], 'abcdefghijk')
             seen = {row['platform']: row for row in trace['observations']}
             self.assertEqual((seen['YouTube']['value'], seen['YouTube']['age_hours']), (120, 24))
@@ -212,3 +213,17 @@ class ExperimentComparisonTests(unittest.TestCase):
         self.assertNotIn(('24h', 'YouTube'), missed)
         self.assertIn('Trial observations are stale', kinds)
         self.assertEqual(report['untracked'], [{'id': 'voice-title-2x2', 'published': 2}])
+
+
+class RepostGapTests(unittest.TestCase):
+    def test_repeated_repost_rows_show_once_and_a_lost_original_is_named(self):
+        with TemporaryDirectory() as local:
+            root = Path(local)
+            job = '20261115_070306_414133_short'
+            atomic_json(root/'data/topic_reservations.json', [{'job_id': job, 'title': 'Tin couriers', 'date': '2026-11-15'}])
+            repost = {'stage_dir_name': job, 'video_id': 'bLKPvWMmM4g', 'workflow': 'republish', 'run_id': '1',
+                      'published_at': '2026-11-16T15:13:00+00:00', 'republished_from': 'IeZApCwr2NE'}
+            atomic_json(root/'data/published_index.json', [repost, dict(repost), dict(repost)])
+            trace = topic_trace(root, [])[0]['trace']
+            self.assertEqual(len(trace['publications']), 1)
+            self.assertIn('The publication record for IeZApCwr2NE is missing; it was reposted as bLKPvWMmM4g.', trace['gaps'])

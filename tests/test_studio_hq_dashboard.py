@@ -87,3 +87,22 @@ class DashboardSnapshotTests(unittest.TestCase):
             pacing = snapshot({'state_dir': folder, 'roots': roots})['pacing_experiment']
             self.assertEqual((pacing['published'], pacing['target']), (1, 24))
             self.assertEqual([group['median'] for group in pacing['groups']], [0, None])
+
+
+class ShotsnipJoinTests(unittest.TestCase):
+    def test_live_capture_uploads_join_to_their_run(self):
+        from studio_hq.archive import atomic_json
+        from studio_hq.dashboard_snapshot import shotsnip_activity
+        with TemporaryDirectory() as local:
+            root = Path(local)
+            runs = {'scheduler': '20261121-080000-abcDEF12345', 'live': '20261121-083153-dSDUAAr-w_g'}
+            uploads = []
+            for area, run in runs.items():
+                clip = root/'work'/area/run/'clip-finished'/'finished-short.mp4'
+                clip.parent.mkdir(parents=True)
+                clip.touch()
+                uploads.append({'status': 'uploaded', 'file': str(clip), 'video_id': 'abcdefghij' + area[0],
+                                'finished_at': '2026-11-21T08:56:14+00:00'})
+            atomic_json(root/'work/scheduler/state.json', {'uploads': uploads})
+            jobs = {row['job'] for row in shotsnip_activity(root, {})[0] if row['kind'] == 'Scheduled clip'}
+            self.assertEqual(jobs, set(runs.values()))

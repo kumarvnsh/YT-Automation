@@ -167,12 +167,18 @@ async fn protect(State(settings): State<Arc<Settings>>, req: Request, next: Next
     let local_host = format!("127.0.0.1:{}", settings.port);
     let local_name = format!("localhost:{}", settings.port);
     let tail_authority = format!("{}:443", settings.tail_host);
+    // Tailscale Serve keeps the client's Host header and adds identity headers only for
+    // user-owned devices, so anything it forwards must carry the owner's identity. Only
+    // direct requests from this PC may rely on the local Host alone.
+    let proxied = ["x-forwarded-for", "x-forwarded-proto", "x-forwarded-host"]
+        .iter()
+        .any(|name| headers.contains_key(*name));
     let allowed = match (host, identity) {
         (Some(h), Some(login)) => {
             (h == settings.tail_host || h == tail_authority || h == local_host || h == local_name)
                 && login.eq_ignore_ascii_case(&settings.allowed_login)
         }
-        (Some(h), None) => h == local_host || h == local_name,
+        (Some(h), None) => !proxied && (h == local_host || h == local_name),
         _ => false,
     };
     if !allowed {

@@ -162,7 +162,9 @@ def shotsnip_activity(root, previews):
                 metadata = record(source, {})
                 if isinstance(metadata, dict):
                     title = safe_text(metadata.get('title'), title)
-                parts = Path(path).relative_to(root/'work/scheduler').parts if Path(path).is_relative_to(root/'work/scheduler') else ()
+                # Live-capture clips publish from work/live/<run>/ with the same run naming.
+                base = next((root/'work'/area for area in ('scheduler', 'live') if Path(path).is_relative_to(root/'work'/area)), None)
+                parts = Path(path).relative_to(base).parts if base else ()
                 if len(parts) >= 2 and re.fullmatch(r'\d{8}-\d{6}-[A-Za-z0-9_-]+', parts[0]):
                     run = parts[0]
             except (OSError, ValueError):

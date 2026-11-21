@@ -222,6 +222,12 @@ def trace_detail(job, reservation, entries, draft, index, repo='kumarvnsh/YT-Aut
         gaps.append('No workflow run is linked to this job.')
     if not entries and not draft:
         gaps.append('No publication or draft is recorded for this reservation.')
+    recorded = {entry.get('video_id') for entry in entries}
+    for entry in entries:
+        original = entry.get('republished_from')
+        if isinstance(original, str) and original not in recorded:
+            gaps.append(f'The publication record for {text(original, 40)} is missing; it was reposted as '
+                        f"{text(entry.get('video_id'), 40)}.")
     names = {'youtube': 'YouTube', 'facebook': 'Facebook', 'instagram': 'Instagram'}
     for publication in publications:
         for link in publication['links']:
@@ -236,10 +242,13 @@ def trace_detail(job, reservation, entries, draft, index, repo='kumarvnsh/YT-Aut
 def topic_trace(source, approvals, repo='kumarvnsh/YT-Automation'):
     published = {row['stage_dir_name']: row for row in rows(load(source/'data/published_index.json', []))
                  if row.get('channel', 'histold') == 'histold' and isinstance(row.get('stage_dir_name'), str)}
-    history = defaultdict(list)
+    history, seen_rows = defaultdict(list), set()
     for row in rows(load(source/'data/published_index.json', [])):
         if row.get('channel', 'histold') == 'histold' and isinstance(row.get('stage_dir_name'), str):
-            history[row['stage_dir_name']].append(row)
+            key = (row['stage_dir_name'], row.get('video_id'), row.get('workflow'), row.get('run_id'), row.get('published_at'))
+            if key not in seen_rows:  # The index can hold repeated repost rows; show each publication once.
+                seen_rows.add(key)
+                history[row['stage_dir_name']].append(row)
     index = observation_index(source)
     pending = {row['stage']: row for row in approvals}
     by_job = {}

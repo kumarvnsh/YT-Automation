@@ -40,8 +40,12 @@ IDENTITY_KEYS = {
 def _identity(entry: dict, keys: tuple[str, ...]) -> tuple | None:
     if keys == ('video_id',):
         # A stage retains its identity when a Facebook-only post gains a YouTube ID.
+        # A repost reuses its original's stage, so republished_from keeps the two apart;
+        # otherwise the repost overwrites the original publication record.
         for field in ('stage_dir_name', 'video_id', 'facebook_id'):
             if entry.get(field):
+                if field == 'stage_dir_name':
+                    return field, str(entry[field]), str(entry.get('republished_from') or '')
                 return field, str(entry[field])
         return None
     return tuple(str(entry.get(key)) for key in keys)
@@ -68,6 +72,8 @@ def merge_lists(base: list, local: list, keys: tuple[str, ...]) -> list:
     merged, seen = [], set()
     for entry in base:
         ident = _identity(entry, keys) if isinstance(entry, dict) else None
+        if ident is not None and ident in seen:
+            continue  # An exact repeat of an identified entry, e.g. a duplicated repost row.
         replacement = local_by_id.get(ident, entry) if ident else entry
         if keys == ('video_id',) and replacement is not entry:
             replacement = {**entry, **replacement}

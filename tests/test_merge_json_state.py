@@ -60,6 +60,20 @@ class MergeListsTests(unittest.TestCase):
             self.assertEqual(merged[0]['video_id'], 'yt1')
             self.assertEqual(merged[0]['instagram_id'], 'ig1')
 
+    def test_repost_keeps_the_original_publication_record(self):
+        original = {'video_id': 'old1', 'stage_dir_name': 'stage1', 'republished_as': 'new1'}
+        repost = {'video_id': 'new1', 'stage_dir_name': 'stage1', 'workflow': 'republish', 'republished_from': 'old1'}
+        for remote, local in (([dict(original, republished_as=None)], [original, repost]), ([original, repost], [original])):
+            merged = merge_lists(remote, local, ('video_id',))
+            self.assertEqual(sorted(entry['video_id'] for entry in merged), ['new1', 'old1'])
+        self.assertEqual(merge_lists([original, repost], [original, repost], ('video_id',)), [original, repost])
+
+    def test_duplicated_rows_collapse_to_one(self):
+        repost = {'video_id': 'new1', 'stage_dir_name': 'stage1', 'republished_from': 'old1'}
+        original = {'video_id': 'old1', 'stage_dir_name': 'stage1'}
+        merged = merge_lists([original, repost, dict(repost)], [original, repost, dict(repost)], ('video_id',))
+        self.assertEqual(merged, [original, repost])
+
     def test_legacy_facebook_fallback_and_unidentified_rows_are_preserved(self):
         first = {'facebook_id': 'fb1'}
         second = {'facebook_id': 'fb2'}
