@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T23:00:29.480729+00:00",
+  "updated": "2026-11-21T03:00:28.347505+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -7,10 +7,10 @@
         "Why Does the Rickshaw Carry a Japanese Name?",
         "Why Did a Burning City Leave Its Books Behind?",
         "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-        "Where Did the Dutch Tulip Really Come From?",
-        "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
+        "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
+        "Where Did the Dutch Tulip Really Come From?"
       ],
-      "measured_videos": 115
+      "measured_videos": 116
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 114
+      "measured_videos": 115
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 117,
-          "mean_like_rate": 0.003769
+          "measured_videos": 118,
+          "mean_like_rate": 0.004039
         },
         "fb": {
-          "measured_videos": 113,
-          "mean_like_rate": 0.001817
+          "measured_videos": 114,
+          "mean_like_rate": 0.001886
         },
         "ig": {
-          "measured_videos": 126,
-          "mean_like_rate": 0.13659
+          "measured_videos": 127,
+          "mean_like_rate": 0.135514
         }
       }
     },
@@ -50,69 +50,69 @@
       }
     }
   },
-  "videos_scored": 115,
+  "videos_scored": 116,
   "weights": {
     "series": {
-      "school_myths": 0.0674,
-      "mistakes": 0.0674,
-      "almost": 0.0684,
+      "school_myths": 0.0672,
+      "mistakes": 0.0672,
+      "almost": 0.0683,
       "erased": 0.072,
       "unsolved": 0.0698,
       "weird_dark": 0.072,
       "photo_story": 0.072,
-      "spy_gadgets": 0.0757,
-      "animals": 0.0757,
+      "spy_gadgets": 0.076,
+      "animals": 0.076,
       "secretly_deadly": 0.072,
-      "worst_jobs": 0.0757,
+      "worst_jobs": 0.076,
       "forgotten_rules": 0.072,
       "behind_legend": 0.0698,
       "found_by_accident": 0.0698
     },
     "region": {
       "india": 0.1111,
-      "africa": 0.109,
-      "japan": 0.1144,
+      "africa": 0.1089,
+      "japan": 0.1145,
       "china": 0.1124,
       "russia": 0.103,
-      "middle_east": 0.116,
-      "europe": 0.1255,
+      "middle_east": 0.1162,
+      "europe": 0.1254,
       "americas": 0.0942,
-      "asia_pacific": 0.1144
+      "asia_pacific": 0.1145
     },
     "duration_variant": {
-      "concise": 0.4942,
-      "story": 0.5058
+      "concise": 0.4993,
+      "story": 0.5007
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "mistakes": {
         "n": 4,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "spy_gadgets": {
         "n": 0,
@@ -124,7 +124,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "worst_jobs": {
         "n": 0,
@@ -132,63 +132,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.43
+        "mean_score": 0.427
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.502
+        "mean_score": 0.497
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.493
+        "mean_score": 0.489
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.514
+        "mean_score": 0.511
       },
       "china": {
         "n": 13,
-        "mean_score": 0.507
+        "mean_score": 0.502
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.468
+        "mean_score": 0.464
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.521
+        "mean_score": 0.517
       },
       "europe": {
         "n": 12,
-        "mean_score": 0.557
+        "mean_score": 0.552
       },
       "americas": {
         "n": 13,
-        "mean_score": 0.43
+        "mean_score": 0.427
       },
       "asia_pacific": {
         "n": 12,
-        "mean_score": 0.514
+        "mean_score": 0.511
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 60,
-        "mean_score": 0.496
+        "n": 61,
+        "mean_score": 0.5
       },
       "story": {
         "n": 55,
-        "mean_score": 0.505
+        "mean_score": 0.501
       }
     }
   },
@@ -196,8 +196,8 @@
     "Why Does the Rickshaw Carry a Japanese Name?",
     "Why Did a Burning City Leave Its Books Behind?",
     "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-    "Where Did the Dutch Tulip Really Come From?",
-    "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
+    "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
+    "Where Did the Dutch Tulip Really Come From?"
   ],
   "losers": [
     "Why Did One Drink Deserve Its Own Book in Tang China?",
