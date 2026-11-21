@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, BarChart3, Clapperboard, Eye, Globe2 } from 'lucide-react';
+import { ArrowUpRight, BarChart3, Clapperboard, Eye, Globe2 } from './icons';
 
 export const studioChannels = ['histold', 'shotsnip'] as const;
 export type StudioChannel = typeof studioChannels[number];
@@ -114,7 +114,7 @@ export function VideoRanking({ series, limit = 8 }: { series: Series; limit?: nu
   </section>;
 }
 
-function PacingExperiment({ experiment, time }: { experiment: Pacing; time: (value: string | null) => string }) {
+export function PacingExperiment({ experiment, time }: { experiment: Pacing; time: (value: string | null) => string }) {
   const [platform, setPlatform] = useState('YouTube');
   const [hours, setHours] = useState(24);
   const groups = experiment.groups.filter(group => group.platform === platform && group.hours === hours);
@@ -139,7 +139,7 @@ function PacingExperiment({ experiment, time }: { experiment: Pacing; time: (val
 }
 
 export function Analytics({ data, channel, choose, time, pacing }: {
-  data: StudioAnalytics; channel: StudioChannel; choose: (channel: StudioChannel) => void;
+  data: StudioAnalytics; channel: StudioChannel; choose?: (channel: StudioChannel) => void;
   time: (value: string | null) => string;
   pacing?: Pacing | null;
 }) {
@@ -147,15 +147,14 @@ export function Analytics({ data, channel, choose, time, pacing }: {
   const series = data[channel].find(item => item.id === source) || data[channel][0];
   return <div className="analytics-workspace">
     <div className="analytics-tools">
-      <div className="filters source-filters" role="group" aria-label="Analytics channel">
+      {choose && <div className="filters source-filters" role="group" aria-label="Analytics channel">
         {studioChannels.map(item => <button key={item} aria-pressed={channel === item}
           onClick={() => choose(item)}>{channelNames[item]}</button>)}
-      </div>
-      {data[channel].length > 1 && <label className="source-select">Data source
-        <select value={series.id} onChange={event => setSource(event.target.value)}>
-          {data[channel].map(item => <option key={item.id} value={item.id}>{sourceName[item.id] || item.platform}</option>)}
-        </select>
-      </label>}
+      </div>}
+      {data[channel].length > 1 && <div className="filters source-chips" role="group" aria-label="Data source">
+        {data[channel].map(item => <button key={item.id} aria-pressed={item.id === series.id}
+          onClick={() => setSource(item.id)}>{sourceName[item.id] || item.platform}</button>)}
+      </div>}
     </div>
     {series ? <>
       <div className="analytics-source"><span><BarChart3 size={16}/>{sourceName[series.id] || series.platform}</span>

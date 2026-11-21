@@ -1,5 +1,19 @@
 # Phase 3 — Planning and channel workspaces
 
+## Navigation (redesigned 22 November 2026)
+
+Studio HQ has five sections, each with one row of sub-pages. Every page has its own address, so links, bookmarks and the back button work. On phones the sections are in a bottom bar, and a badge shows how many items in that section need you. The theme follows the original Shotsnip dashboard: ink navy, slate panels and a golden-yellow accent. Shotsnip is yellow and Histold blue throughout; platforms use YouTube red, Facebook blue and Instagram green (validated for colorblind separation).
+
+| Section | Sub-pages | Replaces |
+| --- | --- | --- |
+| Home | Histold · Shotsnip: headline figures, views by publish day per platform, daily views, typical video by platform, publishing rhythm, top performers and videos to learn from (ranked against each platform's typical video), and a sortable video table | Overview, Analytics |
+| Shotsnip | Live (status, cadence, automatic posting) · Queue (manual clips, new preview) · Targets · Agent | Workspaces → Shotsnip, Controls (Shotsnip parts) |
+| Histold | Topics (each topic opens its own trace page) · Experiments · Assistant · Approvals (drafts, new draft, Strategist) | Planning → Strategy, Controls (Histold parts) |
+| Plan | Calendar (next-up summary, two-week grid with per-channel counts beside a day agenda with a Now line; arrow keys move between days) · Money · Job usage | Planning → Calendar, Earnings & costs, Job usage |
+| System | Health (storage, background jobs, archive now, recent requests) · Activity · Archive · Original tools | Overview stats, Archive, Controls (host parts), Workspaces links |
+
+Older notes below use the previous menu names; the table shows where each moved.
+
 Open [Studio HQ](https://vnsh.tail9bdcf7.ts.net/studio-hq/). The new **Planning** view includes the IST calendar, Histold topic history, experiment evidence, platform earnings, and API costs.
 
 | View | Source and interpretation |

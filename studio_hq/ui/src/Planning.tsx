@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, CalendarDays, FlaskConical, ListChecks, WalletCards } from 'lucide-react';
+import { ArrowUpRight } from './icons';
 import type { CommandEvent, Send } from './Controls';
 
-export type PlanningView = 'calendar' | 'strategy' | 'money' | 'jobs';
 export type JobLink = { channel: 'histold' | 'shotsnip'; id: string };
 type JobCharge = { attempts: number; failed: number; priced: number; cost: string | null };
 type CalendarEvent = { at: string; channel: 'histold' | 'shotsnip'; title: string; state: string; source: string; url: string | null };
@@ -107,61 +106,134 @@ function CadenceEditor({ data, busy, send, recent, time }: {
   </div>;
 }
 
-function Calendar({ data, time, send, busy, cadenceEvent }: { data: PlanningData['calendar'];
-  time: (value: string | null) => string; send?: Send; busy: boolean; cadenceEvent?: CommandEvent;
-}) {
+const weekdayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const monthDay = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const kindLabel = (event: CalendarEvent) => event.state === 'Published'
+  ? (event.source === 'Manual clip' ? 'Manual clip' : 'Published') : 'Planned slot';
+
+/** Two-week overview beside a day agenda: counts in the grid, full detail in the agenda. */
+export function Calendar({ data }: { data: PlanningData['calendar']; time: (value: string | null) => string }) {
   const [selected, setSelected] = useState(data.today);
   const [filter, setFilter] = useState<'all' | 'histold' | 'shotsnip'>('all');
-  const events = data.events.filter(event => localDay.format(new Date(event.at)) === selected &&
-    (filter === 'all' || event.channel === filter));
-  const start = selected < data.today ? data.first : data.today;
-  const dates = Array.from({length: selected < data.today ? 6 : 7}, (_, i) => offset(start, i));
-  return <div className="planning-body">
-    <section className="panel">
-      <div className="panel-head planning-head"><div><h2>Publishing calendar</h2><p>Dispatch slots and recorded posts · IST</p></div>
-        <div className="calendar-paging">
-          <button className="action" aria-label="Show past days" disabled={selected < data.today} onClick={() => setSelected(offset(data.today,-1))}><ArrowLeft size={16}/></button>
-          <button className="action" onClick={() => setSelected(data.today)}>Today</button>
-          <button className="action" aria-label="Show upcoming days" disabled={selected >= data.today} onClick={() => setSelected(data.today)}><ArrowRight size={16}/></button>
+  const visible = data.events.filter(event => filter === 'all' || event.channel === filter)
+    .sort((a, b) => a.at.localeCompare(b.at));
+  const byDay = new Map<string, CalendarEvent[]>();
+  for (const event of visible) {
+    const key = localDay.format(new Date(event.at));
+    byDay.set(key, [...(byDay.get(key) ?? []), event]);
+  }
+  const weekday = (day: string) => (new Date(day + 'T00:00:00Z').getUTCDay() + 6) % 7;
+  const start = offset(data.first, -weekday(data.first));
+  const end = offset(data.last, 6 - weekday(data.last));
+  const days: string[] = [];
+  for (let day = start; day <= end; day = offset(day, 1)) days.push(day);
+  const inRange = (day: string) => day >= data.first && day <= data.last;
+  const move = (step: number) => setSelected(day => {
+    const next = offset(day, step);
+    return inRange(next) ? next : day;
+  });
+  const chosen = byDay.get(selected) ?? [];
+  const now = Date.now();
+  const upcoming = visible.filter(event => Date.parse(event.at) > now);
+  const next = upcoming[0];
+  const todayItems = byDay.get(data.today) ?? [];
+  const total = (channel: 'histold' | 'shotsnip') => visible.filter(event => event.channel === channel && event.state === 'Published').length;
+  const nowIndex = selected === data.today ? chosen.findIndex(event => Date.parse(event.at) > now) : -1;
+
+  return <div className="calendar-layout">
+    <div className="calendar-summary">
+      <div className="summary-tile accent"><span>Next up</span>
+        <strong>{next ? localClock.format(new Date(next.at)) : '—'}</strong>
+        <small>{next ? channelNames[next.channel] + ' · ' + next.title : 'Nothing planned'}</small></div>
+      <div className="summary-tile"><span>Today</span><strong>{todayItems.length}</strong>
+        <small>{todayItems.filter(e => e.state === 'Published').length} published · {todayItems.filter(e => e.state !== 'Published').length} planned</small></div>
+      <div className="summary-tile"><span>Published in this period</span><strong>{total('histold') + total('shotsnip')}</strong>
+        <small><i className="swatch histold"/>Histold {total('histold')} · <i className="swatch shotsnip"/>Shotsnip {total('shotsnip')}</small></div>
+      <div className="summary-tile"><span>Planned ahead</span><strong>{upcoming.length}</strong>
+        <small>Histold dispatch slots · Shotsnip posts {data.shotsnip.cadence_minutes ? 'every ' + data.shotsnip.cadence_minutes / 60 + ' h' : 'on schedule'}</small></div>
+    </div>
+    <div className="calendar-columns">
+      <section className="panel calendar-panel">
+        <div className="calendar-toolbar">
+          <div><h2>{monthDay.format(new Date(start))} to {monthDay.format(new Date(end))}</h2>
+            <p>Tap a day to see its posts · IST</p></div>
+          <div className="filters" role="group" aria-label="Calendar channel">
+            {(['all','histold','shotsnip'] as const).map(channel => <button key={channel} aria-pressed={channel === filter}
+              onClick={() => setFilter(channel)}>{channel !== 'all' && <i className={'swatch ' + channel}/>}{channel === 'all' ? 'All' : channelNames[channel]}</button>)}
+          </div>
         </div>
-      </div>
-      <div className="calendar-days" role="group" aria-label="Select day">
-        {dates.map(day => <button className="action" key={day} aria-pressed={day === selected}
-          onClick={() => setSelected(day)}>{shortDay.format(new Date(day))}</button>)}
-      </div>
-      <div className="calendar-filter">
-        <strong>{longDay.format(new Date(selected))}</strong>
-        <div className="filters source-filters" role="group" aria-label="Calendar channel">
-          {(['all','histold','shotsnip'] as const).map(channel => <button key={channel} aria-pressed={channel === filter}
-            onClick={() => setFilter(channel)}>{channel === 'all' ? 'All' : channelNames[channel]}</button>)}
+        <div className="calendar-grid" role="group" aria-label="Days" onKeyDown={event => {
+          const step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[event.key];
+          if (step) { event.preventDefault(); move(step); }
+        }}>
+          {weekdayNames.map(name => <div key={name} className="calendar-weekday" aria-hidden="true">{name}</div>)}
+          {days.map(day => {
+            const items = byDay.get(day) ?? [];
+            const count = (channel: string) => items.filter(item => item.channel === channel).length;
+            const planned = items.filter(item => item.state !== 'Published').length;
+            return <button key={day} aria-pressed={day === selected} disabled={!inRange(day)} tabIndex={day === selected ? 0 : -1}
+              ref={element => { if (element && day === selected && element.ownerDocument.activeElement?.closest('.calendar-grid')) element.focus(); }}
+              className={'calendar-day' + (day === data.today ? ' today' : '') + (day < data.today ? ' past' : '')}
+              onClick={() => setSelected(day)} aria-label={longDay.format(new Date(day)) + ': ' + items.length + ' posts' + (planned ? ', ' + planned + ' planned' : '')}>
+              <span className="calendar-date">{Number(day.slice(8))}{day === data.today && <em>Today</em>}</span>
+              {items.length > 0 && <span className="calendar-counts">
+                {count('histold') > 0 && <span className="count histold" title="Histold">{count('histold')}</span>}
+                {count('shotsnip') > 0 && <span className="count shotsnip" title="Shotsnip">{count('shotsnip')}</span>}
+              </span>}
+              {items.length > 0 && <span className="calendar-bar" aria-hidden="true">
+                {count('histold') > 0 && <i className="histold" style={{ flexGrow: count('histold') }}/>}
+                {count('shotsnip') > 0 && <i className="shotsnip" style={{ flexGrow: count('shotsnip') }}/>}
+              </span>}
+            </button>;
+          })}
         </div>
-      </div>
-      {!data.histold_available && <p className="chart-note">Histold’s dispatch preview is unavailable. Recorded posts are shown below.</p>}
-      {!events.length ? <p className="empty">No recorded posts or planned dispatches for this selection.</p>
-        : events.map((event, index) => <article key={event.at + event.channel + index} className="agenda-row">
+        <div className="calendar-legend" aria-hidden="true">
+          <span><i className="swatch histold"/>Histold</span><span><i className="swatch shotsnip"/>Shotsnip</span>
+          <span>Arrow keys move between days</span></div>
+        {!data.histold_available && <p className="chart-note">Histold planned slots are unavailable. Recorded posts are shown.</p>}
+      </section>
+      <section className="panel agenda-panel" aria-live="polite">
+        <div className="agenda-head">
+          <button className="action" aria-label="Previous day" disabled={!inRange(offset(selected, -1))} onClick={() => move(-1)}>‹</button>
+          <div><h2>{longDay.format(new Date(selected))}</h2>
+            <p>{chosen.length ? chosen.length + (chosen.length === 1 ? ' post' : ' posts') : 'No posts'}{selected === data.today ? ' · today' : ''}</p></div>
+          <button className="action" aria-label="Next day" disabled={!inRange(offset(selected, 1))} onClick={() => move(1)}>›</button>
+        </div>
+        {selected !== data.today && <div className="agenda-today"><button className="action" onClick={() => setSelected(data.today)}>Back to today</button></div>}
+        {chosen.length ? <ol className="agenda-list">{chosen.map((event, index) => <li key={event.at + event.channel + index}
+          className={'agenda-item ' + event.channel + (Date.parse(event.at) < now ? ' done' : '') + (event.state === 'Published' ? '' : ' planned')}>
+          {index === nowIndex && <span className="now-line" aria-label="Now"><b>Now</b></span>}
           <time dateTime={event.at}>{localClock.format(new Date(event.at))}</time>
-          <div><strong>{event.title}</strong><small>{channelNames[event.channel]} · {event.source}</small></div>
-          <span className={'status ' + (event.state === 'Published' ? 'good' : 'neutral')}>{event.state}</span>
-          {event.url && <a className="rank-link" href={event.url} aria-label={'Watch ' + event.title} target="_blank" rel="noreferrer"><ArrowUpRight size={16}/></a>}
-        </article>)}
-    </section>
-    <section className="panel">
-      <div className="panel-head"><div><h2>Shotsnip posting cadence</h2><p>Clips are published when eligible under the existing scheduler.</p></div>
-        <span className={'status ' + (data.shotsnip.status === 'Active' ? 'good' : 'warn')}>{data.shotsnip.status}</span></div>
-      <div className="planning-detail">
-        {data.shotsnip.cadence_minutes && <span>{data.shotsnip.cadence_minutes} minutes between posting windows</span>}
-        {data.shotsnip.scan_minutes != null && <span>Scan every {data.shotsnip.scan_minutes} minutes</span>}
-        {data.shotsnip.earliest && <span>Cadence threshold {time(data.shotsnip.earliest)} IST</span>}
-        <a className="action" href="/?channel=shotsnip#jobs" target="_blank" rel="noreferrer">Open work queue <ArrowUpRight size={15}/></a>
-      </div>
-      <CadenceEditor data={data.shotsnip} busy={busy} send={send} recent={cadenceEvent} time={time} />
-    </section>
+          <span className="agenda-text"><strong>{event.title}</strong>
+            <small><i className={'swatch ' + event.channel}/>{channelNames[event.channel]} · {kindLabel(event)}</small></span>
+          {event.url ? <a className="icon-link" href={event.url} aria-label={'Watch ' + event.title} target="_blank" rel="noreferrer"><ArrowUpRight size={15}/></a> : <span />}
+        </li>)}
+          {nowIndex === -1 && selected === data.today && chosen.length > 0 && <li className="now-end"><span className="now-line"><b>Now</b></span></li>}
+        </ol> : <p className="empty">Nothing published or planned on this day.</p>}
+        <p className="chart-note"><a href="#/shotsnip/live">Change the Shotsnip cadence</a></p>
+      </section>
+    </div>
   </div>;
+}
+
+export function ShotsnipCadence({ data, time, send, busy, cadenceEvent }: { data: PlanningData['calendar']['shotsnip'];
+  time: (value: string | null) => string; send?: Send; busy: boolean; cadenceEvent?: CommandEvent;
+}) {
+  return <section className="panel">
+    <div className="panel-head"><div><h2>Posting cadence</h2><p>Clips are published when eligible under the existing scheduler.</p></div>
+      <span className={'status ' + (data.status === 'Active' ? 'good' : 'warn')}>{data.status}</span></div>
+    <div className="planning-detail">
+      {data.cadence_minutes && <span>{data.cadence_minutes / 60} h between posting windows</span>}
+      {data.scan_minutes != null && <span>Scans every {data.scan_minutes / 60} h</span>}
+      {data.earliest && <span>Next eligible {time(data.earliest)} IST</span>}
+    </div>
+    <CadenceEditor data={data} busy={busy} send={send} recent={cadenceEvent} time={time} />
+  </section>;
 }
 
 const platformLabel = { youtube: 'YouTube', facebook: 'Facebook', instagram: 'Instagram' };
 
-function TraceView({ trace, time, usage, openUsage, ask }: { trace: Trace; time: (value: string | null) => string;
+export function TraceView({ trace, time, usage, openUsage, ask }: { trace: Trace; time: (value: string | null) => string;
   usage: boolean; openUsage: () => void; ask?: () => void }) {
   const production = Object.entries(trace.production);
   return <div className="trace">
@@ -214,7 +286,7 @@ function TraceView({ trace, time, usage, openUsage, ask }: { trace: Trace; time:
   </div>;
 }
 
-function ExperimentPanel({ data, time }: { data: Experiments; time: (value: string | null) => string }) {
+export function ExperimentPanel({ data, time }: { data: Experiments; time: (value: string | null) => string }) {
   const [choice, setChoice] = useState(0);
   const trial = data.trials[0];
   if (!trial) return <section className="panel"><div className="panel-head"><div><h2>Experiments</h2>
@@ -243,7 +315,7 @@ function ExperimentPanel({ data, time }: { data: Experiments; time: (value: stri
   </section>;
 }
 
-function Recommendations({ items }: { items: Recommendation[] }) {
+export function Recommendations({ items }: { items: Recommendation[] }) {
   const labels = { observe: 'Observation', collect: 'Keep collecting', gap: 'Evidence gap' };
   return <section className="panel recommendations">
     <div className="panel-head"><div><h2>Recommendations</h2><p>Advisory. Each one states its evidence and how uncertain it is.</p></div></div>
@@ -257,7 +329,7 @@ function Recommendations({ items }: { items: Recommendation[] }) {
   </section>;
 }
 
-function AssistantPanel({ records, topics, focus, setFocus, send, busy, recent, time }: {
+export function AssistantPanel({ records, topics, focus, setFocus, send, busy, recent, time }: {
   records: AssistantRecord[]; topics: PlanningData['topics']; focus: string | null; setFocus: (job: string | null) => void;
   send?: Send; busy: boolean; recent?: CommandEvent; time: (value: string | null) => string;
 }) {
@@ -279,7 +351,7 @@ function AssistantPanel({ records, topics, focus, setFocus, send, busy, recent, 
         <button type="button" aria-pressed={!focus} onClick={() => setFocus(null)}>Recommendations and experiments</button>
         {topic && <button type="button" aria-pressed>Topic: {topic.title}</button>}
       </div>
-      {!topic && <p className="trace-muted">To ask about one topic, open its trace and choose Ask about this topic.</p>}
+      {!topic && <p className="trace-muted">To ask about one topic, open it under Topics and choose Ask the assistant.</p>}
       <label className="planning-search">Question
         <textarea value={question} maxLength={600} rows={3} onChange={event => setQuestion(event.target.value)}
           placeholder={topic ? 'Why did this topic underperform on YouTube?' : 'Which lane is ahead, and how sure can we be?'} /></label>
@@ -311,63 +383,61 @@ function AssistantPanel({ records, topics, focus, setFocus, send, busy, recent, 
   </section>;
 }
 
-function Strategy({ data, openPacing, openJob, time, send, busy, commands }: { data: PlanningData; openPacing: () => void;
-  openJob: (job: JobLink) => void; time: (value: string | null) => string; send?: Send; busy: boolean; commands: CommandEvent[] }) {
+export function TopicList({ data }: { data: PlanningData }) {
   const [search, setSearch] = useState('');
-  const [askFocus, setAskFocus] = useState<string | null>(null);
-  const [traced, setTraced] = useState<string | null>(null);
-  const [limit, setLimit] = useState(8);
-  const [age, setAge] = useState(24);
-  const ages = [...new Set(data.histold_experiment.map(item => item.hours))];
-  const topics = data.topics.filter(row => row.title.toLowerCase().includes(search.trim().toLowerCase()) || row.job.includes(search.trim()));
+  const [limit, setLimit] = useState(12);
+  const query = search.trim().toLowerCase();
+  const topics = data.topics.filter(row => row.title.toLowerCase().includes(query) || row.job.includes(query));
+  return <section className="panel">
+    <div className="panel-head"><div><h2>Topics</h2><p>Recent ideas. Open one to see its full journey from idea to results.</p></div></div>
+    <label className="planning-search">Find a topic<input type="search" value={search}
+      onChange={event => { setSearch(event.target.value); setLimit(12); }} placeholder="Search title or job ID" /></label>
+    {topics.length ? <ul className="topic-list">{topics.slice(0, limit).map(row => <li key={row.job}>
+      <a href={'#/histold/topics/' + row.job}>
+        <span><strong>{row.title}</strong><small>{row.format} · {row.date || 'Date unavailable'}{row.trace?.gaps.length ? ' · ' + row.trace.gaps.length + ' gaps' : ''}</small></span>
+        <span className={'status ' + (row.state === 'Published' ? 'good' : 'neutral')}>{row.state}</span>
+      </a></li>)}</ul> : <p className="empty">No matching topics.</p>}
+    {topics.length > limit && <div className="panel-foot"><button onClick={() => setLimit(value => value + 12)}>Show more topics</button></div>}
+  </section>;
+}
+
+export function TopicPage({ data, job, time, send }: { data: PlanningData; job: string; time: (value: string | null) => string; send?: Send }) {
+  const topic = data.topics.find(row => row.job === job);
+  if (!topic) return <section className="panel empty">This topic is no longer in the recent history. <a href="#/histold/topics">Back to topics</a></section>;
+  const usage = data.job_usage?.jobs.find(row => row.channel === 'histold' && row.id === job);
   return <div className="planning-body">
-    <div className="planning-split">
-      <section className="panel">
-        <div className="panel-head planning-head"><div><h2>Histold topic history</h2><p>Each idea traced to its run, publications, observations and cost.</p></div>
-          <a className="action" href="/?channel=histold#/strategy" target="_blank" rel="noreferrer">Strategy tools <ArrowUpRight size={15}/></a></div>
-        <label className="planning-search">Find a topic<input type="search" value={search}
-          onChange={event => { setSearch(event.target.value); setLimit(8); }} placeholder="Search title or job ID" /></label>
-        {topics.length ? topics.slice(0,limit).map(row => <article className="topic-row" key={row.job}>
-          <div><strong>{row.title}</strong><small>{row.format} · {row.date || 'Date unavailable'} · {row.job}</small></div>
-          <span className={'status ' + (row.state === 'Published' ? 'good' : 'neutral')}>{row.state}</span>
-          <div className="topic-links">
-            {row.trace && <button className="action" aria-expanded={traced === row.job}
-              onClick={() => setTraced(traced === row.job ? null : row.job)}>{traced === row.job ? 'Hide trace' : 'Trace'}</button>}
-            {data.job_usage?.jobs.some(job => job.channel === 'histold' && job.id === row.job) &&
-              <button className="action" onClick={() => openJob({channel:'histold',id:row.job})}>Job usage</button>}
-            {row.url && <a className="rank-link" href={row.url} aria-label={'Open ' + row.title} target="_blank" rel="noreferrer"><ArrowUpRight size={16}/></a>}
-          </div>
-          {traced === row.job && row.trace && <TraceView trace={row.trace} time={time}
-            usage={!!data.job_usage?.jobs.some(job => job.channel === 'histold' && job.id === row.job && job.attempts > 0)}
-            openUsage={() => openJob({channel:'histold', id: row.job})}
-            ask={send ? () => { setAskFocus(row.job); document.getElementById('assistant-heading')?.scrollIntoView({behavior:'smooth'}); } : undefined} />}
-        </article>) : <p className="empty">No matching topic records.</p>}
-        {topics.length > limit && <div className="panel-foot"><button onClick={() => setLimit(value => value + 8)}>Show more topics</button></div>}
-      </section>
-      <div className="planning-body">
-        {data.experiments && <Recommendations items={data.experiments.recommendations} />}
-        {data.assistant && <AssistantPanel records={data.assistant} topics={data.topics} focus={askFocus} setFocus={setAskFocus}
-          send={send} busy={busy} time={time}
-          recent={commands.find(event => event.action === 'assistant_ask' || event.action === 'assistant_apply')} />}
-        {data.experiments && <ExperimentPanel data={data.experiments} time={time} />}
-        <section className="panel">
-          <div className="panel-head"><div><h2>Histold six-Reel experiment</h2><p>YouTube observations within the experiment’s age window.</p></div></div>
-          {ages.length > 0 && <div className="filters" role="group" aria-label="Observation age">
-            {ages.map(hour => <button key={hour} aria-pressed={hour === (ages.includes(age) ? age : ages[0])}
-              onClick={() => setAge(hour)}>{hour}h</button>)}</div>}
-          {data.histold_experiment.filter(item => item.hours === (ages.includes(age) ? age : ages[0])).map(item =>
-            <div className="topic-row" key={item.category}><div><strong>{item.category}</strong>
-              <small>{item.observed} observed {item.observed === 1 ? 'video' : 'videos'}</small></div><span>{value.format(item.median)} median views</span></div>)}
-          <p className="chart-note">{ages.length ? 'Exploratory sample. Compare categories only at the same observation age.' : 'No matching YouTube observations are available.'}</p>
-        </section>
-        <section className="panel"><div className="panel-head"><div><h2>Shotsnip pacing</h2><p>Compare 20-second and 30-second clips at matched ages.</p></div></div>
-          <div className="planning-detail"><button className="action" onClick={openPacing}>Open pacing experiment <ArrowUpRight size={15}/></button></div></section>
+    <a className="back-link" href="#/histold/topics">← All topics</a>
+    <section className="panel topic-page">
+      <div className="panel-head"><div><h2>{topic.title}</h2><p>{topic.format} · {topic.date || 'Date unavailable'} · {topic.job}</p></div>
+        <span className={'status ' + (topic.state === 'Published' ? 'good' : 'neutral')}>{topic.state}</span></div>
+      <div className="topic-actions">
+        {topic.url && <a className="action" href={topic.url} target="_blank" rel="noreferrer">Watch <ArrowUpRight size={15}/></a>}
+        {usage && <a className="action" href={'#/plan/jobs/histold/' + job}>Job usage</a>}
+        {send && <a className="action" href={'#/histold/assistant/' + job}>Ask the assistant</a>}
       </div>
-    </div>
+      {topic.trace ? <TraceView trace={topic.trace} time={time} usage={!!usage && usage.attempts > 0}
+        openUsage={() => { window.location.hash = '#/plan/jobs/histold/' + job; }} />
+        : <p className="empty">No trace is recorded for this topic.</p>}
+    </section>
   </div>;
 }
 
-function Money({ data, time, openJobs }: { data: PlanningData; time: (value: string | null) => string; openJobs: () => void }) {
+export function SixReelExperiment({ data }: { data: PlanningData }) {
+  const [age, setAge] = useState(24);
+  const ages = [...new Set(data.histold_experiment.map(item => item.hours))];
+  const chosen = ages.includes(age) ? age : ages[0];
+  return <section className="panel">
+    <div className="panel-head"><div><h2>Six-Reel experiment</h2><p>YouTube observations within the experiment’s age window.</p></div></div>
+    {ages.length > 0 && <div className="filters" role="group" aria-label="Observation age">
+      {ages.map(hour => <button key={hour} aria-pressed={hour === chosen} onClick={() => setAge(hour)}>{hour}h</button>)}</div>}
+    {data.histold_experiment.filter(item => item.hours === chosen).map(item =>
+      <div className="topic-row" key={item.category}><div><strong>{item.category}</strong>
+        <small>{item.observed} observed {item.observed === 1 ? 'video' : 'videos'}</small></div><span>{value.format(item.median)} median views</span></div>)}
+    <p className="chart-note">{ages.length ? 'Exploratory sample. Compare categories only at the same observation age.' : 'No matching YouTube observations are available.'}</p>
+  </section>;
+}
+
+export function Money({ data, time }: { data: PlanningData; time: (value: string | null) => string }) {
   const formatDay = (day: string) => reportDate.format(new Date(day.slice(0,10)));
   return <div className="planning-body">
     <section>
@@ -384,7 +454,7 @@ function Money({ data, time, openJobs }: { data: PlanningData; time: (value: str
     </section>
     <section className="panel experiment-panel">
       <div className="panel-head planning-head"><div><h2>API costs and usage</h2><p>Last 30 days of locally recorded API attempts.</p></div>
-        <button className="action" onClick={openJobs}>View by job <ArrowUpRight size={15}/></button></div>
+        <a className="action" href="#/plan/jobs">View by job</a></div>
       {data.api_usage.length ? <table><thead><tr><th scope="col">Channel and provider</th><th scope="col">Attempts</th>
         <th scope="col">Failed</th><th scope="col">Recorded cost</th></tr></thead>
         <tbody>{data.api_usage.map(row => <tr key={row.channel + row.provider}><th scope="row">{channelNames[row.channel]} · {row.provider}</th>
@@ -396,7 +466,7 @@ function Money({ data, time, openJobs }: { data: PlanningData; time: (value: str
   </div>;
 }
 
-function JobUsage({ data, focus, time }: {
+export function JobUsage({ data, focus, time }: {
   data: NonNullable<PlanningData['job_usage']>; focus: JobLink | null; time: (value: string | null) => string;
 }) {
   const [channel, setChannel] = useState<'all' | JobLink['channel']>(focus?.channel ?? 'all');
@@ -434,21 +504,4 @@ function JobUsage({ data, focus, time }: {
     {filtered.length > limit && <div className="panel-foot"><button onClick={() => setLimit(value => value + 12)}>Show more jobs</button></div>}
     <p className="chart-note">Hosted workflow usage appears only when its telemetry is available to this host. Unpriced attempts remain unavailable.</p>
   </section>;
-}
-
-export function Planning({ data, view, choose, time, openPacing, send, busy, cadenceEvent, openJob, jobFocus, commands = [] }: {data: PlanningData; view: PlanningView; commands?: CommandEvent[];
-  choose: (view: PlanningView) => void; time: (value: string | null) => string; openPacing: () => void;
-  send?: Send; busy: boolean; cadenceEvent?: CommandEvent; openJob: (job: JobLink) => void; jobFocus: JobLink | null }) {
-  const tabs = [{id:'calendar',label:'Calendar',icon:CalendarDays}, {id:'strategy',label:'Strategy',icon:FlaskConical},
-    {id:'money',label:'Earnings & costs',icon:WalletCards}, {id:'jobs',label:'Job usage',icon:ListChecks}] as const;
-  return <div className="planning-body">
-    <div className="filters source-filters planning-tabs" role="group" aria-label="Planning sections">
-      {tabs.map(tab => <button key={tab.id} aria-pressed={view === tab.id} onClick={() => choose(tab.id)}><tab.icon size={16}/>{tab.label}</button>)}
-    </div>
-    {view === 'calendar' ? <Calendar data={data.calendar} time={time} send={send} busy={busy} cadenceEvent={cadenceEvent} />
-      : view === 'strategy' ? <Strategy data={data} openPacing={openPacing} openJob={openJob} time={time} send={send} busy={busy} commands={commands} />
-      : view === 'money' ? <Money data={data} time={time} openJobs={() => choose('jobs')} />
-      : data.job_usage ? <JobUsage key={jobFocus ? jobFocus.channel + jobFocus.id : 'all'} data={data.job_usage} focus={jobFocus} time={time} />
-      : <p className="panel empty">Waiting for the first job usage snapshot.</p>}
-  </div>;
 }

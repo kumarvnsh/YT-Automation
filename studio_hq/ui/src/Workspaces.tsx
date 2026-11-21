@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Activity, ArrowUpRight, BarChart3, Bot, Cable, ClipboardList, Crosshair, FlaskConical, WalletCards } from 'lucide-react';
-import type { PlanningView } from './Planning';
+import { ArrowUpRight } from './icons';
 import type { CommandEvent, Send } from './Controls';
 
 export type Target = { id: string; name: string; enabled: boolean; sources: { platform: 'youtube' | 'twitch'; label: string }[] };
@@ -21,8 +20,6 @@ export type ShotsnipWorkspace = {
     pending_publications: number; events: {at: string; phase: string}[] };
 };
 
-const shotsnip = '/?channel=shotsnip';
-const histold = '/?channel=histold';
 
 export function LiveOperations({ live, status, waiting, time, close }: {
   live: NonNullable<ShotsnipWorkspace['live']>; status: string; waiting: number | null;
@@ -65,9 +62,9 @@ export function LiveOperations({ live, status, waiting, time, close }: {
 const platformNames = { youtube: 'YouTube', twitch: 'Twitch' };
 const targetPattern = /^https:\/\/(?:www\.)?(?:youtube\.com\/(?:@[\w.-]+|channel\/UC[\w-]{22})|twitch\.tv\/\w{3,25})\/?$/i;
 
-function Targets({ list, revision, send, busy, recent, time, close }: {
+export function Targets({ list, revision, send, busy, recent, time, close }: {
   list: Target[]; revision: string | null; send?: Send; busy: boolean; recent?: CommandEvent;
-  time: (value: string | null) => string; close: () => void;
+  time: (value: string | null) => string; close?: () => void;
 }) {
   const [filter, setFilter] = useState<'all' | 'active' | 'paused'>('all');
   const [search, setSearch] = useState('');
@@ -83,7 +80,7 @@ function Targets({ list, revision, send, busy, recent, time, close }: {
   return <section className="panel targets-panel" aria-labelledby="targets-heading">
     <div className="panel-head planning-head">
       <div><h2 id="targets-heading">Targeted channels</h2><p>{active} active of {list.length} creators Shotsnip monitors.</p></div>
-      <div className="tool-links"><button className="action" onClick={close}>Close targets</button></div>
+      {close && <div className="tool-links"><button className="action" onClick={close}>Close targets</button></div>}
     </div>
     {editable && <form className="target-add" onSubmit={event => {
       event.preventDefault();
@@ -132,9 +129,9 @@ function Targets({ list, revision, send, busy, recent, time, close }: {
 
 const count = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
 
-function AgentPanel({ data, send, busy, recent, time, close }: {
+export function AgentPanel({ data, send, busy, recent, time, close }: {
   data: AgentReport; send?: Send; busy: boolean; recent?: CommandEvent;
-  time: (value: string | null) => string; close: () => void;
+  time: (value: string | null) => string; close?: () => void;
 }) {
   const [confirm, setConfirm] = useState<'learning' | 'refresh' | null>(null);
   const [errorCount, setErrorCount] = useState(5);
@@ -145,7 +142,7 @@ function AgentPanel({ data, send, busy, recent, time, close }: {
         <p>{data.checked_at ? 'Last review ' + time(data.checked_at) + ' IST' : 'No review has been recorded.'}</p></div>
       <div className="tool-links">
         {learning != null && <span className={'status ' + (learning ? 'good' : 'neutral')}>{learning ? 'Learning enabled' : 'Learning paused'}</span>}
-        <button className="action" onClick={close}>Close agent</button></div>
+        {close && <button className="action" onClick={close}>Close agent</button>}</div>
     </div>
     {send && <div className="planning-detail agent-actions">
       <button className="action" disabled={busy} onClick={() => send({action:'agent_review',channel:'shotsnip',mode:'review'})}>Run review</button>
@@ -186,75 +183,33 @@ function AgentPanel({ data, send, busy, recent, time, close }: {
   </section>;
 }
 
-export function Workspaces({ data, status, waiting, time, openQueue, openPerformance, openPlanning, send, busy = false, commands = [] }: {
-  data?: ShotsnipWorkspace; status: string; waiting: number | null; time: (value: string | null) => string;
-  openQueue: () => void; openPerformance: () => void; openPlanning: (view: PlanningView) => void;
-  send?: Send; busy?: boolean; commands?: CommandEvent[];
-}) {
-  const [channel, setChannel] = useState<'shotsnip' | 'histold'>('shotsnip');
-  const [showLive, setShowLive] = useState(false);
-  const [showTargets, setShowTargets] = useState(false);
-  const [showAgent, setShowAgent] = useState(false);
-  const tools = [
-    { title: 'Live operations', icon: Activity, note: 'Active run, scheduler checks, and upload blockers.',
-      state: status, href: shotsnip + '#overview', link: 'Full operations tools',
-      local: data?.live ? { label: showLive ? 'Hide live status' : 'View live status', action: () => setShowLive(!showLive) } : undefined },
-    { title: 'Targeted channels', icon: Crosshair, note: 'Manage the creators and streams Shotsnip monitors.',
-      state: data?.targets != null ? data.active_targets + ' active of ' + data.targets : '',
-      href: shotsnip + '#targets', link: 'Original targets tool',
-      local: data?.target_list ? { label: showTargets ? 'Hide targets' : 'Manage in Studio HQ', action: () => setShowTargets(!showTargets) } : undefined },
-    { title: 'Work queue', icon: ClipboardList, note: 'View automatic work, reprioritize jobs, and inspect failed stages.',
-      state: waiting === null ? '' : waiting + ' waiting', href: shotsnip + '#jobs', link: 'Open full queue',
-      local: { label: 'Studio HQ queue', action: openQueue } },
-    { title: 'Bot workspace', icon: Bot, note: 'Assignments, assistant reports, and bot routines.',
-      href: '/bots?channel=shotsnip', link: 'Open bot workspace' },
-    { title: 'Connections', icon: Cable, note: 'Publishing, analytics, and capture connections.',
-      href: shotsnip + '#connections', link: 'Manage connections', connections: data?.connections },
-    { title: 'Agent', icon: FlaskConical, note: data?.agent_at ? 'Reviewed ' + time(data.agent_at) + ' IST' : 'Open source signals and capture review.',
-      state: data?.learning == null ? '' : data.learning ? 'Learning enabled' : 'Learning paused',
-      href: shotsnip + '#agent', link: 'Original agent tool',
-      local: data?.agent ? { label: showAgent ? 'Hide agent' : 'Open in Studio HQ', action: () => setShowAgent(!showAgent) } : undefined },
-    { title: 'Performance', icon: BarChart3, note: 'Platform trends, top clips, and matched-age observations.',
-      href: shotsnip + '#performance', link: 'Full performance', local: { label: 'Studio HQ analytics', action: openPerformance } },
-  ];
-  const histoldTools = [
-    { title: 'Earnings', icon: WalletCards, note: 'Facebook and YouTube reports with their original reporting periods.',
-      href: histold + '#/earnings', link: 'Full earnings report', local: { label: 'Studio HQ earnings', action: () => openPlanning('money') } },
-    { title: 'Strategy', icon: FlaskConical, note: 'Topic decisions, source evidence, and existing strategy controls.',
-      href: histold + '#/strategy', link: 'Full strategy tools', local: { label: 'Studio HQ strategy', action: () => openPlanning('strategy') } },
-    { title: 'Assistant', icon: Activity, note: 'Ask questions about current channel evidence and review action proposals.',
-      href: histold + '#/ai', link: 'Open assistant' },
-    { title: 'Bot workspace', icon: Bot, note: 'Assignments, assistant reports, and bot routines.',
-      href: '/bots?channel=histold', link: 'Open bot workspace' },
-  ];
-  const entries: typeof tools = channel === 'shotsnip' ? tools : histoldTools;
+const original = { shotsnip: '/?channel=shotsnip', histold: '/?channel=histold' };
+const originalTools = {
+  shotsnip: [
+    ['Live operations', 'Full run controls and upload blockers', original.shotsnip + '#overview'],
+    ['Work queue', 'Automatic work, priorities, and failed stages', original.shotsnip + '#jobs'],
+    ['Connections', 'Publishing, analytics, and capture accounts', original.shotsnip + '#connections'],
+    ['Bot workspace', 'Assignments, reports, and routines', '/bots?channel=shotsnip'],
+  ],
+  histold: [
+    ['Strategy tools', 'Topic decisions and strategy controls', original.histold + '#/strategy'],
+    ['Earnings report', 'Full platform earnings detail', original.histold + '#/earnings'],
+    ['Assistant chat', 'Full conversation view', original.histold + '#/ai'],
+    ['Bot workspace', 'Assignments, reports, and routines', '/bots?channel=histold'],
+  ],
+} as const;
+
+/** Tools that still live in the original dashboard; they open in a browser tab with its own sign-in. */
+export function OriginalTools({ connections }: { connections?: { name: string; status: string }[] }) {
   return <div className="planning-body">
-    <div className="filters source-filters" role="group" aria-label="Workspace channel">
-      <button aria-pressed={channel === 'shotsnip'} onClick={() => setChannel('shotsnip')}>Shotsnip</button>
-      <button aria-pressed={channel === 'histold'} onClick={() => setChannel('histold')}>Histold</button>
-    </div>
-    <p className="analytics-info">Full tools open in the original dashboard and use its existing sign-in.</p>
-    {channel === 'shotsnip' && showLive && data?.live &&
-      <LiveOperations live={data.live} status={status} waiting={waiting} time={time} close={() => setShowLive(false)} />}
-    {channel === 'shotsnip' && showTargets && data?.target_list &&
-      <Targets list={data.target_list} revision={data.targets_revision ?? null} send={send} busy={busy}
-        recent={commands.find(event => event.action === 'target_add' || event.action === 'target_toggle')}
-        time={time} close={() => setShowTargets(false)} />}
-    {channel === 'shotsnip' && showAgent && data?.agent &&
-      <AgentPanel data={data.agent} send={send} busy={busy} time={time} close={() => setShowAgent(false)}
-        recent={commands.find(event => event.action === 'agent_review' || event.action === 'agent_learning')} />}
-    <div className="tools-grid">
-      {entries.map(tool => <article className="panel tool-card" key={tool.title}>
-        <div className="tool-heading"><span className="performance-icon"><tool.icon size={18}/></span>
-          <h2>{tool.title}</h2></div>
-        <p>{tool.note}</p>
-        {tool.state && <small className="tool-state">{tool.state}</small>}
-        {tool.connections && <dl>{tool.connections.map(row => <div key={row.name}><dt>{row.name}</dt><dd>{row.status}</dd></div>)}</dl>}
-        <div className="tool-links">
-          {tool.local && <button className="action" onClick={tool.local.action}>{tool.local.label}</button>}
-          <a className="action" href={tool.href} target="_blank" rel="noreferrer">{tool.link} <ArrowUpRight size={15}/></a>
-        </div>
-      </article>)}
-    </div>
+    {(['shotsnip', 'histold'] as const).map(channel => <section className="panel" key={channel}>
+      <div className="panel-head"><div><h2>{channel === 'shotsnip' ? 'Shotsnip' : 'Histold'}</h2>
+        <p>Opens the original dashboard in a new tab.</p></div></div>
+      <ul className="link-list">{originalTools[channel].map(([title, note, href]) => <li key={title}>
+        <a href={href} target="_blank" rel="noreferrer"><span><strong>{title}</strong><small>{note}</small></span><ArrowUpRight size={16}/></a>
+      </li>)}</ul>
+      {channel === 'shotsnip' && connections && <dl className="connection-list">{connections.map(row =>
+        <div key={row.name}><dt>{row.name}</dt><dd>{row.status}</dd></div>)}</dl>}
+    </section>)}
   </div>;
 }
