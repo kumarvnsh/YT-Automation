@@ -563,7 +563,7 @@ MANIFEST = {'name': 'Histold', 'short_name': 'Histold', 'start_url': '/', 'scope
                       {'src': '/icon-512.png', 'sizes': '512x512', 'type': 'image/png'},
                       {'src': '/icon-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'}]}
 
-SW = """const C='histold-v4';
+SW = """const C='histold-v5';
 self.addEventListener('install',e=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
  await Promise.all((await caches.keys()).filter(k=>k.startsWith('histold-')&&k!==C).map(k=>caches.delete(k)));
@@ -571,6 +571,7 @@ self.addEventListener('activate',e=>e.waitUntil((async()=>{
  for(const c of await clients.matchAll({type:'window'}))c.postMessage({type:'dashboard-updated'});
 })()));
 self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET'||new URL(r.url).origin!==location.origin)return;
+ if(new URL(r.url).pathname.startsWith('/studio-hq'))return;  // Studio HQ is a separate app with its own caching.
  if(new URL(r.url).pathname.startsWith('/api/')){e.respondWith(fetch(r,{cache:'no-store'}));return}
  e.respondWith(fetch(r,{cache:'no-store'}).then(res=>{if(res.ok&&!res.redirected){const c=res.clone();caches.open(C).then(x=>x.put(r,c))}return res})
  .catch(()=>caches.match(r)))});"""
@@ -596,7 +597,8 @@ def png_icon(size: int) -> bytes:
             + chunk(b'IDAT', zlib.compress(b''.join(rows), 9)) + chunk(b'IEND', b''))
 
 
-HEAD = """<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#111827">
+# Studio HQ (/studio-hq/) is the one installable app; this dashboard opens in the browser.
+HEAD = """<meta name="theme-color" content="#111827">
 <link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes">
 <style>.chat{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto;padding:4px 2px;margin-bottom:10px}
 .msg{padding:9px 12px;border-radius:12px;max-width:88%;white-space:pre-wrap}.me{align-self:flex-end;background:var(--accent);color:#fff}
@@ -811,7 +813,7 @@ $('cResearch').onclick=async()=>{const b=$('cResearch'),s=$('cStatus');b.disable
 </script>"""
 
 LOGIN = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Histold sign in</title><link rel="manifest" href="/manifest.webmanifest"><style>body{font:15px system-ui;background:#141413;color:#ecebe6;display:grid;place-items:center;min-height:100vh;margin:0}
+<title>Histold sign in</title><style>body{font:15px system-ui;background:#141413;color:#ecebe6;display:grid;place-items:center;min-height:100vh;margin:0}
 form{background:#1e1e1c;border:1px solid #33322e;border-radius:14px;padding:28px;width:min(360px,90vw)}input,button{font:inherit;width:100%;padding:10px;border-radius:8px;margin-top:10px;box-sizing:border-box}
 input{border:1px solid #33322e;background:#141413;color:inherit}button{background:#5b4bd6;color:#fff;border:0}p{color:#a09e96;font-size:13px}</style></head>
 <body><form method="post" action="/login"><h2 style="margin:0">Histold</h2><p>Enter the access key from <code>D:\\histold\\dashboard_key.txt</code> on the laptop. You only do this once per device.</p>

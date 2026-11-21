@@ -29,8 +29,14 @@ def manual_module():
         path=CLIP_ROOT/'manual_jobs.py'
         if not path.exists(): return None
         import importlib.util
+        import sys
+        # manual_jobs imports its Shotsnip siblings (e.g. studio_events) by plain name.
+        if str(CLIP_ROOT) not in sys.path:
+            sys.path.append(str(CLIP_ROOT))
         spec=importlib.util.spec_from_file_location('shotsnip_manual_jobs',path)
-        MANUAL=importlib.util.module_from_spec(spec); spec.loader.exec_module(MANUAL)
+        module=importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        MANUAL=module  # Cache only a fully loaded module, so a failed load is retried.
     return MANUAL
 
 

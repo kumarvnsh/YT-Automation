@@ -140,3 +140,20 @@ def test_clip_library_merges_sources_newest_first_with_publish_state(tmp_path):
     assert [r['title'] for r in rows]==['Live one','Auto one']
     assert rows[0]['origin']=='Live chat-spike monitor' and rows[0]['published'] is None
     assert rows[1]['origin']=='Automatic cycle' and rows[1]['published']['video_id']=='yt9'
+
+
+
+def test_manual_module_resolves_siblings_and_retries_failed_loads(tmp_path, monkeypatch):
+    import sys
+    (tmp_path/'manual_jobs.py').write_text('from fixture_sibling import VALUE\ndef pending(root=None):\n    return VALUE\n')
+    monkeypatch.setattr(clipping, 'CLIP_ROOT', tmp_path)
+    monkeypatch.setattr(clipping, 'MANUAL', None)
+    monkeypatch.setattr(sys, 'path', list(sys.path))
+    try:
+        with pytest.raises(ModuleNotFoundError):
+            clipping.manual_module()
+        assert clipping.MANUAL is None  # a half-loaded module is never cached
+        (tmp_path/'fixture_sibling.py').write_text('VALUE = True\n')
+        assert clipping.manual_module().pending() is True
+    finally:
+        sys.modules.pop('fixture_sibling', None)
