@@ -339,3 +339,8 @@ a.rank-link:hover { background: #29243e; }
   .rail nav button svg { width: 12px; }
   .brand-mark { display: grid; }
 }
+
+.target-add { display: grid; gap: 8px; margin: 4px 18px 12px; }
+.target-add .planning-search { margin: 0; }
+.target-add .action { justify-self: start; }
+.target-row .control-row-title small { overflow-wrap: anywhere; }

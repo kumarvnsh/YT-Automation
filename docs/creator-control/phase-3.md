@@ -8,6 +8,8 @@ Open [Studio HQ](https://vnsh.tail9bdcf7.ts.net/studio-hq/). The new **Planning*
 | Strategy | Histold reservations link to published videos and drafts by job ID. The six-Reel view compares observed YouTube video results at the same age. The Shotsnip pacing report compares the 20- and 30-second variants on each platform. |
 | Earnings & costs | Histold platform estimates use the saved financial reports. Facebook estimates can overlap, and display separately. Local API usage tracks attempts, failures, and costs with a recorded pricing basis. |
 
+Use **Workspaces → Shotsnip → Targeted channels → Manage in Studio HQ** to search the watchlist, pause or enable a creator, and add a YouTube channel or Twitch profile. Studio HQ checks the URL first, then queues the change. The original Shotsnip dashboard makes the write, and Studio HQ verifies the result. A pause or enable is rejected if the watchlist changed after you opened it. Unconfirmed changes stay in review.
+
 Use **Workspaces → Shotsnip → View live status** for the current worker stage, manual waiting count, finished reserve, heartbeat, and recent events. Workspaces also links to the full Live operations tools, Targeted channels, Work queue, Bot workspace, Connections, Agent, and Performance. **Workspaces → Histold** opens the native earnings and strategy summaries as well as the original strategy tools, full earnings report, assistant, and Bot workspace. Original tools use the existing dashboard sign-in.
 
 Use **Planning → Calendar → Shotsnip posting cadence** to review and confirm a change when editing is available. It changes the scan and posting intervals together, as the original control does. Histold’s calendar is a read-only forecast. Topic history currently shows the latest 40 reservations.

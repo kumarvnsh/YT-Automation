@@ -246,7 +246,8 @@ function App() {
           : view === 'workspaces' ? <Workspaces data={snapshot.shotsnip_workspace}
             status={snapshot.health.scheduler_hold ? 'On hold' : snapshot.health.scheduler_status}
             waiting={snapshot.health.queue_available ? snapshot.health.waiting : null} time={timestamp}
-            openQueue={() => chooseView('controls')} openPerformance={() => openAnalytics('shotsnip')} openPlanning={openPlanning} />
+            openQueue={() => chooseView('controls')} openPerformance={() => openAnalytics('shotsnip')} openPlanning={openPlanning}
+            send={snapshot.controls_enabled ? send : undefined} busy={sending || stale || issue} commands={snapshot.commands} />
           : view === 'controls' && snapshot.controls_enabled ? <Controls jobs={snapshot.health.manual_jobs} approvals={snapshot.approvals}
           commands={snapshot.commands} scheduler={snapshot.health.scheduler_enabled} hold={snapshot.health.scheduler_hold}
           busy={sending || stale || issue} backupAt={snapshot.backup_at} time={timestamp} send={send}

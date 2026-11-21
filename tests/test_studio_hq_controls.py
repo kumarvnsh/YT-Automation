@@ -128,3 +128,99 @@ class DashboardControlsTests(unittest.TestCase):
             self.assertIn('240 minutes', controls.perform(self.config, command))
             send.assert_called_once_with(self.config, {'name':'set_cadence','minutes':240})
         self.assertEqual(controls.read_json(filename), dict(original, scan_minutes=240, post_minutes=240))
+
+
+class TargetControlTests(unittest.TestCase):
+    """Targets are changed only through the existing Shotsnip dashboard owner."""
+    def setUp(self):
+        from scripts import clipping_dashboard
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        self.config = {'roots': {'shotsnip': str(self.root)}, 'state_dir': str(self.root)}
+        controls.atomic_json(self.root/'watchlist.json', {'creators': [
+            {'id': 'fixture', 'name': 'Fixture Creator', 'enabled': True,
+             'sources': [{'platform': 'twitch', 'url': 'https://www.twitch.tv/fixture', 'login': 'fixture'}]}]})
+        patched = patch.object(clipping_dashboard, 'CLIP_ROOT', self.root)
+        patched.start()
+        self.addCleanup(patched.stop)
+        self.real_call = controls.call_scheduler
+        # Stand-in for the HTTP hop: the real owner handler runs against the fixture root.
+        owner = patch.object(controls, 'call_scheduler',
+                             side_effect=lambda config, payload, **_: clipping_dashboard.action(payload))
+        self.owner = owner.start()
+        self.addCleanup(owner.stop)
+
+    def command(self, action, **options):
+        return {'request_id': str(uuid.uuid4()), 'action': action, 'channel': 'shotsnip', **options}
+
+    def revision(self):
+        return controls.watchlist_state(self.root)[1]
+
+    def test_toggle_requires_a_fresh_revision_and_is_verified(self):
+        stale = self.command('target_toggle', id='fixture', enabled=False, revision='0' * 64)
+        controls.submit(self.config, stale)
+        with self.assertRaisesRegex(ValueError, 'target list changed'):
+            controls.perform(self.config, stale)
+        self.owner.assert_not_called()
+        body = self.command('target_toggle', id='fixture', enabled=False, revision=self.revision())
+        self.assertIn('paused', controls.perform(self.config, body))
+        self.assertFalse(controls.watchlist_state(self.root)[0][0]['enabled'])
+        again = dict(body, revision=self.revision())
+        self.assertIn('already paused', controls.perform(self.config, again))
+        self.assertEqual(self.owner.call_count, 1)
+
+    def test_toggle_rejects_unknown_targets_and_bad_input(self):
+        with self.assertRaisesRegex(ValueError, 'Choose a target'):
+            controls.submit(self.config, self.command('target_toggle', id='../x', enabled=False, revision='0' * 64))
+        with self.assertRaisesRegex(ValueError, 'This queue belongs to Shotsnip'):
+            controls.submit(self.config, dict(self.command('target_add', url='https://www.twitch.tv/new'), channel='histold'))
+        body = self.command('target_toggle', id='missing', enabled=False, revision=self.revision())
+        with self.assertRaisesRegex(ValueError, 'no longer on the watchlist'):
+            controls.perform(self.config, body)
+
+    def test_add_validates_before_queueing_and_verifies_the_owner_write(self):
+        with self.assertRaisesRegex(ValueError, 'Only YouTube channel and Twitch profile'):
+            controls.submit(self.config, self.command('target_add', url='https://example.com/creator'))
+        with self.assertRaisesRegex(ValueError, 'without /watch'):
+            controls.submit(self.config, self.command('target_add', url='https://www.youtube.com/watch?v=abc'))
+        body = self.command('target_add', url='https://twitch.tv/NewCreator/')
+        controls.submit(self.config, body)
+        queued = json.loads(controls_row(self.root)['body'])
+        self.assertEqual(queued['url'], 'https://www.twitch.tv/newcreator')
+        self.assertIn('Added newcreator', controls.perform(self.config, queued))
+        self.assertEqual(len(controls.watchlist_state(self.root)[0]), 2)
+        duplicate = self.command('target_add', url='https://www.twitch.tv/fixture')
+        controls.submit(self.config, duplicate)
+        self.assertIn('already on the watchlist', controls.perform(self.config, json.loads(controls_row(self.root, duplicate)['body'])))
+
+    def test_unverified_owner_reply_goes_to_review(self):
+        self.owner.side_effect = lambda config, payload, **_: 'Added it.'
+        body = self.command('target_add', url='https://www.twitch.tv/ghost')
+        controls.submit(self.config, body)
+        with patch.object(controls, 'backup_queue'):
+            controls.maintenance_tick(self.config)
+        latest = controls.overview(self.config)[0]
+        self.assertEqual((latest['action'], latest['status']), ('target_add', 'review'))
+
+    def test_owner_validation_errors_surface_as_rejections(self):
+        class Reply:
+            status = 400
+            def read(self, size):
+                return json.dumps({'error': 'Unknown target'}).encode()
+        class Connection:
+            def __init__(self, *args, **kwargs): pass
+            def request(self, *args): pass
+            def getresponse(self): return Reply()
+            def close(self): pass
+        (self.root/'key.txt').write_text('fixture-key')
+        with patch.object(controls.http.client, 'HTTPConnection', Connection):
+            with self.assertRaisesRegex(ValueError, 'Unknown target'):
+                self.real_call(dict(self.config, dashboard_control_key=str(self.root/'key.txt')), {'name': 'set_target'})
+
+
+def controls_row(root, body=None):
+    with closing(controls.controls_db({'state_dir': str(root)})) as db:
+        if body:
+            return db.execute('SELECT body FROM commands WHERE id=?', (body['request_id'],)).fetchone()
+        return db.execute('SELECT body FROM commands ORDER BY updated DESC LIMIT 1').fetchone()

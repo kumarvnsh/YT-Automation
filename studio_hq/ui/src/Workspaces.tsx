@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Activity, ArrowUpRight, BarChart3, Bot, Cable, ClipboardList, Crosshair, FlaskConical, WalletCards } from 'lucide-react';
 import type { PlanningView } from './Planning';
+import type { CommandEvent, Send } from './Controls';
 
+export type Target = { id: string; name: string; enabled: boolean; sources: { platform: 'youtube' | 'twitch'; label: string }[] };
 export type ShotsnipWorkspace = {
+  target_list?: Target[] | null; targets_revision?: string | null;
   targets: number | null; active_targets: number | null; agent_at: string | null; learning: boolean | null;
   connections: { name: string; status: string }[];
   live?: { phase: string; label: string; heartbeat: string | null; dispatcher_at: string | null;
@@ -51,19 +54,90 @@ function LiveOperations({ live, status, waiting, time, close }: {
   </section>;
 }
 
-export function Workspaces({ data, status, waiting, time, openQueue, openPerformance, openPlanning }: {
+const platformNames = { youtube: 'YouTube', twitch: 'Twitch' };
+const targetPattern = /^https:\/\/(?:www\.)?(?:youtube\.com\/(?:@[\w.-]+|channel\/UC[\w-]{22})|twitch\.tv\/\w{3,25})\/?$/i;
+
+function Targets({ list, revision, send, busy, recent, time, close }: {
+  list: Target[]; revision: string | null; send?: Send; busy: boolean; recent?: CommandEvent;
+  time: (value: string | null) => string; close: () => void;
+}) {
+  const [filter, setFilter] = useState<'all' | 'active' | 'paused'>('all');
+  const [search, setSearch] = useState('');
+  const [limit, setLimit] = useState(12);
+  const [confirm, setConfirm] = useState<string | null>(null);
+  const [url, setUrl] = useState('');
+  const query = search.trim().toLowerCase();
+  const shown = list.filter(item => (filter === 'all' || item.enabled === (filter === 'active')) &&
+    (item.name.toLowerCase().includes(query) || item.sources.some(source => source.label.toLowerCase().includes(query))));
+  const active = list.filter(item => item.enabled).length;
+  const validUrl = targetPattern.test(url.trim());
+  const editable = !!send && !!revision;
+  return <section className="panel targets-panel" aria-labelledby="targets-heading">
+    <div className="panel-head planning-head">
+      <div><h2 id="targets-heading">Targeted channels</h2><p>{active} active of {list.length} creators Shotsnip monitors.</p></div>
+      <div className="tool-links"><button className="action" onClick={close}>Close targets</button></div>
+    </div>
+    {editable && <form className="target-add" onSubmit={event => {
+      event.preventDefault();
+      if (!validUrl || busy) return;
+      send({action:'target_add',channel:'shotsnip',url:url.trim()});
+      setUrl('');
+    }}>
+      <label className="planning-search">Add a YouTube channel or Twitch profile
+        <input type="url" inputMode="url" value={url} onChange={event => setUrl(event.target.value)}
+          placeholder="https://www.youtube.com/@handle" autoComplete="off" spellCheck={false} /></label>
+      <button className="action primary" type="submit" disabled={busy || !validUrl}>Add target</button>
+      {url.trim() && !validUrl && <p className="chart-note">Use a YouTube @handle or /channel/ URL, or a Twitch profile URL.</p>}
+    </form>}
+    {recent && <p className="analytics-info" role="status">{recent.message} · {time(recent.at)} IST</p>}
+    <div className="calendar-filter">
+      <div className="filters" role="group" aria-label="Target status">
+        {(['all','active','paused'] as const).map(item => <button key={item} aria-pressed={filter === item}
+          onClick={() => {setFilter(item);setLimit(12);}}>{item === 'all' ? 'All' : item === 'active' ? 'Active' : 'Paused'}</button>)}
+      </div>
+    </div>
+    <label className="planning-search">Find a creator<input type="search" value={search} placeholder="Search name or handle"
+      onChange={event => {setSearch(event.target.value);setLimit(12);}} /></label>
+    {shown.length === 0 && <p className="empty">No matching targets.</p>}
+    {shown.slice(0, limit).map(item => <article className="control-row target-row" key={item.id}>
+      <div className="control-row-title"><strong>{item.name}</strong>
+        <small>{item.sources.map(source => platformNames[source.platform] + ' ' + source.label).join(' · ') || 'No supported source'}</small></div>
+      <div className="control-actions">
+        <span className={'status ' + (item.enabled ? 'good' : 'neutral')}>{item.enabled ? 'Active' : 'Paused'}</span>
+        {editable && confirm !== item.id && <button className="action" disabled={busy}
+          onClick={() => setConfirm(item.id)}>{item.enabled ? 'Pause' : 'Enable'}</button>}
+      </div>
+      {editable && confirm === item.id && <div className="cadence-confirm" role="group" aria-label={'Confirm change for ' + item.name}>
+        <p>{item.enabled ? 'Pause ' + item.name + '? Shotsnip stops scanning these sources from its next scan.'
+          : 'Enable ' + item.name + '? Shotsnip scans these sources again from its next scan.'}</p>
+        <button className="action" onClick={() => setConfirm(null)}>Back</button>
+        <button className="action primary" disabled={busy} onClick={() => {
+          send!({action:'target_toggle',channel:'shotsnip',id:item.id,enabled:!item.enabled,revision:revision!});
+          setConfirm(null);
+        }}>{item.enabled ? 'Confirm pause' : 'Confirm enable'}</button>
+      </div>}
+    </article>)}
+    {shown.length > limit && <div className="panel-foot"><button onClick={() => setLimit(value => value + 12)}>Show more targets</button></div>}
+    {!editable && <p className="chart-note">Target changes are available when Studio HQ controls are enabled.</p>}
+  </section>;
+}
+
+export function Workspaces({ data, status, waiting, time, openQueue, openPerformance, openPlanning, send, busy = false, commands = [] }: {
   data?: ShotsnipWorkspace; status: string; waiting: number | null; time: (value: string | null) => string;
   openQueue: () => void; openPerformance: () => void; openPlanning: (view: PlanningView) => void;
+  send?: Send; busy?: boolean; commands?: CommandEvent[];
 }) {
   const [channel, setChannel] = useState<'shotsnip' | 'histold'>('shotsnip');
   const [showLive, setShowLive] = useState(false);
+  const [showTargets, setShowTargets] = useState(false);
   const tools = [
     { title: 'Live operations', icon: Activity, note: 'Active run, scheduler checks, and upload blockers.',
       state: status, href: shotsnip + '#overview', link: 'Full operations tools',
       local: data?.live ? { label: showLive ? 'Hide live status' : 'View live status', action: () => setShowLive(!showLive) } : undefined },
     { title: 'Targeted channels', icon: Crosshair, note: 'Manage the creators and streams Shotsnip monitors.',
       state: data?.targets != null ? data.active_targets + ' active of ' + data.targets : '',
-      href: shotsnip + '#targets', link: 'Manage targets' },
+      href: shotsnip + '#targets', link: 'Original targets tool',
+      local: data?.target_list ? { label: showTargets ? 'Hide targets' : 'Manage in Studio HQ', action: () => setShowTargets(!showTargets) } : undefined },
     { title: 'Work queue', icon: ClipboardList, note: 'View automatic work, reprioritize jobs, and inspect failed stages.',
       state: waiting === null ? '' : waiting + ' waiting', href: shotsnip + '#jobs', link: 'Open full queue',
       local: { label: 'Studio HQ queue', action: openQueue } },
@@ -96,6 +170,10 @@ export function Workspaces({ data, status, waiting, time, openQueue, openPerform
     <p className="analytics-info">Full tools open in the original dashboard and use its existing sign-in.</p>
     {channel === 'shotsnip' && showLive && data?.live &&
       <LiveOperations live={data.live} status={status} waiting={waiting} time={time} close={() => setShowLive(false)} />}
+    {channel === 'shotsnip' && showTargets && data?.target_list &&
+      <Targets list={data.target_list} revision={data.targets_revision ?? null} send={send} busy={busy}
+        recent={commands.find(event => event.action === 'target_add' || event.action === 'target_toggle')}
+        time={time} close={() => setShowTargets(false)} />}
     <div className="tools-grid">
       {entries.map(tool => <article className="panel tool-card" key={tool.title}>
         <div className="tool-heading"><span className="performance-icon"><tool.icon size={18}/></span>

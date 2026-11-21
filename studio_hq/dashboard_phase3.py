@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 import argparse
+import hashlib
 import json
 import re
 import sqlite3
@@ -324,6 +325,38 @@ def phase3(config, source, shotsnip, activity, approvals, now, *, include_financ
     }
 
 
+def target_label(source):
+    if source.get('platform') == 'youtube':
+        handle = source.get('handle')
+        if isinstance(handle, str) and handle.strip('@'):
+            return '@' + text(handle.strip('@'), 60)
+        return text(source.get('channel_id'), 40) or 'YouTube channel'
+    return text(source.get('login'), 40) or 'Twitch profile'
+
+
+def target_list(root):
+    """Watchlist entries for the targets editor, with the file revision the owner will check."""
+    path = root/'watchlist.json'
+    try:
+        raw = path.read_bytes()
+    except OSError:
+        return None, None
+    try:
+        creators = json.loads(raw.decode('utf-8-sig')).get('creators')
+    except (ValueError, AttributeError):
+        return None, None
+    entries = []
+    for creator in rows(creators):
+        identity = creator.get('id')
+        if not isinstance(identity, str) or not identity:
+            continue
+        sources = [{'platform': source['platform'], 'label': target_label(source)}
+                   for source in rows(creator.get('sources')) if source.get('platform') in ('youtube', 'twitch')]
+        entries.append({'id': text(identity, 80), 'name': text(creator.get('name'), 80) or identity,
+                        'enabled': creator.get('enabled') is True, 'sources': sources})
+    return entries, hashlib.sha256(raw).hexdigest()
+
+
 def shotsnip_workspace(root):
     dashboard = root/'work/dashboard'
     review = load(dashboard/'agent-review.json', {})
@@ -352,7 +385,10 @@ def shotsnip_workspace(root):
         'not_started': 'Unavailable', 'unavailable': 'Unavailable',
         'anonymous_capture_tested': 'Anonymous capture tested',
     }
+    target_entries, targets_revision = target_list(root)
     return {
+        'target_list': target_entries,
+        'targets_revision': targets_revision,
         'targets': len(list(rows(targets))) if isinstance(targets, list) else None,
         'active_targets': sum(row.get('enabled') is True for row in rows(targets)) if isinstance(targets, list) else None,
         'agent_at': review.get('checked_at'),

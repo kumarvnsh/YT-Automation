@@ -26,6 +26,9 @@ IDENTITY = re.compile(r'[a-f0-9-]{36}')
 JOB_ID = re.compile(r'[A-Za-z0-9_-]{1,100}')
 CONFIRMED = {'uploaded', 'facebook_published'}
 CADENCE_MINUTES = (60, 120, 180, 240, 360, 480, 720, 1440)
+TARGET_ID = re.compile(r'[A-Za-z0-9_.@-]{1,80}')
+REVISION = re.compile(r'[0-9a-f]{64}')
+TARGET_ACTIONS = ('target_toggle', 'target_add')
 ACTIVE = {'queued', 'queued_publish', 'running', 'publishing', 'ready', 'partial', 'attention'}
 
 
@@ -170,6 +173,18 @@ def queue_control(config, body):
         if not isinstance(revision, str) or not re.fullmatch(r'[0-9a-f]{64}', revision):
             raise ValueError('Refresh the calendar before changing cadence.')
         target = str(minutes)
+    if action == 'target_toggle':
+        identity, enabled, revision = body.get('id'), body.get('enabled'), body.get('revision')
+        if not isinstance(identity, str) or not TARGET_ID.fullmatch(identity) or type(enabled) is not bool:
+            raise ValueError('Choose a target to pause or enable.')
+        if not isinstance(revision, str) or not REVISION.fullmatch(revision):
+            raise ValueError('Refresh the target list before changing it.')
+        target = identity + ':' + str(enabled)
+    if action == 'target_add':
+        from scripts.clipping_dashboard import target_url
+        _, canonical = target_url(body.get('url') if isinstance(body.get('url'), str) else '')
+        body['url'] = canonical
+        target = canonical.lower()
     if action == 'restore':
         target = body.get('archive_id', '')
         if not isinstance(target, str) or not re.fullmatch(r'[a-f0-9]{24}', target):
@@ -214,30 +229,73 @@ def queue_control(config, body):
 def submit(config, body):
     if not isinstance(body, dict) or not isinstance(body.get('request_id'), str) or not IDENTITY.fullmatch(body['request_id']):
         raise ValueError('Missing request ID.')
-    if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence'):
+    if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence') + TARGET_ACTIONS:
         raise ValueError('This queue belongs to Shotsnip.')
     action = body.get('action')
     if action in ('create_preview', 'publish', 'cancel', 'retry'):
         return manual_command(config, body)
-    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve'):
+    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + TARGET_ACTIONS:
         return queue_control(config, body)
     raise ValueError('Unsupported action.')
 
 
-def call_scheduler(config, payload):
+def call_scheduler(config, payload, *, timeout=15):
+    """Hand a change to the existing Shotsnip dashboard, which owns these files."""
     key = Path(config['dashboard_control_key']).read_text(encoding='utf-8-sig').strip()
     if not re.fullmatch(r'[A-Za-z0-9_.~-]+', key):
         raise RuntimeError('Existing dashboard key is unavailable')
-    conn = http.client.HTTPConnection('127.0.0.1', 8799, timeout=15)
+    conn = http.client.HTTPConnection('127.0.0.1', 8799, timeout=timeout)
     try:
         conn.request('POST', '/api/shotsnip/action', json.dumps(payload),
                      {'Content-Type':'application/json','Cookie':'hk='+key,'X-Histold':'1'})
         res = conn.getresponse()
-        res.read(4096)
-        if res.status != 200:
-            raise RuntimeError('Existing dashboard did not accept the request')
+        raw = res.read(4096)
     finally:
         conn.close()
+    try:
+        reply = json.loads(raw.decode('utf-8'))
+    except ValueError:
+        reply = {}
+    reply = reply if isinstance(reply, dict) else {}
+    if res.status == 400 and isinstance(reply.get('error'), str):
+        raise ValueError(reply['error'][:200])  # The owner's own validation message.
+    if res.status != 200:
+        raise RuntimeError('Existing dashboard did not accept the request')
+    return reply.get('message') if isinstance(reply.get('message'), str) else ''
+
+
+def watchlist_state(root):
+    raw = (root/'watchlist.json').read_bytes()
+    data = json.loads(raw.decode('utf-8-sig'))
+    return [row for row in data.get('creators', []) if isinstance(row, dict)], hashlib.sha256(raw).hexdigest()
+
+
+def target_change(config, body):
+    root = config_root(config)
+    creators, revision = watchlist_state(root)
+    if body['action'] == 'target_toggle':
+        if revision != body['revision']:
+            raise ValueError('The target list changed. Refresh and review it again.')
+        target = next((row for row in creators if row.get('id') == body['id']), None)
+        if target is None:
+            raise ValueError('That target is no longer on the watchlist.')
+        name = str(target.get('name') or body['id'])[:80]
+        if (target.get('enabled') is True) is body['enabled']:
+            return f"{name} is already {'enabled' if body['enabled'] else 'paused'}."
+        call_scheduler(config, {'name': 'set_target', 'id': body['id'], 'enabled': body['enabled']})
+        creators, _ = watchlist_state(root)
+        target = next((row for row in creators if row.get('id') == body['id']), {})
+        if (target.get('enabled') is True) is not body['enabled']:
+            raise RuntimeError('Could not verify the target change')
+        return f"{name} {'enabled' if body['enabled'] else 'paused'}. Shotsnip uses this from its next scan."
+    # Resolving a YouTube channel takes the owner up to 45 seconds.
+    message = call_scheduler(config, {'name': 'add_target', 'url': body['url']}, timeout=75)
+    creators, _ = watchlist_state(root)
+    listed = any(str(source.get('url', '')).lower() == body['url'].lower()
+                 for row in creators for source in row.get('sources', []) if isinstance(source, dict))
+    if not listed and 'already' not in message:
+        raise RuntimeError('Could not verify the new target')
+    return (message or 'Target added.')[:200]
 
 
 def cadence_settings(path):
@@ -291,6 +349,8 @@ def perform(config, body):
     state = Path(config['state_dir'])
     if action in ('scheduler', 'scheduler_cadence'):
         return scheduler_change(config, body)
+    if action in TARGET_ACTIONS:
+        return target_change(config, body)
     if action == 'archive_now':
         roots = {channel: config['roots'][channel] for channel in ('histold', 'shotsnip')}
         result = archive_tick(dict(config, roots=roots), 1)
@@ -378,7 +438,7 @@ def maintenance_tick(config):
                 except ValueError as exc:
                     status, message = 'rejected', str(exc)
                 except (OSError, RuntimeError, TimeoutError, KeyError, subprocess.TimeoutExpired):
-                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft') else 'failed'
+                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft') + TARGET_ACTIONS else 'failed'
                     message = 'The action could not be confirmed. Check the existing worker or archive report.'
                 with db:
                     db.execute('UPDATE commands SET status=?,message=?,updated=? WHERE id=?',
