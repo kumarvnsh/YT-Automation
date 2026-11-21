@@ -7,7 +7,7 @@ import {
 import { Controls, type Approval, type Command, type CommandEvent, type ManualJob, type Send } from './Controls';
 import { Analytics, ChannelCards, ReportingChart, VideoRanking, channelNames, type Pacing, type StudioAnalytics, type StudioChannel } from './Analytics';
 import { Planning, type JobLink, type PlanningData, type PlanningView } from './Planning';
-import { Workspaces, type ShotsnipWorkspace } from './Workspaces';
+import { LiveOperations, Workspaces, type ShotsnipWorkspace } from './Workspaces';
 import './styles.css';
 
 type ChannelId = StudioChannel;
@@ -255,6 +255,9 @@ function App() {
           openUsage={id => openJob({channel:'shotsnip', id})} /> : <>
         {view === 'overview' && performance && <>
           <ChannelCards data={performance} open={openAnalytics} />
+          {snapshot.shotsnip_workspace?.live && <LiveOperations live={snapshot.shotsnip_workspace.live}
+            status={snapshot.health.scheduler_hold ? 'On hold' : snapshot.health.scheduler_status}
+            waiting={snapshot.health.queue_available ? snapshot.health.waiting : null} time={timestamp} />}
           {(trend || topHistold) && <div className="overview-performance">
             {trend && <ReportingChart series={{ ...trend, chart_label: 'Shotsnip · YouTube views' }} />}
             {topHistold && <VideoRanking series={topHistold} limit={4} />}

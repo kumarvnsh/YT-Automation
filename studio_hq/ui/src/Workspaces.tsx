@@ -24,9 +24,9 @@ export type ShotsnipWorkspace = {
 const shotsnip = '/?channel=shotsnip';
 const histold = '/?channel=histold';
 
-function LiveOperations({ live, status, waiting, time, close }: {
+export function LiveOperations({ live, status, waiting, time, close }: {
   live: NonNullable<ShotsnipWorkspace['live']>; status: string; waiting: number | null;
-  time: (value: string | null) => string; close: () => void;
+  time: (value: string | null) => string; close?: () => void;
 }) {
   const stages = [['scanning','Find stream'],['capturing','Capture'],['analyzing','Pick highlight'],
     ['finishing','Finish clip'],['uploading','Upload']];
@@ -35,9 +35,9 @@ function LiveOperations({ live, status, waiting, time, close }: {
   const flagged = stale || live.pending_publications > 0 || status === 'On hold';
   return <section className="panel live-operations" aria-labelledby="live-heading">
     <div className="panel-head planning-head">
-      <div><h2 id="live-heading">Live operations</h2><p>Current stage and recent events from the Windows worker.</p></div>
+      <div><h2 id="live-heading">Shotsnip live operations</h2><p>Current stage and recent events from the Windows worker.</p></div>
       <div className="tool-links"><span className={'status ' + (flagged ? 'warn' : 'neutral')}>{status}</span>
-        <button className="action" onClick={close}>Close live view</button></div>
+        {close && <button className="action" onClick={close}>Close live view</button>}</div>
     </div>
     <div className="live-metrics">
       <div><small>Worker stage</small><strong>{live.label}</strong></div>
