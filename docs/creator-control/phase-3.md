@@ -7,12 +7,12 @@ Studio HQ has five sections, each with one row of sub-pages. Every page has its 
 | Section | Sub-pages | Replaces |
 | --- | --- | --- |
 | Home | Histold · Shotsnip: headline figures, views by publish day per platform, daily views, typical video by platform, publishing rhythm, top performers and videos to learn from (ranked against each platform's typical video), and a sortable video table | Overview, Analytics |
-| Shotsnip | Live (status, cadence, automatic posting) · Queue (manual clips, new preview) · Targets · Agent | Workspaces → Shotsnip, Controls (Shotsnip parts) |
-| Histold | Topics (each topic opens its own trace page) · Experiments · Assistant · Approvals (drafts, new draft, Strategist) | Planning → Strategy, Controls (Histold parts) |
+| Shotsnip | Live (pause/resume, run now, stop after stage, cadence, spoken commentary, local watch worker) · Queue (manual clips, new preview) · Targets · Agent (review, learning, Ask Shotsnip) · Bots | Workspaces → Shotsnip, Controls (Shotsnip parts), the original Shotsnip page |
+| Histold | Topics (each topic opens its own trace page) · Experiments · Assistant · Approvals (drafts, new draft, Strategist) · Controls (pin/unpin publish hours, pause/boost/reset series, regions and durations, refresh analytics, content research) · Bots | Planning → Strategy, Controls (Histold parts), the original Histold strategy and assistant |
 | Plan | Calendar (next-up summary, two-week grid with per-channel counts beside a day agenda with a Now line; arrow keys move between days) · Money · Job usage | Planning → Calendar, Earnings & costs, Job usage |
-| System | Health (storage, background jobs, archive now, recent requests) · Activity · Archive · Original tools | Overview stats, Archive, Controls (host parts), Workspaces links |
+| System | Health (storage, background jobs, archive now, recent requests) · AI (which AI answers, usage caps, end a rest) · Activity · Archive · Original tools | Overview stats, Archive, Controls (host parts), Workspaces links, the original AI brain settings |
 
-Older notes below use the previous menu names; the table shows where each moved.
+Every control from the original dashboards runs here, each through its original owner (`/api/shotsnip/action`, `/api/action`, `/api/research`, `/api/ai`, `/api/bots/action`), which validates it again. Bots pages read the bot office read-only. Older notes below use the previous menu names; the table shows where each moved.
 
 Open [Studio HQ](https://vnsh.tail9bdcf7.ts.net/studio-hq/). The new **Planning** view includes the IST calendar, Histold topic history, experiment evidence, platform earnings, and API costs.
 

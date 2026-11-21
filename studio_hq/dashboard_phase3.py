@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 import argparse
+import sys
 import hashlib
 import json
 import re
@@ -583,7 +584,7 @@ def assistant_history(config):
         return []
 
 
-def phase3(config, source, shotsnip, activity, approvals, now, *, include_finance=False):
+def phase3(config, source, shotsnip, activity, approvals, now, *, include_finance=False, media=None):
     topics = topic_trace(source, approvals, config.get('github_repo', 'kumarvnsh/YT-Automation'))
     usage = observation_report(Path(config['dashboard_private_snapshot']).parent, now, activity, topics) if include_finance else {
         'providers': [], 'jobs': [], 'unattributed': 0, 'available': False,
@@ -593,6 +594,10 @@ def phase3(config, source, shotsnip, activity, approvals, now, *, include_financ
         'topics': topics,
         'histold_experiment': histold_experiment(source),
         'experiments': experiment_comparisons(source, now),
+        'strategy_controls': strategy_snapshot(source, config.get('dashboard_calendar_python')),
+        'ai_settings': ai_settings(config) if include_finance else None,
+        'bots': bots_snapshot(config) if include_finance else None,
+        'clips': clip_snapshot(shotsnip, media) if include_finance and media is not None else None,
         'assistant': assistant_history(config) if include_finance else [],
         'earnings': earnings(source) if include_finance else [],
         'api_usage': usage['providers'],
@@ -677,6 +682,125 @@ def agent_summary(dashboard):
             'scope': text(review.get('automation_scope'), 240)}
 
 
+def commentary_mode(schedule):
+    commentary = schedule.get('commentary') if isinstance(schedule.get('commentary'), dict) else {}
+    if commentary.get('enabled') is not True:
+        return 'off'
+    return commentary.get('mode') if commentary.get('mode') in ('intro', 'full') else 'intro'
+
+
+def watch_worker(dashboard):
+    status = load(dashboard/'worker.json', {})
+    checked = instant(status.get('checked_at'))
+    return {'status': text(status.get('status'), 40) or 'not_started', 'checked_at': checked.isoformat() if checked else None,
+            'note': text(status.get('note'), 200), 'stop_requested': (dashboard/'stop-worker').exists()}
+
+
+def strategy_controls(source):
+    """Current Histold editorial options, overrides and publish-hour plan for the strategy controls."""
+    try:
+        import yaml
+        from src.config import Config
+        from src.growth import settings
+        from src.strategy import MAX_BOOST
+        with (source/'config.yaml').open(encoding='utf-8') as stream:  # No .env: options only, never secrets.
+            cfg = Config(yaml.safe_load(stream) or {})
+        growth = settings(cfg)
+    except Exception:  # noqa: BLE001 - the page shows the controls as unavailable
+        return None
+    def entries(key, label):
+        return [{'id': item['id'], 'label': text(item.get(label) or item['id'].replace('_', ' ').capitalize(), 60)}
+                for item in cfg.get(key) or [] if isinstance(item, dict) and isinstance(item.get('id'), str)]
+    overrides = load(source/'data/growth_overrides.json', {})
+    plan = load(source/'data/growth_plan.json', {})
+    pinned = instant(plan.get('pinned_until'))
+    return {
+        'options': {'series': entries('editorial.series', 'name'), 'region': entries('editorial.regions', 'label'),
+                    'duration_variant': entries('editorial.duration_variants', 'id')},
+        'overrides': {dim: {'paused': [o for o in (overrides.get(dim) or {}).get('paused', []) if isinstance(o, str)],
+                            'boost': {k: v for k, v in ((overrides.get(dim) or {}).get('boost') or {}).items()
+                                      if isinstance(v, (int, float))}}
+                      for dim in ('series', 'region', 'duration_variant')},
+        'plan': {'hours_utc': [h for h in plan.get('hours_utc', []) if isinstance(h, int)],
+                 'pinned_until': pinned.isoformat() if pinned and pinned > datetime.now(timezone.utc) else None,
+                 'status': text(plan.get('status'), 120)},
+        'rules': {'posts_per_day': growth['posts_per_day'], 'allowed_hours_utc': growth['allowed_hours_utc'],
+                  'min_gap_hours': growth['min_gap_hours'], 'max_boost': MAX_BOOST},
+    }
+
+
+def strategy_snapshot(source, python):
+    """Strategy controls need PyYAML; use the helper interpreter when this one lacks it."""
+    try:
+        import yaml  # noqa: F401
+        return strategy_controls(source)
+    except ImportError:
+        pass
+    if not isinstance(python, str):
+        return None
+    try:
+        process = subprocess.run([python, '-m', 'studio_hq.dashboard_phase3', '--strategy', str(source)],
+                                 stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=15, check=True,
+                                 creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+        return json.loads(process.stdout)
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None
+
+
+def clip_snapshot(shotsnip, media):
+    from .media import clips
+    try:
+        return clips(shotsnip, media)
+    except (OSError, ValueError, KeyError, sqlite3.Error):
+        return None
+
+
+def bots_snapshot(config):
+    from .bots import snapshot
+    try:
+        return snapshot(config)
+    except (OSError, sqlite3.Error, ValueError):
+        return None
+
+
+def ai_settings(config):
+    """Which AI answers in the original dashboard, with usage against the owner's caps (read-only)."""
+    try:
+        from src.ai_providers import Providers
+        key = config.get('dashboard_control_key')
+        status = Providers(Path(key).parent/'ai_settings.json').status() if isinstance(key, str) else None
+    except Exception:  # noqa: BLE001 - shown as unavailable
+        return None
+    if not status:
+        return None
+    for info in status['providers'].values():
+        if isinstance(info.get('last_error'), str):
+            info['last_error'] = text(info['last_error'], 160)
+        if isinstance(info.get('resting_until'), (int, float)):
+            info['resting_until'] = datetime.fromtimestamp(info['resting_until'], timezone.utc).isoformat()
+    return status
+
+
+def batch_hold(root, schedule):
+    """Progress of an owner-approved library batch that holds live operations."""
+    hold = schedule.get('live_operations_batch_hold')
+    if not isinstance(hold, dict):
+        return None
+    identities = [item for item in rows(hold.get('job_ids')) if isinstance(item, str)] if isinstance(hold.get('job_ids'), list) else []
+    if not identities and isinstance(hold.get('job_ids'), list):
+        identities = [item for item in hold['job_ids'] if isinstance(item, str)]
+    published = None
+    try:
+        with closing(sqlite3.connect((root/'work/manual/jobs.sqlite').resolve().as_uri() + '?mode=ro', uri=True, timeout=1)) as db:
+            marks = ','.join('?' * len(identities))
+            published = db.execute(f"SELECT COUNT(*) FROM jobs WHERE status='published' AND id IN ({marks})", identities).fetchone()[0] if identities else 0
+    except sqlite3.Error:
+        published = None
+    paused = instant(hold.get('paused_at'))
+    return {'batch': text(hold.get('batch'), 60), 'total': len(identities), 'published': published,
+            'paused_at': paused.isoformat() if paused else None}
+
+
 def shotsnip_workspace(root):
     dashboard = root/'work/dashboard'
     review = load(dashboard/'agent-review.json', {})
@@ -725,6 +849,12 @@ def shotsnip_workspace(root):
             'reserve_limit': number(schedule.get('max_ready_clips')),
             'pending_publications': pending,
             'events': sorted(events, key=lambda item: item['at'], reverse=True)[:8],
+            'enabled': schedule.get('enabled') if isinstance(schedule.get('enabled'), bool) else None,
+            'run_now': (dashboard/'run-now').exists(),
+            'stop_after': (root/'work/scheduler/stop-after-stage').exists(),
+            'hold': batch_hold(root, schedule),
+            'commentary': commentary_mode(schedule),
+            'watch_worker': watch_worker(dashboard),
         },
         'connections': [
             {'name': name, 'status': statuses.get(status, 'Check connection') if isinstance(status, str) else 'Unavailable'}
@@ -743,7 +873,9 @@ def as_iso(value):
     return at.isoformat() if at else None
 
 
-if __name__ == '__main__':
+if __name__ == '__main__' and len(sys.argv) == 3 and sys.argv[1] == '--strategy':
+    print(json.dumps(strategy_controls(Path(sys.argv[2]))))
+elif __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Forecast Histold dispatch slots from current owner config')
     parser.add_argument('root', type=Path)
     parser.add_argument('now', type=datetime.fromisoformat)

@@ -67,6 +67,37 @@ async fn preview(
     }
 }
 
+/// Clip and draft media listed by the snapshot exporter. Each path is re-checked here: it must sit
+/// under the Shotsnip work folder or the private drafts folder and be a video or image.
+async fn media(
+    State(settings): State<Arc<Settings>>,
+    Path(id): Path<String>,
+    req: Request,
+) -> Response {
+    if id.len() != 32 || !id.bytes().all(|c| c.is_ascii_hexdigit()) {
+        return StatusCode::NOT_FOUND.into_response();
+    }
+    let index = tokio::fs::read(settings.snapshot.with_file_name("dashboard-media.json")).await;
+    let path = index.ok().and_then(|bytes| serde_json::from_slice::<Value>(&bytes).ok())
+        .and_then(|map| map.get(&id).and_then(Value::as_str).map(PathBuf::from));
+    let Some(path) = path else { return StatusCode::NOT_FOUND.into_response(); };
+    let Ok(file) = tokio::fs::canonicalize(path).await else { return StatusCode::NOT_FOUND.into_response(); };
+    let mut roots = Vec::new();
+    if let Ok(root) = tokio::fs::canonicalize(settings.shotsnip_root.join("work")).await { roots.push(root); }
+    if let Some(parent) = settings.snapshot.parent() {
+        if let Ok(root) = tokio::fs::canonicalize(parent.join("drafts")).await { roots.push(root); }
+    }
+    let allowed_type = file.extension().and_then(|e| e.to_str())
+        .is_some_and(|e| ["mp4", "jpg", "jpeg", "png", "webp"].iter().any(|x| e.eq_ignore_ascii_case(x)));
+    if !allowed_type || !roots.iter().any(|root| file.starts_with(root)) {
+        return StatusCode::NOT_FOUND.into_response();
+    }
+    match ServeFile::new(file).oneshot(req).await {
+        Ok(response) => response.into_response(),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
 fn controls_error(status: StatusCode, message: &str) -> Response {
     (status, Json(json!({"message":message}))).into_response()
 }
@@ -245,6 +276,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
     let app_routes = Router::new()
         .route("/api/snapshot", get(read_snapshot))
         .route("/api/preview/{id}", get(preview))
+        .route("/api/media/{id}", get(media))
         .route("/api/command", post(submit_control).layer(DefaultBodyLimit::max(8192)))
         .fallback_service(files.clone());
     let app = Router::new()

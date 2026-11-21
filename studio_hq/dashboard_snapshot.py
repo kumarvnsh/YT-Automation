@@ -112,8 +112,9 @@ def shotsnip_activity(root, previews):
                 'queued_publish': 'Queued to publish', 'running': 'In progress', 'publishing': 'Publishing',
                 'partial': 'Needs attention', 'failed': 'Failed', 'attention': 'Needs attention',
             }
-            for identity, status, updated, payload, options in db.execute(
-                'SELECT id,status,updated,result,options FROM jobs ORDER BY updated DESC LIMIT 100'
+            waiting_rows = []
+            for identity, status, updated, payload, options, created in db.execute(
+                'SELECT id,status,updated,result,options,created FROM jobs ORDER BY updated DESC LIMIT 100'
             ):
                 job = read_json_text(payload)
                 publication = job.get('publication') or {}
@@ -139,13 +140,34 @@ def shotsnip_activity(root, previews):
                                     preview = True
                             except (OSError, ValueError, TypeError):
                                 pass
-                        controls.append(dict(id=identity, revision=updated, status=status, at=date(updated),
+                        if status == 'queued_publish':
+                            waiting_rows.append({'id': identity, 'status': status, 'created': created, 'options': settings})
+                        controls.append(dict(id=identity, revision=updated, status=status, at=date(updated), created=created,
+                                             not_before=date(settings.get('not_before')) if isinstance(settings.get('not_before'), (int, float)) else None,
                                              title=safe_text(job.get('title'), 'Manual clip'),
                                              destinations=[p for p in targets if p in ('youtube', 'facebook')],
                                              privacy=settings.get('privacy') if settings.get('privacy') in ('private', 'unlisted') else 'public',
                                              preview=preview))
             queue_available = True
     except (OSError, sqlite3.Error):
+        waiting_rows = []
+    schedule_config = record(root/'scheduler.json', {})
+    manual_schedule = None
+    try:
+        from .dashboard_controls import manual_module
+        module = manual_module(root)
+        times = module.estimate(waiting_rows, ledger.get('last_upload_at', 0), schedule_config)
+        order = sorted(times, key=times.get)
+        for row in controls:
+            if row['id'] in times:
+                row['eta'] = date(times[row['id']])
+                row['position'] = order.index(row['id']) + 1
+        sample = {'options': {'local_library_batch': True}} if any(r['options'].get('local_library_batch') for r in waiting_rows) else {'options': {}}
+        manual_schedule = {'gap_minutes': module.publish_gap_minutes(sample, schedule_config),
+                           'custom': isinstance(schedule_config.get('manual_post_minutes'), int),
+                           'choices': list(getattr(module, 'MANUAL_GAP_CHOICES', ())),
+                           'last_upload': date(ledger.get('last_upload_at')), 'next_at': date(min(times.values())) if times else None}
+    except Exception:  # noqa: BLE001 - the queue still works without estimates
         pass
     for row in ledger.get('uploads', []) if isinstance(ledger.get('uploads'), list) else []:
         if not isinstance(row, dict) or row.get('video_id') in manual_ids:
@@ -187,6 +209,7 @@ def shotsnip_activity(root, previews):
         'scheduler_enabled': schedule.get('enabled') if isinstance(schedule, dict) else None,
         'scheduler_hold': bool(schedule.get('live_operations_batch_hold')) if isinstance(schedule, dict) else False,
         'manual_jobs': controls,
+        'manual_schedule': manual_schedule,
     }
 
 
@@ -241,7 +264,7 @@ def archives(state, roots):
     return sorted(rows, key=lambda row: row['archived_at'] or '', reverse=True)
 
 
-def snapshot(config, previews=None, *, include_finance=False):
+def snapshot(config, previews=None, *, include_finance=False, media=None):
     roots = {name: Path(config['roots'][name]).absolute() for name in LABELS}
     state = Path(config['state_dir'])
     queue, health = shotsnip_activity(roots['shotsnip'], previews if previews is not None else {})
@@ -289,11 +312,14 @@ def snapshot(config, previews=None, *, include_finance=False):
             continue
         approvals.append(dict(title=safe_text(draft.get('title'), 'Histold draft'), stage=stage, run_id=run_id, at=created,
                               url='https://github.com/' + config.get('github_repo', 'kumarvnsh/YT-Automation') + '/actions/runs/' + run_id))
+        if include_finance and media is not None and config.get('dashboard_private_snapshot'):
+            from .media import draft_preview
+            approvals[-1]['preview'] = draft_preview(config, stage, media)
     return dict(
         version=1, generated_at=stamp(), channels=channel_summary,
         analytics=analytics(roots, source, rows),
         pacing_experiment=pacing_experiment(roots['shotsnip']),
-        phase3=phase3(config, source, roots['shotsnip'], rows, approvals, now, include_finance=include_finance),
+        phase3=phase3(config, source, roots['shotsnip'], rows, approvals, now, include_finance=include_finance, media=media),
         shotsnip_workspace=shotsnip_workspace(roots['shotsnip']),
         activity=sorted(visible_rows, key=lambda item: item['at'] or '', reverse=True), archives=library[:250],
         health=health,
@@ -322,8 +348,11 @@ def main():
     config = read_json(args.config)
     private_path = config.get('dashboard_private_snapshot')
     include_finance = isinstance(private_path, str) and Path(private_path).resolve() == args.output.resolve()
-    data = snapshot(config, previews, include_finance=include_finance)
+    media = {}
+    data = snapshot(config, previews, include_finance=include_finance, media=media)
     atomic_json(args.output.with_name('dashboard-previews.json'), previews)
+    if include_finance:
+        atomic_json(args.output.with_name('dashboard-media.json'), media)
     atomic_json(args.output, data)
 
 

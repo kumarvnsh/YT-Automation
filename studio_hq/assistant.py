@@ -18,7 +18,8 @@ import uuid
 
 from .archive import atomic_json, read_json
 
-SCOPES = {'strategy': 'Histold strategy recommendations and experiments', 'trace': 'One Histold topic trace'}
+SCOPES = {'strategy': 'Histold strategy recommendations and experiments', 'trace': 'One Histold topic trace',
+          'shotsnip': 'Shotsnip agent (its own channel data)'}
 QUESTION_MAX = 600
 REPLY_MAX = 4000
 ANSWER_TIMEOUT = 420
@@ -81,7 +82,7 @@ def start(config, body, *, spawn=None):
     """Record the question and answer it in a separate process so controls are never blocked."""
     scope, job = check_request(body)
     snapshot = read_json(Path(config['dashboard_private_snapshot']))
-    facts = evidence(snapshot, scope, job)
+    facts = evidence(snapshot, scope, job) if scope != 'shotsnip' else None
     identity = uuid.uuid4().hex
     record = {'id': identity, 'scope': scope, 'job': job, 'question': body['question'].strip(),
               'status': 'thinking', 'asked_at': now().isoformat(), 'reply': None, 'proposals': []}
@@ -89,7 +90,8 @@ def start(config, body, *, spawn=None):
     directory.mkdir(parents=True, exist_ok=True)
     atomic_json(directory/f'{identity}.json', record)
     atomic_json(directory/f'{identity}.request.json', {
-        'prompt': prompt(scope, job, facts, body['question']), 'key': config['dashboard_control_key']})
+        'prompt': body['question'].strip() if scope == 'shotsnip' else prompt(scope, job, facts, body['question']),
+        'channel': 'shotsnip' if scope == 'shotsnip' else 'histold', 'key': config['dashboard_control_key']})
     (spawn or launch)(directory/f'{identity}.json')
     return 'Question sent to the Histold assistant. The answer appears here when it is ready.'
 
@@ -122,8 +124,10 @@ def answer(path, *, ask=None):
     request_path = path.with_name(path.stem + '.request.json')
     request = read_json(request_path)
     try:
-        reply = (ask or (lambda: owner_request({'dashboard_control_key': request['key']}, '/api/chat',
-                                               {'messages': [{'role': 'user', 'content': request['prompt']}]},
+        payload = {'messages': [{'role': 'user', 'content': request['prompt']}]}
+        if request.get('channel') == 'shotsnip':
+            payload['channel'] = 'shotsnip'
+        reply = (ask or (lambda: owner_request({'dashboard_control_key': request['key']}, '/api/chat', payload,
                                                timeout=ANSWER_TIMEOUT)))()
         record.update(status='answered', reply=str(reply.get('reply') or 'The assistant returned no text.')[:REPLY_MAX],
                       proposals=clean_proposals(reply.get('proposals')))

@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react';
 import { Archive, ArrowDownToLine, ArrowUpRight, Activity, Cloud, Database, HardDrive } from './icons';
 import { channelNames, type Pacing, type StudioAnalytics, type StudioChannel } from './Analytics';
-import { CommandHistory, HistoldActions, HistoldApprovals, HostActions, NewClipForm, SchedulerSwitch, ShotsnipQueue,
+import { CommandHistory, HistoldActions, HistoldApprovals, HostActions, LiveControls, NewClipForm, PublishSchedule, ShotsnipQueue,
   type Approval, type CommandEvent, type ManualJob, type Send } from './Controls';
 import { AssistantPanel, Calendar, ExperimentPanel, JobUsage, Money, Recommendations, ShotsnipCadence, SixReelExperiment,
   TopicList, TopicPage, type JobLink, type PlanningData } from './Planning';
 import { ChannelInsights } from './Insights';
+import { BotsPage } from './Bots';
+import { ClipsPage } from './Media';
+import { AiSettingsPanel, AskShotsnip, CommentaryControl, HistoldStrategyControls, WatchWorker } from './Owner';
 import { AgentPanel, LiveOperations, OriginalTools, Targets, type ShotsnipWorkspace } from './Workspaces';
 
 export type Time = (value: string | null) => string;
@@ -25,7 +28,8 @@ export type Snapshot = {
   approvals: Approval[];
   backup_at: string | null;
   health: { queue_available: boolean; waiting: number; attention: number; scheduler_status: string; scheduler_at: string | null;
-    scheduler_enabled: boolean | null; scheduler_hold: boolean; manual_jobs: ManualJob[] };
+    scheduler_enabled: boolean | null; scheduler_hold: boolean; manual_jobs: ManualJob[];
+    manual_schedule?: import('./Controls').ManualSchedule | null };
   storage: { free: number; total: number; drive_only: number; archive_count: number };
   operations: {
     archive: { at: string | null; copied: number; errors: number };
@@ -105,30 +109,45 @@ export function ShotsnipPage({ snapshot, time, send, busy, sub }: PageProps) {
     <ShotsnipQueue jobs={snapshot.health.manual_jobs} busy={busy} time={time} send={send}
       usageJobs={new Set((phase3?.job_usage?.jobs ?? []).filter(job => job.channel === 'shotsnip').map(job => job.id))}
       openUsage={id => { window.location.hash = '#/plan/jobs/shotsnip/' + id; }} />
-    {send && <NewClipForm busy={busy} send={send} />}
+    <div className="page-stack">
+      {snapshot.health.manual_schedule && <PublishSchedule schedule={snapshot.health.manual_schedule} busy={busy} send={send} time={time}
+        waiting={snapshot.health.manual_jobs.filter(job => job.status === 'queued_publish').length} />}
+      {send && <NewClipForm busy={busy} send={send} />}
+    </div>
   </div>;
+  if (sub === 'clips') return phase3?.clips ? <ClipsPage data={phase3.clips} time={time} /> : <Waiting what="clip library" />;
+  if (sub === 'bots') return phase3?.bots
+    ? <BotsPage data={phase3.bots} channel="shotsnip" busy={busy} send={send} time={time} recent={latest(snapshot.commands, 'bot_action')} />
+    : <Waiting what="bot workspace" />;
   if (sub === 'targets') return workspace?.target_list
     ? <Targets list={workspace.target_list} revision={workspace.targets_revision ?? null} send={send} busy={busy} time={time}
         recent={latest(snapshot.commands, 'target_add', 'target_toggle')} />
     : <Waiting what="targets" />;
-  if (sub === 'agent') return workspace?.agent
-    ? <AgentPanel data={workspace.agent} send={send} busy={busy} time={time} recent={latest(snapshot.commands, 'agent_review', 'agent_learning')} />
-    : <Waiting what="agent" />;
+  if (sub === 'agent') return <div className="page-stack">
+    {workspace?.agent ? <AgentPanel data={workspace.agent} send={send} busy={busy} time={time}
+      recent={latest(snapshot.commands, 'agent_review', 'agent_learning')} /> : <Waiting what="agent" />}
+    <AskShotsnip records={(phase3?.assistant ?? []).filter(row => row.scope === 'shotsnip')} busy={busy} send={send} time={time}
+      recent={latest(snapshot.commands, 'assistant_ask')} />
+  </div>;
   return <div className="page-stack">
+    {workspace?.live && <LiveControls live={workspace.live} busy={busy} send={send} time={time}
+      recent={latest(snapshot.commands, 'scheduler', 'live_run_now', 'live_stop_after_stage')} />}
     {workspace?.live && <LiveOperations live={workspace.live} status={shotsnipStatus(snapshot)}
       waiting={snapshot.health.queue_available ? snapshot.health.waiting : null} time={time} />}
-    <div className="page-split">
-      {phase3 ? <ShotsnipCadence data={phase3.calendar.shotsnip} time={time} send={send} busy={busy}
-        cadenceEvent={latest(snapshot.commands, 'scheduler_cadence')} /> : <Waiting what="schedule" />}
-      <SchedulerSwitch scheduler={snapshot.health.scheduler_enabled} hold={snapshot.health.scheduler_hold} busy={busy} send={send} />
-    </div>
+    {phase3 ? <ShotsnipCadence data={phase3.calendar.shotsnip} time={time} send={send} busy={busy}
+      cadenceEvent={latest(snapshot.commands, 'scheduler_cadence')} /> : <Waiting what="schedule" />}
+    {workspace?.live && <div className="page-split even">
+      <CommentaryControl mode={workspace.live.commentary ?? 'off'} busy={busy} send={send} time={time}
+        recent={latest(snapshot.commands, 'shotsnip_commentary')} />
+      {workspace.live.watch_worker && <WatchWorker worker={workspace.live.watch_worker} busy={busy} send={send} time={time} />}
+    </div>}
   </div>;
 }
 
 export function HistoldPage({ snapshot, time, send, busy, sub, rest }: PageProps) {
   const phase3 = snapshot.phase3;
   if (sub === 'approvals') return <div className="page-split">
-    <HistoldApprovals approvals={snapshot.approvals} busy={busy} time={time} send={send} />
+    <HistoldApprovals approvals={snapshot.approvals} busy={busy} time={time} send={send} recent={latest(snapshot.commands, 'draft_preview', 'story_approve')} />
     {send && <HistoldActions busy={busy} send={send} />}
   </div>;
   if (!phase3) return <Waiting what="strategy" />;
@@ -139,8 +158,15 @@ export function HistoldPage({ snapshot, time, send, busy, sub, rest }: PageProps
       <SixReelExperiment data={phase3} />
     </div>
   </div>;
+  if (sub === 'bots') return phase3.bots
+    ? <BotsPage data={phase3.bots} channel="histold" busy={busy} send={send} time={time} recent={latest(snapshot.commands, 'bot_action')} />
+    : <Waiting what="bot workspace" />;
+  if (sub === 'controls') return phase3.strategy_controls
+    ? <HistoldStrategyControls data={phase3.strategy_controls} busy={busy} send={send} time={time}
+        recent={latest(snapshot.commands, 'histold_strategy', 'histold_research')} />
+    : <Waiting what="strategy controls" />;
   if (sub === 'assistant') return phase3.assistant
-    ? <AssistantPanel records={phase3.assistant} topics={phase3.topics} focus={rest[0] ?? null}
+    ? <AssistantPanel records={phase3.assistant.filter(row => row.scope !== 'shotsnip')} topics={phase3.topics} focus={rest[0] ?? null}
         setFocus={job => { window.location.hash = '#/histold/assistant' + (job ? '/' + job : ''); }}
         send={send} busy={busy} time={time} recent={latest(snapshot.commands, 'assistant_ask', 'assistant_apply')} />
     : <Waiting what="assistant" />;
@@ -185,6 +211,10 @@ export function SystemPage({ snapshot, time, send, busy, sub }: PageProps) {
     <p>Verified copies in Google Drive. Restore copies a video back to this PC.</p></div></div>
     <ArchiveList items={snapshot.archives.filter(row => row.channel in channelNames).slice(0, 80)} time={time} send={send} busy={busy} /></section>;
   if (sub === 'tools') return <OriginalTools connections={snapshot.shotsnip_workspace?.connections} />;
+  if (sub === 'ai') return snapshot.phase3?.ai_settings
+    ? <AiSettingsPanel key={JSON.stringify(snapshot.phase3.ai_settings.providers)} data={snapshot.phase3.ai_settings} busy={busy} send={send} time={time}
+        recent={latest(snapshot.commands, 'ai_settings')} />
+    : <Waiting what="AI settings" />;
   const { archive, cleanup, raw } = snapshot.operations;
   return <div className="page-stack">
     <section className="stats" aria-label="Storage and archive">

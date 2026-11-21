@@ -29,7 +29,7 @@ export type Experiments = {
   untracked: { id: string; published: number }[];
   recommendations: Recommendation[];
 };
-export type AssistantRecord = { id: string; scope: 'strategy' | 'trace'; job: string | null; question: string;
+export type AssistantRecord = { id: string; scope: 'strategy' | 'trace' | 'shotsnip'; job: string | null; question: string;
   status: 'thinking' | 'answered' | 'failed'; asked_at: string | null; answered_at: string | null; reply: string | null;
   proposals: { index: number; name: string; summary: string | null; error: string | null;
     applied: { at: string; message: string } | null }[] };
@@ -41,6 +41,10 @@ export type PlanningData = {
   histold_experiment: {hours: number; category: string; median: number; observed: number}[];
   experiments?: Experiments;
   assistant?: AssistantRecord[];
+  strategy_controls?: import('./Owner').StrategyControls | null;
+  ai_settings?: import('./Owner').AiSettings | null;
+  bots?: import('./Bots').BotWorkspace | null;
+  clips?: import('./Media').ClipData | null;
   earnings: {platform: string; label: string; value: string; currency: string | null; start: string | null;
     end: string | null; checked: string | null; detail: string}[];
   api_usage: {channel: 'histold' | 'shotsnip'; provider: string; attempts: number; failed: number;

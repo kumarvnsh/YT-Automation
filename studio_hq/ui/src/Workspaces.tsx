@@ -17,7 +17,10 @@ export type ShotsnipWorkspace = {
   connections: { name: string; status: string }[];
   live?: { phase: string; label: string; heartbeat: string | null; dispatcher_at: string | null;
     source: string; replay: boolean; reserve: number | null; reserve_limit: number | null;
-    pending_publications: number; events: {at: string; phase: string}[] };
+    pending_publications: number; events: {at: string; phase: string}[];
+    enabled?: boolean | null; run_now?: boolean; stop_after?: boolean;
+    hold?: { batch: string; total: number; published: number | null; paused_at: string | null } | null;
+    commentary?: string; watch_worker?: { status: string; checked_at: string | null; note: string; stop_requested: boolean } };
 };
 
 
@@ -186,7 +189,6 @@ export function AgentPanel({ data, send, busy, recent, time, close }: {
 const original = { shotsnip: '/?channel=shotsnip', histold: '/?channel=histold' };
 const originalTools = {
   shotsnip: [
-    ['Live operations', 'Full run controls and upload blockers', original.shotsnip + '#overview'],
     ['Work queue', 'Automatic work, priorities, and failed stages', original.shotsnip + '#jobs'],
     ['Connections', 'Publishing, analytics, and capture accounts', original.shotsnip + '#connections'],
     ['Bot workspace', 'Assignments, reports, and routines', '/bots?channel=shotsnip'],

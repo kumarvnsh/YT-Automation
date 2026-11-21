@@ -19,13 +19,13 @@ const sections = [
   { id: 'home', label: 'Home', icon: Home, intro: 'Channel performance across every platform.',
     subs: [['histold', 'Histold'], ['shotsnip', 'Shotsnip']] },
   { id: 'shotsnip', label: 'Shotsnip', icon: Scissors, intro: 'Live clipping, the clip queue, sources, and the agent.',
-    subs: [['live', 'Live'], ['queue', 'Queue'], ['targets', 'Targets'], ['agent', 'Agent']] },
-  { id: 'histold', label: 'Histold', icon: BookOpen, intro: 'Topics, experiments, the assistant, and approvals.',
-    subs: [['topics', 'Topics'], ['experiments', 'Experiments'], ['assistant', 'Assistant'], ['approvals', 'Approvals']] },
+    subs: [['live', 'Live'], ['clips', 'Clips'], ['queue', 'Queue'], ['targets', 'Targets'], ['agent', 'Agent'], ['bots', 'Bots']] },
+  { id: 'histold', label: 'Histold', icon: BookOpen, intro: 'Topics, experiments, the assistant, approvals, and strategy controls.',
+    subs: [['topics', 'Topics'], ['experiments', 'Experiments'], ['assistant', 'Assistant'], ['approvals', 'Approvals'], ['controls', 'Controls'], ['bots', 'Bots']] },
   { id: 'plan', label: 'Plan', icon: CalendarDays, intro: 'The publishing calendar, earnings, and costs.',
     subs: [['calendar', 'Calendar'], ['money', 'Money'], ['jobs', 'Job usage']] },
-  { id: 'system', label: 'System', icon: Server, intro: 'Storage, background jobs, the archive, and original tools.',
-    subs: [['health', 'Health'], ['activity', 'Activity'], ['archive', 'Archive'], ['tools', 'Original tools']] },
+  { id: 'system', label: 'System', icon: Server, intro: 'Storage, background jobs, AI settings, the archive, and original tools.',
+    subs: [['health', 'Health'], ['ai', 'AI'], ['activity', 'Activity'], ['archive', 'Archive'], ['tools', 'Original tools']] },
 ] as const;
 type SectionId = typeof sections[number]['id'];
 
@@ -55,6 +55,8 @@ function App() {
   const [sending, setSending] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [retry, setRetry] = useState<Command | null>(null);
+  // A queued command is followed until Windows finishes it, then its result and the new data show by themselves.
+  const [tracking, setTracking] = useState<{ id: string; since: number } | null>(null);
 
   async function sendRequest(body: Command) {
     setSending(true);
@@ -68,7 +70,12 @@ function App() {
       if (result.status >= 500) throw new Error('Request unavailable');
       const data = await result.json();
       setRetry(null);
-      setFeedback(data.message || (result.ok ? 'Request received.' : 'Request denied.'));
+      if (result.ok && typeof data.command_id === 'string') {
+        setTracking({ id: data.command_id, since: Date.now() });
+        setFeedback('Working on it on Windows…');
+      } else {
+        setFeedback(data.message || (result.ok ? 'Done.' : 'Request denied.'));
+      }
       setRequest(value => value + 1);
     } catch {
       setRetry(body);
@@ -99,9 +106,23 @@ function App() {
       }
     }
     void load();
-    const interval = setInterval(load, 30_000);
+    const interval = setInterval(load, tracking ? 2_000 : 30_000);
     return () => { controller.abort(); clearInterval(interval); };
-  }, [request]);
+  }, [request, tracking?.id]);
+
+  useEffect(() => {
+    if (!tracking || !snapshot) return;
+    const event = snapshot.commands.find(item => item.id === tracking.id);
+    if (event && !['queued', 'running'].includes(event.status)) {
+      setFeedback(event.message);
+      setTracking(null);
+    } else if (Date.now() - tracking.since > 180_000) {
+      setFeedback('Still running on Windows. The result will appear under System → Health when it finishes.');
+      setTracking(null);
+    } else if (event?.status === 'running') {
+      setFeedback('Running on Windows…');
+    }
+  }, [snapshot, tracking]);
 
   const stale = snapshot !== null && Date.now() - Date.parse(snapshot.generated_at) > 90_000;
   const status = issue || stale ? 'Delayed' : snapshot ? 'Live' : 'Connecting';
@@ -120,7 +141,7 @@ function App() {
   }, [section.id, sub]);
   const props: PageProps | null = snapshot && {
     snapshot, time: timestamp, send: snapshot.controls_enabled ? send : undefined,
-    busy: sending || stale || issue, sub, rest,
+    busy: sending || !!tracking || stale || issue, sub, rest,
   };
   const Page = { home: HomePage, shotsnip: ShotsnipPage, histold: HistoldPage, plan: PlanPage, system: SystemPage }[section.id];
 
@@ -157,9 +178,10 @@ function App() {
         </a>)}
       </nav>}
       {(issue || stale) && <div className="notice" role="status"><CircleAlert size={17}/><span>{snapshot ? 'Showing the last available data.' : 'Studio HQ is unavailable. Try refreshing.'}</span></div>}
-      {feedback && <div className="command-feedback" role="status"><span>{feedback}</span>
+      {feedback && <div className={'command-feedback' + (sending || tracking ? ' working' : '')} role="status">
+        {(sending || tracking) && <span className="spinner" aria-hidden="true" />}<span>{feedback}</span>
         {retry && <button className="action" disabled={sending} onClick={() => void sendRequest(retry)}>Retry</button>}
-        {!sending && <button className="action" aria-label="Dismiss message" onClick={() => { setFeedback(''); setRetry(null); }}>Dismiss</button>}
+        {!sending && !tracking && <button className="action" aria-label="Dismiss message" onClick={() => { setFeedback(''); setRetry(null); }}>Dismiss</button>}
       </div>}
       {props ? <Page {...props} /> : <div className="loading" role="status">{issue ? 'Use refresh to try again.' : 'Loading…'}</div>}
       {snapshot && <footer>Updated {timestamp(snapshot.generated_at)} IST · {bytes(snapshot.storage.free)} free</footer>}

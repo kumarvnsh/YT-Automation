@@ -32,6 +32,11 @@ TARGET_ACTIONS = ('target_toggle', 'target_add')
 AGENT_ACTIONS = ('agent_learning', 'agent_review')
 SHOTSNIP_OWNER_ACTIONS = TARGET_ACTIONS + AGENT_ACTIONS
 ASSISTANT_ACTIONS = ('assistant_ask', 'assistant_apply')
+LIVE_ACTIONS = ('live_run_now', 'live_stop_after_stage', 'shotsnip_commentary', 'shotsnip_watch_worker', 'manual_spacing')
+QUEUE_ACTIONS = ('move_earlier', 'move_later', 'prioritize', 'schedule')
+HISTOLD_OWNER_ACTIONS = ('histold_strategy', 'histold_research', 'ai_settings')
+BOT_ACTIONS = ('bot_action', 'draft_preview')
+COMMENTARY_MODES = ('off', 'intro', 'full')
 ACTIVE = {'queued', 'queued_publish', 'running', 'publishing', 'ready', 'partial', 'attention'}
 
 
@@ -140,11 +145,23 @@ def manual_command(config, body):
                     targets = row['options'].get('platforms', [])
                     if not targets or set(targets) - {'youtube', 'facebook'} or body.get('platforms') != targets:
                         raise ValueError('Publishing destinations changed. Review the current job again.')
-            module.control_job(db, job_id, action, expected=revision)
+            value = None
+            if action == 'schedule':
+                value = body.get('not_before')
+                if value is not None and (type(value) not in (int, float)):
+                    raise ValueError('Choose a publish time.')
+            if action in ('schedule',):
+                module.control_job(db, job_id, action, expected=revision, value=value)
+            else:
+                module.control_job(db, job_id, action, expected=revision)
             result = {'message': {
                 'publish': 'Approved and queued for the existing publishing worker.',
                 'cancel': 'Cancellation recorded.',
                 'retry': 'Processing retry queued.',
+                'move_earlier': 'Moved one place earlier in the publishing queue.',
+                'move_later': 'Moved one place later in the publishing queue.',
+                'prioritize': 'Moved to the front of the publishing queue.',
+                'schedule': 'Publish time cleared; the clip goes out in queue order.' if value is None else 'Publish time set. The clip waits until then.',
             }[action]}
         return receipt(db, request_id, digest, result)
 
@@ -168,7 +185,67 @@ def queue_control(config, body):
     if action == 'scheduler':
         if type(body.get('enabled')) is not bool or type(body.get('expected')) is not bool:
             raise ValueError('Refresh the scheduler status before changing it.')
+        if 'end_hold' in body and type(body['end_hold']) is not bool:
+            raise ValueError('Refresh the scheduler status before changing it.')
         target = str(body['enabled'])
+    if action == 'live_run_now':
+        if type(body.get('cancel')) is not bool:
+            raise ValueError('Refresh the live status before requesting a cycle.')
+        target = 'cancel' if body['cancel'] else 'run'
+    if action == 'live_stop_after_stage':
+        target = 'stop'
+    if action == 'manual_spacing':
+        if type(body.get('minutes')) is not int or not 30 <= body['minutes'] <= 480:
+            raise ValueError('Choose a gap between 30 minutes and 8 hours.')
+        target = str(body['minutes'])
+    if action == 'shotsnip_commentary':
+        if body.get('mode') not in COMMENTARY_MODES:
+            raise ValueError('Choose off, intro, or full commentary.')
+        target = body['mode']
+    if action == 'shotsnip_watch_worker':
+        if type(body.get('start')) is not bool:
+            raise ValueError('Choose to start or stop the watch worker.')
+        target = str(body['start'])
+    if action in HISTOLD_OWNER_ACTIONS and action != 'bot_action' and body.get('channel') != 'histold':
+        raise ValueError('This control belongs to Histold.')
+    if action == 'histold_strategy':
+        name, args = body.get('name'), body.get('args', {})
+        if name not in ('pin_hours', 'unpin_hours', 'pause_option', 'boost_option', 'reset_option', 'refresh_analytics')                 or not isinstance(args, dict):
+            raise ValueError('Choose a Histold strategy control.')
+        try:
+            import yaml
+            from src import control
+            from src.config import Config
+            with (Path(__file__).resolve().parents[1]/'config.yaml').open(encoding='utf-8') as stream:
+                args, _ = control.validate(name, args, Config(yaml.safe_load(stream) or {}))
+        except ImportError:
+            pass  # Without PyYAML here, the owner's own validation (always run) decides.
+        body['args'] = args
+        target = name + ':' + json.dumps(args, sort_keys=True)
+    if action == 'histold_research':
+        target = 'research'
+    if action == 'bot_action':
+        from .bots import check
+        target = json.dumps(check(body), sort_keys=True)
+    if action == 'draft_preview':
+        stage, run_id = body.get('stage'), body.get('run_id')
+        if (body.get('channel') != 'histold' or not isinstance(stage, str) or not re.fullmatch(r'\d{8}_\d{6}(?:_\d{6})?_(?:short|long)', stage)
+                or not isinstance(run_id, str) or not re.fullmatch(r'\d{6,20}', run_id)):
+            raise ValueError('Choose a Histold draft.')
+        target = stage
+    if action == 'ai_settings':
+        mode, provider = body.get('mode'), body.get('provider')
+        if mode is not None:
+            if mode not in ('auto', 'claude', 'codex', 'local'):
+                raise ValueError('Choose which AI answers.')
+            target = 'mode:' + mode
+        elif provider in ('claude', 'codex'):
+            caps = {k: body.get(k) for k in ('per_5h', 'per_week') if k in body}
+            if any(type(v) is not int or not 0 <= v <= 1000 for v in caps.values()) or (not caps and body.get('clear_cooldown') is not True):
+                raise ValueError('Usage caps must be whole numbers from 0 to 1000.')
+            target = provider + ':' + json.dumps(caps, sort_keys=True) + (':clear' if body.get('clear_cooldown') is True else '')
+        else:
+            raise ValueError('Choose an AI setting.')
     if action == 'scheduler_cadence':
         minutes, revision = body.get('minutes'), body.get('revision')
         if type(minutes) is not int or minutes not in CADENCE_MINUTES:
@@ -196,7 +273,7 @@ def queue_control(config, body):
         if body.get('mode') not in ('review', 'refresh'):
             raise ValueError('Choose a review or an analytics refresh.')
         target = body['mode']
-    if action in ASSISTANT_ACTIONS and body.get('channel') != 'histold':
+    if action in ASSISTANT_ACTIONS and body.get('channel') != ('shotsnip' if body.get('scope') == 'shotsnip' else 'histold'):
         raise ValueError('The assistant answers Histold strategy questions.')
     if action == 'assistant_ask':
         from .assistant import check_request
@@ -248,15 +325,38 @@ def queue_control(config, body):
         return {'message': message, 'command_id': body['request_id']}
 
 
+def refresh_snapshot(config):
+    """Rebuild the private snapshot now, so a finished command shows without waiting for the 30-second cycle."""
+    private = config.get('dashboard_private_snapshot')
+    if not isinstance(private, str):
+        return
+    try:
+        from .dashboard_snapshot import snapshot
+        output = Path(private)
+        previews, media = {}, {}
+        data = snapshot(config, previews, include_finance=True, media=media)
+        atomic_json(output.with_name('dashboard-previews.json'), previews)
+        atomic_json(output.with_name('dashboard-media.json'), media)
+        atomic_json(output, data)
+    except Exception:  # noqa: BLE001 - the regular refresh cycle still runs; a command never fails here
+        pass
+
+
 def submit(config, body):
+    result = route(config, body)
+    refresh_snapshot(config)
+    return result
+
+
+def route(config, body):
     if not isinstance(body, dict) or not isinstance(body.get('request_id'), str) or not IDENTITY.fullmatch(body['request_id']):
         raise ValueError('Missing request ID.')
-    if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence') + SHOTSNIP_OWNER_ACTIONS:
+    if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence') + SHOTSNIP_OWNER_ACTIONS + LIVE_ACTIONS + QUEUE_ACTIONS:
         raise ValueError('This queue belongs to Shotsnip.')
     action = body.get('action')
-    if action in ('create_preview', 'publish', 'cancel', 'retry'):
+    if action in ('create_preview', 'publish', 'cancel', 'retry') + QUEUE_ACTIONS:
         return manual_command(config, body)
-    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS + ASSISTANT_ACTIONS:
+    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS + ASSISTANT_ACTIONS + LIVE_ACTIONS + HISTOLD_OWNER_ACTIONS + BOT_ACTIONS:
         return queue_control(config, body)
     raise ValueError('Unsupported action.')
 
@@ -281,7 +381,7 @@ def owner_request(config, path, payload, *, timeout=15):
     reply = reply if isinstance(reply, dict) else {}
     if res.status in (400, 429) and isinstance(reply.get('error'), str):
         raise ValueError(reply['error'][:200])  # The owner's own validation or busy message.
-    if res.status != 200:
+    if res.status not in (200, 202):
         raise RuntimeError('Existing dashboard did not accept the request')
     return reply
 
@@ -360,16 +460,62 @@ def scheduler_change(config, body):
             return 'Shotsnip posting is already in the requested state.'
         if current.get('enabled') is not body['expected']:
             raise ValueError('Scheduler changed. Refresh and review it again.')
+        end_hold = body.get('end_hold') is True
         if body['enabled']:
             ledger = read_json(work/'state.json')
-            if current.get('live_operations_batch_hold') or any(
-                row.get('status') not in CONFIRMED | {'rejected', 'quarantined'}
-                or (row.get('facebook') or {}).get('status') in ('pending', 'uncertain', 'error', 'failed')
-                for row in ledger['uploads']
-            ):
-                raise ValueError('Shotsnip is on hold or has an unresolved publication. Review the existing dashboard.')
-        call_scheduler(config, {'name':'set_scheduler','enabled': body['enabled']})
-        return 'Shotsnip automatic posting resumed.' if body['enabled'] else 'Shotsnip automatic posting paused.'
+            if current.get('live_operations_batch_hold') and not end_hold:
+                raise ValueError('Shotsnip is on a library batch hold. Confirm ending the hold to resume now.')
+            if any(row.get('status') not in CONFIRMED | {'rejected', 'quarantined'}
+                   or (row.get('facebook') or {}).get('status') in ('pending', 'uncertain', 'error', 'failed')
+                   for row in ledger['uploads']):
+                raise ValueError('A publication result is unresolved, so live operations stay paused to avoid a duplicate post.')
+        message = call_scheduler(config, {'name': 'set_scheduler', 'enabled': body['enabled'], 'end_hold': end_hold})
+        updated = read_json(filename)
+        if updated.get('enabled') is not body['enabled'] or (end_hold and updated.get('live_operations_batch_hold')):
+            raise RuntimeError('Could not verify the scheduler change')
+        if body['enabled']:
+            return message or 'Shotsnip live operations resumed.'
+        return 'Shotsnip live operations paused. Manual and batch clips keep their own queue.'
+
+
+def live_change(config, body):
+    """Run-now and stop-after-stage requests, handed to the existing Shotsnip dispatcher."""
+    root = config_root(config)
+    if body['action'] == 'live_stop_after_stage':
+        phase = read_json(root/'work/scheduler/state.json').get('phase')
+        if phase not in ('capturing', 'analyzing', 'finishing'):
+            raise ValueError('No live stage is running right now.')
+        message = call_scheduler(config, {'name': 'stop_auto_after_stage'})
+        if not (root/'work/scheduler/stop-after-stage').exists():
+            raise RuntimeError('Could not verify the stop request')
+        return message or 'The live job will stop after this stage.'
+    if body['action'] == 'manual_spacing':
+        message = call_scheduler(config, {'name': 'set_manual_spacing', 'minutes': body['minutes']})
+        if read_json(root/'scheduler.json').get('manual_post_minutes') != body['minutes']:
+            raise RuntimeError('Could not verify the new gap')
+        return message or 'Manual clip gap updated.'
+    if body['action'] == 'shotsnip_commentary':
+        message = call_scheduler(config, {'name': 'set_commentary', 'mode': body['mode']})
+        commentary = read_json(root/'scheduler.json').get('commentary') or {}
+        actual = commentary.get('mode') if commentary.get('enabled') else 'off'
+        if actual != body['mode']:
+            raise RuntimeError('Could not verify the commentary change')
+        return message or 'Commentary updated.'
+    if body['action'] == 'shotsnip_watch_worker':
+        message = call_scheduler(config, {'name': 'start_worker' if body['start'] else 'stop_worker'})
+        if not body['start'] and not (root/'work/dashboard/stop-worker').exists():
+            raise RuntimeError('Could not verify the stop request')
+        return message or ('Watch worker started.' if body['start'] else 'Watch worker stop requested.')
+    flag = root/'work/dashboard/run-now'
+    if body['cancel']:
+        call_scheduler(config, {'name': 'cancel_run_now'})
+        if flag.exists():
+            raise RuntimeError('Could not verify the cancellation')
+        return 'Run-now request withdrawn.'
+    message = call_scheduler(config, {'name': 'run_auto_now'})
+    if not flag.exists():
+        raise RuntimeError('Could not verify the run-now request')
+    return message or 'Live cycle requested. It starts when the worker is free.'
 
 
 def agent_file(root, name):
@@ -414,6 +560,33 @@ def perform(config, body):
         return target_change(config, body)
     if action in AGENT_ACTIONS:
         return agent_change(config, body)
+    if action in LIVE_ACTIONS:
+        return live_change(config, body)
+    if action == 'histold_strategy':
+        reply = owner_request(config, '/api/action', {'name': body['name'], 'args': body['args']}, timeout=60)
+        return str(reply.get('message') or 'Strategy setting saved.')[:300]
+    if action == 'bot_action':
+        from .bots import perform as bot_perform
+        return bot_perform(config, body)
+    if action == 'draft_preview':
+        from .media import prepare_draft
+        pending = read_json(Path(config['dashboard_private_snapshot'])).get('approvals', [])
+        if not any(row.get('stage') == body['stage'] and row.get('run_id') == body['run_id'] for row in pending):
+            raise ValueError('That draft is no longer waiting for approval.')
+        return prepare_draft(config, dict(body, _pending=pending))
+    if action == 'ai_settings':
+        if body.get('mode') is not None:
+            payload = {'mode': body['mode']}
+        else:
+            payload = {body['provider']: {**{k: body[k] for k in ('per_5h', 'per_week') if k in body},
+                                          **({'clear_cooldown': True} if body.get('clear_cooldown') is True else {})}}
+        reply = owner_request(config, '/api/ai', payload, timeout=20)
+        if body.get('mode') is not None and reply.get('mode') != body['mode']:
+            raise RuntimeError('Could not verify the AI setting')
+        return 'AI answering set to ' + body['mode'] + '.' if body.get('mode') else 'AI usage settings saved.'
+    if action == 'histold_research':
+        reply = owner_request(config, '/api/research', {}, timeout=20)
+        return str(reply.get('message') or 'Content research started. Results appear in the Histold analysis when it finishes.')[:300]
     if action == 'assistant_ask':
         from .assistant import start
         return start(config, body)
@@ -507,11 +680,12 @@ def maintenance_tick(config):
                 except ValueError as exc:
                     status, message = 'rejected', str(exc)
                 except (OSError, RuntimeError, TimeoutError, KeyError, subprocess.TimeoutExpired):
-                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft','assistant_apply') + SHOTSNIP_OWNER_ACTIONS else 'failed'
+                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft','assistant_apply') + SHOTSNIP_OWNER_ACTIONS + LIVE_ACTIONS + HISTOLD_OWNER_ACTIONS + BOT_ACTIONS else 'failed'
                     message = 'The action could not be confirmed. Check the existing worker or archive report.'
                 with db:
                     db.execute('UPDATE commands SET status=?,message=?,updated=? WHERE id=?',
                                (status,message,time.time(),row['id']))
+                refresh_snapshot(config)
         backup_queue(config)
         if private_snapshot := config.get('dashboard_private_snapshot'):
             index_root = Path(private_snapshot).parent
@@ -557,9 +731,9 @@ def overview(config):
     if not path.is_file():
         return []
     with closing(sqlite3.connect(path.as_uri()+'?mode=ro', uri=True, timeout=1)) as db:
-        return [{'action': row[0], 'status': row[1], 'message': row[2],
+        return [{'id': row[4], 'action': row[0], 'status': row[1], 'message': row[2],
                  'at': datetime.fromtimestamp(row[3], timezone.utc).isoformat()}
-                for row in db.execute('SELECT action,status,message,updated FROM commands ORDER BY updated DESC LIMIT 8')]
+                for row in db.execute('SELECT action,status,message,updated,id FROM commands ORDER BY updated DESC LIMIT 12')]
 
 
 def main():

@@ -6,6 +6,7 @@ import sqlite3
 import tempfile
 import unittest
 from unittest.mock import patch
+import time
 import uuid
 
 from studio_hq import dashboard_controls as controls
@@ -93,6 +94,27 @@ class DashboardControlsTests(unittest.TestCase):
         with closing(sqlite3.connect(self.root/'hub-commands.sqlite')) as db, db:
             db.execute("UPDATE commands SET status='complete',message='Finished'")
         self.assertEqual(controls.submit(self.config, duplicate)['command_id'], first['request_id'])
+
+    def test_queue_order_and_publish_time_controls(self):
+        module = self.manual()
+        ids = controls.submit(self.config, self.command('create_preview', channel='shotsnip', mode='exact',
+                              url='https://youtu.be/abcdefg1234', ranges='10 - 20' + chr(10) + '30 - 40', platforms=['youtube']))['job_ids']
+        for identity in ids:
+            module.update(identity, self.root, status='queued_publish')
+        # Queue order is creation time, ties broken by id, exactly as the worker claims.
+        ids = sorted(ids, key=lambda identity: (module.get(identity, self.root)['created'], identity))
+        second = module.get(ids[1], self.root)
+        result = controls.submit(self.config, self.command('move_earlier', channel='shotsnip', job_id=ids[1], revision=second['updated']))
+        self.assertIn('earlier', result['message'])
+        self.assertEqual(module.claim(self.root)['id'], ids[1])
+        first = module.get(ids[0], self.root)
+        with self.assertRaisesRegex(ValueError, 'Choose a publish time'):
+            controls.submit(self.config, self.command('schedule', channel='shotsnip', job_id=ids[0], revision=first['updated'], not_before='soon'))
+        later = time.time() + 7200
+        self.assertIn('waits until then', controls.submit(self.config, self.command('schedule', channel='shotsnip', job_id=ids[0],
+                                                          revision=first['updated'], not_before=later))['message'])
+        self.assertEqual(module.get(ids[0], self.root)['options']['not_before'], later)
+        self.assertIsNone(module.claim(self.root))  # the only remaining clip is scheduled for later
 
     def test_backups_include_queue_and_command_receipts(self):
         self.manual()
@@ -285,3 +307,176 @@ class AgentExportTests(unittest.TestCase):
                          'RuntimeError: Live video capture stalled for 40 seconds')
         self.assertEqual(capture_error(['ValueError: see https://example.invalid/x']), 'ValueError')
         self.assertEqual(capture_error(None), 'Capture error')
+
+
+class LiveControlTests(unittest.TestCase):
+    """Pause, resume, run-now and stop-after-stage run through the existing Shotsnip dashboard."""
+    def setUp(self):
+        from scripts import clipping_dashboard
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        self.config = {'roots': {'shotsnip': str(self.root)}, 'state_dir': str(self.root)}
+        self.hold = {'batch': 'fixture-batch', 'job_ids': ['a'], 'paused_at': '2026-11-21T09:00:00+00:00'}
+        controls.atomic_json(self.root/'scheduler.json', {'enabled': False, 'scan_minutes': 180, 'post_minutes': 180,
+                                                          'live_operations_batch_hold': self.hold})
+        controls.atomic_json(self.root/'work/scheduler/state.json', {'phase': 'queued', 'uploads': [{'status': 'uploaded'}]})
+        for target in (patch.object(clipping_dashboard, 'CLIP_ROOT', self.root),
+                       patch.object(controls, 'call_scheduler', side_effect=lambda config, payload, **_: clipping_dashboard.action(payload))):
+            target.start()
+            self.addCleanup(target.stop)
+
+    def command(self, action, **options):
+        return {'request_id': str(uuid.uuid4()), 'action': action, 'channel': 'shotsnip', **options}
+
+    def test_resume_during_a_batch_hold_needs_explicit_confirmation(self):
+        resume = self.command('scheduler', enabled=True, expected=False)
+        with self.assertRaisesRegex(ValueError, 'Confirm ending the hold'):
+            controls.perform(self.config, resume)
+        self.assertIn('hold ended early', controls.perform(self.config, dict(resume, end_hold=True)))
+        settings = controls.read_json(self.root/'scheduler.json')
+        self.assertTrue(settings['enabled'])
+        self.assertNotIn('live_operations_batch_hold', settings)
+        self.assertEqual(settings['ended_batch_hold']['batch'], 'fixture-batch')
+        pause = self.command('scheduler', enabled=False, expected=True)
+        self.assertIn('paused', controls.perform(self.config, pause))
+        self.assertFalse(controls.read_json(self.root/'scheduler.json')['enabled'])
+
+    def test_unresolved_publication_blocks_resume(self):
+        controls.atomic_json(self.root/'work/scheduler/state.json', {'phase': 'queued', 'uploads': [{'status': 'pending'}]})
+        with self.assertRaisesRegex(ValueError, 'duplicate post'):
+            controls.perform(self.config, self.command('scheduler', enabled=True, expected=False, end_hold=True))
+        self.assertIn('live_operations_batch_hold', controls.read_json(self.root/'scheduler.json'))
+
+    def test_run_now_and_cancel_are_verified(self):
+        with self.assertRaisesRegex(ValueError, 'Resume automatic clipping'):
+            controls.perform(self.config, self.command('live_run_now', cancel=False))
+        controls.atomic_json(self.root/'scheduler.json', {'enabled': True})
+        self.assertIn('requested', controls.perform(self.config, self.command('live_run_now', cancel=False)))
+        self.assertTrue((self.root/'work/dashboard/run-now').exists())
+        self.assertIn('withdrawn', controls.perform(self.config, self.command('live_run_now', cancel=True)))
+        self.assertFalse((self.root/'work/dashboard/run-now').exists())
+        with self.assertRaisesRegex(ValueError, 'Refresh the live status'):
+            controls.submit(self.config, self.command('live_run_now'))
+
+    def test_stop_after_stage_only_while_a_stage_runs(self):
+        with self.assertRaisesRegex(ValueError, 'No live stage'):
+            controls.perform(self.config, self.command('live_stop_after_stage'))
+        controls.atomic_json(self.root/'work/scheduler/state.json', {'phase': 'capturing', 'uploads': []})
+        self.assertIn('stop after this stage', controls.perform(self.config, self.command('live_stop_after_stage')))
+        self.assertTrue((self.root/'work/scheduler/stop-after-stage').exists())
+
+
+class OwnerControlTests(unittest.TestCase):
+    """Remaining old-dashboard controls, each handed to its existing owner."""
+    def setUp(self):
+        from scripts import clipping_dashboard
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        self.config = {'roots': {'shotsnip': str(self.root)}, 'state_dir': str(self.root)}
+        controls.atomic_json(self.root/'scheduler.json', {'enabled': True, 'commentary': {'enabled': True, 'mode': 'intro'}})
+        for target in (patch.object(clipping_dashboard, 'CLIP_ROOT', self.root),
+                       patch.object(controls, 'call_scheduler', side_effect=lambda config, payload, **_: clipping_dashboard.action(payload))):
+            target.start()
+            self.addCleanup(target.stop)
+
+    def command(self, action, **options):
+        return {'request_id': str(uuid.uuid4()), 'action': action, **options}
+
+    def test_commentary_mode_is_set_and_verified(self):
+        with self.assertRaisesRegex(ValueError, 'off, intro, or full'):
+            controls.submit(self.config, self.command('shotsnip_commentary', channel='shotsnip', mode='loud'))
+        self.assertIn('turned off', controls.perform(self.config, self.command('shotsnip_commentary', channel='shotsnip', mode='off')))
+        self.assertFalse(controls.read_json(self.root/'scheduler.json')['commentary']['enabled'])
+        self.assertIn('full narrated', controls.perform(self.config, self.command('shotsnip_commentary', channel='shotsnip', mode='full')))
+
+    def test_watch_worker_stop_is_verified(self):
+        self.assertIn('Stop requested', controls.perform(self.config, self.command('shotsnip_watch_worker', channel='shotsnip', start=False)))
+        self.assertTrue((self.root/'work/dashboard/stop-worker').exists())
+
+    def test_histold_strategy_is_validated_before_queueing_and_sent_to_the_owner(self):
+        with self.assertRaisesRegex(ValueError, 'Choose a Histold strategy control'):
+            controls.submit(self.config, self.command('histold_strategy', channel='histold', name='delete_everything', args={}))
+        with self.assertRaisesRegex(ValueError, 'unknown series'):
+            controls.submit(self.config, self.command('histold_strategy', channel='histold', name='pause_option',
+                                                      args={'dimension': 'series', 'option': 'no-such-series'}))
+        with self.assertRaisesRegex(ValueError, 'belongs to Histold'):
+            controls.submit(self.config, self.command('histold_strategy', channel='shotsnip', name='refresh_analytics', args={}))
+        import yaml
+        series = yaml.safe_load((Path(__file__).resolve().parents[1]/'config.yaml').read_text(encoding='utf-8'))['editorial']['series'][0]['id']
+        body = self.command('histold_strategy', channel='histold', name='pause_option', args={'dimension': 'series', 'option': series})
+        controls.submit(self.config, body)
+        with patch.object(controls, 'owner_request', return_value={'message': 'Pause series — saved.'}) as owner:
+            self.assertIn('saved', controls.perform(self.config, body))
+            owner.assert_called_once_with(self.config, '/api/action', {'name': 'pause_option', 'args': {'dimension': 'series', 'option': series}}, timeout=60)
+        with patch.object(controls, 'owner_request', return_value={'running': True, 'message': 'Qwen is reviewing the analytics…'}):
+            self.assertIn('reviewing', controls.perform(self.config, self.command('histold_research', channel='histold')))
+
+
+class AiSettingsTests(unittest.TestCase):
+    def test_ai_settings_are_validated_and_sent_to_the_owner(self):
+        with tempfile.TemporaryDirectory() as local:
+            config = {'state_dir': local, 'roots': {}}
+            body = lambda **options: {'request_id': str(uuid.uuid4()), 'action': 'ai_settings', 'channel': 'histold', **options}
+            with self.assertRaisesRegex(ValueError, 'Choose which AI'):
+                controls.submit(config, body(mode='gpt'))
+            with self.assertRaisesRegex(ValueError, 'whole numbers'):
+                controls.submit(config, body(provider='claude', per_5h=-1))
+            with self.assertRaisesRegex(ValueError, 'Choose an AI setting'):
+                controls.submit(config, body(provider='local', per_5h=5))
+            with patch.object(controls, 'owner_request', return_value={'mode': 'local'}) as owner:
+                self.assertIn('local', controls.perform(config, body(mode='local')))
+                owner.assert_called_once_with(config, '/api/ai', {'mode': 'local'}, timeout=20)
+            with patch.object(controls, 'owner_request', return_value={'mode': 'auto'}) as owner:
+                controls.perform(config, body(provider='codex', per_5h=10, per_week=50, clear_cooldown=True))
+                owner.assert_called_once_with(config, '/api/ai', {'codex': {'per_5h': 10, 'per_week': 50, 'clear_cooldown': True}}, timeout=20)
+
+
+class BotWorkspaceTests(unittest.TestCase):
+    def body(self, **options):
+        return {'request_id': str(uuid.uuid4()), 'action': 'bot_action', **options}
+
+    def test_bot_actions_are_checked_then_sent_to_the_bot_workspace(self):
+        from studio_hq import bots
+        with tempfile.TemporaryDirectory() as local:
+            config = {'state_dir': local, 'roots': {}}
+            for options, message in (({'bot_action': 'delete', 'channel': 'histold'}, 'Choose a bot action'),
+                                     ({'bot_action': 'assign', 'channel': 'histold', 'bot': 'shotsnip'}, None),
+                                     ({'bot_action': 'assign', 'channel': 'histold', 'bot': 'ghost'}, 'Choose a bot'),
+                                     ({'bot_action': 'routine', 'channel': 'histold', 'bot': 'histold', 'interval': 5}, 'Choose off, hourly'),
+                                     ({'bot_action': 'cancel', 'channel': 'histold', 'id': '../x'}, 'Choose an item'),
+                                     ({'bot_action': 'approve_problem', 'channel': 'histold', 'key': 'Bad Key!'}, 'Choose a problem')):
+                if message:
+                    with self.assertRaisesRegex(ValueError, message):
+                        controls.submit(config, self.body(**options))
+            # Bot scope per channel is the owner's check; Studio HQ only checks the bot exists.
+            self.assertEqual(bots.check({'bot_action': 'routine', 'channel': 'histold', 'bot': 'histold', 'interval': 3600, 'instruction': ' x '}),
+                             {'action': 'routine', 'channel': 'histold', 'bot': 'histold', 'instruction': 'x', 'engine': 'analyst', 'interval': 3600})
+            body = self.body(bot_action='choose_decision', channel='shotsnip', id='a' * 32, option='b', version=12.5)
+            controls.submit(config, body)
+            with patch.object(controls, 'owner_request', return_value={'message': 'Choice saved'}) as owner:
+                self.assertEqual(controls.perform(config, body), 'Choice saved')
+                owner.assert_called_once_with(config, '/api/bots/action', {'action': 'choose_decision', 'channel': 'shotsnip',
+                                              'id': 'a' * 32, 'option': 'b', 'version': 12.5}, timeout=30)
+
+    def test_snapshot_reads_the_bot_office_read_only(self):
+        from studio_hq import bots
+        with tempfile.TemporaryDirectory() as local:
+            root = Path(local)
+            (root/'bot-workspace').mkdir()
+            with closing(sqlite3.connect(root/'bot-workspace/tasks.sqlite')) as db, db:
+                db.executescript('''CREATE TABLE tasks(id,bot,channel,instruction,engine,status,stage,created,updated,result,error,remote_bot,remote_message,cancel,evidence);
+                  CREATE TABLE notes(bot,channel,text); CREATE TABLE routines(bot,channel,engine,instruction,interval,next_at);
+                  CREATE TABLE decisions(id,channel,bot,source_task,decision_key,payload,status,created,updated,selected,followup);
+                  CREATE TABLE events(task,at,note);''')
+                db.execute('INSERT INTO tasks VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', ('t' * 32, 'histold', 'histold', 'Find one idea', 'analyst',
+                           'completed', 'Done', 1.0, 2.0, 'Report body', None, None, None, 0, None))
+                db.execute('INSERT INTO decisions VALUES(?,?,?,?,?,?,?,?,?,?,?)', ('d' * 32, 'histold', 'histold', 't' * 32, 'k',
+                           json.dumps({'title': 'Test it?', 'options': [{'id': 'yes', 'label': 'Yes', 'plan': 'Run it'}]}), 'pending', 1.0, 3.0, None, None))
+            (root/'key.txt').write_text('k')
+            view = bots.snapshot({'dashboard_control_key': str(root/'key.txt')})
+            histold = view['channels']['histold']
+            self.assertEqual(histold['tasks'][0]['report'], 'Report body')
+            self.assertEqual(histold['decisions'][0]['options'][0]['label'], 'Yes')
+            self.assertEqual({bot['id'] for bot in histold['bots']}, {'jarvis', 'histold', 'operations'})

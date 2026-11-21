@@ -463,7 +463,14 @@ def action(body):
         if name == 'set_scheduler':
             config=read(CLIP_ROOT/'scheduler.json',{})
             config['enabled']=bool(body.get('enabled'))
+            ended=None
+            if config['enabled'] and body.get('end_hold') is True and config.get('live_operations_batch_hold'):
+                # The owner resumed before the batch finished; batch jobs keep publishing on their own interval.
+                ended=config.pop('live_operations_batch_hold')
+                config['ended_batch_hold']={'batch':ended.get('batch'),'ended_at':datetime.now(timezone.utc).isoformat(),'by':'owner'}
             write(CLIP_ROOT/'scheduler.json',config)
+            if ended:
+                return 'Live operations resumed. The library batch hold ended early; its remaining clips still publish on their own schedule.'
             return 'Automatic posting enabled.' if config['enabled'] else 'Automatic posting paused.'
         if name == 'set_cadence':
             minutes=body.get('minutes')
@@ -475,6 +482,17 @@ def action(body):
             SCHEDULER_WAKE.set()
             hours=minutes/60
             return f'Automatic clips every {hours:g} hour{"s" if hours!=1 else ""}.'
+        if name == 'set_manual_spacing':
+            minutes=body.get('minutes')
+            module=manual_module()
+            choices=getattr(module,'MANUAL_GAP_CHOICES',()) if module else ()
+            if type(minutes) is not int or minutes not in choices:
+                raise ValueError('Choose a gap between 30 minutes and 8 hours')
+            config=read(CLIP_ROOT/'scheduler.json',{})
+            config['manual_post_minutes']=minutes
+            write(CLIP_ROOT/'scheduler.json',config)
+            SCHEDULER_WAKE.set()
+            return f'Manual clips now go out at least {minutes/60:g} hour{"s" if minutes!=60 else ""} apart.'
         if name == 'set_commentary':
             mode=body.get('mode')
             if mode not in VOICE_MODES:
