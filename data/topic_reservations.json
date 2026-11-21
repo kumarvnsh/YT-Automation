@@ -3382,5 +3382,14 @@
     "slot": "morning",
     "date": "2026-11-20",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261121_114620_832439_short",
+    "title": "Coal Miners Sent a Caged Canary Underground Before Going Back In",
+    "fingerprint": "back_before_caged_canary_coal_going_miners_sent_underground",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-21",
+    "status": "reserved"
   }
 ]

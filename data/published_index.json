@@ -7790,5 +7790,71 @@
     "production_profile": 2,
     "facebook_id": "2451714528990790",
     "instagram_id": "18020689877956779"
+  },
+  {
+    "video_id": "4U8amYJZRCs",
+    "run_id": "44900498335",
+    "stage_dir_name": "20261121_114620_832439_short",
+    "title": "Coal Miners Sent a Caged Canary Underground Before Going Back In",
+    "published_at": "2026-11-21T11:55:24.807383+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": "run-44900498335",
+    "design": "Annotated blueprint",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 8,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 7,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Coal miners sent caged canaries underground after a blast or fire, and a surviving bird was the signal that the mine could be re-entered.",
+          "opening_visual": "A birdcage beside a coal-mine entrance (a statue-style rendering of a caged canary is documented in the Library of Congress record; any further imagery must be rendered, not presented as historical evidence).",
+          "payoff": "A living animal served as the air-safety test. Limitation: the approved source gives no date or place for the practice and does not explain why birds were used.",
+          "viewer_reason": "A simple, surprising mechanism that viewers can picture without specialist knowledge.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Before electric refrigerators, an ice-block icebox kept food cold, and the iceman delivered blocks through the back door.",
+          "opening_visual": "A wooden icebox in a historic kitchen.",
+          "payoff": "Ice melting in a compartment cooled shelves below.",
+          "viewer_reason": "Broad daily-life relevance.",
+          "rejection_reason": "Matches the avoided recent subject 'How Did Kitchens Stay Cold Before Electricity?' and is a daily-life story rather than a dangerous or expensive problem solved by an unexpected mechanism."
+        },
+        {
+          "premise": "Ohio's Ohio & Erie Canal route was shaped by landowner pressure, and a route through the Cuyahoga Valley was chosen partly for water supply.",
+          "opening_visual": "A map of the canal route.",
+          "payoff": "Land offers and water supply explain the route.",
+          "viewer_reason": "Map-friendly, but a political route decision rather than a problem-and-mechanism story.",
+          "rejection_reason": "Matches the avoided recent subject 'Ohio's 1820s Canal Route Was Shaped by Landowner Pressure'; it is a route-choice story, not an ingenious solution to a documented danger or cost."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The canary premise is the only candidate that fits the lane (a dangerous problem solved by an unexpected mechanism) and is not on the avoided list. It is only partly supported: the approved record supports the mechanism, but not a date, place, or reason for using birds. The story is therefore not verified for a dated video."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 136,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "If the canary lived, miners walked back in.",
+    "duration": 30.075,
+    "production_profile": 2,
+    "facebook_id": "1783777899369865",
+    "instagram_id": "18132873331863032"
   }
 ]
