@@ -7856,5 +7856,71 @@
     "production_profile": 2,
     "facebook_id": "1783777899369865",
     "instagram_id": "18132873331863032"
+  },
+  {
+    "video_id": "0xHy2ZVArUg",
+    "run_id": "44933072370",
+    "stage_dir_name": "20261121_180141_358664_short",
+    "title": "Yellowstone Chose to Fight Every Fire in 1988",
+    "published_at": "2026-11-21T18:10:16.961885+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": true,
+    "format": "short",
+    "publish_claim": "slot-2026-11-21T18",
+    "design": "Split-screen comparison",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 9,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 8,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "The July 1988 decision to fight every Yellowstone fire had little effect on the fires themselves; September snow and rain ended them, and the fires reshaped public understanding of fire.",
+          "opening_visual": "Simple present-day outline map of Yellowstone National Park with a neutral fire-front marker and a 1988 date card; no historical imagery.",
+          "payoff": "Documented choice (21 July 1988 suppression of all fires) met continued drought; the largest firefighting effort of the era had little impact, and weather ended the fires. Limitation: the source does not establish that suppression before 1988 caused the 1988 fuel load; that link is recorded as disputed background.",
+          "viewer_reason": "Yellowstone is widely recognized, and the idea that the biggest firefight did not decide the outcome is a concrete reversal.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "An icebox in a 1917 kitchen was how food was kept cold before electric refrigerators.",
+          "opening_visual": "Diagram of an icebox with an ice compartment above shelves.",
+          "payoff": "Explains how iceboxes worked and why electric refrigeration spread later.",
+          "viewer_reason": "Familiar household object.",
+          "rejection_reason": "Matches the avoid-list title 'How Did Kitchens Stay Cold Before Electricity?'. It is daily-life explanation with no documented choice and surprising consequence."
+        },
+        {
+          "premise": "A Supreme Court justice's 1954 hike along the C&O Canal helped stop a planned parkway and led to a national park.",
+          "opening_visual": "Map of the canal route from Washington, D.C. to Cumberland, Maryland.",
+          "payoff": "A letter and a hike led to later park legislation.",
+          "viewer_reason": "Strong narrative of one person's action.",
+          "rejection_reason": "Matches the avoid-list title 'A Supreme Court Justice Answered a Road Plan With a Hike'. The consequence chain depends on a dated personal narrative and on how the Washington Post reversed its position, which is not a clean causal claim."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The Yellowstone premise has a documented choice, a concrete and surprising consequence, present-day map support (united_states), and multiple NPS pages. Its causal chain can be stated with drought and weather as documented causes, without claiming a sole cause. The other two premises match the avoid list."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 137,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Yellowstone's firefight barely changed the fires.",
+    "duration": 41.55,
+    "production_profile": 2,
+    "facebook_id": "2252833388616948",
+    "instagram_id": "18114834050227962"
   }
 ]
