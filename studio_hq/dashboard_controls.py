@@ -31,6 +31,7 @@ REVISION = re.compile(r'[0-9a-f]{64}')
 TARGET_ACTIONS = ('target_toggle', 'target_add')
 AGENT_ACTIONS = ('agent_learning', 'agent_review')
 SHOTSNIP_OWNER_ACTIONS = TARGET_ACTIONS + AGENT_ACTIONS
+ASSISTANT_ACTIONS = ('assistant_ask', 'assistant_apply')
 ACTIVE = {'queued', 'queued_publish', 'running', 'publishing', 'ready', 'partial', 'attention'}
 
 
@@ -195,6 +196,17 @@ def queue_control(config, body):
         if body.get('mode') not in ('review', 'refresh'):
             raise ValueError('Choose a review or an analytics refresh.')
         target = body['mode']
+    if action in ASSISTANT_ACTIONS and body.get('channel') != 'histold':
+        raise ValueError('The assistant answers Histold strategy questions.')
+    if action == 'assistant_ask':
+        from .assistant import check_request
+        scope, job = check_request(body)
+        target = hashlib.sha256(json.dumps([scope, job, body['question'].strip()]).encode()).hexdigest()
+    if action == 'assistant_apply':
+        identity, index = body.get('answer_id'), body.get('index')
+        if not isinstance(identity, str) or not re.fullmatch(r'[0-9a-f]{32}', identity) or type(index) is not int:
+            raise ValueError('Choose a proposal to apply.')
+        target = f'{identity}:{index}'
     if action == 'restore':
         target = body.get('archive_id', '')
         if not isinstance(target, str) or not re.fullmatch(r'[a-f0-9]{24}', target):
@@ -244,22 +256,22 @@ def submit(config, body):
     action = body.get('action')
     if action in ('create_preview', 'publish', 'cancel', 'retry'):
         return manual_command(config, body)
-    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS:
+    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS + ASSISTANT_ACTIONS:
         return queue_control(config, body)
     raise ValueError('Unsupported action.')
 
 
-def call_scheduler(config, payload, *, timeout=15):
-    """Hand a change to the existing Shotsnip dashboard, which owns these files."""
+def owner_request(config, path, payload, *, timeout=15):
+    """POST to the existing dashboard (the owner of these settings) and return its JSON reply."""
     key = Path(config['dashboard_control_key']).read_text(encoding='utf-8-sig').strip()
     if not re.fullmatch(r'[A-Za-z0-9_.~-]+', key):
         raise RuntimeError('Existing dashboard key is unavailable')
     conn = http.client.HTTPConnection('127.0.0.1', 8799, timeout=timeout)
     try:
-        conn.request('POST', '/api/shotsnip/action', json.dumps(payload),
+        conn.request('POST', path, json.dumps(payload),
                      {'Content-Type':'application/json','Cookie':'hk='+key,'X-Histold':'1'})
         res = conn.getresponse()
-        raw = res.read(4096)
+        raw = res.read(256 * 1024)
     finally:
         conn.close()
     try:
@@ -267,10 +279,16 @@ def call_scheduler(config, payload, *, timeout=15):
     except ValueError:
         reply = {}
     reply = reply if isinstance(reply, dict) else {}
-    if res.status == 400 and isinstance(reply.get('error'), str):
-        raise ValueError(reply['error'][:200])  # The owner's own validation message.
+    if res.status in (400, 429) and isinstance(reply.get('error'), str):
+        raise ValueError(reply['error'][:200])  # The owner's own validation or busy message.
     if res.status != 200:
         raise RuntimeError('Existing dashboard did not accept the request')
+    return reply
+
+
+def call_scheduler(config, payload, *, timeout=15):
+    """Hand a change to the existing Shotsnip dashboard, which owns these files."""
+    reply = owner_request(config, '/api/shotsnip/action', payload, timeout=timeout)
     return reply.get('message') if isinstance(reply.get('message'), str) else ''
 
 
@@ -396,6 +414,12 @@ def perform(config, body):
         return target_change(config, body)
     if action in AGENT_ACTIONS:
         return agent_change(config, body)
+    if action == 'assistant_ask':
+        from .assistant import start
+        return start(config, body)
+    if action == 'assistant_apply':
+        from .assistant import apply
+        return apply(config, body)
     if action == 'archive_now':
         roots = {channel: config['roots'][channel] for channel in ('histold', 'shotsnip')}
         result = archive_tick(dict(config, roots=roots), 1)
@@ -483,7 +507,7 @@ def maintenance_tick(config):
                 except ValueError as exc:
                     status, message = 'rejected', str(exc)
                 except (OSError, RuntimeError, TimeoutError, KeyError, subprocess.TimeoutExpired):
-                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft') + SHOTSNIP_OWNER_ACTIONS else 'failed'
+                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft','assistant_apply') + SHOTSNIP_OWNER_ACTIONS else 'failed'
                     message = 'The action could not be confirmed. Check the existing worker or archive report.'
                 with db:
                     db.execute('UPDATE commands SET status=?,message=?,updated=? WHERE id=?',

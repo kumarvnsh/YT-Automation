@@ -385,3 +385,20 @@ a.rank-link:hover { background: #29243e; }
 .recommendation ul { margin: 0; padding-left: 18px; color: var(--muted); }
 .recommendation p { margin: 0; overflow-wrap: anywhere; }
 @media (max-width: 640px) { .experiment-panel thead th, .experiment-panel tbody th { overflow-wrap: normal; word-break: normal; } }
+
+.assistant-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin: 0 18px 12px; }
+.assistant-form .planning-search { margin: 0; }
+.assistant-form textarea { width: 100%; padding: 8px 10px; border-radius: 8px; font: inherit; resize: vertical;
+  background: transparent; color: inherit; border: 1px solid var(--line); }
+.assistant-form .action { justify-self: start; }
+.assistant-form .filters { margin: 0; padding: 0; }
+.assistant-form p { margin: 0; font-size: 13px; }
+.assistant-form .filters button { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.assistant-record { display: grid; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.assistant-record p { margin: 0; overflow-wrap: anywhere; }
+.assistant-question small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.assistant-reply { white-space: pre-wrap; }
+.assistant-proposal { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 8px; }
+.assistant-proposal > span:first-child { flex: 1 1 180px; }
+.assistant-proposal small { flex-basis: 100%; color: var(--muted); }

@@ -241,7 +241,7 @@ function App() {
             ? <Planning data={snapshot.phase3} view={planningView} choose={openPlanning} time={timestamp}
               openPacing={() => openAnalytics('shotsnip')} send={snapshot.controls_enabled ? send : undefined}
               busy={sending || stale || issue} cadenceEvent={snapshot.commands.find(event => event.action === 'scheduler_cadence')}
-              openJob={openJob} jobFocus={jobFocus} />
+              openJob={openJob} jobFocus={jobFocus} commands={snapshot.commands} />
             : <div className="panel empty" role="status">Waiting for the first planning snapshot.</div>
           : view === 'workspaces' ? <Workspaces data={snapshot.shotsnip_workspace}
             status={snapshot.health.scheduler_hold ? 'On hold' : snapshot.health.scheduler_status}

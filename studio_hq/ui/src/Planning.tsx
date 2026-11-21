@@ -30,6 +30,10 @@ export type Experiments = {
   untracked: { id: string; published: number }[];
   recommendations: Recommendation[];
 };
+export type AssistantRecord = { id: string; scope: 'strategy' | 'trace'; job: string | null; question: string;
+  status: 'thinking' | 'answered' | 'failed'; asked_at: string | null; answered_at: string | null; reply: string | null;
+  proposals: { index: number; name: string; summary: string | null; error: string | null;
+    applied: { at: string; message: string } | null }[] };
 export type PlanningData = {
   calendar: { today: string; first: string; last: string; histold_available: boolean; events: CalendarEvent[];
     shotsnip: { status: string; cadence_minutes: number | null; earliest: string | null;
@@ -37,6 +41,7 @@ export type PlanningData = {
   topics: {job: string; date: string | null; title: string; format: string; state: string; url: string | null; trace?: Trace}[];
   histold_experiment: {hours: number; category: string; median: number; observed: number}[];
   experiments?: Experiments;
+  assistant?: AssistantRecord[];
   earnings: {platform: string; label: string; value: string; currency: string | null; start: string | null;
     end: string | null; checked: string | null; detail: string}[];
   api_usage: {channel: 'histold' | 'shotsnip'; provider: string; attempts: number; failed: number;
@@ -156,8 +161,8 @@ function Calendar({ data, time, send, busy, cadenceEvent }: { data: PlanningData
 
 const platformLabel = { youtube: 'YouTube', facebook: 'Facebook', instagram: 'Instagram' };
 
-function TraceView({ trace, time, usage, openUsage }: { trace: Trace; time: (value: string | null) => string;
-  usage: boolean; openUsage: () => void }) {
+function TraceView({ trace, time, usage, openUsage, ask }: { trace: Trace; time: (value: string | null) => string;
+  usage: boolean; openUsage: () => void; ask?: () => void }) {
   const production = Object.entries(trace.production);
   return <div className="trace">
     <ol className="trace-steps">
@@ -205,6 +210,7 @@ function TraceView({ trace, time, usage, openUsage }: { trace: Trace; time: (val
     </ol>
     {trace.gaps.length > 0 && <div className="trace-gaps" role="note"><strong>Provenance gaps</strong>
       <ul>{trace.gaps.map(gap => <li key={gap}>{gap}</li>)}</ul></div>}
+    {ask && <button className="action" onClick={ask}>Ask about this topic</button>}
   </div>;
 }
 
@@ -251,9 +257,64 @@ function Recommendations({ items }: { items: Recommendation[] }) {
   </section>;
 }
 
-function Strategy({ data, openPacing, openJob, time }: { data: PlanningData; openPacing: () => void;
-  openJob: (job: JobLink) => void; time: (value: string | null) => string }) {
+function AssistantPanel({ records, topics, focus, setFocus, send, busy, recent, time }: {
+  records: AssistantRecord[]; topics: PlanningData['topics']; focus: string | null; setFocus: (job: string | null) => void;
+  send?: Send; busy: boolean; recent?: CommandEvent; time: (value: string | null) => string;
+}) {
+  const [question, setQuestion] = useState('');
+  const [confirm, setConfirm] = useState<string | null>(null);
+  const topic = topics.find(row => row.job === focus);
+  const thinking = records.some(row => row.status === 'thinking');
+  return <section className="panel assistant-panel" aria-labelledby="assistant-heading">
+    <div className="panel-head"><div><h2 id="assistant-heading">Ask the Histold assistant</h2>
+      <p>It sees only the evidence you choose. Proposals change nothing until you apply them.</p></div></div>
+    {send ? <form className="assistant-form" onSubmit={event => {
+      event.preventDefault();
+      if (!question.trim() || busy) return;
+      send(focus ? {action:'assistant_ask',channel:'histold',scope:'trace',job:focus,question:question.trim()}
+        : {action:'assistant_ask',channel:'histold',scope:'strategy',question:question.trim()});
+      setQuestion('');
+    }}>
+      <div className="filters" role="group" aria-label="Evidence">
+        <button type="button" aria-pressed={!focus} onClick={() => setFocus(null)}>Recommendations and experiments</button>
+        {topic && <button type="button" aria-pressed>Topic: {topic.title}</button>}
+      </div>
+      {!topic && <p className="trace-muted">To ask about one topic, open its trace and choose Ask about this topic.</p>}
+      <label className="planning-search">Question
+        <textarea value={question} maxLength={600} rows={3} onChange={event => setQuestion(event.target.value)}
+          placeholder={topic ? 'Why did this topic underperform on YouTube?' : 'Which lane is ahead, and how sure can we be?'} /></label>
+      <button className="action primary" type="submit" disabled={busy || !question.trim() || thinking}>Ask</button>
+      {thinking && <p className="trace-muted" role="status">The assistant is answering. This can take a few minutes.</p>}
+    </form> : <p className="chart-note">Questions are available when Studio HQ controls are enabled.</p>}
+    {recent && <p className="analytics-info" role="status">{recent.message} · {time(recent.at)} IST</p>}
+    {records.map(record => <article key={record.id} className="assistant-record">
+      <p className="assistant-question"><strong>{record.question}</strong>
+        <small>{record.scope === 'trace' ? 'Topic ' + record.job : 'Recommendations and experiments'} · {time(record.asked_at)} IST</small></p>
+      {record.status === 'thinking' ? <p className="trace-muted">Waiting for the answer…</p>
+        : <p className={record.status === 'failed' ? 'trace-muted' : 'assistant-reply'}>{record.reply}</p>}
+      {record.proposals.map(item => {
+        const key = record.id + ':' + item.index;
+        return <div key={key} className="assistant-proposal">
+          <span>{item.error ? 'Not valid: ' + item.error : item.summary || item.name}</span>
+          {item.applied ? <span className="status good">Applied</span>
+            : !item.error && send && (confirm === key
+              ? <span className="tool-links"><button className="action" onClick={() => setConfirm(null)}>Back</button>
+                <button className="action primary" disabled={busy} onClick={() => {
+                  send({action:'assistant_apply',channel:'histold',answer_id:record.id,index:item.index}); setConfirm(null);
+                }}>Confirm apply</button></span>
+              : <button className="action" disabled={busy} onClick={() => setConfirm(key)}>Review and apply</button>)}
+          {item.applied && <small>{item.applied.message}</small>}
+          {confirm === key && <small>This changes the live Histold settings through the original dashboard, which checks it again.</small>}
+        </div>;
+      })}
+    </article>)}
+  </section>;
+}
+
+function Strategy({ data, openPacing, openJob, time, send, busy, commands }: { data: PlanningData; openPacing: () => void;
+  openJob: (job: JobLink) => void; time: (value: string | null) => string; send?: Send; busy: boolean; commands: CommandEvent[] }) {
   const [search, setSearch] = useState('');
+  const [askFocus, setAskFocus] = useState<string | null>(null);
   const [traced, setTraced] = useState<string | null>(null);
   const [limit, setLimit] = useState(8);
   const [age, setAge] = useState(24);
@@ -278,12 +339,16 @@ function Strategy({ data, openPacing, openJob, time }: { data: PlanningData; ope
           </div>
           {traced === row.job && row.trace && <TraceView trace={row.trace} time={time}
             usage={!!data.job_usage?.jobs.some(job => job.channel === 'histold' && job.id === row.job && job.attempts > 0)}
-            openUsage={() => openJob({channel:'histold', id: row.job})} />}
+            openUsage={() => openJob({channel:'histold', id: row.job})}
+            ask={send ? () => { setAskFocus(row.job); document.getElementById('assistant-heading')?.scrollIntoView({behavior:'smooth'}); } : undefined} />}
         </article>) : <p className="empty">No matching topic records.</p>}
         {topics.length > limit && <div className="panel-foot"><button onClick={() => setLimit(value => value + 8)}>Show more topics</button></div>}
       </section>
       <div className="planning-body">
         {data.experiments && <Recommendations items={data.experiments.recommendations} />}
+        {data.assistant && <AssistantPanel records={data.assistant} topics={data.topics} focus={askFocus} setFocus={setAskFocus}
+          send={send} busy={busy} time={time}
+          recent={commands.find(event => event.action === 'assistant_ask' || event.action === 'assistant_apply')} />}
         {data.experiments && <ExperimentPanel data={data.experiments} time={time} />}
         <section className="panel">
           <div className="panel-head"><div><h2>Histold six-Reel experiment</h2><p>YouTube observations within the experiment’s age window.</p></div></div>
@@ -371,7 +436,7 @@ function JobUsage({ data, focus, time }: {
   </section>;
 }
 
-export function Planning({ data, view, choose, time, openPacing, send, busy, cadenceEvent, openJob, jobFocus }: {data: PlanningData; view: PlanningView;
+export function Planning({ data, view, choose, time, openPacing, send, busy, cadenceEvent, openJob, jobFocus, commands = [] }: {data: PlanningData; view: PlanningView; commands?: CommandEvent[];
   choose: (view: PlanningView) => void; time: (value: string | null) => string; openPacing: () => void;
   send?: Send; busy: boolean; cadenceEvent?: CommandEvent; openJob: (job: JobLink) => void; jobFocus: JobLink | null }) {
   const tabs = [{id:'calendar',label:'Calendar',icon:CalendarDays}, {id:'strategy',label:'Strategy',icon:FlaskConical},
@@ -381,7 +446,7 @@ export function Planning({ data, view, choose, time, openPacing, send, busy, cad
       {tabs.map(tab => <button key={tab.id} aria-pressed={view === tab.id} onClick={() => choose(tab.id)}><tab.icon size={16}/>{tab.label}</button>)}
     </div>
     {view === 'calendar' ? <Calendar data={data.calendar} time={time} send={send} busy={busy} cadenceEvent={cadenceEvent} />
-      : view === 'strategy' ? <Strategy data={data} openPacing={openPacing} openJob={openJob} time={time} />
+      : view === 'strategy' ? <Strategy data={data} openPacing={openPacing} openJob={openJob} time={time} send={send} busy={busy} commands={commands} />
       : view === 'money' ? <Money data={data} time={time} openJobs={() => choose('jobs')} />
       : data.job_usage ? <JobUsage key={jobFocus ? jobFocus.channel + jobFocus.id : 'all'} data={data.job_usage} focus={jobFocus} time={time} />
       : <p className="panel empty">Waiting for the first job usage snapshot.</p>}

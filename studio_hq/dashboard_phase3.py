@@ -566,6 +566,14 @@ def observation_report(state, now, activity=(), topics=()):
             'jobs': reports, 'unattributed': unattributed, 'available': available}
 
 
+def assistant_history(config):
+    from .assistant import history
+    try:
+        return history(config)
+    except (OSError, KeyError):
+        return []
+
+
 def phase3(config, source, shotsnip, activity, approvals, now, *, include_finance=False):
     topics = topic_trace(source, approvals, config.get('github_repo', 'kumarvnsh/YT-Automation'))
     usage = observation_report(Path(config['dashboard_private_snapshot']).parent, now, activity, topics) if include_finance else {
@@ -576,6 +584,7 @@ def phase3(config, source, shotsnip, activity, approvals, now, *, include_financ
         'topics': topics,
         'histold_experiment': histold_experiment(source),
         'experiments': experiment_comparisons(source, now),
+        'assistant': assistant_history(config) if include_finance else [],
         'earnings': earnings(source) if include_finance else [],
         'api_usage': usage['providers'],
         'job_usage': {key: usage[key] for key in ('jobs', 'unattributed', 'available')},
