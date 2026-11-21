@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-21T11:00:33.829695+00:00",
+      "updated": "2026-11-21T12:00:47.839739+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "4U8amYJZRCs",
+          "title": "Coal Miners Sent a Caged Canary Underground Before Going Back In",
+          "description": "After a blast or fire in a coal mine, a caged canary was taken underground. If the bird survived, the mine was considered safe to re-enter. This short explainer covers the mechanism using a Library of Congress record of a canary statue.\n#CoalMining #IngeniousSolutions #WorldHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "canary in coal mine",
+            "coal mining",
+            "did you know",
+            "did you know history",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history of mining",
+            "history shorts",
+            "industrial history",
+            "ingenious solutions",
+            "mine safety",
+            "mining history",
+            "occupational safety",
+            "world history",
+            "world history shorts"
+          ],
+          "publishedAt": "2026-11-21T11:55:53Z",
+          "thumbnail": "https://i.ytimg.com/vi/4U8amYJZRCs/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-21",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
         {
           "id": "l63EqXUSzEc",
           "title": "The Automobile Has No Single, Simple Inventor Story",
@@ -2154,48 +2198,6 @@
           "average_watch_time_seconds": 43.0,
           "shares": 0,
           "analytics_views": 12,
-          "engaged_views": 4,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "lCQJdMRx814",
-          "title": "Why Did Persian Builders Dig Their Ice Stores Deep Underground?",
-          "description": "Long before electric freezers, people in ancient Iran built thick-walled underground stores to keep winter ice through hot summers. We explain how their deep, funnel-shaped design kept the cold steady and why the same ice ended up in everyday drinks. #IranianHistory #FoodHistory #YouUseItEveryDay",
-          "tags": [
-            "ancient persia",
-            "ancient technology",
-            "did you know",
-            "education",
-            "everyday origins",
-            "food history",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "ice house",
-            "iran history",
-            "persian sherbet",
-            "world history",
-            "yakhchal",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-11-13T15:49:39Z",
-          "thumbnail": "https://i.ytimg.com/vi/lCQJdMRx814/mqdefault.jpg",
-          "views": 6,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 38.91,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 19.0,
-          "shares": 0,
-          "analytics_views": 6,
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
