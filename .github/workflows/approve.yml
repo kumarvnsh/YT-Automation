@@ -129,3 +129,22 @@ jobs:
           path: output/${{ inputs.stage_dir_name }}
           retention-days: 14
           if-no-files-found: ignore
+
+      # Studio HQ usage telemetry: a separate small artifact, scrubbed to allowlisted
+      # fields and limited to this job. Never blocks publishing.
+      - name: Export Studio HQ telemetry
+        if: always()
+        continue-on-error: true
+        env:
+          STUDIO_JOB: ${{ inputs.stage_dir_name }}
+        run: python scripts/export_studio_events.py data/private/studio-hq/events studio-hq-events "$STUDIO_JOB"
+
+      - name: Upload Studio HQ telemetry
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: studio-hq-events-${{ inputs.stage_dir_name }}
+          path: studio-hq-events
+          retention-days: 14
+          if-no-files-found: ignore

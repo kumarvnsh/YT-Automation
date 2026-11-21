@@ -171,6 +171,7 @@ notifications:
   notify_on_credits: true
 
 output:
+  studio_hq_archive: true
   # load_config() makes this config directory the base directory.
   dir: "output"
   delete_after_upload: false

@@ -17,6 +17,7 @@ Every failure path returns None so the caller falls back to stock footage; image
 generation must never be able to break a run.
 """
 from __future__ import annotations
+from .studio_events import call as studio_call, record_response as studio_response
 
 import base64
 import re
@@ -268,7 +269,7 @@ def render_prompt(
         from openai import OpenAI
 
         client = OpenAI(api_key=key, timeout=timeout, max_retries=1)
-        resp = client.images.generate(
+        resp = studio_call('openai', 'image_generation', model, client.images.generate,
             model=model, prompt=prompt, size=size, quality=quality, n=1
         )
         payload = resp.data[0]

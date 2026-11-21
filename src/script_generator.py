@@ -10,6 +10,7 @@ Output (a `Script` dataclass) contains everything downstream needs:
 The narration of all segments concatenated IS the voiceover script.
 """
 from __future__ import annotations
+from .studio_events import call as studio_call, record_response as studio_response
 
 import json
 import random
@@ -567,7 +568,7 @@ def _call_anthropic(cfg: Config, prompt: str) -> str:
     if effort:
         # Thinking lets the model add up its beats before answering, which is
         # what the no-thinking path kept getting wrong (word-count retries).
-        msg = client.beta.messages.create(
+        msg = studio_call('anthropic', 'script', model, client.beta.messages.create,
             model=model,
             max_tokens=16000,
             thinking={"type": "adaptive"},
@@ -581,7 +582,7 @@ def _call_anthropic(cfg: Config, prompt: str) -> str:
         if msg.stop_reason == "refusal":
             raise RuntimeError(f"refused: {msg.stop_details}")
     else:
-        msg = client.messages.create(
+        msg = studio_call('anthropic', 'script', model, client.messages.create,
             model=model,
             max_tokens=4000,
             system=_SYSTEM,
@@ -596,7 +597,7 @@ def _call_openai(cfg: Config, prompt: str) -> str:
 
     client = OpenAI(api_key=env("OPENAI_API_KEY"))
     model = cfg.get("script.openai_model", "gpt-4o-mini")
-    resp = client.chat.completions.create(
+    resp = studio_call('openai', 'script', model, client.chat.completions.create,
         model=model,
         messages=[
             {"role": "system", "content": _SYSTEM},

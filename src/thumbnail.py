@@ -12,6 +12,7 @@ The hook is written by Claude first so the image model only has to letter
 Every failure path returns None; a thumbnail must never block an upload.
 """
 from __future__ import annotations
+from .studio_events import call as studio_call, record_response as studio_response
 
 import base64
 import io
@@ -66,7 +67,7 @@ def _hook(cfg: Config, title: str, story: str) -> tuple[str, str]:
     try:
         import anthropic
 
-        msg = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY")).messages.create(
+        msg = studio_call('anthropic', 'thumbnail', None, anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY")).messages.create,
             model=cfg.get("thumbnails.judge_model", "claude-sonnet-5-5"),
             max_tokens=2000,
             output_config={"effort": "low"},
@@ -142,7 +143,7 @@ def _pick(cfg: Config, title: str, paths: list[Path]) -> int:
             "Which gets more clicks in a phone feed: clearer focal point, readable at small "
             "size, curiosity, correctly spelled text? Answer with exactly one letter: A or B."
         )})
-        msg = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY")).messages.create(
+        msg = studio_call('anthropic', 'thumbnail', None, anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY")).messages.create,
             model=cfg.get("thumbnails.judge_model", "claude-sonnet-5-5"),
             max_tokens=2000,
             output_config={"effort": "low"},

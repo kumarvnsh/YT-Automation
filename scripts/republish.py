@@ -114,6 +114,14 @@ def do_retitle(cfg, video_id: str) -> None:
 
 def do_repost(cfg, video_id: str, stage_dir_name: str) -> None:
     stage = base_dir() / cfg.get("output.dir", "output") / stage_dir_name
+    if cfg.get('output.studio_hq_archive', False) and stage.is_dir():
+        from src.studio_outputs import stage_media_lock
+        with stage_media_lock(stage):
+            return _repost(cfg, video_id, stage_dir_name, stage)
+    return _repost(cfg, video_id, stage_dir_name, stage)
+
+
+def _repost(cfg, video_id, stage_dir_name, stage):
     video_path = stage / "video.mp4"
     meta_path = stage / "metadata.json"
     if not video_path.exists() or not meta_path.exists():

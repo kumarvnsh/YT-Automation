@@ -19,6 +19,7 @@ from pathlib import Path
 
 from .config import Config, base_dir, env
 from . import topics
+from .studio_events import scope as studio_scope, emit as studio_emit, record_finished
 
 STEP_ORDER = [
     "script", "voiceover", "captions", "assets", "render", "compose",
@@ -717,6 +718,24 @@ def _is_satisfied(st: dict) -> bool:
     return all(s in st["done"] for s in st["target_steps"] if s != 'verify' and not (s == "upload" and skip))
 
 
+def _observed_step(cfg, stage, st, step):
+    root = base_dir()
+    # A caller testing an isolated stage must not emit into a production root.
+    if not stage.resolve().is_relative_to((root / cfg.get('output.dir', 'output')).resolve()):
+        return STEP_FUNCS[step](cfg, stage, st)
+    channel = 'astrotold' if root.name == 'astrotold' else 'histold'
+    with studio_scope(root, channel, st.get('job_id', stage.name), step):
+        studio_emit('stage_started')
+        try:
+            STEP_FUNCS[step](cfg, stage, st)
+        except Exception as exc:
+            studio_emit('stage_failed', error_type=type(exc).__name__)
+            raise
+        studio_emit('stage_succeeded')
+        if step == 'quality' and (stage / 'video.mp4').is_file():
+            record_finished(stage / 'video.mp4', channel, st.get('job_id', stage.name))
+
+
 def run_stage(
     cfg: Config,
     stage: Path,
@@ -726,6 +745,16 @@ def run_stage(
     force_upload: bool = False,
     privacy_override: str | None = None,
 ) -> dict:
+    if cfg.get('output.studio_hq_archive', False):
+        from .studio_outputs import stage_media_lock
+        with stage_media_lock(stage):
+            return _run_stage(cfg, stage, one_step=one_step, notifier=notifier,
+                              force_upload=force_upload, privacy_override=privacy_override)
+    return _run_stage(cfg, stage, one_step=one_step, notifier=notifier,
+                      force_upload=force_upload, privacy_override=privacy_override)
+
+
+def _run_stage(cfg, stage, *, one_step, notifier, force_upload, privacy_override):
     """Execute pending steps for a stage. If one_step, do exactly one then return.
 
     force_upload reopens a stage that previously finished with no_upload=True
@@ -735,9 +764,12 @@ def run_stage(
     whatever (if anything) was set when the draft was originally generated.
     Returns the (updated) state dict. Sends notifications on terminal events.
     """
+    managed = cfg.get('output.studio_hq_archive', False)
     st = load_state(stage)
     cfg = stage_config(cfg, st)
-    dirty = False
+    dirty = managed and not st.get('studio_hq_managed_output')
+    if dirty:
+        st['studio_hq_managed_output'] = True
     if 'verify' in st['target_steps']:
         st['target_steps'] = [step for step in st['target_steps'] if step != 'verify']
         # The removed stage used to populate map metadata, including on resumed jobs.
@@ -760,7 +792,7 @@ def run_stage(
     for step in pending:
         print(f"  → step: {step}")
         try:
-            STEP_FUNCS[step](cfg, stage, st)
+            _observed_step(cfg, stage, st, step)
             st["done"].append(step)
             st["error"] = None
             save_state(stage, st)
@@ -858,7 +890,9 @@ def _cleanup(cfg: Config, stage: Path, st: dict) -> None:
     import shutil
 
     preserve_artifact = env("PRESERVE_STAGE_ARTIFACT") == "true"
-    if st.get("youtube_id") and cfg.get("output.delete_after_upload", False) and not preserve_artifact:
+    if st.get('studio_hq_managed_output'):
+        pass  # Studio HQ removes the verified MP4 after the retention window.
+    elif st.get("youtube_id") and cfg.get("output.delete_after_upload", False) and not preserve_artifact:
         shutil.rmtree(stage, ignore_errors=True)
         print(f"  🧹 removed local renders for {stage.name} (already on YouTube)")
     elif st.get("youtube_id") and preserve_artifact:
@@ -881,6 +915,12 @@ def _prune_old_stages(cfg: Config, keep: Path | None = None) -> None:
         if not d.is_dir() or d == keep or not d.name[:8].isdigit():
             continue
         try:
+            if (d/'.studio-hq-media-lock').exists() or (d/'.studio-hq-keep').exists():
+                continue
+            if cfg.get('output.studio_hq_archive', False) and (d/'video.mp4').is_file():
+                continue
+            if (d/'video.mp4.studio-hq.json').is_file():
+                continue
             if d.stat().st_mtime < cutoff:
                 shutil.rmtree(d, ignore_errors=True)
         except FileNotFoundError:

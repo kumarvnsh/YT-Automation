@@ -278,6 +278,25 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
 
+      # Studio HQ usage telemetry: a separate small artifact, scrubbed to allowlisted
+      # fields and limited to this job. Never blocks publishing.
+      - name: Export Studio HQ telemetry
+        if: always() && steps.stage.outputs.stage_name != ''
+        continue-on-error: true
+        env:
+          STUDIO_JOB: ${{ steps.stage.outputs.stage_name }}
+        run: python scripts/export_studio_events.py data/private/studio-hq/events studio-hq-events "$STUDIO_JOB"
+
+      - name: Upload Studio HQ telemetry
+        if: always() && steps.stage.outputs.stage_name != ''
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: studio-hq-events-${{ steps.stage.outputs.stage_name }}
+          path: studio-hq-events
+          retention-days: 14
+          if-no-files-found: ignore
+
       # A run that fails before anything is uploaded gives its daily slot back.
       # The script keeps the claim if the stage or index shows any platform ID.
       - name: Release unused publication claim

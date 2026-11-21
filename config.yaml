@@ -384,6 +384,7 @@ notifications:
   notify_on_credits: true      # special alert when AI credits run out / flow stops
 
 output:
+  studio_hq_archive: true     # preserve local finals for verified Studio HQ retention
   dir: "output"                # rendered videos + metadata land here
   delete_after_upload: true    # once uploaded to YouTube, delete the local renders (saves disk)
   keep_days: 3                 # also prune leftover run folders older than this many days

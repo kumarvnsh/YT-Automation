@@ -1,0 +1,19 @@
+{
+  "roots": {
+    "histold": "D:/YT-Automation",
+    "astrotold": "D:/YT-Automation/channels/astrotold",
+    "shotsnip": "D:/YT-Cliping-Automation"
+  },
+  "kitty_root": "D:/Clips-Kitty",
+  "state_dir": "D:/StudioHQ/state",
+  "rclone": "D:/StudioHQ/tools/rclone/rclone.exe",
+  "rclone_config": "D:/StudioHQ/private/rclone.conf",
+  "remote": "studio-drive:",
+  "drive_root_folder_id": "YOUR_DRIVE_FOLDER_ID",
+  "bandwidth_limit": "4M",
+  "local_cleanup_enabled": false,
+  "github_repo": "kumarvnsh/YT-Automation",
+  "artifact_download_budget_bytes": 1073741824,
+  "dashboard_calendar_python": "D:/YT-Cliping-Automation/.venv/Scripts/python.exe",
+  "dashboard_private_snapshot": "D:/StudioHQ/private/dashboard-snapshot.json"
+}

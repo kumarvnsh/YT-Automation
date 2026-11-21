@@ -1,5 +1,6 @@
 """Daily camera-led 3D videos from validated data, rendered locally by HyperFrames."""
 from __future__ import annotations
+from .studio_events import record_response as studio_response, stream_call as studio_stream
 import copy,json,math,os,re,shutil,subprocess,time
 from pathlib import Path
 from .config import Config,env
@@ -87,8 +88,9 @@ def generate_plan(cfg,st,duration):
  client=anthropic.Anthropic(api_key=env('ANTHROPIC_API_KEY'),timeout=600,max_retries=1)
  messages=[dict(role='user',content=json.dumps(context))];usage={}
  for attempt in range(2):
-  with client.beta.messages.stream(model=model,max_tokens=int(cfg.get('video.three_d.max_tokens',32000)),thinking={'type':'adaptive','display':'summarized'},output_config={'effort':cfg.get('video.claude_motion.effort','medium')},betas=['server-side-fallback-2026-07-01'],extra_body={'fallbacks':'default'},system=SYSTEM,messages=messages) as stream:
+  with studio_stream('anthropic', 'three_d_generation', model, client.beta.messages.stream,model=model,max_tokens=int(cfg.get('video.three_d.max_tokens',32000)),thinking={'type':'adaptive','display':'summarized'},output_config={'effort':cfg.get('video.claude_motion.effort','medium')},betas=['server-side-fallback-2026-07-01'],extra_body={'fallbacks':'default'},system=SYSTEM,messages=messages) as stream:
    msg=stream.get_final_message()
+  studio_response('anthropic', 'three_d_generation', model, msg)
   text=''.join(b.text for b in msg.content if b.type=='text');usage.setdefault('calls',[]).append(dict(input_tokens=msg.usage.input_tokens,output_tokens=msg.usage.output_tokens,stop_reason=msg.stop_reason))
   try:
    plan=validate_plan(_extract_json(text),duration);return plan,usage

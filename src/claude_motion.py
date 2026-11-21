@@ -11,6 +11,7 @@ scenes using local, checked house templates and vetted maps. Legacy jobs retain
 the stock/AI-image recovery chain.
 """
 from __future__ import annotations
+from .studio_events import call as studio_call, record_response as studio_response, stream_call as studio_stream
 
 import re
 import json
@@ -497,7 +498,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
     if cfg.get('video.claude_motion.style') == 'cinematic_2d':
         from .cinematic_motion import system_prompt
         system = system_prompt(w, h, design)
-    with client.beta.messages.stream(
+    with studio_stream('anthropic', 'motion_generation', None, client.beta.messages.stream,
         model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
         max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
         thinking={"type": "adaptive", "display": "summarized"},
@@ -508,6 +509,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         messages=[{"role": "user", "content": "\n".join(lines)}],
     ) as stream:
         msg = stream.get_final_message()
+    studio_response('anthropic', 'motion_generation', cfg.get('video.claude_motion.model', 'claude-sonnet-5-5'), msg)
     if msg.stop_reason == "refusal":
         raise RuntimeError(f"refused: {msg.stop_details}")
     text = "".join(b.text for b in msg.content if b.type == "text")
@@ -519,7 +521,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
         # Recover individually: batching missing scenes can exhaust the token budget again.
         for index in missing:
             request = "\n".join(lines) + f"\nReturn ONLY these missing zero-based scene IDs: {[index]}. Return complete HTML documents, not a continuation of partial HTML."
-            with client.beta.messages.stream(
+            with studio_stream('anthropic', 'motion_generation', None, client.beta.messages.stream,
                 model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
                 max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
                 thinking={"type": "adaptive", "display": "summarized"},
@@ -528,6 +530,7 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
                 system=system, messages=[{"role": "user", "content": request}],
             ) as stream:
                 recovery = stream.get_final_message()
+            studio_response('anthropic', 'motion_completion', cfg.get('video.claude_motion.model', 'claude-sonnet-5-5'), recovery)
             recovered = parse_scenes("".join(b.text for b in recovery.content if b.type == "text"), len(segs))
             if index not in recovered:
                 raise RuntimeError(f"Cinematic scene {index} generation incomplete: "
@@ -633,7 +636,7 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
     if cfg.get("video.claude_motion.style") == "cinematic_2d":
         from .cinematic_motion import system_prompt
         repair_system = system_prompt(w, h, cfg.get('production.design')) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
-    msg = client.messages.create(
+    msg = studio_call('anthropic', 'motion_repair', None, client.messages.create,
         model=cfg.get("video.claude_motion.repair_model", "claude-haiku-5-5"),
         max_tokens=16000,
         output_config={"effort": cfg.get("video.claude_motion.repair_effort", "low")},

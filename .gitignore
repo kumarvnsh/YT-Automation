@@ -34,3 +34,5 @@ data/private/
 
 # Local video rendering dependencies
 node_modules/
+studio_hq/ui/dist/
+studio_hq/hub/target/

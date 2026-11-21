@@ -9,6 +9,7 @@ Returns a `Voiceover` with the audio file path, total duration, and a list of
 WordTiming(word, start, end) in seconds.
 """
 from __future__ import annotations
+from .studio_events import call as studio_call, record_response as studio_response, stream_call as studio_stream
 
 import asyncio
 import json
@@ -105,7 +106,7 @@ def _synthesize_elevenlabs(cfg: Config, text: str, out_path: Path) -> Voiceover:
     api_key = env("ELEVENLABS_API_KEY")
     voice_id = cfg.get("tts.elevenlabs_voice_id")
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
-    resp = requests.post(
+    resp = studio_call('elevenlabs', 'speech', 'eleven_multilingual_v2', requests.post,
         url,
         headers={"xi-api-key": api_key, "Content-Type": "application/json"},
         json={"text": text, "model_id": "eleven_multilingual_v2"},
@@ -125,10 +126,11 @@ def _synthesize_openai(cfg: Config, text: str, out_path: Path) -> Voiceover:
 
     client = OpenAI(api_key=env("OPENAI_API_KEY"))
     voice = cfg.get("tts.openai_voice", "onyx")
-    with client.audio.speech.with_streaming_response.create(
+    with studio_stream('openai', 'speech', 'tts-1', client.audio.speech.with_streaming_response.create,
         model="tts-1", voice=voice, input=text,
     ) as response:
         response.stream_to_file(str(out_path))
+    studio_response('openai', 'speech', 'tts-1', response)
     duration = _ffprobe_duration(out_path)
     return Voiceover(out_path, duration, _estimate_word_timings(text, duration))
 
@@ -249,7 +251,7 @@ def _align_openai(voiceover: Voiceover) -> Voiceover:
     from openai import OpenAI
     client = OpenAI(api_key=env("OPENAI_API_KEY"))
     with voiceover.audio_path.open("rb") as audio:
-        transcript = client.audio.transcriptions.create(
+        transcript = studio_call('openai', 'alignment', 'whisper-1', client.audio.transcriptions.create,
             model="whisper-1", file=audio, response_format="verbose_json",
             timestamp_granularities=["word"],
         )
