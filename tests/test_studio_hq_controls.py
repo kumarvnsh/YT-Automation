@@ -224,3 +224,64 @@ def controls_row(root, body=None):
         if body:
             return db.execute('SELECT body FROM commands WHERE id=?', (body['request_id'],)).fetchone()
         return db.execute('SELECT body FROM commands ORDER BY updated DESC LIMIT 1').fetchone()
+
+
+class AgentControlTests(unittest.TestCase):
+    """Agent learning and reviews run through the existing Shotsnip dashboard owner."""
+    def setUp(self):
+        from scripts import clipping_dashboard
+        self.owner_module = clipping_dashboard
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        self.config = {'roots': {'shotsnip': str(self.root)}, 'state_dir': str(self.root)}
+        controls.atomic_json(self.root/'work/dashboard/agent-policy.json',
+                             {'learning_enabled': True, 'source_priorities': {'Fixture': 1.2}, 'updated_at': None})
+        patched = patch.object(clipping_dashboard, 'CLIP_ROOT', self.root)
+        patched.start()
+        self.addCleanup(patched.stop)
+        owner = patch.object(controls, 'call_scheduler',
+                             side_effect=lambda config, payload, **_: clipping_dashboard.action(payload))
+        self.owner = owner.start()
+        self.addCleanup(owner.stop)
+
+    def command(self, action, **options):
+        return {'request_id': str(uuid.uuid4()), 'action': action, 'channel': 'shotsnip', **options}
+
+    def test_learning_toggle_checks_expected_state_and_verifies(self):
+        with self.assertRaisesRegex(ValueError, 'Refresh the agent status'):
+            controls.submit(self.config, self.command('agent_learning', enabled=False))
+        stale = self.command('agent_learning', enabled=True, expected=False)
+        self.assertIn('already enabled', controls.perform(self.config, stale))
+        wrong = self.command('agent_learning', enabled=False, expected=False)
+        with self.assertRaisesRegex(ValueError, 'learning changed'):
+            controls.perform(self.config, wrong)
+        self.owner.assert_not_called()
+        body = self.command('agent_learning', enabled=False, expected=True)
+        self.assertIn('paused', controls.perform(self.config, body))
+        policy = controls.read_json(self.root/'work/dashboard/agent-policy.json')
+        self.assertEqual((policy['learning_enabled'], policy['source_priorities']), (False, {'Fixture': 1.2}))
+
+    def test_review_waits_for_a_new_report(self):
+        with self.assertRaisesRegex(ValueError, 'Choose a review'):
+            controls.submit(self.config, self.command('agent_review', mode='publish'))
+        body = self.command('agent_review', mode='review')
+        self.assertIn('finished', controls.agent_change(self.config, body, wait=10))
+        report = controls.read_json(self.root/'work/dashboard/agent-review.json')
+        self.assertIn('No publishing', report['automation_scope'])
+
+    def test_busy_owner_rejects_instead_of_queueing_twice(self):
+        self.owner_module.JOB['running'] = True
+        self.addCleanup(self.owner_module.JOB.update, running=False)
+        with self.assertRaisesRegex(ValueError, 'already running'):
+            controls.agent_change(self.config, self.command('agent_review', mode='review'), wait=0)
+
+
+class AgentExportTests(unittest.TestCase):
+    def test_capture_errors_keep_type_and_drop_paths(self):
+        from studio_hq.dashboard_phase3 import capture_error
+        self.assertEqual(capture_error(["PermissionError: [Errno 13] Permission denied: 'D:\\x\\file.ts'"]), 'PermissionError')
+        self.assertEqual(capture_error("['RuntimeError: Live video capture stalled for 40 seconds']"),
+                         'RuntimeError: Live video capture stalled for 40 seconds')
+        self.assertEqual(capture_error(['ValueError: see https://example.invalid/x']), 'ValueError')
+        self.assertEqual(capture_error(None), 'Capture error')

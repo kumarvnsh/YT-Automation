@@ -357,6 +357,51 @@ def target_list(root):
     return entries, hashlib.sha256(raw).hexdigest()
 
 
+ERROR_SHAPE = re.compile(r"[\[\"' ]*([A-Z][A-Za-z]{2,40}(?:Error|Exception|Timeout))\b:?\s*(.*)", re.S)
+UNSAFE_DETAIL = re.compile(r'[\\/:]|https?|www\.|@')
+
+
+def capture_error(value):
+    """Exception type plus a short message; drop any detail that carries a path, URL or handle."""
+    raw = value[0] if isinstance(value, list) and value else value
+    match = ERROR_SHAPE.match(raw) if isinstance(raw, str) else None
+    if not match:
+        return 'Capture error'
+    kind, detail = match[1], match[2].strip(" '\"]")
+    detail = text(detail, 90) if detail and not UNSAFE_DETAIL.search(detail) else ''
+    return kind + (': ' + detail if detail else '')
+
+
+def agent_summary(dashboard):
+    review = load(dashboard/'agent-review.json', {})
+    policy = load(dashboard/'agent-policy.json', {})
+    learning = policy.get('learning_enabled') if isinstance(policy.get('learning_enabled'), bool) else None
+    weights = policy.get('source_priorities')
+    priorities = sorted(({'creator': text(name, 80), 'priority': value}
+                         for name, value in (weights.items() if isinstance(weights, dict) else ())
+                         if isinstance(value, (int, float)) and not isinstance(value, bool)),
+                        key=lambda row: (-row['priority'], row['creator']))
+    findings = []
+    for row in rows(review.get('findings')):
+        median_views, n = row.get('median_views_near_24_hours'), row.get('n')
+        if isinstance(row.get('creator'), str) and isinstance(n, int) and isinstance(median_views, (int, float)):
+            findings.append({'creator': text(row['creator'], 80), 'samples': n,
+                             'priority': row.get('priority') if isinstance(row.get('priority'), (int, float)) else None,
+                             'median_views': median_views})
+    errors = [{'run': text(row.get('run'), 60), 'creator': text(row.get('creator'), 80),
+               'error': capture_error(row.get('errors'))} for row in rows(review.get('errors'))][:10]
+    notes = lambda key: [text(item, 200) for item in review.get(key, []) if isinstance(item, str)][:5] \
+        if isinstance(review.get(key), list) else []
+    checked = instant(review.get('checked_at'))
+    updated = instant(policy.get('updated_at'))
+    return {'checked_at': checked.isoformat() if checked else None, 'learning': learning,
+            'policy_updated_at': updated.isoformat() if updated else None,
+            'priorities': priorities[:30], 'findings': findings[:30], 'errors': errors,
+            'actions': notes('actions'), 'next_steps': notes('next_steps'),
+            'sample_rule': text(review.get('sample_rule'), 200), 'comparison': text(review.get('comparison'), 200),
+            'scope': text(review.get('automation_scope'), 240)}
+
+
 def shotsnip_workspace(root):
     dashboard = root/'work/dashboard'
     review = load(dashboard/'agent-review.json', {})
@@ -387,6 +432,7 @@ def shotsnip_workspace(root):
     }
     target_entries, targets_revision = target_list(root)
     return {
+        'agent': agent_summary(dashboard),
         'target_list': target_entries,
         'targets_revision': targets_revision,
         'targets': len(list(rows(targets))) if isinstance(targets, list) else None,

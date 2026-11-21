@@ -29,6 +29,8 @@ CADENCE_MINUTES = (60, 120, 180, 240, 360, 480, 720, 1440)
 TARGET_ID = re.compile(r'[A-Za-z0-9_.@-]{1,80}')
 REVISION = re.compile(r'[0-9a-f]{64}')
 TARGET_ACTIONS = ('target_toggle', 'target_add')
+AGENT_ACTIONS = ('agent_learning', 'agent_review')
+SHOTSNIP_OWNER_ACTIONS = TARGET_ACTIONS + AGENT_ACTIONS
 ACTIVE = {'queued', 'queued_publish', 'running', 'publishing', 'ready', 'partial', 'attention'}
 
 
@@ -185,6 +187,14 @@ def queue_control(config, body):
         _, canonical = target_url(body.get('url') if isinstance(body.get('url'), str) else '')
         body['url'] = canonical
         target = canonical.lower()
+    if action == 'agent_learning':
+        if type(body.get('enabled')) is not bool or type(body.get('expected')) is not bool:
+            raise ValueError('Refresh the agent status before changing learning.')
+        target = str(body['enabled'])
+    if action == 'agent_review':
+        if body.get('mode') not in ('review', 'refresh'):
+            raise ValueError('Choose a review or an analytics refresh.')
+        target = body['mode']
     if action == 'restore':
         target = body.get('archive_id', '')
         if not isinstance(target, str) or not re.fullmatch(r'[a-f0-9]{24}', target):
@@ -229,12 +239,12 @@ def queue_control(config, body):
 def submit(config, body):
     if not isinstance(body, dict) or not isinstance(body.get('request_id'), str) or not IDENTITY.fullmatch(body['request_id']):
         raise ValueError('Missing request ID.')
-    if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence') + TARGET_ACTIONS:
+    if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence') + SHOTSNIP_OWNER_ACTIONS:
         raise ValueError('This queue belongs to Shotsnip.')
     action = body.get('action')
     if action in ('create_preview', 'publish', 'cancel', 'retry'):
         return manual_command(config, body)
-    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + TARGET_ACTIONS:
+    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS:
         return queue_control(config, body)
     raise ValueError('Unsupported action.')
 
@@ -344,6 +354,39 @@ def scheduler_change(config, body):
         return 'Shotsnip automatic posting resumed.' if body['enabled'] else 'Shotsnip automatic posting paused.'
 
 
+def agent_file(root, name):
+    try:
+        value = read_json(root/'work/dashboard'/name)
+    except (OSError, ValueError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def agent_change(config, body, *, wait=10.0):
+    root = config_root(config)
+    if body['action'] == 'agent_learning':
+        current = agent_file(root, 'agent-policy.json').get('learning_enabled', True) is not False
+        if current is body['enabled']:
+            return 'Source-priority learning is already ' + ('enabled.' if current else 'paused.')
+        if current is not body['expected']:
+            raise ValueError('Agent learning changed. Refresh and review it again.')
+        call_scheduler(config, {'name': 'set_learning', 'enabled': body['enabled']})
+        if (agent_file(root, 'agent-policy.json').get('learning_enabled', True) is not False) is not body['enabled']:
+            raise RuntimeError('Could not verify the learning change')
+        return ('Source-priority learning enabled. The next review recomputes priorities.' if body['enabled']
+                else 'Source-priority learning paused. Existing priorities stay until it is enabled again.')
+    before = agent_file(root, 'agent-review.json').get('checked_at')
+    message = call_scheduler(config, {'name': body['mode']})
+    if body['mode'] == 'refresh':
+        return (message or 'Analytics refresh started.') + ' The review follows when the sync finishes.'
+    deadline = time.monotonic() + wait
+    while time.monotonic() < deadline:
+        if agent_file(root, 'agent-review.json').get('checked_at') not in (None, before):
+            return 'Agent review finished. Findings are updated.'
+        time.sleep(0.5)
+    return (message or 'Agent review started.') + ' Findings update when it finishes.'
+
+
 def perform(config, body):
     action = body['action']
     state = Path(config['state_dir'])
@@ -351,6 +394,8 @@ def perform(config, body):
         return scheduler_change(config, body)
     if action in TARGET_ACTIONS:
         return target_change(config, body)
+    if action in AGENT_ACTIONS:
+        return agent_change(config, body)
     if action == 'archive_now':
         roots = {channel: config['roots'][channel] for channel in ('histold', 'shotsnip')}
         result = archive_tick(dict(config, roots=roots), 1)
@@ -438,7 +483,7 @@ def maintenance_tick(config):
                 except ValueError as exc:
                     status, message = 'rejected', str(exc)
                 except (OSError, RuntimeError, TimeoutError, KeyError, subprocess.TimeoutExpired):
-                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft') + TARGET_ACTIONS else 'failed'
+                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft') + SHOTSNIP_OWNER_ACTIONS else 'failed'
                     message = 'The action could not be confirmed. Check the existing worker or archive report.'
                 with db:
                     db.execute('UPDATE commands SET status=?,message=?,updated=? WHERE id=?',

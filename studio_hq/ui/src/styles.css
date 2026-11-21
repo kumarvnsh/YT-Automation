@@ -344,3 +344,13 @@ a.rank-link:hover { background: #29243e; }
 .target-add .planning-search { margin: 0; }
 .target-add .action { justify-self: start; }
 .target-row .control-row-title small { overflow-wrap: anywhere; }
+
+.agent-subhead { margin: 16px 18px 8px; font-size: 14px; }
+.agent-actions { flex-wrap: wrap; }
+.agent-notes { margin: 4px 18px 8px; padding-left: 20px; color: var(--muted); font-size: 13px; }
+.agent-errors { list-style: none; margin: 0; padding: 0; }
+.agent-errors li { display: grid; gap: 2px; padding: 10px 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.agent-errors li span { overflow-wrap: anywhere; }
+.agent-errors li small { color: var(--muted); }
+.agent-panel .cadence-confirm { margin: 0 18px 12px; }
+@media (max-width: 640px) { .agent-panel th, .agent-panel td { overflow-wrap: normal; word-break: normal; } }

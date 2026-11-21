@@ -4,7 +4,15 @@ import type { PlanningView } from './Planning';
 import type { CommandEvent, Send } from './Controls';
 
 export type Target = { id: string; name: string; enabled: boolean; sources: { platform: 'youtube' | 'twitch'; label: string }[] };
+export type AgentReport = {
+  checked_at: string | null; learning: boolean | null; policy_updated_at: string | null;
+  priorities: { creator: string; priority: number }[];
+  findings: { creator: string; samples: number; priority: number | null; median_views: number }[];
+  errors: { run: string; creator: string; error: string }[];
+  actions: string[]; next_steps: string[]; sample_rule: string; comparison: string; scope: string;
+};
 export type ShotsnipWorkspace = {
+  agent?: AgentReport;
   target_list?: Target[] | null; targets_revision?: string | null;
   targets: number | null; active_targets: number | null; agent_at: string | null; learning: boolean | null;
   connections: { name: string; status: string }[];
@@ -122,6 +130,62 @@ function Targets({ list, revision, send, busy, recent, time, close }: {
   </section>;
 }
 
+const count = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
+
+function AgentPanel({ data, send, busy, recent, time, close }: {
+  data: AgentReport; send?: Send; busy: boolean; recent?: CommandEvent;
+  time: (value: string | null) => string; close: () => void;
+}) {
+  const [confirm, setConfirm] = useState<'learning' | 'refresh' | null>(null);
+  const [errorCount, setErrorCount] = useState(5);
+  const learning = data.learning;
+  return <section className="panel experiment-panel agent-panel" aria-labelledby="agent-heading">
+    <div className="panel-head planning-head">
+      <div><h2 id="agent-heading">Shotsnip agent</h2>
+        <p>{data.checked_at ? 'Last review ' + time(data.checked_at) + ' IST' : 'No review has been recorded.'}</p></div>
+      <div className="tool-links">
+        {learning != null && <span className={'status ' + (learning ? 'good' : 'neutral')}>{learning ? 'Learning enabled' : 'Learning paused'}</span>}
+        <button className="action" onClick={close}>Close agent</button></div>
+    </div>
+    {send && <div className="planning-detail agent-actions">
+      <button className="action" disabled={busy} onClick={() => send({action:'agent_review',channel:'shotsnip',mode:'review'})}>Run review</button>
+      <button className="action" disabled={busy || confirm !== null} onClick={() => setConfirm('refresh')}>Refresh analytics and review</button>
+      {learning != null && <button className="action" disabled={busy || confirm !== null}
+        onClick={() => setConfirm('learning')}>{learning ? 'Pause learning' : 'Enable learning'}</button>}
+    </div>}
+    {send && confirm && <div className="cadence-confirm" role="group" aria-label="Confirm agent change">
+      <p>{confirm === 'refresh' ? 'Sync Shotsnip analytics from the platforms, then run a review? This can take a few minutes.'
+        : learning ? 'Pause learning? Current source priorities stay as they are until learning is enabled again.'
+        : 'Enable learning? The next review recomputes source priorities from measured results (0.5–1.5).'}</p>
+      <button className="action" onClick={() => setConfirm(null)}>Back</button>
+      <button className="action primary" disabled={busy} onClick={() => {
+        if (confirm === 'refresh') send({action:'agent_review',channel:'shotsnip',mode:'refresh'});
+        else send({action:'agent_learning',channel:'shotsnip',enabled:!learning,expected:!!learning});
+        setConfirm(null);
+      }}>{confirm === 'refresh' ? 'Confirm refresh' : learning ? 'Confirm pause' : 'Confirm enable'}</button>
+    </div>}
+    {recent && <p className="analytics-info" role="status">{recent.message} · {time(recent.at)} IST</p>}
+    <h3 className="agent-subhead">Source priorities</h3>
+    {data.findings.length ? <table><thead><tr><th scope="col">Creator</th><th scope="col">Views near 24 h</th>
+      <th scope="col">Clips</th><th scope="col">Weight</th></tr></thead>
+      <tbody>{data.findings.map(row => <tr key={row.creator}><th scope="row">{row.creator}</th>
+        <td>{count.format(row.median_views)}</td><td>{row.samples}</td>
+        <td>{row.priority != null ? '×' + row.priority.toFixed(2) : '—'}</td></tr>)}</tbody></table>
+      : <p className="empty">No creator has enough measured clips yet.</p>}
+    {data.priorities.length > 0 && <p className="chart-note">Applied weights: {data.priorities.map(row => row.creator + ' ×' + row.priority.toFixed(2)).join(' · ')}
+      {data.policy_updated_at ? ' · updated ' + time(data.policy_updated_at) + ' IST' : ''}</p>}
+    {(data.actions.length > 0 || data.next_steps.length > 0) && <ul className="agent-notes">
+      {data.actions.map(item => <li key={'a' + item}>{item}</li>)}
+      {data.next_steps.map(item => <li key={'n' + item}>{item}</li>)}</ul>}
+    <h3 className="agent-subhead">Capture errors</h3>
+    {data.errors.length ? <ol className="agent-errors">{data.errors.slice(0, errorCount).map(row => <li key={row.run}>
+      <strong>{row.creator || 'Unknown creator'}</strong><span>{row.error}</span><small>{row.run}</small></li>)}</ol>
+      : <p className="empty">No capture errors in recent runs.</p>}
+    {data.errors.length > errorCount && <div className="panel-foot"><button onClick={() => setErrorCount(data.errors.length)}>Show all errors</button></div>}
+    <p className="chart-note">{[data.sample_rule, data.comparison, data.scope].filter(Boolean).join(' ')}</p>
+  </section>;
+}
+
 export function Workspaces({ data, status, waiting, time, openQueue, openPerformance, openPlanning, send, busy = false, commands = [] }: {
   data?: ShotsnipWorkspace; status: string; waiting: number | null; time: (value: string | null) => string;
   openQueue: () => void; openPerformance: () => void; openPlanning: (view: PlanningView) => void;
@@ -130,6 +194,7 @@ export function Workspaces({ data, status, waiting, time, openQueue, openPerform
   const [channel, setChannel] = useState<'shotsnip' | 'histold'>('shotsnip');
   const [showLive, setShowLive] = useState(false);
   const [showTargets, setShowTargets] = useState(false);
+  const [showAgent, setShowAgent] = useState(false);
   const tools = [
     { title: 'Live operations', icon: Activity, note: 'Active run, scheduler checks, and upload blockers.',
       state: status, href: shotsnip + '#overview', link: 'Full operations tools',
@@ -147,7 +212,8 @@ export function Workspaces({ data, status, waiting, time, openQueue, openPerform
       href: shotsnip + '#connections', link: 'Manage connections', connections: data?.connections },
     { title: 'Agent', icon: FlaskConical, note: data?.agent_at ? 'Reviewed ' + time(data.agent_at) + ' IST' : 'Open source signals and capture review.',
       state: data?.learning == null ? '' : data.learning ? 'Learning enabled' : 'Learning paused',
-      href: shotsnip + '#agent', link: 'Open agent' },
+      href: shotsnip + '#agent', link: 'Original agent tool',
+      local: data?.agent ? { label: showAgent ? 'Hide agent' : 'Open in Studio HQ', action: () => setShowAgent(!showAgent) } : undefined },
     { title: 'Performance', icon: BarChart3, note: 'Platform trends, top clips, and matched-age observations.',
       href: shotsnip + '#performance', link: 'Full performance', local: { label: 'Studio HQ analytics', action: openPerformance } },
   ];
@@ -174,6 +240,9 @@ export function Workspaces({ data, status, waiting, time, openQueue, openPerform
       <Targets list={data.target_list} revision={data.targets_revision ?? null} send={send} busy={busy}
         recent={commands.find(event => event.action === 'target_add' || event.action === 'target_toggle')}
         time={time} close={() => setShowTargets(false)} />}
+    {channel === 'shotsnip' && showAgent && data?.agent &&
+      <AgentPanel data={data.agent} send={send} busy={busy} time={time} close={() => setShowAgent(false)}
+        recent={commands.find(event => event.action === 'agent_review' || event.action === 'agent_learning')} />}
     <div className="tools-grid">
       {entries.map(tool => <article className="panel tool-card" key={tool.title}>
         <div className="tool-heading"><span className="performance-icon"><tool.icon size={18}/></span>
