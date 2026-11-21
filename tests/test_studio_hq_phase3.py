@@ -99,3 +99,116 @@ class Phase3Tests(unittest.TestCase):
             linked, = report['jobs']
             self.assertEqual((linked['id'], linked['title'], linked['attempts'], linked['cost']), (job, 'Fixture topic', 2, '0.25'))
             self.assertEqual(linked['breakdown'][0]['stage'], 'render')
+
+
+class IdeaTraceTests(unittest.TestCase):
+    def write(self, root, name, value):
+        atomic_json(root/'data'/name, value)
+
+    def test_idea_traces_to_run_publications_and_labelled_observations(self):
+        with TemporaryDirectory() as local:
+            root = Path(local)
+            job, failed = '20261120_080000_123456_short', '20261120_090000_654321_short'
+            self.write(root, 'topic_reservations.json', [
+                {'job_id': job, 'title': 'Canary', 'date': '2026-11-20', 'slot': 'morning'},
+                {'job_id': failed, 'title': 'Never rendered', 'date': '2026-11-20', 'slot': 'evening'}])
+            selection = {'selected_index': 1, 'selection_reason': 'Fits the lane.', 'candidates': [
+                {'premise': 'Icebox', 'rejection_reason': 'Recently covered.'},
+                {'premise': 'Canary in the mine', 'viewer_reason': 'Simple mechanism.', 'rejection_reason': None}]}
+            self.write(root, 'published_index.json', [
+                {'stage_dir_name': job, 'video_id': 'abcdefghijk', 'facebook_id': '111', 'instagram_id': '222',
+                 'run_id': '44900498335', 'published_at': '2026-11-20T09:00:00+00:00', 'workflow': 'publish',
+                 'editorial_selection': selection, 'editorial_series': 'ingenious_solutions', 'duration': 30.2,
+                 'ab_test': {'id': 'voice-title-2x2', 'title_style': 'question', 'voice': 'edge'}},
+                {'stage_dir_name': job, 'video_id': 'zyxwvutsrqp', 'run_id': '44900498399',
+                 'published_at': '2026-11-21T09:00:00+00:00', 'workflow': 'republish', 'republished_from': 'abcdefghijk'}])
+            self.write(root, 'analytics.json', {'channels': {'histold': {'updated': '2026-11-21T09:00:00+00:00', 'videos': [
+                {'id': 'abcdefghijk', 'publishedAt': '2026-11-20T09:00:00Z', 'views': 120, 'likes': 4}]}}})
+            self.write(root, 'meta_analytics.json', {
+                'facebook': {'updated': '2026-11-20T12:00:00+00:00', 'videos': [
+                    {'id': '111', 'publishedAt': '2026-11-20T09:00:00+0000', 'plays': 50, 'views': 3,
+                     'views_metric': 'fb_reels_total_plays'}]},
+                'instagram': {'updated': '2026-11-20T12:00:00+00:00', 'videos': []}})
+            rows = {row['job']: row['trace'] for row in topic_trace(root, [], 'owner/repo')}
+            trace = rows[job]
+            self.assertEqual(trace['idea']['premise'], 'Canary in the mine')
+            self.assertEqual(trace['idea']['rejected'], [{'premise': 'Icebox', 'reason': 'Recently covered.'}])
+            self.assertEqual(trace['run']['url'], 'https://github.com/owner/repo/actions/runs/44900498335')
+            self.assertEqual(len(trace['publications']), 2)
+            self.assertEqual(trace['publications'][1]['republished_from'], 'abcdefghijk')
+            seen = {row['platform']: row for row in trace['observations']}
+            self.assertEqual((seen['YouTube']['value'], seen['YouTube']['age_hours']), (120, 24))
+            self.assertEqual((seen['Facebook']['value'], seen['Facebook']['metric']), (50, 'Reel plays (includes replays)'))
+            self.assertIn('No current Instagram observation for media 222.', trace['gaps'])
+            self.assertIn('No current YouTube observation for media zyxwvutsrqp.', trace['gaps'])  # republished copy
+            self.assertNotIn('No current YouTube observation for media abcdefghijk.', trace['gaps'])
+            self.assertEqual(trace['production']['Duration'], '30 s')
+            self.assertTrue(trace['arms'][0].startswith('voice-title-2x2'))
+            missing = rows[failed]
+            self.assertEqual(missing['gaps'], ['The idea and its alternatives were not recorded for this job.',
+                                               'No workflow run is linked to this job.',
+                                               'No publication or draft is recorded for this reservation.'])
+
+
+class ExperimentComparisonTests(unittest.TestCase):
+    def video(self, lane, published, **checkpoints):
+        return {'trial': {'id': 'trial-v1', 'lane': lane, 'planned_posts': 42}, 'published_at': published,
+                'checkpoints': checkpoints}
+
+    def run_report(self, videos, index=(), updated='2026-11-21T00:00:00+00:00', now=None):
+        from studio_hq.dashboard_phase3 import experiment_comparisons
+        with TemporaryDirectory() as local:
+            root = Path(local)
+            atomic_json(root/'data/private/growth-trial-observations.json',
+                        {'updated': updated, 'videos': {str(i): video for i, video in enumerate(videos)}})
+            atomic_json(root/'data/published_index.json', list(index))
+            return experiment_comparisons(root, now or datetime(2026, 11, 21, 1, tzinfo=timezone.utc))
+
+    def test_arms_compare_only_within_age_platform_and_metric(self):
+        lanes = ('ingenious_solutions', 'decisions', 'everyday_origins')
+        videos = []
+        for lane, plays in zip(lanes, ((100, 110, 120), (300, 310, 320), (90, 95, 105))):
+            for value in plays:
+                videos.append(self.video(lane, '2026-11-19T00:00:00+00:00', **{
+                    '24h': {'facebook': {'metrics': {'plays': value, 'views_metric': 'fb_reels_total_plays', 'like_rate': 0.01}},
+                            'youtube': {'metrics': {'views': value // 10}}}}))
+        # A legacy Facebook definition must never join the Reel-plays comparison.
+        videos.append(self.video('decisions', '2026-11-19T00:00:00+00:00', **{
+            '24h': {'facebook': {'metrics': {'plays': 9999, 'views_metric': 'legacy_video_views'}}}}))
+        report = self.run_report(videos)
+        groups = {(g['checkpoint'], g['platform']): g for g in report['trials'][0]['groups']}
+        facebook = groups[('24h', 'Facebook')]
+        self.assertTrue(facebook['comparable'])
+        self.assertEqual(facebook['leader'], 'decisions')
+        self.assertFalse(facebook['overlap'])
+        self.assertEqual(next(a for a in facebook['arms'] if a['lane'] == 'decisions')['high'], 320)
+        self.assertFalse(groups[('24h', 'YouTube')]['overlap'])  # no other arm reaches the leader's 30-32 range
+        # One high post in another arm overlaps the leader, so the lead is not reliable.
+        videos.append(self.video('everyday_origins', '2026-11-19T00:00:00+00:00', **{
+            '24h': {'facebook': {'metrics': {'plays': 305, 'views_metric': 'fb_reels_total_plays'}}}}))
+        overlapping = self.run_report(videos)
+        facebook = next(g for g in overlapping['trials'][0]['groups'] if g['platform'] == 'Facebook')
+        self.assertTrue(facebook['overlap'])
+        self.assertIn('not a reliable difference',
+                      next(r for r in overlapping['recommendations'] if r['kind'] == 'observe' and 'Facebook' in r['title'])['uncertainty'])
+        report = self.run_report(videos[:-1])
+        titles = [row['title'] for row in report['recommendations']]
+        self.assertIn('Decisions With Consequences leads Facebook at 24 h', titles)
+        lead = next(row for row in report['recommendations'] if row['title'].endswith('Facebook at 24 h'))
+        self.assertIn('Ranges separate', lead['uncertainty'])
+        self.assertIn('nothing changes automatically', lead['action'])
+
+    def test_thin_samples_missed_windows_stale_data_and_untracked_tests(self):
+        videos = [self.video('decisions', '2026-11-18T00:00:00+00:00', **{
+                      '24h': {'youtube': {'metrics': {'views': 4}}}}),
+                  self.video('everyday_origins', '2026-11-20T23:00:00+00:00')]
+        index = [{'ab_test': {'id': 'voice-title-2x2'}}, {'ab_test': {'id': 'voice-title-2x2'}}]
+        report = self.run_report(videos, index, now=datetime(2026, 11, 21, 12, tzinfo=timezone.utc))
+        kinds = {row['title']: row for row in report['recommendations']}
+        self.assertIn('Keep collecting trial-v1', kinds)
+        self.assertFalse(report['trials'][0]['groups'][0]['comparable'])
+        missed = {(row['checkpoint'], row['platform']): row['count'] for row in report['trials'][0]['missed']}
+        self.assertEqual(missed[('24h', 'Facebook')], 1)  # the 3-day-old post has no Facebook 24 h checkpoint
+        self.assertNotIn(('24h', 'YouTube'), missed)
+        self.assertIn('Trial observations are stale', kinds)
+        self.assertEqual(report['untracked'], [{'id': 'voice-title-2x2', 'published': 2}])

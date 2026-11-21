@@ -354,3 +354,34 @@ a.rank-link:hover { background: #29243e; }
 .agent-errors li small { color: var(--muted); }
 .agent-panel .cadence-confirm { margin: 0 18px 12px; }
 @media (max-width: 640px) { .agent-panel th, .agent-panel td { overflow-wrap: normal; word-break: normal; } }
+
+.topic-row .trace { grid-column: 1 / -1; }
+.trace { display: grid; gap: 12px; padding: 4px 0 8px; font-size: 13px; }
+.trace-steps { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid var(--line); display: grid; gap: 14px; }
+.trace-steps > li { position: relative; display: grid; gap: 6px; }
+.trace-steps > li::before { content: ''; position: absolute; left: -20px; top: 4px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--accent); }
+.trace h4 { margin: 0; font-size: 13px; }
+.trace p { margin: 0; overflow-wrap: anywhere; }
+.trace-muted { color: var(--muted); }
+.trace details ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.trace details li span { display: block; color: var(--muted); }
+.trace-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 6px 12px; margin: 0; }
+.trace-facts dt { color: var(--muted); font-size: 12px; }
+.trace-facts dd { margin: 0; }
+.trace-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.trace-links span { color: var(--muted); overflow-wrap: anywhere; }
+.trace table { width: 100%; border-collapse: collapse; text-align: left; }
+.trace th, .trace td { padding: 6px 8px 6px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.trace th small, .trace td small { display: block; color: var(--muted); font-weight: 400; font-size: 11px; }
+.trace .action { justify-self: start; }
+.trace-gaps { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.trace-gaps ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+
+.experiment-panel td small, .experiment-panel th small { display: block; color: var(--muted); font-weight: 400; font-size: 11px; }
+.recommendation { display: grid; gap: 6px; padding: 12px 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.recommendation h3 { margin: 0; font-size: 14px; }
+.recommendation .status { justify-self: start; }
+.recommendation ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.recommendation p { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .experiment-panel thead th, .experiment-panel tbody th { overflow-wrap: normal; word-break: normal; } }

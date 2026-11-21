@@ -117,9 +117,130 @@ def calendar(config, source, shotsnip, activity, now):
     }
 
 
-def topic_trace(source, approvals):
+METRIC_LABELS = {
+    'views': 'Views (YouTube Data API, lifetime)',
+    'legacy_video_views': 'Video views (legacy Facebook definition)',
+    'fb_reels_total_plays': 'Reel plays (includes replays)',
+    'instagram_views': 'Views (Instagram Insights)',
+}
+GITHUB_RUN = re.compile(r'\d{6,20}')
+
+
+def observation_index(source):
+    """Latest cumulative snapshot per media ID, with when it was observed and the metric definition."""
+    index = {}
+    channel = load(source/'data/analytics.json', {}).get('channels', {})
+    youtube = channel.get('histold') if isinstance(channel, dict) else None
+    if isinstance(youtube, dict):
+        for video in rows(youtube.get('videos')):
+            index[('youtube', video.get('id'))] = (video, youtube.get('updated'), 'views')
+    meta = load(source/'data/meta_analytics.json', {})
+    for platform in ('facebook', 'instagram'):
+        section = meta.get(platform) if isinstance(meta, dict) else None
+        if isinstance(section, dict):
+            for video in rows(section.get('videos')):
+                metric = video.get('views_metric') if platform == 'facebook' else 'instagram_views'
+                index[(platform, video.get('id'))] = (video, section.get('updated'), metric)
+    return index
+
+
+def observation(index, platform, identity):
+    found = index.get((platform, identity)) if isinstance(identity, str) else None
+    if not found:
+        return None
+    video, observed, metric = found
+    value = number(video.get('plays') if metric == 'fb_reels_total_plays' else video.get('views'))
+    published, seen = instant(video.get('publishedAt') or video.get('created_time')), instant(observed)
+    age = round((seen - published).total_seconds() / 3600) if published and seen and seen >= published else None
+    return {'platform': {'youtube': 'YouTube', 'facebook': 'Facebook', 'instagram': 'Instagram'}[platform],
+            'value': value, 'metric': METRIC_LABELS.get(metric, 'Metric definition unavailable'),
+            'likes': number(video.get('likes')), 'comments': number(video.get('comments')),
+            'observed_at': seen.isoformat() if seen else None, 'age_hours': age}
+
+
+def idea_record(entry):
+    selection = entry.get('editorial_selection') if entry else None
+    if not isinstance(selection, dict):
+        return None
+    candidates = list(rows(selection.get('candidates')))
+    chosen = selection.get('selected_index')
+    chosen = candidates[chosen] if isinstance(chosen, int) and 0 <= chosen < len(candidates) else None
+    return {
+        'premise': text((chosen or {}).get('premise'), 400),
+        'viewer_reason': text((chosen or {}).get('viewer_reason'), 300),
+        'selection_reason': text(selection.get('selection_reason'), 400),
+        'rejected': [{'premise': text(row.get('premise'), 300), 'reason': text(row.get('rejection_reason'), 300)}
+                     for row in candidates if row is not chosen and isinstance(row.get('rejection_reason'), str)][:8],
+    }
+
+
+def trace_detail(job, reservation, entries, draft, index, repo='kumarvnsh/YT-Automation'):
+    """Idea -> reservation -> run -> publications -> observations; every missing link is named."""
+    first = entries[0] if entries else None
+    run = (first or {}).get('run_id') or (draft or {}).get('run_id')
+    run = str(run) if run is not None and GITHUB_RUN.fullmatch(str(run)) else None
+    production = {}
+    for key, label in (('editorial_series', 'Series'), ('editorial_region', 'Region'), ('category', 'Category'),
+                       ('design', 'Design'), ('duration_variant', 'Duration variant'), ('voice', 'Voice')):
+        value = (first or {}).get(key)
+        if isinstance(value, str) and value:
+            production[label] = text(value.replace('_', ' '), 60)
+    duration = number((first or {}).get('duration'))
+    if duration:
+        production['Duration'] = f'{duration:.0f} s'
+    arms = []
+    for key in ('ab_test', 'growth_trial'):
+        value = (first or {}).get(key)
+        if isinstance(value, dict) and isinstance(value.get('id'), str):
+            details = ', '.join(f"{name.replace('_', ' ')} {text(str(item), 40)}" for name, item in value.items()
+                                if name in ('title_style', 'voice', 'lane') and item is not None)
+            arms.append(text(value['id'], 60) + (' · ' + details if details else ''))
+    if isinstance((first or {}).get('experiment'), str) and not any(arm.startswith(first['experiment']) for arm in arms):
+        arms.append(text(first['experiment'], 60))
+    publications, observations = [], []
+    for entry in entries:
+        links = []
+        for platform, key in (('youtube', 'video_id'), ('facebook', 'facebook_id'), ('instagram', 'instagram_id')):
+            identity = entry.get(key)
+            if not isinstance(identity, str) or not identity:
+                continue
+            seen = observation(index, platform, identity)
+            links.append({'platform': platform, 'id': text(identity, 40), 'observed': seen is not None,
+                          'url': public_url(None, 'YouTube', identity) if platform == 'youtube' else None})
+            if seen:
+                observations.append(dict(seen, media=text(identity, 40)))
+        when = instant(entry.get('published_at'))
+        publications.append({'at': when.isoformat() if when else None, 'links': links,
+                             'workflow': text(entry.get('workflow'), 30),
+                             'republished_from': text(entry.get('republished_from'), 40) or None,
+                             'retitled_at': entry.get('retitled_at') if isinstance(entry.get('retitled_at'), str) else None})
+    idea = idea_record(first)
+    gaps = []
+    if not idea:
+        gaps.append('The idea and its alternatives were not recorded for this job.')
+    if not run:
+        gaps.append('No workflow run is linked to this job.')
+    if not entries and not draft:
+        gaps.append('No publication or draft is recorded for this reservation.')
+    names = {'youtube': 'YouTube', 'facebook': 'Facebook', 'instagram': 'Instagram'}
+    for publication in publications:
+        for link in publication['links']:
+            if not link['observed']:
+                gaps.append(f"No current {names[link['platform']]} observation for media {link['id']}.")
+    return {'idea': idea, 'reservation': {'date': reservation.get('date'), 'slot': text(reservation.get('slot'), 20)},
+            'run': {'id': run, 'url': f'https://github.com/{repo}/actions/runs/{run}'} if run else None,
+            'production': production, 'arms': arms, 'hook': text((first or {}).get('hook'), 160),
+            'publications': publications, 'observations': observations, 'gaps': list(dict.fromkeys(gaps))}
+
+
+def topic_trace(source, approvals, repo='kumarvnsh/YT-Automation'):
     published = {row['stage_dir_name']: row for row in rows(load(source/'data/published_index.json', []))
                  if row.get('channel', 'histold') == 'histold' and isinstance(row.get('stage_dir_name'), str)}
+    history = defaultdict(list)
+    for row in rows(load(source/'data/published_index.json', [])):
+        if row.get('channel', 'histold') == 'histold' and isinstance(row.get('stage_dir_name'), str):
+            history[row['stage_dir_name']].append(row)
+    index = observation_index(source)
     pending = {row['stage']: row for row in approvals}
     by_job = {}
     for record in rows(load(source/'data/topic_reservations.json', [])):
@@ -137,6 +258,8 @@ def topic_trace(source, approvals):
             'format': 'Long-form' if job.endswith('_long') else 'Short',
             'state': 'Published' if related else 'Ready for review' if draft else 'Reservation recorded',
             'url': url or (draft['url'] if draft else None),
+            'trace': trace_detail(job, record, sorted(history.get(job, []), key=lambda row: str(row.get('published_at'))),
+                                  draft, index, repo),
         }
     return sorted(by_job.values(), key=lambda row: row['job'], reverse=True)[:40]
 
@@ -159,6 +282,139 @@ def histold_experiment(source):
          'median': median(items.values()), 'observed': len(items)}
         for (hours, category), items in sorted(samples.items())
     ]
+
+
+MIN_ARM_SAMPLE = 3
+CHECKPOINT_HOURS = {'24h': (24, 3), '72h': (72, 6), '7d': (168, 12)}
+TRIAL_METRICS = {'youtube': ('views', 'Views (YouTube Data API, lifetime)'),
+                 'fb_reels_total_plays': ('plays', 'Reel plays (includes replays)')}
+
+
+def spread(values):
+    return {'n': len(values), 'median': median(values) if values else None,
+            'low': min(values) if values else None, 'high': max(values) if values else None}
+
+
+def trial_groups(videos, lanes):
+    """Arms grouped only within one checkpoint age, platform and metric definition."""
+    grouped = defaultdict(lambda: defaultdict(lambda: {'values': [], 'rates': []}))
+    for video in videos:
+        lane = (video.get('trial') or {}).get('lane')
+        checkpoints = video.get('checkpoints')
+        if lane not in lanes or not isinstance(checkpoints, dict):
+            continue
+        for checkpoint, platforms in checkpoints.items():
+            if checkpoint not in CHECKPOINT_HOURS or not isinstance(platforms, dict):
+                continue
+            for platform, observed in platforms.items():
+                metrics = observed.get('metrics') if isinstance(observed, dict) else None
+                if not isinstance(metrics, dict):
+                    continue
+                definition = 'youtube' if platform == 'youtube' else metrics.get('views_metric')
+                if definition not in TRIAL_METRICS:
+                    continue  # An unknown or legacy definition never joins a comparison.
+                field, label = TRIAL_METRICS[definition]
+                cell = grouped[(checkpoint, platform, label)][lane]
+                if (value := number(metrics.get(field))) is not None:
+                    cell['values'].append(value)
+                if (rate := number(metrics.get('like_rate'))) is not None:
+                    cell['rates'].append(rate)
+    groups = []
+    for (checkpoint, platform, label), cells in sorted(grouped.items(), key=lambda item: (CHECKPOINT_HOURS[item[0][0]][0], item[0][1])):
+        arms = [dict(spread(cells[lane]['values']), lane=lane, name=lanes[lane],
+                     like_rate=median(cells[lane]['rates']) if cells[lane]['rates'] else None,
+                     like_rate_n=len(cells[lane]['rates'])) for lane in lanes]
+        comparable = all(arm['n'] >= MIN_ARM_SAMPLE for arm in arms)
+        leader = max(arms, key=lambda arm: arm['median']) if comparable else None
+        overlap = comparable and any(arm is not leader and arm['high'] >= leader['low'] for arm in arms)
+        groups.append({'checkpoint': checkpoint, 'hours': CHECKPOINT_HOURS[checkpoint][0],
+                       'platform': 'YouTube' if platform == 'youtube' else 'Facebook', 'metric': label,
+                       'arms': arms, 'comparable': comparable, 'leader': leader['lane'] if leader else None,
+                       'overlap': overlap})
+    return groups
+
+
+def missed_checkpoints(videos, observed_at):
+    """Published long enough ago that a checkpoint window closed without an observation."""
+    missed = defaultdict(int)
+    for video in videos:
+        published = instant(video.get('published_at'))
+        checkpoints = video.get('checkpoints') if isinstance(video.get('checkpoints'), dict) else {}
+        if not published or not observed_at:
+            continue
+        age = (observed_at - published).total_seconds() / 3600
+        for name, (hours, tolerance) in CHECKPOINT_HOURS.items():
+            if age > hours + tolerance:
+                for platform in ('youtube', 'facebook'):
+                    if platform not in (checkpoints.get(name) or {}):
+                        missed[(name, platform)] += 1
+    return [{'checkpoint': name, 'platform': 'YouTube' if platform == 'youtube' else 'Facebook', 'count': count}
+            for (name, platform), count in sorted(missed.items())]
+
+
+def experiment_comparisons(source, now):
+    from src.growth_trial import LANES
+    lanes = {lane['id']: lane['name'] for lane in LANES}
+    data = load(source/'data/private/growth-trial-observations.json', {})
+    videos = [video for video in (data.get('videos') or {}).values() if isinstance(video, dict)] \
+        if isinstance(data.get('videos'), dict) else []
+    updated = instant(data.get('updated'))
+    trials, recommendations = [], []
+    for identity in sorted({(video.get('trial') or {}).get('id') for video in videos} - {None}):
+        members = [video for video in videos if (video.get('trial') or {}).get('id') == identity]
+        planned = max((number((video.get('trial') or {}).get('planned_posts')) or 0 for video in members), default=0)
+        groups = trial_groups(members, lanes)
+        missed = missed_checkpoints(members, updated)
+        published = {lane: sum((video.get('trial') or {}).get('lane') == lane for video in members) for lane in lanes}
+        trials.append({'id': text(identity, 60), 'planned_posts': int(planned) or None, 'published': len(members),
+                       'lanes': [{'lane': lane, 'name': lanes[lane], 'published': published[lane]} for lane in lanes],
+                       'groups': groups, 'missed': missed, 'updated': updated.isoformat() if updated else None})
+        ready = [group for group in groups if group['comparable']]
+        for group in ready:
+            leader = next(arm for arm in group['arms'] if arm['lane'] == group['leader'])
+            recommendations.append({
+                'kind': 'observe', 'title': f"{leader['name']} leads {group['platform']} at {group['hours']} h",
+                'evidence': [f"{arm['name']}: median {arm['median']:g} from {arm['n']} posts (range {arm['low']:g}–{arm['high']:g})"
+                             for arm in group['arms']] + [f"Metric: {group['metric']}."],
+                'uncertainty': ('Ranges overlap, so this is not a reliable difference. ' if group['overlap'] else
+                                'Ranges separate in this sample. ') +
+                               'Lanes rotate by day but are not randomized, and topics differ within each lane.',
+                'action': 'Advisory only. Decide after the planned posts finish; nothing changes automatically.'})
+        if not ready:
+            thinnest = [f"{group['hours']} h {group['platform']}: " + ', '.join(f"{arm['name']} {arm['n']}" for arm in group['arms'])
+                        for group in groups if group['hours'] <= 72]
+            recommendations.append({
+                'kind': 'collect', 'title': f'Keep collecting {identity}',
+                'evidence': [f"{len(members)} of {int(planned) if planned else '?'} planned posts published."] +
+                            (thinnest or ['No matched-age observations yet.']),
+                'uncertainty': f'Each lane needs at least {MIN_ARM_SAMPLE} observations at the same age, platform and '
+                               'metric before a comparison means anything. Current differences are noise.',
+                'action': 'No change recommended.'})
+        lost = [row for row in missed if row['count']]
+        if lost:
+            recommendations.append({
+                'kind': 'gap', 'title': f'Checkpoint windows were missed in {identity}',
+                'evidence': [f"{row['count']} × {row['checkpoint']} {row['platform']}" for row in lost],
+                'uncertainty': 'A missed window is unknown, not zero. It shrinks the sample and can bias lanes if misses are uneven.',
+                'action': 'Check that the observation recorder runs at least every 3 hours.'})
+    if updated and (now - updated).total_seconds() > 6 * 3600:
+        recommendations.append({'kind': 'gap', 'title': 'Trial observations are stale',
+                                'evidence': [f'Last recorded {updated.isoformat()}.'],
+                                'uncertainty': 'The 24 h window is only 3 hours wide, so a stale recorder loses checkpoints.',
+                                'action': 'Check the analytics refresh that records trial observations.'})
+    tracked = {(video.get('trial') or {}).get('id') for video in videos}
+    tests = defaultdict(int)
+    for row in rows(load(source/'data/published_index.json', [])):
+        test = row.get('ab_test')
+        if isinstance(test, dict) and isinstance(test.get('id'), str) and test['id'] not in tracked:
+            tests[test['id']] += 1
+    untracked = [{'id': text(identity, 60), 'published': count} for identity, count in sorted(tests.items())]
+    for test in untracked:
+        recommendations.append({'kind': 'gap', 'title': f"{test['id']} has no matched-age observations",
+                                'evidence': [f"{test['published']} published posts carry this test's arms."],
+                                'uncertainty': 'Only lifetime snapshots at different ages exist, so its arms cannot be compared fairly.',
+                                'action': 'Add the test to a matched-age recorder before reading results.'})
+    return {'trials': trials, 'untracked': untracked, 'recommendations': recommendations, 'min_sample': MIN_ARM_SAMPLE}
 
 
 def amount(value):
@@ -311,7 +567,7 @@ def observation_report(state, now, activity=(), topics=()):
 
 
 def phase3(config, source, shotsnip, activity, approvals, now, *, include_finance=False):
-    topics = topic_trace(source, approvals)
+    topics = topic_trace(source, approvals, config.get('github_repo', 'kumarvnsh/YT-Automation'))
     usage = observation_report(Path(config['dashboard_private_snapshot']).parent, now, activity, topics) if include_finance else {
         'providers': [], 'jobs': [], 'unattributed': 0, 'available': False,
     }
@@ -319,6 +575,7 @@ def phase3(config, source, shotsnip, activity, approvals, now, *, include_financ
         'calendar': calendar(config, source, shotsnip, activity, now),
         'topics': topics,
         'histold_experiment': histold_experiment(source),
+        'experiments': experiment_comparisons(source, now),
         'earnings': earnings(source) if include_finance else [],
         'api_usage': usage['providers'],
         'job_usage': {key: usage[key] for key in ('jobs', 'unattributed', 'available')},

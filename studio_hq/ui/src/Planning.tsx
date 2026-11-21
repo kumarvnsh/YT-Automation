@@ -6,12 +6,37 @@ export type PlanningView = 'calendar' | 'strategy' | 'money' | 'jobs';
 export type JobLink = { channel: 'histold' | 'shotsnip'; id: string };
 type JobCharge = { attempts: number; failed: number; priced: number; cost: string | null };
 type CalendarEvent = { at: string; channel: 'histold' | 'shotsnip'; title: string; state: string; source: string; url: string | null };
+type Observation = { platform: string; media: string; value: number | null; metric: string; likes: number | null;
+  comments: number | null; observed_at: string | null; age_hours: number | null };
+export type Trace = {
+  idea: { premise: string; viewer_reason: string; selection_reason: string; rejected: { premise: string; reason: string }[] } | null;
+  reservation: { date: string | null; slot: string };
+  run: { id: string; url: string } | null;
+  production: Record<string, string>; arms: string[]; hook: string;
+  publications: { at: string | null; workflow: string; republished_from: string | null; retitled_at: string | null;
+    links: { platform: 'youtube' | 'facebook' | 'instagram'; id: string; url: string | null; observed: boolean }[] }[];
+  observations: Observation[]; gaps: string[];
+};
+type Arm = { lane: string; name: string; n: number; median: number | null; low: number | null; high: number | null;
+  like_rate: number | null; like_rate_n: number };
+type Recommendation = { kind: 'observe' | 'collect' | 'gap'; title: string; evidence: string[]; uncertainty: string; action: string };
+export type Experiments = {
+  min_sample: number;
+  trials: { id: string; planned_posts: number | null; published: number; updated: string | null;
+    lanes: { lane: string; name: string; published: number }[];
+    groups: { checkpoint: string; hours: number; platform: string; metric: string; arms: Arm[];
+      comparable: boolean; leader: string | null; overlap: boolean }[];
+    missed: { checkpoint: string; platform: string; count: number }[] }[];
+  untracked: { id: string; published: number }[];
+  recommendations: Recommendation[];
+};
 export type PlanningData = {
   calendar: { today: string; first: string; last: string; histold_available: boolean; events: CalendarEvent[];
     shotsnip: { status: string; cadence_minutes: number | null; earliest: string | null;
       scan_minutes?: number | null; revision?: string | null; choices?: number[]; cadence_pending?: boolean } };
-  topics: {job: string; date: string | null; title: string; format: string; state: string; url: string | null}[];
+  topics: {job: string; date: string | null; title: string; format: string; state: string; url: string | null; trace?: Trace}[];
   histold_experiment: {hours: number; category: string; median: number; observed: number}[];
+  experiments?: Experiments;
   earnings: {platform: string; label: string; value: string; currency: string | null; start: string | null;
     end: string | null; checked: string | null; detail: string}[];
   api_usage: {channel: 'histold' | 'shotsnip'; provider: string; attempts: number; failed: number;
@@ -129,8 +154,107 @@ function Calendar({ data, time, send, busy, cadenceEvent }: { data: PlanningData
   </div>;
 }
 
-function Strategy({ data, openPacing, openJob }: { data: PlanningData; openPacing: () => void; openJob: (job: JobLink) => void }) {
+const platformLabel = { youtube: 'YouTube', facebook: 'Facebook', instagram: 'Instagram' };
+
+function TraceView({ trace, time, usage, openUsage }: { trace: Trace; time: (value: string | null) => string;
+  usage: boolean; openUsage: () => void }) {
+  const production = Object.entries(trace.production);
+  return <div className="trace">
+    <ol className="trace-steps">
+      <li><h4>Idea</h4>
+        {trace.idea ? <>
+          <p>{trace.idea.premise || 'Premise unavailable'}</p>
+          {trace.idea.selection_reason && <p className="trace-muted">Why chosen: {trace.idea.selection_reason}</p>}
+          {trace.idea.rejected.length > 0 && <details><summary>{trace.idea.rejected.length} alternatives excluded</summary>
+            <ul>{trace.idea.rejected.map((row, index) => <li key={index}><strong>{row.premise}</strong><span>{row.reason}</span></li>)}</ul></details>}
+        </> : <p className="trace-muted">Not recorded for this job.</p>}
+      </li>
+      <li><h4>Reservation and run</h4>
+        <p>Reserved {trace.reservation.date || 'date unavailable'}{trace.reservation.slot ? ' · ' + trace.reservation.slot + ' slot' : ''}</p>
+        {trace.run ? <a className="action" href={trace.run.url} target="_blank" rel="noreferrer">Workflow run {trace.run.id} <ArrowUpRight size={14}/></a>
+          : <p className="trace-muted">No workflow run linked.</p>}
+      </li>
+      <li><h4>Production</h4>
+        {production.length ? <dl className="trace-facts">{production.map(([key, item]) => <div key={key}><dt>{key}</dt><dd>{item}</dd></div>)}</dl>
+          : <p className="trace-muted">No production details recorded.</p>}
+        {trace.hook && <p className="trace-muted">Hook: “{trace.hook}”</p>}
+        {trace.arms.length > 0 && <p className="trace-muted">Experiment arms: {trace.arms.join(' · ')}</p>}
+      </li>
+      <li><h4>Publication</h4>
+        {trace.publications.length ? trace.publications.map((row, index) => <div key={index} className="trace-publication">
+          <p>{row.at ? time(row.at) + ' IST' : 'Time unavailable'} · {row.workflow || 'workflow unknown'}
+            {row.republished_from ? ' · republished from ' + row.republished_from : ''}{row.retitled_at ? ' · retitled' : ''}</p>
+          <p className="trace-links">{row.links.map(link => link.url
+            ? <a key={link.platform + link.id} href={link.url} target="_blank" rel="noreferrer">{platformLabel[link.platform]} <ArrowUpRight size={12}/></a>
+            : <span key={link.platform + link.id}>{platformLabel[link.platform]} {link.id}</span>)}</p>
+        </div>) : <p className="trace-muted">Not published.</p>}
+      </li>
+      <li><h4>Observations</h4>
+        {trace.observations.length ? <table><thead><tr><th scope="col">Platform</th><th scope="col">Value</th><th scope="col">Age</th></tr></thead>
+          <tbody>{trace.observations.map(row => <tr key={row.platform + row.media}>
+            <th scope="row">{row.platform}<small>{row.metric}</small></th>
+            <td>{row.value != null ? value.format(row.value) : 'Unavailable'}{row.likes != null ? <small>{row.likes} likes</small> : null}</td>
+            <td>{row.age_hours != null ? row.age_hours + ' h' : '—'}<small>{row.observed_at ? time(row.observed_at) : ''}</small></td></tr>)}</tbody></table>
+          : <p className="trace-muted">No observations yet.</p>}
+        <p className="trace-muted">Cumulative snapshots. Compare only the same platform and metric at a similar age.</p>
+      </li>
+      <li><h4>Cost</h4>
+        {usage ? <button className="action" onClick={openUsage}>Open job usage</button>
+          : <p className="trace-muted">No usage records for this job in the last 30 days.</p>}
+      </li>
+    </ol>
+    {trace.gaps.length > 0 && <div className="trace-gaps" role="note"><strong>Provenance gaps</strong>
+      <ul>{trace.gaps.map(gap => <li key={gap}>{gap}</li>)}</ul></div>}
+  </div>;
+}
+
+function ExperimentPanel({ data, time }: { data: Experiments; time: (value: string | null) => string }) {
+  const [choice, setChoice] = useState(0);
+  const trial = data.trials[0];
+  if (!trial) return <section className="panel"><div className="panel-head"><div><h2>Experiments</h2>
+    <p>No matched-age trial observations are recorded.</p></div></div></section>;
+  const group = trial.groups[Math.min(choice, trial.groups.length - 1)];
+  const rate = new Intl.NumberFormat('en-IN', { style: 'percent', maximumFractionDigits: 1 });
+  return <section className="panel experiment-panel">
+    <div className="panel-head"><div><h2>Experiment {trial.id}</h2>
+      <p>{trial.published} of {trial.planned_posts ?? '?'} planned posts · first observation in each age window
+        {trial.updated ? ' · recorded ' + time(trial.updated) + ' IST' : ''}</p></div></div>
+    {trial.groups.length > 0 ? <>
+      <div className="filters" role="group" aria-label="Comparison">
+        {trial.groups.map((item, index) => <button key={item.checkpoint + item.platform} aria-pressed={item === group}
+          onClick={() => setChoice(index)}>{item.hours} h · {item.platform}</button>)}
+      </div>
+      <table><thead><tr><th scope="col">Lane</th><th scope="col">Posts</th><th scope="col">Median</th><th scope="col">Range</th></tr></thead>
+        <tbody>{group.arms.map(arm => <tr key={arm.lane}>
+          <th scope="row">{arm.name}{arm.lane === group.leader ? <small>Highest median</small> : null}</th>
+          <td>{arm.n}</td>
+          <td>{arm.median != null ? value.format(arm.median) : '—'}{arm.like_rate != null ? <small>{rate.format(arm.like_rate)} likes</small> : null}</td>
+          <td>{arm.low != null ? value.format(arm.low) + '–' + value.format(arm.high!) : '—'}</td></tr>)}</tbody></table>
+      <p className="chart-note">{group.metric} at {group.hours} h. {group.comparable
+        ? (group.overlap ? 'Every lane has enough posts, but the ranges overlap.' : 'Every lane has enough posts and the leader’s range is separate.')
+        : `Not comparable yet: each lane needs at least ${data.min_sample} posts observed in this window.`}</p>
+    </> : <p className="empty">No matched-age observations yet.</p>}
+  </section>;
+}
+
+function Recommendations({ items }: { items: Recommendation[] }) {
+  const labels = { observe: 'Observation', collect: 'Keep collecting', gap: 'Evidence gap' };
+  return <section className="panel recommendations">
+    <div className="panel-head"><div><h2>Recommendations</h2><p>Advisory. Each one states its evidence and how uncertain it is.</p></div></div>
+    {items.length ? items.map(item => <article key={item.title} className="recommendation">
+      <span className={'status ' + (item.kind === 'gap' ? 'warn' : 'neutral')}>{labels[item.kind]}</span>
+      <h3>{item.title}</h3>
+      <ul>{item.evidence.map(line => <li key={line}>{line}</li>)}</ul>
+      <p><strong>Uncertainty:</strong> {item.uncertainty}</p>
+      <p className="trace-muted">{item.action}</p>
+    </article>) : <p className="empty">No recommendations yet.</p>}
+  </section>;
+}
+
+function Strategy({ data, openPacing, openJob, time }: { data: PlanningData; openPacing: () => void;
+  openJob: (job: JobLink) => void; time: (value: string | null) => string }) {
   const [search, setSearch] = useState('');
+  const [traced, setTraced] = useState<string | null>(null);
   const [limit, setLimit] = useState(8);
   const [age, setAge] = useState(24);
   const ages = [...new Set(data.histold_experiment.map(item => item.hours))];
@@ -138,7 +262,7 @@ function Strategy({ data, openPacing, openJob }: { data: PlanningData; openPacin
   return <div className="planning-body">
     <div className="planning-split">
       <section className="panel">
-        <div className="panel-head planning-head"><div><h2>Histold topic history</h2><p>Reservations linked to drafts and published videos by job ID.</p></div>
+        <div className="panel-head planning-head"><div><h2>Histold topic history</h2><p>Each idea traced to its run, publications, observations and cost.</p></div>
           <a className="action" href="/?channel=histold#/strategy" target="_blank" rel="noreferrer">Strategy tools <ArrowUpRight size={15}/></a></div>
         <label className="planning-search">Find a topic<input type="search" value={search}
           onChange={event => { setSearch(event.target.value); setLimit(8); }} placeholder="Search title or job ID" /></label>
@@ -146,14 +270,21 @@ function Strategy({ data, openPacing, openJob }: { data: PlanningData; openPacin
           <div><strong>{row.title}</strong><small>{row.format} · {row.date || 'Date unavailable'} · {row.job}</small></div>
           <span className={'status ' + (row.state === 'Published' ? 'good' : 'neutral')}>{row.state}</span>
           <div className="topic-links">
+            {row.trace && <button className="action" aria-expanded={traced === row.job}
+              onClick={() => setTraced(traced === row.job ? null : row.job)}>{traced === row.job ? 'Hide trace' : 'Trace'}</button>}
             {data.job_usage?.jobs.some(job => job.channel === 'histold' && job.id === row.job) &&
               <button className="action" onClick={() => openJob({channel:'histold',id:row.job})}>Job usage</button>}
             {row.url && <a className="rank-link" href={row.url} aria-label={'Open ' + row.title} target="_blank" rel="noreferrer"><ArrowUpRight size={16}/></a>}
           </div>
+          {traced === row.job && row.trace && <TraceView trace={row.trace} time={time}
+            usage={!!data.job_usage?.jobs.some(job => job.channel === 'histold' && job.id === row.job && job.attempts > 0)}
+            openUsage={() => openJob({channel:'histold', id: row.job})} />}
         </article>) : <p className="empty">No matching topic records.</p>}
         {topics.length > limit && <div className="panel-foot"><button onClick={() => setLimit(value => value + 8)}>Show more topics</button></div>}
       </section>
       <div className="planning-body">
+        {data.experiments && <Recommendations items={data.experiments.recommendations} />}
+        {data.experiments && <ExperimentPanel data={data.experiments} time={time} />}
         <section className="panel">
           <div className="panel-head"><div><h2>Histold six-Reel experiment</h2><p>YouTube observations within the experiment’s age window.</p></div></div>
           {ages.length > 0 && <div className="filters" role="group" aria-label="Observation age">
@@ -250,7 +381,7 @@ export function Planning({ data, view, choose, time, openPacing, send, busy, cad
       {tabs.map(tab => <button key={tab.id} aria-pressed={view === tab.id} onClick={() => choose(tab.id)}><tab.icon size={16}/>{tab.label}</button>)}
     </div>
     {view === 'calendar' ? <Calendar data={data.calendar} time={time} send={send} busy={busy} cadenceEvent={cadenceEvent} />
-      : view === 'strategy' ? <Strategy data={data} openPacing={openPacing} openJob={openJob} />
+      : view === 'strategy' ? <Strategy data={data} openPacing={openPacing} openJob={openJob} time={time} />
       : view === 'money' ? <Money data={data} time={time} openJobs={() => choose('jobs')} />
       : data.job_usage ? <JobUsage key={jobFocus ? jobFocus.channel + jobFocus.id : 'all'} data={data.job_usage} focus={jobFocus} time={time} />
       : <p className="panel empty">Waiting for the first job usage snapshot.</p>}
