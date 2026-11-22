@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-22T18:00:29.047537+00:00",
+      "updated": "2026-11-22T19:00:35.590759+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,51 @@
       },
       "videos": [
         {
+          "id": "yd3PWoRjNac",
+          "title": "Yellowstone's Wolf Planners Expected a Third of Wolves to Add Nothing",
+          "description": "In 1994, U.S. officials approved returning gray wolves to Yellowstone after a formal environmental impact statement. The planners expected about a third of released wolves to add nothing to population growth, but the 1995 founders reproduced more, died less, and roamed less than assumed, so planned Canadian transplants were judged unnecessary by 1997. #YellowstoneWolves #WildlifeHistory #EnvironmentalHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "canada wolves",
+            "conservation",
+            "decisions with consequences",
+            "did you know",
+            "education",
+            "environmental history",
+            "everyday origins",
+            "gray wolves",
+            "historical facts",
+            "history shorts",
+            "national park history",
+            "nature history",
+            "us history",
+            "wildlife management",
+            "wolf reintroduction",
+            "world history",
+            "yellowstone"
+          ],
+          "publishedAt": "2026-11-22T18:31:51Z",
+          "thumbnail": "https://i.ytimg.com/vi/yd3PWoRjNac/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
+        {
           "id": "Jc1jzJNlqHc",
           "title": "Railroad Clocks Ran on Standard Time 35 Years Before U.S. Law Did",
           "description": "Before standard time, American cities set their clocks by the sun. At noon on November 18, 1883, railroad clocks across the United States were reset to a new standard time, and several cities heard noon strike twice. Congress did not pass its Standard Time Act until 1918.\n#history #timezones #railroads\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -58,7 +103,7 @@
           ],
           "publishedAt": "2026-11-22T11:20:17Z",
           "thumbnail": "https://i.ytimg.com/vi/Jc1jzJNlqHc/mqdefault.jpg",
-          "views": 8,
+          "views": 9,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -147,7 +192,7 @@
           ],
           "publishedAt": "2026-11-21T23:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/i8oWcZUKfJA/mqdefault.jpg",
-          "views": 19,
+          "views": 22,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -191,7 +236,7 @@
           ],
           "publishedAt": "2026-11-21T18:10:38Z",
           "thumbnail": "https://i.ytimg.com/vi/0xHy2ZVArUg/mqdefault.jpg",
-          "views": 7,
+          "views": 8,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -325,7 +370,7 @@
           ],
           "publishedAt": "2026-11-20T18:12:25Z",
           "thumbnail": "https://i.ytimg.com/vi/UEqFpOBSXdU/mqdefault.jpg",
-          "views": 1,
+          "views": 0,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -337,12 +382,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
@@ -1329,7 +1374,7 @@
           ],
           "publishedAt": "2026-11-15T10:55:29Z",
           "thumbnail": "https://i.ytimg.com/vi/T2PhQx-4814/mqdefault.jpg",
-          "views": 15,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2159,49 +2204,6 @@
           "shares": 0,
           "analytics_views": 4,
           "engaged_views": 2,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-22",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "-cPiNs-0pLA",
-          "title": "Could a Boat Really Climb From the Hudson to Lake Erie?",
-          "description": "A boat leaving the Hudson River could rise all the way to Lake Erie, and the answer lies in a staircase of locks. We look at why the land forced engineers to lift boats step by step, and how a lock works. #ErieCanal #CanalHistory #AmericanHistory",
-          "tags": [
-            "19th century transport",
-            "american history",
-            "canal history",
-            "canal locks",
-            "did you know",
-            "did you know history",
-            "education",
-            "erie canal",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "hudson river",
-            "lake erie",
-            "lock engineering",
-            "new york history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T20:59:56Z",
-          "thumbnail": "https://i.ytimg.com/vi/-cPiNs-0pLA/mqdefault.jpg",
-          "views": 10,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 80.11,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 34.0,
-          "shares": 0,
-          "analytics_views": 10,
-          "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-13",
             "end_date": "2026-11-22",
