@@ -61,6 +61,29 @@ class CinematicMotionTests(unittest.TestCase):
             browser.close()
         self.assertEqual(report['errors'], [])
 
+    def test_portrait_recovery_keeps_facts_out_of_caption_band(self):
+        from playwright.sync_api import sync_playwright
+        from PIL import Image
+        from src.claude_motion import house_scene, inspect_scene
+        from src.portrait_assets import bind_photos
+
+        # The 2026-11-22 failure: portrait stacked over three facts pushed "Thomas Jefferson" into the captions.
+        narration = ('That lost collection covered only law, economics and history. Then, in 1815, '
+                     "Congress chose to buy Thomas Jefferson's personal library.")
+        with tempfile.TemporaryDirectory() as tmp:
+            face = Path(tmp, 'tj.jpg'); Image.new('RGB', (400, 500), (120, 90, 70)).save(face)
+            portrait = {'id': 'thomas_jefferson', 'name': 'Thomas Jefferson', 'years': '1743–1826',
+                        'file': str(face), 'mime': 'image/jpeg'}
+            html, used = bind_photos(house_scene(narration, [], 10.8, [portrait]), [portrait])
+        self.assertEqual(used, ['thomas_jefferson'])
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            for size, landscape in (((540, 960), False), ((960, 540), True)):
+                page = browser.new_page(viewport={'width': size[0], 'height': size[1]})
+                report = inspect_scene(page, prepare_html(html, 2, landscape=landscape), 10.8, 30, [], True)
+                self.assertEqual(report['errors'], [], size)
+            browser.close()
+
     def test_prompt_has_parser_and_safe_area_contract(self):
         prompt = system_prompt(540, 960)
         self.assertIn('540 x 960', prompt)

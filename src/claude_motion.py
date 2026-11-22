@@ -90,6 +90,10 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0, photos:
         for i, chunk in enumerate(chunks))
     placeholders = ''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in maps)
     facts = key_facts(narration) or key_words(narration)
+    from .portrait_assets import mentioned
+    photo = next((p for p in photos if mentioned(p, narration)), None)
+    if photo:  # the portrait's own label already names the person
+        facts = [f for f in facts if f.casefold() != str(photo.get('name', '')).casefold()] or facts
     # Explain with the narration's own dates, numbers and names; maps only establish place.
     cards = ''.join(
         f'<div class="house-fact k-pop" style="--d:{.1 + i * duration / (len(facts) + 1):.3f}s">'
@@ -105,10 +109,12 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0, photos:
     if cards:
         from .icon_assets import DEFAULTS, candidate_icons
         icon = next((n for n in candidate_icons([narration], limit=1) if n not in DEFAULTS), None)
-        from .portrait_assets import mentioned
-        photo = next((p for p in photos if mentioned(p, narration)), None)
         if photo:  # the person being talked about beats any illustration
-            cards = f'<histold-photo id="{photo["id"]}" class="k-pop" style="width:210px"></histold-photo>' + cards
+            # Beside the facts, not above them: a portrait stacked over three fact cards ran past the
+            # caption band (Jefferson, 2026-11-22) and failed the render check.
+            facts_html, _, rule = cards.partition('</div><svg')
+            cards = (f'<div class="house-row"><histold-photo id="{photo["id"]}" class="k-pop" '
+                     f'style="width:170px;flex-shrink:0"></histold-photo>{facts_html}</div></div><svg{rule}')
         elif icon:  # a matched illustration above the facts
             cards = (f'<histold-icon name="{icon}" class="k-pop" style="width:150px;--d:.05s"></histold-icon>'
                      + cards)
@@ -134,7 +140,10 @@ def house_scene(narration: str, maps: list[dict], duration: float = 6.0, photos:
             'animation:house-outline 1.5s linear infinite}'
             '@keyframes house-outline{to{stroke-dashoffset:-56}}'
             '.house-facts{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}'
-            '.house-fact{max-width:460px;overflow-wrap:anywhere}.house-art .k-icon{margin:0 auto 10px}'
+            '.house-fact{max-width:460px;overflow-wrap:anywhere}'
+            '.house-row{display:flex;align-items:center;justify-content:center;gap:18px;text-align:center}'
+            '.house-row .house-facts{flex:1;min-width:0}.house-row .house-fact{max-width:100%}'
+            '.house-row .k-huge{font-size:72px!important}.house-art .k-icon{margin:0 auto 10px}'
             '.house-rail{height:8px;width:100%;background:var(--bone);overflow:hidden;flex-shrink:0}'
             '.house-rail::after{content:"";display:block;width:42%;height:100%;background:var(--accent);'
             'animation:house-progress 2s linear infinite alternate}'
