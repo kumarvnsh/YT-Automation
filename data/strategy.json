@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T15:00:27.831750+00:00",
+  "updated": "2026-11-22T19:00:28.318570+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
         "Why Did One Emperor Dig a Canal Across Half of China?"
       ],
-      "measured_videos": 113
+      "measured_videos": 114
     },
     "facebook": {
       "winners": [
@@ -32,12 +32,12 @@
           "mean_like_rate": 0.003108
         },
         "fb": {
-          "measured_videos": 111,
-          "mean_like_rate": 0.001893
+          "measured_videos": 110,
+          "mean_like_rate": 0.00191
         },
         "ig": {
-          "measured_videos": 124,
-          "mean_like_rate": 0.136786
+          "measured_videos": 123,
+          "mean_like_rate": 0.136477
         }
       },
       "Museum object": {
@@ -77,6 +77,20 @@
           "measured_videos": 1,
           "mean_like_rate": 0.5
         }
+      },
+      "Archive dossier": {
+        "yt": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "fb": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "ig": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.00885
+        }
       }
     },
     "long": {
@@ -88,38 +102,38 @@
       }
     }
   },
-  "videos_scored": 113,
+  "videos_scored": 114,
   "weights": {
     "series": {
-      "school_myths": 0.0673,
-      "mistakes": 0.0683,
-      "almost": 0.0683,
-      "erased": 0.0717,
-      "unsolved": 0.0696,
-      "weird_dark": 0.0717,
-      "photo_story": 0.0752,
-      "spy_gadgets": 0.0752,
-      "animals": 0.0752,
-      "secretly_deadly": 0.0717,
-      "worst_jobs": 0.0752,
-      "forgotten_rules": 0.0717,
-      "behind_legend": 0.0696,
-      "found_by_accident": 0.0696
+      "school_myths": 0.0676,
+      "mistakes": 0.0685,
+      "almost": 0.0685,
+      "erased": 0.0719,
+      "unsolved": 0.0699,
+      "weird_dark": 0.0719,
+      "photo_story": 0.0719,
+      "spy_gadgets": 0.0754,
+      "animals": 0.0754,
+      "secretly_deadly": 0.0719,
+      "worst_jobs": 0.0754,
+      "forgotten_rules": 0.0719,
+      "behind_legend": 0.0699,
+      "found_by_accident": 0.0699
     },
     "region": {
       "india": 0.1131,
-      "africa": 0.1108,
+      "africa": 0.1109,
       "japan": 0.1162,
       "china": 0.116,
       "russia": 0.1047,
       "middle_east": 0.1074,
       "europe": 0.1175,
       "americas": 0.0959,
-      "asia_pacific": 0.1183
+      "asia_pacific": 0.1182
     },
     "duration_variant": {
-      "concise": 0.4976,
-      "story": 0.5024
+      "concise": 0.4969,
+      "story": 0.5031
     }
   },
   "stats": {
@@ -149,8 +163,8 @@
         "mean_score": 0.434
       },
       "photo_story": {
-        "n": 0,
-        "mean_score": null
+        "n": 1,
+        "mean_score": 0.434
       },
       "spy_gadgets": {
         "n": 0,
@@ -184,7 +198,7 @@
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.505
+        "mean_score": 0.506
       },
       "africa": {
         "n": 15,
@@ -196,7 +210,7 @@
       },
       "china": {
         "n": 12,
-        "mean_score": 0.517
+        "mean_score": 0.518
       },
       "russia": {
         "n": 12,
@@ -204,11 +218,11 @@
       },
       "middle_east": {
         "n": 11,
-        "mean_score": 0.482
+        "mean_score": 0.483
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.523
+        "mean_score": 0.524
       },
       "americas": {
         "n": 12,
@@ -216,17 +230,17 @@
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.526
+        "mean_score": 0.527
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 61,
+        "n": 62,
         "mean_score": 0.498
       },
       "story": {
         "n": 52,
-        "mean_score": 0.502
+        "mean_score": 0.503
       }
     }
   },
@@ -238,11 +252,11 @@
     "Why Did One Emperor Dig a Canal Across Half of China?"
   ],
   "losers": [
-    "Minnesota's Lone Surviving Agency Building Held Food, and a Broken Promise",
     "Were the Pyramids of Giza Really Built by Enslaved People?",
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
     "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
-    "The Panama Canal Builders Bought Wire Screens Against Mosquitoes"
+    "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
+    "Apollo 13's Square Air Canisters Did Not Fit the Round Openings"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -269,12 +283,6 @@
       "platform": "yt",
       "views": 3,
       "reason": "Viewing percentage is 0.0% with 3 recorded views."
-    },
-    {
-      "video_id": "Chyn8YLkKO0",
-      "platform": "yt",
-      "views": 9,
-      "reason": "Viewing percentage is 0.0% with 5 recorded views."
     },
     {
       "video_id": "wUYjpa6ICeU",
