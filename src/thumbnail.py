@@ -65,21 +65,26 @@ def build_prompt(title: str, story: str, hook: tuple[str, str], concept: str) ->
 def _hook(cfg: Config, title: str, story: str) -> tuple[str, str]:
     """2-4 word curiosity hook split into (white line, yellow punch line)."""
     try:
-        import anthropic
-
-        msg = studio_call('anthropic', 'thumbnail', None, anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY")).messages.create,
-            model=cfg.get("thumbnails.judge_model", "claude-sonnet-5-5"),
-            max_tokens=2000,
-            output_config={"effort": "low"},
-            messages=[{"role": "user", "content": (
-                f"History Short titled \"{title}\". Story: {story}\n\n"
-                "Write a 2-4 word ALL-CAPS thumbnail hook, a punchy true claim that "
-                "creates curiosity (style: COFFEE WAS | BANNED!). Only claims the "
-                "story supports. Reply with exactly: LINE1 | LINE2 (LINE2 = the "
-                "punch word(s), may end with ! or ?)."
-            )}],
+        prompt = (
+            f"History Short titled \"{title}\". Story: {story}\n\n"
+            "Write a 2-4 word ALL-CAPS thumbnail hook, a punchy true claim that "
+            "creates curiosity (style: COFFEE WAS | BANNED!). Only claims the "
+            "story supports. Reply with exactly: LINE1 | LINE2 (LINE2 = the "
+            "punch word(s), may end with ! or ?)."
         )
-        text = "".join(b.text for b in msg.content if b.type == "text").strip()
+        from . import plan_ai
+        if plan_ai.enabled(cfg):
+            text = plan_ai.complete(cfg, 'thumbnail', prompt, json_reply=False)[0].strip()
+        else:
+            import anthropic
+
+            msg = studio_call('anthropic', 'thumbnail', None, anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY")).messages.create,
+                model=cfg.get("thumbnails.judge_model", "claude-sonnet-5-5"),
+                max_tokens=2000,
+                output_config={"effort": "low"},
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = "".join(b.text for b in msg.content if b.type == "text").strip()
         l1, l2 = (x.strip().upper() for x in text.splitlines()[-1].split("|", 1))
         if l1 and l2 and len((l1 + " " + l2).split()) <= 5:
             return l1, l2

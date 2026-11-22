@@ -6,6 +6,7 @@ import { CommandHistory, HistoldActions, HistoldApprovals, HostActions, LiveCont
 import { AssistantPanel, Calendar, ExperimentPanel, JobUsage, Money, Recommendations, ShotsnipCadence, SixReelExperiment,
   TopicList, TopicPage, type JobLink, type PlanningData } from './Planning';
 import { ChannelInsights } from './Insights';
+import { HistoldLiveControls, HistoldLiveOperations, PlanLimits } from './HistoldLive';
 import { BotsPage } from './Bots';
 import { ClipsPage } from './Media';
 import { AiSettingsPanel, AskShotsnip, CommentaryControl, HistoldStrategyControls, WatchWorker } from './Owner';
@@ -22,6 +23,7 @@ export type Snapshot = {
   analytics?: StudioAnalytics;
   pacing_experiment?: Pacing | null;
   video_insights?: Partial<Record<'histold' | 'shotsnip', import('./VideoInsights').ChannelVideoInsights | null>> | null;
+  histold_live?: import('./HistoldLive').HistoldLiveData | null;
   phase3?: PlanningData;
   shotsnip_workspace?: ShotsnipWorkspace;
   controls_enabled: boolean;
@@ -147,6 +149,18 @@ export function ShotsnipPage({ snapshot, time, send, busy, sub }: PageProps) {
 
 export function HistoldPage({ snapshot, time, send, busy, sub, rest }: PageProps) {
   const phase3 = snapshot.phase3;
+  if (sub === 'live') {
+    const live = snapshot.histold_live;
+    if (!live) return <Waiting what="Histold live operations" />;
+    const nextSlot = phase3?.calendar.events.filter(event => event.channel === 'histold' && event.state === 'Planned'
+      && Date.parse(event.at) > Date.now()).map(event => event.at).sort()[0] ?? null;
+    return <div className="page-stack">
+      <HistoldLiveControls data={live} busy={busy} send={send} time={time}
+        recent={latest(snapshot.commands, 'histold_local_mode', 'histold_local_run', 'histold_local_retry')} />
+      <HistoldLiveOperations data={live} nextSlot={nextSlot} time={time} />
+      <PlanLimits data={live} time={time} />
+    </div>;
+  }
   if (sub === 'approvals') return <div className="page-split">
     <HistoldApprovals approvals={snapshot.approvals} busy={busy} time={time} send={send} recent={latest(snapshot.commands, 'draft_preview', 'story_approve')} />
     {send && <HistoldActions busy={busy} send={send} />}

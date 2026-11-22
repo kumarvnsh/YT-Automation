@@ -85,6 +85,18 @@ def generate_plan(cfg,st,duration):
  from .script_generator import _extract_json
  model=cfg.get('video.three_d.model',cfg.get('video.claude_motion.model','claude-haiku-5-5'))
  context=dict(title=st['script']['title'],duration=duration,narration=st['script']['segments'],timing=[dict(start=x['start'],end=x['end'],words=x.get('words',[])) for x in st.get('storyboard',{}).get('scenes',[])])
+ from . import plan_ai
+ if plan_ai.enabled(cfg):
+  # Owner's plans (Claude Code / Codex) instead of paid API credits.
+  prompt=json.dumps(context);usage={'calls':[]}
+  for attempt in range(2):
+   text,provider=plan_ai.complete(cfg,'scenes',prompt,system=SYSTEM)
+   usage['calls'].append(dict(provider=provider))
+   try:
+    return validate_plan(_extract_json(text),duration),usage
+   except (ValueError,TypeError,KeyError) as exc:
+    if attempt:raise
+    prompt=json.dumps(context)+f'\n\nYour previous plan failed validation: {exc}. Return the complete corrected JSON plan only, no commentary.'
  client=anthropic.Anthropic(api_key=env('ANTHROPIC_API_KEY'),timeout=600,max_retries=1)
  messages=[dict(role='user',content=json.dumps(context))];usage={}
  for attempt in range(2):

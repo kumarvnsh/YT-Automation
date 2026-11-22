@@ -36,7 +36,7 @@ export type CommandEvent = { id?: string; action: string; status: string; messag
 export type Command = Record<string, string | number | boolean | string[]>;
 export type Send = (command: Command) => void;
 type Time = (value: string | null) => string;
-type Pending = { title: string; detail: string; command: Command; story?: boolean };
+export type Pending = { title: string; detail: string; command: Command; story?: boolean };
 
 export const statuses: Record<string, string> = {
   queued: 'Queued', queued_publish: 'Queued to publish', running: 'Processing', ready: 'Ready for review',
@@ -55,7 +55,7 @@ function destinationText(values: string[]) {
 }
 
 /** One review step before any change; the page never sends a command on the first tap. */
-function ConfirmPanel({ pending, busy, send, close }: { pending: Pending; busy: boolean; send: Send; close: () => void }) {
+export function ConfirmPanel({ pending, busy, send, close }: { pending: Pending; busy: boolean; send: Send; close: () => void }) {
   const [privacy, setPrivacy] = useState('private');
   return <section className="confirm-panel" aria-label="Review request" role="dialog">
     <div><strong>{pending.title}</strong><p>{pending.detail}</p></div>

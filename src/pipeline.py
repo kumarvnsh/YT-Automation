@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import copy
+import os
 from datetime import date, datetime
 from pathlib import Path
 
@@ -63,11 +64,16 @@ def new_stage(
     privacy: str | None = None,
 ) -> Path:
     # Scheduled jobs are serialized; local callers also need atomic slot reservation.
-    import fcntl
     root = _out_root(cfg)
     root.mkdir(parents=True, exist_ok=True)
     with (root / '.stage-creation.lock').open('a') as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX)
+        if os.name == 'nt':  # the laptop runner (Windows) has no fcntl
+            import msvcrt
+            lock.seek(0)
+            msvcrt.locking(lock.fileno(), msvcrt.LK_LOCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(lock, fcntl.LOCK_EX)
         return _new_stage(cfg, fmt, no_upload=no_upload, dry_run=dry_run, topic=topic, privacy=privacy)
 
 

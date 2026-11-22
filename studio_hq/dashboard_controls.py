@@ -36,6 +36,7 @@ LIVE_ACTIONS = ('live_run_now', 'live_stop_after_stage', 'shotsnip_commentary', 
 QUEUE_ACTIONS = ('move_earlier', 'move_later', 'prioritize', 'schedule')
 HISTOLD_OWNER_ACTIONS = ('histold_strategy', 'histold_research', 'ai_settings')
 BOT_ACTIONS = ('bot_action', 'draft_preview')
+from .histold_live import ACTIONS as HISTOLD_LIVE_ACTIONS
 COMMENTARY_MODES = ('off', 'intro', 'full')
 ACTIVE = {'queued', 'queued_publish', 'running', 'publishing', 'ready', 'partial', 'attention'}
 
@@ -182,6 +183,9 @@ def controls_db(config):
 def queue_control(config, body):
     action = body['action']
     target = ''
+    if action in HISTOLD_LIVE_ACTIONS:
+        from .histold_live import check
+        target = check(body)
     if action == 'scheduler':
         if type(body.get('enabled')) is not bool or type(body.get('expected')) is not bool:
             raise ValueError('Refresh the scheduler status before changing it.')
@@ -353,10 +357,12 @@ def route(config, body):
         raise ValueError('Missing request ID.')
     if body.get('channel') != 'shotsnip' and body.get('action') in ('create_preview','publish','cancel','retry','scheduler','scheduler_cadence') + SHOTSNIP_OWNER_ACTIONS + LIVE_ACTIONS + QUEUE_ACTIONS:
         raise ValueError('This queue belongs to Shotsnip.')
+    if body.get('channel') != 'histold' and body.get('action') in HISTOLD_LIVE_ACTIONS:
+        raise ValueError('These controls belong to Histold.')
     action = body.get('action')
     if action in ('create_preview', 'publish', 'cancel', 'retry') + QUEUE_ACTIONS:
         return manual_command(config, body)
-    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS + ASSISTANT_ACTIONS + LIVE_ACTIONS + HISTOLD_OWNER_ACTIONS + BOT_ACTIONS:
+    if action in ('scheduler', 'scheduler_cadence', 'archive_now', 'restore', 'strategist', 'story_draft', 'story_approve') + SHOTSNIP_OWNER_ACTIONS + ASSISTANT_ACTIONS + LIVE_ACTIONS + HISTOLD_OWNER_ACTIONS + BOT_ACTIONS + HISTOLD_LIVE_ACTIONS:
         return queue_control(config, body)
     raise ValueError('Unsupported action.')
 
@@ -562,6 +568,9 @@ def perform(config, body):
         return agent_change(config, body)
     if action in LIVE_ACTIONS:
         return live_change(config, body)
+    if action in HISTOLD_LIVE_ACTIONS:
+        from .histold_live import perform as histold_live_perform
+        return histold_live_perform(config, body)
     if action == 'histold_strategy':
         reply = owner_request(config, '/api/action', {'name': body['name'], 'args': body['args']}, timeout=60)
         return str(reply.get('message') or 'Strategy setting saved.')[:300]
@@ -680,7 +689,7 @@ def maintenance_tick(config):
                 except ValueError as exc:
                     status, message = 'rejected', str(exc)
                 except (OSError, RuntimeError, TimeoutError, KeyError, subprocess.TimeoutExpired):
-                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft','assistant_apply') + SHOTSNIP_OWNER_ACTIONS + LIVE_ACTIONS + HISTOLD_OWNER_ACTIONS + BOT_ACTIONS else 'failed'
+                    status = 'review' if body['action'] in ('scheduler','scheduler_cadence','strategist','story_approve','story_draft','assistant_apply') + SHOTSNIP_OWNER_ACTIONS + LIVE_ACTIONS + HISTOLD_OWNER_ACTIONS + BOT_ACTIONS + HISTOLD_LIVE_ACTIONS else 'failed'
                     message = 'The action could not be confirmed. Check the existing worker or archive report.'
                 with db:
                     db.execute('UPDATE commands SET status=?,message=?,updated=? WHERE id=?',

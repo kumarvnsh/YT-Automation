@@ -51,6 +51,8 @@ class Notifier:
 
     def send(self, text: str) -> bool:
         """Send a raw WhatsApp message. Never raises."""
+        if not self.enabled:
+            return False  # WhatsApp retired 2026-11-22; owner updates go to the Telegram bot
         if not self._configured():
             missing = [
                 n for n, v in (

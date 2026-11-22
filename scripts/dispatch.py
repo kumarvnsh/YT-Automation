@@ -57,6 +57,70 @@ def run_workflow(workflow: str, fields: dict, dry_run: bool) -> bool:
     return out.returncode == 0
 
 
+SWITCH_FILE = Path(os.environ.get('HISTOLD_HOME', r'D:\histold')) / 'control' / 'local-production.json'
+
+
+def local_enabled(local: dict) -> bool:
+    """Studio HQ's switch (Histold > Live) wins over config.yaml, so it applies without a git push."""
+    try:
+        switch = json.loads(SWITCH_FILE.read_text(encoding='utf-8'))
+        if isinstance(switch, dict) and isinstance(switch.get('enabled'), bool):
+            return switch['enabled']
+    except (OSError, ValueError):
+        pass
+    return bool(local.get('enabled'))
+
+
+def local_publish(fmt: str, slot: str, dry_run: bool) -> bool:
+    """Start scripts/run_local_publish.py when local production is on; False means use the cloud."""
+    local = load_config().get('local_production', {}) or {}
+    if not local_enabled(local):
+        return False
+    python = Path(local.get('python') or r'D:\YT-Automation-env\histold-local\Scripts\python.exe')
+    if not python.is_file():
+        print(f'  publish: local production is on but {python} is missing; using the cloud')
+        return False
+    cmd = [str(python), str(ROOT / 'scripts' / 'run_local_publish.py'), '--format', fmt, '--slot', slot]
+    if dry_run:
+        print('  would run locally: ' + ' '.join(cmd))
+        return True
+    flags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else 0
+    subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     creationflags=flags)
+    print(f'  publish: started locally ({fmt}, slot {slot})')
+    return True
+
+
+RETRY_FILE = Path(os.environ.get('HISTOLD_HOME', r'D:\histold')) / 'control' / 'local-publish-retry.json'
+
+
+def retry_waiting_video(dry_run: bool, now: float | None = None) -> bool:
+    """A video that waited for the Claude/Codex limits to reset: start it once the reset has passed."""
+    try:
+        waiting = json.loads(RETRY_FILE.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return False
+    if not isinstance(waiting, dict) or waiting.get('format') not in ('short', 'long'):
+        return False
+    if (now or datetime.now(timezone.utc).timestamp()) < float(waiting.get('retry_at') or 0):
+        print(f"  waiting video: {waiting['format']} retries after "
+              f"{datetime.fromtimestamp(float(waiting['retry_at'])):%H:%M} (plans resetting)")
+        return False
+    local = load_config().get('local_production', {}) or {}
+    python = Path(local.get('python') or r'D:\YT-Automation-env\histold-local\Scripts\python.exe')
+    if not local_enabled(local) or not python.is_file():
+        return False
+    cmd = [str(python), str(ROOT / 'scripts' / 'run_local_publish.py'), '--format', waiting['format'], '--retry']
+    if dry_run:
+        print('  would retry locally: ' + ' '.join(cmd))
+        return True
+    flags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else 0
+    subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     creationflags=flags)
+    print(f"  waiting video: {waiting['format']} started on the plans again")
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--dry-run', action='store_true', help='print what would be dispatched')
@@ -79,12 +143,16 @@ def main() -> int:
     elif fmt:
         if state.get('publish') == slot:
             print('  publish: already dispatched this hour')
+        elif local_publish(fmt, slot, args.dry_run):
+            # Made on this laptop with the owner's plans; it falls back to the paid cloud run itself.
+            state['publish'] = slot
         elif run_workflow('publish.yml', {'format': fmt, 'scheduled': 'true', 'dispatch_slot': slot}, args.dry_run):
             state['publish'] = slot
         else:
             ok = False
     else:
         print('  publish: not a publish hour')
+    retry_waiting_video(args.dry_run)
     if not args.no_analytics:
         if state.get('analytics') == slot:
             print('  analytics: already dispatched this hour')

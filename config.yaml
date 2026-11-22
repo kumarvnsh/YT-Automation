@@ -379,8 +379,31 @@ meta:
     enabled: true
     hashtags: ["#WorldHistory", "#Histold"]
 
+# Make Histold videos on the laptop with the owner's plans instead of paid API credits.
+# scripts/dispatch.py starts scripts/run_local_publish.py at publish hours when enabled; when the
+# plans cannot make a video (limits, missing setup, a failed step) the slot goes to the paid
+# cloud workflow automatically. Set enabled: false to go back to paid cloud runs entirely.
+local_production:
+  enabled: true                # on since 22 Nov 2026; Studio HQ > Histold > Live switches it (control/local-production.json wins)
+  python: 'D:\YT-Automation-env\histold-local\Scripts\python.exe'
+  ffmpeg_dir: 'D:\Clips-Kitty\vendor\ffmpeg'
+  repository: "kumarvnsh/YT-Automation"
+
+# Provider order for local runs (src/plan_ai.py). Cloud runs never use this.
+local_ai:
+  order: [claude, codex, qwen]
+  qwen_for: [assess, thumbnail, title]   # Qwen never researches (no web) or writes scene code
+  qwen_model: "qwen3:8b"
+  claude_model: ""             # "" = your plan's default model; e.g. "sonnet" or "opus"
+  claude_model_for: {scenes: sonnet, scene_repair: sonnet}   # faster and lighter on the plan for scene code
+  parallel_scenes: 3           # scene batches written at the same time
+  codex_model: ""
+  claude_max_output_tokens: 32000
+  claude: {per_5h: 60, per_week: 600}    # Histold's share of each plan; the dashboard assistant has its own
+  codex: {per_5h: 60, per_week: 600}
+
 notifications:
-  enabled: false               # WhatsApp retired 2026-11-22; owner updates go to the Telegram bot
+  enabled: false              # WhatsApp retired 2026-11-22; owner updates go to the Telegram bot
   channel: "openwa"            # currently only OpenWA is implemented
   notify_on_start: false       # ping when a daily run begins
   notify_on_success: true      # ping when a video uploads (or renders, if no-upload)

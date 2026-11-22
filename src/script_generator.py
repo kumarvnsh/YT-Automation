@@ -613,6 +613,10 @@ def _call_openai(cfg: Config, prompt: str) -> str:
 
 
 def _provider_call(cfg: Config, provider: str, prompt: str) -> str:
+    if provider == "plan":
+        # Owner's plans (Claude Code / Codex, then Qwen) instead of paid API credits.
+        from . import plan_ai
+        return plan_ai.complete(cfg, "script", prompt, system=_SYSTEM)[0]
     if provider == "anthropic":
         return _call_anthropic(cfg, prompt)
     if provider == "anthropic_fallback":
@@ -643,6 +647,11 @@ def _next_round_robin_provider(cfg: Config) -> str:
 
 
 def _provider_sequence(cfg: Config) -> list[str]:
+    from . import plan_ai
+    if plan_ai.enabled(cfg):
+        # Local runs have no paid API key; when the plans fail the step fails and
+        # the local runner hands the slot to the paid cloud workflow instead.
+        return ["plan"]
     legacy = cfg.get("script.provider", "anthropic")
     routing = cfg.get("script.routing")
     if not routing:

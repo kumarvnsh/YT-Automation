@@ -13,6 +13,7 @@ import sqlite3
 
 from .archive import atomic_json, digest, read_json, stamp, within
 from .video_insights import summary as video_summary
+from .histold_live import snapshot as histold_live_snapshot
 from .dashboard_analytics import analytics, pacing_experiment
 from .dashboard_controls import overview
 from .dashboard_phase3 import phase3, shotsnip_workspace
@@ -321,6 +322,7 @@ def snapshot(config, previews=None, *, include_finance=False, media=None):
         analytics=analytics(roots, source, rows),
         pacing_experiment=pacing_experiment(roots['shotsnip']),
         video_insights=video_summary(config) if include_finance else None,
+        histold_live=histold_live_snapshot(config) if include_finance else None,
         phase3=phase3(config, source, roots['shotsnip'], rows, approvals, now, include_finance=include_finance, media=media),
         shotsnip_workspace=shotsnip_workspace(roots['shotsnip']),
         activity=sorted(visible_rows, key=lambda item: item['at'] or '', reverse=True), archives=library[:250],

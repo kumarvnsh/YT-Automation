@@ -430,6 +430,21 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
             selected = range(start, min(start + 3, len(segs)))
             scenes.update(_request_scenes(cfg, title, segs, windows, w, h, selected))
         return scenes
+    from . import plan_ai
+    if indices is None and plan_ai.enabled(cfg) and len(segs) > 2:
+        # Plan replies are capped well below the API's, so ask for two scenes at a time, several
+        # batches at once. Each worker gets a copy of the run's context so usage still reaches Studio HQ.
+        import contextvars
+        from concurrent.futures import ThreadPoolExecutor
+        batches = [range(start, min(start + 2, len(segs))) for start in range(0, len(segs), 2)]
+        workers = max(1, min(len(batches), int(cfg.get('local_ai.parallel_scenes', 3))))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = [pool.submit(contextvars.copy_context().run, _request_scenes, cfg, title, segs, windows, w, h, batch)
+                       for batch in batches]
+            scenes = {}
+            for future in futures:
+                scenes.update(future.result())
+        return scenes
     requested = list(range(len(segs)) if indices is None else indices)
     lines = [f"Video title: {title}", ""]
     if indices is not None:
@@ -491,13 +506,29 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
             f"Narration: {seg.narration.strip()}\n"
             f"Visual keywords: {', '.join(seg.keywords[:4])}\n"
         )
-    # Writing every scene can take well over the SDK's 10-min default, with long
-    # quiet stretches while the model thinks; summarized thinking keeps bytes flowing.
-    client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), timeout=1800, max_retries=1)
     system = _SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7), w_text=w - 72, example=_EXAMPLE.strip())
     if cfg.get('video.claude_motion.style') == 'cinematic_2d':
         from .cinematic_motion import system_prompt
         system = system_prompt(w, h, design)
+    from . import plan_ai
+    if plan_ai.enabled(cfg):
+        # Owner's plans (Claude Code / Codex) instead of paid API credits.
+        text, _ = plan_ai.complete(cfg, 'scenes', "\n".join(lines), system=system, json_reply=False)
+        scenes = {i: html for i, html in parse_scenes(text, len(segs)).items() if i in requested}
+        print(f"  plan scenes: {len(scenes)}/{len(requested)} requested scenes returned")
+        for index in sorted(set(requested) - scenes.keys()):
+            request = "\n".join(lines) + f"\nReturn ONLY these missing zero-based scene IDs: {[index]}. Return complete HTML documents, not a continuation of partial HTML."
+            recovered = {int(i): html for i, html in _SCENE_RE.findall(
+                plan_ai.complete(cfg, 'scenes', request, system=system, json_reply=False)[0])}
+            if index not in recovered and len(recovered) == 1:
+                recovered = {index: next(iter(recovered.values()))}  # one scene asked, one returned: numbering differs
+            if index not in recovered:
+                raise RuntimeError(f"Scene {index} generation incomplete on the owner's plans")
+            scenes[index] = recovered[index]
+        return scenes
+    # Writing every scene can take well over the SDK's 10-min default, with long
+    # quiet stretches while the model thinks; summarized thinking keeps bytes flowing.
+    client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), timeout=1800, max_retries=1)
     with studio_stream('anthropic', 'motion_generation', None, client.beta.messages.stream,
         model=cfg.get("video.claude_motion.model", "claude-sonnet-5-5"),
         max_tokens=int(cfg.get("video.claude_motion.max_tokens", 30000)),
@@ -631,11 +662,17 @@ def _repair_scenes(cfg: Config, raw: dict[int, str], issues: dict[int, list[str]
     for i, probs in issues.items():
         parts.append(f'Scene {i} problems:\n- ' + "\n- ".join(probs)
                      + f'\n<scene index="{i}">\n{raw[i]}\n</scene>\n')
-    client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), max_retries=1)
     repair_system = _REPAIR_SYSTEM.format(w=w, h=h, cap_y=int(h * 0.7))
     if cfg.get("video.claude_motion.style") == "cinematic_2d":
         from .cinematic_motion import system_prompt
         repair_system = system_prompt(w, h, cfg.get('production.design')) + "\nRepair the supplied scenes using their measured errors. Preserve content, native timing and authored cinematic artwork. Return every supplied complete scene.\n"
+    from . import plan_ai
+    if plan_ai.enabled(cfg):
+        text, _ = plan_ai.complete(cfg, 'scene_repair', "\n".join(parts), system=repair_system, json_reply=False)
+        fixed = {int(i): html for i, html in _SCENE_RE.findall(text) if int(i) in issues}
+        print(f"  plan scene repair: {len(fixed)}/{len(issues)} scenes returned")
+        return fixed
+    client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"), max_retries=1)
     msg = studio_call('anthropic', 'motion_repair', None, client.messages.create,
         model=cfg.get("video.claude_motion.repair_model", "claude-haiku-5-5"),
         max_tokens=16000,
@@ -749,7 +786,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
         if cinematic:
-            raise RuntimeError('Cinematic 2D scene generation failed; refusing old-style fallback') from exc
+            raise RuntimeError(f'Cinematic 2D scene generation failed ({str(exc)[:160]}); refusing old-style fallback') from exc
         recovery = 'local house templates' if production else 'stock'
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
