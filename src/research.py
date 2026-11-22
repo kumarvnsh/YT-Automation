@@ -366,7 +366,8 @@ def _ipv4_get(url, **kwargs):
         connection.allowed_gai_family = original
 
 
-def _fetch_page(cfg, url):
+def _fetch_page(cfg, url, limit=24000):
+    """`limit` caps the text kept for prompts; None keeps the whole page (exact-quote checks)."""
     for _ in range(4):
         if not _authority(cfg, url):
             raise ValueError('Direct evidence retrieval requires an approved HTTPS authority')
@@ -393,7 +394,7 @@ def _fetch_page(cfg, url):
                 text = ' '.join(parser.parts)
             if len(text.strip()) < 200:
                 raise ValueError('Evidence page returned insufficient readable text')
-            return {'type': 'retrieved_page', 'url': url, 'cited_text': text[:24000],
+            return {'type': 'retrieved_page', 'url': url, 'cited_text': text[:limit] if limit else text,
                     'retrieved_at': _now(), 'response_sha256': hashlib.sha256(raw).hexdigest()}
     raise ValueError('Evidence page exceeded the redirect limit')
 

@@ -17,11 +17,12 @@ from .archive import atomic_json, read_json
 from .histold_live import clone, configured, control
 from .media import media_id
 
-ACTIONS = ('fact_post_decide', 'fact_post_make', 'fact_post_schedule')
+ACTIONS = ('fact_post_decide', 'fact_post_make', 'fact_post_schedule', 'fact_post_remove')
 POST_ID = re.compile(r'\d{8}_\d{6}_[0-9a-f]{6}')
 STATUS = {'making': 'Being made', 'awaiting_approval': 'Waiting for your OK', 'approved': 'Approved', 'posting': 'Posting',
           'posted': 'Posted', 'partly_posted': 'Partly posted', 'skipped': 'Skipped', 'failed': 'Failed',
-          'waiting_plans': 'Waiting for plan limits', 'replaced': 'Remade'}
+          'waiting_plans': 'Waiting for plan limits', 'replaced': 'Remade', 'removed': 'Removed'}
+HIDDEN = ('replaced', 'removed')  # kept in the queue for history, never listed
 
 
 def folder(config) -> Path:
@@ -59,7 +60,7 @@ def snapshot(config, media: dict | None) -> dict | None:
         return None
     rows = []
     for row in queue(config)[-40:][::-1]:
-        if not isinstance(row, dict) or not POST_ID.fullmatch(str(row.get('id'))) or row.get('status') == 'replaced':
+        if not isinstance(row, dict) or not POST_ID.fullmatch(str(row.get('id'))) or row.get('status') in HIDDEN:
             continue
         card = Path(str(row.get('card') or ''))
         image = None
@@ -91,6 +92,10 @@ def check(body) -> str:
         return str(body['enabled'])
     if action == 'fact_post_make':
         return 'now'
+    if action == 'fact_post_remove':
+        if body.get('id') != 'failed' and not POST_ID.fullmatch(str(body.get('id'))):
+            raise ValueError('Choose a failed post to remove.')
+        return str(body['id'])
     raise ValueError('Unknown fact post action.')
 
 
@@ -117,6 +122,17 @@ def perform(config, body) -> str:
         _runner(config, ['--make'])
         return 'Making a fact post now. It appears here, and in Telegram for your OK, in about 5 minutes.'
     rows = queue(config)
+    if action == 'fact_post_remove':
+        # Only failed posts: a removed post is hidden from the list but stays in the queue file.
+        targets = [r for r in rows if isinstance(r, dict) and r.get('status') == 'failed'
+                   and body['id'] in ('failed', r.get('id'))]
+        if not targets:
+            raise ValueError('There is no failed post to remove.')
+        stamp = datetime.now(timezone.utc).isoformat()
+        for row in targets:
+            row.update(status='removed', removed_at=stamp, updated=stamp)
+        atomic_json(folder(config) / 'queue.json', rows)
+        return 'Removed the failed post.' if len(targets) == 1 else f'Removed {len(targets)} failed posts.'
     entry = next((r for r in rows if r.get('id') == body['id']), None)
     if not entry:
         raise ValueError('That fact post no longer exists.')

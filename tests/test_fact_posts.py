@@ -52,7 +52,7 @@ class Verification(unittest.TestCase):
             {'url': 'https://www.si.edu/about/history', 'publisher': 'Smithsonian', 'excerpt': 'left his estate to the United States to found an establishment'},
             {'url': 'https://www.loc.gov/item/x', 'publisher': 'Library of Congress', 'excerpt': 'established in 1846 with funds from James Smithson, a British scientist'},
             {'url': 'https://example.com/blog', 'publisher': 'Blog', 'excerpt': 'established in 1846 with funds from James Smithson'}]}
-        fetched = lambda cfg, url: {'url': url, 'cited_text': PAGE}
+        fetched = lambda cfg, url, **kw: {'url': url, 'cited_text': PAGE}
         with mock.patch('src.research._fetch_page', side_effect=fetched):
             verified = fp.verify_sources(CFG, fact)
         self.assertEqual({s['institution'] for s in verified}, {'si.edu', 'loc.gov'})
@@ -63,7 +63,7 @@ class Verification(unittest.TestCase):
             {'url': 'https://www.si.edu/b', 'excerpt': 'established in 1846 with funds from James Smithson'},
             {'url': 'https://www.loc.gov/c', 'excerpt': 'Smithson personally designed the castle building himself in 1840'}]}
         reasons = []
-        with mock.patch('src.research._fetch_page', side_effect=lambda cfg, url: {'url': url, 'cited_text': PAGE}):
+        with mock.patch('src.research._fetch_page', side_effect=lambda cfg, url, **kw: {'url': url, 'cited_text': PAGE}):
             self.assertEqual(fp.verify_sources(CFG, fact, reasons), [])
         self.assertIn('www.loc.gov: quote not found on the page', reasons)
 
@@ -72,7 +72,7 @@ class Verification(unittest.TestCase):
             {'url': 'https://www.si.edu/a', 'excerpt': 'left his estate to the United States to found an establishment'},
             {'url': 'https://www.loc.gov/b', 'excerpt': 'established in 1846 with funds from James Smithson'}]}
 
-        def fetch(cfg, url):
+        def fetch(cfg, url, **kw):
             if 'loc.gov' in url:
                 raise ConnectionError('reset')
             return {'url': url, 'cited_text': PAGE}
@@ -81,6 +81,33 @@ class Verification(unittest.TestCase):
             with self.assertRaises(RuntimeError) as caught:
                 fp.find_fact(CFG, [], attempts=1)
         self.assertIn('www.loc.gov: page not fetched (ConnectionError)', str(caught.exception))
+
+    def test_overstated_fact_is_reworded_before_being_dropped(self):
+        fact = {'headline': 'The richest man funded it all', 'fact': 'Smithson gave everything.', 'sources': [
+            {'url': 'https://www.si.edu/a', 'publisher': 'Smithsonian', 'excerpt': 'left his estate to the United States to found an establishment'},
+            {'url': 'https://www.loc.gov/b', 'publisher': 'LOC', 'excerpt': 'established in 1846 with funds from James Smithson'}]}
+        reworded = json.dumps({'headline': 'A British scientist funded the Smithsonian',
+                               'fact': 'James Smithson left his estate to the United States.', 'caption': 'C'})
+        checks = iter([['"richest" is not in the excerpts'], []])
+        with mock.patch.object(fp, 'research_fact', return_value=fact), \
+                mock.patch('src.research._fetch_page', side_effect=lambda cfg, url, **kw: {'url': url, 'cited_text': PAGE}), \
+                mock.patch.object(fp, 'check_claims', side_effect=lambda *a: next(checks)), \
+                mock.patch.object(fp.plan_ai, 'complete', return_value=(reworded, 'claude')) as complete:
+            found, sources = fp.find_fact(CFG, [], attempts=1)
+        self.assertEqual(found['headline'], 'A British scientist funded the Smithsonian')
+        self.assertEqual(found['fact'], 'James Smithson left his estate to the United States.')
+        self.assertEqual(len(sources), 2)
+        self.assertIn('richest', complete.call_args[0][2])
+
+    def test_quote_is_checked_against_the_whole_page(self):
+        long_page = 'filler words here. ' * 3000 + PAGE
+        fetched = []
+        fact = {'sources': [{'url': 'https://www.si.edu/a', 'excerpt': 'left his estate to the United States to found an establishment'}]}
+        with mock.patch('src.research._fetch_page', side_effect=lambda cfg, url, **kw: fetched.append(kw) or {'url': url, 'cited_text': long_page}):
+            reasons = []
+            fp.verify_sources(CFG, fact, reasons)
+        self.assertEqual(fetched, [{'limit': None}])
+        self.assertNotIn('www.si.edu: quote not found on the page', reasons)
 
     def test_source_fetch_uses_ipv4_and_retries_a_dropped_connection(self):
         import socket
@@ -126,6 +153,28 @@ class StudioView(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     view.check(body)
             self.assertIn('Skipped', view.perform(config, {'action': 'fact_post_decide', 'id': '20261122_124801_5b2615', 'choice': 'skip'}))
+
+    def test_failed_posts_can_be_removed_from_the_list(self):
+        from studio_hq import fact_posts_view as view
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            folder = root / 'private' / 'drafts' / 'fact-posts'
+            folder.mkdir(parents=True)
+            ids = ['20261122_100000_aaaaaa', '20261122_110000_bbbbbb', '20261122_120000_cccccc']
+            (folder / 'queue.json').write_text(json.dumps([
+                {'id': ids[0], 'status': 'failed'}, {'id': ids[1], 'status': 'failed'}, {'id': ids[2], 'status': 'posted'}]))
+            config = {'dashboard_private_snapshot': str(root / 'private' / 'snap.json'), 'dashboard_histold_index_root': str(root / 'clone')}
+            with self.assertRaises(ValueError):
+                view.check({'action': 'fact_post_remove', 'id': '../x'})
+            self.assertEqual(view.check({'action': 'fact_post_remove', 'id': 'failed'}), 'failed')
+            with self.assertRaises(ValueError):  # a posted card is never removed
+                view.perform(config, {'action': 'fact_post_remove', 'id': ids[2]})
+            self.assertIn('Removed the failed post', view.perform(config, {'action': 'fact_post_remove', 'id': ids[0]}))
+            self.assertEqual([p['id'] for p in view.snapshot(config, {})['posts']], [ids[2], ids[1]])
+            self.assertIn('Removed the failed post', view.perform(config, {'action': 'fact_post_remove', 'id': 'failed'}))
+            self.assertEqual([p['id'] for p in view.snapshot(config, {})['posts']], [ids[2]])
+            stored = json.loads((folder / 'queue.json').read_text())
+            self.assertEqual([r['status'] for r in stored], ['removed', 'removed', 'posted'])
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ConfirmPanel, type CommandEvent, type Pending, type Send } from './Controls';
-import { ArrowUpRight, Pause, Play, WandSparkles } from './icons';
+import { ArrowUpRight, Pause, Play, Trash2, WandSparkles } from './icons';
 import { mediaUrl } from './Media';
 
 type Time = (value: string | null) => string;
@@ -25,6 +25,7 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
   const [pending, setPending] = useState<Pending | null>(null);
   const [limit, setLimit] = useState(9);
   const waiting = data.posts.filter(post => post.status === 'awaiting_approval');
+  const failed = data.posts.filter(post => post.status === 'failed').length;
   const approval = data.schedule.approve_until && new Date(data.schedule.approve_until + 'T23:59:59Z').getTime() >= Date.now();
   return <div className="page-stack">
     <section className="panel live-controls" aria-labelledby="fact-posts-heading">
@@ -51,6 +52,10 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
           : <button className="action" disabled={busy} onClick={() => setPending({ title: 'Post three times a day?',
               detail: 'A fact post is made at each daily time on your Claude and Codex plans.',
               command: { action: 'fact_post_schedule', channel: 'histold', enabled: true } })}><Play size={16}/>Start schedule</button>}
+        {failed > 0 && <button className="action" disabled={busy} onClick={() => setPending({
+          title: `Remove ${failed === 1 ? 'the failed post' : `all ${failed} failed posts`} from the list?`,
+          detail: 'They are hidden here. Posted and waiting posts are not touched.',
+          command: { action: 'fact_post_remove', channel: 'histold', id: 'failed' } })}><Trash2 size={16}/>Remove failed ({failed})</button>}
       </div>}
       {recent && <p className="analytics-info" role="status">{recent.message} · {time(recent.at)} IST</p>}
       {pending && send && <ConfirmPanel pending={pending} busy={busy} send={send} close={() => setPending(null)} />}
@@ -75,6 +80,8 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
                   detail: post.headline ?? '', command: { action: 'fact_post_decide', channel: 'histold', id: post.id, choice: 'approve' } })}>Post it</button>
                 <button className="action" disabled={busy} onClick={() => send({ action: 'fact_post_decide', channel: 'histold', id: post.id, choice: 'skip' })}>Skip</button>
               </>}
+              {send && post.status === 'failed' && <button className="action" disabled={busy} aria-label={`Remove failed post ${post.headline ?? ''}`.trim()}
+                onClick={() => send({ action: 'fact_post_remove', channel: 'histold', id: post.id })}><Trash2 size={14}/>Remove</button>}
               {post.facebook_url && <a className="action" href={post.facebook_url} target="_blank" rel="noreferrer">Facebook <ArrowUpRight size={14}/></a>}
             </div>
           </div>

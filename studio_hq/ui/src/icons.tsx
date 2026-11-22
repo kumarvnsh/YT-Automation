@@ -30,6 +30,7 @@ export {
   Scissors,
   HardDrives as Server,
   ShieldCheck,
+  Trash as Trash2,
   MagicWand as WandSparkles,
   IconContext,
 } from '@phosphor-icons/react';
