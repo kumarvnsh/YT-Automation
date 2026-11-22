@@ -202,3 +202,22 @@ def test_messages_use_the_plain_explanation(tmp_path):
     status, problem = c.telegram.sent[0][1], c.telegram.sent[1][1]
     assert 'Recording of one streamer keeps stopping' in status and 'PermissionError' not in status
     assert 'What is wrong: Recording of one streamer' in problem and 'Spotted once' in problem
+
+
+def test_run_returns_while_a_started_program_keeps_running(tmp_path):
+    # 2026-11-22: start_dashboard.ps1 left the dashboard holding the output pipe and the bot hung for good.
+    import sys
+    child = tmp_path / 'child.py'
+    child.write_text('import subprocess, sys\nsubprocess.Popen([sys.executable, "-c", "import time; time.sleep(30)"])\nprint("started")\n')
+    began = time.monotonic()
+    code, out = tc.run([sys.executable, str(child)], timeout=20)
+    assert (code, out) == (0, 'started')
+    assert time.monotonic() - began < 15
+
+
+def test_fact_post_choices_share_one_row_without_dismiss(tmp_path):
+    rows = tc.offer_rows(tc.Approvals(tmp_path), [
+        ('fact_post', {'id': '20261123_013913_38b899', 'choice': 'approve'}, '✅ Post it'),
+        ('fact_post', {'id': '20261123_013913_38b899', 'choice': 'skip'}, '⏭ Skip'),
+        ('operator_run', {}, 'Run')])
+    assert [[label for label, _ in row] for row in rows] == [['✅ Post it', '⏭ Skip'], ['Run', 'Dismiss']]

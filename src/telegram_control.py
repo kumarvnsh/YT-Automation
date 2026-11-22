@@ -218,6 +218,18 @@ def offer(approvals: Approvals, action: str, args: dict, label: str) -> list[tup
     return [(label, 'a:' + identity + ':y'), ('Dismiss', 'a:' + identity + ':n')]
 
 
+def offer_rows(approvals: Approvals, offers) -> list[list[tuple[str, str]]]:
+    """Button rows. Choices about one fact post (Post it / Skip) share a row with no Dismiss:
+    Skip already says no, and a Dismiss per choice showed two identical buttons."""
+    rows, choices = [], []
+    for action, args, label in (offers or [])[:5]:
+        if action == 'fact_post':
+            choices.append((label, 'a:' + approvals.create(action, args, label) + ':y'))
+        else:
+            rows.append(offer(approvals, action, args, label))
+    return ([choices] if choices else []) + rows
+
+
 def notify(text: str, offers: list[tuple[str, dict, str]] | None = None, config_path: Path = CONFIG,
            control: Path = CONTROL, session=requests) -> str:
     """Send an update to the paired owner, optionally with approval buttons. Never raises."""
@@ -226,7 +238,7 @@ def notify(text: str, offers: list[tuple[str, dict, str]] | None = None, config_
         return 'not_configured'
     try:
         approvals = Approvals(control)
-        rows = [offer(approvals, action, args, label) for action, args, label in (offers or [])[:5]]
+        rows = offer_rows(approvals, offers)
         Telegram(config['token'], session).send(int(config['owner_id']), text, rows or None)
         return 'sent'
     except Exception as exc:  # an update must never break the caller
@@ -263,7 +275,7 @@ def notify_photo(path: Path, caption: str, offers: list[tuple[str, dict, str]] |
         return 'not_configured'
     try:
         approvals = Approvals(control)
-        rows = [offer(approvals, action, args, label) for action, args, label in (offers or [])[:5]]
+        rows = offer_rows(approvals, offers)
         Telegram(config['token'], session).send_photo(int(config['owner_id']), path, caption, rows or None)
         return 'sent'
     except Exception as exc:  # an update must never break the caller
@@ -276,12 +288,25 @@ def decide_fact_post(post_id: str, choice: str) -> tuple[bool, str]:
 
 
 def run(cmd: list[str], timeout: int = 180) -> tuple[int, str]:
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=timeout,
-                                creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
-        return result.returncode, ((result.stdout or '') + (result.stderr or '')).strip()
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        return 124, type(exc).__name__ + ': ' + str(exc)
+    """Output goes to a file, not a pipe: a program the command starts (start_dashboard.ps1 starts the
+    dashboard) inherits a pipe and holds it open, and waiting for that pipe hung the bot for good
+    (2026-11-22, every button dead until restarted). A file never blocks the wait."""
+    import tempfile
+    with tempfile.TemporaryFile() as out:
+        try:
+            proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=out, stderr=subprocess.STDOUT,
+                                    creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+        except OSError as exc:
+            return 124, type(exc).__name__ + ': ' + str(exc)
+        try:
+            code = proc.wait(timeout=timeout)
+        except subprocess.TimeoutExpired as exc:
+            proc.kill()
+            code, note = 124, f'\nTimeoutExpired: {exc}'
+        else:
+            note = ''
+        out.seek(0)
+        return code, (out.read().decode('utf-8', 'replace') + note).strip()
 
 
 class Controller:
