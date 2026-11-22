@@ -3,6 +3,8 @@ import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from src import strategy
 from src.config import Config
@@ -99,6 +101,24 @@ class StrategyTests(unittest.TestCase):
         self.assertAlmostEqual(out['c'] / out['b'], 0.2 * strategy.MAX_BOOST / 0.3, places=2)
         everything = strategy.apply_overrides(w, {'series': {'paused': ['a', 'b', 'c']}})
         self.assertEqual(everything, w)
+
+    def test_peaks_keeps_retention_that_arrives_after_a_view_recount(self):
+        def export(views, pct):
+            return {'channels': {'histold': {'videos': [{'id': 'k1', 'views': views, 'likes': 0, 'avg_view_pct': pct}]}}}
+
+        def fake_run(args, **_):
+            out = 'c1' if args[1] == 'log' else json.dumps(export(21, None)) if args[2] == 'c1:data/analytics.json' else ''
+            return SimpleNamespace(stdout=out)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / 'data').mkdir()
+            (root / 'data/analytics.json').write_text(json.dumps(export(20, 38.73)))
+            with patch.object(strategy.subprocess, 'run', fake_run):
+                best = strategy.peaks(root, '2026-11-01')
+
+        self.assertEqual(best['yt']['k1']['views'], 21)
+        self.assertEqual(best['yt']['k1']['avg_view_pct'], 38.73)
 
     def test_load_applies_overrides_file(self):
         with tempfile.TemporaryDirectory() as tmp:

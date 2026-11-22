@@ -50,11 +50,17 @@ def peaks(root: Path, since: str) -> dict:
         if (root / path).exists():
             yield json.loads((root / path).read_text())
 
+    keys = ('views', 'likes', 'avg_view_pct', 'skip_rate',
+            'average_watch_time_seconds', 'engaged_views', 'plays', 'initial_plays', 'replays', 'views_metric')
+
     def keep(platform, video):
         row = best[platform].setdefault(str(video['id']), {})
         if (platform=='fb' and video.get('views_metric')) or (video.get('views') or 0) >= row.get('views', -1):
-            row.update({k: video.get(k) for k in ('views', 'likes', 'avg_view_pct', 'skip_rate',
-                                                  'average_watch_time_seconds','engaged_views','plays','initial_plays','replays','views_metric')})
+            row.update({k: video.get(k) for k in keys})
+        else:
+            # A later export can report fewer views (YouTube recounts) yet carry metrics such as
+            # average percentage viewed that arrived after the peak snapshot; keep those too.
+            row.update({k: video[k] for k in keys if row.get(k) is None and video.get(k) is not None})
 
     for data in snapshots('data/analytics.json'):
         for video in data.get('channels', {}).get('histold', {}).get('videos', []):
