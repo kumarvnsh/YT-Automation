@@ -7858,5 +7858,71 @@
     "production_profile": 2,
     "facebook_id": "1487070236629271",
     "instagram_id": "18005309120797865"
+  },
+  {
+    "video_id": "3cLUs_8OhVQ",
+    "run_id": "",
+    "stage_dir_name": "20261122_105811_039795_short",
+    "title": "The Smithsonian Began as a Backup Plan in One Man's Will",
+    "published_at": "2026-11-22T07:01:42.577256+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Museum object",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 11,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 10,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A British-based scientist wrote a backup clause into his will: if his nephew died without children, his estate would go to the United States to found 'the Smithsonian Institution' in Washington. The nephew died without heirs in 1835, the clause took effect, Congress authorized accepting the gift in 1836, and after a long debate the Smithsonian was founded in 1846. It is now the world's largest museum complex, and nobody knows why he did it.",
+          "opening_visual": "Archival draft of Smithson's 1826 handwritten will (Smithsonian Libraries exhibit), zooming in on the clause naming 'the United States of America'.",
+          "payoff": "A backup clause that depended on what happened to someone else's family led to the world's largest museum complex. Limitation: the Smithsonian's own exhibit says Smithson's motives are unknown, so the video must not suggest a reason. The causal chain is will clause, then heirless nephew, then Congress's 1836 authorization, then the 1846 founding, which followed debate. It is not presented as a direct or inevitable result.",
+          "viewer_reason": "Almost everyone recognizes the Smithsonian name. The fact that it exists because of a backup clause written by someone who left no explanation is surprising right away and easy to follow.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "From the supplied Ohio & Erie Canal page: after the canal opened, flour shipped through Cleveland rose from 1,000 barrels to 250,000 barrels, and news from New York took 10 days instead of 30.",
+          "opening_visual": null,
+          "payoff": null,
+          "viewer_reason": null,
+          "rejection_reason": "The Ohio & Erie Canal is already covered in your recent titles ('Ohio's 1820s Canal Route Was Shaped by Landowner Pressure'), and the Erie Canal is covered too. The flour numbers also come from a single page with a vague timeline ('Six years later'), and I have no independent corroboration for them."
+        },
+        {
+          "premise": "From the supplied C&O Canal page: a Washington Post editorial supported paving the canal into a parkway, Justice Douglas challenged the editor to walk its 185 miles, and the paper later reversed its position.",
+          "opening_visual": null,
+          "payoff": null,
+          "viewer_reason": null,
+          "rejection_reason": "This repeats a recent title directly: 'A Supreme Court Justice Answered a Road Plan With a Hike'."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Both supplied pages repeat recent subjects, so I used web search for a new story. The Smithson bequest is a single documented choice (a contingent clause in a will) with a large, well-recognized result. Every step in the chain (will, heirless nephew, 1836 authorization, 1846 founding) is supported by Smithsonian Libraries exhibit pages. The premise is kept narrow: no motive is claimed, and the founding is not described as automatic."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 139,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "The Smithsonian began as a backup clause.",
+    "duration": 43.175,
+    "production_profile": 2,
+    "facebook_id": "1155054420487500",
+    "instagram_id": "17957820336319228"
   }
 ]
