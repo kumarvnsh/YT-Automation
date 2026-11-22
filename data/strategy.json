@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T19:00:28.318570+00:00",
+  "updated": "2026-11-22T23:00:32.165329+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -261,6 +261,18 @@
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
     {
+      "video_id": "wUYjpa6ICeU",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 Facebook plays and 0 watch seconds despite 212 Instagram views; possible posting or linking fault"
+    },
+    {
+      "video_id": "lCQJdMRx814",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 Facebook plays and 0 watch seconds despite 124 Instagram views; possible posting or linking fault"
+    },
+    {
       "video_id": "_LG3VzPRgp0",
       "platform": "yt",
       "views": 0,
@@ -313,18 +325,6 @@
       "platform": "yt",
       "views": 9,
       "reason": "Viewing percentage missing in the recent export gap."
-    },
-    {
-      "video_id": "wUYjpa6ICeU",
-      "platform": "fb",
-      "views": 0,
-      "reason": "0 Facebook plays while Instagram shows 212 views; unverified"
-    },
-    {
-      "video_id": "lCQJdMRx814",
-      "platform": "fb",
-      "views": 0,
-      "reason": "0 Facebook plays while Instagram shows 124 views; unverified"
     },
     {
       "video_id": "-cPiNs-0pLA",
