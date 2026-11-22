@@ -19,6 +19,7 @@ import sqlite3
 import subprocess
 import time
 import uuid
+from html import escape
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -64,15 +65,44 @@ ADMIN_DONE = {
     'stop-stale-monitors': 'Stuck background checks were cleared.',
     'restart-tailscale': 'Phone access was reconnected.',
 }
-HELP = ('Here is what I can do, sir:\n\n'
-        '/status - Is everything OK? A quick summary\n'
-        '/problems - What is broken right now, with a Fix button\n'
-        '/review - Ask the checker to look at a channel now\n'
-        '/operator - Start, pause or resume the auto-fixer\n'
-        '/dashboard - Restart the dashboard if it is stuck\n'
-        '/admin - Laptop maintenance that needs admin rights\n\n'
-        'Each button works once and stops working after an hour.')
+COMMANDS = [
+    ('today', "Today's uploads and fact posts"),
+    ('posts', 'Fact posts waiting for your OK'),
+    ('stats', 'Views and top videos this week'),
+    ('status', 'Is everything OK? Quick health check'),
+    ('problems', 'What is broken, with a Fix button'),
+    ('review', 'Ask the checker to look at a channel'),
+    ('operator', 'Start, pause or resume the auto-fixer'),
+    ('dashboard', 'Restart the dashboard if it is stuck'),
+    ('admin', 'Laptop maintenance (admin rights)'),
+    ('help', 'Everything I can do'),
+]
+DESCRIPTION = ('Histold Control, at your service.\n\n'
+               'Your private assistant for the Histold and Shotsnip channels: daily uploads, fact posts '
+               'for your approval, channel stats, and problems with one-tap fixes.\n\n'
+               'I answer only to my paired owner.')
+SHORT_DESCRIPTION = 'Private control desk for the Histold and Shotsnip channels.'
+# The menu under the typing box; each label stands for a command.
+KEYBOARD = [['📅 Today', '📈 Stats'], ['🖼 Posts', '✅ Status'], ['⚠️ Problems', '⚙️ More']]
+KEYS = {label.split(' ', 1)[1].lower(): '/' + label.split(' ', 1)[1].lower() for row in KEYBOARD for label in row}
+RULE = '━━━━━━━━━━━━━━'
+CONTROLS = ('/review · ask the checker to look at a channel\n'
+            '/operator · start, pause or resume the auto-fixer\n'
+            '/dashboard · restart the dashboard if it is stuck\n'
+            '/admin · laptop maintenance (admin rights)')
+HELP = ('🏛 <b>Histold Control</b>\n<i>At your service, sir.</i>\n' + RULE + '\n\n'
+        '<b>Every day</b>\n'
+        '/today · uploads and fact posts today\n'
+        '/posts · fact posts waiting for your OK\n'
+        '/stats · views and top videos this week\n\n'
+        '<b>Health</b>\n'
+        '/status · is everything OK?\n'
+        '/problems · what is broken, with a Fix button\n\n'
+        '<b>Controls</b>\n' + CONTROLS + '\n\n'
+        '<i>The menu below the typing box has the everyday ones. Each button works once and expires after an hour.</i>')
+MORE = '⚙️ <b>Controls</b>\n' + RULE + '\n' + CONTROLS + '\n/help · everything I can do'
 NAMES = {'histold': 'Histold (history channel)', 'shotsnip': 'Shotsnip (gaming clips)'}
+SHORT = {'histold': '🏛 Histold', 'shotsnip': '🎮 Shotsnip'}
 
 
 def now_utc() -> datetime:
@@ -127,14 +157,23 @@ class Telegram:
             raise RuntimeError(f"Telegram {method} failed: {str(data.get('description'))[:200]}")
         return data['result']
 
-    def send(self, chat_id: int, text: str, buttons: list[list[tuple[str, str]]] | None = None):
+    def send(self, chat_id: int, text: str, buttons: list[list[tuple[str, str]]] | None = None,
+             html: bool = False, keyboard: list[list[str]] | None = None):
         params = {'chat_id': chat_id, 'text': text[:TEXT_LIMIT], 'disable_web_page_preview': True}
+        if html:
+            params['parse_mode'] = 'HTML'
         if buttons:
             params['reply_markup'] = {'inline_keyboard': [[{'text': t[:60], 'callback_data': d} for t, d in row] for row in buttons]}
+        elif keyboard:  # the menu under the typing box
+            params['reply_markup'] = {'keyboard': [[{'text': t} for t in row] for row in keyboard],
+                                      'resize_keyboard': True, 'is_persistent': True}
         return self.call('sendMessage', **params)
 
-    def send_photo(self, chat_id: int, path: Path, caption: str, buttons: list[list[tuple[str, str]]] | None = None):
+    def send_photo(self, chat_id: int, path: Path, caption: str, buttons: list[list[tuple[str, str]]] | None = None,
+                   html: bool = False):
         data = {'chat_id': chat_id, 'caption': caption[:1000]}
+        if html:
+            data['parse_mode'] = 'HTML'
         if buttons:
             data['reply_markup'] = json.dumps({'inline_keyboard': [[{'text': t[:60], 'callback_data': d} for t, d in row] for row in buttons]})
         with ipv4_only(), Path(path).open('rb') as handle:
@@ -146,6 +185,16 @@ class Telegram:
 
     def edit(self, chat_id: int, message_id: int, text: str):
         return self.call('editMessageText', chat_id=chat_id, message_id=message_id, text=text[:TEXT_LIMIT])
+
+    def clear_buttons(self, chat_id: int, message_id: int):
+        """Works on text and photo messages alike (editing a photo's text needs a different call)."""
+        return self.call('editMessageReplyMarkup', chat_id=chat_id, message_id=message_id, reply_markup={'inline_keyboard': []})
+
+    def setup_profile(self):
+        """The command menu, the description on the bot's start screen and its short about text."""
+        self.call('setMyCommands', commands=[{'command': c, 'description': d} for c, d in COMMANDS])
+        self.call('setMyDescription', description=DESCRIPTION)
+        self.call('setMyShortDescription', short_description=SHORT_DESCRIPTION)
 
     def answer(self, callback_id: str, text: str = ''):
         return self.call('answerCallbackQuery', callback_query_id=callback_id, text=text[:180])
@@ -231,7 +280,7 @@ def offer_rows(approvals: Approvals, offers) -> list[list[tuple[str, str]]]:
 
 
 def notify(text: str, offers: list[tuple[str, dict, str]] | None = None, config_path: Path = CONFIG,
-           control: Path = CONTROL, session=requests) -> str:
+           control: Path = CONTROL, session=requests, html: bool = False) -> str:
     """Send an update to the paired owner, optionally with approval buttons. Never raises."""
     config = load_config(config_path)
     if not config.get('token') or not config.get('owner_id'):
@@ -239,7 +288,7 @@ def notify(text: str, offers: list[tuple[str, dict, str]] | None = None, config_
     try:
         approvals = Approvals(control)
         rows = offer_rows(approvals, offers)
-        Telegram(config['token'], session).send(int(config['owner_id']), text, rows or None)
+        Telegram(config['token'], session).send(int(config['owner_id']), text, rows or None, html=html)
         return 'sent'
     except Exception as exc:  # an update must never break the caller
         return 'failed: ' + type(exc).__name__
@@ -268,7 +317,7 @@ def notify_once(text: str, logical_id: str, state_path: Path, offers=None, confi
 
 
 def notify_photo(path: Path, caption: str, offers: list[tuple[str, dict, str]] | None = None,
-                 config_path: Path = CONFIG, control: Path = CONTROL, session=requests) -> str:
+                 config_path: Path = CONFIG, control: Path = CONTROL, session=requests, html: bool = False) -> str:
     """Send a picture to the paired owner, optionally with approval buttons. Never raises."""
     config = load_config(config_path)
     if not config.get('token') or not config.get('owner_id'):
@@ -276,7 +325,7 @@ def notify_photo(path: Path, caption: str, offers: list[tuple[str, dict, str]] |
     try:
         approvals = Approvals(control)
         rows = offer_rows(approvals, offers)
-        Telegram(config['token'], session).send_photo(int(config['owner_id']), path, caption, rows or None)
+        Telegram(config['token'], session).send_photo(int(config['owner_id']), path, caption, rows or None, html=html)
         return 'sent'
     except Exception as exc:  # an update must never break the caller
         return 'failed: ' + type(exc).__name__
@@ -335,7 +384,10 @@ class Controller:
         if sender.get('id') != int(self.config['owner_id']) or chat.get('id') != int(self.config['owner_id']):
             return  # not the owner: ignore silently
         command = text.split()[0].split('@')[0].lower()
+        if not command.startswith('/'):  # a tap on the menu under the typing box
+            command = KEYS.get(text.split(' ', 1)[-1].strip().lower(), command)
         handler = {'/start': self.help, '/help': self.help, '/status': self.status, '/problems': self.problems,
+                   '/today': self.today, '/stats': self.stats, '/posts': self.posts, '/more': self.more,
                    '/review': self.review_menu, '/operator': self.operator_menu, '/dashboard': self.dashboard_menu,
                    '/admin': self.admin_menu}.get(command, self.help)
         handler()
@@ -351,35 +403,63 @@ class Controller:
         self.config.pop('pair_code', None)
         self.config.pop('pair_expires', None)
         save_config(self.config, self.config_path)
-        self.send('Connected. From now on I only take orders from this Telegram account.\n\n' + HELP, chat_id=chat['id'])
+        self.send('🔐 <b>Connected.</b> From now on I only take orders from this Telegram account.\n\n' + HELP,
+                  chat_id=chat['id'], keyboard=KEYBOARD)
 
-    def send(self, text: str, buttons=None, chat_id: int | None = None):
-        return self.telegram.send(chat_id or int(self.config['owner_id']), text, buttons)
+    def send(self, text: str, buttons=None, chat_id: int | None = None, keyboard=None):
+        """Bot replies are Telegram HTML: anything that came from data must go through escape()."""
+        return self.telegram.send(chat_id or int(self.config['owner_id']), text, buttons, html=True, keyboard=keyboard)
 
     # ------------------------------------------------------------ commands
     def help(self):
-        self.send(HELP)
+        self.send(HELP, keyboard=KEYBOARD)
+
+    def more(self):
+        self.send(MORE)
+
+    def today(self):
+        from src import telegram_views
+        self.send(telegram_views.today())
+
+    def stats(self):
+        from src import telegram_views
+        self.send(telegram_views.stats())
+
+    def posts(self):
+        from src import telegram_views
+        waiting = telegram_views.waiting_posts()
+        if not waiting:
+            return self.send('🖼 <b>Fact posts</b>\n' + RULE + '\n✅ Nothing is waiting for you, sir.')
+        for entry in waiting[:3]:
+            buttons = offer_rows(self.approvals, [
+                ('fact_post', {'id': entry['id'], 'choice': 'approve'}, '✅ Post it'),
+                ('fact_post', {'id': entry['id'], 'choice': 'skip'}, '⏭ Skip')])
+            try:
+                self.telegram.send_photo(int(self.config['owner_id']), Path(entry['card']),
+                                         telegram_views.post_caption(entry), buttons, html=True)
+            except Exception:  # card missing: the words alone still let the owner decide
+                self.send(telegram_views.post_caption(entry), buttons)
 
     def status(self):
-        lines, trouble = [], False
+        lines, trouble = ['🩺 <b>Health check</b>', RULE], False
         for channel in CHANNELS:
             open_problems = bot_findings.problems(self.workspace, self.operator, channel)
             if not open_problems:
-                lines.append(f'✅ {NAMES[channel]}: all good, no problems found.')
+                lines.append(f'✅ <b>{SHORT[channel]}</b> · all good')
                 continue
             trouble = True
-            lines.append(f'⚠️ {NAMES[channel]}: {len(open_problems)} problem(s)')
-            lines += [f"   • {(p.get('plain') or p['title'])[:120]}\n     → {p['fix']['label']}" for p in open_problems[:4]]
+            lines.append(f'⚠️ <b>{SHORT[channel]}</b> · {len(open_problems)} problem{"s" if len(open_problems) != 1 else ""}')
+            lines += [f"   • {escape((p.get('plain') or p['title'])[:120])}\n     <i>{escape(p['fix']['label'])}</i>"
+                      for p in open_problems[:4]]
         paused = (self.operator / 'PAUSE').exists()
-        lines.append('')
-        lines.append('🔧 Auto-fixer: ' + ('PAUSED. It will not fix anything until you turn it back on (/operator).'
-                                         if paused else 'on. It repairs problems by itself and tells you.'))
         code, _ = self.run(['curl.exe', '-s', '-o', 'NUL', '-w', '%{http_code}', DASHBOARD + '/login'], timeout=15)
-        lines.append('🖥️ Dashboard: ' + ('working.' if code == 0 else 'not responding. Try /dashboard.'))
+        lines += ['', '<b>Systems</b>',
+                  '🔧 Auto-fixer · ' + ('⏸ <b>paused</b>, fixing nothing (/operator)' if paused else 'on'),
+                  '🖥 Dashboard · ' + ('working' if code == 0 else '❌ not responding (/dashboard)')]
         if not (self.admin / 'runner.ps1').exists():
-            lines.append('🔒 Admin helper: not set up yet.')
+            lines.append('🔒 Admin helper · not set up')
         if trouble:
-            lines.append('\nTap /problems to see each one with a Fix button.')
+            lines.append('\n<i>Tap /problems to see each one with a Fix button.</i>')
         self.send('\n'.join(lines))
 
     def problems(self):
@@ -387,37 +467,37 @@ class Controller:
         for channel in CHANNELS:
             for p in bot_findings.problems(self.workspace, self.operator, channel):
                 found = True
-                buttons = None
                 buttons = []
                 if p['fix']['state'] not in ('deployed', 'verified'):
                     buttons.append(offer(self.approvals, 'fix_problem', {'channel': channel, 'key': p['key']}, '🔧 Fix it now')[:1])
                 buttons.append(offer(self.approvals, 'dismiss_problem', {'channel': channel, 'key': p['key']}, '🙅 Not a problem')[:1])
-                self.send(f"⚠️ {NAMES[channel]}\n\nWhat is wrong: {p.get('plain') or p['title']}\n\n"
-                          f"Status: {p['fix']['label']}"
-                          + (f"\nNote: {p['fix']['detail']}" if p['fix'].get('detail') else ''), buttons)
+                self.send(f"⚠️ <b>{SHORT[channel]} problem</b>\n{RULE}\n{escape(p.get('plain') or p['title'])}\n\n"
+                          f"<b>Status</b> · {escape(p['fix']['label'])}"
+                          + (f"\n<i>{escape(p['fix']['detail'])}</i>" if p['fix'].get('detail') else ''), buttons)
         if not found:
-            self.send('✅ Nothing is broken right now.')
+            self.send('✅ <b>Nothing is broken right now.</b>')
 
     def review_menu(self):
-        self.send('Which channel should the checker look at now? It takes a few minutes and tells you here if it finds anything.',
-                  [offer(self.approvals, 'review', {'channel': c}, 'Check ' + NAMES[c])[:1] for c in CHANNELS])
+        self.send('🔎 <b>Channel check</b>\n' + RULE + '\nWhich channel should the checker look at now? '
+                  'It takes a few minutes and reports back here.',
+                  [offer(self.approvals, 'review', {'channel': c}, 'Check ' + SHORT[c])[:1] for c in CHANNELS])
 
     def operator_menu(self):
         paused = (self.operator / 'PAUSE').exists()
         rows = [offer(self.approvals, 'operator_run', {}, '▶️ Fix problems now')[:1],
                 offer(self.approvals, 'operator_resume' if paused else 'operator_pause', {},
                       '✅ Turn auto-fixing back on' if paused else '⏸️ Pause auto-fixing')[:1]]
-        self.send('The auto-fixer finds broken things and repairs them by itself.\n\nRight now it is '
-                  + ('PAUSED.' if paused else 'ON.'), rows)
+        self.send('🔧 <b>Auto-fixer</b>\n' + RULE + '\nIt finds broken things and repairs them by itself.\n\n'
+                  'Right now it is ' + ('⏸ <b>paused</b>.' if paused else '✅ <b>on</b>.'), rows)
 
     def dashboard_menu(self):
-        self.send('Restart the dashboard? Use this if the dashboard page is stuck or not loading.',
+        self.send('🖥 <b>Dashboard</b>\n' + RULE + '\nRestart it if the page is stuck or not loading.',
                   [offer(self.approvals, 'restart_dashboard', {}, '🔄 Restart dashboard')])
 
     def admin_menu(self):
         if not (self.admin / 'runner.ps1').exists():
-            return self.send('The admin helper is not set up on the laptop yet.')
-        self.send('Laptop maintenance (needs admin rights). Tap one:',
+            return self.send('🔒 The admin helper is not set up on the laptop yet.')
+        self.send('🔒 <b>Laptop maintenance</b>\n' + RULE + '\nThese need admin rights. Tap one:',
                   [offer(self.approvals, 'admin', {'name': n}, d[:58])[:1] for n, d in ADMIN_ACTIONS.items()])
 
     # ------------------------------------------------------------ buttons
@@ -440,23 +520,24 @@ class Controller:
             pass
         if not approval:
             if match and note != 'Unknown button':
-                self.send(note + '.')
+                self.send(escape(note) + '.')
             return
+        self._settle(message)
         if match.group(2) == 'n':
-            return self._edit(message, (message.get('text') or '') + '\n\nIgnored.')
-        self._edit(message, (message.get('text') or '') + '\n\n⏳ Working on it...')
+            return self.send('👌 Dismissed.')
         try:
             ok, result = self.execute(approval['action'], approval['args'])
         except Exception as exc:
             ok, result = False, 'Something went wrong: ' + str(exc)[:300]
         self.approvals.finish(approval['id'], 'done' if ok else 'failed', result)
-        self.send(('✅ Done. ' if ok else '❌ That did not work. ') + result)
+        self.send(('✅ <b>Done.</b> ' if ok else '❌ <b>That did not work.</b> ') + escape(result))
 
-    def _edit(self, message: dict, text: str) -> None:
+    def _settle(self, message: dict) -> None:
+        """Take the buttons off the message once one is used, so it cannot be tapped again."""
         try:
-            self.telegram.edit(message['chat']['id'], message['message_id'], text)
+            self.telegram.clear_buttons(message['chat']['id'], message['message_id'])
         except Exception:
-            pass  # editing is cosmetic
+            pass  # cosmetic
 
     # ------------------------------------------------------------ actions
     def execute(self, action: str, args: dict) -> tuple[bool, str]:

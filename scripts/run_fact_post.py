@@ -42,12 +42,10 @@ def environment(cfg) -> None:
 
 
 def notify_draft(entry: dict) -> None:
-    from src import telegram_control
-    text = (f"🖼 Sir, a Histold fact post is ready for your OK.\n\n{entry.get('headline')}\n\n{entry.get('fact')}\n\n"
-            f"Sources: {', '.join(s.get('publisher') or '' for s in entry.get('sources') or [])}")
-    status = telegram_control.notify_photo(Path(entry['card']), text, [
+    from src import telegram_control, telegram_views
+    status = telegram_control.notify_photo(Path(entry['card']), telegram_views.post_caption(entry), [
         ('fact_post', {'id': entry['id'], 'choice': 'approve'}, '✅ Post it'),
-        ('fact_post', {'id': entry['id'], 'choice': 'skip'}, '⏭ Skip')])
+        ('fact_post', {'id': entry['id'], 'choice': 'skip'}, '⏭ Skip')], html=True)
     log('approval request', entry['id'], status)
 
 

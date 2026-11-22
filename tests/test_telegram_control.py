@@ -14,10 +14,16 @@ TOKEN = '123456789:' + 'A' * 35
 
 class FakeTelegram:
     def __init__(self):
-        self.sent, self.answers, self.edits = [], [], []
+        self.sent, self.answers, self.edits, self.cleared, self.photos = [], [], [], [], []
 
-    def send(self, chat_id, text, buttons=None):
+    def send(self, chat_id, text, buttons=None, html=False, keyboard=None):
         self.sent.append((chat_id, text, buttons))
+
+    def send_photo(self, chat_id, path, caption, buttons=None, html=False):
+        self.photos.append((path, caption, buttons))
+
+    def clear_buttons(self, chat_id, message_id):
+        self.cleared.append(message_id)
 
     def answer(self, callback_id, text=''):
         self.answers.append(text)
@@ -84,7 +90,7 @@ def test_buttons_run_fixed_actions_once(tmp_path):
     run_button = buttons(c)[0]
     c.handle(press(run_button))
     assert c.ran == [['schtasks', '/Run', '/TN', 'Histold Operator']]
-    assert c.telegram.sent[-1][1].startswith('✅ Done.')
+    assert c.telegram.sent[-1][1].startswith('✅ <b>Done.</b>')
     c.handle(press(run_button))               # replay
     assert len(c.ran) == 1 and c.telegram.answers[-1] == 'This button was already used'
     c.handle(press('a:' + 'f' * 16 + ':y'))   # forged id
@@ -179,7 +185,7 @@ def test_late_button_answer_still_runs_the_action(tmp_path):
     c.telegram.answer = too_late
     c.handle(press(buttons(c)[0]))
     assert c.ran == [['schtasks', '/Run', '/TN', 'Histold Operator']]
-    assert c.telegram.sent[-1][1].startswith('✅ Done.')
+    assert c.telegram.sent[-1][1].startswith('✅ <b>Done.</b>')
 
 
 def test_ipv4_only_is_scoped():
@@ -201,7 +207,7 @@ def test_messages_use_the_plain_explanation(tmp_path):
     c.handle(message('/problems'))
     status, problem = c.telegram.sent[0][1], c.telegram.sent[1][1]
     assert 'Recording of one streamer keeps stopping' in status and 'PermissionError' not in status
-    assert 'What is wrong: Recording of one streamer' in problem and 'Spotted once' in problem
+    assert 'problem</b>' in problem and 'Recording of one streamer' in problem and 'Spotted once' in problem
 
 
 def test_run_returns_while_a_started_program_keeps_running(tmp_path):
@@ -221,3 +227,51 @@ def test_fact_post_choices_share_one_row_without_dismiss(tmp_path):
         ('fact_post', {'id': '20261123_013913_38b899', 'choice': 'skip'}, '⏭ Skip'),
         ('operator_run', {}, 'Run')])
     assert [[label for label, _ in row] for row in rows] == [['✅ Post it', '⏭ Skip'], ['Run', 'Dismiss']]
+
+
+def test_menu_keyboard_taps_run_their_commands_and_used_buttons_disappear(tmp_path, monkeypatch):
+    from src import telegram_views as tv
+    c = controller(tmp_path)
+    monkeypatch.setattr(tv, 'today', lambda: 'TODAY')
+    monkeypatch.setattr(tv, 'stats', lambda: 'STATS')
+    for label, reply in (('📅 Today', 'TODAY'), ('📈 Stats', 'STATS'), ('⚙️ More', '/review')):
+        c.handle(message(label))
+        assert reply in c.telegram.sent[-1][1]
+    c.handle(message('/operator'))
+    c.handle(press(buttons(c)[0]))
+    assert c.telegram.cleared == [5]  # the tapped message lost its buttons
+
+
+def test_posts_sends_waiting_cards_with_post_and_skip(tmp_path, monkeypatch):
+    from src import telegram_views as tv
+    entry = {'id': '20261123_013913_38b899', 'status': 'awaiting_approval', 'headline': 'Flags <cut> & kept',
+             'fact': 'A fact.', 'sources': [{'publisher': 'NPS'}], 'card': str(tmp_path / 'card.png')}
+    monkeypatch.setattr(tv, '_fact_posts', lambda: [entry])
+    c = controller(tmp_path)
+    c.handle(message('/posts'))
+    path, caption, rows = c.telegram.photos[-1]
+    assert [label for label, _ in rows[0]] == ['✅ Post it', '⏭ Skip'] and len(rows) == 1
+    assert 'Flags &lt;cut&gt; &amp; kept' in caption  # data is escaped for Telegram HTML
+
+
+def test_today_and_stats_read_both_channels(tmp_path, monkeypatch):
+    from datetime import timedelta
+    from src import telegram_views as tv
+    now = datetime(2026, 11, 23, 12, 0, tzinfo=tv.IST)
+    data, clips = tmp_path / 'data', tmp_path / 'clips'
+    (data).mkdir(); (clips / 'work' / 'dashboard').mkdir(parents=True); (clips / 'work' / 'scheduler').mkdir(parents=True)
+    at = (now - timedelta(hours=2)).isoformat()
+    (data / 'published_index.json').write_text(json.dumps([{'video_id': 'h1', 'title': 'Wolves <return>', 'published_at': at, 'channel': 'histold'}]))
+    (data / 'analytics.json').write_text(json.dumps({'channels': {'histold': {'videos': [{'id': 'h1', 'views': 1500}]}}}))
+    (clips / 'work' / 'scheduler' / 'state.json').write_text(json.dumps({'uploads': [
+        {'status': 'uploaded', 'video_id': 's1', 'finished_at': (now - timedelta(days=2)).isoformat(), 'source': {'channel': 'Kai'}}]}))
+    (clips / 'work' / 'dashboard' / 'analytics.json').write_text(json.dumps({'subscribers': 16, 'total_views': 28066,
+                                                                            'videos': [{'id': 's1', 'title': 'Kai jumps', 'views': 40}]}))
+    monkeypatch.setattr(tv, 'HISTOLD_DATA', data)
+    monkeypatch.setattr(tv, 'SHOTSNIP', clips)
+    monkeypatch.setattr(tv, '_fact_posts', lambda: [])
+    today = tv.today(now)
+    assert '1 upload' in today and 'Wolves &lt;return&gt;' in today and '👁 1.5k' in today
+    assert 'Nothing yet today. Last upload 21 Nov' in today
+    stats = tv.stats(now)
+    assert '👥 16 subs' in stats and '👁 28.1k total' in stats and 'Kai jumps' in stats

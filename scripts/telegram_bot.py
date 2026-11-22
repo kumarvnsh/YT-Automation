@@ -22,7 +22,7 @@ CODE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(CODE))
 from src import telegram_control as tc  # noqa: E402
 
-WATCHED = ['scripts/telegram_bot.py', 'src/telegram_control.py', 'src/bot_findings.py']
+WATCHED = ['scripts/telegram_bot.py', 'src/telegram_control.py', 'src/telegram_views.py', 'src/bot_findings.py']
 LOG = tc.CONTROL / 'telegram-bot.log'
 OFFSET = tc.CONTROL / 'telegram-offset.json'
 
@@ -77,6 +77,10 @@ def main() -> int:
         return 0
     started, last_check, backoff = digest(), time.monotonic(), 5
     log('bot started')
+    try:  # command menu and start-screen text; refreshed whenever new code loads
+        tc.Telegram(tc.load_config().get('token', '')).setup_profile()
+    except Exception as exc:  # cosmetic: never stop the bot
+        log('profile setup failed', type(exc).__name__, str(exc)[:200])
     try:
         offset = json.loads(OFFSET.read_text()).get('offset', 0)
     except (OSError, ValueError):
