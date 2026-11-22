@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-22T07:00:26.719632+00:00",
+      "updated": "2026-11-22T07:24:14.216309+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "3cLUs_8OhVQ",
+          "title": "The Smithsonian Began as a Backup Plan in One Man's Will",
+          "description": "James Smithson's will left most of his estate to his nephew, with a backup clause in case the nephew died without heirs. When that happened in 1835, the money went to the United States to found the Smithsonian Institution, after Congress decided whether to accept it. Smithson's reason for choosing the United States remains unknown.\n#history #smithsonian #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of Andrew Jackson: Ralph Eleaser Whiteside Earl, Public domain, via Wikimedia Commons\nPortrait of James Smithson: Henri-Joseph Johns, Public domain, via Wikimedia Commons",
+          "tags": [
+            "19th century",
+            "andrew jackson",
+            "decisions with consequences",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "james smithson",
+            "museum history",
+            "smithsonian",
+            "smithsonian institution",
+            "us congress",
+            "washington dc",
+            "world history"
+          ],
+          "publishedAt": "2026-11-22T07:02:16Z",
+          "thumbnail": "https://i.ytimg.com/vi/3cLUs_8OhVQ/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+          }
+        },
         {
           "id": "i8oWcZUKfJA",
           "title": "Sichuan's Ancient Water Scheme Manages a River Without Blocking It",
@@ -1753,7 +1797,7 @@
           ],
           "publishedAt": "2026-11-14T14:59:32Z",
           "thumbnail": "https://i.ytimg.com/vi/yZEtFoH-rGg/mqdefault.jpg",
-          "views": 13,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2158,48 +2202,6 @@
           "shares": 0,
           "analytics_views": 40,
           "engaged_views": 6,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-22",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "KSKTU3S1aKo",
-          "title": "Why Did a 1828 Newspaper Print in One Man's Writing System?",
-          "description": "In 1828 the Cherokee Nation launched a bilingual newspaper in New Echota, Georgia, using a syllabary devised by Sequoyah. Its March 1828 issue printed sections of the Cherokee Constitution of 1827. #CherokeeHistory #WorldHistory #NativeAmericanHistory\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of Sequoyah: Lithographer: Lehman and Duval (George Lehman (d.1870); Peter S. Duval) Painter:, Public domain, via Wikimedia Commons",
-          "tags": [
-            "american history",
-            "cherokee nation history",
-            "cherokee phoenix",
-            "cherokee syllabary",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "indigenous writing systems",
-            "native american newspapers",
-            "new echota georgia",
-            "sequoyah",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T18:15:09Z",
-          "thumbnail": "https://i.ytimg.com/vi/KSKTU3S1aKo/mqdefault.jpg",
-          "views": 9,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 32.6,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 19.0,
-          "shares": 0,
-          "analytics_views": 9,
-          "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
             "end_date": "2026-11-22",
