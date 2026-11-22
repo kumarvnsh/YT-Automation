@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T23:00:27.398360+00:00",
+  "updated": "2026-11-22T03:00:27.206921+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
         "Why Did One Emperor Dig a Canal Across Half of China?"
       ],
-      "measured_videos": 115
+      "measured_videos": 113
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 114
+      "measured_videos": 113
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,8 +28,8 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 116,
-          "mean_like_rate": 0.003028
+          "measured_videos": 114,
+          "mean_like_rate": 0.003081
         },
         "fb": {
           "measured_videos": 112,
@@ -64,69 +64,69 @@
       }
     }
   },
-  "videos_scored": 115,
+  "videos_scored": 113,
   "weights": {
     "series": {
-      "school_myths": 0.0677,
-      "mistakes": 0.0677,
-      "almost": 0.0686,
-      "erased": 0.072,
-      "unsolved": 0.0699,
-      "weird_dark": 0.072,
-      "photo_story": 0.072,
-      "spy_gadgets": 0.0754,
-      "animals": 0.0754,
-      "secretly_deadly": 0.072,
-      "worst_jobs": 0.0754,
-      "forgotten_rules": 0.072,
-      "behind_legend": 0.0699,
-      "found_by_accident": 0.0699
+      "school_myths": 0.0673,
+      "mistakes": 0.0683,
+      "almost": 0.0683,
+      "erased": 0.0717,
+      "unsolved": 0.0696,
+      "weird_dark": 0.0717,
+      "photo_story": 0.0752,
+      "spy_gadgets": 0.0752,
+      "animals": 0.0752,
+      "secretly_deadly": 0.0717,
+      "worst_jobs": 0.0752,
+      "forgotten_rules": 0.0717,
+      "behind_legend": 0.0696,
+      "found_by_accident": 0.0696
     },
     "region": {
-      "india": 0.1135,
-      "africa": 0.1113,
-      "japan": 0.1166,
-      "china": 0.1148,
-      "russia": 0.1051,
-      "middle_east": 0.1078,
-      "europe": 0.118,
-      "americas": 0.0961,
-      "asia_pacific": 0.1168
+      "india": 0.1131,
+      "africa": 0.1109,
+      "japan": 0.1162,
+      "china": 0.116,
+      "russia": 0.1048,
+      "middle_east": 0.1074,
+      "europe": 0.1176,
+      "americas": 0.0957,
+      "asia_pacific": 0.1183
     },
     "duration_variant": {
-      "concise": 0.4993,
-      "story": 0.5007
+      "concise": 0.4992,
+      "story": 0.5008
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "mistakes": {
-        "n": 4,
-        "mean_score": 0.435
+        "n": 3,
+        "mean_score": 0.434
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "photo_story": {
-        "n": 1,
-        "mean_score": 0.435
+        "n": 0,
+        "mean_score": null
       },
       "spy_gadgets": {
         "n": 0,
@@ -138,7 +138,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "worst_jobs": {
         "n": 0,
@@ -146,62 +146,62 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.434
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.507
+        "mean_score": 0.505
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.498
+        "mean_score": 0.497
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.519
+        "mean_score": 0.518
       },
       "china": {
-        "n": 13,
-        "mean_score": 0.512
+        "n": 12,
+        "mean_score": 0.517
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.473
+        "mean_score": 0.472
       },
       "middle_east": {
         "n": 11,
-        "mean_score": 0.483
+        "mean_score": 0.482
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.525
+        "mean_score": 0.523
       },
       "americas": {
         "n": 13,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "asia_pacific": {
-        "n": 12,
-        "mean_score": 0.52
+        "n": 11,
+        "mean_score": 0.526
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 61,
-        "mean_score": 0.5
+        "n": 60,
+        "mean_score": 0.499
       },
       "story": {
-        "n": 54,
+        "n": 53,
         "mean_score": 0.501
       }
     }
@@ -223,6 +223,12 @@
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
     {
+      "video_id": "_LG3VzPRgp0",
+      "platform": "yt",
+      "views": 0,
+      "reason": "The viewing percentage is still unavailable more than five days after publication."
+    },
+    {
       "video_id": "SfvGGm6eaok",
       "platform": "yt",
       "views": 6,
@@ -239,6 +245,18 @@
       "platform": "yt",
       "views": 3,
       "reason": "Viewing percentage is 0.0% with 3 recorded views."
+    },
+    {
+      "video_id": "Chyn8YLkKO0",
+      "platform": "yt",
+      "views": 7,
+      "reason": "Viewing percentage is 0.0% with 5 recorded views."
+    },
+    {
+      "video_id": "wUYjpa6ICeU",
+      "platform": "yt",
+      "views": 3,
+      "reason": "Viewing percentage is 0.0% with 2 recorded views."
     },
     {
       "video_id": "ZE9tGMBB7Fg",
@@ -263,6 +281,12 @@
       "platform": "yt",
       "views": 9,
       "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "wUYjpa6ICeU",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 Facebook plays while Instagram shows 212 views; unverified"
     },
     {
       "video_id": "lCQJdMRx814",
