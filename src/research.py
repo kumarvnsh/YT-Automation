@@ -9,6 +9,7 @@ import hashlib
 import json
 import copy
 import re
+import time
 from datetime import datetime, timezone
 from urllib.parse import urlparse, urldefrag, urljoin
 from html.parser import HTMLParser
@@ -345,13 +346,32 @@ class _ArticleText(HTMLParser):
             self.parts.append(' '.join(data.split()))
 
 
-def _fetch_page(cfg, url):
+def _ipv4_get(url, **kwargs):
+    """GET over IPv4. The laptop's IPv6 route is broken (nps.gov reset 6 of 8 IPv6 requests, 0 of 8
+    over IPv4), so a valid source was being discarded at random. One retry covers a dropped connection."""
+    import socket
     import requests
+    import urllib3.util.connection as connection
+    original = connection.allowed_gai_family
+    connection.allowed_gai_family = lambda: socket.AF_INET
+    try:
+        for attempt in range(2):
+            try:
+                return requests.get(url, **kwargs)
+            except (requests.ConnectionError, requests.Timeout):
+                if attempt:
+                    raise
+                time.sleep(2)
+    finally:
+        connection.allowed_gai_family = original
+
+
+def _fetch_page(cfg, url):
     for _ in range(4):
         if not _authority(cfg, url):
             raise ValueError('Direct evidence retrieval requires an approved HTTPS authority')
-        with requests.get(url, timeout=(5, 15), allow_redirects=False, stream=True,
-                          headers={'User-Agent': 'HistoldResearch/1.0'}) as response:
+        with _ipv4_get(url, timeout=(5, 15), allow_redirects=False, stream=True,
+                       headers={'User-Agent': 'HistoldResearch/1.0'}) as response:
             if response.status_code in (301, 302, 303, 307, 308):
                 url = urljoin(url, response.headers['Location'])
                 continue

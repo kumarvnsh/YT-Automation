@@ -83,25 +83,38 @@ def _norm(text: str) -> str:
     return ' '.join(re.sub(r'[^a-z0-9\'" -]+', ' ', text.lower()).split())
 
 
-def verify_sources(cfg: Config, fact: dict) -> list[dict]:
-    """Fetch every source; keep those whose quote is on the page. Needs two institutions."""
+def verify_sources(cfg: Config, fact: dict, reasons: list[str] | None = None) -> list[dict]:
+    """Fetch every source; keep those whose quote is on the page. Needs two institutions.
+    Why each source was rejected is added to `reasons`."""
     from .research import _authority, _fetch_page
     verified, institutions = [], set()
+    reasons = [] if reasons is None else reasons
     for source in fact.get('sources') or []:
         url, excerpt = str(source.get('url') or ''), str(source.get('excerpt') or '')
-        if not url.startswith('https://') or len(_norm(excerpt).split()) < 6 or not _authority(cfg, url):
+        name = urlparse(url).hostname or url[:60]
+        if not url.startswith('https://') or not _authority(cfg, url):
+            reasons.append(f'{name}: not an approved institution')
+            continue
+        if len(_norm(excerpt).split()) < 6:
+            reasons.append(f'{name}: excerpt too short')
             continue
         try:
             page = _fetch_page(cfg, url)
         except Exception as exc:  # noqa: BLE001 - an unreachable source simply does not count
             print(f'  ! fact source not fetched ({type(exc).__name__}): {url}')
+            reasons.append(f'{name}: page not fetched ({type(exc).__name__})')
             continue
-        if _norm(excerpt) in _norm(page['cited_text']):
-            host = urlparse(page['url']).hostname or ''
-            institution = '.'.join(host.split('.')[-2:])
-            verified.append({**source, 'url': page['url'], 'institution': institution})
-            institutions.add(institution)
-    return verified if len(institutions) >= 2 else []
+        if _norm(excerpt) not in _norm(page['cited_text']):
+            reasons.append(f'{name}: quote not found on the page')
+            continue
+        host = urlparse(page['url']).hostname or ''
+        institution = '.'.join(host.split('.')[-2:])
+        verified.append({**source, 'url': page['url'], 'institution': institution})
+        institutions.add(institution)
+    if len(institutions) < 2:
+        reasons.append(f"'{str(fact.get('headline'))[:40]}': {len(institutions)} verified institution(s)")
+        return []
+    return verified
 
 
 def research_fact(cfg: Config, avoid: list[str], attempt_note: str = '') -> dict:
@@ -141,19 +154,21 @@ def check_claims(cfg: Config, fact: dict, sources: list[dict]) -> list[str]:
 
 
 def find_fact(cfg: Config, avoid: list[str], attempts: int = 3) -> tuple[dict, list[dict]]:
-    note = ''
+    note, reasons = '', []
     for _ in range(attempts):
         fact = research_fact(cfg, avoid, note)
-        sources = verify_sources(cfg, fact)
+        sources = verify_sources(cfg, fact, reasons)
         if not sources:
             note = 'The previous fact failed: its excerpts were not found word for word on two different institutions. Choose another fact.\n'
             continue
         problems = check_claims(cfg, fact, sources)
         if problems:
             note = 'The previous fact overstated its sources (' + '; '.join(problems)[:300] + '). Choose another fact.\n'
+            reasons.append(f"'{str(fact.get('headline'))[:40]}' overstated its sources")
             continue
         return fact, sources
-    raise RuntimeError('No fact could be verified on two approved institutions')
+    # Say why, so a failure in the log or Telegram can be acted on.
+    raise RuntimeError('No fact could be verified on two approved institutions (' + '; '.join(reasons)[-400:] + ')')
 
 
 # ---------------------------------------------------------------- 2. reference

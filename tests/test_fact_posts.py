@@ -62,8 +62,42 @@ class Verification(unittest.TestCase):
             {'url': 'https://www.si.edu/a', 'excerpt': 'left his estate to the United States to found an establishment'},
             {'url': 'https://www.si.edu/b', 'excerpt': 'established in 1846 with funds from James Smithson'},
             {'url': 'https://www.loc.gov/c', 'excerpt': 'Smithson personally designed the castle building himself in 1840'}]}
+        reasons = []
         with mock.patch('src.research._fetch_page', side_effect=lambda cfg, url: {'url': url, 'cited_text': PAGE}):
-            self.assertEqual(fp.verify_sources(CFG, fact), [])
+            self.assertEqual(fp.verify_sources(CFG, fact, reasons), [])
+        self.assertIn('www.loc.gov: quote not found on the page', reasons)
+
+    def test_failure_says_why_each_source_was_rejected(self):
+        fact = {'headline': 'Smithson', 'sources': [
+            {'url': 'https://www.si.edu/a', 'excerpt': 'left his estate to the United States to found an establishment'},
+            {'url': 'https://www.loc.gov/b', 'excerpt': 'established in 1846 with funds from James Smithson'}]}
+
+        def fetch(cfg, url):
+            if 'loc.gov' in url:
+                raise ConnectionError('reset')
+            return {'url': url, 'cited_text': PAGE}
+        with mock.patch.object(fp, 'research_fact', return_value=fact), \
+                mock.patch('src.research._fetch_page', side_effect=fetch):
+            with self.assertRaises(RuntimeError) as caught:
+                fp.find_fact(CFG, [], attempts=1)
+        self.assertIn('www.loc.gov: page not fetched (ConnectionError)', str(caught.exception))
+
+    def test_source_fetch_uses_ipv4_and_retries_a_dropped_connection(self):
+        import socket
+        import requests
+        import urllib3.util.connection as connection
+        from src import research
+        seen = []
+
+        def get(url, **kwargs):
+            seen.append(connection.allowed_gai_family())
+            if len(seen) == 1:
+                raise requests.ConnectionError('reset by peer')
+            return 'page'
+        with mock.patch('requests.get', side_effect=get), mock.patch.object(research.time, 'sleep'):
+            self.assertEqual(research._ipv4_get('https://www.nps.gov/x'), 'page')
+        self.assertEqual(seen, [socket.AF_INET, socket.AF_INET])
+        self.assertNotEqual(connection.allowed_gai_family(), None)
 
     def test_caption_has_sources_and_tags(self):
         text = fp.caption(CFG, {'headline': 'H', 'caption': 'C', 'hashtags': ['Smithsonian', '#History']},
