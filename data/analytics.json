@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-22T05:00:36.356290+00:00",
+      "updated": "2026-11-22T06:00:33.429628+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -71,12 +71,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -115,12 +115,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -159,12 +159,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -204,12 +204,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -249,12 +249,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -293,12 +293,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
@@ -467,12 +467,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
@@ -772,12 +772,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
@@ -904,12 +904,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
@@ -1940,12 +1940,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
