@@ -155,6 +155,15 @@ class HistoldLive(unittest.TestCase):
         self.assertEqual(progress['step'], 0.6)
         self.assertAlmostEqual(progress['overall'], (120 + 60 + 330 * 0.6) / (120 + 60 + 330), places=3)
 
+    def test_setup_survives_a_tool_path_from_another_system(self):
+        with mock.patch.object(live, 'configured', return_value={'python': 'python.exe', 'enabled': False, 'caps': {}}):
+            self.assertEqual(len(live.setup(self.config)), 4)
+
+    def test_a_live_failure_never_breaks_the_snapshot(self):
+        from studio_hq import dashboard_snapshot
+        with mock.patch.object(dashboard_snapshot, 'histold_live_snapshot', side_effect=RuntimeError('boom')):
+            self.assertIsNone(dashboard_snapshot._histold_live({}))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -265,7 +265,9 @@ def current_run(config, now: float) -> dict | None:
 
 def setup(config) -> list[dict]:
     root, secrets = clone(config), home(config) / 'secrets'
-    env_root = Path(configured(config)['python']).parents[2]
+    python = Path(configured(config)['python'])
+    # <env>\histold-local\Scripts\python.exe -> <env>; a path from another system may have fewer parts.
+    env_root = python.parents[2] if len(python.parents) > 2 else python.parent
     return [
         {'name': 'Production tools', 'ok': Path(configured(config)['python']).is_file()},
         {'name': 'Narration voice (Kokoro)', 'ok': (env_root / 'histold-kokoro' / 'Scripts' / 'python.exe').is_file()},

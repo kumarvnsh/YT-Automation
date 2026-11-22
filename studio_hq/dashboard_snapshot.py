@@ -266,6 +266,14 @@ def archives(state, roots):
     return sorted(rows, key=lambda row: row['archived_at'] or '', reverse=True)
 
 
+def _histold_live(config):
+    """Histold live operations must never break the rest of the snapshot."""
+    try:
+        return histold_live_snapshot(config)
+    except Exception:  # noqa: BLE001 - the Live tab shows "waiting" instead
+        return None
+
+
 def snapshot(config, previews=None, *, include_finance=False, media=None):
     roots = {name: Path(config['roots'][name]).absolute() for name in LABELS}
     state = Path(config['state_dir'])
@@ -322,7 +330,7 @@ def snapshot(config, previews=None, *, include_finance=False, media=None):
         analytics=analytics(roots, source, rows),
         pacing_experiment=pacing_experiment(roots['shotsnip']),
         video_insights=video_summary(config) if include_finance else None,
-        histold_live=histold_live_snapshot(config) if include_finance else None,
+        histold_live=_histold_live(config) if include_finance else None,
         phase3=phase3(config, source, roots['shotsnip'], rows, approvals, now, include_finance=include_finance, media=media),
         shotsnip_workspace=shotsnip_workspace(roots['shotsnip']),
         activity=sorted(visible_rows, key=lambda item: item['at'] or '', reverse=True), archives=library[:250],
