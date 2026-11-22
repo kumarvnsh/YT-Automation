@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-21T23:00:42.602089+00:00",
+      "updated": "2026-11-22T00:00:32.569955+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,51 @@
       },
       "videos": [
         {
+          "id": "i8oWcZUKfJA",
+          "title": "Sichuan's Ancient Water Scheme Manages a River Without Blocking It",
+          "description": "Dujiangyan, in Sichuan Province, China, is an ancient irrigation system that controls the Minjiang River without a dam across it. Engineers used dikes, a floodgate and a diversion passage to split the flow and keep water reaching the Chengdu Plain's farmland. UNESCO documents the system, which still supplies farms today. #ChinaHistory #IrrigationHistory #IngeniousSolutions\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "ancient engineering",
+            "chengdu plain",
+            "china history",
+            "did you know",
+            "dujiangyan",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "ingenious solutions",
+            "irrigation history",
+            "minjiang river",
+            "river engineering",
+            "sichuan china",
+            "unesco world heritage",
+            "water history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-21T23:14:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/i8oWcZUKfJA/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-13",
+            "end_date": "2026-11-22",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
+          }
+        },
+        {
           "id": "0xHy2ZVArUg",
           "title": "Yellowstone Chose to Fight Every Fire in 1988",
           "description": "In July 1988, Yellowstone National Park managers decided to suppress all fires during a record drought. The firefight had little effect on the fires, which September rain and snow finally stopped. The episode also raised public understanding of fire's role in wild landscapes.\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -66,16 +111,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -110,16 +155,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -155,16 +200,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -200,16 +245,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -244,16 +289,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -294,7 +339,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -337,7 +382,7 @@
           "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -381,7 +426,7 @@
           "engaged_views": 9,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -418,16 +463,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -468,7 +513,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -512,7 +557,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -555,7 +600,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -599,7 +644,7 @@
           "engaged_views": 16,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -643,7 +688,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -686,7 +731,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -723,16 +768,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -775,7 +820,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -818,7 +863,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -855,16 +900,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -905,7 +950,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -948,7 +993,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -991,7 +1036,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1033,7 +1078,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1076,7 +1121,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1120,7 +1165,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1165,7 +1210,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1210,7 +1255,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1253,7 +1298,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1295,7 +1340,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1338,7 +1383,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1381,7 +1426,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1423,7 +1468,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1466,7 +1511,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1509,7 +1554,7 @@
           "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1550,7 +1595,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1593,7 +1638,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1637,7 +1682,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1680,7 +1725,7 @@
           "engaged_views": 8,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1722,7 +1767,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1767,7 +1812,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1810,7 +1855,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1853,7 +1898,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1891,16 +1936,16 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
+            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
+            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
+            "shares": "YouTube Analytics permission, report delay, or missing response row.",
+            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
+            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
           }
         },
         {
@@ -1940,7 +1985,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1982,7 +2027,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2028,7 +2073,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2071,7 +2116,7 @@
           "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2115,7 +2160,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2157,53 +2202,10 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
+            "end_date": "2026-11-22",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
-        },
-        {
-          "id": "C9GeTO7j1W8",
-          "title": "Why Did Coffeehouses Start Printing Their Own Cash?",
-          "description": "In the mid-1600s, England lacked enough small coins, so shops, inns and coffeehouses issued their own tokens. These tokens worked as money and advertised the businesses that made them. Discover how this everyday shortage shaped English street life.\n#EnglishHistory #CoffeeHistory #WorldHistory",
-          "tags": [
-            "17th century",
-            "coffeehouse history",
-            "did you know",
-            "education",
-            "english history",
-            "everyday origins",
-            "forgotten history",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "london history",
-            "old money",
-            "tokens",
-            "world history",
-            "you use it every day"
-          ],
-          "publishedAt": "2026-11-13T18:14:41Z",
-          "thumbnail": "https://i.ytimg.com/vi/C9GeTO7j1W8/mqdefault.jpg",
-          "views": 0,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-21",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
-          }
         }
       ]
     }
