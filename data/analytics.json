@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-22T12:00:29.243624+00:00",
+      "updated": "2026-11-22T13:00:34.921849+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -58,7 +58,7 @@
           ],
           "publishedAt": "2026-11-22T11:20:17Z",
           "thumbnail": "https://i.ytimg.com/vi/Jc1jzJNlqHc/mqdefault.jpg",
-          "views": 0,
+          "views": 1,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -70,12 +70,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -147,7 +147,7 @@
           ],
           "publishedAt": "2026-11-21T23:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/i8oWcZUKfJA/mqdefault.jpg",
-          "views": 15,
+          "views": 17,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -280,7 +280,7 @@
           ],
           "publishedAt": "2026-11-20T23:10:21Z",
           "thumbnail": "https://i.ytimg.com/vi/l63EqXUSzEc/mqdefault.jpg",
-          "views": 6,
+          "views": 10,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -894,7 +894,7 @@
           ],
           "publishedAt": "2026-11-16T16:59:01Z",
           "thumbnail": "https://i.ytimg.com/vi/Chyn8YLkKO0/mqdefault.jpg",
-          "views": 7,
+          "views": 9,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1712,7 +1712,7 @@
           ],
           "publishedAt": "2026-11-14T15:57:36Z",
           "thumbnail": "https://i.ytimg.com/vi/4vjxe7HaQZI/mqdefault.jpg",
-          "views": 22,
+          "views": 25,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1886,7 +1886,7 @@
           ],
           "publishedAt": "2026-11-14T14:38:28Z",
           "thumbnail": "https://i.ytimg.com/vi/QN1FmIl8Cto/mqdefault.jpg",
-          "views": 14,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
