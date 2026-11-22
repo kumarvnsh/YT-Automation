@@ -99,6 +99,17 @@ class Verification(unittest.TestCase):
         self.assertEqual(len(sources), 2)
         self.assertIn('richest', complete.call_args[0][2])
 
+    def test_claims_are_checked_against_the_passage_around_the_quote(self):
+        fact = {'headline': 'H', 'fact': 'F', 'sources': [
+            {'url': 'https://www.si.edu/a', 'publisher': 'Smithsonian', 'excerpt': 'left his estate to the United States'}]}
+        with mock.patch('src.research._fetch_page', side_effect=lambda cfg, url, **kw: {'url': url, 'cited_text': PAGE}):
+            fp.verify_sources(CFG, fact)
+        sources = [{'publisher': 'Smithsonian', 'excerpt': 'left his estate to the United States',
+                    'context': fp._norm(PAGE)}]
+        with mock.patch.object(fp.plan_ai, 'complete', return_value=('{"supported": true}', 'claude')) as complete:
+            self.assertEqual(fp.check_claims(CFG, fact, sources), [])
+        self.assertIn('established in 1846 with funds from james smithson', complete.call_args[0][2])
+
     def test_quote_is_checked_against_the_whole_page(self):
         long_page = 'filler words here. ' * 3000 + PAGE
         fetched = []
