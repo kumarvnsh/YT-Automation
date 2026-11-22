@@ -559,11 +559,11 @@ def _extract_json(text: str) -> dict:
         raise
 
 
-def _call_anthropic(cfg: Config, prompt: str) -> str:
+def _call_anthropic(cfg: Config, prompt: str, model: str | None = None) -> str:
     import anthropic
 
     client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"))
-    model = cfg.get("script.anthropic_model", "claude-sonnet-4-6")
+    model = model or cfg.get("script.anthropic_model", "claude-sonnet-4-6")
     effort = cfg.get("script.anthropic_effort")
     if effort:
         # Thinking lets the model add up its beats before answering, which is
@@ -582,13 +582,17 @@ def _call_anthropic(cfg: Config, prompt: str) -> str:
         if msg.stop_reason == "refusal":
             raise RuntimeError(f"refused: {msg.stop_details}")
     else:
+        # Long-form scripts (10-16 segments with keywords and claim IDs) need far more
+        # than 4000 tokens; a cut-off reply has no complete JSON and fails the slot.
         msg = studio_call('anthropic', 'script', model, client.messages.create,
             model=model,
-            max_tokens=4000,
+            max_tokens=int(cfg.get("script.max_output_tokens", 12000)),
             system=_SYSTEM,
             messages=[{"role": "user", "content": prompt}],
         )
     print(f"  script: {model} in_tokens={msg.usage.input_tokens} out_tokens={msg.usage.output_tokens}")
+    if msg.stop_reason == "max_tokens":
+        raise RuntimeError(f"{model} reply hit the {msg.usage.output_tokens}-token limit before the script was complete")
     return "".join(block.text for block in msg.content if block.type == "text")
 
 
@@ -611,6 +615,9 @@ def _call_openai(cfg: Config, prompt: str) -> str:
 def _provider_call(cfg: Config, provider: str, prompt: str) -> str:
     if provider == "anthropic":
         return _call_anthropic(cfg, prompt)
+    if provider == "anthropic_fallback":
+        # A stronger Claude model, used only after the primary model failed twice.
+        return _call_anthropic(cfg, prompt, model=cfg.get("script.anthropic_fallback_model", "claude-sonnet-5-5"))
     if provider == "openai":
         return _call_openai(cfg, prompt)
     raise RuntimeError(f"Unsupported script provider: {provider}")
@@ -653,17 +660,29 @@ def _provider_sequence(cfg: Config) -> list[str]:
     return list(dict.fromkeys([primary, fallback]))
 
 
+_REPAIR_NOTE = (
+    "\n\nIMPORTANT: your previous reply could not be read as the required JSON object. "
+    "Reply with ONLY the JSON object: start with { and end with }, with no planning, prose or code fences."
+)
+
+
 def _call_with_routing(cfg: Config, prompt: str, validator=None) -> tuple[str, str, bool]:
     errors = []
     for index, provider in enumerate(_provider_sequence(cfg)):
-        for _try in range(2):  # one cheap retry on a malformed reply before falling back
+        attempt_prompt = prompt
+        for _try in range(2):  # one corrective retry on a malformed reply before falling back
+            raw = None
             try:
-                raw = _provider_call(cfg, provider, prompt)
+                raw = _provider_call(cfg, provider, attempt_prompt)
                 if validator is not None:
                     validator(raw)
                 return raw, provider, index > 0
             except Exception as exc:  # noqa: BLE001 - retry, then try configured fallback provider
                 errors.append(f"{provider}: {exc}")
+                if raw is not None:
+                    # Keep the start of an unusable reply in the run log so a failure can be diagnosed.
+                    print(f"  ! {provider} script reply unusable ({exc}); it began: {raw.strip()[:240]!r}")
+                    attempt_prompt = prompt + _REPAIR_NOTE
     raise RuntimeError("All script providers failed: " + " | ".join(errors))
 
 

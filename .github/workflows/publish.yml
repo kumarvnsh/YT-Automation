@@ -189,15 +189,26 @@ jobs:
 
           STATUS="TIMEOUT"
           END=$((SECONDS + 5*3600))
+          RETRIES=0
           while [ $SECONDS -lt $END ]; do
             set +e
             OUT=$(python -m src.main "${ARGS[@]}" 2>&1)
             PY_STATUS=$?
             set -e
             echo "$OUT"
-            if [ "$PY_STATUS" -ne 0 ]; then STATUS="ERROR"; break; fi
             if echo "$OUT" | grep -q "STATUS: DONE"; then STATUS="DONE"; break; fi
-            if echo "$OUT" | grep -q "STATUS: ERROR"; then STATUS="ERROR"; break; fi
+            if [ "$PY_STATUS" -ne 0 ] || echo "$OUT" | grep -q "STATUS: ERROR"; then
+              # A failed step resumes from saved state, which is what a manual rerun did.
+              # Retry only steps before upload: an upload must never run twice.
+              FAILED=$(echo "$OUT" | sed -n "s/.*!! step '\([a-z_]*\)' failed.*/\1/p" | tail -1)
+              if [ "$RETRIES" -lt 2 ] && [ -n "$FAILED" ] && [ "$FAILED" != "upload" ]; then
+                RETRIES=$((RETRIES + 1))
+                echo "::warning::Step '$FAILED' failed; retrying automatically ($RETRIES of 2) in 60 seconds"
+                sleep 60
+                continue
+              fi
+              STATUS="ERROR"; break
+            fi
           done
           echo "pipeline_status=$STATUS" >> "$GITHUB_OUTPUT"
           if [ "$STATUS" != "DONE" ]; then

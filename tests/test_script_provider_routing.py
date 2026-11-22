@@ -228,6 +228,48 @@ class AnthropicCallTests(unittest.TestCase):
         self.assertNotIn("thinking", c.messages.create.call_args.kwargs)
         c.beta.messages.create.assert_not_called()
 
+    def test_plain_call_has_room_for_long_form_scripts(self):
+        c = self._call(Config({"script": {"anthropic_model": "claude-haiku-5-5"}}))
+        self.assertEqual(c.messages.create.call_args.kwargs["max_tokens"], 12000)
+
+    def test_cut_off_reply_says_so(self):
+        from types import SimpleNamespace
+        from src.script_generator import _call_anthropic
+        msg = SimpleNamespace(content=[SimpleNamespace(type="text", text="Let me plan the chapters")],
+                              stop_reason="max_tokens", usage=SimpleNamespace(input_tokens=1, output_tokens=12000))
+        with patch("anthropic.Anthropic") as client:
+            client.return_value.messages.create.return_value = msg
+            with self.assertRaisesRegex(RuntimeError, "12000-token limit"):
+                _call_anthropic(Config({"script": {"anthropic_model": "claude-haiku-5-5"}}), "p")
+
+
+class RecoveryTests(unittest.TestCase):
+    """The 22 Nov long-form failure: two unreadable replies, then a dead OpenAI fallback."""
+
+    def test_retry_asks_for_json_only_and_falls_back_to_a_stronger_claude_model(self):
+        from src.script_generator import _call_with_routing, _parse_script_response
+        cfg = Config({"script": {"routing": "fallback", "provider": "anthropic", "fallback_provider": "anthropic_fallback",
+                                 "anthropic_model": "claude-haiku-5-5", "anthropic_fallback_model": "claude-sonnet-5-5"}})
+        calls = []
+
+        def reply(cfg, prompt, model=None):
+            calls.append((model, prompt))
+            return "# Planning the chapters" if model is None else json.dumps(SCRIPT_JSON)
+
+        with patch("src.script_generator._call_anthropic", side_effect=reply):
+            raw, provider, fallback = _call_with_routing(cfg, "PROMPT", _parse_script_response)
+        self.assertEqual((provider, fallback), ("anthropic_fallback", True))
+        self.assertEqual([model for model, _ in calls], [None, None, "claude-sonnet-5-5"])
+        self.assertNotIn("could not be read", calls[0][1])
+        self.assertIn("could not be read as the required JSON object", calls[1][1])
+        self.assertEqual(calls[2][1], "PROMPT")  # the fallback model gets the clean prompt first
+
+    def test_live_config_no_longer_falls_back_to_openai(self):
+        from src.config import load_config
+        cfg = load_config()
+        self.assertEqual(cfg.get("script.fallback_provider"), "anthropic_fallback")
+        self.assertGreaterEqual(int(cfg.get("script.max_output_tokens")), 12000)
+
 
 if __name__ == "__main__":
     unittest.main()

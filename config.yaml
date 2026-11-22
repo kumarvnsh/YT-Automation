@@ -181,8 +181,12 @@ script:
   story_profile: "consequence_first"
   provider: "anthropic"        # primary provider: "anthropic" | "openai"
   routing: "fallback"          # "fallback" | "random" | "round_robin"
-  fallback_provider: "openai"
+  # The OpenAI account is inactive (billing), so a failed script now falls back to a
+  # stronger Claude model instead (only used after the primary model fails twice).
+  fallback_provider: "anthropic_fallback"
+  anthropic_fallback_model: "claude-sonnet-5-5"
   anthropic_model: "claude-haiku-5-5"    # ~$0.002/script vs ~$0.03 on Sonnet 5.5
+  max_output_tokens: 12000     # reply limit without thinking (long-form); 4000 cut long scripts off
   anthropic_effort: "low"      # thinking on, so word budgets land first try; unset = old no-thinking call
   openai_model: "gpt-4o-mini"
   # Require the four-beat looping structure (hook / setup / pivot / fact stack
