@@ -25,8 +25,10 @@ MANUAL = None
 
 def manual_module():
     global MANUAL
+    path=CLIP_ROOT/'manual_jobs.py'
+    if MANUAL is not None and path.exists() and getattr(MANUAL, '_loaded_mtime', None) != path.stat().st_mtime:
+        MANUAL=None  # Shotsnip's queue code changed: load the new version without a dashboard restart
     if MANUAL is None:
-        path=CLIP_ROOT/'manual_jobs.py'
         if not path.exists(): return None
         import importlib.util
         import sys
@@ -36,6 +38,7 @@ def manual_module():
         spec=importlib.util.spec_from_file_location('shotsnip_manual_jobs',path)
         module=importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
+        module._loaded_mtime=path.stat().st_mtime
         MANUAL=module  # Cache only a fully loaded module, so a failed load is retried.
     return MANUAL
 
@@ -493,6 +496,16 @@ def action(body):
             write(CLIP_ROOT/'scheduler.json',config)
             SCHEDULER_WAKE.set()
             return f'Manual clips now go out at least {minutes/60:g} hour{"s" if minutes!=60 else ""} apart.'
+        if name == 'set_manual_publishing':
+            paused=body.get('paused')
+            if type(paused) is not bool:
+                raise ValueError('Choose whether manual publishing is paused')
+            config=read(CLIP_ROOT/'scheduler.json',{})
+            config['manual_publishing_paused']=paused
+            write(CLIP_ROOT/'scheduler.json',config)
+            SCHEDULER_WAKE.set()
+            return ('Manual publishing is paused. Waiting clips stay in the queue and live operations no longer wait for them.'
+                    if paused else 'Manual publishing resumed. Waiting clips go out in queue order.')
         if name == 'set_commentary':
             mode=body.get('mode')
             if mode not in VOICE_MODES:

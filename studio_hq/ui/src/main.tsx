@@ -21,7 +21,7 @@ const sections = [
   { id: 'shotsnip', label: 'Shotsnip', icon: Scissors, intro: 'Live clipping, the clip queue, sources, and the agent.',
     subs: [['live', 'Live'], ['clips', 'Clips'], ['queue', 'Queue'], ['targets', 'Targets'], ['agent', 'Agent'], ['bots', 'Bots']] },
   { id: 'histold', label: 'Histold', icon: BookOpen, intro: 'Video making on this PC, topics, experiments, the assistant, approvals, and strategy controls.',
-    subs: [['live', 'Live'], ['topics', 'Topics'], ['experiments', 'Experiments'], ['assistant', 'Assistant'], ['approvals', 'Approvals'], ['controls', 'Controls'], ['bots', 'Bots']] },
+    subs: [['live', 'Live'], ['posts', 'Posts'], ['topics', 'Topics'], ['experiments', 'Experiments'], ['assistant', 'Assistant'], ['approvals', 'Approvals'], ['controls', 'Controls'], ['bots', 'Bots']] },
   { id: 'plan', label: 'Plan', icon: CalendarDays, intro: 'The publishing calendar, earnings, and costs.',
     subs: [['calendar', 'Calendar'], ['money', 'Money'], ['jobs', 'Job usage']] },
   { id: 'system', label: 'System', icon: Server, intro: 'Storage, background jobs, AI settings, the archive, and original tools.',

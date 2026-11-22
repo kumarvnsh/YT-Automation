@@ -121,6 +121,44 @@ def retry_waiting_video(dry_run: bool, now: float | None = None) -> bool:
     return True
 
 
+def fact_post(now: datetime, slot: str, state: dict, dry_run: bool) -> bool:
+    """Start one Histold fact image post at its hours, or remake one that waited for the plans."""
+    cfg = load_config()
+    posts = cfg.get('fact_posts', {}) or {}
+    local = cfg.get('local_production', {}) or {}
+    python = Path(local.get('python') or r'D:\YT-Automation-env\histold-local\Scripts\python.exe')
+    try:  # Studio HQ's Posts switch wins over config.yaml
+        switch = json.loads((SWITCH_FILE.parent / 'fact-posts.json').read_text(encoding='utf-8'))
+        enabled = switch['enabled'] if isinstance(switch.get('enabled'), bool) else bool(posts.get('enabled'))
+    except (OSError, ValueError, AttributeError):
+        enabled = bool(posts.get('enabled'))
+    if not enabled or not python.is_file():
+        return False
+    mode = None
+    if now.hour in (posts.get('hours_utc') or []) and now.minute < PUBLISH_WINDOW_MIN and state.get('fact_post') != slot:
+        mode = ['--make', '--slot', slot]
+    else:
+        try:
+            sys.path.insert(0, str(ROOT))
+            from src.fact_posts import load_queue
+            if any(r.get('status') == 'waiting_plans' and float(r.get('retry_at') or 0) <= now.timestamp() for r in load_queue()):
+                mode = ['--retry']
+        except Exception:  # noqa: BLE001
+            mode = None
+    if not mode:
+        return False
+    cmd = [str(python), str(ROOT / 'scripts' / 'run_fact_post.py'), *mode]
+    if dry_run:
+        print('  would make a fact post: ' + ' '.join(cmd))
+        return True
+    flags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else 0
+    subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=flags)
+    if mode[0] == '--make':
+        state['fact_post'] = slot
+    print('  fact post: started ' + ' '.join(mode))
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--dry-run', action='store_true', help='print what would be dispatched')
@@ -153,6 +191,7 @@ def main() -> int:
     else:
         print('  publish: not a publish hour')
     retry_waiting_video(args.dry_run)
+    fact_post(now, slot, state, args.dry_run)
     if not args.no_analytics:
         if state.get('analytics') == slot:
             print('  analytics: already dispatched this hour')

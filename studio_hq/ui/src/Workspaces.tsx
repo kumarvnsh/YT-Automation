@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowUpRight } from './icons';
 import type { CommandEvent, Send } from './Controls';
 
@@ -20,9 +20,45 @@ export type ShotsnipWorkspace = {
     pending_publications: number; events: {at: string; phase: string}[];
     enabled?: boolean | null; run_now?: boolean; stop_after?: boolean;
     hold?: { batch: string; total: number; published: number | null; paused_at: string | null } | null;
-    commentary?: string; watch_worker?: { status: string; checked_at: string | null; note: string; stop_requested: boolean } };
+    commentary?: string; watch_worker?: { status: string; checked_at: string | null; note: string; stop_requested: boolean };
+    timers?: { combined: boolean; scan_minutes: number; post_minutes: number; next_cycle: string | null; next_post: string | null;
+      stage_started: string | null; last_upload: string | null } };
 };
 
+
+const BUSY = ['scanning', 'capturing', 'analyzing', 'finishing', 'uploading'];
+const clock = (seconds: number) => {
+  const n = Math.max(0, Math.ceil(seconds));
+  return [Math.floor(n / 3600), Math.floor(n % 3600 / 60), n % 60].map(part => String(part).padStart(2, '0')).join(':');
+};
+
+/** Countdown to the next live cycle (and post), ticking every second, like the original Shotsnip dashboard. */
+export function LiveTimers({ live, time }: { live: NonNullable<ShotsnipWorkspace['live']>; time: (value: string | null) => string }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => { const id = window.setInterval(() => setNow(Date.now()), 1000); return () => window.clearInterval(id); }, []);
+  const timers = live.timers;
+  if (!timers) return null;
+  const busy = BUSY.includes(live.phase);
+  const left = (iso: string | null) => iso ? (Date.parse(iso) - now) / 1000 : null;
+  const cycle = left(timers.next_cycle);
+  const post = left(timers.next_post);
+  const cycleText = live.enabled !== true ? 'Paused' : busy ? 'Running now' : cycle == null ? '—' : cycle <= 0 ? 'Due now' : clock(cycle);
+  const postText = live.enabled !== true ? 'Paused' : timers.combined ? 'After processing' : live.phase === 'uploading' ? 'Uploading'
+    : post == null ? '—' : post <= 0 ? 'Due now' : clock(post);
+  const elapsed = busy && timers.stage_started ? Math.floor((now - Date.parse(timers.stage_started)) / 60000) : null;
+  return <section className="panel live-timers-card" aria-labelledby="live-timers-heading">
+    <div className="panel-head"><div><h2 id="live-timers-heading">Next live cycle</h2>
+      <p>{timers.combined ? `Each cycle scans, captures and posts, every ${Math.round(timers.scan_minutes / 60 * 10) / 10} h after the last cycle or upload.`
+        : `Scans every ${timers.scan_minutes} min; posts every ${timers.post_minutes} min.`}</p></div></div>
+    <div className="live-timer-grid">
+      <div><small>{timers.combined ? 'Next cycle in' : 'Next scan in'}</small><strong className="live-timer" aria-live="off">{cycleText}</strong>
+        {timers.next_cycle && live.enabled === true && !busy && <small>at {time(timers.next_cycle)} IST</small>}</div>
+      <div><small>Next post</small><strong className="live-timer">{postText}</strong>
+        {timers.last_upload && <small>Last upload {time(timers.last_upload)} IST</small>}</div>
+    </div>
+    {elapsed != null && <p className="control-note">Current stage running for {elapsed} min.</p>}
+  </section>;
+}
 
 export function LiveOperations({ live, status, waiting, time, close }: {
   live: NonNullable<ShotsnipWorkspace['live']>; status: string; waiting: number | null;

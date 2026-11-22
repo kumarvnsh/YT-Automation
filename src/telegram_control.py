@@ -42,6 +42,7 @@ CHANNELS = ('histold', 'shotsnip')
 # Every action the phone can trigger. Arguments are validated against these patterns.
 ACTIONS = {
     'fix_problem': {'label': 'Fix this problem now', 'args': {'channel': '^(histold|shotsnip)$', 'key': '^[a-z0-9-]{1,60}$'}},
+    'fact_post': {'label': 'Approve or skip a fact post', 'args': {'id': '^[0-9]{8}_[0-9]{6}_[0-9a-f]{6}$', 'choice': '^(approve|skip)$'}},
     'dismiss_problem': {'label': 'Not a problem', 'args': {'channel': '^(histold|shotsnip)$', 'key': '^[a-z0-9-]{1,60}$'}},
     'operator_run': {'label': 'Run the Operator now', 'args': {}},
     'operator_pause': {'label': 'Pause the Operator', 'args': {}},
@@ -131,6 +132,17 @@ class Telegram:
         if buttons:
             params['reply_markup'] = {'inline_keyboard': [[{'text': t[:60], 'callback_data': d} for t, d in row] for row in buttons]}
         return self.call('sendMessage', **params)
+
+    def send_photo(self, chat_id: int, path: Path, caption: str, buttons: list[list[tuple[str, str]]] | None = None):
+        data = {'chat_id': chat_id, 'caption': caption[:1000]}
+        if buttons:
+            data['reply_markup'] = json.dumps({'inline_keyboard': [[{'text': t[:60], 'callback_data': d} for t, d in row] for row in buttons]})
+        with ipv4_only(), Path(path).open('rb') as handle:
+            response = self.session.post(self.base + 'sendPhoto', data=data, files={'photo': handle}, timeout=120)
+        result = response.json() if response.content else {}
+        if not result.get('ok'):
+            raise RuntimeError(f"Telegram sendPhoto failed: {str(result.get('description'))[:200]}")
+        return result['result']
 
     def edit(self, chat_id: int, message_id: int, text: str):
         return self.call('editMessageText', chat_id=chat_id, message_id=message_id, text=text[:TEXT_LIMIT])
@@ -241,6 +253,26 @@ def notify_once(text: str, logical_id: str, state_path: Path, offers=None, confi
         state[logical_id] = status
     path.write_text(json.dumps(state, indent=2), encoding='utf-8')
     return status
+
+
+def notify_photo(path: Path, caption: str, offers: list[tuple[str, dict, str]] | None = None,
+                 config_path: Path = CONFIG, control: Path = CONTROL, session=requests) -> str:
+    """Send a picture to the paired owner, optionally with approval buttons. Never raises."""
+    config = load_config(config_path)
+    if not config.get('token') or not config.get('owner_id'):
+        return 'not_configured'
+    try:
+        approvals = Approvals(control)
+        rows = [offer(approvals, action, args, label) for action, args, label in (offers or [])[:5]]
+        Telegram(config['token'], session).send_photo(int(config['owner_id']), path, caption, rows or None)
+        return 'sent'
+    except Exception as exc:  # an update must never break the caller
+        return 'failed: ' + type(exc).__name__
+
+
+def decide_fact_post(post_id: str, choice: str) -> tuple[bool, str]:
+    from src import fact_posts
+    return True, fact_posts.decide(post_id, choice)
 
 
 def run(cmd: list[str], timeout: int = 180) -> tuple[int, str]:
@@ -408,6 +440,8 @@ class Controller:
             item = bot_findings.approve(self.workspace, args['channel'], args['key'])
             ok, out = self.start_operator()
             return ok, f"Fixing: {(item.get('plain') or item['title'])[:150]}\n\n" + out
+        if action == 'fact_post':
+            return decide_fact_post(args['id'], args['choice'])
         if action == 'dismiss_problem':
             bot_findings.settle(self.workspace, args['channel'], args['key'], 'The owner marked this as not a problem.', 'owner')
             return True, ('Removed from your problems. Repeat reports of it are ignored for '

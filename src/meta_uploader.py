@@ -63,6 +63,12 @@ def _ensure_media_release(repo: str, token: str) -> int:
 
 def _host_video(video_path: Path) -> tuple[str, callable]:
     """Upload the mp4 as a release asset. Returns (public_url, cleanup_fn)."""
+    return _host_file(video_path, "video/mp4", "reel")
+
+
+def _host_file(path: Path, content_type: str, prefix: str) -> tuple[str, callable]:
+    """Upload a file as a release asset Meta can pull. Returns (public_url, cleanup_fn)."""
+    video_path = path
     repo = env("GITHUB_REPOSITORY")
     token = env("GITHUB_TOKEN")
     if not repo or not token:
@@ -73,11 +79,11 @@ def _host_video(video_path: Path) -> tuple[str, callable]:
         )
     release_id = _ensure_media_release(repo, token)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    asset_name = f"reel_{stamp}.mp4"
+    asset_name = f"{prefix}_{stamp}{path.suffix}"
     data = video_path.read_bytes()
     up = requests.post(
         f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets?name={asset_name}",
-        headers={**_gh_headers(token), "Content-Type": "video/mp4"},
+        headers={**_gh_headers(token), "Content-Type": content_type},
         data=data,
         timeout=300,
     )
@@ -95,7 +101,7 @@ def _host_video(video_path: Path) -> tuple[str, callable]:
         except Exception as exc:  # noqa: BLE001
             print(f"  ! could not delete hosted media asset: {exc}")
 
-    print(f"  hosted mp4 for Meta pull: {url}")
+    print(f"  hosted {path.suffix.lstrip('.')} for Meta pull: {url}")
     return url, cleanup
 
 

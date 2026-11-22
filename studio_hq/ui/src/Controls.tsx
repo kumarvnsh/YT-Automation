@@ -7,7 +7,7 @@ export type ManualJob = {
   destinations: string[]; privacy: string; preview: boolean; at: string | null;
   eta?: string | null; position?: number; not_before?: string | null;
 };
-export type ManualSchedule = { gap_minutes: number; custom: boolean; choices: number[]; last_upload: string | null; next_at: string | null };
+export type ManualSchedule = { gap_minutes: number; custom: boolean; choices: number[]; last_upload: string | null; next_at: string | null; paused?: boolean };
 
 const hours = (minutes: number) => minutes % 60 ? (minutes / 60).toFixed(1).replace('.0', '') + ' h' : minutes / 60 + ' h';
 const localInput = (iso: string | null | undefined) => {
@@ -20,8 +20,15 @@ const localInput = (iso: string | null | undefined) => {
 export function PublishSchedule({ schedule, waiting, busy, send, time }: { schedule: ManualSchedule; waiting: number; busy: boolean; send?: Send; time: Time }) {
   return <section className="panel control-form">
     <h2><Clapperboard size={17}/>Publishing schedule</h2>
-    <p className="control-note">{waiting ? `${waiting} ${waiting === 1 ? 'clip is' : 'clips are'} waiting to publish. ` : 'No clips are waiting to publish. '}
-      {schedule.next_at ? 'Next about ' + time(schedule.next_at) + ' IST.' : ''}{schedule.last_upload ? ' Last upload ' + time(schedule.last_upload) + ' IST.' : ''}</p>
+    {schedule.paused
+      ? <p className="control-note"><Pause size={14}/>Manual publishing is paused. {waiting ? `${waiting} ${waiting === 1 ? 'clip stays' : 'clips stay'} in the queue, and ` : ''}live operations no longer wait for them.</p>
+      : <p className="control-note">{waiting ? `${waiting} ${waiting === 1 ? 'clip is' : 'clips are'} waiting to publish. ` : 'No clips are waiting to publish. '}
+      {schedule.next_at ? 'Next about ' + time(schedule.next_at) + ' IST.' : ''}{schedule.last_upload ? ' Last upload ' + time(schedule.last_upload) + ' IST.' : ''}</p>}
+    {send && <div className="live-buttons">
+      <button className={'action' + (schedule.paused ? ' primary' : '')} disabled={busy}
+        onClick={() => send({ action: 'manual_publishing', channel: 'shotsnip', paused: !schedule.paused })}>
+        {schedule.paused ? <><Play size={15}/>Resume manual publishing</> : <><Pause size={15}/>Pause manual publishing</>}</button>
+    </div>}
     <p className="control-note">Time between manual clips{schedule.custom ? '' : ' (current default)'}:</p>
     <div className="gap-choices" role="radiogroup" aria-label="Time between manual clips">
       {schedule.choices.map(minutes => <button key={minutes} role="radio" aria-checked={schedule.gap_minutes === minutes}

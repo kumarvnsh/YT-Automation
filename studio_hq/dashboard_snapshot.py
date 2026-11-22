@@ -167,6 +167,7 @@ def shotsnip_activity(root, previews):
         sample = {'options': {'local_library_batch': True}} if any(r['options'].get('local_library_batch') for r in waiting_rows) else {'options': {}}
         manual_schedule = {'gap_minutes': module.publish_gap_minutes(sample, schedule_config),
                            'custom': isinstance(schedule_config.get('manual_post_minutes'), int),
+                           'paused': schedule_config.get('manual_publishing_paused') is True,
                            'choices': list(getattr(module, 'MANUAL_GAP_CHOICES', ())),
                            'last_upload': date(ledger.get('last_upload_at')), 'next_at': date(min(times.values())) if times else None}
     except Exception:  # noqa: BLE001 - the queue still works without estimates
@@ -266,6 +267,14 @@ def archives(state, roots):
     return sorted(rows, key=lambda row: row['archived_at'] or '', reverse=True)
 
 
+def _fact_posts(config, media):
+    try:
+        from .fact_posts_view import snapshot as fact_snapshot
+        return fact_snapshot(config, media)
+    except Exception:  # noqa: BLE001 - the Posts tab shows "waiting" instead
+        return None
+
+
 def _histold_live(config):
     """Histold live operations must never break the rest of the snapshot."""
     try:
@@ -331,6 +340,7 @@ def snapshot(config, previews=None, *, include_finance=False, media=None):
         pacing_experiment=pacing_experiment(roots['shotsnip']),
         video_insights=video_summary(config) if include_finance else None,
         histold_live=_histold_live(config) if include_finance else None,
+        fact_posts=_fact_posts(config, media) if include_finance else None,
         phase3=phase3(config, source, roots['shotsnip'], rows, approvals, now, include_finance=include_finance, media=media),
         shotsnip_workspace=shotsnip_workspace(roots['shotsnip']),
         activity=sorted(visible_rows, key=lambda item: item['at'] or '', reverse=True), archives=library[:250],

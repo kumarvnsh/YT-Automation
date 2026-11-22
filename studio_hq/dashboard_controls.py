@@ -32,11 +32,13 @@ TARGET_ACTIONS = ('target_toggle', 'target_add')
 AGENT_ACTIONS = ('agent_learning', 'agent_review')
 SHOTSNIP_OWNER_ACTIONS = TARGET_ACTIONS + AGENT_ACTIONS
 ASSISTANT_ACTIONS = ('assistant_ask', 'assistant_apply')
-LIVE_ACTIONS = ('live_run_now', 'live_stop_after_stage', 'shotsnip_commentary', 'shotsnip_watch_worker', 'manual_spacing')
+LIVE_ACTIONS = ('live_run_now', 'live_stop_after_stage', 'shotsnip_commentary', 'shotsnip_watch_worker', 'manual_spacing', 'manual_publishing')
 QUEUE_ACTIONS = ('move_earlier', 'move_later', 'prioritize', 'schedule')
 HISTOLD_OWNER_ACTIONS = ('histold_strategy', 'histold_research', 'ai_settings')
 BOT_ACTIONS = ('bot_action', 'draft_preview')
 from .histold_live import ACTIONS as HISTOLD_LIVE_ACTIONS
+from .fact_posts_view import ACTIONS as FACT_POST_ACTIONS
+HISTOLD_LIVE_ACTIONS = HISTOLD_LIVE_ACTIONS + FACT_POST_ACTIONS
 COMMENTARY_MODES = ('off', 'intro', 'full')
 ACTIVE = {'queued', 'queued_publish', 'running', 'publishing', 'ready', 'partial', 'attention'}
 
@@ -183,7 +185,10 @@ def controls_db(config):
 def queue_control(config, body):
     action = body['action']
     target = ''
-    if action in HISTOLD_LIVE_ACTIONS:
+    if action in FACT_POST_ACTIONS:
+        from .fact_posts_view import check as fact_check
+        target = fact_check(body)
+    elif action in HISTOLD_LIVE_ACTIONS:
         from .histold_live import check
         target = check(body)
     if action == 'scheduler':
@@ -198,6 +203,10 @@ def queue_control(config, body):
         target = 'cancel' if body['cancel'] else 'run'
     if action == 'live_stop_after_stage':
         target = 'stop'
+    if action == 'manual_publishing':
+        if type(body.get('paused')) is not bool:
+            raise ValueError('Choose whether manual publishing is paused.')
+        target = 'paused' if body['paused'] else 'running'
     if action == 'manual_spacing':
         if type(body.get('minutes')) is not int or not 30 <= body['minutes'] <= 480:
             raise ValueError('Choose a gap between 30 minutes and 8 hours.')
@@ -495,6 +504,11 @@ def live_change(config, body):
         if not (root/'work/scheduler/stop-after-stage').exists():
             raise RuntimeError('Could not verify the stop request')
         return message or 'The live job will stop after this stage.'
+    if body['action'] == 'manual_publishing':
+        message = call_scheduler(config, {'name': 'set_manual_publishing', 'paused': body['paused']})
+        if read_json(root/'scheduler.json').get('manual_publishing_paused') is not body['paused']:
+            raise RuntimeError('Could not verify the manual publishing switch')
+        return message or 'Manual publishing switch saved.'
     if body['action'] == 'manual_spacing':
         message = call_scheduler(config, {'name': 'set_manual_spacing', 'minutes': body['minutes']})
         if read_json(root/'scheduler.json').get('manual_post_minutes') != body['minutes']:
@@ -568,6 +582,9 @@ def perform(config, body):
         return agent_change(config, body)
     if action in LIVE_ACTIONS:
         return live_change(config, body)
+    if action in FACT_POST_ACTIONS:
+        from .fact_posts_view import perform as fact_perform
+        return fact_perform(config, body)
     if action in HISTOLD_LIVE_ACTIONS:
         from .histold_live import perform as histold_live_perform
         return histold_live_perform(config, body)

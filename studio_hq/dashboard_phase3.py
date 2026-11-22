@@ -781,6 +781,23 @@ def ai_settings(config):
     return status
 
 
+def live_timers(live, schedule):
+    """Next cycle, next post and stage start, computed like the original Shotsnip dashboard's timers."""
+    stamp = lambda value: datetime.fromtimestamp(value, timezone.utc).isoformat() if isinstance(value, (int, float)) and value > 0 else None
+    scan = schedule.get('scan_minutes') if isinstance(schedule.get('scan_minutes'), (int, float)) else 30
+    post = schedule.get('post_minutes') if isinstance(schedule.get('post_minutes'), (int, float)) else 120
+    early = schedule.get('early_publish_minutes') if isinstance(schedule.get('early_publish_minutes'), (int, float)) else 0
+    last = lambda key: live.get(key) if isinstance(live.get(key), (int, float)) else 0
+    combined = schedule.get('mode') == 'scan_capture_upload'
+    if combined:  # one cycle scans, captures and posts; it waits the scan interval after the last cycle or upload
+        next_cycle, next_post = max(last('last_cycle_at'), last('last_upload_at')) + scan * 60, None
+    else:
+        next_cycle, next_post = last('last_scan_at') + scan * 60, last('last_upload_at') + max(0, post - early) * 60
+    return {'combined': combined, 'scan_minutes': scan, 'post_minutes': post,
+            'next_cycle': stamp(next_cycle), 'next_post': stamp(next_post) if next_post else None,
+            'stage_started': stamp(live.get('phase_started_at')), 'last_upload': stamp(live.get('last_upload_at'))}
+
+
 def batch_hold(root, schedule):
     """Progress of an owner-approved library batch that holds live operations."""
     hold = schedule.get('live_operations_batch_hold')
@@ -855,6 +872,7 @@ def shotsnip_workspace(root):
             'hold': batch_hold(root, schedule),
             'commentary': commentary_mode(schedule),
             'watch_worker': watch_worker(dashboard),
+            'timers': live_timers(live, schedule),
         },
         'connections': [
             {'name': name, 'status': statuses.get(status, 'Check connection') if isinstance(status, str) else 'Unavailable'}

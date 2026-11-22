@@ -18,6 +18,8 @@ runner gives the slot back to the paid cloud workflow, so the channel never miss
 from __future__ import annotations
 
 import json
+import re
+import shutil
 import os
 import subprocess
 import threading
@@ -298,3 +300,55 @@ def complete(cfg, purpose: str, prompt: str, *, system: str = '', web: bool = Fa
         print(f'  {purpose}: answered by {NAMES[provider]}' + (f' ({model})' if model else ''))
         return text, provider
     raise PlanUnavailable(f'No plan provider could do {purpose}: ' + '; '.join(notes or ['none configured']))
+
+
+def codex_image(cfg, prompt: str, out_path: Path, references: list[Path] = (), timeout: int = 420) -> Path:
+    """Draw one image with Codex's built-in image generation on the owner's plan.
+
+    Codex runs in its own empty folder that it may write to (and nothing else), with the
+    reference images attached. Codex also keeps a copy under ~/.codex/generated_images (C:);
+    that copy is removed once the image is taken, to keep generated media on D:.
+    """
+    cfg = _with_live(cfg)
+    ready = status(cfg)['codex']
+    if not ready['ready']:
+        raise PlanUnavailable('Codex is ' + ('not installed' if not ready['installed'] else 'resting or capped') + '; it draws the images')
+    work = _sandbox() / f'image-{os.getpid()}-{threading.get_ident()}-{int(time.time())}'
+    work.mkdir(parents=True, exist_ok=True)
+    started = time.monotonic()
+    try:
+        attached = []
+        for index, ref in enumerate(references):
+            target = work / f'reference-{index}{Path(ref).suffix or ".jpg"}'
+            target.write_bytes(Path(ref).read_bytes())
+            attached += ['-i', target.name]
+        cmd = [find_codex(), 'exec', '--sandbox', 'workspace-write', '--skip-git-repo-check', '--ephemeral', '--color', 'never',
+               '-C', str(work), *attached, '-o', 'reply.txt', '-']
+        full = prompt + '\n\nUse your built-in image_gen tool. Save the finished image in the current folder as image.png. Reply only with the file name.'
+        result = subprocess.run(cmd, input=full, capture_output=True, text=True, encoding='utf-8', errors='replace',
+                                cwd=work, timeout=timeout, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+        blob = f'{result.stdout}\n{result.stderr}'
+        image = work / 'image.png'
+        if not image.is_file():
+            if LIMIT_RE.search(blob):
+                with _LOCK:
+                    state = _load()
+                    state['cooldown']['codex'] = reset_time(blob) or time.time() + 3600
+                    state['last_error']['codex'] = 'Plan usage limit reported'
+                    _save(state)
+                _emit('codex', 'image', None, started, 'failed', error='PlanLimit')
+                raise PlanUnavailable('Codex reached its plan limit while drawing')
+            _emit('codex', 'image', None, started, 'failed', error='NoImage')
+            raise RuntimeError('Codex did not produce an image: ' + (blob.strip()[-200:] or f'exit {result.returncode}'))
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_bytes(image.read_bytes())
+        for folder in set(re.findall(r'generated_images[\/]+([0-9a-f-]{36})', blob)):
+            shutil.rmtree(Path.home() / '.codex' / 'generated_images' / folder, ignore_errors=True)
+        with _LOCK:
+            state = _load()
+            state['usage'].setdefault('codex', []).append(time.time())
+            _save(state)
+        _emit('codex', 'image', 'image_gen', started, 'ok', usage={'images': 1})
+        return out_path
+    finally:
+        shutil.rmtree(work, ignore_errors=True)

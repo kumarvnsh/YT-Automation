@@ -7,10 +7,11 @@ import { AssistantPanel, Calendar, ExperimentPanel, JobUsage, Money, Recommendat
   TopicList, TopicPage, type JobLink, type PlanningData } from './Planning';
 import { ChannelInsights } from './Insights';
 import { HistoldLiveControls, HistoldLiveOperations, PlanLimits } from './HistoldLive';
+import { FactPosts } from './FactPosts';
 import { BotsPage } from './Bots';
 import { ClipsPage } from './Media';
 import { AiSettingsPanel, AskShotsnip, CommentaryControl, HistoldStrategyControls, WatchWorker } from './Owner';
-import { AgentPanel, LiveOperations, OriginalTools, Targets, type ShotsnipWorkspace } from './Workspaces';
+import { AgentPanel, LiveOperations, LiveTimers, OriginalTools, Targets, type ShotsnipWorkspace } from './Workspaces';
 
 export type Time = (value: string | null) => string;
 export type Item = { channel: StudioChannel; kind: string; title: string; status: string; at: string | null; url: string | null };
@@ -24,6 +25,7 @@ export type Snapshot = {
   pacing_experiment?: Pacing | null;
   video_insights?: Partial<Record<'histold' | 'shotsnip', import('./VideoInsights').ChannelVideoInsights | null>> | null;
   histold_live?: import('./HistoldLive').HistoldLiveData | null;
+  fact_posts?: import('./FactPosts').FactPostsData | null;
   phase3?: PlanningData;
   shotsnip_workspace?: ShotsnipWorkspace;
   controls_enabled: boolean;
@@ -135,6 +137,7 @@ export function ShotsnipPage({ snapshot, time, send, busy, sub }: PageProps) {
   return <div className="page-stack">
     {workspace?.live && <LiveControls live={workspace.live} busy={busy} send={send} time={time}
       recent={latest(snapshot.commands, 'scheduler', 'live_run_now', 'live_stop_after_stage')} />}
+    {workspace?.live && <LiveTimers live={workspace.live} time={time} />}
     {workspace?.live && <LiveOperations live={workspace.live} status={shotsnipStatus(snapshot)}
       waiting={snapshot.health.queue_available ? snapshot.health.waiting : null} time={time} />}
     {phase3 ? <ShotsnipCadence data={phase3.calendar.shotsnip} time={time} send={send} busy={busy}
@@ -149,6 +152,10 @@ export function ShotsnipPage({ snapshot, time, send, busy, sub }: PageProps) {
 
 export function HistoldPage({ snapshot, time, send, busy, sub, rest }: PageProps) {
   const phase3 = snapshot.phase3;
+  if (sub === 'posts') return snapshot.fact_posts
+    ? <FactPosts data={snapshot.fact_posts} busy={busy} send={send} time={time}
+        recent={latest(snapshot.commands, 'fact_post_make', 'fact_post_decide', 'fact_post_schedule')} />
+    : <Waiting what="fact posts" />;
   if (sub === 'live') {
     const live = snapshot.histold_live;
     if (!live) return <Waiting what="Histold live operations" />;

@@ -389,6 +389,15 @@ local_production:
   ffmpeg_dir: 'D:\Clips-Kitty\vendor\ffmpeg'
   repository: "kumarvnsh/YT-Automation"
 
+# Histold fact image posts on Facebook + Instagram (src/fact_posts.py, scripts/run_fact_post.py).
+# Made on this laptop: Claude researches and verifies, Codex draws from an archival reference,
+# our template adds the text and logo. The dispatcher starts one at each hour below.
+fact_posts:
+  enabled: false               # scheduled posting; Studio HQ > Histold > Posts can also make one now
+  hours_utc: [10, 14, 20]      # 3:30 PM, 7:30 PM and 1:30 AM IST; between the Shorts at 12, 18 and 23 UTC
+  approve_until: "2026-11-29"  # until this date each card waits for your OK in Telegram / Studio HQ
+  always_approve: false
+
 # Provider order for local runs (src/plan_ai.py). Cloud runs never use this.
 local_ai:
   order: [claude, codex, qwen]
