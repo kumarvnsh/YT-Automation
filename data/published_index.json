@@ -7990,5 +7990,71 @@
     "production_profile": 2,
     "facebook_id": "1127756170023554",
     "instagram_id": "18013187939776406"
+  },
+  {
+    "video_id": "yd3PWoRjNac",
+    "run_id": "45054250850",
+    "stage_dir_name": "20261122_181952_831527_short",
+    "title": "Yellowstone's Wolf Planners Expected a Third of Wolves to Add Nothing",
+    "published_at": "2026-11-22T18:31:16.334684+00:00",
+    "channel": "histold",
+    "slot": "evening",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": "run-45054250850",
+    "design": "Moving atlas",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 13,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 12,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "In the 1994 plan for Yellowstone wolves, planners expected many reintroduced wolves to add nothing to population growth. The 1995 founders did better than the plan assumed, so the planned annual transplants were dropped after 1996.",
+          "opening_visual": "Rendered map of the Canadian capture areas that supplied wolves for Yellowstone in 1995 and 1996, using the NPS report figure as the reference, then a Yellowstone outline.",
+          "payoff": "The founders reproduced more, died less, and wandered less than planned, so no more transplants were needed. NPS attributes this to founder performance, not to a single cause. The 33% forecast and the 14-versus-9 table figure in the same report do not match exactly, and this is recorded as a limitation.",
+          "viewer_reason": "A planning forecast that turned out too pessimistic is a concrete, checkable reversal, and the map makes the Canada-to-Yellowstone chain easy to follow.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "A 1997 federal judge ruled against the Yellowstone and central Idaho wolf program.",
+          "opening_visual": "Courtroom or ruling document (no approved archival image was retrieved).",
+          "payoff": "Not verified.",
+          "viewer_reason": "Legal conflict is recognizable, but it is not the consequence story the lane asks for.",
+          "rejection_reason": "Approved NPS pages describe the 1997 ruling inconsistently: one says the program violated the Endangered Species Act, another says the reintroduction itself was legal. This contested legal status needs corroboration I could not obtain, so it cannot anchor the premise."
+        },
+        {
+          "premise": "The 1995 Yellowstone wolves were classed as 'nonessential experimental' so managers could be flexible about livestock conflicts.",
+          "opening_visual": "Simple diagram of the legal designation and the special management rules (no approved image retrieved).",
+          "payoff": "Not verified as a documented consequence.",
+          "viewer_reason": "The designation is a surprising design choice, but its effect is less visual and less direct than the founder story.",
+          "rejection_reason": "Approved pages state the designation's purpose but do not document a resulting livestock outcome that I can attribute to it. The same 1997 legal dispute would also be needed as context, which makes the causal chain weaker."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Candidate 0 is the only one with a documented choice (the 1994 plan), a documented surprising reversal (founders outperformed planning assumptions), a renderable map from NPS material, and a payoff that stays within the evidence. Its limitations are stated rather than hidden."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 141,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Planners forecast a third of the wolves would add nothing.",
+    "duration": 40.375,
+    "production_profile": 2,
+    "facebook_id": "4205657566393223",
+    "instagram_id": "18203064547380415"
   }
 ]

@@ -3418,5 +3418,14 @@
     "slot": "manual",
     "date": "2026-11-22",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261122_181952_831527_short",
+    "title": "Yellowstone's Wolf Planners Expected a Third of Wolves to Add Nothing",
+    "fingerprint": "add_expected_nothing_planners_s_third_wolf_wolves_yellowstone",
+    "format": "short",
+    "slot": "evening",
+    "date": "2026-11-22",
+    "status": "reserved"
   }
 ]
