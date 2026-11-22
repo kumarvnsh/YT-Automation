@@ -8056,5 +8056,71 @@
     "production_profile": 2,
     "facebook_id": "4205657566393223",
     "instagram_id": "18203064547380415"
+  },
+  {
+    "video_id": "-7-YlK4o8mM",
+    "run_id": "45081007626",
+    "stage_dir_name": "20261122_230412_906847_short",
+    "title": "The Thermostat's Ancestor Was a Damper Controlling a Coal Fire",
+    "published_at": "2026-11-22T23:16:44.265426+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": "run-45081007626",
+    "design": "Archive dossier",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 14,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 13,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "The wall thermostat's early ancestor controlled airflow to a coal furnace fire: Albert Butz's 1886 'damper-flapper' opened a furnace damper, and a 1932 Time-O-Stat used a mercury switch on a bimetal coil.",
+          "opening_visual": "The 8-Day Jeweled Thermostat (Time-O-Stat, c. 1932) from the National Museum of American History, shown beside a 1886 damper diagram.",
+          "payoff": "The thermostat's early form acted on the furnace fire through a damper, and by about 1932 it switched a furnace circuit through a mercury switch. The source does not show that Butz's device was the first thermostat.",
+          "viewer_reason": "Almost every viewer adjusts a thermostat, and the reveal that its ancestor worked on a coal fire's airflow is concrete and checkable.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Pearl-look shirt buttons were made from Mississippi River mussel shells at a German-run factory in Muscatine, Iowa, from 1887.",
+          "opening_visual": "A button card from the Object Project collection beside a river-mussel shell.",
+          "payoff": "A German immigrant's factory in Iowa turned freshwater mussel shell into mass-produced buttons for ready-to-wear clothing.",
+          "viewer_reason": "Buttons are familiar and the river-to-shirt chain is surprising.",
+          "rejection_reason": "Rejected for this cycle: the core fact is supported only by a Smithsonian exhibit story, and the mussel-shell opening needs an Iowa map ID that the pipeline does not support, so the visual cannot be rendered accurately."
+        },
+        {
+          "premise": "Liquid hand soap was 'the first successful mass-produced' pump soap after Minnetonka bought nearly 100 million pumps in 1980.",
+          "opening_visual": "An old soap bottle with a pump, from the Smithsonian liquid soap story.",
+          "payoff": "A pump-dispenser supply corner in 1980 let one company launch first.",
+          "viewer_reason": "Liquid soap is familiar, but the claim is a superlative from one page and would need a second independent publisher.",
+          "rejection_reason": "Rejected: the 'first successful mass-produced' superlative rests on one approved page, and the pump-supply story is extraordinary, so it cannot be corroborated with the sources available."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The thermostat premise is supported by one approved National Museum of American History object record. Its facts are specific and narrow, the object is concrete and renderable, and the topic is broadly relevant. I did not claim it was the first thermostat, and I kept the qualified 1886 and c. 1932 dates."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 142,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "A thermostat once opened a coal furnace's damper. Its early form worked on the fire itself.",
+    "duration": 45.275,
+    "production_profile": 2,
+    "facebook_id": "1176116585090605",
+    "instagram_id": "17915941227561761"
   }
 ]
