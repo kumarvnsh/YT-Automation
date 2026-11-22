@@ -1,4 +1,5 @@
 """Measured health alerts, audience summaries and advisory weekly reviews."""
+import json
 from datetime import datetime, timedelta, timezone
 
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -109,10 +110,50 @@ def weekly_review(data, now, current, previous=None):
                             'This report is advisory and does not publish or modify strategy.']}
 
 
-def daily_briefing(data, alerts, now):
-    """Compact WhatsApp briefing with explicit metric periods and local times."""
+def shotsnip_lines(root, now):
+    """Read-only Shotsnip status for the daily Telegram briefing. Missing files are said plainly, never guessed."""
+    import sqlite3
+    from contextlib import closing
+    from pathlib import Path
+    root = Path(root)
+    lines = ['', '🎮 SHOTSNIP']
+    try:
+        scheduler = json.loads((root/'scheduler.json').read_text(encoding='utf-8'))
+        held = isinstance(scheduler.get('live_operations_batch_hold'), dict) and bool(scheduler['live_operations_batch_hold'])
+        lines.append('Live clipping: ' + ('on' if scheduler.get('enabled') else 'paused') + (' (batch hold active)' if held else ''))
+    except (OSError, ValueError):
+        lines.append('Live clipping: status unavailable')
+    try:
+        analytics = json.loads((root/'work/dashboard/analytics.json').read_text(encoding='utf-8'))
+        today = now.astimezone(IST).date()
+        uploads = 0
+        for video in analytics.get('videos') or []:
+            try:
+                if datetime.fromisoformat(str(video.get('published_at')).replace('Z', '+00:00')).astimezone(IST).date() == today:
+                    uploads += 1
+            except ValueError:
+                pass
+        lines.append(f'Uploaded today: {uploads} Short(s)')
+        if analytics.get('today_ist') == str(today) and isinstance(analytics.get('today_upload_views'), (int, float)):
+            lines.append(f"Views on today's uploads so far: {analytics['today_upload_views']:,.0f}")
+        if isinstance(analytics.get('subscribers'), (int, float)):
+            lines.append(f"Subscribers: {analytics['subscribers']:,.0f}")
+    except (OSError, ValueError):
+        lines.append('Channel numbers unavailable in this snapshot.')
+    try:
+        with closing(sqlite3.connect((root/'work/manual/jobs.sqlite').as_uri() + '?mode=ro', uri=True, timeout=2)) as db:
+            counts = dict(db.execute("SELECT status,count(*) FROM jobs GROUP BY status").fetchall())
+        waiting, stuck = counts.get('queued_publish', 0), counts.get('attention', 0) + counts.get('failed', 0)
+        lines.append(f'Manual queue: {waiting} waiting to publish' + (f', {stuck} need a look' if stuck else ''))
+    except (OSError, sqlite3.Error):
+        pass
+    return lines
+
+
+def daily_briefing(data, alerts, now, shotsnip_root=None):
+    """Compact Telegram briefing for both channels with explicit metric periods and local times."""
     local = now.astimezone(IST)
-    lines = ['*JARVIS | HISTOLD*', local.strftime('%a, %d %b %Y | %I:%M %p IST'), '', '*SYSTEM STATUS*']
+    lines = ['🗞 JARVIS DAILY BRIEFING', local.strftime('%a, %d %b %Y | %I:%M %p IST'), '', '🛠 SYSTEM STATUS']
     errors = sum(a.get('severity') == 'error' for a in alerts)
     warnings = len(alerts) - errors
     lines.append(f'{errors} issue(s) need attention; {warnings} warning(s).' if alerts else 'All monitored checks passed.')
@@ -120,7 +161,7 @@ def daily_briefing(data, alerts, now):
     if len(alerts) > 3:
         lines.append(f'+ {len(alerts)-3} more in the dashboard.')
     hours = sorted(data.get('hours') or [])
-    lines.extend(['', '*PUBLISHING*'])
+    lines.extend(['', '📜 HISTOLD', 'Publishing'])
     if hours:
         candidates = [now.astimezone(timezone.utc).replace(hour=h, minute=0, second=0, microsecond=0) for h in hours]
         candidates = [at if at > now else at + timedelta(days=1) for at in candidates]
@@ -139,13 +180,13 @@ def daily_briefing(data, alerts, now):
         except (KeyError, TypeError, ValueError):
             pass
     lines.append(f'Published today: {today} tracked video(s)')
-    lines.extend(['', '*PERFORMANCE SNAPSHOT*', 'Views on videos published in the last 28 days:'])
+    lines.extend(['', 'Views on videos published in the last 28 days:'])
     for name, key in [('YouTube', 'yt'), ('Facebook', 'fb'), ('Instagram', 'ig')]:
         values = [v[key] for v in videos if isinstance(v.get(key), (int, float))]
         lines.append(f'- {name}: {sum(values):,.0f} views ({len(values)} measured videos)' if values else f'- {name}: unavailable')
     lines.append('These are accumulated video views, not views earned today.')
     evidence = data.get('content_evidence') or {}
-    lines.extend(['', '*CONTENT SIGNALS*'])
+    lines.extend(['', 'Content signals'])
     found = False
     for label, groups in [('Stronger', evidence.get('working') or []), ('Weaker', evidence.get('not_working') or [])]:
         if groups:
@@ -159,7 +200,9 @@ def daily_briefing(data, alerts, now):
     else:
         lines.append('Observed associations; results are not proof of cause.')
     interpretation = (data.get('ai_insights') or {}).get('interpretation') or {}
-    lines.extend(['', '*NEXT ACTION*'])
+    if shotsnip_root:
+        lines.extend(shotsnip_lines(shotsnip_root, now))
+    lines.extend(['', '➡️ NEXT ACTION'])
     if errors:
         lines.append('Check the issues above in the dashboard.')
     elif interpretation.get('next_test'):
@@ -168,13 +211,13 @@ def daily_briefing(data, alerts, now):
         lines.append('Review the warnings above in the dashboard.')
     else:
         lines.append('Keep the current schedule and collect more comparable results.')
-    lines.extend(['', 'Dashboard: https://vnsh.tail9bdcf7.ts.net/#/overview', 'Briefing only; no strategy changes applied.'])
+    lines.extend(['', 'Studio HQ: https://vnsh.tail9bdcf7.ts.net/studio-hq/', 'Briefing only; no strategy changes applied.'])
     return '\n'.join(lines)
 
 
 def alert_message(alert, now):
-    return '\n'.join(['*JARVIS | HISTOLD ALERT*',
+    return '\n'.join(['🚨 JARVIS ALERT',
                       now.astimezone(IST).strftime('%d %b, %I:%M %p IST'),
-                      '', '*Issue needing attention*', str(alert['message']),
-                      '', 'Check current status and recovery details:',
-                      'https://vnsh.tail9bdcf7.ts.net/#/overview'])
+                      '', 'Issue needing attention:', str(alert['message']),
+                      '', 'Check current status and recovery details in Studio HQ:',
+                      'https://vnsh.tail9bdcf7.ts.net/studio-hq/'])

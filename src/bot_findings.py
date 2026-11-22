@@ -5,7 +5,7 @@ the prose stays advisory. Everything here treats model output as untrusted data:
 fields are validated, sanitized and capped, and each consumer re-checks what it uses.
 
 Consumers:
-- WhatsApp: a new active failure from an Operations monitor report alerts the owner.
+- Telegram: a new active failure from an Operations monitor report alerts the owner.
 - Operator agent: an active failure seen in two consecutive Operations reports becomes
   an issue lead (src/operator_agent.py guardrails still apply).
 - Strategist and growth agent: suspect metrics are masked only when the numbers

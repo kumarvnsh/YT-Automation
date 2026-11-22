@@ -20,7 +20,6 @@ from pathlib import Path
 CODE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(CODE))
 from src import operator_agent as op  # noqa: E402
-from src.whatsapp_updates import send_update  # noqa: E402
 from src import bot_findings  # noqa: E402
 from src import telegram_control  # noqa: E402
 
@@ -71,13 +70,8 @@ def plain_problem(issue):
 
 
 def notify(text, key):
-    log('telegram', key, telegram_control.notify(text))
-    try:
-        config = json.loads((HOME / 'secrets/whatsapp-updates.json').read_text(encoding='utf-8'))
-        result = send_update(config, text, 'operator:' + key, STATE / 'notify-state.json')
-        log('whatsapp', key, result.get('status'))
-    except Exception as exc:  # a notification failure must never stop repairs
-        log('whatsapp failed', key, type(exc).__name__, exc)
+    # telegram_control.notify never raises, so a notification failure cannot stop repairs.
+    log('telegram', key, telegram_control.notify_once(text, 'operator:' + key, STATE / 'telegram-notify-state.json'))
 
 
 # ---------------------------------------------------------------- GitHub

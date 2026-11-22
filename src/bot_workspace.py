@@ -437,9 +437,9 @@ class Workspace:
             try:
                 offers=[('fix_problem',{'channel':task['channel'],'key':f['key']},'🔧 Fix it now'+(': '+f['title'][:30] if len(new)>1 else '')) for f in new[:3]]
                 status=self.notify(text,'bot-ops:'+task['id'],offers=offers)
-                self.update(task['id'],stage='Owner alerted on WhatsApp ('+str(status)+')')
+                self.update(task['id'],stage='Owner alerted on Telegram ('+str(status)+')')
             except Exception as exc:  # an alert failure must never fail the report
-                self.update(task['id'],stage='WhatsApp alert failed ('+type(exc).__name__+')')
+                self.update(task['id'],stage='Telegram alert failed ('+type(exc).__name__+')')
 
     def run_assignment(self, task, prompt):
         if task['engine']=='superbot' and self.runtime().get('ready'):

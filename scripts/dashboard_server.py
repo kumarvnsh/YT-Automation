@@ -44,7 +44,6 @@ from src.assistant_voice import LocalVoice  # noqa: E402
 from src.ai_providers import Providers  # noqa: E402
 from src.ollama_policy import compact_local_prompt  # noqa: E402
 from src.bot_workspace import Workspace  # noqa: E402
-from src.whatsapp_updates import send_update  # noqa: E402
 from src import telegram_control  # noqa: E402
 from weekly_review import ensure_server, ollama  # noqa: E402
 
@@ -92,14 +91,8 @@ def bot_workspace(state):
                 if not text:raise RuntimeError('The analyst returned no report')
                 return text+'\n\nAnalyst provider: '+provider+ ('\nFallback notes: '+'; '.join(notes) if notes else '')
             def notify(text, logical_id, offers=None):
-                # Telegram gets approval buttons (e.g. Fix now); WhatsApp gets the plain update.
-                telegram=telegram_control.notify(text,offers)
-                try:
-                    config=json.loads((DATA_ROOT.parent/'secrets/whatsapp-updates.json').read_text(encoding='utf-8'))
-                    whatsapp=send_update(config,text,logical_id,DATA_ROOT.parent/'bot-workspace/notify-state.json').get('status')
-                except (OSError,ValueError) as exc:
-                    whatsapp='unavailable ('+type(exc).__name__+')'
-                return 'telegram '+telegram+', whatsapp '+str(whatsapp)
+                # Owner updates, with approval buttons such as Fix now, go to the Telegram bot only.
+                return 'telegram '+telegram_control.notify_once(text,logical_id,DATA_ROOT.parent/'bot-workspace/telegram-notify-state.json',offers)
             def repair():
                 # The Operator's own scheduled task (owner account, limited rights); its lock,
                 # PAUSE file, caps and cooldowns decide whether it acts.

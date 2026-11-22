@@ -33,7 +33,6 @@ Step 'dashboard' {
     # The launcher checks both health and source fingerprints under a shared lock.
     Invoke-Script $DashboardScript @('-DataRoot', (Join-Path $HomeDir 'YT-Automation'), '-Port', "$Port")
 }
-Step 'whatsapp'  { Invoke-Script (Join-Path $Here 'start_openwa.ps1') @('-HomeDir', $HomeDir) }
 Step 'shotsnip'  { Invoke-Script (Join-Path $Here 'start_shotsnip_worker.ps1') @('-HomeDir', $HomeDir, '-Port', "$Port", '-Force') }
 # Open the installed dashboard app (Brave "Install app", pinned to the taskbar);
 # fall back to a normal browser tab if that shortcut is gone.

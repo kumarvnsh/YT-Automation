@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
@@ -5,7 +6,8 @@ from pathlib import Path
 from unittest.mock import patch
 
 from src.operations import health_alerts, snapshot, observed_change, audience_summary, weekly_review, daily_briefing, alert_message
-from src.whatsapp_updates import send_update
+from src import telegram_control
+from src.operations import shotsnip_lines
 
 
 class OperationsTests(unittest.TestCase):
@@ -27,22 +29,35 @@ class OperationsTests(unittest.TestCase):
         new = snapshot({'videos': [{'yt_id': 'a', 'yt': 14}, {'yt_id': 'b', 'yt': 999}]}, now)
         self.assertEqual(observed_change(new, old)['yt'], {'videos_compared': 1, 'observed_view_change': 4})
 
-    @patch('requests.post')
-    def test_message_timeout_is_not_retried_automatically(self, post):
-        import requests
-        post.side_effect = requests.Timeout()
-        config = {'enabled': True, 'base_url': 'http://127.0.0.1:2785', 'session_id': 'jarvis',
-                  'recipient': '15551234567', 'api_key': 'private'}
-        with tempfile.TemporaryDirectory() as tmp:
+    def test_telegram_update_is_sent_once_even_after_a_failure(self):
+        sent = []
+        with tempfile.TemporaryDirectory() as tmp, patch.object(telegram_control, 'notify',
+                                                                side_effect=lambda text, *a: sent.append(text) or 'failed: Timeout'):
             path = Path(tmp)/'state.json'
-            self.assertEqual(send_update(config, 'briefing', 'daily:2026-11-17', path)['status'], 'outcome_unknown')
-            send_update(config, 'changed briefing', 'daily:2026-11-17', path)
-            self.assertEqual(post.call_count, 1)
+            self.assertEqual(telegram_control.notify_once('briefing', 'daily:2026-11-17', path), 'failed: Timeout')
+            self.assertEqual(telegram_control.notify_once('changed briefing', 'daily:2026-11-17', path), 'failed: Timeout')
+            self.assertEqual(sent, ['briefing'])
 
-    @patch('requests.post')
-    def test_disabled_delivery_never_sends(self, post):
-        self.assertEqual(send_update({}, 'test', 'daily', 'unused')['status'], 'disabled')
-        post.assert_not_called()
+    def test_unpaired_bot_retries_later(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(telegram_control, 'notify', return_value='not_configured') as notify:
+            path = Path(tmp)/'state.json'
+            telegram_control.notify_once('briefing', 'daily', path)
+            telegram_control.notify_once('briefing', 'daily', path)
+            self.assertEqual(notify.call_count, 2)
+
+    def test_shotsnip_section_reads_live_state_and_today(self):
+        now = datetime(2026, 11, 22, 4, 0, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root/'work/dashboard').mkdir(parents=True)
+            (root/'scheduler.json').write_text(json.dumps({'enabled': False, 'live_operations_batch_hold': {'until': 'x'}}))
+            (root/'work/dashboard/analytics.json').write_text(json.dumps({'subscribers': 16, 'today_ist': '2026-11-22', 'today_upload_views': 42,
+                'videos': [{'published_at': '2026-11-21T20:00:00+00:00'}, {'published_at': '2026-11-20T20:00:00+00:00'}]}))
+            text = '\n'.join(shotsnip_lines(root, now))
+        self.assertIn('Live clipping: paused (batch hold active)', text)
+        self.assertIn('Uploaded today: 1 Short(s)', text)
+        self.assertIn("Views on today's uploads so far: 42", text)
+        self.assertIn('Subscribers: 16', text)
 
 
     def test_briefing_separates_accumulated_views_and_local_publish_slots(self):
@@ -55,7 +70,8 @@ class OperationsTests(unittest.TestCase):
         self.assertIn('YouTube: 20 views (2 measured videos)', text)
         self.assertIn('Instagram: unavailable', text)
         self.assertIn('not views earned today', text)
-        self.assertIn('*NEXT ACTION*', text)
+        self.assertIn('NEXT ACTION', text)
+        self.assertNotIn('*', text)  # Telegram messages are plain text
         self.assertNotIn('Local AI hypothesis', text)
 
     def test_error_takes_priority_over_a_suggested_experiment(self):
@@ -64,7 +80,7 @@ class OperationsTests(unittest.TestCase):
         text = daily_briefing({'ai_insights': {'interpretation': {'next_test': 'Try objects'}}}, [alert], now)
         self.assertIn('Check the issues above', text)
         self.assertNotIn('Try objects', text)
-        self.assertIn('*Issue needing attention*', alert_message(alert, now))
+        self.assertIn('Issue needing attention', alert_message(alert, now))
 
 
 if __name__ == '__main__':

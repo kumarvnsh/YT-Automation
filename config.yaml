@@ -376,7 +376,7 @@ meta:
     hashtags: ["#WorldHistory", "#Histold"]
 
 notifications:
-  enabled: true                # master switch for WhatsApp alerts
+  enabled: false               # WhatsApp retired 2026-11-22; owner updates go to the Telegram bot
   channel: "openwa"            # currently only OpenWA is implemented
   notify_on_start: false       # ping when a daily run begins
   notify_on_success: true      # ping when a video uploads (or renders, if no-upload)

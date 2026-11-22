@@ -220,6 +220,28 @@ def notify(text: str, offers: list[tuple[str, dict, str]] | None = None, config_
         return 'failed: ' + type(exc).__name__
 
 
+def notify_once(text: str, logical_id: str, state_path: Path, offers=None, config_path: Path = CONFIG,
+                control: Path = CONTROL, session=requests) -> str:
+    """Send one update per logical ID. The attempt is recorded first, so a timeout never causes a duplicate."""
+    path = Path(state_path)
+    try:
+        state = json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
+    except (OSError, ValueError):
+        state = {}
+    if logical_id in state:
+        return state[logical_id]
+    state[logical_id] = 'outcome_unknown'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(state, indent=2), encoding='utf-8')
+    status = notify(text, offers, config_path, control, session)
+    if status == 'not_configured':
+        state.pop(logical_id)  # Nothing was attempted; send once the bot is paired.
+    else:
+        state[logical_id] = status
+    path.write_text(json.dumps(state, indent=2), encoding='utf-8')
+    return status
+
+
 def run(cmd: list[str], timeout: int = 180) -> tuple[int, str]:
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=timeout,

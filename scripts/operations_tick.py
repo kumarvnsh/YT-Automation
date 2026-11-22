@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local monitoring, weekly advisory reports and owner-approved WhatsApp updates."""
+"""Local monitoring, weekly advisory reports and the owner's Telegram updates."""
 import argparse
 import json
 import os
@@ -11,7 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from scripts.build_dashboard import collect, read_json
 from src.operations import IST, health_alerts, snapshot, weekly_review, daily_briefing, alert_message
-from src.whatsapp_updates import send_update
+from src import telegram_control
 from src.control import GitHub
 from src.config import load_config
 from src.recovery import latest_exports, recover, service_watchdog, shotsnip_keepalive
@@ -108,17 +108,16 @@ def _tick(root, now=None):
     review = weekly_review(data, now, current, previous)
     review_path = private/('weekly-'+review['week']+'.json')
     review_path.write_text(json.dumps(review, indent=2, default=str), encoding='utf-8')
-    briefing = daily_briefing(data, alerts, now)
+    briefing = daily_briefing(data, alerts, now, shotsnip_root=Path(os.environ.get('SHOTSNIP_ROOT', r'D:\YT-Cliping-Automation')))
     (private/'daily-briefing.txt').write_text(briefing, encoding='utf-8')
-    config = read_json(root.parent/'secrets/whatsapp-updates.json', {}) or {}
-    notification = {'status': 'disabled' if not config.get('enabled') else 'scheduled', 'daily_time': '09:00 Asia/Kolkata'}
-    if config.get('enabled'):
-        if now.astimezone(IST).hour >= 9:
-            notification = send_update(config, briefing, 'daily:'+str(day), private/'notification-state.json')
-        if config.get('send_alerts', True):
-            for alert in alerts:
-                if alert['severity'] == 'error':
-                    send_update(config, alert_message(alert, now), 'alert:'+alert['id'], private/'notification-state.json')
+    # Owner updates go to the Telegram bot only (WhatsApp was retired on 2026-11-22).
+    state = private/'telegram-notification-state.json'
+    notification = {'status': 'scheduled', 'channel': 'telegram', 'daily_time': '09:00 Asia/Kolkata'}
+    if now.astimezone(IST).hour >= 9:
+        notification['status'] = telegram_control.notify_once(briefing, 'daily:'+str(day), state)
+    for alert in alerts:
+        if alert['severity'] == 'error':
+            telegram_control.notify_once(alert_message(alert, now), 'alert:'+alert['id']+':'+str(day), state)
     report = {'generated': now.isoformat(), 'alerts': alerts, 'workflow_check': run_status,
               'export_source': export_source, 'repairs': repairs, 'recent_repairs': recent,
               'weekly_review': review, 'notification': notification, 'daily_briefing': briefing}
@@ -131,4 +130,4 @@ if __name__ == '__main__':
     parser.add_argument('--data-root', type=Path, required=True)
     args = parser.parse_args()
     result = tick(args.data_root)
-    print('Operations updated:', len(result['alerts']), 'alerts; WhatsApp:', result['notification']['status'])
+    print('Operations updated:', len(result['alerts']), 'alerts; Telegram:', result['notification']['status'])

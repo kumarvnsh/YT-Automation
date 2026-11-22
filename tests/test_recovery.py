@@ -84,12 +84,12 @@ class RecoveryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             actions, alerts = service_watchdog(root, root/'state.json', self.now)
-            self.assertEqual(len(alerts), 2)
+            self.assertEqual(len(alerts), 1)
             self.assertTrue(all(a['status'] == 'restart_requested' for a in actions))
-            self.assertEqual({Path(c.args[0][-1]).name for c in run.call_args_list}, {'start_dashboard.ps1','start_openwa.ps1'})
+            self.assertEqual({Path(c.args[0][-1]).name for c in run.call_args_list}, {'start_dashboard.ps1'})
             again, _ = service_watchdog(root, root/'state.json', self.now + timedelta(minutes=1))
             self.assertTrue(all(a['status'] == 'cooldown' for a in again))
-            self.assertEqual(run.call_count, 2)
+            self.assertEqual(run.call_count, 1)
 
     @patch('requests.get')
     @patch('src.recovery.subprocess.run', create=True)
