@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T11:00:32.054935+00:00",
+  "updated": "2026-11-22T15:00:27.831750+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 113
+      "measured_videos": 114
     }
   },
   "evaluation_metric": "likes / views",
@@ -59,6 +59,16 @@
           "measured_videos": 1,
           "mean_like_rate": 0.0
         },
+        "fb": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "ig": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.5
+        }
+      },
+      "Moving atlas": {
         "fb": {
           "measured_videos": 1,
           "mean_like_rate": 0.0
@@ -263,7 +273,7 @@
     {
       "video_id": "Chyn8YLkKO0",
       "platform": "yt",
-      "views": 7,
+      "views": 9,
       "reason": "Viewing percentage is 0.0% with 5 recorded views."
     },
     {
