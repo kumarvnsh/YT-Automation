@@ -7924,5 +7924,71 @@
     "production_profile": 2,
     "facebook_id": "1155054420487500",
     "instagram_id": "17957820336319228"
+  },
+  {
+    "video_id": "Jc1jzJNlqHc",
+    "run_id": "",
+    "stage_dir_name": "20261122_163013_642403_short",
+    "title": "Railroad Clocks Ran on Standard Time 35 Years Before U.S. Law Did",
+    "published_at": "2026-11-22T11:19:47.520427+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Graphic novel",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 12,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 11,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "The U.S. time zones on everyday clocks started as a railroad system. Railroad officials switched railroad clocks to the new standard at noon on November 18, 1883. Congress did not pass the Standard Time Act until 1918.",
+          "opening_visual": "A plain clock face beside a simple present-day United States outline map divided into time-zone bands, with the date November 18, 1883 shown on screen.",
+          "payoff": "The time zones still on our clocks today were first a railroad schedule, and the federal law came 35 years later. Limitation: the source describes the 1883 change for railroad clocks and says clocks struck noon twice in 'several cities.' It does not say every town switched that day, and the narration must not claim it did.",
+          "viewer_reason": "Everyone checks the time, and few people know that a private industry set the zones decades before the government did.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Lead page (NPS): the icebox came before the modern refrigerator.",
+          "opening_visual": "A wooden icebox with a block of ice.",
+          "payoff": "How homes kept food cold before electric refrigerators.",
+          "viewer_reason": "Refrigerators are in almost every kitchen.",
+          "rejection_reason": "Repeats the recent title 'How Did Kitchens Stay Cold Before Electricity?' Also, the NPS lead page could not be retrieved (connection reset), so none of it could be verified."
+        },
+        {
+          "premise": "Lead page (NPS): in 1954 Justice William O. Douglas answered a plan to build a highway along the C&O Canal by challenging the editors to hike it.",
+          "opening_visual": "A towpath along the C&O Canal.",
+          "payoff": "A hike helped save the canal as parkland.",
+          "viewer_reason": "A memorable act of civic protest.",
+          "rejection_reason": "Repeats the recent title 'A Supreme Court Justice Answered a Road Plan With a Hike.' It also isn't an everyday object or habit, so it doesn't fit this lane."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The surprise is quick to grasp: a familiar daily thing, clock time, was first set by railroads, and Congress made it law decades later. The opening visual is easy to render (a clock and a present-day U.S. map). One fetched Library of Congress page supports every narration claim. None of the claims is extraordinary, and the date is not disputed. Both other candidates repeat recent subjects."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 140,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Railroads, not Congress, set America's clocks first.",
+    "duration": 37.525,
+    "production_profile": 2,
+    "facebook_id": "1127756170023554",
+    "instagram_id": "18013187939776406"
   }
 ]
