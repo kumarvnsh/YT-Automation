@@ -44,7 +44,7 @@ from src.assistant_voice import LocalVoice  # noqa: E402
 from src.ai_providers import Providers  # noqa: E402
 from src.ollama_policy import compact_local_prompt  # noqa: E402
 from src.bot_workspace import Workspace  # noqa: E402
-from src import telegram_control  # noqa: E402
+from src import metric_gaps, telegram_control  # noqa: E402
 from weekly_review import ensure_server, ollama  # noqa: E402
 
 KEY_FILE = ROOT.parent / 'dashboard_key.txt'
@@ -74,9 +74,11 @@ def bot_workspace(state):
                             'uploads':[{k:u.get(k) for k in ('status','video_id','rejection_reason','started_at')} for u in s.get('uploads',[])[-12:]],
                             'target_creators':[{'name':t['name'],'enabled':t.get('enabled')} for t in d.get('targets',[])]}
                 d=state.get()
+                videos,gaps=metric_gaps.annotate([{k:v.get(k) for k in ('yt_id','title','at','fb','fb_plays','fb_initial_plays','fb_replays','fb_views_metric','fb_insight_status','fb_watch_seconds','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]],
+                                                 datetime.now(timezone.utc))
                 return {'channel':channel,'built':d.get('built'),'hours':d.get('hours'),
                         'freshness':d.get('freshness'),'content_evidence':d.get('content_evidence'),'growth_trial':d.get('growth_trial'),
-                        'videos':[{k:v.get(k) for k in ('yt_id','title','at','fb','fb_plays','fb_initial_plays','fb_replays','fb_views_metric','fb_insight_status','fb_watch_seconds','ig','yt','region','series','length','yt_pct')} for v in d.get('videos',[])[:50]]}
+                        'youtube_viewing_percentage':gaps,'videos':videos}
             def analyst(prompt, *, order=None):
                 def local():
                     ensure_server(OLLAMA)

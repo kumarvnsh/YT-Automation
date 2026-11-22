@@ -42,6 +42,7 @@ CHANNELS = ('histold', 'shotsnip')
 # Every action the phone can trigger. Arguments are validated against these patterns.
 ACTIONS = {
     'fix_problem': {'label': 'Fix this problem now', 'args': {'channel': '^(histold|shotsnip)$', 'key': '^[a-z0-9-]{1,60}$'}},
+    'dismiss_problem': {'label': 'Not a problem', 'args': {'channel': '^(histold|shotsnip)$', 'key': '^[a-z0-9-]{1,60}$'}},
     'operator_run': {'label': 'Run the Operator now', 'args': {}},
     'operator_pause': {'label': 'Pause the Operator', 'args': {}},
     'operator_resume': {'label': 'Resume the Operator', 'args': {}},
@@ -330,8 +331,10 @@ class Controller:
             for p in bot_findings.problems(self.workspace, self.operator, channel):
                 found = True
                 buttons = None
+                buttons = []
                 if p['fix']['state'] not in ('deployed', 'verified'):
-                    buttons = [offer(self.approvals, 'fix_problem', {'channel': channel, 'key': p['key']}, '🔧 Fix it now')]
+                    buttons.append(offer(self.approvals, 'fix_problem', {'channel': channel, 'key': p['key']}, '🔧 Fix it now')[:1])
+                buttons.append(offer(self.approvals, 'dismiss_problem', {'channel': channel, 'key': p['key']}, '🙅 Not a problem')[:1])
                 self.send(f"⚠️ {NAMES[channel]}\n\nWhat is wrong: {p.get('plain') or p['title']}\n\n"
                           f"Status: {p['fix']['label']}"
                           + (f"\nNote: {p['fix']['detail']}" if p['fix'].get('detail') else ''), buttons)
@@ -405,6 +408,10 @@ class Controller:
             item = bot_findings.approve(self.workspace, args['channel'], args['key'])
             ok, out = self.start_operator()
             return ok, f"Fixing: {(item.get('plain') or item['title'])[:150]}\n\n" + out
+        if action == 'dismiss_problem':
+            bot_findings.settle(self.workspace, args['channel'], args['key'], 'The owner marked this as not a problem.', 'owner')
+            return True, ('Removed from your problems. Repeat reports of it are ignored for '
+                          + str(bot_findings.SETTLED_TTL.days) + ' days.')
         if action == 'operator_run':
             return self.start_operator()
         if action == 'operator_pause':

@@ -30,6 +30,9 @@ PLATFORMS = ('fb', 'ig', 'yt')
 MAX_FAILURES = 5
 MAX_SUSPECTS = 40
 SUSPECT_TTL = timedelta(days=14)
+# A problem settled as "not a problem" (by a data check or by the owner) stays out of the
+# Problems list for this long, unless the data check later finds a real fault.
+SETTLED_TTL = timedelta(days=14)
 # A flagged platform metric is masked only if it is near zero while another platform
 # shows real reach for the same video; otherwise the bot's suspicion is ignored.
 SUSPECT_MAX_VIEWS = 10
@@ -123,7 +126,11 @@ def record(directory, channel: str, bot: str, task: str, findings: dict, now: da
         # The Operations monitor owns active failures: absent from its latest report means resolved.
         previous = state.get('active_failures') or {}
         current = {}
+        quiet = settled_keys(state, now)
         for item in findings['active_failures']:
+            if item['key'] in quiet:
+                state['settled'][item['key']]['repeats'] = int(state['settled'][item['key']].get('repeats') or 0) + 1
+                continue
             old = previous.get(item['key'])
             current[item['key']] = {**item, 'first_seen': old['first_seen'] if old else stamp, 'last_seen': stamp,
                                     'streak': old['streak'] + 1 if old else 1, 'task': task}
@@ -141,6 +148,38 @@ def record(directory, channel: str, bot: str, task: str, findings: dict, now: da
     data['updated'] = stamp
     _save(directory, data)
     return new
+
+
+def settled_keys(state: dict, now: datetime) -> set[str]:
+    out = set()
+    for key, item in list((state.get('settled') or {}).items()):
+        try:
+            if now - datetime.fromisoformat(item['at']) < SETTLED_TTL:
+                out.add(key)
+                continue
+        except (KeyError, TypeError, ValueError):
+            pass
+        state['settled'].pop(key, None)
+    return out
+
+
+def settle(directory, channel: str, key: str, reason: str, by: str, title: str = '', now: datetime | None = None) -> None:
+    """Close a problem as not a problem: it leaves the Problems list and repeat reports are ignored."""
+    if channel not in CHANNELS:
+        raise ValueError('Unknown channel')
+    now = now or datetime.now(timezone.utc)
+    data = load(directory)
+    state = data.setdefault('channels', {}).setdefault(channel, {})
+    old = (state.get('active_failures') or {}).pop(key, None) or {}
+    state.setdefault('settled', {})[key] = {'at': now.isoformat(), 'by': by, 'reason': _clean(reason, 300),
+                                            'title': _clean(title or old.get('title') or key, 120), 'repeats': 0}
+    _save(directory, data)
+
+
+def settled(directory, channel: str, now: datetime | None = None) -> list[dict]:
+    state = (load(directory).get('channels') or {}).get(channel) or {}
+    keys = settled_keys(state, now or datetime.now(timezone.utc))
+    return [{'key': key, **state['settled'][key]} for key in sorted(keys)]
 
 
 def issue_id(channel: str, key: str) -> str:
@@ -194,8 +233,13 @@ def known_keys(directory, channel: str, operator_dir=None) -> str:
     items = [p['key'] + ' (' + p.get('title', '')[:80] + '; Operator: ' + p['fix']['label'] +
              (': ' + p['fix']['detail'][:160] if p['fix'].get('detail') else '') + ')'
              for p in problems(directory, operator_dir or Path(directory).parent / 'operator', channel)]
-    return (' Currently open failure keys, reuse them if the same problem is still active, and drop them if the '
+    text = (' Currently open failure keys, reuse them if the same problem is still active, and drop them if the '
             'evidence shows it is resolved (say so in the report): ' + '; '.join(items) + '.') if items else ''
+    quiet = [s['key'] + ' (' + s['title'][:80] + ': ' + s['reason'][:160] + ')' for s in settled(directory, channel)]
+    if quiet:
+        text += (' Settled as not a problem; do not report these again unless the evidence shows a genuinely new fault: '
+                 + '; '.join(quiet) + '.')
+    return text
 
 
 OWNER_APPROVAL_TTL = timedelta(hours=24)

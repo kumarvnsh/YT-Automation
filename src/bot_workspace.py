@@ -12,7 +12,9 @@ import threading
 import time
 import uuid
 import requests
-from src import bot_findings, bot_decisions
+from datetime import datetime, timezone
+
+from src import bot_findings, bot_decisions, metric_gaps
 
 BOTS = [
     {'id':'jarvis','name':'Jarvis','role':'Coordinator','scope':'both',
@@ -420,6 +422,18 @@ class Workspace:
     def share(self, task, findings):
         """Publish validated findings to findings.json; alert the owner about new active failures.
         A failure here never changes the task outcome: the report is already saved."""
+        if task['bot']=='operations' and task['channel']=='histold' and self.evidence:
+            try:
+                videos=(self.evidence('histold') or {}).get('videos')
+                if isinstance(videos,list):
+                    now=datetime.now(timezone.utc)
+                    findings,normal=metric_gaps.screen(findings,videos,now)
+                    for item in normal:
+                        bot_findings.settle(self.directory,'histold',item['key'],item['reason'],'data check',item['title'],now)
+                    if normal:
+                        self.update(task['id'],stage='Ignored '+str(len(normal))+' report(s) of normal YouTube reporting delays')
+            except Exception as exc:  # the check is a filter; a failure leaves the report as it was
+                self.update(task['id'],stage='Reporting-delay check skipped ('+type(exc).__name__+')')
         try:
             new=bot_findings.record(self.directory,task['channel'],task['bot'],task['id'],findings)
             self.record_decisions(task,findings.get('decisions',[]))

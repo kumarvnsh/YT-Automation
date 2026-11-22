@@ -211,6 +211,27 @@ def _retention_and_subs(
     return out
 
 
+ANALYTICS_DELAY_DAYS = 3
+
+
+def _missing_metric_reason(video: dict, today: str) -> str:
+    """Explain why YouTube Analytics returned no row for this video.
+
+    YouTube returns no row for a video nobody has watched, and its per-video
+    metrics usually arrive 2-3 days after publication; neither is a fault.
+    """
+    if video.get("views") == 0:
+        return "No views yet; YouTube Analytics reports nothing for an unwatched video."
+    published = str(video.get("publishedAt") or "")[:10]
+    try:
+        age_days = (datetime.fromisoformat(today) - datetime.fromisoformat(published)).days
+    except ValueError:
+        age_days = None
+    if age_days is not None and age_days < ANALYTICS_DELAY_DAYS:
+        return "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+    return "YouTube Analytics permission, report delay, or missing response row."
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=None)
@@ -247,8 +268,9 @@ def main() -> int:
     for video in videos:
         video.update(retention.get(video["id"], {}))
         video["analytics_period"] = {"start_date": start_date, "end_date": today, "note": "Rates use views from this same Analytics report; Data API counts may differ."}
+        reason = _missing_metric_reason(video, today)
         video["unavailable_metrics"] = {
-            key: "YouTube Analytics permission, report delay, or missing response row."
+            key: reason
             for key in ("avg_view_pct", "subs_gained", "average_watch_time_seconds", "shares", "analytics_views", "engaged_views")
             if video.get(key) is None
         }

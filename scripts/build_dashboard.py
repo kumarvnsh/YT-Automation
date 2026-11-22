@@ -176,15 +176,16 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
     for platform, items in (('YouTube', analytics.get('channels', {}).get('histold', {}).get('videos', [])),
                             ('Facebook', meta.get('facebook', {}).get('videos', [])),
                             ('Instagram', meta.get('instagram', {}).get('videos', []))):
-        missing = {}
         counts = {}
         for item in items:
             um = item.get('unavailable_metrics') or []
             for key in (um.keys() if isinstance(um, dict) else um):
-                missing[key] = um[key] if isinstance(um, dict) else 'not returned by the API'
-                counts[key] = counts.get(key, 0) + 1
-        if missing:
-            gaps[platform] = {key: f'{counts[key]} of {len(items)} videos: {reason}' for key, reason in missing.items()}
+                reason = um[key] if isinstance(um, dict) else 'not returned by the API'
+                counts.setdefault(key, {})
+                counts[key][reason] = counts[key].get(reason, 0) + 1
+        if counts:
+            gaps[platform] = {key: '; '.join(f'{n} of {len(items)} videos: {reason}' for reason, n in reasons.items())
+                              for key, reasons in counts.items()}
 
     reviews = sorted((root / 'data/reviews').glob('*.md')) if (root / 'data/reviews').exists() else []
     s = settings(cfg)
