@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T12:00:18.045182+00:00",
+  "updated": "2026-11-22T09:00:08.879542+00:00",
   "status": "pinned by you until 2026-12-01T05:08 UTC",
   "hours_utc": [
     11,
@@ -39,47 +39,53 @@
   ],
   "hour_stats": {
     "04": {
-      "n": 24,
-      "mean": 0.532,
-      "shrunk": 0.528
+      "n": 23,
+      "mean": 0.539,
+      "shrunk": 0.534
     },
     "07": {
       "n": 15,
-      "mean": 0.476,
-      "shrunk": 0.48
+      "mean": 0.475,
+      "shrunk": 0.479
     },
     "11": {
       "n": 2,
-      "mean": 0.358,
-      "shrunk": 0.443
+      "mean": 0.355,
+      "shrunk": 0.442
     },
     "12": {
       "n": 16,
       "mean": 0.515,
-      "shrunk": 0.513
+      "shrunk": 0.512
     },
     "16": {
-      "n": 19,
-      "mean": 0.484,
-      "shrunk": 0.487
+      "n": 18,
+      "mean": 0.48,
+      "shrunk": 0.483
     },
     "17": {
       "n": 1,
-      "mean": 0.372,
+      "mean": 0.371,
       "shrunk": 0.468
     },
     "18": {
       "n": 14,
-      "mean": 0.485,
-      "shrunk": 0.488
+      "mean": 0.483,
+      "shrunk": 0.486
     },
     "23": {
       "n": 3,
-      "mean": 0.556,
-      "shrunk": 0.528
+      "mean": 0.554,
+      "shrunk": 0.527
     }
   },
   "masked_metrics": [
+    {
+      "video_id": "_LG3VzPRgp0",
+      "platform": "yt",
+      "views": 0,
+      "reason": "The viewing percentage is still unavailable more than five days after publication, consistent with the ongoing reporting gap."
+    },
     {
       "video_id": "SfvGGm6eaok",
       "platform": "yt",
@@ -97,6 +103,18 @@
       "platform": "yt",
       "views": 3,
       "reason": "Viewing percentage is 0.0% with 3 recorded views."
+    },
+    {
+      "video_id": "Chyn8YLkKO0",
+      "platform": "yt",
+      "views": 7,
+      "reason": "Viewing percentage is 0.0% with 5 recorded views."
+    },
+    {
+      "video_id": "wUYjpa6ICeU",
+      "platform": "yt",
+      "views": 3,
+      "reason": "Viewing percentage is 0.0% with 2 recorded views."
     },
     {
       "video_id": "ZE9tGMBB7Fg",
@@ -119,8 +137,14 @@
     {
       "video_id": "jCPbacI0r5Q",
       "platform": "yt",
-      "views": 6,
+      "views": 9,
       "reason": "Viewing percentage missing in the recent export gap."
+    },
+    {
+      "video_id": "wUYjpa6ICeU",
+      "platform": "fb",
+      "views": 0,
+      "reason": "0 Facebook plays while Instagram shows 212 views; unverified"
     },
     {
       "video_id": "lCQJdMRx814",
