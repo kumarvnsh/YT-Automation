@@ -330,6 +330,14 @@ def codex_image(cfg, prompt: str, out_path: Path, references: list[Path] = (), t
         blob = f'{result.stdout}\n{result.stderr}'
         image = work / 'image.png'
         if not image.is_file():
+            # Codex can draw the image yet fail to copy it in (its Windows sandbox shell timed out on
+            # 2026-11-23 "connecting runner pipe-in"); its own copy under generated_images is the image.
+            drawn = [Path.home() / '.codex' / 'generated_images' / folder / name for folder, name in
+                     re.findall(r'generated_images[\\/]+([0-9a-f-]{36})[\\/]+([\w.-]+\.(?:png|jpe?g|webp))', blob)]
+            drawn = [p for p in drawn if p.is_file() and p.stat().st_mtime >= time.time() - (time.monotonic() - started) - 5]
+            if drawn:
+                image = max(drawn, key=lambda p: p.stat().st_mtime)
+        if not image.is_file():
             if LIMIT_RE.search(blob):
                 with _LOCK:
                     state = _load()
@@ -342,7 +350,7 @@ def codex_image(cfg, prompt: str, out_path: Path, references: list[Path] = (), t
             raise RuntimeError('Codex did not produce an image: ' + (blob.strip()[-200:] or f'exit {result.returncode}'))
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_bytes(image.read_bytes())
-        for folder in set(re.findall(r'generated_images[\/]+([0-9a-f-]{36})', blob)):
+        for folder in set(re.findall(r'generated_images[\\/]+([0-9a-f-]{36})', blob)):
             shutil.rmtree(Path.home() / '.codex' / 'generated_images' / folder, ignore_errors=True)
         with _LOCK:
             state = _load()

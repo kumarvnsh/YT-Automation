@@ -103,6 +103,20 @@ class PlanAI(unittest.TestCase):
             run.assert_not_called()
             qwen.assert_not_called()
 
+    def test_image_drawn_but_not_copied_is_taken_from_codex_store(self):
+        home = Path(self.folder.name) / 'home'
+        drawn = home / '.codex' / 'generated_images' / ('0' * 8 + '-0000-0000-0000-' + '0' * 12) / 'exec-1.png'
+
+        def run(cmd, **kw):  # the 2026-11-23 failure: drawn, then the sandbox shell timed out before copying
+            drawn.parent.mkdir(parents=True); drawn.write_bytes(b'png')
+            return done(stderr=f'ess: timed out after 15000ms connecting runner pipe-in\ncodex\n{drawn}\ntokens used\n24,628')
+        out = Path(self.folder.name) / 'post' / 'image.png'
+        with mock.patch.object(plan_ai, 'status', lambda cfg: {'codex': {'ready': True, 'installed': True}}), \
+             mock.patch.object(plan_ai.Path, 'home', lambda: home), mock.patch.object(plan_ai.subprocess, 'run', run):
+            plan_ai.codex_image(CFG, 'draw', out)
+        self.assertEqual(out.read_bytes(), b'png')
+        self.assertFalse(drawn.parent.exists())  # the C: copy is cleaned up
+
     def test_qwen_is_the_last_resort_for_small_jobs(self):
         state = {'usage': {'claude': [time.time(), time.time()]}, 'cooldown': {'codex': time.time() + 600}, 'last_error': {}}
         Path(os.environ['HISTOLD_PLAN_AI_STATE']).write_text(json.dumps(state), encoding='utf-8')
