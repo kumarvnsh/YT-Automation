@@ -747,6 +747,11 @@ def main():
             maintenance_tick(config)
         except (OSError, sqlite3.Error, RuntimeError):
             return 1
+        try:
+            from .video_insights import maybe_start
+            maybe_start(config, args.config.resolve())
+        except OSError:
+            pass
         return 0
     try:
         print(json.dumps(submit(config,json.loads(sys.stdin.buffer.read(16384)))))

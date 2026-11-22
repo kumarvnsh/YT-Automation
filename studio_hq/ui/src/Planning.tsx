@@ -29,7 +29,7 @@ export type Experiments = {
   untracked: { id: string; published: number }[];
   recommendations: Recommendation[];
 };
-export type AssistantRecord = { id: string; scope: 'strategy' | 'trace' | 'shotsnip'; job: string | null; question: string;
+export type AssistantRecord = { id: string; scope: 'strategy' | 'trace' | 'shotsnip' | 'videos'; job: string | null; question: string;
   status: 'thinking' | 'answered' | 'failed'; asked_at: string | null; answered_at: string | null; reply: string | null;
   proposals: { index: number; name: string; summary: string | null; error: string | null;
     applied: { at: string; message: string } | null }[] };
@@ -339,7 +339,10 @@ export function AssistantPanel({ records, topics, focus, setFocus, send, busy, r
 }) {
   const [question, setQuestion] = useState('');
   const [confirm, setConfirm] = useState<string | null>(null);
+  const [videos, setVideos] = useState(false);
   const topic = topics.find(row => row.job === focus);
+  const scopeLabel = (record: AssistantRecord) => record.scope === 'trace' ? 'Topic ' + record.job
+    : record.scope === 'videos' ? 'Video performance' : 'Recommendations and experiments';
   const thinking = records.some(row => row.status === 'thinking');
   return <section className="panel assistant-panel" aria-labelledby="assistant-heading">
     <div className="panel-head"><div><h2 id="assistant-heading">Ask the Histold assistant</h2>
@@ -348,24 +351,25 @@ export function AssistantPanel({ records, topics, focus, setFocus, send, busy, r
       event.preventDefault();
       if (!question.trim() || busy) return;
       send(focus ? {action:'assistant_ask',channel:'histold',scope:'trace',job:focus,question:question.trim()}
-        : {action:'assistant_ask',channel:'histold',scope:'strategy',question:question.trim()});
+        : {action:'assistant_ask',channel:'histold',scope:videos ? 'videos' : 'strategy',question:question.trim()});
       setQuestion('');
     }}>
       <div className="filters" role="group" aria-label="Evidence">
-        <button type="button" aria-pressed={!focus} onClick={() => setFocus(null)}>Recommendations and experiments</button>
+        <button type="button" aria-pressed={!focus && !videos} onClick={() => { setFocus(null); setVideos(false); }}>Recommendations and experiments</button>
+        <button type="button" aria-pressed={!focus && videos} onClick={() => { setFocus(null); setVideos(true); }}>Video performance</button>
         {topic && <button type="button" aria-pressed>Topic: {topic.title}</button>}
       </div>
       {!topic && <p className="trace-muted">To ask about one topic, open it under Topics and choose Ask the assistant.</p>}
       <label className="planning-search">Question
         <textarea value={question} maxLength={600} rows={3} onChange={event => setQuestion(event.target.value)}
-          placeholder={topic ? 'Why did this topic underperform on YouTube?' : 'Which lane is ahead, and how sure can we be?'} /></label>
+          placeholder={topic ? 'Why did this topic underperform on YouTube?' : videos ? 'Why did my recent videos start slowly?' : 'Which lane is ahead, and how sure can we be?'} /></label>
       <button className="action primary" type="submit" disabled={busy || !question.trim() || thinking}>Ask</button>
       {thinking && <p className="trace-muted" role="status">The assistant is answering. This can take a few minutes.</p>}
     </form> : <p className="chart-note">Questions are available when Studio HQ controls are enabled.</p>}
     {recent && <p className="analytics-info" role="status">{recent.message} · {time(recent.at)} IST</p>}
     {records.map(record => <article key={record.id} className="assistant-record">
       <p className="assistant-question"><strong>{record.question}</strong>
-        <small>{record.scope === 'trace' ? 'Topic ' + record.job : 'Recommendations and experiments'} · {time(record.asked_at)} IST</small></p>
+        <small>{scopeLabel(record)} · {time(record.asked_at)} IST</small></p>
       {record.status === 'thinking' ? <p className="trace-muted">Waiting for the answer…</p>
         : <p className={record.status === 'failed' ? 'trace-muted' : 'assistant-reply'}>{record.reply}</p>}
       {record.proposals.map(item => {

@@ -21,6 +21,7 @@ export type Snapshot = {
   archives: ArchiveRow[];
   analytics?: StudioAnalytics;
   pacing_experiment?: Pacing | null;
+  video_insights?: Partial<Record<'histold' | 'shotsnip', import('./VideoInsights').ChannelVideoInsights | null>> | null;
   phase3?: PlanningData;
   shotsnip_workspace?: ShotsnipWorkspace;
   controls_enabled: boolean;
@@ -98,7 +99,7 @@ export function HomePage({ snapshot, time, sub }: PageProps) {
   if (!snapshot.analytics) return <Waiting what="analytics" />;
   return <div className={'scope-' + channel}>
     <ChannelInsights key={channel} data={snapshot.analytics} channel={channel} time={time}
-      pacing={channel === 'shotsnip' ? snapshot.pacing_experiment : null} />
+      pacing={channel === 'shotsnip' ? snapshot.pacing_experiment : null} insights={snapshot.video_insights?.[channel]} />
   </div>;
 }
 

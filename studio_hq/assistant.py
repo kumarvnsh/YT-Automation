@@ -19,7 +19,8 @@ import uuid
 from .archive import atomic_json, read_json
 
 SCOPES = {'strategy': 'Histold strategy recommendations and experiments', 'trace': 'One Histold topic trace',
-          'shotsnip': 'Shotsnip agent (its own channel data)'}
+          'shotsnip': 'Shotsnip agent (its own channel data)',
+          'videos': 'Histold video performance: retention, traffic sources and slow starters'}
 QUESTION_MAX = 600
 REPLY_MAX = 4000
 ANSWER_TIMEOUT = 420
@@ -54,6 +55,8 @@ def check_request(body):
 def evidence(snapshot, scope, job):
     """Only the selected scope. Earnings, costs, Shotsnip and credentials are never included."""
     phase3 = snapshot.get('phase3') or {}
+    if scope == 'videos':
+        return video_evidence(snapshot)
     experiments = phase3.get('experiments') or {}
     if scope == 'strategy':
         return {'recommendations': experiments.get('recommendations', []),
@@ -66,6 +69,32 @@ def evidence(snapshot, scope, job):
     if not topic:
         raise ValueError('That topic is no longer in the recent topic history.')
     return {key: topic.get(key) for key in ('job', 'title', 'date', 'format', 'state', 'trace')}
+
+
+def video_evidence(snapshot):
+    insights = (snapshot.get('video_insights') or {}).get('histold') or {}
+    if insights.get('status') != 'connected':
+        raise ValueError('Histold video insights are not available yet. Try again after the next refresh.')
+    videos = []
+    for identity, video in (insights.get('videos') or {}).items():
+        totals = video.get('totals') or {}
+        curve = video.get('retention') or []
+        point = lambda share: min(curve, key=lambda p: abs(p[0] - share))[1] if curve else None
+        videos.append({'title': video.get('title'), 'published': (video.get('published') or '')[:10],
+                       'seconds': video.get('duration_seconds'), 'views': totals.get('views'),
+                       'engaged_views': totals.get('engagedViews'), 'average_view_percentage': totals.get('averageViewPercentage'),
+                       'likes': totals.get('likes'), 'shares': totals.get('shares'), 'subscribers_gained': totals.get('subscribersGained'),
+                       'audience_watch_ratio_at': {'10%': point(.1), '50%': point(.5), '90%': point(.9)} if curve else None,
+                       'relative_retention': video.get('relative_retention'),
+                       'top_traffic': [[row.get('label'), row.get('share')] for row in (video.get('traffic') or [])[:3]],
+                       'first_days_views': [row[1] for row in (video.get('daily') or [])[:7]]})
+    return {'reported_through': insights.get('data_end'),
+            'channel_traffic_last_28_days': [[row.get('label'), row.get('share')] for row in insights.get('traffic') or []],
+            'typical_average_view_percentage': insights.get('typical_view_percentage'),
+            'slow_starters': [{k: row.get(k) for k in ('title', 'day', 'views', 'typical', 'reasons')} for row in insights.get('attention') or []],
+            'recent_videos': videos[:40],
+            'rules': 'Views compare cumulative views at the same age. Retention curves exist only for videos YouTube had enough viewers to report. '
+                     'Impressions and click-through rate are not available from the API.'}
 
 
 def prompt(scope, job, facts, question):

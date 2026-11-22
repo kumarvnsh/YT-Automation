@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { ArrowDown, ArrowUp, ArrowUpRight } from './icons';
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { channelNames, PacingExperiment, type Pacing, type Series, type StudioAnalytics, type StudioChannel } from './Analytics';
+import { AttentionPanel, InsightsStatus, TrafficPanel, VideoDetailModal, type ChannelVideoInsights } from './VideoInsights';
 
 type Time = (value: string | null) => string;
 type Platform = 'youtube' | 'facebook' | 'instagram';
@@ -148,12 +149,21 @@ function rate(video: Video) {
   return video.value && video.likes != null ? video.likes / video.value : null;
 }
 
-function VideoList({ title, note, videos, score }: { title: string; note: string; videos: Video[]; score: (video: Video) => number }) {
+type Opener = { canOpen: (video: Video) => boolean; open: (video: Video) => void };
+
+function VideoTitle({ video, opener, strong }: { video: Video; opener?: Opener; strong?: boolean }) {
+  const text = strong ? <strong>{video.title}</strong> : video.title;
+  if (opener?.canOpen(video)) return <button className="link-button" onClick={() => opener.open(video)}>{text}</button>;
+  if (!strong && video.url) return <a href={video.url} target="_blank" rel="noreferrer">{video.title}</a>;
+  return text;
+}
+
+function VideoList({ title, note, videos, score, opener }: { title: string; note: string; videos: Video[]; score: (video: Video) => number; opener?: Opener }) {
   return <section className="panel">
     <div className="panel-head"><div><h2>{title}</h2><p>{note}</p></div></div>
     {videos.length ? <ol className="video-list">{videos.map(video => <li key={video.platform + video.id}>
       <span className="platform-dot" style={{ background: platformColor[video.platform] }} aria-hidden="true" />
-      <span className="video-main"><strong>{video.title}</strong>
+      <span className="video-main"><VideoTitle video={video} opener={opener} strong />
         <small>{platformName[video.platform]} · {video.published ? dayLabel.format(new Date(video.published)) : 'date unknown'}{rate(video) != null ? ' · ' + percent.format(rate(video)!) + ' likes' : ''}</small></span>
       <span className="video-score"><b>{video.value == null ? '—' : compact.format(video.value)}</b><small>{score(video).toFixed(1)}× typical</small></span>
       {video.url ? <a className="icon-link" href={video.url} target="_blank" rel="noreferrer" aria-label={'Open ' + video.title}><ArrowUpRight size={15}/></a> : <span />}
@@ -163,7 +173,7 @@ function VideoList({ title, note, videos, score }: { title: string; note: string
 
 type SortKey = 'published' | 'value' | 'likes' | 'rate';
 
-function VideoTable({ videos }: { videos: Video[] }) {
+function VideoTable({ videos, opener }: { videos: Video[]; opener?: Opener }) {
   const [platform, setPlatform] = useState<'all' | Platform>('all');
   const [sort, setSort] = useState<{ key: SortKey; down: boolean }>({ key: 'published', down: true });
   const [limit, setLimit] = useState(15);
@@ -189,7 +199,7 @@ function VideoTable({ videos }: { videos: Video[] }) {
       <thead><tr><th scope="col">Video</th>{header('published', 'Published')}{header('value', 'Views')}{header('likes', 'Likes')}{header('rate', 'Like rate')}</tr></thead>
       <tbody>{rows.slice(0, limit).map(video => <tr key={video.platform + video.id}>
         <th scope="row"><span className="table-title"><span className="platform-dot" style={{ background: platformColor[video.platform] }} aria-hidden="true" />
-          {video.url ? <a href={video.url} target="_blank" rel="noreferrer">{video.title}</a> : video.title}</span><small>{platformName[video.platform]}</small></th>
+          <VideoTitle video={video} opener={opener} /></span><small>{platformName[video.platform]}{opener?.canOpen(video) ? ' · details' : ''}</small></th>
         <td>{video.published ? dayLabel.format(new Date(video.published)) : '—'}</td>
         <td>{video.value == null ? '—' : whole.format(video.value)}</td>
         <td>{video.likes == null ? '—' : whole.format(video.likes)}</td>
@@ -199,8 +209,12 @@ function VideoTable({ videos }: { videos: Video[] }) {
   </section>;
 }
 
-export function ChannelInsights({ data, channel, time, pacing }: { data: StudioAnalytics; channel: StudioChannel; time: Time; pacing?: Pacing | null }) {
+export function ChannelInsights({ data, channel, time, pacing, insights }: { data: StudioAnalytics; channel: StudioChannel; time: Time;
+  pacing?: Pacing | null; insights?: ChannelVideoInsights | null }) {
   const series = data[channel];
+  const [openId, setOpenId] = useState<string | null>(null);
+  const details = insights?.status === 'connected' ? insights.videos ?? {} : {};
+  const opener: Opener = { canOpen: video => video.platform === 'youtube' && !!details[video.id], open: video => setOpenId(video.id) };
   const platforms = useMemo(() => platformSeries(series), [series]);
   const videos: Video[] = useMemo(() => platforms.flatMap(({ platform, series: item }) =>
     item.videos.map(video => ({ ...video, platform }))), [platforms]);
@@ -221,6 +235,7 @@ export function ChannelInsights({ data, channel, time, pacing }: { data: StudioA
   if (!series.length) return <div className="panel empty">There is no analytics export for {channelNames[channel]} yet.</div>;
   return <div className="page-stack insights">
     <p className="insights-updated">Latest export {time(updated)} IST · {videos.length} measured videos across {platforms.length} platforms</p>
+    <InsightsStatus insights={insights} time={time} />
     <Kpis series={series} platforms={platforms} />
     <div className="chart-grid">
       <ChartPanel wide title="Views by publish day" note="Lifetime views of videos published each day, by platform · last 28 days">
@@ -235,11 +250,17 @@ export function ChannelInsights({ data, channel, time, pacing }: { data: StudioA
       {publishing && <ChartPanel title="Publishing rhythm" note="Posts recorded per day · last 28 days">
         <Rhythm series={publishing} color={brand} /></ChartPanel>}
     </div>
+    {insights?.status === 'connected' && <div className="page-split even">
+      <AttentionPanel insights={insights} open={setOpenId} />
+      <TrafficPanel insights={insights} color={platformColor.youtube} />
+    </div>}
     <div className="page-split even">
-      <VideoList title="Top performers" note="Furthest above the typical video on their platform" videos={top} score={score} />
-      <VideoList title="Videos to learn from" note="Furthest below typical, among videos at least 3 days old" videos={learn} score={score} />
+      <VideoList title="Top performers" note="Furthest above the typical video on their platform" videos={top} score={score} opener={opener} />
+      <VideoList title="Videos to learn from" note="Furthest below typical, among videos at least 3 days old" videos={learn} score={score} opener={opener} />
     </div>
-    {videos.length > 0 && <VideoTable videos={videos} />}
+    {videos.length > 0 && <VideoTable videos={videos} opener={opener} />}
+    {openId && details[openId] && insights && <VideoDetailModal id={openId} video={details[openId]} insights={insights} color={brand}
+      attention={insights.attention?.find(row => row.id === openId)} time={time} onClose={() => setOpenId(null)} />}
     {channel === 'shotsnip' && pacing && <PacingExperiment experiment={pacing} time={time} />}
   </div>;
 }
