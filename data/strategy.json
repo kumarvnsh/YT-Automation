@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T03:00:27.206921+00:00",
+  "updated": "2026-11-22T07:00:28.638305+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 114,
-          "mean_like_rate": 0.003081
+          "measured_videos": 113,
+          "mean_like_rate": 0.003108
         },
         "fb": {
-          "measured_videos": 112,
-          "mean_like_rate": 0.001876
+          "measured_videos": 111,
+          "mean_like_rate": 0.001893
         },
         "ig": {
-          "measured_videos": 125,
-          "mean_like_rate": 0.136017
+          "measured_videos": 124,
+          "mean_like_rate": 0.136786
         }
       },
       "Museum object": {
@@ -52,6 +52,20 @@
         "ig": {
           "measured_videos": 1,
           "mean_like_rate": 0.166667
+        }
+      },
+      "Graphic novel": {
+        "yt": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "fb": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "ig": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.5
         }
       }
     },
@@ -84,18 +98,18 @@
     },
     "region": {
       "india": 0.1131,
-      "africa": 0.1109,
+      "africa": 0.1108,
       "japan": 0.1162,
       "china": 0.116,
-      "russia": 0.1048,
+      "russia": 0.1047,
       "middle_east": 0.1074,
-      "europe": 0.1176,
-      "americas": 0.0957,
+      "europe": 0.1175,
+      "americas": 0.0959,
       "asia_pacific": 0.1183
     },
     "duration_variant": {
-      "concise": 0.4992,
-      "story": 0.5008
+      "concise": 0.4976,
+      "story": 0.5024
     }
   },
   "stats": {
@@ -187,7 +201,7 @@
         "mean_score": 0.523
       },
       "americas": {
-        "n": 13,
+        "n": 12,
         "mean_score": 0.434
       },
       "asia_pacific": {
@@ -197,12 +211,12 @@
     },
     "duration_variant": {
       "concise": {
-        "n": 60,
-        "mean_score": 0.499
+        "n": 61,
+        "mean_score": 0.498
       },
       "story": {
-        "n": 53,
-        "mean_score": 0.501
+        "n": 52,
+        "mean_score": 0.502
       }
     }
   },
@@ -214,11 +228,11 @@
     "Why Did One Emperor Dig a Canal Across Half of China?"
   ],
   "losers": [
-    "Why Did British Lawmakers Try to Ban a Flowery Indian Cotton?",
     "Minnesota's Lone Surviving Agency Building Held Food, and a Broken Promise",
     "Were the Pyramids of Giza Really Built by Enslaved People?",
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
-    "Your Ketchup Bottle Once Held a Fermented Asian Sauce"
+    "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
+    "The Panama Canal Builders Bought Wire Screens Against Mosquitoes"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -226,7 +240,7 @@
       "video_id": "_LG3VzPRgp0",
       "platform": "yt",
       "views": 0,
-      "reason": "The viewing percentage is still unavailable more than five days after publication."
+      "reason": "The viewing percentage is still unavailable more than five days after publication, consistent with the ongoing reporting gap."
     },
     {
       "video_id": "SfvGGm6eaok",
