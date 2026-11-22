@@ -174,3 +174,29 @@ class StaleLocks(unittest.TestCase):
             self.assertFalse((root / 'output' / 'old_unfinished' / '.studio-hq-media-lock').exists())
             self.assertTrue((root / 'output' / 'old_finished' / '.studio-hq-media-lock').exists())
             self.assertTrue((root / 'output' / 'fresh' / '.studio-hq-media-lock').exists())
+
+
+class PublishPreview(unittest.TestCase):
+    def test_only_a_finished_quality_passed_preview_is_accepted(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root, source = Path(raw) / 'repo', Path(raw) / 'preview' / '20261122_105811_039795_short'
+            source.mkdir(parents=True)
+            (source / 'state.json').write_text(json.dumps({'complete': True, 'no_upload': True}))
+            (source / 'quality.json').write_text(json.dumps({'passed': True}))
+            with mock.patch.object(runner, 'ROOT', root), mock.patch.object(runner, 'log'):
+                self.assertEqual(runner.prepare_preview(source), source.name)
+                self.assertTrue((root / 'output' / source.name / 'state.json').is_file())
+                (source / 'quality.json').write_text(json.dumps({'passed': False}))
+                with self.assertRaises(SystemExit):
+                    runner.prepare_preview(source)
+                (source / 'quality.json').write_text(json.dumps({'passed': True}))
+                (source / 'state.json').write_text(json.dumps({'complete': True, 'no_upload': True, 'youtube_id': 'x'}))
+                with self.assertRaises(SystemExit):
+                    runner.prepare_preview(source)
+
+    def test_publish_runs_only_the_upload_of_that_stage(self):
+        args = SimpleNamespace(format='short', dry_run=False, no_upload=False, stamp='T', stage='20261122_105811_039795_short')
+        with tempfile.TemporaryDirectory() as raw, mock.patch.object(runner, 'LOG_DIR', Path(raw)), \
+                mock.patch.object(runner, 'stream', return_value=proc('STATUS: DONE  url')) as stream:
+            self.assertEqual(runner.step_loop(args, {})[0], 'DONE')
+        self.assertEqual(stream.call_args.args[0][-4:], ['--stage', args.stage, '--force-upload', '--step'])

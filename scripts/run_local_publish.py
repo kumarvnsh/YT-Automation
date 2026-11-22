@@ -147,6 +147,8 @@ def stream(cmd, env, timeout, path: Path) -> subprocess.CompletedProcess:
 
 def step_loop(args, env) -> tuple[str, str]:
     cmd = [sys.executable, '-m', 'src.main', '--format', args.format, '--step']
+    if getattr(args, 'stage', None):  # publish a finished preview: only the upload step runs
+        cmd = [sys.executable, '-m', 'src.main', '--stage', args.stage, '--force-upload', '--step']
     if args.dry_run:
         cmd.append('--dry-run')
     if args.no_upload:
@@ -168,6 +170,21 @@ def step_loop(args, env) -> tuple[str, str]:
                 continue
             return 'ERROR', out
     return 'TIMEOUT', last
+
+
+def prepare_preview(source: Path) -> str:
+    """Bring a finished, quality-passed preview into this checkout's output folder for upload."""
+    state = json.loads((source / 'state.json').read_text(encoding='utf-8'))
+    quality = json.loads((source / 'quality.json').read_text(encoding='utf-8'))
+    if not state.get('complete') or not state.get('no_upload') or state.get('youtube_id'):
+        raise SystemExit('Only a finished preview that was never uploaded can be published this way.')
+    if quality.get('passed') is not True:
+        raise SystemExit('That preview did not pass its quality checks.')
+    target = ROOT / 'output' / source.name
+    if source.resolve() != target.resolve():
+        shutil.copytree(source, target, dirs_exist_ok=True)
+    log('publishing preview', source.name)
+    return source.name
 
 
 def clear_stale_locks(max_age: int = 120) -> None:
@@ -289,7 +306,9 @@ def main() -> int:
     ap.add_argument('--no-fallback', action='store_true')
     ap.add_argument('--no-sync', action='store_true', help='testing only: do not reset the clone to origin/master')
     ap.add_argument('--retry', action='store_true', help='make the video that waited for the plans to reset')
+    ap.add_argument('--publish-stage', type=Path, help='upload a finished preview that passed its quality checks')
     args = ap.parse_args()
+    args.stage = None
     if args.retry:
         args.slot = ''  # the original hour has passed; the daily cap still applies to the claim
     args.stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
@@ -306,12 +325,16 @@ def main() -> int:
         if not args.no_sync:
             git_sync()
         clear_stale_locks()
+        if args.publish_stage:
+            args.stage = prepare_preview(args.publish_stage)
+            args.no_fallback = True  # a specific video: never replace it with a different cloud-made one
+            args.slot = ''
         from src.config import load_config
         from src import plan_ai
         cfg = load_config()
         env, missing = tool_env(cfg)
         ready = plan_ai.status(cfg)
-        if not any(info['ready'] for info in ready.values()):
+        if not args.stage and not any(info['ready'] for info in ready.values()):  # publishing a preview needs no AI
             return defer(args, 'Claude and Codex plans are both resting or capped')
         if args.retry:
             RETRY.unlink(missing_ok=True)
