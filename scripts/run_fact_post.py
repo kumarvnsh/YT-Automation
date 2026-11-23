@@ -128,11 +128,15 @@ def main() -> int:
         if args.retry:
             from src import fact_posts
             waiting = [r for r in fact_posts.load_queue() if r.get('status') == 'waiting_plans']
-            for row in waiting[:-1]:  # older waiting duplicates; the newest is remade with its fact
-                fact_posts.update(row['id'], status='replaced')
-            if waiting:
-                return make(cfg, waiting[-1].get('slot') or '', resume=waiting[-1]['id'])
-            return make(cfg, '')
+            if not waiting:
+                return make(cfg, '')
+            code = 0
+            for row in waiting:  # oldest first, each keeping its own verified fact
+                code = make(cfg, row.get('slot') or '', resume=row['id'])
+                still = next((r for r in fact_posts.load_queue() if r['id'] == row['id']), {})
+                if still.get('status') == 'waiting_plans':
+                    break  # the image makers ran out again: the rest keep waiting for the next retry
+            return code
         return make(cfg, args.slot)
     finally:
         os.close(fd)
