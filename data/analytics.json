@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-23T11:00:34.128110+00:00",
+      "updated": "2026-11-23T12:00:38.135562+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,50 @@
       },
       "videos": [
         {
+          "id": "zMUOPEgxclQ",
+          "title": "The Library of Congress Was Rebuilt From One Man's Private Bookshelves",
+          "description": "In 1814, the burning of Washington destroyed the small congressional library inside the Capitol, a collection limited to law, economics and history. Congress chose to replace it with Thomas Jefferson's personal library of 6,487 volumes, which covered almost every subject. The Library of Congress still names Jefferson's idea of universality as the reason it collects so widely.\n#history #libraryofcongress #thomasjefferson\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of Thomas Jefferson: Rembrandt Peale, Public domain, via Wikimedia Commons",
+          "tags": [
+            "american history",
+            "books",
+            "burning of washington",
+            "decisions with consequences",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "libraries",
+            "library of congress",
+            "thomas jefferson",
+            "us capitol",
+            "war of 1812",
+            "world history"
+          ],
+          "publishedAt": "2026-11-23T11:17:24Z",
+          "thumbnail": "https://i.ytimg.com/vi/zMUOPEgxclQ/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-23",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+          }
+        },
+        {
           "id": "-7-YlK4o8mM",
           "title": "The Thermostat's Ancestor Was a Damper Controlling a Coal Fire",
           "description": "A thermostat once opened a coal furnace's damper, according to an 1886 patent by Albert Butz. By about 1932, a Time-O-Stat thermostat was switching the furnace circuit through a mercury switch on a bimetal coil. The records show how a household temperature control began with airflow, not a wall dial. #ThermostatHistory #EverydayObjects #UnexpectedHistories",
@@ -66,7 +110,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -104,14 +148,14 @@
           ],
           "publishedAt": "2026-11-22T18:31:51Z",
           "thumbnail": "https://i.ytimg.com/vi/yd3PWoRjNac/mqdefault.jpg",
-          "views": 4,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -155,7 +199,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -192,14 +236,14 @@
           ],
           "publishedAt": "2026-11-22T07:02:16Z",
           "thumbnail": "https://i.ytimg.com/vi/3cLUs_8OhVQ/mqdefault.jpg",
-          "views": 10,
+          "views": 12,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -244,7 +288,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -288,7 +332,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -332,7 +376,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -383,7 +427,7 @@
           "analytics_views": 2,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -427,7 +471,7 @@
           "analytics_views": 0,
           "engaged_views": 0,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -464,7 +508,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -514,7 +558,7 @@
           "analytics_views": 2,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -557,7 +601,7 @@
           "analytics_views": 20,
           "engaged_views": 6,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -601,7 +645,7 @@
           "analytics_views": 27,
           "engaged_views": 9,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -638,7 +682,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -688,7 +732,7 @@
           "analytics_views": 5,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -732,7 +776,7 @@
           "analytics_views": 6,
           "engaged_views": 2,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -775,7 +819,7 @@
           "analytics_views": 6,
           "engaged_views": 2,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -819,7 +863,7 @@
           "analytics_views": 52,
           "engaged_views": 16,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -863,7 +907,7 @@
           "analytics_views": 48,
           "engaged_views": 6,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -906,7 +950,7 @@
           "analytics_views": 9,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -943,7 +987,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -995,7 +1039,7 @@
           "analytics_views": 6,
           "engaged_views": 0,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1038,7 +1082,7 @@
           "analytics_views": 14,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1075,7 +1119,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1125,7 +1169,7 @@
           "analytics_views": 3,
           "engaged_views": 0,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1168,7 +1212,7 @@
           "analytics_views": 3,
           "engaged_views": 0,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1211,7 +1255,7 @@
           "analytics_views": 21,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1253,7 +1297,7 @@
           "analytics_views": 3,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1283,7 +1327,7 @@
           ],
           "publishedAt": "2026-11-15T18:16:18Z",
           "thumbnail": "https://i.ytimg.com/vi/S7egTTzf3qc/mqdefault.jpg",
-          "views": 38,
+          "views": 39,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1296,7 +1340,7 @@
           "analytics_views": 38,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1340,7 +1384,7 @@
           "analytics_views": 19,
           "engaged_views": 7,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1385,7 +1429,7 @@
           "analytics_views": 27,
           "engaged_views": 3,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1430,7 +1474,7 @@
           "analytics_views": 15,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1473,7 +1517,7 @@
           "analytics_views": 11,
           "engaged_views": 6,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1515,7 +1559,7 @@
           "analytics_views": 9,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1558,7 +1602,7 @@
           "analytics_views": 11,
           "engaged_views": 3,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1601,7 +1645,7 @@
           "analytics_views": 9,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1643,7 +1687,7 @@
           "analytics_views": 4,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1686,7 +1730,7 @@
           "analytics_views": 6,
           "engaged_views": 3,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1729,7 +1773,7 @@
           "analytics_views": 23,
           "engaged_views": 7,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1770,7 +1814,7 @@
           "analytics_views": 15,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1813,7 +1857,7 @@
           "analytics_views": 22,
           "engaged_views": 6,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1857,7 +1901,7 @@
           "analytics_views": 15,
           "engaged_views": 4,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1900,7 +1944,7 @@
           "analytics_views": 27,
           "engaged_views": 8,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1942,7 +1986,7 @@
           "analytics_views": 12,
           "engaged_views": 3,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -1987,7 +2031,7 @@
           "analytics_views": 14,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2030,7 +2074,7 @@
           "analytics_views": 15,
           "engaged_views": 3,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2070,10 +2114,10 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 6.0,
           "shares": 0,
-          "analytics_views": 15,
+          "analytics_views": 14,
           "engaged_views": 2,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2111,7 +2155,7 @@
           "playlists": [],
           "is_unsorted": true,
           "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
@@ -2157,52 +2201,10 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 12.0,
           "shares": 0,
-          "analytics_views": 10,
+          "analytics_views": 7,
           "engaged_views": 1,
           "analytics_period": {
-            "start_date": "2026-11-13",
-            "end_date": "2026-11-23",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "k3M_LZ3BwWA",
-          "title": "Why Did India's Freedom Walk Start With Salt?",
-          "description": "In British-ruled India, the Salt Act made making your own salt illegal, touching every household. In 1930, Mohandas Gandhi walked to the sea to defy that rule and turned a kitchen staple into a symbol of self-rule. #IndianHistory #WorldHistory #Salt\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "british india",
-            "dandi",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "freedom movement",
-            "gandhi",
-            "historical facts",
-            "history shorts",
-            "indian history",
-            "salt act",
-            "salt march",
-            "surprising history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-13T21:54:29Z",
-          "thumbnail": "https://i.ytimg.com/vi/k3M_LZ3BwWA/mqdefault.jpg",
-          "views": 2,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 0.0,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
-          "shares": 0,
-          "analytics_views": 2,
-          "engaged_views": 0,
-          "analytics_period": {
-            "start_date": "2026-11-13",
+            "start_date": "2026-11-14",
             "end_date": "2026-11-23",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
