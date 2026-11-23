@@ -269,7 +269,7 @@ def illustrate(cfg: Config, fact: dict, reference: dict | None, out: Path) -> Pa
               'Scene: ' + brief + '\n' + STYLE)
     refs = [Path(reference['file'])] if reference else []
     for attempt in range(2):
-        plan_ai.codex_image(cfg, prompt, out, refs)
+        plan_ai.image(cfg, prompt, out, refs)
         if has_text(out) is not True:
             return out
         prompt += '\nThe previous attempt contained lettering. Paint the scene with no text at all.'

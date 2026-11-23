@@ -35,7 +35,9 @@ DEFAULT_ORDER = ('claude', 'codex', 'qwen')
 DEFAULT_QWEN_FOR = ('assess', 'thumbnail', 'title')
 DEFAULT_CAPS = {'per_5h': 60, 'per_week': 600}
 TIMEOUTS = {'research': 1200, 'scenes': 1800, 'scene_repair': 900}
-NAMES = {'claude': 'claude_plan', 'codex': 'codex_plan', 'qwen': 'qwen_local'}
+NAMES = {'claude': 'claude_plan', 'codex': 'codex_plan', 'qwen': 'qwen_local', 'antigravity': 'antigravity_plan'}
+DEFAULT_AG_MODELS = ('claude-sonnet-5-5-high', 'gemini-4-neon-high')
+DEFAULT_IMAGE_ORDER = ('antigravity', 'codex')
 _LOCK = threading.Lock()
 
 
@@ -128,7 +130,27 @@ def status(cfg=None) -> dict:
         info = out[provider]
         info['ready'] = installed and not info['resting_until'] and info['used_5h'] < caps['per_5h'] \
             and info['used_week'] < caps['per_week']
+    out['antigravity'] = _antigravity_status(cfg)
     return out
+
+
+def _ag_models(cfg) -> list[str]:
+    models = cfg.get('local_ai.antigravity_models', DEFAULT_AG_MODELS) if cfg is not None else DEFAULT_AG_MODELS
+    return [str(m) for m in models or ()]
+
+
+def _antigravity_status(cfg) -> dict:
+    """Antigravity reports its own quota per model; it is ready when the app is open and one text model has quota."""
+    from . import antigravity_ai as ag
+    try:
+        offered = ag.models()
+    except Exception as exc:  # noqa: BLE001 - closed app or unexpected reply: simply not ready
+        return {'installed': (ag.AG / 'bin' / 'agentapi.bat').is_file(), 'ready': False, 'resting_until': None,
+                'last_error': str(exc)[:160], 'models': {}}
+    mine = {m: offered[m] for m in _ag_models(cfg) if m in offered}
+    return {'installed': True, 'resting_until': None, 'last_error': None,
+            'models': {m: {'left': round(i['left'], 3), 'reset': i['reset']} for m, i in mine.items()},
+            'ready': any(ag.ready(m) for m in mine)}
 
 
 def next_ready_at(cfg=None, now: float | None = None) -> float:
@@ -155,7 +177,9 @@ def next_ready_at(cfg=None, now: float | None = None) -> float:
 def order_for(cfg, purpose: str, web: bool) -> list[str]:
     order = list(cfg.get('local_ai.order', DEFAULT_ORDER) if cfg is not None else DEFAULT_ORDER)
     qwen_for = set(cfg.get('local_ai.qwen_for', DEFAULT_QWEN_FOR) if cfg is not None else DEFAULT_QWEN_FOR)
-    return [p for p in order if p in ('claude', 'codex') or (p == 'qwen' and not web and purpose in qwen_for)]
+    # Antigravity's plain call has no web search, so it never researches.
+    return [p for p in order if p in ('claude', 'codex') or (p == 'antigravity' and not web)
+            or (p == 'qwen' and not web and purpose in qwen_for)]
 
 
 def _emit(provider: str, purpose: str, model: str | None, started: float, status_text: str, usage=None, error=None):
@@ -234,6 +258,78 @@ def _codex(cfg, prompt: str, web: bool, timeout: int) -> tuple[str, dict, str | 
     return text, {}, model
 
 
+def _antigravity(cfg, prompt: str, timeout: int) -> tuple[str, dict, str | None]:
+    """First configured Antigravity model with quota left (Claude Sonnet, then Gemini); no tools."""
+    from . import antigravity_ai as ag
+    tried = []
+    for model in _ag_models(cfg):
+        if not ag.ready(model):
+            tried.append(f'{model} unavailable')
+            continue
+        try:
+            return ag.text(prompt, model, timeout=timeout), {}, model
+        except ag.Unavailable as exc:
+            tried.append(str(exc)[:80])
+    raise LimitError('Antigravity: ' + '; '.join(tried or ['no models configured']))
+
+
+def image_ready(cfg=None) -> bool:
+    """Whether any image provider (Antigravity, then Codex) can draw right now."""
+    cfg = _with_live(cfg)
+    order = list(cfg.get('local_ai.image_order', DEFAULT_IMAGE_ORDER) if cfg is not None else DEFAULT_IMAGE_ORDER)
+    if 'antigravity' in order and _load()['cooldown'].get('antigravity_image', 0) <= time.time():
+        from . import antigravity_ai as ag
+        if ag.ready(str(cfg.get('local_ai.antigravity_image_model', 'gemini-3.8-flash-high') if cfg is not None
+                        else 'gemini-3.8-flash-high')):
+            return True
+    return 'codex' in order and status(cfg)['codex']['ready']
+
+
+def image(cfg, prompt: str, out_path: Path, references: list[Path] = (), timeout: int = 420) -> Path:
+    """Draw one image: Antigravity (Gemini) first, Codex as backup (local_ai.image_order).
+
+    Raises PlanUnavailable only when every provider is closed or out of quota, so callers can wait
+    for a reset; any other failure of the last provider is raised as it is.
+    """
+    cfg = _with_live(cfg)
+    order = list(cfg.get('local_ai.image_order', DEFAULT_IMAGE_ORDER) if cfg is not None else DEFAULT_IMAGE_ORDER)
+    notes, error = [], None
+    for provider in order:
+        started = time.monotonic()
+        try:
+            if provider == 'antigravity':
+                from . import antigravity_ai as ag
+                resting = _load()['cooldown'].get('antigravity_image', 0)
+                if resting > time.time():  # its image quota is used up: do not open another conversation
+                    raise PlanUnavailable('Antigravity image quota used up until ' + datetime.fromtimestamp(resting).strftime('%H:%M'))
+                model = str(cfg.get('local_ai.antigravity_image_model', 'gemini-3.8-flash-high'))
+                try:
+                    ag.image(prompt, out_path, references, model_id=model, timeout=min(timeout, 300))
+                except ag.Unavailable as exc:
+                    if 'quota' in str(exc).lower():
+                        with _LOCK:
+                            state = _load()
+                            state['cooldown']['antigravity_image'] = exc.reset or time.time() + 3600
+                            _save(state)
+                    raise PlanUnavailable(str(exc)) from exc
+                _emit('antigravity', 'image', model, started, 'ok', usage={'images': 1})
+                print(f'  image: drawn by {NAMES["antigravity"]} ({model})')
+                return out_path
+            if provider == 'codex':
+                return codex_image(cfg, prompt, out_path, references, timeout=timeout)
+        except PlanUnavailable as exc:
+            notes.append(f'{provider}: {str(exc)[:100]}')
+        except Exception as exc:  # noqa: BLE001 - the next provider gets a turn
+            if provider == 'antigravity':
+                _emit('antigravity', 'image', None, started, 'failed', error=type(exc).__name__)
+            notes.append(f'{provider}: {type(exc).__name__}: {str(exc)[:100]}')
+            error = exc
+        print(f'  ! image: {notes[-1]}')
+    if error is not None:
+        raise RuntimeError('No image provider could draw: ' + '; '.join(notes)) from error
+    raise PlanUnavailable('No image provider could draw: ' + '; '.join(notes or ['none configured']))
+
+
 def _qwen(cfg, prompt: str, json_reply: bool, timeout: int, system: str = '') -> tuple[str, dict, str | None]:
     import requests
     model = cfg.get('local_ai.qwen_model', 'qwen3:8b') if cfg is not None else 'qwen3:8b'
@@ -269,6 +365,8 @@ def complete(cfg, purpose: str, prompt: str, *, system: str = '', web: bool = Fa
                 text, usage, model = _claude(cfg, prompt, web, timeout, system=system.strip(), purpose=purpose)
             elif provider == 'codex':
                 text, usage, model = _codex(cfg, full, web, timeout)
+            elif provider == 'antigravity':
+                text, usage, model = _antigravity(cfg, full, timeout)
             else:
                 text, usage, model = _qwen(cfg, prompt, json_reply, timeout, system=system.strip())
         except LimitError as exc:
@@ -289,7 +387,7 @@ def complete(cfg, purpose: str, prompt: str, *, system: str = '', web: bool = Fa
             _emit(provider, purpose, None, started, 'failed', error=type(exc).__name__)
             notes.append(f'{provider}: {type(exc).__name__}: {str(exc)[:120]}')
             continue
-        if provider != 'qwen':
+        if provider in ('claude', 'codex'):  # Antigravity counts its own quota
             with _LOCK:
                 state = _load()
                 state['usage'].setdefault(provider, []).append(time.time())

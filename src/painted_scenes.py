@@ -1,7 +1,7 @@
 """Painted backdrops for Histold scenes made on the laptop.
 
-While Claude writes each scene's animation, Codex paints one full-screen illustration per scene on the
-owner's plan. The painting sits behind the scene with a slow camera push; Claude's labels, diagrams,
+While Claude writes each scene's animation, Antigravity (Gemini) paints one full-screen illustration per scene
+on the owner's plan, with Codex as backup. The painting sits behind the scene with a slow camera push; Claude's labels, diagrams,
 maps and portraits stay on top. Only the laptop runner turns this on (HISTOLD_PAINTED=1, set from
 local_production.painted_scenes); cloud runs never paint. A painting that fails leaves that scene
 exactly as it renders today.
@@ -71,8 +71,8 @@ class Painter:
         settings = cfg.get('local_production.painted_scenes', {}) or {}
         self.cfg, self.folder, self.w, self.h = cfg, Path(folder), w, h
         from . import plan_ai
-        if not plan_ai.status(cfg)['codex']['ready']:  # capped or resting: the video keeps the normal look
-            raise plan_ai.PlanUnavailable('Codex is resting or capped')
+        if not plan_ai.image_ready(cfg):  # Antigravity closed / out of quota and Codex capped: normal look
+            raise plan_ai.PlanUnavailable('no image provider is ready (Antigravity or Codex)')
         self.limit = int(settings.get('max_images', 10)) if isinstance(settings, dict) else 10
         self.timeout = int(settings.get('timeout_seconds', 360)) if isinstance(settings, dict) else 360
         count = len(narrations)
@@ -99,7 +99,7 @@ class Painter:
         from . import plan_ai
         raw = self.folder / f'paint_{index:02d}.png'
         try:
-            plan_ai.codex_image(self.cfg, prompt, raw, timeout=self.timeout)
+            plan_ai.image(self.cfg, prompt, raw, timeout=self.timeout)
             return _fit(raw, final, self.w, self.h)
         except plan_ai.PlanUnavailable as exc:
             self.stopped = True  # the plan is resting: do not queue more requests

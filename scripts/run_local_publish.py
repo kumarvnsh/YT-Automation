@@ -353,7 +353,7 @@ def main() -> int:
         cfg = load_config()
         env, missing = tool_env(cfg)
         ready = plan_ai.status(cfg)
-        if not args.stage and not any(info['ready'] for info in ready.values()):  # publishing a preview needs no AI
+        if not args.stage and not any(ready[p]['ready'] for p in ('claude', 'codex')):  # research needs one; a preview upload needs none
             return defer(args, 'Claude and Codex plans are both resting or capped')
         if args.retry:
             RETRY.unlink(missing_ok=True)

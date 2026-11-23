@@ -18,7 +18,7 @@ READY = {'codex': {'ready': True}}
 
 class Painted(unittest.TestCase):
     def setUp(self):
-        patcher = mock.patch.object(plan_ai, 'status', return_value=READY)
+        patcher = mock.patch.object(plan_ai, 'image_ready', return_value=True)
         patcher.start()
         self.addCleanup(patcher.stop)
         painted_scenes._OFF.clear()
@@ -56,7 +56,7 @@ class Painted(unittest.TestCase):
             return out
         cfg = Config({'local_production': {'painted_scenes': {'max_images': 3, 'parallel': 1}}})
         with tempfile.TemporaryDirectory() as folder, \
-                mock.patch.object(plan_ai, 'codex_image', side_effect=fake), \
+                mock.patch.object(plan_ai, 'image', side_effect=fake), \
                 mock.patch.object(painted_scenes, '_fit', side_effect=lambda src, dest, w, h: dest.write_bytes(b'j') or dest):
             ready = painted_scenes.Painter(cfg, 'T', [f'line {i}' for i in range(6)], Path(folder), 1080, 1920).collect(30)
         self.assertEqual(len(drawn), 3)
@@ -69,7 +69,7 @@ class Painted(unittest.TestCase):
         def capped(cfg, prompt, out, timeout=0):
             calls.append(1)
             raise plan_ai.PlanUnavailable('capped')
-        with tempfile.TemporaryDirectory() as folder, mock.patch.object(plan_ai, 'codex_image', side_effect=capped):
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(plan_ai, 'image', side_effect=capped):
             ready = painted_scenes.Painter(Config({'local_production': {'painted_scenes': {'parallel': 1}}}),
                                            'T', ['a', 'b', 'c'], Path(folder), 1080, 1920).collect(30)
         self.assertEqual((ready, len(calls)), ({}, 1))
@@ -85,7 +85,7 @@ class ResetTime(unittest.TestCase):
 
 class Safety(Painted):
     def test_codex_unavailable_at_the_start_turns_painting_off_for_the_video(self):
-        with mock.patch.object(plan_ai, 'status', return_value={'codex': {'ready': False}}),                 mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1'}), tempfile.TemporaryDirectory() as folder:
+        with mock.patch.object(plan_ai, 'image_ready', return_value=False),                 mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1'}), tempfile.TemporaryDirectory() as folder:
             with self.assertRaises(plan_ai.PlanUnavailable):
                 painted_scenes.Painter(Config({}), 'T', ['a'], Path(folder), 1080, 1920)
             painted_scenes.disable()
@@ -127,7 +127,7 @@ class Safety(Painted):
             gate.wait(5)
             raise RuntimeError('late')
         cfg = Config({'local_production': {'painted_scenes': {'parallel': 1}}})
-        with tempfile.TemporaryDirectory() as folder, mock.patch.object(plan_ai, 'codex_image', side_effect=slow):
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(plan_ai, 'image', side_effect=slow):
             painter = painted_scenes.Painter(cfg, 'T', ['a', 'b', 'c'], Path(folder), 1080, 1920)
             self.assertEqual(painter.collect(grace=.2), {})
             gate.set()
