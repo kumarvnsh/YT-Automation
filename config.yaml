@@ -392,6 +392,7 @@ local_production:
     preset: "medium"           # sharper than veryfast at the same size, without straining the laptop
     crf: 17                    # near visually lossless, so YouTube's re-encode starts from a clean master
     frame_quality: 97          # JPEG quality of each captured scene frame (cloud: 90)
+  textured_style: true         # laptop only: paper/ink/wash illustration kit + reference scene (src/cinematic_texture.css)
   painted_scenes:              # laptop only: Antigravity (Codex as backup) paints a backdrop per scene
     enabled: true
     max_images: 4              # per video (Antigravity's image quota is small); neighbouring scenes share paintings

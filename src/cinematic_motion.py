@@ -31,13 +31,35 @@ def system_prompt(w: int, h: int, design: dict | None = None) -> str:
                    'Size art to fit the available height and keep the main illustration visible at frame zero.')
         prompt = prompt.replace('bottom 180 CSS pixels', 'bottom 88 CSS pixels').replace('Start content below 124px.', 'Start content below 76px.')
         prompt = prompt.replace('about 420px wide and 350–440px tall', 'about 500–650px wide and 230–330px tall')
+    if textured():
+        prompt += TEXTURE_NOTE.replace('{example}', _HERE.joinpath('cinematic_texture_example.html').read_text(encoding='utf-8'))
     from .painted_scenes import PROMPT_NOTE, enabled
     if enabled():
-        prompt += PROMPT_NOTE
+        prompt += PROMPT_NOTE + 'The painted-backdrop layout rules above win over the illustration size in the texture style.\n'
     return prompt
 
 
-@lru_cache(maxsize=1)
+TEXTURE_NOTE = """
+TEXTURED ILLUSTRATION STYLE (this run). The renderer adds paper grain, fibres and a vignette over every frame,
+and these classes for your SVG artwork (filters are already defined; do not define them yourself):
+  hx-ink     hand-drawn wobble for outlines and buildings      hx-wash    gouache-like mottled fill (skies, smoke, water)
+  hx-shadow  soft drop shadow that lifts a subject             hx-glow    soft blur for light, fire glow, haze
+  hx-hatch   fill:url(#hx-hatch) crosshatch on shaded faces    hx-flicker flame/candle flicker (transform-box set)
+  hx-rise    things drifting up and fading (set --d delay, --x drift, --r spin, --t duration)
+  hx-far / hx-near   slow background / foreground drift for depth (ambient; does not count as motion)
+Paint scenes, not icons: build each illustration in depth layers (sky or wall, far silhouettes, the subject,
+foreground), give it one light source (shade the far side with darker colour or hx-hatch, warm rim light on edges
+facing the light), and use linear/radial gradients whose stop colours are palette variables or color-mix() of them
+with #000 for shadows. Draw real period detail (columns, cornices, arched windows, tools, clothing). Animate the
+story: things assemble, ignite, travel, fill, rise. Keep labels on calm areas with a short leader line, never on
+busy art, and keep every label clear of shapes drawn above it.
+This is a complete scene in the target style; match its richness, not its subject:
+<example>
+{example}
+</example>
+"""
+
+
 def textured() -> bool:
     """Textured-illustration kit (paper, ink, wash, depth): on with HISTOLD_TEXTURE=1 while it is being judged."""
     import os
@@ -49,6 +71,7 @@ def _light(colour: str) -> bool:
     return .299 * r + .587 * g + .114 * b > 140
 
 
+@lru_cache(maxsize=1)
 def _base_css() -> str:
     faces = []
     for family, filename, style in (
