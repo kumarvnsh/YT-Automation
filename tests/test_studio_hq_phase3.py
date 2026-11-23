@@ -227,3 +227,20 @@ class RepostGapTests(unittest.TestCase):
             trace = topic_trace(root, [])[0]['trace']
             self.assertEqual(len(trace['publications']), 1)
             self.assertIn('The publication record for IeZApCwr2NE is missing; it was reposted as bLKPvWMmM4g.', trace['gaps'])
+
+
+class PostingPlanTests(unittest.TestCase):
+    def test_daily_limit_explains_the_long_wait_and_plans_the_next_slots(self):
+        from datetime import datetime, timezone
+        from studio_hq.dashboard_phase3 import posting_plan
+        at = lambda h, m: datetime(2026, 11, 23, h, m, tzinfo=timezone.utc)
+        uploads = [{'status': 'uploaded', 'video_id': str(i), 'finished_at': at(h, m).isoformat()}
+                   for i, (h, m) in enumerate(((7, 0), (10, 34), (16, 35)))]
+        live = {'uploads': uploads, 'last_upload_at': at(16, 35).timestamp(), 'last_cycle_at': at(13, 34).timestamp()}
+        schedule = {'scan_minutes': 240, 'youtube_rules': {'max_per_day': 3, 'min_gap_minutes': 120}}
+        plan = posting_plan(r'D:\YT-Cliping-Automation', live, schedule, now=at(17, 3).timestamp())
+        self.assertEqual(plan['reason'], 'daily_limit')
+        self.assertEqual(plan['frees_after'], at(7, 0).isoformat())
+        self.assertEqual([s['reason'] for s in plan['upcoming']], ['daily_limit', 'cadence', 'daily_limit'])
+        self.assertEqual(plan['upcoming'][0]['at'], datetime(2026, 11, 24, 7, 0, tzinfo=timezone.utc).isoformat())
+        self.assertEqual(plan['upcoming'][2]['at'], datetime(2026, 11, 24, 16, 35, tzinfo=timezone.utc).isoformat())

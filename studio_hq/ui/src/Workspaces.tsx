@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowUpRight } from './icons';
+import { ArrowUpRight, Clock, Hourglass, Record } from './icons';
 import type { CommandEvent, Send } from './Controls';
 
 export type Target = { id: string; name: string; enabled: boolean; sources: { platform: 'youtube' | 'twitch'; label: string }[] };
@@ -22,9 +22,12 @@ export type ShotsnipWorkspace = {
     hold?: { batch: string; total: number; published: number | null; paused_at: string | null } | null;
     commentary?: string; watch_worker?: { status: string; checked_at: string | null; note: string; stop_requested: boolean };
     timers?: { combined: boolean; scan_minutes: number; post_minutes: number; next_cycle: string | null; next_post: string | null;
-      stage_started: string | null; last_upload: string | null; held_by?: string | null } };
+      stage_started: string | null; last_upload: string | null; held_by?: string | null; plan?: PostingPlan | null } };
 };
 
+type SlotReason = 'daily_limit' | 'min_gap' | 'cadence';
+export type PostingPlan = { uploads_24h: string[]; max_per_day: number; min_gap_minutes: number; cadence_minutes: number;
+  reason: SlotReason | null; frees_after: string | null; upcoming: { at: string; reason: SlotReason }[]; processing_minutes: number };
 
 const BUSY = ['scanning', 'capturing', 'analyzing', 'finishing', 'uploading'];
 const clock = (seconds: number) => {
@@ -32,34 +35,104 @@ const clock = (seconds: number) => {
   return [Math.floor(n / 3600), Math.floor(n % 3600 / 60), n % 60].map(part => String(part).padStart(2, '0')).join(':');
 };
 
-/** Countdown to the next live cycle (and post), ticking every second, like the original Shotsnip dashboard. */
+const istHour = new Intl.DateTimeFormat('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' });
+const istDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' });
+const istDay = new Intl.DateTimeFormat('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' });
+const hm = (iso: string) => istHour.format(new Date(iso));
+function dayWord(iso: string, now: number) {
+  const day = istDate.format(new Date(iso));
+  if (day === istDate.format(new Date(now))) return 'Today';
+  if (day === istDate.format(new Date(now + 86400000))) return 'Tomorrow';
+  if (day === istDate.format(new Date(now - 86400000))) return 'Yesterday';
+  return istDay.format(new Date(iso));
+}
+/** Long waits read as "13 h 57 m"; the last hour ticks as mm:ss. */
+function wait(seconds: number) {
+  const n = Math.max(0, Math.ceil(seconds));
+  if (n >= 3600) return `${Math.floor(n / 3600)} h ${String(Math.floor(n % 3600 / 60)).padStart(2, '0')} m`;
+  return `${String(Math.floor(n / 60)).padStart(2, '0')}:${String(n % 60).padStart(2, '0')}`;
+}
+const hours = (minutes: number) => minutes % 60 ? `${minutes} min` : `${minutes / 60} h`;
+const REASON: Record<SlotReason, string> = { daily_limit: 'Daily limit', min_gap: 'Minimum gap', cadence: 'Cadence' };
+
+function why(plan: PostingPlan) {
+  if (plan.reason === 'daily_limit') return <>Daily limit reached: <b>{plan.uploads_24h.length} of {plan.max_per_day}</b> uploads in the last 24 h.
+    {plan.frees_after && <> The next slot opens 24 h after the {hm(plan.frees_after)} upload.</>}</>;
+  if (plan.reason === 'min_gap') return <>Minimum gap: uploads stay at least <b>{hours(plan.min_gap_minutes)}</b> apart.</>;
+  return <>On cadence: a cycle every <b>{hours(plan.cadence_minutes)}</b>, plus about {plan.processing_minutes} min to record and finish the clip.</>;
+}
+
+/** A 48-hour track: the last 24 h of uploads on the left, the planned slots on the right, now in the middle. */
+function Track({ plan, now }: { plan: PostingPlan; now: number }) {
+  const from = now - 86400000, span = 2 * 86400000;
+  const at = (iso: string) => Math.min(100, Math.max(0, (Date.parse(iso) - from) / span * 100));
+  const ticks = [-24, -12, 0, 12, 24];
+  return <div className="slot-track" role="img" aria-label={`Uploads in the last 24 hours: ${plan.uploads_24h.map(hm).join(', ') || 'none'}. `
+    + `Planned: ${plan.upcoming.map(slot => hm(slot.at)).join(', ')}.`}>
+    <div className="slot-rail">
+      <span className="slot-now" style={{ left: '50%' }}><b>Now</b></span>
+      {plan.uploads_24h.map(iso => <span key={iso} className="slot-dot past" style={{ left: at(iso) + '%' }} title={`Posted ${hm(iso)}`}>
+        <em>{hm(iso)}</em></span>)}
+      {plan.upcoming.filter(slot => Date.parse(slot.at) - from <= span).map((slot, index) =>
+        <span key={slot.at} className={'slot-dot next' + (index === 0 ? ' first' : '')} style={{ left: at(slot.at) + '%' }}
+          title={`${index ? 'About ' : ''}${hm(slot.at)} · ${REASON[slot.reason]}`}><em>{index ? '~' : ''}{hm(slot.at)}</em></span>)}
+    </div>
+    <div className="slot-ticks" aria-hidden="true">{ticks.map(tick => <span key={tick} style={{ left: (tick + 24) / 48 * 100 + '%' }}>
+      {tick === 0 ? 'now' : (tick > 0 ? '+' : '') + tick + ' h'}</span>)}</div>
+  </div>;
+}
+
+/** When the next clip posts, why it waits, and the next slots the owner's posting rules allow. */
 export function LiveTimers({ live, time }: { live: NonNullable<ShotsnipWorkspace['live']>; time: (value: string | null) => string }) {
   const [now, setNow] = useState(Date.now());
   useEffect(() => { const id = window.setInterval(() => setNow(Date.now()), 1000); return () => window.clearInterval(id); }, []);
   const timers = live.timers;
   if (!timers) return null;
   const busy = BUSY.includes(live.phase);
+  const paused = live.enabled !== true;
+  const plan = timers.plan ?? null;
   const left = (iso: string | null) => iso ? (Date.parse(iso) - now) / 1000 : null;
+  const postAt = timers.next_post ?? plan?.upcoming[0]?.at ?? null;
+  const post = left(postAt);
   const cycle = left(timers.next_cycle);
-  const post = left(timers.next_post);
-  const cycleText = live.enabled !== true ? 'Paused' : busy ? 'Running now' : cycle == null ? '—' : cycle <= 0 ? 'Due now' : clock(cycle);
-  const postText = live.enabled !== true ? 'Paused' : timers.combined && !timers.next_post ? 'After processing' : live.phase === 'uploading' ? 'Uploading'
-    : post == null ? '—' : post <= 0 ? 'Due now' : clock(post);
   const elapsed = busy && timers.stage_started ? Math.floor((now - Date.parse(timers.stage_started)) / 60000) : null;
+  const held = plan?.reason && plan.reason !== 'cadence';
+  const chip = paused ? ['Paused', 'neutral'] : busy ? ['Running now', 'good'] : held ? ['Waiting · ' + REASON[plan!.reason!], 'warn'] : ['On cadence', 'good'];
   return <section className="panel live-timers-card" aria-labelledby="live-timers-heading">
-    <div className="panel-head"><div><h2 id="live-timers-heading">Next live cycle</h2>
-      <p>{timers.combined ? `Each cycle scans, captures and posts, every ${Math.round(timers.scan_minutes / 60 * 10) / 10} h after the last cycle or upload.`
-        : `Scans every ${timers.scan_minutes} min; posts every ${timers.post_minutes} min.`}</p></div></div>
-    <div className="live-timer-grid">
-      <div><small>{timers.combined ? 'Next cycle in' : 'Next scan in'}</small><strong className="live-timer" aria-live="off">{cycleText}</strong>
-        {timers.next_cycle && live.enabled === true && !busy && <small>at {time(timers.next_cycle)} IST</small>}</div>
-      <div><small>Next post</small><strong className="live-timer">{postText}</strong>
-        {timers.next_post && live.enabled === true && <small>at {time(timers.next_post)} IST</small>}
-        {timers.last_upload && <small>Last upload {time(timers.last_upload)} IST</small>}</div>
+    <div className="panel-head"><div><h2 id="live-timers-heading">Posting schedule</h2>
+      <p>When the next clip goes out, and why. Times are IST.</p></div>
+      <span className={'status ' + chip[1]}>{chip[0]}</span></div>
+    <div className="schedule-hero">
+      <div className="schedule-next">
+        <small>Next post</small>
+        {paused ? <strong className="schedule-time">Paused</strong>
+          : busy ? <><strong className="schedule-time">Working</strong>
+              <span className="schedule-wait">{live.label}{elapsed != null ? ` · ${elapsed} min in` : ''}</span></>
+          : postAt ? <><strong className="schedule-time">{hm(postAt)}<span>{dayWord(postAt, now)}</span></strong>
+              <span className="schedule-wait" aria-live="off">{post != null && post > 0 ? 'in ' + wait(post) : 'due now'}</span></>
+          : <strong className="schedule-time">After processing</strong>}
+      </div>
+      <dl className="schedule-facts">
+        <div><dt><Record size={15}/> Recording starts</dt>
+          <dd>{paused ? '—' : busy ? 'Now' : timers.next_cycle ? <>{hm(timers.next_cycle)} <small>{dayWord(timers.next_cycle, now)}{cycle != null && cycle > 0 ? ' · in ' + wait(cycle) : ''}</small></> : '—'}</dd></div>
+        <div><dt><Clock size={15}/> Last upload</dt>
+          <dd>{timers.last_upload ? <>{hm(timers.last_upload)} <small>{dayWord(timers.last_upload, now)}</small></> : '—'}</dd></div>
+        {plan && <div><dt><Hourglass size={15}/> Rules</dt>
+          <dd>{plan.max_per_day} a day <small>· {hours(plan.min_gap_minutes)} gap · every {hours(plan.cadence_minutes)}</small></dd></div>}
+      </dl>
     </div>
-    {timers.held_by === 'youtube_rules' && live.enabled === true && <p className="control-note">
-      Held by your posting rules (uploads a day / minimum gap). Recording starts shortly before the slot.</p>}
-    {elapsed != null && <p className="control-note">Current stage running for {elapsed} min.</p>}
+    {plan && !paused && <>
+      <p className={'schedule-why' + (held ? ' held' : '')}>{why(plan)}</p>
+      <Track plan={plan} now={now} />
+      <ol className="slot-list" aria-label="Upcoming posts">
+        {plan.upcoming.map((slot, index) => <li key={slot.at}>
+          <strong>{index ? '~' : ''}{hm(slot.at)}</strong><span>{dayWord(slot.at, now)}</span>
+          <em className={'reason ' + slot.reason}>{REASON[slot.reason]}</em></li>)}
+      </ol>
+      <p className="control-note">Later slots are estimates from your <a href="#posting-rules-heading" onClick={event => {
+        event.preventDefault(); document.getElementById('posting-rules-heading')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>posting rules</a>
+        {' '}and the last upload {timers.last_upload ? time(timers.last_upload) : ''}; change those rules to change the slots.</p>
+    </>}
   </section>;
 }
 

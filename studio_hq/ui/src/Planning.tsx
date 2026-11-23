@@ -263,14 +263,18 @@ export function PostingRules({ data, send, busy, recent, time }: { data: Plannin
   return <section className="panel posting-rules" aria-labelledby="posting-rules-heading">
     <div className="panel-head"><div><h2 id="posting-rules-heading">Posting rules</h2>
       <p>Every Shotsnip setting. The scheduler uses exactly these; nothing is decided in the background.</p></div></div>
-    {groups.map(group => <fieldset key={group} className="rules-group" disabled={busy || confirm || !send}>
-      <legend>{group}</legend>
+    {groups.map((group, index) => { const rows = settings.filter(row => row.group === group);
+      const edited = rows.filter(row => row.key in changes).length;
+      return <details key={group} className="rules-group" open={index === 0 || edited > 0 || undefined}>
+      <summary><span>{group}</span><small>{edited ? `${edited} unsaved` : rows.slice(0, 3).map(row => `${row.label.replace(/ \(.*\)$/, '')} ${show(row, row.value)}`).join(' · ')}</small></summary>
+      <fieldset disabled={busy || confirm || !send}>
       {settings.filter(row => row.group === group).map(row => {
         const current = draft[row.key] ?? row.value;
         const set = (next: SettingValue) => setDraft(old => ({ ...old, [row.key]: next }));
         const id = 'rule-' + row.key.replace(/\W/g, '-');
         return <div className={'rule-row' + (row.key in changes ? ' changed' : '')} key={row.key}>
           <label htmlFor={id}>{row.label}<small>{row.help}</small></label>
+          {row.key in changes && <span className="rule-was">was {show(row, row.value)}</span>}
           {row.kind === 'bool' ? <input id={id} type="checkbox" checked={current === true} onChange={event => set(event.target.checked)} />
             : row.kind === 'choice' ? <select id={id} value={String(current)} onChange={event => {
                 const pick = row.choices!.find(choice => String(choice) === event.target.value)!; set(pick); }}>
@@ -279,11 +283,11 @@ export function PostingRules({ data, send, busy, recent, time }: { data: Plannin
                 value={String(current)} onChange={event => set(event.target.value === '' ? NaN : Number(event.target.value))} />}
         </div>;
       })}
-    </fieldset>)}
-    <div className="cadence-edit">
+    </fieldset></details>; })}
+    <div className={'cadence-edit rules-bar' + (count || confirm ? ' active' : '')}>
       {!confirm && <div className="cadence-form">
         <button className="action" disabled={busy || !count || invalid || !send} onClick={() => setConfirm(true)}>
-          Review {count || ''} change{count === 1 ? '' : 's'}</button>
+          {count ? `Review ${count} change${count === 1 ? '' : 's'}` : 'No changes yet'}</button>
         {count > 0 && <button className="action" onClick={() => setDraft({})}>Discard</button>}
         {invalid && <span className="analytics-info">A value is outside its allowed range.</span>}
       </div>}

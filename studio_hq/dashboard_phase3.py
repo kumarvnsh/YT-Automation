@@ -801,6 +801,53 @@ def upload_window(root, state, schedule):
         return None
 
 
+PROCESSING_MINUTES = 15  # a cycle records, cuts and finishes a clip in about 10-17 minutes (23 Nov runs)
+
+
+def posting_plan(root, live, schedule, now=None, count=3):
+    """Why the next post waits, and the next few post times the owner's rules allow (an estimate).
+
+    Each slot is the latest of: the cadence after the previous post (plus processing), the minimum gap,
+    and the daily limit (a slot opens 24 h after the oldest of the last `max_per_day` uploads).
+    """
+    try:
+        if str(root) not in sys.path:
+            sys.path.insert(0, str(root))
+        import youtube_rules
+        rules = youtube_rules.settings(schedule)
+        times = [t for t, _ in youtube_rules.youtube_uploads(live)]
+    except Exception:  # noqa: BLE001 - no plan, the card shows the timers alone
+        return None
+    now = now or datetime.now(timezone.utc).timestamp()
+    stamp = lambda value: datetime.fromtimestamp(value, timezone.utc).isoformat()
+    scan = number(schedule.get('scan_minutes')) or 30
+    cap, gap = rules['max_per_day'], rules['min_gap_minutes'] * 60
+    cycle_base = max(live.get('last_cycle_at') or 0, live.get('last_upload_at') or 0)
+    last = max(times + [live.get('last_upload_at') or 0])
+    upcoming, simulated = [], list(times)
+    for index in range(count):
+        cadence_at = (cycle_base if index == 0 else last) + scan * 60 + PROCESSING_MINUTES * 60
+        options = {'cadence': max(cadence_at, now + (PROCESSING_MINUTES * 60 if index == 0 else 0))}
+        if last:
+            options['min_gap'] = last + gap
+        recent = sorted(t for t in simulated if max(options.values()) - t < 86400)
+        if len(recent) >= cap:
+            options['daily_limit'] = recent[len(recent) - cap] + 86400
+        reason = max(options, key=options.get)
+        at = options[reason]
+        upcoming.append({'at': stamp(at), 'reason': reason})
+        simulated.append(at)
+        last = at
+    day = sorted(t for t in times if now - t < 86400)
+    first = upcoming[0]['reason'] if upcoming else None
+    frees = None
+    if first == 'daily_limit' and len(day) >= cap:
+        frees = stamp(day[len(day) - cap])
+    return {'uploads_24h': [stamp(t) for t in day], 'max_per_day': cap, 'min_gap_minutes': rules['min_gap_minutes'],
+            'cadence_minutes': scan, 'reason': first, 'frees_after': frees, 'upcoming': upcoming,
+            'processing_minutes': PROCESSING_MINUTES}
+
+
 def live_timers(live, schedule, root=None):
     """Next cycle, next post and stage start, computed like the original Shotsnip dashboard's timers."""
     stamp = lambda value: datetime.fromtimestamp(value, timezone.utc).isoformat() if isinstance(value, (int, float)) and value > 0 else None
@@ -825,7 +872,7 @@ def live_timers(live, schedule, root=None):
     return {'combined': combined, 'scan_minutes': scan, 'post_minutes': post,
             'next_cycle': stamp(next_cycle), 'next_post': stamp(next_post) if next_post else None,
             'stage_started': stamp(live.get('phase_started_at')), 'last_upload': stamp(live.get('last_upload_at')),
-            'held_by': limit}
+            'held_by': limit, 'plan': posting_plan(root, live, schedule) if root and combined else None}
 
 
 def batch_hold(root, schedule):
