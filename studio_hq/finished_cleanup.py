@@ -47,7 +47,7 @@ def shotsnip_snapshot(root):
             yield ledger, jobs
 
 
-def eligible_video(manifest, root, ledger, jobs, now):
+def eligible_video(manifest, root, ledger, jobs, now, wait_hours=48):
     if manifest['channel'] != 'shotsnip' or manifest['status'] != 'verified_local_retained':
         return None
     row = manifest['files'][0]
@@ -71,7 +71,7 @@ def eligible_video(manifest, root, ledger, jobs, now):
     if manual:
         evidence = manual_publication_age(video, row['sha256'], ledger,
                                           ledger.get('studio_hq_published_manual_jobs', []))
-        if not evidence or evidence[0] != parts[0] or now-evidence[1] < 48*3600:
+        if not evidence or evidence[0] != parts[0] or now-evidence[1] < wait_hours*3600:
             return None
         return video if package_matches(manifest, video, root) else None
     uploads = [item for item in ledger['uploads'] if references_run(item, root, run)]
@@ -80,7 +80,7 @@ def eligible_video(manifest, root, ledger, jobs, now):
         return None
     matches = [item for item in uploads if Path(item.get('file', '')) == video
                and item.get('sha256') == row['sha256'] and item.get('finished_at')]
-    if len(matches) != 1 or now-timestamp(matches[0]['finished_at']) < 48*3600:
+    if len(matches) != 1 or now-timestamp(matches[0]['finished_at']) < wait_hours*3600:
         return None
     return video if package_matches(manifest, video, root) else None
 
@@ -99,7 +99,8 @@ def cleanup_candidate(manifest, config):
     root = Path(config['roots'][channel]).absolute()
     if channel == 'shotsnip':
         with shotsnip_snapshot(root) as (ledger, jobs):
-            yield eligible_video(manifest, root, ledger, jobs, time.time())
+            yield eligible_video(manifest, root, ledger, jobs, time.time(),
+                                 float(config.get('shotsnip_cleanup_after_hours', 6)))
         return
     if config.get('story_finished_cleanup_enabled') is not True:
         yield None
@@ -142,10 +143,14 @@ def cleanup_candidate(manifest, config):
 
 
 def cleanup_tick(config):
-    """Restore into a temporary directory before deleting at most one local MP4."""
+    """Restore each clip from Drive into a temporary directory and check it before deleting it locally.
+
+    Up to finished_cleanup_per_tick (10) per run. A Shotsnip clip's whole run folder goes with it.
+    """
     from filelock import Timeout
 
     state = Path(config['state_dir']).absolute()
+    per_tick = max(1, int(config.get('finished_cleanup_per_tick', 10)))
     report = dict(observed_at=stamp(), status='no_eligible_clip', removed=0, bytes_removed=0)
     try:
         with worker_lock(state):
@@ -161,8 +166,8 @@ def cleanup_tick(config):
                 with cleanup_candidate(manifest, config) as video:
                     if video is not None:
                         candidates.append((timestamp(manifest['completed_at']), manifest['archive_id'], manifest, destination, video))
-            if candidates:
-                _, identity, manifest, destination, video = min(candidates, key=lambda item: item[:2])
+            done = []
+            for _, identity, manifest, destination, video in sorted(candidates, key=lambda item: item[:2])[:per_tick]:
                 with TemporaryDirectory(prefix='finished-cleanup-', dir=within(state, state)) as scratch:
                     recovered = Path(scratch)
                     Rclone(config).restore_files(destination, recovered, [entry['name'] for entry in manifest['files']])
@@ -185,15 +190,34 @@ def cleanup_tick(config):
                             removal_record = state/'finished-cleanup-receipts'/f'{identity}.json'
                             atomic_json(removal_record, report)
                             video.unlink()
-                            report.update(status='removed', removed=1, bytes_removed=manifest['files'][0]['size'],
-                                          observed_at=stamp())
+                            freed = manifest['files'][0]['size']
+                            if manifest['channel'] == 'shotsnip':
+                                # The published clip is on Drive (just restored and checked): the rest of its run
+                                # folder (raw recording, highlight cut, other cut, previews) goes with it.
+                                freed += remove_run_folder(video, Path(config['roots']['shotsnip']).absolute())
+                            report.update(status='removed', removed=1, bytes_removed=freed, observed_at=stamp())
                             atomic_json(removal_record, report)
+                            done.append({'archive_id': identity, 'channel': manifest['channel'], 'bytes_removed': freed})
+            if done:
+                report.update(status='removed', removed=len(done), bytes_removed=sum(d['bytes_removed'] for d in done),
+                              cleaned=done)
             report['spent_bundles'] = drop_spent_bundles(state)
     except (Timeout, OSError, ValueError, KeyError, RuntimeError, sqlite3.Error, subprocess.TimeoutExpired) as exc:
         report['status'] = 'deferred' if isinstance(exc, (Timeout, sqlite3.OperationalError)) else 'failed'
         report['error_type'] = type(exc).__name__
     atomic_json(state/'last-finished-cleanup-tick.json', report)
     return report
+
+
+def remove_run_folder(video: Path, root: Path) -> int:
+    """Delete a Shotsnip run folder (work/scheduler/<run> or work/manual/<run>) whose clip is on Drive."""
+    import shutil
+    run = video.parent.parent.resolve()
+    if run.parent not in ((root/'work/scheduler').resolve(), (root/'work/manual').resolve()) or not run.is_dir():
+        return 0
+    size = sum(p.stat().st_size for p in run.rglob('*') if p.is_file())
+    shutil.rmtree(run, ignore_errors=True)
+    return size
 
 
 def drop_spent_bundles(state: Path) -> dict:

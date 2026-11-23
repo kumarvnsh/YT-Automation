@@ -270,7 +270,9 @@ class ArchiveTests(unittest.TestCase):
             transfer.return_value.restore_files.side_effect = restore_files
             self.assertEqual(cleanup_tick(self.config)['status'], 'removed')
         self.assertFalse(self.video.exists())
-        self.assertTrue((self.video.parent/'metadata.json').exists())
+        # Verified on Drive: the whole Shotsnip run folder goes (raw recording, cuts, previews, metadata).
+        self.assertFalse(self.video.parent.parent.exists())
+        self.assertTrue((self.clip/'work/scheduler').is_dir())
 
     def test_rate_limit_defers_followup_without_another_provider_request(self):
         self.config.update(rclone='fake-rclone',rclone_config=str(self.root/'private/rclone.conf'))
