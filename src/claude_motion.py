@@ -792,6 +792,11 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         if st.get('growth_trial') and selection.get('candidates'):
             cfg.raw['production']['editorial_opening_visual']=selection['candidates'][selection['selected_index']]['opening_visual']
 
+    from . import painted_scenes
+    painter = paints = None
+    if cinematic and painted_scenes.enabled():
+        painter = painted_scenes.Painter(cfg, st['script']['title'], [seg.narration for seg in segs][:len(windows)],
+                                         stage / 'paintings', w, h)
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
@@ -800,14 +805,22 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         recovery = 'local house templates' if production else 'stock'
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
+    if painter:
+        paints = painter.collect()
+        st['painted_scenes'] = sorted(paints)
     def prepare(html, index):
         from .icon_assets import bind_icons
         from .portrait_assets import bind_photos
         bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
         if cinematic:
             from .cinematic_motion import prepare_html
-            return prepare_html(bound, index, landscape=cw > ch,
-                                theme_offset=(st.get('design') or {}).get('palette'))
+            painting = (paints or {}).get(index)
+            ready = prepare_html(bound, index, landscape=cw > ch,
+                                 theme_offset=(st.get('design') or {}).get('palette'), painted=bool(painting))
+            if painting:
+                s_, e_ = windows[index]
+                ready = painted_scenes.apply(ready, painting, e_ - s_, index)
+            return ready
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
         return apply_palette(bound, palette)
 

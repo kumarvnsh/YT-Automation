@@ -67,12 +67,26 @@ def _codex_app_cli() -> str | None:
     return _APP_CLI[0]
 
 
+_DATED_RE = re.compile(r'(?:try again at|resets?(?: at| on)?)\s+([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4}),?\s+'
+                       r'(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*([ap]\.?m\.?)', re.I)
+
+
 def reset_time(text: str, now: datetime | None = None) -> float | None:
     """'try again at 3:35 AM' / 'resets 3am' -> epoch seconds of the next such local time."""
+    now = now or datetime.now()
+    dated = _DATED_RE.search(text or '')  # Codex: 'try again at Nov 25th, 2026 10:47 PM'
+    if dated:
+        try:
+            day = datetime.strptime(f'{dated[1][:3]} {dated[2]} {dated[3]}', '%b %d %Y')
+        except ValueError:
+            day = None
+        hour, minute, ampm = int(dated[4]), int(dated[5] or 0), dated[6].lower().replace('.', '')
+        if day and hour <= 12 and minute <= 59:
+            hour = hour % 12 + (12 if ampm == 'pm' else 0)
+            return day.replace(hour=hour, minute=minute).timestamp()
     m = RESET_RE.search(text or '')
     if not m:
         return None
-    now = now or datetime.now()
     hour, minute, ampm = int(m[1]), int(m[2] or 0), (m[3] or '').lower().replace('.', '')
     if ampm == 'pm' and hour < 12:
         hour += 12

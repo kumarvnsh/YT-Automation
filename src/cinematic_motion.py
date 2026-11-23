@@ -31,10 +31,18 @@ def system_prompt(w: int, h: int, design: dict | None = None) -> str:
                    'Size art to fit the available height and keep the main illustration visible at frame zero.')
         prompt = prompt.replace('bottom 180 CSS pixels', 'bottom 88 CSS pixels').replace('Start content below 124px.', 'Start content below 76px.')
         prompt = prompt.replace('about 420px wide and 350–440px tall', 'about 500–650px wide and 230–330px tall')
+    from .painted_scenes import PROMPT_NOTE, enabled
+    if enabled():
+        prompt += PROMPT_NOTE
     return prompt
 
 
 @lru_cache(maxsize=1)
+def _light(colour: str) -> bool:
+    r, g, b = (int(colour.lstrip('#')[i:i + 2], 16) for i in (0, 2, 4))
+    return .299 * r + .587 * g + .114 * b > 140
+
+
 def _base_css() -> str:
     faces = []
     for family, filename, style in (
@@ -48,7 +56,7 @@ def _base_css() -> str:
     return ''.join(faces) + _HERE.joinpath('cinematic_2d.css').read_text()
 
 
-def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None) -> str:
+def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None, painted=False) -> str:
     """Prefix helpers so authored layouts and keyframes retain precedence."""
     html = re.sub(r'<style id="cinematic-2d">.*?</style>', '', html, flags=re.S)
     # Asset binding replaces custom tags with SVG/figure elements. Preserve
@@ -70,6 +78,9 @@ def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None) -
     )
     palette = _THEMES[index % len(_THEMES)] if theme_offset is None else palettes[theme_offset % len(palettes)]
     paper, ink, bone, accent, dim = palette
+    if painted and _light(paper):
+        # Over a painting the text needs light ink on dark panels; same colours, swapped roles.
+        paper, ink, bone, dim = ink, paper, dim, bone
     theme = (f':root{{--parch:{paper};--ink:{ink};--bone:{bone};'
              f'--accent:{accent};--dim:{dim}}}')
     geometry = '''

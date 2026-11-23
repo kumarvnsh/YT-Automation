@@ -95,6 +95,9 @@ def tool_env(cfg) -> tuple[dict, list[str]]:
     for var, key in (('FFMPEG_PRESET', 'preset'), ('FFMPEG_CRF', 'crf'), ('FRAME_JPEG_QUALITY', 'frame_quality')):
         if encode.get(key) not in (None, '') and not os.environ.get(var):
             env[var] = str(encode[key])
+    painted = local.get('painted_scenes', {}) or {}
+    if painted.get('enabled') and not os.environ.get('HISTOLD_PAINTED'):
+        env['HISTOLD_PAINTED'] = '1'  # Codex paints scene backdrops on the plan (src/painted_scenes.py)
     (ENV_ROOT / 'tmp').mkdir(parents=True, exist_ok=True)
     kokoro = ENV_ROOT / 'histold-kokoro' / 'Scripts' / 'python.exe'
     if kokoro.is_file():

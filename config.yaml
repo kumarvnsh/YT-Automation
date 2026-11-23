@@ -392,6 +392,11 @@ local_production:
     preset: "slow"             # better detail per bit; costs a few extra minutes per Short
     crf: 17                    # near visually lossless, so YouTube's re-encode starts from a clean master
     frame_quality: 97          # JPEG quality of each captured scene frame (cloud: 90)
+  painted_scenes:              # laptop only: Codex paints a backdrop per scene (src/painted_scenes.py)
+    enabled: true
+    max_images: 10             # per video; long videos share paintings between neighbouring scenes
+    parallel: 3                # paintings drawn at once while Claude writes the scenes
+    timeout_seconds: 360       # per painting; a slow or failed one leaves that scene in the plain style
 
 # Histold fact image posts on Facebook + Instagram (src/fact_posts.py, scripts/run_fact_post.py).
 # Made on this laptop: Claude researches and verifies, Codex draws from an archival reference,
