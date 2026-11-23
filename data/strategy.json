@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T19:00:31.712575+00:00",
+  "updated": "2026-11-23T23:00:35.096335+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
         "Coal Miners Sent a Caged Canary Underground Before Going Back In"
       ],
-      "measured_videos": 115
+      "measured_videos": 114
     },
     "facebook": {
       "winners": [
@@ -79,10 +79,6 @@
         }
       },
       "Archive dossier": {
-        "yt": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.0
-        },
         "fb": {
           "measured_videos": 1,
           "mean_like_rate": 0.0
@@ -95,7 +91,7 @@
       "Paper theater": {
         "yt": {
           "measured_videos": 1,
-          "mean_like_rate": 0.1
+          "mean_like_rate": 0.083333
         },
         "fb": {
           "measured_videos": 1,
@@ -144,23 +140,23 @@
       }
     }
   },
-  "videos_scored": 115,
+  "videos_scored": 114,
   "weights": {
     "series": {
       "school_myths": 0.0671,
-      "mistakes": 0.0682,
-      "almost": 0.0682,
+      "mistakes": 0.0681,
+      "almost": 0.0681,
       "erased": 0.072,
-      "unsolved": 0.0697,
+      "unsolved": 0.0696,
       "weird_dark": 0.072,
       "photo_story": 0.072,
-      "spy_gadgets": 0.0759,
-      "animals": 0.0759,
+      "spy_gadgets": 0.076,
+      "animals": 0.076,
       "secretly_deadly": 0.072,
-      "worst_jobs": 0.0759,
+      "worst_jobs": 0.076,
       "forgotten_rules": 0.072,
-      "behind_legend": 0.0697,
-      "found_by_accident": 0.0697
+      "behind_legend": 0.0696,
+      "found_by_accident": 0.0696
     },
     "region": {
       "india": 0.1141,
@@ -174,39 +170,39 @@
       "asia_pacific": 0.1181
     },
     "duration_variant": {
-      "concise": 0.5063,
-      "story": 0.4937
+      "concise": 0.5071,
+      "story": 0.4929
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "spy_gadgets": {
         "n": 0,
@@ -218,7 +214,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "worst_jobs": {
         "n": 0,
@@ -226,25 +222,25 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.426
+        "mean_score": 0.425
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.502
+        "mean_score": 0.501
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.493
+        "mean_score": 0.492
       },
       "japan": {
         "n": 12,
@@ -252,7 +248,7 @@
       },
       "china": {
         "n": 12,
-        "mean_score": 0.508
+        "mean_score": 0.507
       },
       "russia": {
         "n": 12,
@@ -260,7 +256,7 @@
       },
       "middle_east": {
         "n": 11,
-        "mean_score": 0.474
+        "mean_score": 0.473
       },
       "europe": {
         "n": 11,
@@ -268,21 +264,21 @@
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.426
+        "mean_score": 0.425
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.518
+        "mean_score": 0.517
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 64,
-        "mean_score": 0.504
+        "n": 63,
+        "mean_score": 0.505
       },
       "story": {
         "n": 51,
-        "mean_score": 0.495
+        "mean_score": 0.494
       }
     }
   },
@@ -294,10 +290,10 @@
     "Coal Miners Sent a Caged Canary Underground Before Going Back In"
   ],
   "losers": [
+    "Were the Pyramids of Giza Really Built by Enslaved People?",
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
     "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
     "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
-    "Apollo 13's Square Air Canisters Did Not Fit the Round Openings",
     "Yellowstone Chose to Fight Every Fire in 1988"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
@@ -306,31 +302,37 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 plays while status is available (historical, Nov 16)"
+      "reason": "FB 0 plays vs IG 212 during Nov 13-16 low-FB window"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "32.3s average watch on 2 plays"
+      "reason": "FB 2 plays vs IG 137 during Nov 13-16 low-FB window"
     },
     {
       "video_id": "-cPiNs-0pLA",
       "platform": "fb",
       "views": 3,
-      "reason": "23.2s average watch on 3 plays"
+      "reason": "FB 3 plays vs IG 129 during Nov 13-16 low-FB window"
     },
     {
       "video_id": "yUDJaAj3Zvg",
       "platform": "fb",
       "views": 3,
-      "reason": "24.5s average watch on 3 plays"
+      "reason": "FB 3 plays vs IG 107 and YT 40 during Nov 13-16 low-FB window"
     },
     {
       "video_id": "SfvGGm6eaok",
       "platform": "fb",
       "views": 2,
-      "reason": "2 FB plays vs ~200 typical for the period"
+      "reason": "FB 2 plays vs IG 139 during Nov 13-16 low-FB window"
+    },
+    {
+      "video_id": "UEqFpOBSXdU",
+      "platform": "yt",
+      "views": 1,
+      "reason": "Trial lane median implies 72h YouTube checkpoint recorded 0, but export showed 1 view at ~71h; confirm checkpoint snapshot timing"
     },
     {
       "video_id": "lCQJdMRx814",
