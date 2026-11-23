@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T23:00:32.165329+00:00",
+  "updated": "2026-11-23T03:00:26.629460+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
         "Why Did One Emperor Dig a Canal Across Half of China?"
       ],
-      "measured_videos": 114
+      "measured_videos": 115
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 114
+      "measured_videos": 115
     }
   },
   "evaluation_metric": "likes / views",
@@ -91,6 +91,20 @@
           "measured_videos": 1,
           "mean_like_rate": 0.00885
         }
+      },
+      "Paper theater": {
+        "yt": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "fb": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.002994
+        },
+        "ig": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.166667
+        }
       }
     },
     "long": {
@@ -102,12 +116,12 @@
       }
     }
   },
-  "videos_scored": 114,
+  "videos_scored": 115,
   "weights": {
     "series": {
       "school_myths": 0.0676,
-      "mistakes": 0.0685,
-      "almost": 0.0685,
+      "mistakes": 0.0686,
+      "almost": 0.0686,
       "erased": 0.0719,
       "unsolved": 0.0699,
       "weird_dark": 0.0719,
@@ -125,46 +139,46 @@
       "africa": 0.1109,
       "japan": 0.1162,
       "china": 0.116,
-      "russia": 0.1047,
+      "russia": 0.1048,
       "middle_east": 0.1074,
       "europe": 0.1175,
-      "americas": 0.0959,
+      "americas": 0.096,
       "asia_pacific": 0.1182
     },
     "duration_variant": {
-      "concise": 0.4969,
-      "story": 0.5031
+      "concise": 0.4962,
+      "story": 0.5038
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "spy_gadgets": {
         "n": 0,
@@ -176,7 +190,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "worst_jobs": {
         "n": 0,
@@ -184,29 +198,29 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.434
+        "mean_score": 0.435
       }
     },
     "region": {
       "india": {
         "n": 14,
-        "mean_score": 0.506
+        "mean_score": 0.507
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.497
+        "mean_score": 0.498
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.518
+        "mean_score": 0.519
       },
       "china": {
         "n": 12,
@@ -214,7 +228,7 @@
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.472
+        "mean_score": 0.473
       },
       "middle_east": {
         "n": 11,
@@ -222,11 +236,11 @@
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.524
+        "mean_score": 0.525
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.434
+        "mean_score": 0.435
       },
       "asia_pacific": {
         "n": 11,
@@ -235,8 +249,8 @@
     },
     "duration_variant": {
       "concise": {
-        "n": 62,
-        "mean_score": 0.498
+        "n": 63,
+        "mean_score": 0.497
       },
       "story": {
         "n": 52,
@@ -252,11 +266,11 @@
     "Why Did One Emperor Dig a Canal Across Half of China?"
   ],
   "losers": [
-    "Were the Pyramids of Giza Really Built by Enslaved People?",
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
     "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
     "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
-    "Apollo 13's Square Air Canisters Did Not Fit the Round Openings"
+    "Apollo 13's Square Air Canisters Did Not Fit the Round Openings",
+    "The Automobile Has No Single, Simple Inventor Story"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -264,7 +278,25 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 Facebook plays and 0 watch seconds despite 212 Instagram views; possible posting or linking fault"
+      "reason": "Exactly 0 plays while marked available; 212 Instagram plays same period"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 3,
+      "reason": "3 plays with implausible 23.2s average watch time"
+    },
+    {
+      "video_id": "yUDJaAj3Zvg",
+      "platform": "fb",
+      "views": 3,
+      "reason": "3 plays with implausible 24.5s average watch time"
+    },
+    {
+      "video_id": "g4aOe5vcitA",
+      "platform": "fb",
+      "views": 2,
+      "reason": "2 plays with implausible 32.3s average watch time"
     },
     {
       "video_id": "lCQJdMRx814",
@@ -293,7 +325,7 @@
     {
       "video_id": "2aRdkpMSsVY",
       "platform": "yt",
-      "views": 3,
+      "views": 4,
       "reason": "Viewing percentage is 0.0% with 3 recorded views."
     },
     {
@@ -325,24 +357,6 @@
       "platform": "yt",
       "views": 9,
       "reason": "Viewing percentage missing in the recent export gap."
-    },
-    {
-      "video_id": "-cPiNs-0pLA",
-      "platform": "fb",
-      "views": 3,
-      "reason": "Three exported plays in a near-simultaneous cluster of two-to-three-play counts, with 129 Instagram views."
-    },
-    {
-      "video_id": "yUDJaAj3Zvg",
-      "platform": "fb",
-      "views": 3,
-      "reason": "Three exported plays in the same near-simultaneous cluster, with 107 Instagram views."
-    },
-    {
-      "video_id": "g4aOe5vcitA",
-      "platform": "fb",
-      "views": 2,
-      "reason": "Two Facebook plays alongside 137 Instagram views fits the older near-zero cluster."
     },
     {
       "video_id": "SfvGGm6eaok",
