@@ -142,6 +142,23 @@ def test_clip_library_merges_sources_newest_first_with_publish_state(tmp_path):
     assert rows[1]['origin']=='Automatic cycle' and rows[1]['published']['video_id']=='yt9'
 
 
+def test_animal_shorts_appear_in_runs_library_and_latest(tmp_path):
+    import json
+    folder=tmp_path/'work/animals/20261124-001500-abc';folder.mkdir(parents=True)
+    (folder/'short.mp4').write_bytes(b'0')
+    (folder/'metadata.json').write_text(json.dumps({'title':'Pig vs Penguin','source':{'channel':'Weird Anoma','url':'u'}}))
+    (tmp_path/'work/animals/dryrun-nometa').mkdir()
+    (tmp_path/'work/animals/dryrun-nometa/short.mp4').write_bytes(b'0')
+    state={'uploads':[{'status':'uploaded','video_id':'yt7','file':str(folder/'short.mp4')}]}
+    with patch.object(clipping,'CLIP_ROOT',tmp_path):
+        runs=clipping.clip_runs()
+        rows=clipping.clip_library(runs,state,[])
+        newest=clipping.latest_clip(state,[])
+    assert [r['run'] for r in runs]==['20261124-001500-abc'] and runs[0]['creator']=='Weird Anoma'
+    assert rows[0]['origin']=='Animal & brainrot cycle' and rows[0]['published']['video_id']=='yt7'
+    assert newest['title']=='Pig vs Penguin' and newest['origin']=='Animal & brainrot cycle'
+
+
 
 def test_manual_module_resolves_siblings_and_retries_failed_loads(tmp_path, monkeypatch):
     import sys

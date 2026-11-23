@@ -110,6 +110,18 @@ def clip_runs():
             'source_url':source.get('url'),'channel_id':None,'clips':clips,
             'chat_messages':read(path.parent/'chat-signals.json',{}).get('messages'),
             'errors':[],'elapsed_seconds':None,'worker':'automatic'})
+    # Animal & brainrot mode (animal_shorts.py): one finished short.mp4 + metadata.json per run folder.
+    for path in sorted((CLIP_ROOT/'work/animals').glob('*/metadata.json'),reverse=True)[:50]:
+        clip=path.parent/'short.mp4'
+        if not clip.is_file():
+            continue
+        metadata=read(path,{})
+        source=metadata.get('source') or {}
+        runs.append({'run':path.parent.name,'creator':source.get('channel'),'source_url':source.get('url'),
+            'channel_id':source.get('channel_id'),
+            'clips':[{'title':metadata.get('title') or 'Animal Short','trigger':'animal-short',
+                      'file':clip.relative_to(CLIP_ROOT/'work').as_posix(),'finished':True,'finishing_error':None}],
+            'chat_messages':None,'errors':[],'elapsed_seconds':None,'worker':'animals'})
     for path in sorted((CLIP_ROOT / 'work/live').glob('*/summary.json'), reverse=True)[:100]:
         summary = read(path, {})
         clips = []
@@ -179,7 +191,8 @@ def clip_library(runs, state, manual_jobs, limit=80):
                      'intro': (metadata.get('commentary') or {}).get('script', {}).get('hook'),
                      'published': publication, 'error': error})
     for run in runs:
-        origin = 'Automatic cycle' if run.get('worker') == 'automatic' else 'Live chat-spike monitor'
+        origin = {'automatic': 'Automatic cycle', 'animals': 'Animal & brainrot cycle'}.get(
+            run.get('worker'), 'Live chat-spike monitor')
         for clip in run.get('clips', []):
             if clip.get('finished'):
                 add(clip['file'], clip.get('title'), run.get('creator'), origin, run['run'], run.get('source_url'),
@@ -209,6 +222,9 @@ def latest_clip(state, manual_jobs):
             found.append((clip, 'Automatic cycle'))
     for clip in (work/'live').glob('*/*-finished/finished-short.mp4'):
         found.append((clip, 'Live chat-spike monitor'))
+    for clip in (work/'animals').glob('*/short.mp4'):
+        if (clip.parent/'metadata.json').is_file():
+            found.append((clip, 'Animal & brainrot cycle'))
     for job in manual_jobs:
         relative = (job.get('result') or {}).get('file')
         if relative and (work/relative).is_file():
