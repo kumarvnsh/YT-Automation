@@ -16,7 +16,7 @@ import subprocess
 from src.facebook_monetization import summarize_api
 from src.growth import IST, scheduled_format
 from .dashboard_analytics import day, load, number, public_url, rows
-from .dashboard_controls import CADENCE_MINUTES, cadence_settings
+from .dashboard_controls import CADENCE_MINUTES, cadence_settings, owner_settings
 
 
 PHASE_LABELS = {
@@ -105,7 +105,15 @@ def calendar(config, source, shotsnip, activity, now):
         mode = 'On hold'
     earliest = None
     if mode == 'Active' and cadence and last_upload:
-        earliest = (last_upload + timedelta(minutes=max(0, cadence-early))).isoformat()
+        earliest = last_upload + timedelta(minutes=max(0, cadence-early))
+        window = upload_window(shotsnip, state, schedule)
+        if window and window > earliest.timestamp():
+            earliest = datetime.fromtimestamp(window, timezone.utc)
+        earliest = earliest.isoformat()
+    try:
+        settings = owner_settings(shotsnip).describe(schedule) if revision else []
+    except (OSError, ImportError, AttributeError, SyntaxError):
+        settings = []
     return {
         'today': today.isoformat(), 'first': first.isoformat(), 'last': last.isoformat(),
         'histold_available': planned is not None,
@@ -113,7 +121,8 @@ def calendar(config, source, shotsnip, activity, now):
                      'scan_minutes': number(schedule.get('scan_minutes')), 'revision': revision,
                      'choices': CADENCE_MINUTES if revision and isinstance(enabled, bool)
                      and not schedule.get('live_operations_batch_hold') and not schedule.get('pending_post_minutes') else [],
-                     'cadence_pending': bool(schedule.get('pending_post_minutes'))},
+                     'cadence_pending': bool(schedule.get('pending_post_minutes')),
+                     'settings': settings},
         'events': sorted(events, key=lambda event: event['at']),
     }
 
@@ -781,7 +790,18 @@ def ai_settings(config):
     return status
 
 
-def live_timers(live, schedule):
+def upload_window(root, state, schedule):
+    """When Shotsnip's YouTube rules (daily limit, minimum gap) next allow an upload; None if now."""
+    try:
+        if str(root) not in sys.path:
+            sys.path.insert(0, str(root))
+        import youtube_rules
+        return youtube_rules.spacing_wait(state, schedule)
+    except Exception:  # noqa: BLE001 - the timer then falls back to the cadence alone
+        return None
+
+
+def live_timers(live, schedule, root=None):
     """Next cycle, next post and stage start, computed like the original Shotsnip dashboard's timers."""
     stamp = lambda value: datetime.fromtimestamp(value, timezone.utc).isoformat() if isinstance(value, (int, float)) and value > 0 else None
     scan = schedule.get('scan_minutes') if isinstance(schedule.get('scan_minutes'), (int, float)) else 30
@@ -789,13 +809,23 @@ def live_timers(live, schedule):
     early = schedule.get('early_publish_minutes') if isinstance(schedule.get('early_publish_minutes'), (int, float)) else 0
     last = lambda key: live.get(key) if isinstance(live.get(key), (int, float)) else 0
     combined = schedule.get('mode') == 'scan_capture_upload'
+    window = upload_window(root, live, schedule) if root else None
+    limit = None
     if combined:  # one cycle scans, captures and posts; it waits the scan interval after the last cycle or upload
         next_cycle, next_post = max(last('last_cycle_at'), last('last_upload_at')) + scan * 60, None
+        if window and window > next_cycle:
+            # The YouTube rules hold the upload: the cycle only records shortly before the slot opens.
+            try:
+                lead = owner_settings(root).value(schedule, 'record_lead_minutes')
+            except Exception:  # noqa: BLE001
+                lead = 20
+            next_cycle, next_post, limit = max(next_cycle, window - lead * 60), window, 'youtube_rules'
     else:
         next_cycle, next_post = last('last_scan_at') + scan * 60, last('last_upload_at') + max(0, post - early) * 60
     return {'combined': combined, 'scan_minutes': scan, 'post_minutes': post,
             'next_cycle': stamp(next_cycle), 'next_post': stamp(next_post) if next_post else None,
-            'stage_started': stamp(live.get('phase_started_at')), 'last_upload': stamp(live.get('last_upload_at'))}
+            'stage_started': stamp(live.get('phase_started_at')), 'last_upload': stamp(live.get('last_upload_at')),
+            'held_by': limit}
 
 
 def batch_hold(root, schedule):
@@ -872,7 +902,7 @@ def shotsnip_workspace(root):
             'hold': batch_hold(root, schedule),
             'commentary': commentary_mode(schedule),
             'watch_worker': watch_worker(dashboard),
-            'timers': live_timers(live, schedule),
+            'timers': live_timers(live, schedule, root),
         },
         'connections': [
             {'name': name, 'status': statuses.get(status, 'Check connection') if isinstance(status, str) else 'Unavailable'}

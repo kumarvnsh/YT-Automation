@@ -32,7 +32,7 @@ TARGET_ACTIONS = ('target_toggle', 'target_add')
 AGENT_ACTIONS = ('agent_learning', 'agent_review')
 SHOTSNIP_OWNER_ACTIONS = TARGET_ACTIONS + AGENT_ACTIONS
 ASSISTANT_ACTIONS = ('assistant_ask', 'assistant_apply')
-LIVE_ACTIONS = ('live_run_now', 'live_stop_after_stage', 'shotsnip_commentary', 'shotsnip_watch_worker', 'manual_spacing', 'manual_publishing')
+LIVE_ACTIONS = ('live_run_now', 'live_stop_after_stage', 'shotsnip_commentary', 'shotsnip_watch_worker', 'manual_spacing', 'manual_publishing', 'shotsnip_settings')
 QUEUE_ACTIONS = ('move_earlier', 'move_later', 'prioritize', 'schedule')
 HISTOLD_OWNER_ACTIONS = ('histold_strategy', 'histold_research', 'ai_settings')
 BOT_ACTIONS = ('bot_action', 'draft_preview')
@@ -49,6 +49,16 @@ class WorkerBusy(Exception):
 
 def config_root(config):
     return Path(config['roots']['shotsnip']).absolute()
+
+
+def owner_settings(root):
+    """Shotsnip's owner_settings.py: the list of every setting the owner controls from the dashboard."""
+    import importlib.util
+    path = Path(root)/'owner_settings.py'
+    spec = importlib.util.spec_from_file_location('shotsnip_owner_settings', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def manual_module(root):
@@ -215,6 +225,11 @@ def queue_control(config, body):
         if body.get('mode') not in COMMENTARY_MODES:
             raise ValueError('Choose off, intro, or full commentary.')
         target = body['mode']
+    if action == 'shotsnip_settings':
+        if not isinstance(body.get('revision'), str) or not re.fullmatch(r'[0-9a-f]{64}', body['revision']):
+            raise ValueError('Refresh the posting rules before changing them.')
+        body['changes'] = owner_settings(config_root(config)).validate(body.get('changes'))
+        target = hashlib.sha256(json.dumps([body['changes'], body['revision']], sort_keys=True).encode()).hexdigest()
     if action == 'shotsnip_watch_worker':
         if type(body.get('start')) is not bool:
             raise ValueError('Choose to start or stop the watch worker.')
@@ -521,6 +536,15 @@ def live_change(config, body):
         if actual != body['mode']:
             raise RuntimeError('Could not verify the commentary change')
         return message or 'Commentary updated.'
+    if body['action'] == 'shotsnip_settings':
+        settings = owner_settings(root)
+        if cadence_settings(root/'scheduler.json')[1] != body['revision']:
+            raise ValueError('Shotsnip settings changed. Refresh and review them again.')
+        message = call_scheduler(config, {'name': 'set_settings', 'changes': body['changes']})
+        saved = read_json(root/'scheduler.json')
+        if any(settings.value(saved, key) != new for key, new in body['changes'].items()):
+            raise RuntimeError('Could not verify the new posting rules')
+        return message or 'Posting rules saved.'
     if body['action'] == 'shotsnip_watch_worker':
         message = call_scheduler(config, {'name': 'start_worker' if body['start'] else 'stop_worker'})
         if not body['start'] and not (root/'work/dashboard/stop-worker').exists():

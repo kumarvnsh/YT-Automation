@@ -85,6 +85,17 @@ def eligible_video(manifest, root, ledger, jobs, now, wait_hours=48):
     return video if package_matches(manifest, video, root) else None
 
 
+def posted_cleanup_hours(root, config):
+    """The owner's "Remove posted clips from the laptop after" setting (Shotsnip scheduler.json, set in Studio HQ)."""
+    try:
+        hours = read_json(root/'scheduler.json').get('posted_cleanup_hours')
+    except (OSError, ValueError):
+        hours = None
+    if type(hours) is int and 1 <= hours <= 168:
+        return float(hours)
+    return float(config.get('shotsnip_cleanup_after_hours', 6))
+
+
 def package_matches(manifest, video, root):
     for entry in manifest['files']:
         member = within(video.parent/entry['name'], root)
@@ -99,8 +110,7 @@ def cleanup_candidate(manifest, config):
     root = Path(config['roots'][channel]).absolute()
     if channel == 'shotsnip':
         with shotsnip_snapshot(root) as (ledger, jobs):
-            yield eligible_video(manifest, root, ledger, jobs, time.time(),
-                                 float(config.get('shotsnip_cleanup_after_hours', 6)))
+            yield eligible_video(manifest, root, ledger, jobs, time.time(), posted_cleanup_hours(root, config))
         return
     if config.get('story_finished_cleanup_enabled') is not True:
         yield None

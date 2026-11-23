@@ -3,7 +3,7 @@ import { Archive, ArrowDownToLine, ArrowUpRight, Activity, Cloud, Database, Hard
 import { channelNames, type Pacing, type StudioAnalytics, type StudioChannel } from './Analytics';
 import { CommandHistory, HistoldActions, HistoldApprovals, HostActions, LiveControls, NewClipForm, PublishSchedule, ShotsnipQueue,
   type Approval, type CommandEvent, type ManualJob, type Send } from './Controls';
-import { AssistantPanel, Calendar, ExperimentPanel, JobUsage, Money, Recommendations, ShotsnipCadence, SixReelExperiment,
+import { AssistantPanel, Calendar, ExperimentPanel, JobUsage, Money, PostingRules, Recommendations, ShotsnipCadence, SixReelExperiment,
   TopicList, TopicPage, type JobLink, type PlanningData } from './Planning';
 import { ChannelInsights } from './Insights';
 import { HistoldLiveControls, HistoldLiveOperations, PlanLimits } from './HistoldLive';
@@ -142,6 +142,8 @@ export function ShotsnipPage({ snapshot, time, send, busy, sub }: PageProps) {
       waiting={snapshot.health.queue_available ? snapshot.health.waiting : null} time={time} />}
     {phase3 ? <ShotsnipCadence data={phase3.calendar.shotsnip} time={time} send={send} busy={busy}
       cadenceEvent={latest(snapshot.commands, 'scheduler_cadence')} /> : <Waiting what="schedule" />}
+    {phase3 && <PostingRules data={phase3.calendar.shotsnip} send={send} busy={busy} time={time}
+      recent={latest(snapshot.commands, 'shotsnip_settings')} />}
     {workspace?.live && <div className="page-split even">
       <CommentaryControl mode={workspace.live.commentary ?? 'off'} busy={busy} send={send} time={time}
         recent={latest(snapshot.commands, 'shotsnip_commentary')} />

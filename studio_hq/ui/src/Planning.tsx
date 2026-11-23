@@ -33,10 +33,13 @@ export type AssistantRecord = { id: string; scope: 'strategy' | 'trace' | 'shots
   status: 'thinking' | 'answered' | 'failed'; asked_at: string | null; answered_at: string | null; reply: string | null;
   proposals: { index: number; name: string; summary: string | null; error: string | null;
     applied: { at: string; message: string } | null }[] };
+export type OwnerSetting = { key: string; label: string; group: string; kind: 'int' | 'float' | 'bool' | 'choice';
+  value: string | number | boolean; help: string; min?: number; max?: number; choices?: (string | number)[] };
 export type PlanningData = {
   calendar: { today: string; first: string; last: string; histold_available: boolean; events: CalendarEvent[];
     shotsnip: { status: string; cadence_minutes: number | null; earliest: string | null;
-      scan_minutes?: number | null; revision?: string | null; choices?: number[]; cadence_pending?: boolean } };
+      scan_minutes?: number | null; revision?: string | null; choices?: number[]; cadence_pending?: boolean;
+      settings?: OwnerSetting[] } };
   topics: {job: string; date: string | null; title: string; format: string; state: string; url: string | null; trace?: Trace}[];
   histold_experiment: {hours: number; category: string; median: number; observed: number}[];
   experiments?: Experiments;
@@ -232,6 +235,69 @@ export function ShotsnipCadence({ data, time, send, busy, cadenceEvent }: { data
       {data.earliest && <span>Next eligible {time(data.earliest)} IST</span>}
     </div>
     <CadenceEditor data={data} busy={busy} send={send} recent={cadenceEvent} time={time} />
+  </section>;
+}
+
+type SettingValue = string | number | boolean;
+
+/** Every Shotsnip setting, set by the owner here. The scheduler keeps no values of its own. */
+export function PostingRules({ data, send, busy, recent, time }: { data: PlanningData['calendar']['shotsnip'];
+  send?: Send; busy: boolean; recent?: CommandEvent; time: (value: string | null) => string;
+}) {
+  const settings = data.settings ?? [];
+  const [draft, setDraft] = useState<Record<string, SettingValue>>({});
+  const [base, setBase] = useState(data.revision);
+  const [confirm, setConfirm] = useState(false);
+  if (base !== data.revision && !confirm) { setBase(data.revision); setDraft({}); }
+  if (!settings.length) return null;
+  const changes = Object.fromEntries(Object.entries(draft).filter(([key, next]) =>
+    settings.find(row => row.key === key)?.value !== next));
+  const invalid = settings.some(row => {
+    const next = draft[row.key];
+    return typeof next === 'number' && (Number.isNaN(next) || (row.min != null && next < row.min) || (row.max != null && next > row.max)
+      || (row.kind === 'int' && !Number.isInteger(next)));
+  });
+  const count = Object.keys(changes).length;
+  const show = (row: OwnerSetting, next: SettingValue) => row.kind === 'bool' ? (next ? 'On' : 'Off') : String(next);
+  const groups = [...new Set(settings.map(row => row.group))];
+  return <section className="panel posting-rules" aria-labelledby="posting-rules-heading">
+    <div className="panel-head"><div><h2 id="posting-rules-heading">Posting rules</h2>
+      <p>Every Shotsnip setting. The scheduler uses exactly these; nothing is decided in the background.</p></div></div>
+    {groups.map(group => <fieldset key={group} className="rules-group" disabled={busy || confirm || !send}>
+      <legend>{group}</legend>
+      {settings.filter(row => row.group === group).map(row => {
+        const current = draft[row.key] ?? row.value;
+        const set = (next: SettingValue) => setDraft(old => ({ ...old, [row.key]: next }));
+        const id = 'rule-' + row.key.replace(/\W/g, '-');
+        return <div className={'rule-row' + (row.key in changes ? ' changed' : '')} key={row.key}>
+          <label htmlFor={id}>{row.label}<small>{row.help}</small></label>
+          {row.kind === 'bool' ? <input id={id} type="checkbox" checked={current === true} onChange={event => set(event.target.checked)} />
+            : row.kind === 'choice' ? <select id={id} value={String(current)} onChange={event => {
+                const pick = row.choices!.find(choice => String(choice) === event.target.value)!; set(pick); }}>
+                {row.choices!.map(choice => <option key={String(choice)} value={String(choice)}>{String(choice)}</option>)}</select>
+            : <input id={id} type="number" min={row.min} max={row.max} step={row.kind === 'float' ? 0.05 : 1}
+                value={String(current)} onChange={event => set(event.target.value === '' ? NaN : Number(event.target.value))} />}
+        </div>;
+      })}
+    </fieldset>)}
+    <div className="cadence-edit">
+      {!confirm && <div className="cadence-form">
+        <button className="action" disabled={busy || !count || invalid || !send} onClick={() => setConfirm(true)}>
+          Review {count || ''} change{count === 1 ? '' : 's'}</button>
+        {count > 0 && <button className="action" onClick={() => setDraft({})}>Discard</button>}
+        {invalid && <span className="analytics-info">A value is outside its allowed range.</span>}
+      </div>}
+      {confirm && <div className="cadence-confirm" role="group" aria-label="Confirm posting rules">
+        <ul>{Object.entries(changes).map(([key, next]) => { const row = settings.find(item => item.key === key)!;
+          return <li key={key}>{row.label}: {show(row, row.value)} → <b>{show(row, next)}</b></li>; })}</ul>
+        <button className="action" onClick={() => setConfirm(false)}>Back</button>
+        <button className="action primary" disabled={busy} onClick={() => {
+          send?.({ action: 'shotsnip_settings', channel: 'shotsnip', changes, revision: data.revision! });
+          setConfirm(false); setDraft({});
+        }}>Save posting rules</button>
+      </div>}
+      {recent && <p className="analytics-info">{recent.message} · {time(recent.at)} IST</p>}
+    </div>
   </section>;
 }
 

@@ -391,6 +391,26 @@ class OwnerControlTests(unittest.TestCase):
         self.assertFalse(controls.read_json(self.root/'scheduler.json')['commentary']['enabled'])
         self.assertIn('full narrated', controls.perform(self.config, self.command('shotsnip_commentary', channel='shotsnip', mode='full')))
 
+    def test_posting_rules_are_validated_saved_and_verified(self):
+        import shutil
+        shutil.copy(r'D:\YT-Cliping-Automation\owner_settings.py', self.root/'owner_settings.py')
+        revision = controls.cadence_settings(self.root/'scheduler.json')[1]
+        with self.assertRaisesRegex(ValueError, 'Uploads a day must be from 1 to 12'):
+            controls.submit(self.config, self.command('shotsnip_settings', channel='shotsnip', revision=revision,
+                                                      changes={'youtube_rules.max_per_day': 40}))
+        with self.assertRaisesRegex(ValueError, 'not a Shotsnip setting'):
+            controls.submit(self.config, self.command('shotsnip_settings', channel='shotsnip', revision=revision,
+                                                      changes={'enabled': False}))
+        body = self.command('shotsnip_settings', channel='shotsnip', revision=revision,
+                            changes={'youtube_rules.max_per_day': 4, 'privacy': 'unlisted', 'never_posted_cleanup_hours': 12})
+        self.assertIn('Saved: Uploads a day', controls.perform(self.config, body))
+        saved = controls.read_json(self.root/'scheduler.json')
+        self.assertEqual((saved['youtube_rules']['max_per_day'], saved['privacy'], saved['never_posted_cleanup_hours']),
+                         (4, 'unlisted', 12))
+        self.assertTrue(saved['enabled'])  # other settings untouched
+        with self.assertRaisesRegex(ValueError, 'settings changed'):  # stale revision
+            controls.perform(self.config, body)
+
     def test_watch_worker_stop_is_verified(self):
         self.assertIn('Stop requested', controls.perform(self.config, self.command('shotsnip_watch_worker', channel='shotsnip', start=False)))
         self.assertTrue((self.root/'work/dashboard/stop-worker').exists())

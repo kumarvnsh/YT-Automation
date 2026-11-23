@@ -22,7 +22,7 @@ export type ShotsnipWorkspace = {
     hold?: { batch: string; total: number; published: number | null; paused_at: string | null } | null;
     commentary?: string; watch_worker?: { status: string; checked_at: string | null; note: string; stop_requested: boolean };
     timers?: { combined: boolean; scan_minutes: number; post_minutes: number; next_cycle: string | null; next_post: string | null;
-      stage_started: string | null; last_upload: string | null } };
+      stage_started: string | null; last_upload: string | null; held_by?: string | null } };
 };
 
 
@@ -43,7 +43,7 @@ export function LiveTimers({ live, time }: { live: NonNullable<ShotsnipWorkspace
   const cycle = left(timers.next_cycle);
   const post = left(timers.next_post);
   const cycleText = live.enabled !== true ? 'Paused' : busy ? 'Running now' : cycle == null ? '—' : cycle <= 0 ? 'Due now' : clock(cycle);
-  const postText = live.enabled !== true ? 'Paused' : timers.combined ? 'After processing' : live.phase === 'uploading' ? 'Uploading'
+  const postText = live.enabled !== true ? 'Paused' : timers.combined && !timers.next_post ? 'After processing' : live.phase === 'uploading' ? 'Uploading'
     : post == null ? '—' : post <= 0 ? 'Due now' : clock(post);
   const elapsed = busy && timers.stage_started ? Math.floor((now - Date.parse(timers.stage_started)) / 60000) : null;
   return <section className="panel live-timers-card" aria-labelledby="live-timers-heading">
@@ -54,8 +54,11 @@ export function LiveTimers({ live, time }: { live: NonNullable<ShotsnipWorkspace
       <div><small>{timers.combined ? 'Next cycle in' : 'Next scan in'}</small><strong className="live-timer" aria-live="off">{cycleText}</strong>
         {timers.next_cycle && live.enabled === true && !busy && <small>at {time(timers.next_cycle)} IST</small>}</div>
       <div><small>Next post</small><strong className="live-timer">{postText}</strong>
+        {timers.next_post && live.enabled === true && <small>at {time(timers.next_post)} IST</small>}
         {timers.last_upload && <small>Last upload {time(timers.last_upload)} IST</small>}</div>
     </div>
+    {timers.held_by === 'youtube_rules' && live.enabled === true && <p className="control-note">
+      Held by your posting rules (uploads a day / minimum gap). Recording starts shortly before the slot.</p>}
     {elapsed != null && <p className="control-note">Current stage running for {elapsed} min.</p>}
   </section>;
 }

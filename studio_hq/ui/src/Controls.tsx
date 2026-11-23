@@ -40,7 +40,7 @@ export function PublishSchedule({ schedule, waiting, busy, send, time }: { sched
 }
 export type Approval = { title: string; stage: string; run_id: string; url: string; at: string; preview?: import('./Media').DraftPreview | null };
 export type CommandEvent = { id?: string; action: string; status: string; message: string; at: string };
-export type Command = Record<string, string | number | boolean | string[]>;
+export type Command = Record<string, string | number | boolean | string[] | Record<string, string | number | boolean>>;
 export type Send = (command: Command) => void;
 type Time = (value: string | null) => string;
 export type Pending = { title: string; detail: string; command: Command; story?: boolean };
@@ -50,7 +50,7 @@ export const statuses: Record<string, string> = {
   publishing: 'Publishing', partial: 'Needs reconciliation', attention: 'Needs reconciliation', failed: 'Processing failed',
 };
 const models: Record<string, string> = {
-  archive_now:'Archive now', restore:'Restore archive', scheduler:'Shotsnip schedule', scheduler_cadence:'Shotsnip cadence',
+  archive_now:'Archive now', restore:'Restore archive', scheduler:'Shotsnip schedule', scheduler_cadence:'Shotsnip cadence', shotsnip_settings:'Posting rules',
   strategist:'Strategist', story_draft:'Histold draft', story_approve:'Histold approval', target_add:'Add target',
   target_toggle:'Target change', agent_review:'Agent review', agent_learning:'Agent learning',
   assistant_ask:'Assistant question', assistant_apply:'Assistant proposal', create_preview:'Shotsnip preview',

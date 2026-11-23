@@ -23,6 +23,16 @@ MIN_SOURCE_SAMPLE = 3
 MANUAL = None
 
 
+def owner_settings_module():
+    """Shotsnip's owner_settings.py, loaded fresh each time so a change there needs no dashboard restart."""
+    import importlib.util
+    path=CLIP_ROOT/'owner_settings.py'
+    spec=importlib.util.spec_from_file_location('shotsnip_owner_settings',path)
+    module=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def manual_module():
     global MANUAL
     path=CLIP_ROOT/'manual_jobs.py'
@@ -496,6 +506,14 @@ def action(body):
             write(CLIP_ROOT/'scheduler.json',config)
             SCHEDULER_WAKE.set()
             return f'Manual clips now go out at least {minutes/60:g} hour{"s" if minutes!=60 else ""} apart.'
+        if name == 'set_settings':
+            settings=owner_settings_module()
+            changes=settings.validate(body.get('changes'))
+            config=settings.apply(read(CLIP_ROOT/'scheduler.json',{}),changes)
+            write(CLIP_ROOT/'scheduler.json',config)
+            SCHEDULER_WAKE.set()
+            labels=[settings.SPEC[key][1] for key in changes]
+            return 'Saved: '+', '.join(labels)+'. Shotsnip uses these from its next check.'
         if name == 'set_manual_publishing':
             paused=body.get('paused')
             if type(paused) is not bool:
