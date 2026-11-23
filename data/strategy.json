@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T11:00:28.333906+00:00",
+  "updated": "2026-11-23T15:00:38.586250+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -7,10 +7,10 @@
         "Why Does the Rickshaw Carry a Japanese Name?",
         "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
-        "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
-        "Why Did One Emperor Dig a Canal Across Half of China?"
+        "Coal Miners Sent a Caged Canary Underground Before Going Back In",
+        "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
       ],
-      "measured_videos": 114
+      "measured_videos": 115
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 114
+      "measured_videos": 115
     }
   },
   "evaluation_metric": "likes / views",
@@ -105,6 +105,20 @@
           "measured_videos": 1,
           "mean_like_rate": 0.166667
         }
+      },
+      "Annotated blueprint": {
+        "yt": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.035714
+        },
+        "fb": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "ig": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.009615
+        }
       }
     },
     "long": {
@@ -116,69 +130,69 @@
       }
     }
   },
-  "videos_scored": 114,
+  "videos_scored": 115,
   "weights": {
     "series": {
-      "school_myths": 0.0676,
-      "mistakes": 0.0685,
-      "almost": 0.0685,
+      "school_myths": 0.0674,
+      "mistakes": 0.0684,
+      "almost": 0.0684,
       "erased": 0.0719,
-      "unsolved": 0.0699,
+      "unsolved": 0.0698,
       "weird_dark": 0.0719,
       "photo_story": 0.0719,
-      "spy_gadgets": 0.0754,
-      "animals": 0.0754,
+      "spy_gadgets": 0.0756,
+      "animals": 0.0756,
       "secretly_deadly": 0.0719,
-      "worst_jobs": 0.0754,
+      "worst_jobs": 0.0756,
       "forgotten_rules": 0.0719,
-      "behind_legend": 0.0699,
-      "found_by_accident": 0.0699
+      "behind_legend": 0.0698,
+      "found_by_accident": 0.0698
     },
     "region": {
       "india": 0.1143,
-      "africa": 0.1107,
-      "japan": 0.116,
+      "africa": 0.1106,
+      "japan": 0.1162,
       "china": 0.1158,
       "russia": 0.1046,
       "middle_east": 0.1072,
-      "europe": 0.1174,
+      "europe": 0.1173,
       "americas": 0.0958,
-      "asia_pacific": 0.1181
+      "asia_pacific": 0.1182
     },
     "duration_variant": {
-      "concise": 0.4954,
-      "story": 0.5046
+      "concise": 0.5004,
+      "story": 0.4996
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "spy_gadgets": {
         "n": 0,
@@ -190,7 +204,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "worst_jobs": {
         "n": 0,
@@ -198,63 +212,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.434
+        "mean_score": 0.43
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.511
+        "mean_score": 0.507
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.497
+        "mean_score": 0.493
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.518
+        "mean_score": 0.514
       },
       "china": {
         "n": 12,
-        "mean_score": 0.518
+        "mean_score": 0.513
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.472
+        "mean_score": 0.468
       },
       "middle_east": {
         "n": 11,
-        "mean_score": 0.483
+        "mean_score": 0.479
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.524
+        "mean_score": 0.519
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.434
+        "mean_score": 0.43
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.527
+        "mean_score": 0.523
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 63,
-        "mean_score": 0.497
+        "n": 64,
+        "mean_score": 0.5
       },
       "story": {
         "n": 51,
-        "mean_score": 0.504
+        "mean_score": 0.5
       }
     }
   },
@@ -262,8 +276,8 @@
     "Why Does the Rickshaw Carry a Japanese Name?",
     "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
     "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
-    "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
-    "Why Did One Emperor Dig a Canal Across Half of China?"
+    "Coal Miners Sent a Caged Canary Underground Before Going Back In",
+    "How Did Ancient Egyptians Keep Time Once the Sun Went Down?"
   ],
   "losers": [
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
@@ -278,25 +292,25 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 plays while available, yet 212 Instagram plays (historical)"
-    },
-    {
-      "video_id": "-cPiNs-0pLA",
-      "platform": "fb",
-      "views": 3,
-      "reason": "23.2s average watch on 3 plays"
-    },
-    {
-      "video_id": "yUDJaAj3Zvg",
-      "platform": "fb",
-      "views": 3,
-      "reason": "24.5s average watch on 3 plays"
+      "reason": "0 Facebook plays marked available while Instagram shows 212; likely historical export gap"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "32.3s average watch on 2 plays"
+      "reason": "32.3 s average watch on 2 plays is implausible; Instagram shows 137"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 3,
+      "reason": "23.2 s average watch on 3 plays"
+    },
+    {
+      "video_id": "yUDJaAj3Zvg",
+      "platform": "fb",
+      "views": 3,
+      "reason": "24.5 s average watch on 3 plays"
     },
     {
       "video_id": "SfvGGm6eaok",
