@@ -90,6 +90,11 @@ def tool_env(cfg) -> tuple[dict, list[str]]:
         'GITHUB_REPOSITORY': cfg.get('local_production.repository', 'kumarvnsh/YT-Automation'),
         'YOUTUBE_CLIENT_SECRET_FILE': 'secrets/client_secret.json',
     })
+    # Higher-quality encoding on the laptop only; cloud runs never read local_production.
+    encode = local.get('encode', {}) or {}
+    for var, key in (('FFMPEG_PRESET', 'preset'), ('FFMPEG_CRF', 'crf'), ('FRAME_JPEG_QUALITY', 'frame_quality')):
+        if encode.get(key) not in (None, '') and not os.environ.get(var):
+            env[var] = str(encode[key])
     (ENV_ROOT / 'tmp').mkdir(parents=True, exist_ok=True)
     kokoro = ENV_ROOT / 'histold-kokoro' / 'Scripts' / 'python.exe'
     if kokoro.is_file():

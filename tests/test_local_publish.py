@@ -200,3 +200,22 @@ class PublishPreview(unittest.TestCase):
                 mock.patch.object(runner, 'stream', return_value=proc('STATUS: DONE  url')) as stream:
             self.assertEqual(runner.step_loop(args, {})[0], 'DONE')
         self.assertEqual(stream.call_args.args[0][-4:], ['--stage', args.stage, '--force-upload', '--step'])
+
+
+class EncodeQuality(unittest.TestCase):
+    def test_laptop_gets_higher_quality_and_cloud_keeps_its_defaults(self):
+        from src import video_builder as vb
+        cfg = Config({'local_production': {'encode': {'preset': 'slow', 'crf': 17, 'frame_quality': 97}}})
+        clean = {k: v for k, v in os.environ.items() if k not in ('FFMPEG_PRESET', 'FFMPEG_CRF', 'FRAME_JPEG_QUALITY')}
+        with mock.patch.dict(os.environ, clean, clear=True):
+            self.assertEqual(vb._crf_args(), [])  # cloud: x264 default, exactly as before
+            self.assertEqual(vb.frame_quality(), 90)
+            self.assertEqual(vb._encode_settings(Config({})), ('veryfast', '23'))
+            with mock.patch.object(runner, 'run', return_value=proc('tok')), \
+                    mock.patch.object(runner, 'secret_text', return_value='x'):
+                env, _ = runner.tool_env(cfg)
+            self.assertEqual((env['FFMPEG_PRESET'], env['FFMPEG_CRF'], env['FRAME_JPEG_QUALITY']), ('slow', '17', '97'))
+            with mock.patch.dict(os.environ, env):
+                self.assertEqual(vb._crf_args(), ['-crf', '17'])
+                self.assertEqual(vb.frame_quality(), 97)
+                self.assertEqual(vb._encode_settings(Config({})), ('slow', '17'))

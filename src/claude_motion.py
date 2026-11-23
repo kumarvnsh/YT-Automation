@@ -735,20 +735,21 @@ def _check_and_repair(cfg: Config, page, raw: dict[int, str], w: int, h: int) ->
 
 
 def _render_scene(page, html: str, duration: float, fps: int, dest: Path, preset: str) -> Path:
+    from .video_builder import _crf_args, frame_quality
     page.set_content(html, wait_until="load")
     page.evaluate("async () => { await document.fonts.ready; document.getAnimations().forEach(a => a.pause()); }")
     if not page.evaluate("document.getAnimations().filter(a => !(a.animationName || '').startsWith('kit-fx-')).length"):
         raise RuntimeError("scene has no animations")
     ff = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(fps),
-         "-c:v", "mjpeg", "-i", "-", "-c:v", "libx264", "-preset", preset,
+         "-c:v", "mjpeg", "-i", "-", "-c:v", "libx264", "-preset", preset, *_crf_args(),
          "-pix_fmt", "yuv420p", "-r", str(fps), str(dest)],
         stdin=subprocess.PIPE, stderr=subprocess.PIPE,
     )
     try:
         for f in range(max(int(round(duration * fps)), 1)):
             page.evaluate("t => document.getAnimations().forEach(a => a.currentTime = t)", f * 1000 / fps)
-            ff.stdin.write(page.screenshot(type="jpeg", quality=90))
+            ff.stdin.write(page.screenshot(type="jpeg", quality=frame_quality()))
     finally:
         ff.stdin.close()
         err = ff.stderr.read().decode()

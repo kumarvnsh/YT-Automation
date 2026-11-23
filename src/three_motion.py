@@ -163,6 +163,6 @@ def render_motion_video(cfg,st,stage,words,duration):
  st['render_quality']=report;(stage/'render_quality.json').write_text(json.dumps(report,indent=2))
  if report['errors']:raise RuntimeError('3D visual checks failed: '+'; '.join(report['errors']))
  start=time.monotonic()
- with (project/'render.log').open('w') as log:subprocess.run([cli,'render',str(project),'-o',str((stage/'silent.mp4').resolve()),'--resolution','portrait','--fps',str(fps),'--crf',str(cfg.get('video.encode.crf',23)),'--workers',str(cfg.get('video.three_d.render_workers',2)),'--no-browser-gpu','--experimental-fast-capture=false'],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=2400)
+ with (project/'render.log').open('w') as log:subprocess.run([cli,'render',str(project),'-o',str((stage/'silent.mp4').resolve()),'--resolution','portrait','--fps',str(fps),'--crf',str(os.environ.get('FFMPEG_CRF') or cfg.get('video.encode.crf',23)),'--workers',str(cfg.get('video.three_d.render_workers',2)),'--no-browser-gpu','--experimental-fast-capture=false'],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=2400)
  report['render_seconds']=round(time.monotonic()-start,2);st['render_quality']=report;(stage/'render_quality.json').write_text(json.dumps(report,indent=2))
  return stage/'silent.mp4'

@@ -388,6 +388,10 @@ local_production:
   python: 'D:\YT-Automation-env\histold-local\Scripts\python.exe'
   ffmpeg_dir: 'D:\Clips-Kitty\vendor\ffmpeg'
   repository: "kumarvnsh/YT-Automation"
+  encode:                      # laptop renders only; the cloud keeps video.encode (veryfast / crf 23 / frames 90)
+    preset: "slow"             # better detail per bit; costs a few extra minutes per Short
+    crf: 17                    # near visually lossless, so YouTube's re-encode starts from a clean master
+    frame_quality: 97          # JPEG quality of each captured scene frame (cloud: 90)
 
 # Histold fact image posts on Facebook + Instagram (src/fact_posts.py, scripts/run_fact_post.py).
 # Made on this laptop: Claude researches and verifies, Codex draws from an archival reference,

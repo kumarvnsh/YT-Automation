@@ -30,6 +30,21 @@ def _encode_settings(cfg: Config) -> tuple[str, str]:
     return preset, str(crf)
 
 
+def _crf_args() -> list[str]:
+    """Quality for intermediate encodes. Only the laptop runner sets FFMPEG_CRF (scripts/run_local_publish.py);
+    cloud runs get [] and keep x264's own default (crf 23), exactly as before."""
+    crf = os.environ.get("FFMPEG_CRF")
+    return ["-crf", crf] if crf else []
+
+
+def frame_quality() -> int:
+    """JPEG quality of captured scene frames: 90 in the cloud, higher on the laptop (FRAME_JPEG_QUALITY)."""
+    try:
+        return max(1, min(100, int(os.environ.get("FRAME_JPEG_QUALITY") or 90)))
+    except ValueError:
+        return 90
+
+
 _SUBTITLES_OK: bool | None = None
 
 
@@ -102,7 +117,7 @@ def _build_segment_clip(
             "ffmpeg", "-y", "-stream_loop", "-1", "-i", str(asset.path),
             "-t", f"{duration:.3f}",
             "-vf", video_filter,
-            "-an", "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+            "-an", "-c:v", "libx264", "-preset", preset, *_crf_args(), "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
     elif motion == "stopmotion":
@@ -126,7 +141,7 @@ def _build_segment_clip(
             "ffmpeg", "-y", "-loop", "1", "-i", str(asset.path),
             "-t", f"{duration:.3f}",
             "-vf", image_filter,
-            "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+            "-c:v", "libx264", "-preset", preset, *_crf_args(), "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
         _run(cmd)
@@ -153,7 +168,7 @@ def _build_segment_clip(
             "ffmpeg", "-y", "-loop", "1", "-i", str(asset.path),
             "-t", f"{duration:.3f}",
             "-vf", image_filter,
-            "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+            "-c:v", "libx264", "-preset", preset, *_crf_args(), "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
         _run(cmd)
@@ -173,7 +188,7 @@ def _build_segment_clip(
             "ffmpeg", "-y", "-loop", "1", "-i", str(asset.path),
             "-t", f"{duration:.3f}",
             "-vf", image_filter,
-            "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+            "-c:v", "libx264", "-preset", preset, *_crf_args(), "-pix_fmt", "yuv420p", "-r", str(fps),
             str(dest),
         ]
     _run(cmd)
@@ -233,7 +248,7 @@ def _concat_xfade(
         "ffmpeg", "-y", *inputs,
         "-filter_complex", ";".join(steps),
         "-map", "[vout]",
-        "-c:v", "libx264", "-preset", preset, "-pix_fmt", "yuv420p", "-r", str(fps),
+        "-c:v", "libx264", "-preset", preset, *_crf_args(), "-pix_fmt", "yuv420p", "-r", str(fps),
         str(dest),
     ])
     return dest
