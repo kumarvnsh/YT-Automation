@@ -417,7 +417,7 @@ local_ai:
   qwen_for: [assess, thumbnail, title]   # Qwen never researches (no web) or writes scene code
   qwen_model: "qwen3:8b"
   claude_model: ""             # "" = your plan's default model; e.g. "sonnet" or "opus"
-  claude_model_for: {scenes: sonnet, scene_repair: sonnet}   # faster and lighter on the plan for scene code
+  claude_model_for: {scenes: opus, scene_repair: sonnet}   # Opus draws the scenes (richer art, 23 Nov); repairs stay on Sonnet
   parallel_scenes: 3           # scene batches written at the same time
   codex_model: ""
   claude_max_output_tokens: 32000
