@@ -458,6 +458,8 @@ class Controller:
                   '🖥 Dashboard · ' + ('working' if code == 0 else '❌ not responding (/dashboard)')]
         if not (self.admin / 'runner.ps1').exists():
             lines.append('🔒 Admin helper · not set up')
+        from src import telegram_views
+        lines += [''] + telegram_views.plans()
         if trouble:
             lines.append('\n<i>Tap /problems to see each one with a Fix button.</i>')
         self.send('\n'.join(lines))

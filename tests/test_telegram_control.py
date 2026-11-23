@@ -275,3 +275,23 @@ def test_today_and_stats_read_both_channels(tmp_path, monkeypatch):
     assert 'Nothing yet today. Last upload 21 Nov' in today
     stats = tv.stats(now)
     assert '👥 16 subs' in stats and '👁 28.1k total' in stats and 'Kai jumps' in stats
+
+
+def test_status_lists_ai_plans_and_when_images_come_back():
+    from datetime import datetime
+    from unittest import mock
+    from src import plan_ai, telegram_views
+    now = datetime(2026, 11, 23, 12, 0, tzinfo=telegram_views.IST)
+    ready = {'claude': {'installed': True, 'ready': True, 'used_5h': 3, 'per_5h': 60, 'resting_until': None},
+             'codex': {'installed': True, 'ready': False, 'resting_until': 1795627020.0},
+             'antigravity': {'installed': True, 'ready': True, 'models': {
+                 'claude-sonnet-5-5-high': {'left': .8, 'reset': 'x'},
+                 'gemini-4-neon-high': {'left': 0.0, 'reset': '2026-11-23T09:38:50Z'}}}}
+    with mock.patch.object(plan_ai, 'status', return_value=ready), \
+            mock.patch.object(plan_ai, '_load', return_value={'cooldown': {'antigravity_image': 1795426766.0}}):
+        lines = telegram_views.plans(now)
+    text = '\n'.join(lines)
+    assert '🟢 Claude · ready (3/60 used in 5h)' in text
+    assert '🔴 Codex · resting until 25 Nov 22:47' in text
+    assert 'Claude Sonnet 80% · Gemini Neon back 15:08' in text
+    assert '🎨 Images · Gemini back 15:09 · Codex back 25 Nov 22:47' in text

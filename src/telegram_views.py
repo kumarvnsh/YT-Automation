@@ -135,3 +135,63 @@ def post_caption(entry: dict) -> str:
     sources = ', '.join(s.get('publisher') or '' for s in entry.get('sources') or [])
     return (f"🖼 <b>Fact post ready for your OK</b>\n{RULE}\n<b>{escape(entry.get('headline') or '')}</b>\n\n"
             f"{escape(entry.get('fact') or '')}\n\n<i>Sources: {escape(sources)}</i>")
+
+
+# ---------------------------------------------------------------- AI plans
+
+AG_NAMES = {'claude-sonnet-5-5-high': 'Claude Sonnet', 'claude-opus-5-5-high': 'Claude Opus',
+            'gemini-4-neon-high': 'Gemini Neon'}
+
+
+def _at(epoch: float | str | None, now: datetime) -> str:
+    """'15:09' today, '25 Nov 22:47' on another day (India time)."""
+    when = _when(epoch) if isinstance(epoch, str) else (
+        datetime.fromtimestamp(float(epoch), timezone.utc).astimezone(IST) if epoch else None)
+    if not when:
+        return 'unknown'
+    return when.strftime('%H:%M' if when.date() == now.date() else '%d %b %H:%M')
+
+
+def plans(now: datetime | None = None) -> list[str]:
+    """Telegram lines: what each plan has left and when a used-up one comes back."""
+    now = (now or datetime.now(IST)).astimezone(IST)
+    try:
+        from src import plan_ai
+        try:
+            from src.config import load_config
+            cfg = load_config()
+        except Exception:  # noqa: BLE001 - defaults are fine for a status view
+            cfg = None
+        ready = plan_ai.status(cfg)
+        resting = plan_ai._load()['cooldown']
+    except Exception as exc:  # noqa: BLE001 - a view must never break the bot
+        return ['<b>AI plans</b>', f'<i>Not available ({escape(str(exc)[:80])})</i>']
+    lines = ['<b>AI plans</b>']
+    for key, name in (('claude', 'Claude'), ('codex', 'Codex')):
+        info = ready.get(key) or {}
+        if not info.get('installed'):
+            lines.append(f'⚪ {name} · not installed')
+        elif info.get('resting_until'):
+            lines.append(f"🔴 {name} · resting until {_at(info['resting_until'], now)}")
+        elif not info.get('ready'):
+            lines.append(f"🟠 {name} · Histold's share used ({info.get('used_5h')}/{info.get('per_5h')} in 5h)")
+        else:
+            lines.append(f"🟢 {name} · ready ({info.get('used_5h', 0)}/{info.get('per_5h')} used in 5h)")
+    ag = ready.get('antigravity') or {}
+    if not ag.get('models'):
+        lines.append('⚪ Antigravity · app closed' if ag.get('installed') else '⚪ Antigravity · not installed')
+    else:
+        parts = []
+        for model, info in ag['models'].items():
+            name = escape(AG_NAMES.get(model, model))
+            parts.append(f"{name} {round(info['left'] * 100)}%" if info['left'] > .05
+                         else f"{name} back {_at(info.get('reset'), now)}")
+        lines.append(('🟢' if ag.get('ready') else '🔴') + ' Antigravity · ' + ' · '.join(parts))
+    image_rest = resting.get('antigravity_image', 0)
+    codex = ready.get('codex') or {}
+    gemini = f'Gemini back {_at(image_rest, now)}' if image_rest > now.timestamp() else \
+        ('Gemini ready' if ag.get('models') else 'Gemini needs the app open')
+    backup = 'Codex ready' if codex.get('ready') else (
+        f"Codex back {_at(codex['resting_until'], now)}" if codex.get('resting_until') else 'Codex unavailable')
+    lines.append(f'🎨 Images · {gemini} · {backup}')
+    return lines
