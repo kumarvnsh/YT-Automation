@@ -8188,5 +8188,71 @@
     "production_profile": 2,
     "facebook_id": "1649516433494942",
     "instagram_id": "18098882951152123"
+  },
+  {
+    "video_id": "v7fM7kWvKF4",
+    "run_id": "",
+    "stage_dir_name": "20261123_233012_498667_short",
+    "title": "U.S. Lifesavers Fired a Cannon to Rescue Shipwrecked Crews",
+    "published_at": "2026-11-23T18:17:38.049552+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Archive dossier",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 15,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 14,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Before electric refrigerators, American homes kept food cold with iceboxes, and the ice was cut from frozen ponds in winter and stored in ice houses (from the supplied NPS icebox page).",
+          "opening_visual": "The Bohn Syphon icebox at the JFK birthplace with its doors open.",
+          "payoff": "Ice cut in winter lasted into summer because ice houses were packed with sawdust or straw.",
+          "viewer_reason": "Everyone owns a fridge.",
+          "rejection_reason": "This repeats the recent title 'How Did Kitchens Stay Cold Before Electricity?' and the recent ice-storage subjects. The other two supplied pages (the Douglas hike and the Ohio & Erie Canal route) are also recent titles."
+        },
+        {
+          "premise": "From the 1880s, the U.S. Coast and Geodetic Survey predicted tides with William Ferrel's mechanical tide-predicting machine, which used gears to add up tidal components.",
+          "opening_visual": "The brass Ferrel tide-predicting machine.",
+          "payoff": "A mechanical 'computer' produced tide tables before digital computers did.",
+          "viewer_reason": "It's a surprising analog computer.",
+          "rejection_reason": "Search results from NOAA pages disagree about how long the machine was in service (through 1911, 1965 or 1991). The problem it solved is not stated as a documented danger on the pages found. The mechanism is hard to explain in 35 seconds without overstating it. I did not fetch these pages to verify them."
+        },
+        {
+          "premise": "When a ship ran aground near the U.S. coast, lifesavers on shore fired a small cannon carrying a light line over the wreck. The crew pulled out heavier lines, and survivors came ashore one at a time in a life ring with canvas pants sewn into it. This did not always work: weather and distance could defeat it.",
+          "opening_visual": "Diagram: a beach on the left, a stranded ship on the right, and a dotted arc as the Lyle gun's projectile carries a thin line over the ship. Then a cutaway of the breeches buoy (life ring plus canvas breeches) sliding along a rope.",
+          "payoff": "A lifeline from a cannon, then rescue in a pair of pants on a rope. Limitation: NPS says wind, fog, darkness and the wreck's position affected the shot. It often took several shots, and sometimes conditions were too severe.",
+          "viewer_reason": "Firing a cannon at people to save them, and riding to shore in canvas pants, is surprising and immediately clear. The rescue sequence is easy to draw.",
+          "rejection_reason": null
+        }
+      ],
+      "selected_index": 2,
+      "selection_reason": "It is not a recent subject and the reversal is concrete (a gun fired to save lives). The mechanism fits a simple diagram, and three fetched NPS pages from two park units support it. The premise is kept narrow, covering how it worked and when it failed. The single-source estimate of lives saved is left out of the narration."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 143,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Lifesavers fired a cannon to rescue shipwrecked crews.",
+    "duration": 35.175,
+    "production_profile": 2,
+    "facebook_id": "1777765311020596",
+    "instagram_id": "18139873264640378"
   }
 ]
