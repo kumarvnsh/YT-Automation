@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T07:00:52.343047+00:00",
+  "updated": "2026-11-23T11:00:28.333906+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -278,7 +278,7 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 plays while available, despite 212 Instagram plays"
+      "reason": "0 plays while available, yet 212 Instagram plays (historical)"
     },
     {
       "video_id": "-cPiNs-0pLA",
