@@ -238,7 +238,11 @@ class PostingPlanTests(unittest.TestCase):
                    for i, (h, m) in enumerate(((7, 0), (10, 34), (16, 35)))]
         live = {'uploads': uploads, 'last_upload_at': at(16, 35).timestamp(), 'last_cycle_at': at(13, 34).timestamp()}
         schedule = {'scan_minutes': 240, 'youtube_rules': {'max_per_day': 3, 'min_gap_minutes': 120}}
-        plan = posting_plan(r'D:\YT-Cliping-Automation', live, schedule, now=at(17, 3).timestamp())
+        import os
+        shotsnip = Path(os.environ.get('SHOTSNIP_ROOT', r'D:\YT-Cliping-Automation'))
+        if not (shotsnip/'youtube_rules.py').is_file():
+            self.skipTest('Sibling Shotsnip checkout is unavailable')
+        plan = posting_plan(str(shotsnip), live, schedule, now=at(17, 3).timestamp())
         self.assertEqual(plan['reason'], 'daily_limit')
         self.assertEqual(plan['frees_after'], at(7, 0).isoformat())
         self.assertEqual([s['reason'] for s in plan['upcoming']], ['daily_limit', 'cadence', 'daily_limit'])

@@ -393,7 +393,11 @@ class OwnerControlTests(unittest.TestCase):
 
     def test_posting_rules_are_validated_saved_and_verified(self):
         import shutil
-        shutil.copy(r'D:\YT-Cliping-Automation\owner_settings.py', self.root/'owner_settings.py')
+        import os
+        source = Path(os.environ.get('SHOTSNIP_ROOT', r'D:\YT-Cliping-Automation'))/'owner_settings.py'
+        if not source.is_file():
+            self.skipTest('Sibling Shotsnip checkout is unavailable')
+        shutil.copy(source, self.root/'owner_settings.py')
         revision = controls.cadence_settings(self.root/'scheduler.json')[1]
         with self.assertRaisesRegex(ValueError, 'Uploads a day must be from 1 to 12'):
             controls.submit(self.config, self.command('shotsnip_settings', channel='shotsnip', revision=revision,
