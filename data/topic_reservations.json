@@ -3445,5 +3445,14 @@
     "slot": "manual",
     "date": "2026-11-23",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261124_043012_742527_short",
+    "title": "The Teddy Bear Owes Its Name to a Refusal in Mississippi",
+    "fingerprint": "bear_its_mississippi_name_owes_refusal_teddy",
+    "format": "short",
+    "slot": "manual",
+    "date": "2026-11-24",
+    "status": "reserved"
   }
 ]

@@ -8254,5 +8254,71 @@
     "production_profile": 2,
     "facebook_id": "1777765311020596",
     "instagram_id": "18139873264640378"
+  },
+  {
+    "video_id": "fEJ_p-XAW-4",
+    "run_id": "",
+    "stage_dir_name": "20261124_043012_742527_short",
+    "title": "The Teddy Bear Owes Its Name to a Refusal in Mississippi",
+    "published_at": "2026-11-23T23:20:22.443311+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Paper theater",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 16,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 15,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A middle-class family's icebox at JFK's 1917 birthplace home shows how food was kept cold with lake ice before electric refrigerators became common.",
+          "opening_visual": "NPS photo of the Bohn Syphon icebox in golden oak with its doors open",
+          "payoff": "By 1944, 85% of American households had a refrigerator, and the iceman disappeared.",
+          "viewer_reason": "Everyone owns a fridge but few know about its ice-delivery ancestor.",
+          "rejection_reason": "Repeats a recent subject ('How Did Kitchens Stay Cold Before Electricity?' and the recent icebox and ice-store titles)."
+        },
+        {
+          "premise": "The route of Ohio's canal was shaped by landowners offering free land, and its towpath is now a bike trail.",
+          "opening_visual": "NPS map of major canals in the 1860s",
+          "payoff": "A freight ditch became a recreation corridor inside Cuyahoga Valley National Park.",
+          "viewer_reason": "Many people ride or walk old towpaths without knowing why they exist.",
+          "rejection_reason": "Not an everyday object, and it repeats a recent subject ('Ohio's 1820s Canal Route Was Shaped by Landowner Pressure')."
+        },
+        {
+          "premise": "The toy teddy bear is named after Theodore Roosevelt. In 1902 he refused to shoot a captured, tied-up bear on a Mississippi hunt. A Washington Post cartoon spread the story, and a Brooklyn shop owner made a stuffed 'Teddy's Bear'.",
+          "opening_visual": "Berryman's 1902 'Drawing the Line in Mississippi' cartoon (public-domain archival cartoon) next to a plain stuffed teddy bear",
+          "payoff": "A refusal to make an unsporting kill became the name of a common childhood toy. Limitation: the approved sources support the naming link and the Michtom toy. They do not establish that Michtom made the world's first stuffed bear, and this packet does not claim that.",
+          "viewer_reason": "Almost everyone has owned a teddy bear. The president's name and a public refusal to shoot give the story an immediate surprise and a concrete archival image.",
+          "rejection_reason": null
+        }
+      ],
+      "selected_index": 2,
+      "selection_reason": "The teddy bear is a universally recognized object, and its origin is an understandable surprise with a single archival cartoon as the opening image. Two independent approved publishers (NPS and the National Archives) support the core naming link. It is not among the recent subjects. The premise is narrowed to the naming and the Michtom toy, with no first-invention claim."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 144,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Your teddy bear carries an American president's name.",
+    "duration": 38.725,
+    "production_profile": 2,
+    "facebook_id": "1156081223562167",
+    "instagram_id": "17875057890644143"
   }
 ]
