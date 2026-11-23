@@ -371,3 +371,23 @@ class TelemetryTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+
+def test_spent_cloud_bundles_are_dropped_only_after_their_video_was_removed(tmp_path):
+    import json
+    from studio_hq.finished_cleanup import drop_spent_bundles
+    state = tmp_path
+    for run, removed in (('111', True), ('222', False), ('333', True)):
+        folder = state/'github-artifacts'/run
+        (folder/'files').mkdir(parents=True)
+        (folder/'artifact.zip').write_bytes(b'zip' * 10)
+        video = folder/'files'/'video.mp4'
+        if run == '333':
+            video.write_bytes(b'v')  # receipt says removed but the video is still here: keep the evidence
+        receipts = state/'finished-cleanup-receipts'
+        receipts.mkdir(exist_ok=True)
+        (receipts/f'{run}.json').write_text(json.dumps({'status': 'removed' if removed else 'verified_pending_removal',
+                                                        'original': str(video)}))
+    assert drop_spent_bundles(state) == {'removed': 1, 'bytes_removed': 30}
+    assert not (state/'github-artifacts'/'111'/'artifact.zip').exists()
+    assert (state/'github-artifacts'/'222'/'artifact.zip').exists() and (state/'github-artifacts'/'333'/'artifact.zip').exists()

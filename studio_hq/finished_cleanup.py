@@ -188,8 +188,33 @@ def cleanup_tick(config):
                             report.update(status='removed', removed=1, bytes_removed=manifest['files'][0]['size'],
                                           observed_at=stamp())
                             atomic_json(removal_record, report)
+            report['spent_bundles'] = drop_spent_bundles(state)
     except (Timeout, OSError, ValueError, KeyError, RuntimeError, sqlite3.Error, subprocess.TimeoutExpired) as exc:
         report['status'] = 'deferred' if isinstance(exc, (Timeout, sqlite3.OperationalError)) else 'failed'
         report['error_type'] = type(exc).__name__
     atomic_json(state/'last-finished-cleanup-tick.json', report)
     return report
+
+
+def drop_spent_bundles(state: Path) -> dict:
+    """Delete a cloud run's downloaded artifact.zip once its video was verified on Drive and removed.
+
+    The ZIP is only evidence for that removal (hosted_story_evidence); afterwards nothing reads it, and the
+    zips piled up (2 GB by 23 Nov). Only folders named in a 'removed' cleanup receipt whose video is gone.
+    """
+    root = (state/'github-artifacts').resolve()
+    dropped = freed = 0
+    for receipt in sorted((state/'finished-cleanup-receipts').glob('*.json')):
+        try:
+            record = read_json(receipt)
+            original = Path(record.get('original') or '').resolve()
+        except (OSError, ValueError):
+            continue
+        if record.get('status') != 'removed' or not original.is_relative_to(root) or original.exists():
+            continue
+        bundle = root/original.relative_to(root).parts[0]/'artifact.zip'
+        if bundle.is_file():
+            freed += bundle.stat().st_size
+            bundle.unlink()
+            dropped += 1
+    return {'removed': dropped, 'bytes_removed': freed}
