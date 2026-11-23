@@ -38,6 +38,12 @@ def system_prompt(w: int, h: int, design: dict | None = None) -> str:
 
 
 @lru_cache(maxsize=1)
+def textured() -> bool:
+    """Textured-illustration kit (paper, ink, wash, depth): on with HISTOLD_TEXTURE=1 while it is being judged."""
+    import os
+    return os.environ.get('HISTOLD_TEXTURE') == '1'
+
+
 def _light(colour: str) -> bool:
     r, g, b = (int(colour.lstrip('#')[i:i + 2], 16) for i in (0, 2, 4))
     return .299 * r + .587 * g + .114 * b > 140
@@ -56,7 +62,7 @@ def _base_css() -> str:
     return ''.join(faces) + _HERE.joinpath('cinematic_2d.css').read_text()
 
 
-def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None, painted=False) -> str:
+def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None, painted=False, texture=None) -> str:
     """Prefix helpers so authored layouts and keyframes retain precedence."""
     html = re.sub(r'<style id="cinematic-2d">.*?</style>', '', html, flags=re.S)
     # Asset binding replaces custom tags with SVG/figure elements. Preserve
@@ -101,7 +107,13 @@ def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None, p
 .k-stage .histold-map svg{width:100%;max-height:162px}
 .k-stage .house-rail{grid-column:1/-1}
 ''' if landscape else ''
-    style = '<style id="cinematic-2d">' + _base_css() + theme + geometry + '</style>'
+    texture = textured() if texture is None else texture
+    kit = _HERE.joinpath('cinematic_texture.css').read_text(encoding='utf-8') if texture else ''
+    style = '<style id="cinematic-2d">' + _base_css() + theme + geometry + kit + '</style>'
+    if texture:  # the hx-* filters the kit's classes point at
+        defs = _HERE.joinpath('cinematic_texture_defs.svg').read_text(encoding='utf-8')
+        body = re.search(r'<body[^>]*>', html, flags=re.I)
+        html = html[:body.end()] + defs + html[body.end():] if body else html
     head = re.search(r'<head\b[^>]*>', html, flags=re.I)
     if head:
         return html[:head.end()] + style + html[head.end():]

@@ -1,0 +1,20 @@
+/* Histold textured-illustration kit: hand-made look drawn in code (src/cinematic_motion.py injects it).
+   Grain and fibres sit over the whole frame; the hx-* classes give artwork ink, wash, shade and depth. */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:39;opacity:.45;mix-blend-mode:soft-light;
+  background:radial-gradient(120% 90% at 50% 42%,transparent 55%,rgba(0,0,0,.55) 100%),
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='540' height='960'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.008 .02' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .28  0 0 0 0 .2  0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>")}
+.hx-ink{filter:url(#hx-ink)}
+.hx-wash{filter:url(#hx-wash)}
+.hx-shadow{filter:url(#hx-shadow)}
+.hx-glow{filter:url(#hx-glow)}
+.hx-hatch{fill:url(#hx-hatch)}
+.hx-far{animation:kit-fx-far 14s linear both}
+.hx-near{animation:kit-fx-near 14s linear both}
+.hx-flicker{transform-box:fill-box;transform-origin:50% 100%;animation:hx-flicker .9s ease-in-out infinite alternate}
+.hx-rise{animation:hx-rise var(--t,6s) linear var(--d,0s) both}
+@keyframes kit-fx-far{from{transform:translateX(0)}to{transform:translateX(-10px)}}
+@keyframes kit-fx-near{from{transform:translateX(0)}to{transform:translateX(-28px)}}
+@keyframes hx-flicker{0%{transform:scale(1,1)}50%{transform:scale(1.06,.93)}100%{transform:scale(.95,1.08)}}
+@keyframes hx-rise{from{transform:translate(0,0) rotate(0);opacity:0}15%{opacity:.9}to{transform:translate(var(--x,30px),-160px) rotate(var(--r,140deg));opacity:0}}
