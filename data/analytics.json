@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-23T18:00:39.384708+00:00",
+      "updated": "2026-11-23T19:00:31.137671+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "v7fM7kWvKF4",
+          "title": "U.S. Lifesavers Fired a Cannon to Rescue Shipwrecked Crews",
+          "description": "When a ship ran aground near the U.S. coast, lifesavers on the beach used a small cannon to send a thin line out to the stranded ship. Army officer David Lyle designed the gun. The crew hauled heavier lines aboard, and survivors came ashore one at a time in a life ring with canvas pants sewn into it. It did not always work, and the National Park Service explains why.\n#history #shipwreck #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "breeches buoy",
+            "coast guard history",
+            "david lyle",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "ingenious solutions",
+            "lyle gun",
+            "maritime history",
+            "rescue technology",
+            "shipwreck rescue",
+            "us life-saving service",
+            "world history"
+          ],
+          "publishedAt": "2026-11-23T18:18:05Z",
+          "thumbnail": "https://i.ytimg.com/vi/v7fM7kWvKF4/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-23",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
         {
           "id": "zMUOPEgxclQ",
           "title": "The Library of Congress Was Rebuilt From One Man's Private Bookshelves",
@@ -103,7 +147,7 @@
           ],
           "publishedAt": "2026-11-22T23:17:16Z",
           "thumbnail": "https://i.ytimg.com/vi/-7-YlK4o8mM/mqdefault.jpg",
-          "views": 22,
+          "views": 23,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -148,8 +192,8 @@
           ],
           "publishedAt": "2026-11-22T18:31:51Z",
           "thumbnail": "https://i.ytimg.com/vi/yd3PWoRjNac/mqdefault.jpg",
-          "views": 5,
-          "likes": 0,
+          "views": 4,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -2167,48 +2211,6 @@
             "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
             "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
-        },
-        {
-          "id": "keMA0RGoEpM",
-          "title": "Before Nigeria's Presidency, What Was Nnamdi Azikiwe Really Doing?",
-          "description": "Nigeria's first president is often remembered for politics, but his early public career was built on newspapers. This short Behind the Legend story looks at how printing shaped his path to leadership. #NigerianHistory #WestAfricanHistory #BehindTheLegend\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "african history",
-            "african journalism",
-            "behind the legend",
-            "colonial west africa",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "nigeria first president",
-            "nigerian history",
-            "nnamdi azikiwe",
-            "west african history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T04:10:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/keMA0RGoEpM/mqdefault.jpg",
-          "views": 11,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 38.44,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 12.0,
-          "shares": 0,
-          "analytics_views": 7,
-          "engaged_views": 1,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
         }
       ]
     }
