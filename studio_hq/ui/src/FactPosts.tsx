@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ConfirmPanel, type CommandEvent, type Pending, type Send } from './Controls';
-import { ArrowUpRight, Pause, Play, Trash2, WandSparkles } from './icons';
+import { ArrowUpRight, Pause, Play, RotateCw, Trash2, WandSparkles } from './icons';
 import { mediaUrl } from './Media';
 
 type Time = (value: string | null) => string;
@@ -30,7 +30,7 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
   return <div className="page-stack">
     <section className="panel live-controls" aria-labelledby="fact-posts-heading">
       <div className="panel-head"><div><h2 id="fact-posts-heading">Fact image posts</h2>
-        <p>Verified history facts, illustrated by Codex, posted to Facebook and Instagram.</p></div>
+        <p>Verified history facts, illustrated by Gemini (Codex as backup), posted to Facebook and Instagram.</p></div>
         <span className={'status ' + (data.schedule.enabled ? 'good' : 'neutral')}>{data.schedule.enabled ? 'On schedule' : 'Paused'}</span></div>
       <div className="live-metrics">
         <div><small>Posted today</small><strong>{data.posted_today} of {data.schedule.hours_utc.length || 3}</strong></div>
@@ -80,6 +80,9 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
                   detail: post.headline ?? '', command: { action: 'fact_post_decide', channel: 'histold', id: post.id, choice: 'approve' } })}>Post it</button>
                 <button className="action" disabled={busy} onClick={() => send({ action: 'fact_post_decide', channel: 'histold', id: post.id, choice: 'skip' })}>Skip</button>
               </>}
+              {send && (post.status === 'failed' || post.status === 'waiting_plans') && <button className="action primary" disabled={busy || data.running}
+                aria-label={`Retry fact post ${post.headline ?? ''}`.trim()}
+                onClick={() => send({ action: 'fact_post_retry', channel: 'histold', id: post.id })}><RotateCw size={14}/>Retry</button>}
               {send && post.status === 'failed' && <button className="action" disabled={busy} aria-label={`Remove failed post ${post.headline ?? ''}`.trim()}
                 onClick={() => send({ action: 'fact_post_remove', channel: 'histold', id: post.id })}><Trash2 size={14}/>Remove</button>}
               {post.facebook_url && <a className="action" href={post.facebook_url} target="_blank" rel="noreferrer">Facebook <ArrowUpRight size={14}/></a>}

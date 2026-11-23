@@ -17,7 +17,7 @@ from .archive import atomic_json, read_json
 from .histold_live import clone, configured, control
 from .media import media_id
 
-ACTIONS = ('fact_post_decide', 'fact_post_make', 'fact_post_schedule', 'fact_post_remove')
+ACTIONS = ('fact_post_decide', 'fact_post_make', 'fact_post_schedule', 'fact_post_remove', 'fact_post_retry')
 POST_ID = re.compile(r'\d{8}_\d{6}_[0-9a-f]{6}')
 STATUS = {'making': 'Being made', 'awaiting_approval': 'Waiting for your OK', 'approved': 'Approved', 'posting': 'Posting',
           'posted': 'Posted', 'partly_posted': 'Partly posted', 'skipped': 'Skipped', 'failed': 'Failed',
@@ -92,6 +92,10 @@ def check(body) -> str:
         return str(body['enabled'])
     if action == 'fact_post_make':
         return 'now'
+    if action == 'fact_post_retry':
+        if not POST_ID.fullmatch(str(body.get('id'))):
+            raise ValueError('Choose a failed post to retry.')
+        return str(body['id'])
     if action == 'fact_post_remove':
         if body.get('id') != 'failed' and not POST_ID.fullmatch(str(body.get('id'))):
             raise ValueError('Choose a failed post to remove.')
@@ -122,6 +126,15 @@ def perform(config, body) -> str:
         _runner(config, ['--make'])
         return 'Making a fact post now. It appears here, and in Telegram for your OK, in about 5 minutes.'
     rows = queue(config)
+    if action == 'fact_post_retry':
+        entry = next((r for r in rows if isinstance(r, dict) and r.get('id') == body['id']), None)
+        if not entry or entry.get('status') not in ('failed', 'waiting_plans'):
+            raise ValueError('Only a failed or waiting post can be retried.')
+        lock = control(config) / 'fact-post.lock'
+        if lock.is_file() and time.time() - lock.stat().st_mtime < 3600:
+            raise ValueError('A fact post is being made right now; retry when it finishes.')
+        _runner(config, ['--retry-post', body['id']])
+        return 'Retrying it with the same fact. The new card appears here, and in Telegram for your OK, in about 5 minutes.'
     if action == 'fact_post_remove':
         # Only failed posts: a removed post is hidden from the list but stays in the queue file.
         targets = [r for r in rows if isinstance(r, dict) and r.get('status') == 'failed'

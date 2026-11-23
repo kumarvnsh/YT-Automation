@@ -4,7 +4,8 @@
   --make [--slot HOUR]   research, illustrate, render and check one post; during the approval period it is
                          sent to Telegram with Approve / Skip, otherwise it is posted straight away
   --post ID              post an approved card to Facebook and Instagram
-  --retry                remake a post that waited for the Claude / Codex limits to reset
+  --retry                remake the post that waited for the plan limits to reset (its fact is kept)
+  --retry-post ID        remake one failed or waiting post, keeping its verified fact (Telegram / Studio HQ button)
 
 Started by scripts/dispatch.py at the fact-post hours, by Telegram buttons and by Studio HQ.
 """
@@ -41,6 +42,10 @@ def environment(cfg) -> None:
     os.environ.update({k: v for k, v in env.items() if isinstance(v, str)})
 
 
+def retry_button(post_id: str) -> list:
+    return [('fact_post_retry', {'id': post_id}, '🔁 Retry')]
+
+
 def notify_draft(entry: dict) -> None:
     from src import telegram_control, telegram_views
     status = telegram_control.notify_photo(Path(entry['card']), telegram_views.post_caption(entry), [
@@ -49,17 +54,27 @@ def notify_draft(entry: dict) -> None:
     log('approval request', entry['id'], status)
 
 
-def make(cfg, slot: str) -> int:
+def _latest(fact_posts) -> str | None:
+    rows = [r for r in fact_posts.load_queue() if r.get('status') in ('failed', 'waiting_plans')]
+    return rows[-1]['id'] if rows else None
+
+
+def make(cfg, slot: str, resume: str | None = None) -> int:
     from src import fact_posts, plan_ai, telegram_control
     try:
-        entry = fact_posts.make_post(cfg, slot)
+        entry = fact_posts.make_post(cfg, slot, resume=resume)
     except plan_ai.PlanUnavailable as exc:
         log('waiting for the plans:', exc)
-        telegram_control.notify('⏳ Sir, your Claude and Codex limits are used up, so this Histold fact post will be made after they reset.')
+        what = 'image makers (Gemini and Codex)' if 'image provider' in str(exc) else 'Claude and Codex limits'
+        post = _latest(fact_posts)
+        telegram_control.notify(f'⏳ Sir, the {what} are used up, so this Histold fact post waits for them to reset. '
+                                'Tap Retry to try again sooner.', retry_button(post) if post else None)
         return 0
     except Exception as exc:  # noqa: BLE001
         log('fact post failed:', type(exc).__name__, exc)
-        telegram_control.notify(f'❌ Sir, a Histold fact post could not be made ({str(exc)[:160]}). The next one runs as usual.')
+        post = _latest(fact_posts)
+        telegram_control.notify(f'❌ Sir, a Histold fact post could not be made ({str(exc)[:160]}). '
+                                'Tap Retry to make it again; the next one also runs as usual.', retry_button(post) if post else None)
         return 1
     log('made', entry['id'], entry['status'], '-', entry.get('headline'))
     if entry['status'] == 'awaiting_approval':
@@ -84,6 +99,7 @@ def main() -> int:
     group.add_argument('--make', action='store_true')
     group.add_argument('--post')
     group.add_argument('--retry', action='store_true')
+    group.add_argument('--retry-post')
     ap.add_argument('--slot', default='')
     args = ap.parse_args()
     LOCK.parent.mkdir(parents=True, exist_ok=True)
@@ -95,7 +111,7 @@ def main() -> int:
             if time.time() - LOCK.stat().st_mtime > 3600:
                 LOCK.unlink(missing_ok=True)
                 continue
-            if not args.post:
+            if not (args.post or args.retry_post):
                 log('another fact post is being made')
                 return 0
             time.sleep(10)
@@ -107,12 +123,16 @@ def main() -> int:
         environment(cfg)
         if args.post:
             return post(cfg, args.post)
+        if args.retry_post:
+            return make(cfg, '', resume=args.retry_post)
         if args.retry:
             from src import fact_posts
             waiting = [r for r in fact_posts.load_queue() if r.get('status') == 'waiting_plans']
-            for row in waiting:
+            for row in waiting[:-1]:  # older waiting duplicates; the newest is remade with its fact
                 fact_posts.update(row['id'], status='replaced')
-            return make(cfg, waiting[-1].get('slot') or '' if waiting else '')
+            if waiting:
+                return make(cfg, waiting[-1].get('slot') or '', resume=waiting[-1]['id'])
+            return make(cfg, '')
         return make(cfg, args.slot)
     finally:
         os.close(fd)

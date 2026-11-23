@@ -295,3 +295,12 @@ def test_status_lists_ai_plans_and_when_images_come_back():
     assert '🔴 Codex · resting until 25 Nov 22:47' in text
     assert 'Claude Sonnet 80% · Gemini Neon back 15:08' in text
     assert '🎨 Images · Gemini back 15:09 · Codex back 25 Nov 22:47' in text
+
+
+def test_retry_button_remakes_the_post():
+    from unittest import mock
+    from src import fact_posts, telegram_control as tc
+    with mock.patch.object(fact_posts, 'retry', return_value='Retrying it with the same fact now.') as retry:
+        ok, text = tc.Controller.execute(mock.Mock(), 'fact_post_retry', {'id': '20261123_111253_7e5835'})
+    assert ok and 'Retrying' in text
+    retry.assert_called_once_with('20261123_111253_7e5835')

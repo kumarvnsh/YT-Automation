@@ -358,18 +358,39 @@ def caption(cfg: Config, fact: dict, sources: list[dict]) -> str:
 
 # ---------------------------------------------------------------- make one post
 
-def make_post(cfg: Config, slot: str = '') -> dict:
-    """Research, illustrate, render and check one post; returns its queue entry."""
+def make_post(cfg: Config, slot: str = '', resume: str | None = None) -> dict:
+    """Research, illustrate, render and check one post; returns its queue entry.
+
+    resume: the id of a failed or waiting post. Its already-verified fact (fact.json) is kept and only the
+    picture and card are made again; without a saved fact it is researched afresh under the same id.
+    """
     rows = load_queue()
     avoid = [r.get('headline', '') for r in rows]
-    post_id = datetime.now().strftime('%Y%m%d_%H%M%S_') + uuid.uuid4().hex[:6]
-    folder = POSTS / post_id
-    folder.mkdir(parents=True, exist_ok=True)
-    entry = {'id': post_id, 'status': 'making', 'slot': slot or None, 'created': now(), 'updated': now()}
-    save_queue(rows + [entry])
+    saved = None
+    if resume:
+        if not any(r.get('id') == resume and r.get('status') in ('failed', 'waiting_plans') for r in rows):
+            raise ValueError('Only a failed or waiting fact post can be retried.')
+        post_id = resume
+        folder = POSTS / post_id
+        folder.mkdir(parents=True, exist_ok=True)
+        try:
+            saved = json.loads((folder / 'fact.json').read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            saved = None
+        update(post_id, status='making', error=None, retry_at=None, retried=now())
+    else:
+        post_id = datetime.now().strftime('%Y%m%d_%H%M%S_') + uuid.uuid4().hex[:6]
+        folder = POSTS / post_id
+        folder.mkdir(parents=True, exist_ok=True)
+        entry = {'id': post_id, 'status': 'making', 'slot': slot or None, 'created': now(), 'updated': now()}
+        save_queue(rows + [entry])
     try:
-        fact, sources = find_fact(cfg, avoid)
-        (folder / 'fact.json').write_text(json.dumps({**fact, 'verified_sources': sources}, indent=1, ensure_ascii=False), encoding='utf-8')
+        if saved and saved.get('verified_sources'):
+            sources = saved.pop('verified_sources')
+            fact = saved
+        else:
+            fact, sources = find_fact(cfg, avoid)
+            (folder / 'fact.json').write_text(json.dumps({**fact, 'verified_sources': sources}, indent=1, ensure_ascii=False), encoding='utf-8')
         update(post_id, headline=str(fact.get('headline'))[:120], fact=str(fact.get('fact'))[:400],
                sources=[{'publisher': s.get('publisher'), 'url': s['url']} for s in sources])
         reference = find_reference(fact, folder)
@@ -447,14 +468,26 @@ def publish(cfg: Config, post_id: str) -> dict:
 
 # ---------------------------------------------------------------- approval
 
-def start_posting(post_id: str) -> None:
-    """Post in a separate process (it takes up to a couple of minutes) with the production tools."""
+def start_posting(post_id: str, *args: str) -> None:
+    """Post (or, with args, run another run_fact_post.py mode) in a separate process with the production tools."""
     import subprocess
     from .config import load_config
     python = Path((load_config().get('local_production', {}) or {}).get('python') or r'D:\YT-Automation-env\histold-local\Scripts\python.exe')
     flags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else 0
-    subprocess.Popen([str(python), str(base_dir() / 'scripts' / 'run_fact_post.py'), '--post', post_id], cwd=base_dir(),
+    subprocess.Popen([str(python), str(base_dir() / 'scripts' / 'run_fact_post.py'), *(args or ('--post',)), post_id], cwd=base_dir(),
                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=flags)
+
+
+def retry(post_id: str, *, start=start_posting) -> str:
+    """Remake a failed or waiting post, keeping its verified fact (Telegram and Studio HQ Retry buttons)."""
+    entry = next((r for r in load_queue() if r['id'] == post_id), None)
+    if not entry:
+        raise ValueError('That fact post no longer exists.')
+    if entry.get('status') not in ('failed', 'waiting_plans'):
+        return f"That post is already {str(entry.get('status')).replace('_', ' ')}."
+    start(post_id, '--retry-post')
+    kept = ' with the same fact' if entry.get('headline') else ''
+    return f'Retrying it{kept} now. The new card comes here for your OK in about 5 minutes.'
 
 
 def decide(post_id: str, choice: str, *, start=start_posting) -> str:

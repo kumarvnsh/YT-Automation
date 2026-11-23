@@ -32,6 +32,24 @@ class Queue(unittest.TestCase):
         self.assertFalse(fp.needs_approval(CFG, datetime(2026, 11, 30, 1, tzinfo=timezone.utc)))
         self.assertTrue(fp.needs_approval(Config({'fact_posts': {'always_approve': True}})))
 
+    def test_retry_button_reuses_the_verified_fact(self):
+        pid = '20261123_111253_7e5835'
+        fp.save_queue([{'id': pid, 'status': 'waiting_plans', 'headline': 'Pieces of the Wright Flyer landed on the Moon'}])
+        started = []
+        self.assertIn('same fact', fp.retry(pid, start=lambda *a: started.append(a)))
+        self.assertEqual(started, [(pid, '--retry-post')])
+        fp.update(pid, status='posted')
+        self.assertIn('already posted', fp.retry(pid, start=lambda *a: started.append(a)))
+        (Path(self.folder.name) / pid).mkdir()
+        (Path(self.folder.name) / pid / 'fact.json').write_text(json.dumps(
+            {'headline': 'Wright Flyer', 'fact': 'Wood went to the Moon.', 'verified_sources': [{'publisher': 'NASA', 'url': 'https://nasa.gov/x'}]}))
+        fp.update(pid, status='failed')
+        with mock.patch.object(fp, 'find_fact') as research,                 mock.patch.object(fp, 'find_reference', return_value=None),                 mock.patch.object(fp, 'illustrate', side_effect=lambda cfg, fact, ref, out: out),                 mock.patch.object(fp, 'render_card', side_effect=lambda fact, sources, art, out: out),                 mock.patch.object(fp, 'check_card', return_value=[]), mock.patch.object(fp, 'caption', return_value='c'):
+            entry = fp.make_post(CFG, resume=pid)
+        research.assert_not_called()  # the checked fact is kept: no new research
+        self.assertEqual((entry['id'], entry['headline'], entry['status']), (pid, 'Wright Flyer', 'awaiting_approval'))
+        self.assertEqual(len(fp.load_queue()), 1)
+
     def test_decide_approves_once_and_starts_posting(self):
         fp.save_queue([{'id': '20261122_124801_5b2615', 'status': 'awaiting_approval'}])
         started = []

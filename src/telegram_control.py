@@ -44,6 +44,7 @@ CHANNELS = ('histold', 'shotsnip')
 ACTIONS = {
     'fix_problem': {'label': 'Fix this problem now', 'args': {'channel': '^(histold|shotsnip)$', 'key': '^[a-z0-9-]{1,60}$'}},
     'fact_post': {'label': 'Approve or skip a fact post', 'args': {'id': '^[0-9]{8}_[0-9]{6}_[0-9a-f]{6}$', 'choice': '^(approve|skip)$'}},
+    'fact_post_retry': {'label': 'Retry a fact post', 'args': {'id': '^[0-9]{8}_[0-9]{6}_[0-9a-f]{6}$'}},
     'dismiss_problem': {'label': 'Not a problem', 'args': {'channel': '^(histold|shotsnip)$', 'key': '^[a-z0-9-]{1,60}$'}},
     'operator_run': {'label': 'Run the Operator now', 'args': {}},
     'operator_pause': {'label': 'Pause the Operator', 'args': {}},
@@ -550,6 +551,9 @@ class Controller:
             return ok, f"Fixing: {(item.get('plain') or item['title'])[:150]}\n\n" + out
         if action == 'fact_post':
             return decide_fact_post(args['id'], args['choice'])
+        if action == 'fact_post_retry':
+            from src import fact_posts
+            return True, fact_posts.retry(args['id'])
         if action == 'dismiss_problem':
             bot_findings.settle(self.workspace, args['channel'], args['key'], 'The owner marked this as not a problem.', 'owner')
             return True, ('Removed from your problems. Repeat reports of it are ignored for '
