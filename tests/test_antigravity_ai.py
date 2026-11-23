@@ -48,6 +48,13 @@ class Antigravity(unittest.TestCase):
 
 
 class ImageOrder(unittest.TestCase):
+    def setUp(self):  # never read the laptop's real plan state (Gemini may really be resting)
+        state = {'usage': {}, 'cooldown': {}, 'last_error': {}}
+        for name, value in (('_load', state), ('_save', None)):
+            patcher = mock.patch.object(plan_ai, name, return_value=value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
     def test_gemini_first_then_codex_backup(self):
         cfg = Config({'local_ai': {'image_order': ['antigravity', 'codex']}})
         with tempfile.TemporaryDirectory() as folder:

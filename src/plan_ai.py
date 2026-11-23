@@ -174,6 +174,16 @@ def next_ready_at(cfg=None, now: float | None = None) -> float:
     return soonest if soonest > now else now + 3600
 
 
+def next_image_at(cfg=None, now: float | None = None) -> float:
+    """When an image provider can draw again: Gemini's reported reset or Codex's, whichever is sooner."""
+    now = now or time.time()
+    state = _load()
+    times = [t for t in (state['cooldown'].get('antigravity_image', 0), state['cooldown'].get('codex', 0)) if t > now]
+    if len(times) < 2:  # one of them is not resting, so it may simply be closed: look again in an hour
+        return now + 3600
+    return min(times) + 60
+
+
 def order_for(cfg, purpose: str, web: bool) -> list[str]:
     order = list(cfg.get('local_ai.order', DEFAULT_ORDER) if cfg is not None else DEFAULT_ORDER)
     qwen_for = set(cfg.get('local_ai.qwen_for', DEFAULT_QWEN_FOR) if cfg is not None else DEFAULT_QWEN_FOR)

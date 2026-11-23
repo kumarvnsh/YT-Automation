@@ -126,3 +126,46 @@ class CinematicMotionTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+ANIM = '<style>@keyframes k-in{from{opacity:0}to{opacity:1}} .a{animation:k-in 1s both}</style>'
+
+
+def _check(html, duration=3):
+    from playwright.sync_api import sync_playwright
+    from src.claude_motion import fit_stage, inspect_scene
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page(viewport={'width': 540, 'height': 960})
+        ready = prepare_html(html, 1)
+        fitted = fit_stage(page, ready)
+        report = inspect_scene(page, fitted, duration, 30, [], True)
+        browser.close()
+    return fitted, report['errors']
+
+
+class LayoutChecks(unittest.TestCase):
+    def test_a_wrapper_reaching_the_logo_area_is_fine_when_its_words_sit_lower(self):
+        html = ('<html><head>' + ANIM + '</head><body><div class="k-stage" style="justify-content:flex-start;padding-top:0">'
+                '<div style="padding-top:240px"><h1 class="a" style="margin:0;font-size:36px">Words well below the logo</h1>'
+                '<svg class="a" width="300" height="200"><rect class="a" width="300" height="200" fill="#c96"/></svg></div></div></body></html>')
+        _, errors = _check(html)
+        self.assertFalse([e for e in errors if 'HISTOLD' in e], errors)
+
+    def test_too_tall_content_is_fitted_between_logo_and_captions(self):
+        tall = ''.join(f'<p class="a" style="margin:0;font-size:30px;line-height:60px">Line {i}</p>' for i in range(12))
+        html = '<html><head>' + ANIM + '</head><body><div class="k-stage">' + tall + '</div></body></html>'
+        fitted, errors = _check(html)
+        self.assertIn('histold-fit', fitted)
+        self.assertFalse([e for e in errors if 'HISTOLD' in e or 'caption band' in e], errors)
+
+    def test_words_under_a_drawing_and_a_map_over_a_diagram_are_caught(self):
+        html = ('<html><head>' + ANIM + '</head><body><div class="k-stage"><div class="a" style="position:relative;width:420px;height:300px">'
+                '<div data-map-id="x" style="position:absolute;left:0;top:0;width:300px;height:200px">'
+                '<svg width="300" height="200"><rect width="300" height="200" fill="#c96"/></svg>'
+                '<div style="position:absolute;left:40px;top:90px;font-size:22px">United States</div></div>'
+                '<svg style="position:absolute;left:20px;top:40px" width="300" height="200"><rect width="300" height="200" fill="#333"/></svg>'
+                '</div></div></body></html>')
+        _, errors = _check(html)
+        self.assertTrue(any('covered by other artwork' in e for e in errors), errors)
+        self.assertTrue(any('a map overlaps other artwork' in e for e in errors), errors)

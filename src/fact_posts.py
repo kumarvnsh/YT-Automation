@@ -382,7 +382,8 @@ def make_post(cfg: Config, slot: str = '') -> dict:
         return update(post_id, status=status, card=str(card), caption=caption(cfg, fact, sources),
                       reference=reference and {k: reference.get(k) for k in ('title', 'license', 'url')})
     except plan_ai.PlanUnavailable as exc:
-        update(post_id, status='waiting_plans', error=str(exc)[:240], retry_at=plan_ai.next_ready_at(cfg))
+        retry = plan_ai.next_image_at(cfg) if 'image provider' in str(exc) else plan_ai.next_ready_at(cfg)
+        update(post_id, status='waiting_plans', error=str(exc)[:240], retry_at=retry)
         raise
     except Exception as exc:
         update(post_id, status='failed', error=f'{type(exc).__name__}: {exc}'[:900])

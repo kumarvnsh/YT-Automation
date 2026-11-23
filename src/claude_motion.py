@@ -331,10 +331,16 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
     for time in times:
         page.evaluate("t => document.getAnimations().forEach(a => {a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", time * 1000)
         errors.extend(f'{time:.2f}s: {e}' for e in page.evaluate(_LINT_JS))
+        errors.extend(f'{time:.2f}s: {e}' for e in page.evaluate(_COVER_JS))
         if branding:
+            # Judge the text itself, not the boxes that hold it: a wrapper whose padding reaches the logo
+            # area while its words sit lower used to reject good scenes (2026-11-23).
             collisions = page.evaluate("""() => [...document.querySelectorAll('.k-stage *')].filter(e => {
-              const r=e.getBoundingClientRect(),s=getComputedStyle(e);
-              return s.visibility!=='hidden' && +s.opacity>0.05 && e.textContent.trim() && r.left<innerWidth*.17 && r.right>innerWidth*.045 && r.top<innerHeight*.12 && r.bottom>innerHeight*.045;
+              if (![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return false;
+              for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
+                const s = getComputedStyle(n); if (s.display === 'none' || s.visibility === 'hidden' || +s.opacity < 0.05) return false; }
+              const g = document.createRange(); g.selectNodeContents(e); const r = g.getBoundingClientRect();
+              return r.width > 1 && r.left<innerWidth*.17 && r.right>innerWidth*.045 && r.top<innerHeight*.12 && r.bottom>innerHeight*.045;
             }).length""")
             if collisions:
                 errors.append(f'{time:.2f}s: text overlaps HISTOLD safe area')
@@ -623,6 +629,107 @@ _LINT_JS = """() => {
   return [...new Set(out)];
 }"""
 
+_EXTENT_JS = """() => {
+  // Where the scene's visible text and art sit right now (full-frame backgrounds excluded).
+  const W = innerWidth, H = innerHeight;
+  const seen = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05) return false; } return true; };
+  let top = Infinity, bottom = -Infinity;
+  for (const e of document.querySelectorAll('.k-stage *')) {
+    const tag = e.tagName.toLowerCase();
+    const text = [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+    if (!text && !['img', 'svg', 'figure'].includes(tag) && !e.classList.contains('k-photo')) continue;
+    if (e.closest('svg') && tag !== 'svg' && tag !== 'text') continue;
+    const r = e.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2 || (r.width > W * .8 && r.height > H * .6) || !seen(e)) continue;
+    top = Math.min(top, r.top); bottom = Math.max(bottom, r.bottom);
+  }
+  const s = document.querySelector('.k-stage');
+  const cs = s ? getComputedStyle(s) : null;
+  return {top, bottom, padTop: cs ? parseFloat(cs.paddingTop) : 124,
+          floor: s ? s.getBoundingClientRect().bottom : H * .8};
+}"""
+
+
+def fit_stage(page, html: str) -> str:
+    """Keep a scene's content between the HISTOLD logo area and the caption band.
+
+    The stage centres its content, so anything too tall spilled out of both ends: the headline rose into
+    the logo area or labels fell into the captions, and the scene was rejected for the plain house
+    template. The visible text and art are measured across the timeline, and the stage is scaled and
+    shifted just enough for that whole span to fit. Scenes that already fit are left untouched.
+    """
+    try:
+        page.set_content(html, wait_until='load')
+        page.evaluate('async () => { await document.fonts.ready; }')
+        spans = []
+        for moment in (300, 1000, 2000, 3500, 5000, 7000, 9000, 12000):
+            page.evaluate("t => document.getAnimations().forEach(a => {a.pause(); "
+                          "a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", moment)
+            spans.append(page.evaluate(_EXTENT_JS))
+        page.evaluate(_SEEK_END_JS)
+        spans.append(page.evaluate(_EXTENT_JS))
+    except Exception:  # noqa: BLE001 - measuring is a bonus; the checks still judge the scene
+        return html
+    found = [x for x in spans if x['top'] not in (None, float('inf')) and x['bottom'] is not None]
+    if not found:
+        return html
+    top = min(x['top'] for x in found)
+    bottom = max(x['bottom'] for x in found)
+    ceiling, floor = found[0]['padTop'], found[0]['floor'] - 10
+    if top >= ceiling - 2 and bottom <= floor + 2:
+        return html
+    scale = min(1.0, (floor - ceiling) / max(1.0, bottom - top))
+    if scale < .55:  # would be unreadable; let the checks and repair handle it
+        return html
+    # Centre the scaled span in the room between the logo area and the captions (y' = shift + scale*y).
+    shift = ceiling + ((floor - ceiling) - scale * (bottom - top)) / 2 - scale * top
+    style = ('<style id="histold-fit">.k-stage{overflow:visible!important;transform-origin:50% 0!important;'
+             f'transform:translateY({shift:.1f}px) scale({scale:.3f})!important}}</style>')
+    head = re.search(r'</head\s*>', html, flags=re.I)
+    return html[:head.start()] + style + html[head.start():] if head else style + html
+
+
+_COVER_JS = """() => {
+  // Words hidden under other artwork, and maps laid over other drawings. Text-on-text is in _LINT_JS;
+  // these slipped through it (2026-11-23 "Thermostat" Short: a map under the furnace diagram).
+  const out = [], W = innerWidth, H = innerHeight;
+  const seen = e => { for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05) return false; } return true; };
+  const big = e => { const r = e.getBoundingClientRect(); return r.width > W * .8 && r.height > H * .6; };
+  for (const e of document.querySelectorAll('.k-stage *')) {
+    if (e.closest('svg') && !['text', 'tspan'].includes(e.tagName.toLowerCase())) continue;
+    if (![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) || !seen(e)) continue;
+    const g = document.createRange(); g.selectNodeContents(e); const r = g.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4) continue;
+    let covered = 0;
+    for (const fx of [.5, .25, .75, .12, .88]) {
+      const x = r.left + r.width * fx, y = r.top + r.height / 2;
+      if (x < 0 || y < 0 || x >= W || y >= H) continue;
+      const hit = document.elementFromPoint(x, y);
+      if (!hit || hit === e || e.contains(hit) || hit.contains(e) || big(hit) || !seen(hit)) continue;
+      if ((hit.closest('svg') || hit).contains(e)) continue;
+      covered++;
+    }
+    if (covered >= 2) out.push('"' + e.textContent.trim().slice(0, 30) + '" is covered by other artwork');
+  }
+  const arts = [...document.querySelectorAll('.k-stage img, .k-stage svg, .k-stage .k-photo, .k-stage [data-map-id]')]
+    .filter(e => !(e.tagName.toLowerCase() === 'svg' && e.parentElement.closest('svg')) && seen(e) && !big(e));
+  const area = r => Math.max(0, r.width) * Math.max(0, r.height);
+  for (const m of arts.filter(e => e.matches('[data-map-id]'))) {
+    const a = m.getBoundingClientRect();
+    for (const o of arts) {
+      if (o === m || o.contains(m) || m.contains(o) || o.closest('[data-map-id]')) continue;
+      const b = o.getBoundingClientRect();
+      const w = Math.min(a.right, b.right) - Math.max(a.left, b.left), h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      if (w > 0 && h > 0 && w * h > .12 * Math.min(area(a), area(b))) out.push('a map overlaps other artwork');
+    }
+  }
+  return [...new Set(out)];
+}"""
+
 _SEEK_END_JS = """() => document.getAnimations().forEach(a => {
   a.pause();
   const end = a.effect.getComputedTiming().endTime;
@@ -815,7 +922,13 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
             st['painted_scenes'] = sorted(paints)
         except Exception as exc:  # noqa: BLE001
             print(f'  ! painted backdrops unavailable ({str(exc)[:160]})')
+    fit_page = []  # set once the browser is open: every prepared scene is then fitted to its stage
+
     def prepare(html, index, paint=True):
+        ready = _prepare(html, index, paint)
+        return fit_stage(fit_page[0], ready) if fit_page and cinematic else ready
+
+    def _prepare(html, index, paint=True):
         from .icon_assets import bind_icons
         from .portrait_assets import bind_photos
         bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
@@ -851,6 +964,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page(viewport={"width": cw, "height": ch}, device_scale_factor=_SCALE)
+            fit_page.append(page)
             if not production:
                 scenes = _check_and_repair(cfg, page, scenes, cw, ch)
             else:
