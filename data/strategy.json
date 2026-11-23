@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T03:00:26.629460+00:00",
+  "updated": "2026-11-23T07:00:52.343047+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "How Did Ancient Egyptians Keep Time Once the Sun Went Down?",
         "Why Did One Emperor Dig a Canal Across Half of China?"
       ],
-      "measured_videos": 115
+      "measured_videos": 114
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 115
+      "measured_videos": 114
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 113,
-          "mean_like_rate": 0.003108
+          "measured_videos": 112,
+          "mean_like_rate": 0.003136
         },
         "fb": {
-          "measured_videos": 110,
-          "mean_like_rate": 0.00191
+          "measured_videos": 109,
+          "mean_like_rate": 0.001927
         },
         "ig": {
-          "measured_videos": 123,
-          "mean_like_rate": 0.136477
+          "measured_videos": 122,
+          "mean_like_rate": 0.137331
         }
       },
       "Museum object": {
@@ -116,12 +116,12 @@
       }
     }
   },
-  "videos_scored": 115,
+  "videos_scored": 114,
   "weights": {
     "series": {
       "school_myths": 0.0676,
-      "mistakes": 0.0686,
-      "almost": 0.0686,
+      "mistakes": 0.0685,
+      "almost": 0.0685,
       "erased": 0.0719,
       "unsolved": 0.0699,
       "weird_dark": 0.0719,
@@ -135,50 +135,50 @@
       "found_by_accident": 0.0699
     },
     "region": {
-      "india": 0.1131,
-      "africa": 0.1109,
-      "japan": 0.1162,
-      "china": 0.116,
-      "russia": 0.1048,
-      "middle_east": 0.1074,
-      "europe": 0.1175,
-      "americas": 0.096,
-      "asia_pacific": 0.1182
+      "india": 0.1143,
+      "africa": 0.1107,
+      "japan": 0.116,
+      "china": 0.1158,
+      "russia": 0.1046,
+      "middle_east": 0.1072,
+      "europe": 0.1174,
+      "americas": 0.0958,
+      "asia_pacific": 0.1181
     },
     "duration_variant": {
-      "concise": 0.4962,
-      "story": 0.5038
+      "concise": 0.4954,
+      "story": 0.5046
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "erased": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "spy_gadgets": {
         "n": 0,
@@ -190,7 +190,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "worst_jobs": {
         "n": 0,
@@ -198,29 +198,29 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.435
+        "mean_score": 0.434
       }
     },
     "region": {
       "india": {
-        "n": 14,
-        "mean_score": 0.507
+        "n": 13,
+        "mean_score": 0.511
       },
       "africa": {
         "n": 15,
-        "mean_score": 0.498
+        "mean_score": 0.497
       },
       "japan": {
         "n": 12,
-        "mean_score": 0.519
+        "mean_score": 0.518
       },
       "china": {
         "n": 12,
@@ -228,7 +228,7 @@
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.473
+        "mean_score": 0.472
       },
       "middle_east": {
         "n": 11,
@@ -236,11 +236,11 @@
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.525
+        "mean_score": 0.524
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.435
+        "mean_score": 0.434
       },
       "asia_pacific": {
         "n": 11,
@@ -253,8 +253,8 @@
         "mean_score": 0.497
       },
       "story": {
-        "n": 52,
-        "mean_score": 0.503
+        "n": 51,
+        "mean_score": 0.504
       }
     }
   },
@@ -278,25 +278,31 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "Exactly 0 plays while marked available; 212 Instagram plays same period"
+      "reason": "0 plays while available, despite 212 Instagram plays"
     },
     {
       "video_id": "-cPiNs-0pLA",
       "platform": "fb",
       "views": 3,
-      "reason": "3 plays with implausible 23.2s average watch time"
+      "reason": "23.2s average watch on 3 plays"
     },
     {
       "video_id": "yUDJaAj3Zvg",
       "platform": "fb",
       "views": 3,
-      "reason": "3 plays with implausible 24.5s average watch time"
+      "reason": "24.5s average watch on 3 plays"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "2 plays with implausible 32.3s average watch time"
+      "reason": "32.3s average watch on 2 plays"
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "2 FB plays vs ~200 typical for the period"
     },
     {
       "video_id": "lCQJdMRx814",
@@ -357,12 +363,6 @@
       "platform": "yt",
       "views": 9,
       "reason": "Viewing percentage missing in the recent export gap."
-    },
-    {
-      "video_id": "SfvGGm6eaok",
-      "platform": "fb",
-      "views": 2,
-      "reason": "Two Facebook plays alongside 139 Instagram views fits the older near-zero cluster."
     },
     {
       "video_id": "N12YUvX0VQE",
