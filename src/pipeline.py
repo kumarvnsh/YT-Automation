@@ -714,6 +714,23 @@ def _skip_upload(st: dict) -> bool:
     return bool(st.get("no_upload")) and "upload" not in st.get("done", [])
 
 
+def _queue_rerender(st: dict, step: str, exc: Exception) -> None:
+    """On the laptop, a failed render check makes the next attempt render the video again.
+
+    Retrying only the quality step re-checks the same frames and can never pass, so every local run
+    of that stage used to fall back to the paid cloud. One fresh render per stage; cloud runs are
+    single attempts and keep their behaviour.
+    """
+    if env('PUBLISH_WORKFLOW') != 'local' or step != 'quality' or 'Renderer visual checks failed' not in str(exc):
+        return
+    if st.get('rerenders', 0) >= 1:
+        return
+    st['rerenders'] = st.get('rerenders', 0) + 1
+    st['done'] = [s for s in st['done'] if s not in ('render', 'compose')]
+    st.pop('render_quality', None)
+    print('  ↻ render checks failed: the next attempt renders the video again')
+
+
 def _pending_steps(st: dict) -> list[str]:
     skip = _skip_upload(st)
     return [s for s in st["target_steps"] if s != 'verify' and s not in st["done"] and not (s == "upload" and skip)]
@@ -804,6 +821,7 @@ def _run_stage(cfg, stage, *, one_step, notifier, force_upload, privacy_override
             save_state(stage, st)
         except Exception as exc:  # noqa: BLE001
             st["error"] = str(exc)
+            _queue_rerender(st, step, exc)
             save_state(stage, st)
             print(f"  !! step '{step}' failed: {exc}")
             if notifier is not None:

@@ -33,8 +33,15 @@ STYLE = ('Rich painterly illustration in the manner of an editorial gouache or a
          'navy, warm cream, terracotta and muted brass.')
 
 
+_OFF = []  # set for the rest of this process once Codex is found unavailable at the start of a video
+
+
 def enabled() -> bool:
-    return os.environ.get('HISTOLD_PAINTED') == '1'
+    return os.environ.get('HISTOLD_PAINTED') == '1' and not _OFF
+
+
+def disable() -> None:
+    _OFF.append(True)
 
 
 def _prompt(title: str, narration: str, story: str, landscape: bool) -> str:
@@ -63,6 +70,9 @@ class Painter:
     def __init__(self, cfg, title: str, narrations: list[str], folder: Path, w: int, h: int):
         settings = cfg.get('local_production.painted_scenes', {}) or {}
         self.cfg, self.folder, self.w, self.h = cfg, Path(folder), w, h
+        from . import plan_ai
+        if not plan_ai.status(cfg)['codex']['ready']:  # capped or resting: the video keeps the normal look
+            raise plan_ai.PlanUnavailable('Codex is resting or capped')
         self.limit = int(settings.get('max_images', 10)) if isinstance(settings, dict) else 10
         self.timeout = int(settings.get('timeout_seconds', 360)) if isinstance(settings, dict) else 360
         count = len(narrations)
@@ -102,22 +112,33 @@ class Painter:
 
     def collect(self, grace: float = 240) -> dict[int, Path]:
         wait(self.futures.values(), timeout=grace)
-        done = {paint: f.result() for paint, f in self.futures.items() if f.done() and not f.exception()}
+        self.stopped = True  # paintings still queued are not started; the video goes on without them
+        for future in self.futures.values():
+            future.cancel()
+        done = {paint: f.result() for paint, f in self.futures.items()
+                if f.done() and not f.cancelled() and not f.exception()}
         ready = {scene: done[paint] for scene, paint in enumerate(self.source) if done.get(paint)}
         print(f'  ✓ painted backdrops ready for {len(ready)}/{len(self.source)} scenes')
         return ready
 
 
-def apply(html: str, image: Path, duration: float, index: int = 0) -> str:
+def apply(html: str, image: Path | None, duration: float, index: int = 0) -> str:
     """Lay the painting behind the scene. Its camera move is a kit-fx- animation, so the motion
-    checks ignore it and judge only Claude's own layers."""
-    data = base64.b64encode(Path(image).read_bytes()).decode('ascii')
+    checks ignore it and judge only Claude's own layers.
+
+    With no image (its painting failed after Claude was told to expect one) a dark palette backdrop
+    takes its place, so text written for a painting never lands on a bare white page."""
+    if image:
+        picture = f"url(data:image/jpeg;base64,{base64.b64encode(Path(image).read_bytes()).decode('ascii')}) center/cover no-repeat"
+    else:
+        picture = ('radial-gradient(120% 75% at 50% 38%,color-mix(in srgb,var(--parch) 82%,var(--accent) 18%) 0%,'
+                   'var(--parch) 62%,color-mix(in srgb,var(--parch) 70%,#000 30%) 100%)')
     drift = ('-2%,-1%', '2%,-1.5%', '-1.5%,1%', '1.5%,1.5%')[index % 4]
     style = ('<style id="histold-paint">html{background:#000!important}'
              'body,.k-stage{background:transparent!important;background-color:transparent!important}'
              '.k-stage{text-shadow:0 2px 12px rgba(0,0,0,.6)}'
              '.hp-paint{position:fixed;inset:-5%;z-index:-2;pointer-events:none;'
-             f'background:url(data:image/jpeg;base64,{data}) center/cover no-repeat;'
+             f'background:{picture};'
              f'animation:kit-fx-paint {max(duration, .5):.2f}s linear both}}'
              '.hp-shade{position:fixed;inset:0;z-index:-1;pointer-events:none;background:'
              'linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.25) 28%,rgba(0,0,0,.08) 55%,rgba(0,0,0,.72) 100%)}'

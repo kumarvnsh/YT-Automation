@@ -72,6 +72,17 @@ def secret_text(*names) -> str | None:
     return None
 
 
+def _started(when) -> bool:
+    """True once a 'start_after' time has passed (or none is set); an unreadable value means not yet."""
+    if not when:
+        return True
+    try:
+        start = datetime.fromisoformat(str(when))
+    except ValueError:
+        return False
+    return datetime.now(start.tzinfo) >= start
+
+
 def tool_env(cfg) -> tuple[dict, list[str]]:
     """Environment for the pipeline, and what is missing for a full publish."""
     env = dict(os.environ)
@@ -96,7 +107,7 @@ def tool_env(cfg) -> tuple[dict, list[str]]:
         if encode.get(key) not in (None, '') and not os.environ.get(var):
             env[var] = str(encode[key])
     painted = local.get('painted_scenes', {}) or {}
-    if painted.get('enabled') and not os.environ.get('HISTOLD_PAINTED'):
+    if painted.get('enabled') and not os.environ.get('HISTOLD_PAINTED') and _started(painted.get('start_after')):
         env['HISTOLD_PAINTED'] = '1'  # Codex paints scene backdrops on the plan (src/painted_scenes.py)
     (ENV_ROOT / 'tmp').mkdir(parents=True, exist_ok=True)
     kokoro = ENV_ROOT / 'histold-kokoro' / 'Scripts' / 'python.exe'

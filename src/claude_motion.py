@@ -795,8 +795,12 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
     from . import painted_scenes
     painter = paints = None
     if cinematic and painted_scenes.enabled():
-        painter = painted_scenes.Painter(cfg, st['script']['title'], [seg.narration for seg in segs][:len(windows)],
-                                         stage / 'paintings', w, h)
+        try:  # paintings are a bonus: nothing here may stop the video
+            painter = painted_scenes.Painter(cfg, st['script']['title'], [seg.narration for seg in segs][:len(windows)],
+                                             stage / 'paintings', w, h)
+        except Exception as exc:  # noqa: BLE001
+            painted_scenes.disable()  # Claude gets the normal brief, so the scenes stay self-contained
+            print(f'  ! painted backdrops off for this video ({str(exc)[:160]})')
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
@@ -806,21 +810,29 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         print(f"  ! claude_motion: scene request failed ({exc}) — using {recovery}.")
         scenes = {}
     if painter:
-        paints = painter.collect()
-        st['painted_scenes'] = sorted(paints)
-    def prepare(html, index):
+        try:
+            paints = painter.collect()
+            st['painted_scenes'] = sorted(paints)
+        except Exception as exc:  # noqa: BLE001
+            print(f'  ! painted backdrops unavailable ({str(exc)[:160]})')
+    def prepare(html, index, paint=True):
         from .icon_assets import bind_icons
         from .portrait_assets import bind_photos
         bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
         if cinematic:
             from .cinematic_motion import prepare_html
-            painting = (paints or {}).get(index)
-            ready = prepare_html(bound, index, landscape=cw > ch,
-                                 theme_offset=(st.get('design') or {}).get('palette'), painted=bool(painting))
-            if painting:
+            if painter:  # Claude wrote these scenes for a backdrop: always give them one
+                painting = (paints or {}).get(index) if paint else None
+                dark = prepare_html(bound, index, landscape=cw > ch, painted=True,
+                                    theme_offset=(st.get('design') or {}).get('palette'))
                 s_, e_ = windows[index]
-                ready = painted_scenes.apply(ready, painting, e_ - s_, index)
-            return ready
+                try:
+                    return painted_scenes.apply(dark, painting, e_ - s_, index)
+                except Exception as exc:  # noqa: BLE001 - fall back to the plain dark backdrop
+                    print(f'  ! scene {index} painting skipped ({str(exc)[:120]})')
+                    return painted_scenes.apply(dark, None, e_ - s_, index)
+            return prepare_html(bound, index, landscape=cw > ch,
+                                theme_offset=(st.get('design') or {}).get('palette'))
         palette = PALETTE_SEQUENCE[((st.get('editorial_slot') or 0) + index) % len(PALETTE_SEQUENCE)]
         return apply_palette(bound, palette)
 
@@ -893,7 +905,8 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     report['scenes'][str(i)] = inspection
                     print(f'  ✓ scene {i} recovered with local house template (was: {"; ".join(original_errors[:3])})')
             from .portrait_assets import cap_photos
-            scenes = {i: prepare(html, i) for i, html in cap_photos(scenes).items()}
+            plain = cap_photos(scenes)
+            scenes = {i: prepare(html, i) for i, html in plain.items()}
             if any('class="k-icon' in html for html in scenes.values()):
                 from .icon_assets import CREDIT
                 st['credits'] = sorted(set(st.get('credits', [])) | {CREDIT})
@@ -906,8 +919,15 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                 if i not in scenes:
                     continue
                 try:
-                    clips[i] = _render_scene(page, scenes[i], e - s, fps,
-                                             scene_dir / f"scene_{i:02d}.mp4", preset)
+                    try:
+                        clips[i] = _render_scene(page, scenes[i], e - s, fps,
+                                                 scene_dir / f"scene_{i:02d}.mp4", preset)
+                    except Exception as exc:  # noqa: BLE001
+                        if not (paints or {}).get(i):
+                            raise
+                        print(f'  ! painted scene {i} failed to render ({str(exc)[:120]}); rendering it plain')
+                        scenes[i] = prepare(plain[i], i, paint=False)
+                        clips[i] = _render_scene(page, scenes[i], e - s, fps, scene_dir / f"scene_{i:02d}.mp4", preset)
                     print(f"  ✓ scene {i} rendered ({e - s:.1f}s)")
                 except Exception as exc:  # noqa: BLE001
                     if cinematic:

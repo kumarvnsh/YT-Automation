@@ -13,7 +13,15 @@ from src.config import Config
 SCENE = '<!doctype html><html><head><style>body{background:var(--parch)}</style></head><body><div class="k-stage">Hi</div></body></html>'
 
 
+READY = {'codex': {'ready': True}}
+
+
 class Painted(unittest.TestCase):
+    def setUp(self):
+        patcher = mock.patch.object(plan_ai, 'status', return_value=READY)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        painted_scenes._OFF.clear()
     def test_only_the_laptop_flag_turns_it_on_and_adds_the_prompt_note(self):
         with mock.patch.dict(os.environ, {'HISTOLD_PAINTED': ''}):
             self.assertFalse(painted_scenes.enabled())
@@ -73,3 +81,54 @@ class ResetTime(unittest.TestCase):
         self.assertEqual(datetime.fromtimestamp(reset_time(text)), datetime(2026, 11, 25, 22, 47))
         self.assertEqual(datetime.fromtimestamp(reset_time('try again at 3:35 AM', datetime(2026, 1, 1, 9))),
                          datetime(2026, 1, 2, 3, 35))
+
+
+class Safety(Painted):
+    def test_codex_unavailable_at_the_start_turns_painting_off_for_the_video(self):
+        with mock.patch.object(plan_ai, 'status', return_value={'codex': {'ready': False}}),                 mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1'}), tempfile.TemporaryDirectory() as folder:
+            with self.assertRaises(plan_ai.PlanUnavailable):
+                painted_scenes.Painter(Config({}), 'T', ['a'], Path(folder), 1080, 1920)
+            painted_scenes.disable()
+            self.assertNotIn('PAINTED BACKDROP', system_prompt(540, 960))
+        painted_scenes._OFF.clear()
+
+    def test_missing_painting_gets_a_dark_backdrop_not_white(self):
+        html = painted_scenes.apply(prepare_html(SCENE, 0, painted=True), None, 3.0)
+        self.assertIn('radial-gradient(', html)
+        self.assertIn('--parch:#152f30', html)
+
+    def test_painting_waits_for_its_start_date(self):
+        from scripts import run_local_publish as runner
+        self.assertTrue(runner._started(None))
+        self.assertTrue(runner._started('2020-01-01T00:00:00+05:30'))
+        self.assertFalse(runner._started('2999-01-01T00:00:00+05:30'))
+        self.assertFalse(runner._started('soon'))
+
+    def test_a_failed_render_check_on_the_laptop_renders_again_once(self):
+        from src import pipeline
+        st = {'done': ['script', 'render', 'compose'], 'render_quality': {}}
+        fail = RuntimeError('Renderer visual checks failed: render_quality; see quality.json')
+        with mock.patch.dict(os.environ, {'PUBLISH_WORKFLOW': 'local'}):
+            pipeline._queue_rerender(st, 'quality', fail)
+            self.assertEqual((st['done'], st['rerenders']), (['script'], 1))
+            st['done'] += ['render', 'compose']
+            pipeline._queue_rerender(st, 'quality', fail)  # only once per stage
+            self.assertEqual(st['done'], ['script', 'render', 'compose'])
+        st = {'done': ['render', 'compose']}
+        with mock.patch.dict(os.environ, {'PUBLISH_WORKFLOW': 'publish'}):
+            pipeline._queue_rerender(st, 'quality', fail)  # cloud unchanged
+        self.assertEqual(st['done'], ['render', 'compose'])
+
+    def test_slow_paintings_are_dropped_not_waited_for(self):
+        import threading
+        gate = threading.Event()
+
+        def slow(cfg, prompt, out, timeout=0):
+            gate.wait(5)
+            raise RuntimeError('late')
+        cfg = Config({'local_production': {'painted_scenes': {'parallel': 1}}})
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(plan_ai, 'codex_image', side_effect=slow):
+            painter = painted_scenes.Painter(cfg, 'T', ['a', 'b', 'c'], Path(folder), 1080, 1920)
+            self.assertEqual(painter.collect(grace=.2), {})
+            gate.set()
+            self.assertTrue(all(f.cancelled() for f in list(painter.futures.values())[1:]))
