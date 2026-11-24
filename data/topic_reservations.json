@@ -3454,5 +3454,14 @@
     "slot": "manual",
     "date": "2026-11-24",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261124_163014_803444_short",
+    "title": "A 2,500-Pound Machine of Gears Did America's Tide Math",
+    "fingerprint": "2_500_america_did_gears_machine_math_pound_s_tide",
+    "format": "short",
+    "slot": "manual",
+    "date": "2026-11-24",
+    "status": "reserved"
   }
 ]

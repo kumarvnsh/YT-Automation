@@ -8320,5 +8320,71 @@
     "production_profile": 2,
     "facebook_id": "1156081223562167",
     "instagram_id": "17875057890644143"
+  },
+  {
+    "video_id": "CYQTvgSN0wc",
+    "run_id": "",
+    "stage_dir_name": "20261124_163014_803444_short",
+    "title": "A 2,500-Pound Machine of Gears Did America's Tide Math",
+    "published_at": "2026-11-24T11:23:25.448180+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Annotated blueprint",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 17,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 16,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Predicting U.S. tides meant adding together many separate tidal components, which took too much labor to do by hand. The Coast and Geodetic Survey's Tide-Predicting Machine No. 2 did that addition mechanically. Its gears turned shafts for 37 constituents, chains summed them, and a pointer on a dial showed the height of the tide.",
+          "opening_visual": "A simple animated diagram: several sine waves of different speeds stack into one irregular tide curve. Then cut to a labeled schematic of gears, shafts and a summation chain that drives a dial pointer. Use an archival NOAA photo of the machine only if the production retrieves it from noaa.gov.",
+          "payoff": "From 1912 to 1965, U.S. tide predictions were made on this machine of gears and chains, about 11 feet long and roughly 2,500 pounds. Digital electronic computers replaced it in 1966. Limitation: the approved pages say the hand method was too laborious, but they give no figure for time or money saved. They also do not explicitly tie the machine to ship safety, so the narration must not say it prevented groundings.",
+          "viewer_reason": "Most people think of computers as electronic. A 2,500-pound brass machine that computed with gears and chains, and stayed in service until 1965, is easy to understand at once and genuinely surprising.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Benjamin Franklin's grounded lightning rod was meant to protect buildings from lightning strikes and the fires they caused.",
+          "opening_visual": "A diagram of a church steeple with a pointed iron rod and a conductor running down to the ground.",
+          "payoff": "Lightning reaches the ground through the conductor instead of passing through the building.",
+          "viewer_reason": "The inventor is famous and the mechanism is simple.",
+          "rejection_reason": "The only approved-host result was an NPS Preservation Brief PDF. Its search snippet mentions Franklin-era lightning protection, but nothing about fire or how the rod works was retrieved or verified. Every other support came from non-approved hosts (Mental Floss, Physics Today, Wikipedia, founders.archives.gov was not fetched). The story is also very familiar."
+        },
+        {
+          "premise": "During construction of the Golden Gate Bridge, a safety net hung under the deck caught workers who fell, and 19 survivors formed the 'Half Way to Hell Club'.",
+          "opening_visual": "A cross-section diagram of the bridge deck with a net strung below it.",
+          "payoff": "A plain net turned fatal falls into survivable ones.",
+          "viewer_reason": "A recognizable landmark with a vivid, human payoff.",
+          "rejection_reason": "No approved institution page was found. Sources were goldengate.org, history.com, weburbanist and Wikipedia, none of them approved. They also disagree on the death toll (11 vs 12). The core claims cannot be cited here."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Only this candidate has every core fact quoted directly from fetched pages on an approved host (noaa.gov). The problem (computing tides by hand was impractically laborious) and the mechanism (gears plus summation chains adding 37 constituents) are both stated outright. It also fits easily in about 35 seconds with renderable diagrams."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 145,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "A 2,500-pound gear machine predicted America's tides.",
+    "duration": 44.525,
+    "production_profile": 2,
+    "facebook_id": "1474293574767339",
+    "instagram_id": "18123739406284717"
   }
 ]
