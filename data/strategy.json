@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T07:00:33.893689+00:00",
+  "updated": "2026-11-24T11:00:44.631522+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
         "Coal Miners Sent a Caged Canary Underground Before Going Back In"
       ],
-      "measured_videos": 113
+      "measured_videos": 115
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 115
+      "measured_videos": 116
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,8 +28,8 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 110,
-          "mean_like_rate": 0.003193
+          "measured_videos": 111,
+          "mean_like_rate": 0.003164
         },
         "fb": {
           "measured_videos": 107,
@@ -42,16 +42,16 @@
       },
       "Museum object": {
         "yt": {
-          "measured_videos": 1,
+          "measured_videos": 2,
           "mean_like_rate": 0.0
         },
         "fb": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.004292
+          "measured_videos": 2,
+          "mean_like_rate": 0.006671
         },
         "ig": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.166667
+          "measured_videos": 2,
+          "mean_like_rate": 0.083333
         }
       },
       "Graphic novel": {
@@ -150,69 +150,69 @@
       }
     }
   },
-  "videos_scored": 113,
+  "videos_scored": 115,
   "weights": {
     "series": {
-      "school_myths": 0.067,
-      "mistakes": 0.0681,
-      "almost": 0.0681,
-      "erased": 0.072,
-      "unsolved": 0.0696,
-      "weird_dark": 0.072,
-      "photo_story": 0.072,
-      "spy_gadgets": 0.076,
-      "animals": 0.076,
-      "secretly_deadly": 0.072,
-      "worst_jobs": 0.076,
-      "forgotten_rules": 0.072,
-      "behind_legend": 0.0696,
-      "found_by_accident": 0.0696
+      "school_myths": 0.0673,
+      "mistakes": 0.0683,
+      "almost": 0.0683,
+      "erased": 0.0698,
+      "unsolved": 0.0698,
+      "weird_dark": 0.0721,
+      "photo_story": 0.0721,
+      "spy_gadgets": 0.0761,
+      "animals": 0.0761,
+      "secretly_deadly": 0.0721,
+      "worst_jobs": 0.0761,
+      "forgotten_rules": 0.0721,
+      "behind_legend": 0.0698,
+      "found_by_accident": 0.0698
     },
     "region": {
-      "india": 0.1139,
-      "africa": 0.1114,
-      "japan": 0.1179,
-      "china": 0.1154,
-      "russia": 0.1042,
-      "middle_east": 0.1069,
-      "europe": 0.117,
-      "americas": 0.0955,
-      "asia_pacific": 0.1179
+      "india": 0.114,
+      "africa": 0.1115,
+      "japan": 0.118,
+      "china": 0.1155,
+      "russia": 0.1044,
+      "middle_east": 0.1059,
+      "europe": 0.1171,
+      "americas": 0.0956,
+      "asia_pacific": 0.118
     },
     "duration_variant": {
-      "concise": 0.5062,
-      "story": 0.4938
+      "concise": 0.5063,
+      "story": 0.4937
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "erased": {
-        "n": 1,
-        "mean_score": 0.425
+        "n": 2,
+        "mean_score": 0.426
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "spy_gadgets": {
         "n": 0,
@@ -224,7 +224,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "worst_jobs": {
         "n": 0,
@@ -232,62 +232,62 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.425
+        "mean_score": 0.426
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.501
+        "mean_score": 0.502
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.491
+        "mean_score": 0.493
       },
       "japan": {
         "n": 11,
-        "mean_score": 0.516
+        "mean_score": 0.518
       },
       "china": {
         "n": 12,
-        "mean_score": 0.507
+        "mean_score": 0.508
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.462
+        "mean_score": 0.463
       },
       "middle_east": {
-        "n": 11,
-        "mean_score": 0.473
+        "n": 12,
+        "mean_score": 0.47
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.513
+        "mean_score": 0.514
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.425
+        "mean_score": 0.426
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.516
+        "mean_score": 0.518
       }
     },
     "duration_variant": {
       "concise": {
-        "n": 63,
+        "n": 64,
         "mean_score": 0.504
       },
       "story": {
-        "n": 50,
+        "n": 51,
         "mean_score": 0.495
       }
     }
@@ -300,11 +300,11 @@
     "Coal Miners Sent a Caged Canary Underground Before Going Back In"
   ],
   "losers": [
-    "Were the Pyramids of Giza Really Built by Enslaved People?",
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
     "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
     "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
-    "Sichuan's Ancient Water Scheme Manages a River Without Blocking It"
+    "Sichuan's Ancient Water Scheme Manages a River Without Blocking It",
+    "The Smithsonian Began as a Backup Plan in One Man's Will"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -312,25 +312,25 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 plays while IG 212, Nov 13-16 gap"
+      "reason": "FB 0 plays vs IG 212, Nov 13-16 FB reporting fault window"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "2 plays with 32s watch time while IG 137, Nov 13-16 gap"
-    },
-    {
-      "video_id": "-cPiNs-0pLA",
-      "platform": "fb",
-      "views": 3,
-      "reason": "3 plays with 23s watch time while IG 129, Nov 13-16 FB reporting gap"
+      "reason": "FB 2 plays with 32s watch time and IG 137, consistent with FB reporting fault"
     },
     {
       "video_id": "SfvGGm6eaok",
       "platform": "fb",
       "views": 2,
-      "reason": "2 plays while IG 139, Nov 13-16 gap"
+      "reason": "FB 2 plays vs IG 139, Nov 13-16 FB reporting fault window"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 3,
+      "reason": "FB 3 plays with 23s watch time while IG 129"
     },
     {
       "video_id": "0xHy2ZVArUg",
