@@ -1,14 +1,14 @@
 {
-  "updated": "2026-11-24T15:00:57.666480+00:00",
+  "updated": "2026-11-24T19:01:07.264103+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
       "winners": [
+        "Yellowstone's Wolf Planners Expected a Third of Wolves to Add Nothing",
         "Why Does the Rickshaw Carry a Japanese Name?",
         "The Automobile Has No Single, Simple Inventor Story",
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
-        "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-        "Coal Miners Sent a Caged Canary Underground Before Going Back In"
+        "Why Did Mexican Silver Cross the Pacific to Reach Manila?"
       ],
       "measured_videos": 116
     },
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 111,
-          "mean_like_rate": 0.003486
+          "measured_videos": 110,
+          "mean_like_rate": 0.003518
         },
         "fb": {
-          "measured_videos": 107,
-          "mean_like_rate": 0.001963
+          "measured_videos": 106,
+          "mean_like_rate": 0.001982
         },
         "ig": {
-          "measured_videos": 120,
-          "mean_like_rate": 0.133786
+          "measured_videos": 119,
+          "mean_like_rate": 0.13323
         }
       },
       "Museum object": {
@@ -70,12 +70,16 @@
       },
       "Moving atlas": {
         "fb": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.0
+          "measured_videos": 2,
+          "mean_like_rate": 0.001953
         },
         "ig": {
+          "measured_videos": 2,
+          "mean_like_rate": 0.295455
+        },
+        "yt": {
           "measured_videos": 1,
-          "mean_like_rate": 0.5
+          "mean_like_rate": 0.142857
         }
       },
       "Archive dossier": {
@@ -153,66 +157,66 @@
   "videos_scored": 116,
   "weights": {
     "series": {
-      "school_myths": 0.0673,
-      "mistakes": 0.0683,
-      "almost": 0.0683,
-      "erased": 0.0698,
-      "unsolved": 0.0698,
-      "weird_dark": 0.0721,
-      "photo_story": 0.0721,
-      "spy_gadgets": 0.0761,
-      "animals": 0.0761,
-      "secretly_deadly": 0.0721,
-      "worst_jobs": 0.0761,
-      "forgotten_rules": 0.0721,
-      "behind_legend": 0.0698,
-      "found_by_accident": 0.0698
+      "school_myths": 0.067,
+      "mistakes": 0.0682,
+      "almost": 0.0682,
+      "erased": 0.0697,
+      "unsolved": 0.0697,
+      "weird_dark": 0.0722,
+      "photo_story": 0.0722,
+      "spy_gadgets": 0.0763,
+      "animals": 0.0763,
+      "secretly_deadly": 0.0722,
+      "worst_jobs": 0.0763,
+      "forgotten_rules": 0.0722,
+      "behind_legend": 0.0697,
+      "found_by_accident": 0.0697
     },
     "region": {
-      "india": 0.114,
-      "africa": 0.1115,
-      "japan": 0.118,
-      "china": 0.1155,
-      "russia": 0.1044,
-      "middle_east": 0.106,
-      "europe": 0.1171,
-      "americas": 0.0957,
-      "asia_pacific": 0.1178
+      "india": 0.1138,
+      "africa": 0.1113,
+      "japan": 0.1178,
+      "china": 0.1172,
+      "russia": 0.1042,
+      "middle_east": 0.1058,
+      "europe": 0.1169,
+      "americas": 0.0955,
+      "asia_pacific": 0.1176
     },
     "duration_variant": {
-      "concise": 0.5057,
-      "story": 0.4943
+      "concise": 0.5115,
+      "story": 0.4885
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "erased": {
         "n": 2,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "spy_gadgets": {
         "n": 0,
@@ -224,7 +228,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "worst_jobs": {
         "n": 0,
@@ -232,72 +236,72 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.427
+        "mean_score": 0.422
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.503
+        "mean_score": 0.498
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.493
+        "mean_score": 0.488
       },
       "japan": {
         "n": 11,
-        "mean_score": 0.518
+        "mean_score": 0.513
       },
       "china": {
-        "n": 12,
-        "mean_score": 0.509
+        "n": 11,
+        "mean_score": 0.511
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.464
+        "mean_score": 0.459
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.471
+        "mean_score": 0.466
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.515
+        "mean_score": 0.51
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.427
+        "mean_score": 0.422
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.518
+        "mean_score": 0.513
       }
     },
     "duration_variant": {
       "concise": {
         "n": 65,
-        "mean_score": 0.504
+        "mean_score": 0.508
       },
       "story": {
         "n": 51,
-        "mean_score": 0.495
+        "mean_score": 0.49
       }
     }
   },
   "winners": [
+    "Yellowstone's Wolf Planners Expected a Third of Wolves to Add Nothing",
     "Why Does the Rickshaw Carry a Japanese Name?",
     "The Automobile Has No Single, Simple Inventor Story",
     "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
-    "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
-    "Coal Miners Sent a Caged Canary Underground Before Going Back In"
+    "Why Did Mexican Silver Cross the Pacific to Reach Manila?"
   ],
   "losers": [
     "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
@@ -312,7 +316,7 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 FB plays with 212 IG; part of historical Nov 13-16 Facebook low-play cluster"
+      "reason": "0 FB plays with insights 'available' while IG shows 212; part of Nov 13-16 near-zero FB cluster"
     },
     {
       "video_id": "g4aOe5vcitA",
@@ -389,7 +393,7 @@
     {
       "video_id": "ZE9tGMBB7Fg",
       "platform": "yt",
-      "views": 0,
+      "views": 2,
       "reason": "Viewing percentage missing in the recent export gap."
     },
     {
