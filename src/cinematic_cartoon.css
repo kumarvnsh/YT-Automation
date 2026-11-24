@@ -1,0 +1,62 @@
+/* Histold cartoon-comic kit (src/cinematic_motion.py injects it with HISTOLD_STYLE=cartoon).
+   Ideas adapted from cartoon-shorts-skill (Matteoikarieth96, MIT): bold cel-shaded cartoon characters and props,
+   thick ink outlines, halftone dot texture, comic starbursts, scoreboards and snappy squash-and-stretch beats.
+   Original Histold artwork drawn in code; CSS-only deterministic motion; no external assets. */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.08;
+  background-image:radial-gradient(var(--ink) 1.3px,transparent 1.3px);background-size:12px 12px}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:39;opacity:.34;mix-blend-mode:multiply;
+  background:radial-gradient(115% 85% at 50% 44%,transparent 58%,color-mix(in srgb,var(--ink) 45%,transparent) 100%)}
+/* Bold cartoon strokes, flat cel fills and hard comic shadows. */
+.ct-ink{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.ct-thin{stroke-width:3}
+.ct-fill{fill:var(--accent);stroke:var(--ink);stroke-width:4.5;stroke-linejoin:round}
+.ct-fill2{fill:var(--bone);stroke:var(--ink);stroke-width:4.5;stroke-linejoin:round}
+.ct-fill3{fill:var(--parch);stroke:var(--ink);stroke-width:4.5;stroke-linejoin:round}
+.ct-shade{fill:var(--ink);opacity:.22;stroke:none}
+.ct-dots{fill:url(#ct-dots);opacity:.22;stroke:none}
+.ct-hard{filter:url(#ct-hard)}
+.ct-shadow{fill:var(--ink);opacity:.2}
+/* Rotating comic sunburst rays behind a payoff (ambient). */
+.ct-rays{transform-box:fill-box;transform-origin:50% 50%;animation:kit-fx-rays var(--t,16s) linear infinite}
+@keyframes kit-fx-rays{to{transform:rotate(360deg)}}
+/* Snappy cartoon motion (position on an outer <g transform>, animate an inner <g>). */
+.ct-slam{transform-box:fill-box;transform-origin:50% 50%;animation:ct-slam .34s cubic-bezier(.2,1.6,.4,1) var(--d,0s) both}
+@keyframes ct-slam{0%{transform:scale(2.1) rotate(var(--r,-6deg));opacity:0}65%{transform:scale(.94) rotate(var(--r,-4deg));opacity:1}100%{transform:scale(1) rotate(var(--r,-4deg));opacity:1}}
+.ct-pop{transform-box:fill-box;transform-origin:50% 50%;animation:ct-pop .32s cubic-bezier(.34,1.8,.5,1) var(--d,0s) both}
+@keyframes ct-pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.ct-slide{animation:ct-slide .42s cubic-bezier(.22,1.35,.4,1) var(--d,0s) both}
+@keyframes ct-slide{from{transform:translate(var(--fx,-140px),var(--fy,0));opacity:0}to{transform:none;opacity:1}}
+.ct-bounce{transform-box:fill-box;transform-origin:50% 100%;animation:ct-bounce var(--t,.5s) ease-in-out var(--d,0s) infinite alternate}
+@keyframes ct-bounce{from{transform:translateY(0) scale(1.04,.96)}to{transform:translateY(var(--h,-14px)) scale(.97,1.05)}}
+.ct-swing{transform-origin:0 0;animation:ct-swing var(--t,.42s) ease-in-out var(--d,0s) infinite alternate}
+@keyframes ct-swing{from{transform:rotate(var(--a,-32deg))}to{transform:rotate(var(--b,32deg))}}
+.ct-raise{transform-origin:0 0;animation:ct-raise .32s cubic-bezier(.3,1.6,.5,1) var(--d,0s) both}
+@keyframes ct-raise{from{transform:rotate(var(--a,0deg))}to{transform:rotate(var(--b,-110deg))}}
+.ct-spin{transform-box:fill-box;transform-origin:50% 50%;animation:ct-spin var(--t,1.2s) linear infinite}
+@keyframes ct-spin{to{transform:rotate(360deg)}}
+.ct-shake{animation:ct-shake .08s linear var(--d,0s) 6 alternate}
+@keyframes ct-shake{from{transform:translateX(-4px)}to{transform:translateX(4px)}}
+.ct-streak{animation:ct-streak var(--t,.75s) linear var(--d,0s) infinite}
+@keyframes ct-streak{from{transform:translateX(120px);opacity:0}20%{opacity:.7}to{transform:translateX(-260px);opacity:0}}
+.ct-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:ct-draw var(--t,.5s) ease-out var(--d,0s) both}
+@keyframes ct-draw{to{stroke-dashoffset:0}}
+.ct-push{animation:kit-fx-push 12s ease-in-out both}
+@keyframes kit-fx-push{from{transform:scale(1)}to{transform:scale(1.05)}}
+/* Comic HUD: scoreboard bar, sound-word boom, framed panel, speech bubble and bold pill. */
+.ct-board{display:flex;align-items:stretch;width:100%;max-width:440px;align-self:center;border:4px solid var(--ink);
+  border-radius:12px;overflow:hidden;box-shadow:4px 5px 0 var(--ink);background:var(--ink);color:var(--parch);font-family:var(--body)}
+.ct-board .ct-tm{flex:1;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;font:800 15px/1 var(--body);
+  letter-spacing:.05em;text-transform:uppercase;background:var(--ink);color:var(--parch)}
+.ct-board .ct-tm b{font:800 26px/1 var(--display);color:var(--bone)}
+.ct-board .ct-mid{padding:8px 14px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:var(--parch);
+  font:800 22px/1 var(--display);border-left:4px solid var(--ink);border-right:4px solid var(--ink)}
+.ct-boom{display:inline-block;padding:4px 14px 6px;font:800 34px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;
+  color:var(--parch);background:var(--accent);border:4px solid var(--ink);border-radius:10px;
+  box-shadow:4px 5px 0 var(--ink);transform:rotate(var(--r,-5deg))}
+.ct-pill{display:inline-block;padding:6px 14px 7px;border:3.5px solid var(--ink);border-radius:999px;background:var(--bone);
+  color:var(--ink);font:800 17px/1.1 var(--body);letter-spacing:.03em;box-shadow:3px 4px 0 var(--ink)}
+.ct-panel{border:4px solid var(--ink);border-radius:12px;background:var(--parch);box-shadow:5px 6px 0 var(--ink);overflow:hidden}
+.ct-bubble{position:relative;display:inline-block;padding:8px 14px 9px;border:3.5px solid var(--ink);border-radius:16px;
+  background:var(--parch);color:var(--ink);font:800 18px/1.15 var(--body);box-shadow:3px 4px 0 var(--ink)}
+.ct-bubble::after{content:'';position:absolute;left:var(--tail,20px);bottom:-13px;width:16px;height:16px;
+  background:var(--parch);border-right:3.5px solid var(--ink);border-bottom:3.5px solid var(--ink);transform:rotate(45deg)}

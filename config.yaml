@@ -393,7 +393,7 @@ local_production:
     crf: 17                    # near visually lossless, so YouTube's re-encode starts from a clean master
     frame_quality: 97          # JPEG quality of each captured scene frame (cloud: 90)
   textured_style: true         # laptop only: paper/ink/wash illustration kit + reference scene (src/cinematic_texture.css)
-  scene_style: auto            # laptop only: auto = cut-paper or flat-lit per script, each the other's fallback, then textured (owner, 24 Nov); papercut / flatlit to force one; off = textured only
+  scene_style: auto            # laptop only: auto = papercut / flatlit / inkfolk / cartoon per script, with fallback, then textured; set a kit name to force one; off = textured only
   painted_scenes:              # laptop only: Antigravity (Codex as backup) paints a picture per scene
     mode: inset                # inset = framed picture inside the scene (owner, 24 Nov); backdrop = full-screen background
     enabled: true

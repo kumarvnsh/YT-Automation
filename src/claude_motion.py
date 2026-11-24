@@ -509,7 +509,7 @@ def _animate_svg(svg: str, asset: dict) -> str:
 # Rich establishing maps: Natural Earth II shaded relief with neighbours, rivers, lakes and a graticule,
 # themed to the scene style (assets built offline by scripts/build_rich_maps.py; all public domain).
 _RICH_DIR = Path(__file__).resolve().parent.parent / 'assets' / 'maps' / 'rich'
-_THEMES = {'flatlit': 'dark', 'papercut': 'vintage', 'inkfolk': 'ink'}
+_THEMES = {'flatlit': 'dark', 'papercut': 'vintage', 'inkfolk': 'ink', 'cartoon': 'comic'}
 _RICH_CSS = (
     '<style id="histold-rich-map">'
     '.hm-rich{position:relative;width:100%;border-radius:12px;overflow:hidden;border:2px solid color-mix(in srgb,var(--ink) 70%,transparent);'
@@ -517,11 +517,13 @@ _RICH_CSS = (
     '.hm-rich[data-theme=dark]{--hm-line:rgba(255,255,255,.42);--hm-water:#3a7593;--hm-grat:rgba(255,255,255,.13)}'
     '.hm-rich[data-theme=vintage]{--hm-water:#6d8584}'
     '.hm-rich[data-theme=ink]{--hm-line:rgba(25,25,25,.6);--hm-water:#7d8e96;--hm-grat:rgba(25,25,25,.16);background:var(--parch)}'
+    '.hm-rich[data-theme=comic]{border:4px solid var(--ink);box-shadow:4px 5px 0 var(--ink);--hm-line:rgba(23,17,27,.68);--hm-water:#3e8ec4;--hm-grat:rgba(23,17,27,.18)}'
     '.hm-rich svg{display:block;width:100%;height:auto;overflow:hidden!important}'
     '.hm-rich .hm-relief{filter:saturate(.92)}'
     '.hm-rich[data-theme=dark] .hm-relief{filter:brightness(.45) saturate(.65) contrast(1.15)}'
     '.hm-rich[data-theme=vintage] .hm-relief{filter:sepia(.6) saturate(.75) contrast(.95) brightness(1.04)}'
     '.hm-rich[data-theme=ink] .hm-relief{filter:grayscale(1) contrast(1.2) brightness(1.18);opacity:.5}'
+    '.hm-rich[data-theme=comic] .hm-relief{filter:saturate(1.25) contrast(1.14) brightness(1.04)}'
     '.hm-rich .hm-cam{transform-box:view-box;animation:hm-dive 7s cubic-bezier(.2,.6,.3,1) both}'
     '@keyframes hm-dive{from{transform:scale(1)}to{transform:scale(1.1)}}'
     '.hm-rich .hm-grat{fill:none;stroke:var(--hm-grat);stroke-width:calc(var(--u)*.8);stroke-dasharray:calc(var(--u)*4) calc(var(--u)*4)}'

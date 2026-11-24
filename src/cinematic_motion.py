@@ -142,14 +142,45 @@ This is a complete scene in the target style; match its drawing and acting, not 
 </example>
 """
 
-STYLE_NOTES = {'papercut': PAPERCUT_NOTE, 'flatlit': FLATLIT_NOTE, 'inkfolk': INKFOLK_NOTE}
+CARTOON_NOTE = """
+CARTOON COMIC STYLE (this run). Bold, energetic cel-shaded cartoon illustration like an animated comic short:
+thick ink outlines, flat cel fills in palette variables with hard cel-shadow strips, subtle halftone dots,
+comic scoreboards, starburst sound-words and snappy squash-and-stretch action. Characters are expressive
+original cartoon figures (round heads, clear eyes/brows, simple clothing shapes) — never draw a real person's
+photorealistic face (use a supplied histold-photo when likeness matters, or a respectful stylized silhouette/prop).
+The renderer adds a faint halftone screen and vignette over every frame and defines these (do not define them):
+  SVG: ct-ink       thick round-cap cartoon outline (5px; ct-thin for 3px details)
+       ct-fill / ct-fill2 / ct-fill3   flat accent / bone / parch fills with thick ink outline
+       ct-shade     hard cel-shadow overlay strip   ct-dots  fill:url(#ct-dots) halftone shading
+       ct-hard      crisp offset comic drop shadow  ct-shadow ground shadow ellipse
+       ct-rays      slowly spinning sunburst rays (ambient)  ct-streak horizontal speed line
+  Motion (set --d delay; NEVER put an animation class on an element that has transform="...", animate an inner <g>):
+       ct-slam      comic slam-in with overshoot (sound words, headlines; set --r tilt)
+       ct-pop       springy pop-in   ct-slide slide-in (--fx/--fy)   ct-bounce squash-and-stretch bounce (--h, --t)
+       ct-swing     limb/arm/leg run-cycle swing around 0,0 (--a, --b, --t)   ct-raise one-shot lift (--a, --b)
+       ct-spin      wheel/gear spin (--t)   ct-shake impact shudder   ct-draw ink draw-on (pathLength="1")
+       ct-push      slow camera push (ambient)
+  HTML: ct-board    comic scoreboard bar (.ct-tm slots + .ct-mid centre badge, great for scores/years/counts)
+        ct-boom     bold tilted comic sound-word badge ("ZIGZAG!", "JAMMED?!", "90°F!")
+        ct-pill     rounded comic fact pill   ct-panel framed comic panel   ct-bubble comic speech bubble (--tail)
+Stage each beat like a punchy comic panel: hook the subject on frame 0 with a ct-board or bold title, animate
+characters and props moving, bouncing or reacting to every stressed beat, and land the payoff with a starburst
+or ct-boom / ct-pill. Keep a real visual change at least every 1.5 seconds; voiceover stays dominant (no loud SFX).
+This is a complete scene in the target style; match its comic energy and construction, not its subject:
+<example>
+{example}
+</example>
+"""
+
+STYLE_NOTES = {'papercut': PAPERCUT_NOTE, 'flatlit': FLATLIT_NOTE, 'inkfolk': INKFOLK_NOTE, 'cartoon': CARTOON_NOTE}
 
 
 def scene_style() -> str:
     """Opt-in scene kit chosen with HISTOLD_STYLE: 'papercut' (cut-paper diorama, adapted from paper-reel and
     papercut-explainer, MIT), 'flatlit' (flat-lit vector + exploded breakdowns, adapted from
-    claude-animation-skills, MIT) or 'inkfolk' (ink stick figures acting the story, adapted from
-    stickman-video-director, MIT). Empty when unset or unknown."""
+    claude-animation-skills, MIT), 'inkfolk' (ink stick figures acting the story, adapted from
+    stickman-video-director, MIT) or 'cartoon' (bold cel-shaded comic shorts, adapted from
+    cartoon-shorts-skill, MIT). Empty when unset or unknown."""
     import os
     name = os.environ.get('HISTOLD_STYLE', '').strip().lower()
     return name if name in STYLE_NOTES else ''
@@ -159,17 +190,23 @@ def papercut() -> bool:
     return scene_style() == 'papercut'
 
 
-# Machines, structures and how-it-worked stories suit the flat-lit exploded breakdown; stories of people acting
-# suit ink-folk stick figures; places, documents and institutions suit cut-paper dioramas (owner, 24 Nov).
+# Machines, structures and how-it-worked stories suit the flat-lit exploded breakdown; absurd, funny, animal,
+# hoax, sports and stunt stories suit the bold cartoon comic kit; dramatic stories of people acting suit
+# ink-folk stick figures; places, documents and institutions suit cut-paper dioramas (owner, 24 Nov).
 _MECHANISM_WORDS = ('machine', 'gear', 'engine', 'pump', 'mechanism', 'device', 'clock', 'invent', 'engineer',
                     'bridge', 'canal', 'aqueduct', 'dam', 'lock', 'wheel', 'lever', 'calculat', 'computer',
                     'telescope', 'printing', 'press', 'valve', 'steam', 'tool', 'pulley', 'crank', 'shaft',
                     'circuit', 'telegraph', 'loom', 'mill', 'furnace', 'cannon', 'ship', 'boat', 'instrument')
+_CARTOON_WORDS = ('absurd', 'bizarre', 'chaos', 'chaotic', 'ridicul', 'funny', 'comedy', 'blunder', 'mishap',
+                  'hoax', 'prank', 'scam', 'fraud', 'cheat', 'trick', 'stunt', 'wager', 'contest', 'rivalry',
+                  'olympic', 'marathon', 'sport', 'trophy', 'championship', 'scoreboard', 'world record',
+                  'emu', 'rabbit', 'cat ', 'dog ', 'pig ', 'elephant', 'monkey', 'mascot', 'animal',
+                  'circus', 'clown', 'cartoon', 'comic', 'outsmart', 'backfir', 'giveaway', 'nickname')
 _ACTION_WORDS = ('refus', 'fired', 'rescue', 'march', 'fought', 'fight', 'battle', 'crew', 'soldier', 'crowd',
                  'ran ', 'carried', 'walked', 'sailed', 'climbed', 'rowed', 'hunt', 'escap', 'protest', 'strike',
                  'argued', 'shouted', 'chased', 'shot', 'threw', 'pulled', 'hauled', 'dragged', 'volunteer',
                  'tied', 'raced', 'swam', 'dug', 'stormed', 'smuggl', 'arrest', 'duel', 'boycott', 'riot')
-STYLE_FALLBACK = {'papercut': 'flatlit', 'flatlit': 'papercut', 'inkfolk': 'papercut'}
+STYLE_FALLBACK = {'papercut': 'flatlit', 'flatlit': 'papercut', 'inkfolk': 'papercut', 'cartoon': 'papercut'}
 
 
 def choose_style(script: dict) -> str:
@@ -177,12 +214,15 @@ def choose_style(script: dict) -> str:
     text = ' '.join([str(script.get('title', ''))] +
                     [str(seg.get('narration', '')) for seg in script.get('segments', []) if isinstance(seg, dict)]).lower()
     machines = sum(text.count(word) for word in _MECHANISM_WORDS)
+    cartoon = sum(text.count(word) for word in _CARTOON_WORDS)
     action = sum(text.count(word) for word in _ACTION_WORDS)
-    if machines >= 3 and machines >= action:
+    if machines >= 3 and machines >= action and machines >= cartoon:
         return 'flatlit'   # how a machine or structure worked
+    if cartoon >= 3 and cartoon >= action:
+        return 'cartoon'   # absurd, funny, animal, sports, hoax or stunt stories
     if action >= 3:
-        return 'inkfolk'   # people doing things
-    return 'flatlit' if machines >= 3 else 'papercut'  # places, documents, institutions
+        return 'inkfolk'   # dramatic stories of people doing things
+    return 'papercut'      # places, documents, institutions
 
 
 def resolve_style(script: dict) -> str:

@@ -20,6 +20,17 @@ class SceneStyleTests(unittest.TestCase):
         with mock.patch.dict(os.environ, {'HISTOLD_STYLE': 'inkfolk'}):
             self.assertIn('INK-FOLK', kits.system_prompt(540, 960))
             self.assertIn('if-swing', kits.prepare_html('<html><head></head><body></body></html>', 0))
+        cartoon = {'title': 'The Great Emu War: An Absurd Blunder', 'segments': [
+            {'narration': 'Twenty thousand emus outsmarted everyone in a chaotic comedy of errors.'}]}
+        self.assertEqual(kits.choose_style(cartoon), 'cartoon')
+        self.assertEqual(kits.style_chain('cartoon'), ['cartoon', 'papercut', 'textured'])
+        with mock.patch.dict(os.environ, {'HISTOLD_STYLE': 'cartoon'}):
+            self.assertIn('CARTOON COMIC', kits.system_prompt(540, 960))
+            html = kits.prepare_html('<html><head></head><body></body></html>', 0)
+            self.assertIn('ct-board', html)
+            self.assertIn('ct-dots', html)
+            from src.claude_motion import _map_theme
+            self.assertEqual(_map_theme(kits.tag_style(html, 'cartoon')), 'comic')
 
     def test_auto_resolves_per_script_and_each_kit_falls_back_to_the_other_then_textured(self):
         with mock.patch.dict(os.environ, {'HISTOLD_STYLE': 'auto'}):

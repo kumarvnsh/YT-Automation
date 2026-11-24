@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.k-stage{gap:14px}
+.hd{margin:0;text-align:center;font:700 34px/1.08 var(--display);color:var(--ink)}
+.board{position:relative;width:440px;height:420px;align-self:center}
+.board svg{position:absolute;inset:0;width:440px;height:420px;overflow:visible}
+.lbl{position:absolute}
+.sprint{animation:spr 2.2s ease-in-out var(--d,0s) infinite alternate}
+@keyframes spr{from{transform:translateX(0)}to{transform:translateX(36px)}}
+</style></head><body><div class="k-stage">
+<div class="ct-board ct-pop" style="--d:0s">
+  <div class="ct-tm">ARMY <b>0</b></div><div class="ct-mid">1932</div><div class="ct-tm"><b>20K</b> EMUS</div>
+</div>
+<h1 class="hd k-reveal" style="--d:.15s">Australia vs. 20,000 emus</h1>
+<div class="board ct-panel ct-push">
+  <svg viewBox="0 0 440 420">
+    <!-- cel sky + halftone strip + outback mesa + ground -->
+    <rect x="0" y="0" width="440" height="420" style="fill:color-mix(in srgb,var(--parch) 80%,var(--bone))"/>
+    <rect x="0" y="0" width="440" height="190" class="ct-dots"/>
+    <!-- spinning sunburst rays behind action -->
+    <g transform="translate(290 130)"><g class="ct-rays" opacity=".18" style="fill:var(--accent)">
+      <path d="M0,0 L-40,-240 L40,-240 Z M0,0 L160,-180 L210,-110 Z M0,0 L240,20 L210,100 Z M0,0 L120,210 L40,240 Z M0,0 L-120,210 L-190,150 Z M0,0 L-240,-10 L-210,-90 Z"/>
+    </g></g>
+    <circle cx="345" cy="76" r="34" class="ct-fill ct-hard"/>
+    <path d="M-10 262 L90 218 H195 L250 254 L330 222 H450 V420 H-10 Z" class="ct-fill2"/>
+    <path d="M-10 294 H450 V430 H-10 Z" class="ct-fill" style="fill:color-mix(in srgb,var(--bone) 72%,var(--accent))"/>
+    <!-- outback wheat tufts along the ground -->
+    <g class="ct-ink ct-thin" opacity=".55">
+      <path d="M46 355 l-6 -14 M46 355 l4 -16 M182 372 l-5 -12 M182 372 l6 -14 M350 338 l-6 -14 M350 338 l5 -14"/>
+    </g>
+    <!-- horizontal speed lines -->
+    <g class="ct-ink ct-thin" opacity=".5">
+      <line x1="250" y1="185" x2="345" y2="185" class="ct-streak" style="--d:.2s"/>
+      <line x1="280" y1="215" x2="365" y2="215" class="ct-streak" style="--d:.5s"/>
+    </g>
+    <!-- frustrated cartoon soldier on left -->
+    <g transform="translate(104 294)"><g class="ct-bounce" style="--h:-6px;--t:.55s">
+      <ellipse cx="0" cy="4" rx="34" ry="8" class="ct-shadow"/>
+      <path d="M-10 -34 L-16 0 M10 -34 L16 0" class="ct-ink" style="stroke-width:9"/>
+      <rect x="-22" y="-92" width="44" height="60" rx="10" class="ct-fill2"/>
+      <path d="M2 -92 h10 a10 10 0 0 1 10 10 v40 a10 10 0 0 1 -10 10 h-10 Z" class="ct-shade"/>
+      <g transform="translate(18 -78)"><g class="ct-swing" style="--a:-115deg;--b:-65deg;--t:.4s">
+        <path d="M0 0 L34 -12" class="ct-ink" style="stroke-width:8"/>
+      </g></g>
+      <circle cx="0" cy="-118" r="24" class="ct-fill3"/>
+      <path d="M-24 -128 H28 L18 -144 H-18 Z" class="ct-fill"/>
+      <circle cx="8" cy="-120" r="3.5" style="fill:var(--ink)"/>
+      <path d="M2 -108 Q10 -114 16 -108" class="ct-ink ct-thin"/>
+    </g></g>
+    <!-- sprinting cartoon emu on right -->
+    <g transform="translate(275 294)"><g class="sprint" style="--d:.3s"><g class="ct-bounce" style="--h:-16px;--t:.36s">
+      <ellipse cx="0" cy="6" rx="38" ry="9" class="ct-shadow"/>
+      <g transform="translate(-8 -44)"><g class="ct-swing" style="--a:-36deg;--b:36deg;--t:.32s"><path d="M0 0 L-8 44 L-22 48" class="ct-ink"/></g></g>
+      <g transform="translate(8 -44)"><g class="ct-swing" style="--a:36deg;--b:-36deg;--t:.32s"><path d="M0 0 L10 44 L24 48" class="ct-ink"/></g></g>
+      <ellipse cx="0" cy="-64" rx="40" ry="30" class="ct-fill2"/>
+      <path d="M-10 -92 A40 30 0 0 1 40 -64 A34 26 0 0 1 -6 -36 Z" class="ct-shade"/>
+      <path d="M22 -78 Q34 -116 26 -146" class="ct-ink" style="stroke-width:14"/>
+      <circle cx="24" cy="-154" r="18" class="ct-fill2"/>
+      <path d="M38 -158 L62 -152 L38 -145 Z" class="ct-fill"/>
+      <circle cx="28" cy="-158" r="6" class="ct-fill3"/>
+      <circle cx="30" cy="-158" r="2.5" style="fill:var(--ink)"/>
+    </g></g></g>
+    <!-- comic starburst behind sound word -->
+    <g transform="translate(222 92)"><g class="ct-pop" style="--d:1.4s">
+      <polygon points="0,-42 14,-18 44,-28 28,-4 52,12 22,18 30,44 2,26 -24,42 -18,16 -48,14 -24,-4 -40,-28 -12,-18" class="ct-fill ct-hard"/>
+    </g></g>
+  </svg>
+  <div class="lbl" style="left:168px;top:64px"><span class="ct-boom ct-slam" style="--d:1.45s;--r:-6deg;font-size:26px">ZIGZAG!</span></div>
+  <div class="lbl" style="left:16px;top:76px"><span class="ct-bubble ct-pop" style="--d:2.4s;--tail:54px">Missed again!</span></div>
+  <div class="lbl" style="right:18px;bottom:16px"><span class="ct-pill ct-pop" style="--d:3.2s">Top speed: 30 mph</span></div>
+</div>
+</div></body></html>
