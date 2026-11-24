@@ -13,6 +13,13 @@ class SceneStyleTests(unittest.TestCase):
             {'narration': 'Thousands followed Gandhi to the coast in 1930.'}]}
         self.assertEqual(kits.choose_style(machine), 'flatlit')
         self.assertEqual(kits.choose_style(event), 'papercut')
+        action = {'title': 'Lifesavers Fired a Cannon to Rescue Shipwrecked Crews', 'segments': [
+            {'narration': 'The crew rowed out, fired a line and hauled each sailor to the beach.'}]}
+        self.assertEqual(kits.choose_style(action), 'inkfolk')
+        self.assertEqual(kits.style_chain('inkfolk'), ['inkfolk', 'papercut', 'textured'])
+        with mock.patch.dict(os.environ, {'HISTOLD_STYLE': 'inkfolk'}):
+            self.assertIn('INK-FOLK', kits.system_prompt(540, 960))
+            self.assertIn('if-swing', kits.prepare_html('<html><head></head><body></body></html>', 0))
 
     def test_auto_resolves_per_script_and_each_kit_falls_back_to_the_other_then_textured(self):
         with mock.patch.dict(os.environ, {'HISTOLD_STYLE': 'auto'}):

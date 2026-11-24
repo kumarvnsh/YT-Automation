@@ -19,7 +19,8 @@ Never fetch external assets, fonts, scripts or URLs. Never invent portrait URLs.
 Avoid giant repeated word/number posters, oversized standalone dates, gradients
 as the entire visual, emoji, generic dashboard cards and blue presentation slides.
 
-MOTION: CSS @keyframes ONLY; no JavaScript, timers, canvas, element.animate(),
+MOTION: a CSS animation that sets transform replaces an SVG element's transform="..." attribute, so
+position with an outer <g transform> and animate an inner element. CSS @keyframes ONLY; no JavaScript, timers, canvas, element.animate(),
 video, audio or external dependencies. The renderer seeks CSS animations to a
 precise timestamp. Use explicit seconds, animation delays and fill-mode:both.
 Match reveals to provided native word cues and duration. Show a real visual change

@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.k-stage{gap:14px}
+.hd{margin:0;text-align:center;font:400 36px/1.08 var(--display);color:var(--ink)}
+.board{position:relative;width:440px;height:430px;align-self:center}
+.board svg{position:absolute;inset:0;width:440px;height:430px;overflow:visible}
+.lbl{position:absolute}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick .5s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scale(1,1)}to{transform:scale(.92,1.1)}}
+.pass{animation:pass 1.2s ease-in-out var(--d,0s) infinite}
+@keyframes pass{0%{transform:translate(0,0)}50%{transform:translate(70px,-10px)}100%{transform:translate(140px,0)}}
+.douse{animation:douse 1.2s ease-in var(--d,0s) infinite}
+@keyframes douse{0%{opacity:0;transform:translate(0,0)}30%{opacity:1}100%{opacity:0;transform:translate(26px,30px)}}
+</style></head><body><div class="k-stage">
+<span class="if-date k-reveal" style="--d:0s;align-self:center">London &middot; September 1666</span>
+<h1 class="hd k-reveal" style="--d:.15s">Buckets passed hand to hand</h1>
+<div class="board if-push">
+  <svg viewBox="0 0 440 430">
+    <!-- ground line and burning house, ink on paper -->
+    <g class="if-ink if-boil">
+      <path d="M0 360 H440" pathLength="1" class="if-draw" style="--d:0s"/>
+      <path d="M330 360 V230 L380 190 L430 230 V360" class="if-fill2"/>
+      <path d="M350 360 V310 H372 V360"/>
+      <path d="M392 262 h22 v22 h-22z"/>
+    </g>
+    <g class="flame" style="fill:var(--accent);stroke:var(--ink);stroke-width:3"><path d="M352 232 q8-40 24-20 q6-34 22-8 q14-30 20 10 q4 14-8 22 h-50z"/></g>
+    <!-- three stick figures in a chain; each arm swings around its shoulder joint -->
+    <g class="if-ink if-boil">
+      <g transform="translate(70 0)"><g class="if-enter" style="--d:.4s">
+        <circle cx="0" cy="246" r="17" class="if-head"/>
+        <path d="M0 263 V318 M0 318 L-14 360 M0 318 L14 360"/>
+        <g transform="translate(0 276)"><g class="if-swing" style="--a:-70deg;--b:-20deg;--t:.6s"><path d="M0 0 L30 6"/></g></g>
+      </g></g>
+      <g transform="translate(170 0)"><g class="if-enter" style="--d:.8s">
+        <circle cx="0" cy="246" r="17" class="if-head"/>
+        <path d="M0 263 V318 M0 318 L-14 360 M0 318 L14 360"/>
+        <g transform="translate(0 276)"><g class="if-swing" style="--a:-60deg;--b:10deg;--t:.6s;--d:.3s"><path d="M0 0 L30 6"/></g></g>
+      </g></g>
+      <g transform="translate(270 0)"><g class="if-enter" style="--d:1.2s">
+        <circle cx="0" cy="246" r="17" class="if-head"/>
+        <path d="M0 263 V318 M0 318 L-14 360 M0 318 L14 360"/>
+        <g transform="translate(0 276)"><g class="if-swing" style="--a:-80deg;--b:-30deg;--t:.6s"><path d="M0 0 L34 0"/></g></g>
+        <path d="M-12 240 q4-6 8 0" class="if-thin"/>
+      </g></g>
+    </g>
+    <!-- buckets travel along the chain; water splashes on the house -->
+    <g class="pass" style="--d:1.6s"><path d="M88 270 h22 l-4 22 h-14z" class="if-fill"/></g>
+    <g class="pass" style="--d:2.2s"><path d="M88 270 h22 l-4 22 h-14z" class="if-fill"/></g>
+    <g style="fill:var(--bone);stroke:var(--ink);stroke-width:2"><circle cx="312" cy="262" r="5" class="douse" style="--d:2.6s"/><circle cx="318" cy="252" r="4" class="douse" style="--d:2.9s"/></g>
+    <!-- worry marks pop beside the last head -->
+    <g class="if-ink if-thin"><path d="M296 222 l8 -10 M304 230 l12 -4" class="if-pop" style="--d:3.2s"/></g>
+    <ellipse cx="170" cy="364" rx="160" ry="6" class="if-shadow"/>
+  </svg>
+  <div class="lbl" style="left:12px;top:150px"><span class="if-bubble k-reveal" style="--d:3.6s">Faster!</span></div>
+  <div class="lbl" style="left:206px;top:388px"><span class="if-note k-reveal" style="--d:4.2s">13,200 houses lost</span></div>
+</div>
+</div></body></html>

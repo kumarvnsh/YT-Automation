@@ -113,13 +113,43 @@ This is a complete scene in the target style; match its construction and lightin
 </example>
 """
 
-STYLE_NOTES = {'papercut': PAPERCUT_NOTE, 'flatlit': FLATLIT_NOTE}
+INKFOLK_NOTE = """
+INK-FOLK STYLE (this run). The story is ACTED OUT by expressive ink stick figures on paper, like a hand-drawn
+history cartoon told straight: round white heads, thick ink limbs, a few flat-coloured props and buildings drawn
+in the same ink line, simple ground lines and skylines. People do things: walk, point, haul, row, fire, refuse,
+shake hands, run, cheer, argue. Never draw a real person's face: heads stay plain circles (a hat, beard line,
+glasses or a period prop tells who is who), and use a supplied histold-photo when a named person's likeness matters.
+The renderer adds paper grain and a vignette and defines these (do not define them yourself):
+  SVG: if-ink        ink stroke for figures and props (put on a <g>; fill none, round caps, 4.5px)
+       if-thin       thinner ink for details    if-head  white round head with ink outline
+       if-fill / if-fill2  flat accent / bone fill with ink outline for props, coats, buildings
+       if-shadow     soft ground shadow ellipse   if-boil  8fps hand-drawn line boil (ambient)
+  JOINTS: wrap a limb in <g transform="translate(jx jy)"><g class="if-swing" style="--a:-30deg;--b:30deg;
+       --t:.5s">...lines drawn from 0,0...</g></g> so it rotates around the joint; if-raise lifts once from --a to
+       --b on its cue (--d); if-nod gentle head nod; if-turn wheel or crank rotation (--t).
+  Whole figures (set --d): if-walk walks in from --fx; if-enter springs in; if-hop jump; if-bob idle bounce;
+       if-shake shudder (impact, fear). if-draw ink draw-on for props, arrows, routes (pathLength="1").
+       if-pop for emotion marks (sweat drops, ! , motion lines) beside a head.
+  HTML: if-note hand-lettered note card; if-bubble speech bubble (set --tail px); if-date black date card.
+IMPORTANT: a CSS animation replaces an SVG element's transform attribute, so never put an animation class on an
+element that has transform="..."; position with an outer <g transform>, animate an inner <g>.
+Stage each beat as a small piece of action cued to the words: a figure enters, then acts, then reacts. Keep 2-4
+figures per scene, large enough to read on a phone (heads at least 28px across). Labels are short notes or
+bubbles with real quoted words or a fact, never the narration. Keep a real change at least every 1.5 seconds.
+This is a complete scene in the target style; match its drawing and acting, not its subject:
+<example>
+{example}
+</example>
+"""
+
+STYLE_NOTES = {'papercut': PAPERCUT_NOTE, 'flatlit': FLATLIT_NOTE, 'inkfolk': INKFOLK_NOTE}
 
 
 def scene_style() -> str:
     """Opt-in scene kit chosen with HISTOLD_STYLE: 'papercut' (cut-paper diorama, adapted from paper-reel and
-    papercut-explainer, MIT) or 'flatlit' (flat-lit vector + exploded breakdowns, adapted from
-    claude-animation-skills, MIT). Empty when unset or unknown."""
+    papercut-explainer, MIT), 'flatlit' (flat-lit vector + exploded breakdowns, adapted from
+    claude-animation-skills, MIT) or 'inkfolk' (ink stick figures acting the story, adapted from
+    stickman-video-director, MIT). Empty when unset or unknown."""
     import os
     name = os.environ.get('HISTOLD_STYLE', '').strip().lower()
     return name if name in STYLE_NOTES else ''
@@ -129,21 +159,30 @@ def papercut() -> bool:
     return scene_style() == 'papercut'
 
 
-# Machines, structures and how-it-worked stories suit the flat-lit exploded breakdown; events, places,
-# people and trade suit cut-paper dioramas. Each style is the other's fallback (owner, 24 Nov).
+# Machines, structures and how-it-worked stories suit the flat-lit exploded breakdown; stories of people acting
+# suit ink-folk stick figures; places, documents and institutions suit cut-paper dioramas (owner, 24 Nov).
 _MECHANISM_WORDS = ('machine', 'gear', 'engine', 'pump', 'mechanism', 'device', 'clock', 'invent', 'engineer',
                     'bridge', 'canal', 'aqueduct', 'dam', 'lock', 'wheel', 'lever', 'calculat', 'computer',
                     'telescope', 'printing', 'press', 'valve', 'steam', 'tool', 'pulley', 'crank', 'shaft',
                     'circuit', 'telegraph', 'loom', 'mill', 'furnace', 'cannon', 'ship', 'boat', 'instrument')
-STYLE_FALLBACK = {'papercut': 'flatlit', 'flatlit': 'papercut'}
+_ACTION_WORDS = ('refus', 'fired', 'rescue', 'march', 'fought', 'fight', 'battle', 'crew', 'soldier', 'crowd',
+                 'ran ', 'carried', 'walked', 'sailed', 'climbed', 'rowed', 'hunt', 'escap', 'protest', 'strike',
+                 'argued', 'shouted', 'chased', 'shot', 'threw', 'pulled', 'hauled', 'dragged', 'volunteer',
+                 'tied', 'raced', 'swam', 'dug', 'stormed', 'smuggl', 'arrest', 'duel', 'boycott', 'riot')
+STYLE_FALLBACK = {'papercut': 'flatlit', 'flatlit': 'papercut', 'inkfolk': 'papercut'}
 
 
 def choose_style(script: dict) -> str:
     """Pick the scene kit for one video from its script."""
     text = ' '.join([str(script.get('title', ''))] +
                     [str(seg.get('narration', '')) for seg in script.get('segments', []) if isinstance(seg, dict)]).lower()
-    hits = sum(text.count(word) for word in _MECHANISM_WORDS)
-    return 'flatlit' if hits >= 3 else 'papercut'
+    machines = sum(text.count(word) for word in _MECHANISM_WORDS)
+    action = sum(text.count(word) for word in _ACTION_WORDS)
+    if machines >= 3 and machines >= action:
+        return 'flatlit'   # how a machine or structure worked
+    if action >= 3:
+        return 'inkfolk'   # people doing things
+    return 'flatlit' if machines >= 3 else 'papercut'  # places, documents, institutions
 
 
 def resolve_style(script: dict) -> str:
