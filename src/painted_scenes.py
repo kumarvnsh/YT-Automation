@@ -14,7 +14,7 @@ import base64
 import os
 import subprocess
 import time
-from concurrent.futures import ThreadPoolExecutor, wait
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from pathlib import Path
 
 PROMPT_NOTE = """
@@ -145,6 +145,13 @@ class Painter:
             raw.unlink(missing_ok=True)
         return None
 
+    def settle(self, seconds: float = 20) -> bool:
+        """Wait briefly for the providers to answer. A plan that refuses at once (quota used up) stops
+        the painter here, before the scenes are written, so the writer is not told to leave a picture slot.
+        Returns True while painting is still on."""
+        wait(self.futures.values(), timeout=seconds, return_when=FIRST_COMPLETED)
+        return not self.stopped
+
     def collect(self, grace: float = 240) -> dict[int, Path]:
         wait(self.futures.values(), timeout=grace)
         self.stopped = True  # paintings still queued are not started; the video goes on without them
@@ -161,16 +168,16 @@ def apply_inset(html: str, image: Path | None, duration: float, index: int = 0) 
     """Fill the scene's ``.histold-painting`` slot with the painting, a frame and a slow push.
 
     The scene keeps its own paper background. With no painting (it failed after the writer was told to
-    expect one) the slot becomes a quiet palette card, so the layout never has a hole. A scene that left
-    out the slot is returned unchanged."""
+    expect one) the slot is hidden, so the video never shows an empty framed box (owner, 24 Nov). A scene
+    that left out the slot is returned unchanged."""
     import re
     if 'histold-painting' not in html:
         return html
-    if image:
-        picture = f"url(data:image/jpeg;base64,{base64.b64encode(Path(image).read_bytes()).decode('ascii')}) center/cover no-repeat"
-    else:
-        picture = ('radial-gradient(120% 90% at 50% 40%,color-mix(in srgb,var(--parch) 80%,var(--accent) 20%) 0%,'
-                   'color-mix(in srgb,var(--parch) 86%,var(--ink) 14%) 100%)')
+    if not image:
+        style = '<style id="histold-paint">.histold-painting{display:none!important}</style>'
+        head = re.search(r'</head\s*>', html, flags=re.I)
+        return html[:head.start()] + style + html[head.start():] if head else style + html
+    picture = f"url(data:image/jpeg;base64,{base64.b64encode(Path(image).read_bytes()).decode('ascii')}) center/cover no-repeat"
     drift = ('-2%,-1%', '2%,-1.5%', '-1.5%,1%', '1.5%,1.5%')[index % 4]
     style = ('<style id="histold-paint">'
              '.histold-painting{position:relative;overflow:hidden;border-radius:14px;'

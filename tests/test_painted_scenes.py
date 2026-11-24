@@ -60,7 +60,9 @@ class Painted(unittest.TestCase):
         self.assertIn('data:image/jpeg;base64,', html)
         self.assertNotIn('background:transparent!important', html)
         self.assertNotIn('hp-shade', html)
-        self.assertIn('radial-gradient(', painted_scenes.apply_inset(prepare_html(scene, 0), None, 3.0))
+        empty = painted_scenes.apply_inset(prepare_html(scene, 0), None, 3.0)
+        self.assertIn('.histold-painting{display:none!important}', empty)  # no empty framed box
+        self.assertNotIn('hp-pic', empty)
         self.assertEqual(painted_scenes.apply_inset(SCENE, image, 3.0), SCENE)  # no slot: unchanged
 
     def test_light_palettes_swap_to_light_text_over_paintings(self):
@@ -101,6 +103,12 @@ class Painted(unittest.TestCase):
 
 
 class ResetTime(unittest.TestCase):
+    def test_settle_reports_a_plan_that_refuses_at_once(self):
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(plan_ai, 'image_ready', return_value=True),                 mock.patch.object(plan_ai, 'image', side_effect=plan_ai.PlanUnavailable('quota used up')):
+            painter = painted_scenes.Painter(Config({'local_production': {'painted_scenes': {'parallel': 1}}}),
+                                             'T', ['a', 'b'], Path(folder), 1080, 1920)
+            self.assertFalse(painter.settle(10))  # the writer then gets the normal brief, no picture slot
+
     def test_codex_dated_reset_is_understood(self):
         text = "You've hit your usage limit. ... or try again at Nov 25th, 2026 10:47 PM."
         self.assertEqual(datetime.fromtimestamp(reset_time(text)), datetime(2026, 11, 25, 22, 47))

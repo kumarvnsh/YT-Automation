@@ -908,6 +908,10 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         except Exception as exc:  # noqa: BLE001
             painted_scenes.disable()  # Claude gets the normal brief, so the scenes stay self-contained
             print(f'  ! painted backdrops off for this video ({str(exc)[:160]})')
+        if painter and not painter.settle():  # providers refused straight away: write normal scenes
+            painter = None
+            painted_scenes.disable()
+            print('  ! painted backdrops off for this video (no image provider could draw)')
     try:
         scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
