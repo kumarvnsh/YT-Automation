@@ -14,10 +14,10 @@ class SceneRecoveryTests(unittest.TestCase):
         self._check_recovery({1: '<html><head></head><body>ending</body></html>'},
                              'Missing generated scene')
 
-    def test_opening_without_required_maps_is_replaced_not_accepted(self):
-        self._check_recovery({0: '<html><head></head><body>invented map</body></html>',
-                              1: '<html><head></head><body>ending</body></html>'},
-                             'Opening scene is missing required establishing maps')
+    def test_opening_without_a_map_is_accepted(self):
+        # Maps are optional (owner, 24 Nov): a scene that shows the subject instead is not replaced.
+        cfg = Config({'production': {'enabled': True}})
+        self.assertNotIn('ensure_opening_maps(html, maps)', Path('src/claude_motion.py').read_text(encoding='utf-8'))
 
     def test_malformed_repair_uses_local_recovery(self):
         generated = {0: '<html><head></head><body><histold-map id="canada"></histold-map>'
@@ -87,8 +87,7 @@ class SceneRecoveryTests(unittest.TestCase):
         self.assertNotIn('bad-layout', saved)
         self.assertEqual(report['scenes']['0'], {'errors': [], 'warnings': []})
         self.assertNotIn('obsolete warning', report['warnings'])
-        self.assertTrue(any('data-map-id="canada"' in html for html in inspected))
-        self.assertIn('data-map-id="washington"', saved)
+        self.assertNotIn('data-map-id', saved)  # the house fallback no longer forces a map into scene 0
         self.assertIn('This American town requires a border detour.', saved)
         self.assertNotIn('<img', saved)
         self.assertEqual(report['errors'], [])

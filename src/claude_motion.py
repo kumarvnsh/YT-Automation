@@ -494,9 +494,11 @@ def _request_scenes(cfg: Config, title: str, segs: list, windows, w: int, h: int
             lines.append('Selected opening visual (editorial suggestion, not historical evidence): '+str(opening)+
                          '. Build this clear explanatory view in scene 0, aligned with the narration. Avoid generic scenery.')
     if maps and 0 in requested:
-        lines.append('Verified map IDs: ' + ', '.join(a['map_id'] for a in maps) +
-                     '. In scene 0 establish ALL these locations with exact placeholders '
-                     '<histold-map id="MAP_ID"></histold-map> inside .k-stage, at readable size. '
+        lines.append('Verified map IDs (OPTIONAL): ' + ', '.join(a['map_id'] for a in maps) +
+                     '. A map is not required. Use one only in a scene whose narration names that place and where '
+                     'seeing where it is genuinely helps the story; otherwise show the subject itself (object, '
+                     'machine, building, diagram) and no map. When you do use one, place the exact placeholder '
+                     '<histold-map id="MAP_ID"></histold-map> inside .k-stage at readable size, clear of other artwork. '
                      'These are present-day establishing outlines; world maps use separate extents and North American country/state maps share a projection. '
                      'The binding supplies the geometry and layout. Keep labels readable for >=2 seconds '
                      'while animating outlines, emphasis and story graphics from the first frame; do not wait '
@@ -988,12 +990,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     if not html:
                         report['scenes'][str(i)] = {'errors': ['Missing generated scene'], 'warnings': []}
                         continue
-                    if i == 0 and maps:
-                        html = ensure_opening_maps(html, maps)
-                    if i == 0 and maps and any(f'<histold-map id="{a["map_id"]}"></histold-map>' not in html for a in maps):
-                        report['scenes'][str(i)] = {'errors': ['Opening scene is missing required establishing maps'], 'warnings': []}
-                        continue
-                    s, e = windows[i]
+                    s, e = windows[i]  # maps are optional (owner, 24 Nov): only where the writer chose one
                     try:
                         scenes[i] = bind_maps(html, maps)
                         inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
@@ -1010,9 +1007,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                         fixed = {}
                     for i, html in fixed.items():
                         try:
-                            html = bind_maps(ensure_opening_maps(html, maps) if i == 0 else html, maps)
-                            if i == 0 and maps and any(f'data-map-id="{asset["map_id"]}"' not in html for asset in maps):
-                                continue
+                            html = bind_maps(html, maps)
                             s, e = windows[i]
                             repaired = inspect_scene(page, prepare(html, i), e-s, fps, board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         except Exception:
@@ -1025,7 +1020,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     if not original_errors:
                         continue
                     # One weak scene should not cancel the publish; the house scene keeps the slot filled.
-                    scenes[i] = house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', []))
+                    scenes[i] = house_scene(segs[i].narration, [], e-s, st.get('portraits', []))
                     inspection = inspect_scene(page, prepare(scenes[i], i), e-s, fps,
                         board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                     report['recoveries'].append({'scene': i, 'method': 'local_house_scene',
@@ -1061,7 +1056,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                     if cinematic:
                         raise
                     if production:
-                        scenes[i] = prepare(house_scene(segs[i].narration, maps if i == 0 else [], e-s, st.get('portraits', [])), i)
+                        scenes[i] = prepare(house_scene(segs[i].narration, [], e-s, st.get('portraits', [])), i)
                         inspection = inspect_scene(page, scenes[i], e-s, fps,
                             board['scenes'][i]['cues'], cfg.get('video.branding.enabled', False))
                         if inspection['errors']:
