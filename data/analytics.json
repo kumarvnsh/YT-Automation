@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-23T23:00:29.292763+00:00",
+      "updated": "2026-11-24T00:00:36.840758+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,51 @@
       },
       "videos": [
         {
+          "id": "fEJ_p-XAW-4",
+          "title": "The Teddy Bear Owes Its Name to a Refusal in Mississippi",
+          "description": "In 1902, President Theodore Roosevelt refused to shoot a tied-up black bear on a Mississippi hunt because he thought it was unsportsmanlike. Cartoonist Clifford Berryman drew the moment for the Washington Post, and a Brooklyn shop owner named Morris Michtom then made a stuffed toy called Teddy's Bear. Sources: U.S. National Park Service and U.S. National Archives.\n#history #teddybear #didyouknow\n\nPortrait of Clifford K. Berryman: Harris & Ewing, Public domain, via Wikimedia Commons\nPortrait of Morris Michtom: Unknown, Public domain, via Wikimedia Commons\nPortrait of Theodore Roosevelt: Adam Cuerden, Public domain, via Wikimedia Commons",
+          "tags": [
+            "1902",
+            "clifford berryman",
+            "did you know",
+            "education",
+            "everyday objects",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "mississippi",
+            "morris michtom",
+            "political cartoon",
+            "teddy bear",
+            "theodore roosevelt",
+            "toy history",
+            "washington post",
+            "world history"
+          ],
+          "publishedAt": "2026-11-23T23:21:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/fEJ_p-XAW-4/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-24",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
+        {
           "id": "v7fM7kWvKF4",
           "title": "U.S. Lifesavers Fired a Cannon to Rescue Shipwrecked Crews",
           "description": "When a ship ran aground near the U.S. coast, lifesavers on the beach used a small cannon to send a thin line out to the stranded ship. Army officer David Lyle designed the gun. The crew hauled heavier lines aboard, and survivors came ashore one at a time in a life ring with canvas pants sewn into it. It did not always work, and the National Park Service explains why.\n#history #shipwreck #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)",
@@ -58,7 +103,7 @@
           ],
           "publishedAt": "2026-11-23T18:18:05Z",
           "thumbnail": "https://i.ytimg.com/vi/v7fM7kWvKF4/mqdefault.jpg",
-          "views": 13,
+          "views": 21,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -66,7 +111,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -110,7 +155,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -147,7 +192,7 @@
           ],
           "publishedAt": "2026-11-22T23:17:16Z",
           "thumbnail": "https://i.ytimg.com/vi/-7-YlK4o8mM/mqdefault.jpg",
-          "views": 25,
+          "views": 27,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -155,7 +200,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -200,7 +245,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -244,7 +289,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -280,7 +325,7 @@
           ],
           "publishedAt": "2026-11-22T07:02:16Z",
           "thumbnail": "https://i.ytimg.com/vi/3cLUs_8OhVQ/mqdefault.jpg",
-          "views": 12,
+          "views": 14,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -294,7 +339,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -338,7 +383,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -381,7 +426,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -424,7 +469,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -468,7 +513,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -512,7 +557,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -549,7 +594,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -599,7 +644,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -642,7 +687,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -686,7 +731,7 @@
           "engaged_views": 9,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -723,7 +768,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -773,7 +818,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -817,7 +862,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -860,7 +905,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -904,7 +949,7 @@
           "engaged_views": 16,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -948,7 +993,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -991,7 +1036,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1028,7 +1073,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -1080,7 +1125,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1123,7 +1168,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1160,7 +1205,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
@@ -1210,7 +1255,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1253,7 +1298,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1296,7 +1341,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1324,7 +1369,7 @@
           ],
           "publishedAt": "2026-11-16T00:30:54Z",
           "thumbnail": "https://i.ytimg.com/vi/wUYjpa6ICeU/mqdefault.jpg",
-          "views": 3,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1338,7 +1383,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1381,7 +1426,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1425,7 +1470,7 @@
           "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1470,7 +1515,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1501,7 +1546,7 @@
           ],
           "publishedAt": "2026-11-15T10:55:29Z",
           "thumbnail": "https://i.ytimg.com/vi/T2PhQx-4814/mqdefault.jpg",
-          "views": 16,
+          "views": 18,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1515,7 +1560,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1558,7 +1603,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1600,7 +1645,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1643,7 +1688,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1686,7 +1731,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1728,7 +1773,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1771,7 +1816,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1814,7 +1859,7 @@
           "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1855,7 +1900,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1898,7 +1943,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1942,7 +1987,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -1985,7 +2030,7 @@
           "engaged_views": 8,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2027,7 +2072,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2072,7 +2117,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2115,7 +2160,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
@@ -2158,55 +2203,10 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
+            "end_date": "2026-11-24",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {}
-        },
-        {
-          "id": "9JGGj-Yg9vs",
-          "title": "What Did a Farmer's Plow Turn Up in Nara in 1831?",
-          "description": "In 1831 a farmer plowing a field in Yamato, today's Nara Prefecture, uncovered a grave with cremated remains and a bronze epitaph. The plaque names Fumi no Nemaro, who died in 707, and the national e-Museum calls it the earliest reliably datable example of its kind. #JapaneseHistory #FoundByAccident #NaraJapan\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "ancient japan",
-            "bronze artifacts",
-            "buddhism in japan",
-            "cremation history",
-            "did you know",
-            "did you know history",
-            "education",
-            "epitaph",
-            "everyday origins",
-            "found by accident",
-            "historical facts",
-            "history shorts",
-            "japan archaeology",
-            "japanese history",
-            "nara japan",
-            "world history",
-            "yamato period"
-          ],
-          "publishedAt": "2026-11-14T06:55:14Z",
-          "thumbnail": "https://i.ytimg.com/vi/9JGGj-Yg9vs/mqdefault.jpg",
-          "views": 0,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-23",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
-          }
         }
       ]
     }
