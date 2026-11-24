@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.k-stage{gap:16px}
+.ban{align-self:center;max-width:440px;text-align:center}
+.ban .hd{margin:0;font:400 36px/1.08 var(--display)}
+.ban .pc-tape{top:-10px;left:-18px}
+.ban .pc-tape.r{left:auto;right:-18px;--r:32deg}
+.board{position:relative;width:440px;height:430px;align-self:center}
+.board svg{position:absolute;inset:0;width:440px;height:430px;overflow:visible}
+.lbl{position:absolute}
+.water{stroke-dasharray:1;stroke-dashoffset:1;animation:flow 3.2s linear var(--d,0s) both}
+@keyframes flow{to{stroke-dashoffset:0}}
+.drip{animation:drip .9s ease-in var(--d,0s) infinite}
+@keyframes drip{from{transform:translateY(0);opacity:1}to{transform:translateY(46px);opacity:0}}
+.grow{transform-box:fill-box;transform-origin:50% 100%;animation:grow .5s cubic-bezier(.34,1.6,.5,1) var(--d,0s) both}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.count{position:absolute;right:10px;top:12px;width:150px;padding:10px 12px;text-align:center;color:var(--ink)}
+.count b{display:block;font:400 36px/1 var(--display);color:var(--accent)}
+.count span{font:700 15px/1.1 var(--body);letter-spacing:.06em;text-transform:uppercase}
+</style></head><body><div class="k-stage">
+<!-- taped headline banner: one hard fact, caps-free serif -->
+<div class="pc-banner ban pc-drop" style="--d:0s"><span class="pc-tape"></span><span class="pc-tape r"></span>
+  <h1 class="hd">Water that rolled downhill for 90 km</h1></div>
+<div class="board pc-push">
+  <svg viewBox="0 0 440 430">
+    <!-- paper layers back to front: sky card, far hills, near hills -->
+    <rect x="0" y="0" width="440" height="430" rx="6" class="pc-cut-lo" style="fill:color-mix(in srgb,var(--parch) 78%,var(--dim))"/>
+    <g class="pc-far">
+      <path d="M-10 250 Q60 170 130 220 T270 200 T450 215 V430 H-10Z" class="pc-cut" style="fill:color-mix(in srgb,var(--dim) 70%,var(--parch))"/>
+    </g>
+    <path d="M-10 330 Q90 280 200 316 T450 300 V430 H-10Z" class="pc-cut" style="fill:color-mix(in srgb,var(--ink) 35%,var(--parch))"/>
+    <!-- aqueduct arches, each a cut piece popping in on its cue -->
+    <g class="pc-cut" style="fill:var(--bone)">
+      <rect x="30" y="150" width="380" height="22" class="pc-pop" style="--d:.2s"/>
+      <g class="grow" style="--d:.5s"><path d="M40 172 h60 v130 h-14 v-70 a16 16 0 0 0 -32 0 v70 h-14z"/></g>
+      <g class="grow" style="--d:.8s"><path d="M100 172 h60 v130 h-14 v-70 a16 16 0 0 0 -32 0 v70 h-14z"/></g>
+      <g class="grow" style="--d:1.1s"><path d="M160 172 h60 v130 h-14 v-70 a16 16 0 0 0 -32 0 v70 h-14z"/></g>
+      <g class="grow" style="--d:1.4s"><path d="M220 172 h60 v130 h-14 v-70 a16 16 0 0 0 -32 0 v70 h-14z"/></g>
+      <g class="grow" style="--d:1.7s"><path d="M280 172 h60 v130 h-14 v-70 a16 16 0 0 0 -32 0 v70 h-14z"/></g>
+      <g class="grow" style="--d:2.0s"><path d="M340 172 h60 v130 h-14 v-70 a16 16 0 0 0 -32 0 v70 h-14z"/></g>
+    </g>
+    <!-- shading strip on the channel and the gentle slope line -->
+    <rect x="30" y="166" width="380" height="6" style="fill:var(--ink)" opacity=".25"/>
+    <path d="M34 156 L406 164" pathLength="1" class="water" style="--d:2.3s;stroke:var(--accent);stroke-width:7;stroke-linecap:round;fill:none"/>
+    <g style="fill:var(--accent)"><circle cx="404" cy="176" r="4" class="drip" style="--d:5.4s"/></g>
+    <!-- tiny workers: cut-out silhouettes bobbing -->
+    <g class="pc-cut-lo" style="fill:var(--ink)">
+      <g class="pc-bob"><circle cx="120" cy="330" r="7"/><path d="M113 340 h14 l3 26 h-20z"/></g>
+      <g class="pc-bob" style="animation-delay:.4s"><circle cx="300" cy="322" r="7"/><path d="M293 332 h14 l3 26 h-20z"/></g>
+    </g>
+  </svg>
+  <!-- paper counter card and torn labels, placed on calm areas -->
+  <div class="count pc-slab pc-pop" style="--d:3.4s;background-color:var(--parch)"><b>1:4800</b><span>gradient</span></div>
+  <div class="lbl" style="left:14px;top:108px"><span class="pc-tag pc-slide" style="--d:2.6s;--r:-3deg">25 cm drop per km</span></div>
+  <div class="lbl" style="left:210px;top:372px"><span class="pc-stamp" style="--d:4.4s;font-size:18px">Pont du Gard &middot; 50 AD</span></div>
+</div>
+</div></body></html>

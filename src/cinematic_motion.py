@@ -31,7 +31,10 @@ def system_prompt(w: int, h: int, design: dict | None = None) -> str:
                    'Size art to fit the available height and keep the main illustration visible at frame zero.')
         prompt = prompt.replace('bottom 180 CSS pixels', 'bottom 88 CSS pixels').replace('Start content below 124px.', 'Start content below 76px.')
         prompt = prompt.replace('about 420px wide and 350–440px tall', 'about 500–650px wide and 230–330px tall')
-    if textured():
+    kit = scene_style()
+    if kit:
+        prompt += STYLE_NOTES[kit].replace('{example}', _HERE.joinpath(f'cinematic_{kit}_example.html').read_text(encoding='utf-8'))
+    elif textured():
         prompt += TEXTURE_NOTE.replace('{example}', _HERE.joinpath('cinematic_texture_example.html').read_text(encoding='utf-8'))
     from .painted_scenes import enabled, prompt_note
     if enabled():
@@ -58,6 +61,149 @@ This is a complete scene in the target style; match its richness, not its subjec
 {example}
 </example>
 """
+
+
+PAPERCUT_NOTE = """
+CUT-PAPER STYLE (this run). The whole scene is built from flat pieces of cut paper, like a paper-craft diorama
+photographed from the front: matte colours, visible fibre grain, slightly rough cut edges, soft drop shadows that
+lift each layer off the one behind it, light from the top-left. The renderer adds grain and a vignette over every
+frame and defines these (do not define them yourself):
+  SVG: pc-cut      rough cut edge + fibre grain + drop shadow, for each paper layer or object (<g> or shape)
+       pc-cut-lo   same, flatter shadow, for back layers and small pieces
+  HTML: pc-slab    a cut card (set background-color with a palette variable); pc-banner taped headline banner
+       pc-tape     masking-tape strip (absolute; set --r rotation) to pin banners and cards
+       pc-tag      torn coloured label for a date or fact (set --r, -4deg to 4deg)
+       pc-note     ruled note card; pc-stamp  rubber-stamp slam for a date or verdict (set --d)
+  Motion (set --d delay): pc-pop springy pop with overshoot (props, 0.3s); pc-slide overshooting slide-in
+       (--fx/--fy start offset); pc-drop drop-in from above; pc-bob idle bob; pc-spin (--t period) for gears and
+       wheels; pc-boil 15fps paper jitter for a banner; pc-push / pc-far slow camera push and depth drift (ambient).
+Build every illustration as stacked paper layers back to front: a backdrop card, far layer, mid layer, the
+subject, a foreground lip, then labels. Shapes are flat fills (palette variables or color-mix() of them), no
+outlines and no gradients on objects; add depth with layers, darker strips on shaded faces and shadows.
+Headline: one pc-banner, taped, stating the scene's hard fact in 3-8 words. Labels: pc-tag or pc-slab cards with a
+short fact, never the narration. Cue one discrete paper event to each stressed word (a piece pops, slides, drops,
+stamps or turns), roughly every 0.5-1s; things assemble piece by piece rather than fading in.
+This is a complete scene in the target style; match its richness and paper construction, not its subject:
+<example>
+{example}
+</example>
+"""
+
+
+FLATLIT_NOTE = """
+FLAT-LIT STYLE (this run). Clean flat-vector illustration lit from one side, like a modern science explainer:
+every object is a flat shape in a palette variable, with ONE light direction for the whole scene (upper left).
+The far side of each round or boxy object gets a darker crescent/face (class fl-shade on an overlay path), the
+edge facing the light a thin rim (fl-rim), and the hero object a soft coloured glow behind it (fl-halo on a
+blurred circle). No outlines, no textures, no gradients as decoration. The renderer adds faint grain and a soft
+central glow and defines these (do not define them yourself):
+  SVG: fl-shade dark crescent overlay   fl-rim light edge   fl-halo soft glow   fl-lift drop shadow under a part
+       fl-speck twinkling dust (set --d, --t)   fl-turn gear/wheel rotation (--t period; add ccw to reverse)
+  HTML: fl-pill rounded label pill (add ghost for an outline pill)   fl-num numbered circle   fl-hero big payoff tag
+  Motion (set --d delay): fl-drop overshoot drop-in; fl-pop pop from nothing; fl-rise rise-in for callouts;
+       fl-line leader line draws (pathLength="1"); fl-float gentle float; fl-push slow camera push (ambient).
+  BREAKDOWN: to explain a machine, building or object, show it assembled, then lift its parts apart: wrap each
+       part in <g class="fl-layer" style="--dy:-60px;--d:1.6s"> (negative --dy lifts it up, positive drops it),
+       then draw a leader line from each part to a numbered callout (fl-num + short name) at the side.
+Elements arrive one at a time with overshoot, on the words that name them. Labels are pills or numbered callouts
+with 1-4 words, never the narration. Keep a real change at least every 1.5 seconds.
+This is a complete scene in the target style; match its construction and lighting, not its subject:
+<example>
+{example}
+</example>
+"""
+
+STYLE_NOTES = {'papercut': PAPERCUT_NOTE, 'flatlit': FLATLIT_NOTE}
+
+
+def scene_style() -> str:
+    """Opt-in scene kit chosen with HISTOLD_STYLE: 'papercut' (cut-paper diorama, adapted from paper-reel and
+    papercut-explainer, MIT) or 'flatlit' (flat-lit vector + exploded breakdowns, adapted from
+    claude-animation-skills, MIT). Empty when unset or unknown."""
+    import os
+    name = os.environ.get('HISTOLD_STYLE', '').strip().lower()
+    return name if name in STYLE_NOTES else ''
+
+
+def papercut() -> bool:
+    return scene_style() == 'papercut'
+
+
+# Machines, structures and how-it-worked stories suit the flat-lit exploded breakdown; events, places,
+# people and trade suit cut-paper dioramas. Each style is the other's fallback (owner, 24 Nov).
+_MECHANISM_WORDS = ('machine', 'gear', 'engine', 'pump', 'mechanism', 'device', 'clock', 'invent', 'engineer',
+                    'bridge', 'canal', 'aqueduct', 'dam', 'lock', 'wheel', 'lever', 'calculat', 'computer',
+                    'telescope', 'printing', 'press', 'valve', 'steam', 'tool', 'pulley', 'crank', 'shaft',
+                    'circuit', 'telegraph', 'loom', 'mill', 'furnace', 'cannon', 'ship', 'boat', 'instrument')
+STYLE_FALLBACK = {'papercut': 'flatlit', 'flatlit': 'papercut'}
+
+
+def choose_style(script: dict) -> str:
+    """Pick the scene kit for one video from its script."""
+    text = ' '.join([str(script.get('title', ''))] +
+                    [str(seg.get('narration', '')) for seg in script.get('segments', []) if isinstance(seg, dict)]).lower()
+    hits = sum(text.count(word) for word in _MECHANISM_WORDS)
+    return 'flatlit' if hits >= 3 else 'papercut'
+
+
+def resolve_style(script: dict) -> str:
+    """HISTOLD_STYLE=auto picks per video; an explicit kit name is used as given; otherwise ''."""
+    import os
+    name = os.environ.get('HISTOLD_STYLE', '').strip().lower()
+    if name == 'auto':
+        return choose_style(script)
+    return name if name in STYLE_NOTES else ''
+
+
+def style_chain(primary: str) -> list[str]:
+    """Writers to try in order: the chosen kit, the other kit, then the current textured look."""
+    return [primary, STYLE_FALLBACK[primary], 'textured'] if primary in STYLE_FALLBACK else []
+
+
+class writing_style:
+    """Temporarily point the scene writer (system_prompt) and prepare_html at one kit; 'textured' = the
+    pre-existing textured look."""
+
+    def __init__(self, name: str):
+        self.name = name
+
+    def __enter__(self):
+        import os
+        self.saved = {k: os.environ.get(k) for k in ('HISTOLD_STYLE', 'HISTOLD_TEXTURE')}
+        if self.name == 'textured':
+            os.environ['HISTOLD_STYLE'] = ''
+            os.environ['HISTOLD_TEXTURE'] = '1'
+        else:
+            os.environ['HISTOLD_STYLE'] = self.name
+        return self
+
+    def __exit__(self, *exc):
+        import os
+        for key, value in self.saved.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+        return False
+
+
+_STYLE_TAG = re.compile(r'<meta name="histold-style" content="([a-z]*)">')
+
+
+def tag_style(html: str, name: str) -> str:
+    """Record which kit a scene was written for, so it is prepared with that kit."""
+    html = _STYLE_TAG.sub('', html)
+    tag = f'<meta name="histold-style" content="{name}">'
+    for pattern in (r'<head[^>]*>', r'<html[^>]*>', r'<!doctype[^>]*>'):
+        found = re.search(pattern, html, flags=re.I)
+        if found:
+            return html[:found.end()] + tag + html[found.end():]
+    return tag + html
+
+
+def tagged_style(html: str) -> str | None:
+    found = _STYLE_TAG.search(html)
+    return found.group(1) if found else None
 
 
 def textured() -> bool:
@@ -130,11 +276,16 @@ def prepare_html(html: str, index: int, *, landscape=False, theme_offset=None, p
 .k-stage .histold-map svg{width:100%;max-height:162px}
 .k-stage .house-rail{grid-column:1/-1}
 ''' if landscape else ''
-    texture = textured() if texture is None else texture
-    kit = _HERE.joinpath('cinematic_texture.css').read_text(encoding='utf-8') if texture else ''
+    tagged = tagged_style(html)  # a scene written in a fallback kit keeps that kit
+    special = '' if tagged == 'textured' else (tagged if tagged in STYLE_NOTES else scene_style())
+    if tagged == 'textured':
+        texture = True
+    texture = (textured() if texture is None else texture) or bool(special)
+    kit_name = f'cinematic_{special}' if special else 'cinematic_texture'
+    kit = _HERE.joinpath(kit_name + '.css').read_text(encoding='utf-8') if texture else ''
     style = '<style id="cinematic-2d">' + _base_css() + theme + geometry + kit + '</style>'
-    if texture:  # the hx-* filters the kit's classes point at
-        defs = _HERE.joinpath('cinematic_texture_defs.svg').read_text(encoding='utf-8')
+    if texture:  # the hx-*/pc-* filters the kit's classes point at
+        defs = _HERE.joinpath(kit_name + '_defs.svg').read_text(encoding='utf-8')
         body = re.search(r'<body[^>]*>', html, flags=re.I)
         html = html[:body.end()] + defs + html[body.end():] if body else html
     head = re.search(r'<head\b[^>]*>', html, flags=re.I)

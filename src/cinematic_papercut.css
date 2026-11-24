@@ -1,0 +1,52 @@
+/* Histold cut-paper kit (src/cinematic_motion.py injects it with HISTOLD_STYLE=papercut).
+   Look adapted from paper-reel (Haider Farooq, MIT) and papercut-explainer (sanat, MIT):
+   flat paper pieces with fibre grain, a light top-left lip, rough cut edges and soft drop shadows,
+   torn tags and taped banners, springy pop-ins, hard cuts. Drawn entirely in code. */
+body::after{content:'';position:fixed;inset:-30px;pointer-events:none;z-index:40;opacity:.24;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .4  0 0 0 0 .34  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:pc-grain .5s steps(1) infinite}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:39;mix-blend-mode:multiply;opacity:.55;
+  background:radial-gradient(110% 80% at 50% 42%,transparent 50%,rgba(60,45,30,.55) 100%)}
+@keyframes pc-grain{0%{transform:translate(0,0)}25%{transform:translate(-12px,8px)}50%{transform:translate(9px,-11px)}75%{transform:translate(-6px,-5px)}}
+
+/* A cut piece of paper (HTML). */
+.pc-slab{position:relative;border-radius:4px;filter:url(#pc-rough) drop-shadow(1px 4px 5px rgba(20,14,8,.38));
+  box-shadow:inset 1.5px 1.5px 0 rgba(255,255,255,.28);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9 .45' numOctaves='3'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .38  0 0 0 .35 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  background-blend-mode:multiply}
+/* Cut-paper SVG artwork: rough edge + lift. Put it on a <g> or shape. */
+.pc-cut{filter:url(#pc-cut)}
+.pc-cut-lo{filter:url(#pc-cut-lo)}
+.pc-grainfill{fill:url(#pc-fibre)}
+/* Torn tag (labels, dates, captions inside the art) and taped headline banner. */
+.pc-tag{display:inline-block;padding:6px 14px 8px;background:var(--accent);color:var(--parch);
+  font:800 22px/1.05 var(--display);filter:url(#pc-torn) drop-shadow(1px 3px 3px rgba(20,14,8,.35));transform:rotate(var(--r,-2deg))}
+.pc-banner{position:relative;padding:12px 22px 14px;background:color-mix(in srgb,var(--parch) 88%,var(--ink));color:var(--ink);
+  filter:url(#pc-torn) drop-shadow(2px 5px 6px rgba(20,14,8,.4));transform:rotate(var(--r,-1.2deg))}
+.pc-tape{position:absolute;width:70px;height:22px;background:rgba(214,196,140,.82);filter:url(#pc-torn);
+  transform:rotate(var(--r,-35deg));box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.pc-tape::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 3px,transparent 3px 7px)}
+/* Ruled note card and rubber stamp. */
+.pc-note{background:#efe6d2;background-image:repeating-linear-gradient(transparent 0 25px,rgba(60,90,140,.28) 25px 26px);
+  color:#2a2620;padding:12px 16px;filter:drop-shadow(1px 5px 6px rgba(20,14,8,.35));transform:rotate(var(--r,1.5deg))}
+.pc-stamp{display:inline-block;padding:6px 12px;border:4px double currentColor;color:#b8392b;
+  font:900 26px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;opacity:.9;filter:url(#pc-torn);
+  animation:pc-stamp .2s cubic-bezier(.3,1.8,.5,1) var(--d,0s) both}
+@keyframes pc-stamp{from{transform:scale(1.9) rotate(-12deg);opacity:0}to{transform:scale(1) rotate(-12deg);opacity:.9}}
+/* Motion: springy pop, overshooting slide, 15 fps boil, slow camera push. Set --d for the delay. */
+.pc-pop{transform-box:fill-box;transform-origin:50% 100%;animation:pc-pop .32s cubic-bezier(.34,1.7,.5,1) var(--d,0s) both}
+@keyframes pc-pop{from{transform:scale(0) rotate(var(--tilt,-4deg));opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.pc-slide{animation:pc-slide .36s cubic-bezier(.16,1.25,.3,1) var(--d,0s) both}
+@keyframes pc-slide{from{transform:translate(var(--fx,-120px),var(--fy,0));opacity:0}to{transform:none;opacity:1}}
+.pc-drop{animation:pc-drop .42s cubic-bezier(.3,1.5,.5,1) var(--d,0s) both}
+@keyframes pc-drop{from{transform:translateY(-140px) rotate(6deg);opacity:0}to{transform:none;opacity:1}}
+.pc-boil{animation:pc-boil .4s steps(1) infinite}
+@keyframes pc-boil{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(1px,-1px) rotate(.2deg)}50%{transform:translate(-1px,1px) rotate(-.15deg)}75%{transform:translate(1px,1px) rotate(.1deg)}}
+.pc-bob{transform-box:fill-box;animation:pc-bob 1.2s ease-in-out infinite alternate}
+@keyframes pc-bob{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+.pc-spin{transform-box:fill-box;transform-origin:50% 50%;animation:pc-spin var(--t,4s) linear infinite}
+@keyframes pc-spin{to{transform:rotate(360deg)}}
+.pc-push{animation:kit-fx-push 12s ease-in-out both}
+@keyframes kit-fx-push{from{transform:scale(1)}to{transform:scale(1.06)}}
+.pc-far{animation:kit-fx-far 14s linear both}
+@keyframes kit-fx-far{from{transform:translateX(0)}to{transform:translateX(-10px)}}

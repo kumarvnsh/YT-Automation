@@ -13,6 +13,7 @@ the stock/AI-image recovery chain.
 from __future__ import annotations
 from .studio_events import call as studio_call, record_response as studio_response, stream_call as studio_stream
 
+import os
 import re
 import json
 import subprocess
@@ -914,8 +915,31 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
             painter = None
             painted_scenes.disable()
             print('  ! painted backdrops off for this video (no image provider could draw)')
+    chain = []
+    if cinematic:  # laptop scene kits: papercut / flatlit chosen per script, each the other's fallback
+        from . import cinematic_motion as kits
+        primary = kits.resolve_style(st.get('script') or {})
+        chain = kits.style_chain(primary)
+        if primary:
+            os.environ['HISTOLD_STYLE'] = primary  # repairs and untagged scenes use the chosen kit
+            st['scene_style'] = primary
+            print(f'  scene style: {primary} (fallbacks: {", ".join(chain[1:])})')
     try:
-        scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
+        scenes = None
+        for n, kit in enumerate(chain):
+            try:
+                with kits.writing_style(kit):
+                    scenes = {i: kits.tag_style(html, kit) for i, html in
+                              _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch).items()}
+                if kit != chain[0]:
+                    st['scene_style'] = kit
+                break
+            except Exception as exc:  # noqa: BLE001 - try the next kit
+                if n == len(chain) - 1:
+                    raise
+                print(f'  ! {kit} scenes failed ({str(exc)[:120]}); trying {chain[n + 1]}')
+        if scenes is None:
+            scenes = _request_scenes(cfg, st["script"]["title"], segs, windows, cw, ch)
     except Exception as exc:  # noqa: BLE001 - fall back to stock for every segment
         if cinematic:
             raise RuntimeError(f'Cinematic 2D scene generation failed ({str(exc)[:160]}); refusing old-style fallback') from exc
@@ -1015,6 +1039,35 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                         if len(repaired['errors']) < len(report['scenes'][str(i)]['errors']):
                             scenes[i] = html
                             report['scenes'][str(i)] = repaired
+                # A scene still failing is rewritten in the other kit, then the textured look,
+                # before the plain house template takes its slot.
+                for kit in chain[1:]:
+                    failing = [i for i in range(len(windows)) if report['scenes'].get(str(i), {}).get('errors')]
+                    if not failing:
+                        break
+                    try:
+                        with kits.writing_style(kit):
+                            redo = _request_scenes(cfg, st['script']['title'], segs, windows, cw, ch, failing)
+                    except Exception as exc:  # noqa: BLE001
+                        print(f'  ! {kit} rewrite unavailable ({str(exc)[:120]})')
+                        continue
+                    for i, html in redo.items():
+                        if i not in failing:
+                            continue
+                        try:
+                            html = bind_maps(kits.tag_style(html, kit), maps)
+                            s, e = windows[i]
+                            rewritten = inspect_scene(page, prepare(html, i), e-s, fps, board['scenes'][i]['cues'],
+                                                      cfg.get('video.branding.enabled', False))
+                        except Exception:  # noqa: BLE001
+                            continue
+                        before = report['scenes'][str(i)]['errors']
+                        if len(rewritten['errors']) < len(before):
+                            scenes[i] = html
+                            report['scenes'][str(i)] = rewritten
+                            report['recoveries'].append({'scene': i, 'method': f'style_{kit}',
+                                                         'original_errors': before, 'validated': not rewritten['errors']})
+                            print(f'  ✓ scene {i} rewritten in {kit} style')
                 for i, (s, e) in enumerate(windows):
                     original_errors = report['scenes'][str(i)]['errors']
                     if not original_errors:

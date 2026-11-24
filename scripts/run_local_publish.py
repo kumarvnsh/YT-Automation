@@ -108,6 +108,9 @@ def tool_env(cfg) -> tuple[dict, list[str]]:
             env[var] = str(encode[key])
     if local.get('textured_style', True) and not os.environ.get('HISTOLD_TEXTURE'):
         env['HISTOLD_TEXTURE'] = '1'  # textured-illustration kit and brief (src/cinematic_texture.css)
+    style = str(local.get('scene_style', 'auto') or 'off').strip().lower()
+    if style != 'off' and not os.environ.get('HISTOLD_STYLE'):
+        env['HISTOLD_STYLE'] = style  # cut-paper / flat-lit scene kits (src/cinematic_motion.py)
     painted = local.get('painted_scenes', {}) or {}
     if painted.get('enabled') and not os.environ.get('HISTOLD_PAINTED') and _started(painted.get('start_after')):
         env['HISTOLD_PAINTED'] = '1'  # Gemini/Codex paint a picture per scene on the plan (src/painted_scenes.py)
