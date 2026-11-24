@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T23:00:35.096335+00:00",
+  "updated": "2026-11-24T03:00:30.369275+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 115
+      "measured_videos": 116
     }
   },
   "evaluation_metric": "likes / views",
@@ -117,10 +117,6 @@
         }
       },
       "Split-screen comparison": {
-        "yt": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.0
-        },
         "fb": {
           "measured_videos": 1,
           "mean_like_rate": 0.0
@@ -128,6 +124,20 @@
         "ig": {
           "measured_videos": 1,
           "mean_like_rate": 1.0
+        }
+      },
+      "Illustrated newsreel": {
+        "yt": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.0
+        },
+        "fb": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.003663
+        },
+        "ig": {
+          "measured_videos": 1,
+          "mean_like_rate": 0.002545
         }
       }
     },
@@ -294,7 +304,7 @@
     "Edo Japan's Prized Pale Face Powder Hid a Poison",
     "Your Ketchup Bottle Once Held a Fermented Asian Sauce",
     "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
-    "Yellowstone Chose to Fight Every Fire in 1988"
+    "Sichuan's Ancient Water Scheme Manages a River Without Blocking It"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -302,31 +312,37 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "FB 0 plays vs IG 212 during Nov 13-16 low-FB window"
+      "reason": "0 FB plays while IG shows 212"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "FB 2 plays vs IG 137 during Nov 13-16 low-FB window"
+      "reason": "2 FB plays while IG shows 137"
     },
     {
       "video_id": "-cPiNs-0pLA",
       "platform": "fb",
       "views": 3,
-      "reason": "FB 3 plays vs IG 129 during Nov 13-16 low-FB window"
+      "reason": "3 FB plays while IG shows 129"
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "2 FB plays while IG shows 139"
+    },
+    {
+      "video_id": "0xHy2ZVArUg",
+      "platform": "yt",
+      "views": 8,
+      "reason": "0.0% average viewed with 8 views at ~53h; likely analytics lag, not real 0% viewing"
     },
     {
       "video_id": "yUDJaAj3Zvg",
       "platform": "fb",
       "views": 3,
       "reason": "FB 3 plays vs IG 107 and YT 40 during Nov 13-16 low-FB window"
-    },
-    {
-      "video_id": "SfvGGm6eaok",
-      "platform": "fb",
-      "views": 2,
-      "reason": "FB 2 plays vs IG 139 during Nov 13-16 low-FB window"
     },
     {
       "video_id": "UEqFpOBSXdU",
@@ -367,7 +383,7 @@
     {
       "video_id": "wUYjpa6ICeU",
       "platform": "yt",
-      "views": 3,
+      "views": 4,
       "reason": "Viewing percentage is 0.0% with 2 recorded views."
     },
     {
