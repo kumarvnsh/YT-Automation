@@ -3463,5 +3463,14 @@
     "slot": "manual",
     "date": "2026-11-24",
     "status": "reserved"
+  },
+  {
+    "job_id": "20261124_233012_774031_short",
+    "title": "Jefferson's Envoys Went to Buy New Orleans and Said Yes to Far More",
+    "fingerprint": "buy_envoys_far_jefferson_more_new_orleans_s_said_went_yes",
+    "format": "short",
+    "slot": "manual",
+    "date": "2026-11-24",
+    "status": "reserved"
   }
 ]

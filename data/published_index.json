@@ -8386,5 +8386,71 @@
     "production_profile": 2,
     "facebook_id": "1474293574767339",
     "instagram_id": "18123739406284717"
+  },
+  {
+    "video_id": "n7DdFZD-ssU",
+    "run_id": "",
+    "stage_dir_name": "20261124_233012_774031_short",
+    "title": "Jefferson's Envoys Went to Buy New Orleans and Said Yes to Far More",
+    "published_at": "2026-11-24T18:17:10.612997+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Split-screen comparison",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 18,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 17,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Jefferson sent envoys to France to try to buy New Orleans and West Florida for up to $10 million. Instead, Napoleon offered them all of Louisiana for $15 million. The envoys went beyond their instructions and said yes.",
+          "opening_visual": "Present-day U.S. outline map with a single pin on New Orleans and an on-screen note: 'Budget: up to $10 million for New Orleans and West Florida.'",
+          "payoff": "The envoys came back with 530,000,000 acres instead of one city. Jefferson approved the deal. Limitation: the source places Napoleon's change of plans next to the yellow fever losses in St. Domingue and the threat of war with England. It does not name a single cause, so the video must not either.",
+          "viewer_reason": "A well-known subject with a clear reversal that is easy to grasp: a shopping trip for one city ended with a huge piece of a continent. It also raises the relatable question of what you do when the deal on offer is far bigger than your instructions allow.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "The Voyager team decided to turn Voyager 1's camera back toward Earth in 1990. The result was the 'Pale Blue Dot' image, taken shortly before the cameras were switched off for good.",
+          "opening_visual": "NASA's Pale Blue Dot image.",
+          "payoff": "An unplanned photo became one of NASA's best-known images.",
+          "viewer_reason": "An image almost everyone recognizes.",
+          "rejection_reason": "I did not fetch the NASA pages, so I have no word-for-word excerpts. The parts about who argued for the photo come mostly from Cornell and press sources, which are not approved institutions. Space stories (Apollo 12, Apollo 13) are also well represented in recent titles."
+        },
+        {
+          "premise": "The U.S. decision to buy Alaska from Russia in 1867 was mocked at the time and later paid off.",
+          "opening_visual": "The 1867 purchase check or treaty from the National Archives.",
+          "payoff": "A purchase once dismissed as foolish turned out to be valuable.",
+          "viewer_reason": "A recognizable 'they laughed at the decision' reversal.",
+          "rejection_reason": "The 'later paid off' part depends on gold-rush and resource claims that I could not support with word-for-word excerpts from approved pages in this session. It is also a well-worn story, and the Russia/California fort subject appears in recent titles."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "This is the only candidate where every narration claim is backed by a word-for-word excerpt from an approved, fetched page (history.state.gov). The decision is documented (the envoys accepted terms beyond their instructions), the result is surprising and clear (530,000,000 acres), and it can be shown with a present-day U.S. map pin and simple dollar figures. The narration stays narrow: it names no single cause for Napoleon's offer and makes no claim that the purchase 'doubled the nation'."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 146,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Sent to buy New Orleans, envoys bought Louisiana.",
+    "duration": 40.5,
+    "production_profile": 2,
+    "facebook_id": "4591530097770972",
+    "instagram_id": "17968745172212896"
   }
 ]
