@@ -33,12 +33,13 @@ class ClaudeMotionTest(unittest.TestCase):
         import xml.etree.ElementTree as ET
         assets = [load_map('russia'), load_map('india')]
         html = bind_maps(''.join(f'<histold-map id="{a["map_id"]}"></histold-map>' for a in assets), assets)
+        from src.claude_motion import _rich
         for asset in assets:
-            viewbox = ET.fromstring(asset['svg']).attrib['viewBox']
-            self.assertIn(f'viewBox="{viewbox}"', html)
+            rich = _rich(asset['map_id'])  # each extent keeps its own frame (rich relief map)
+            self.assertIn(f'viewBox="0 0 {rich["width"]} {rich["height"]}"', html)
             self.assertIn(f'data-map-id="{asset["map_id"]}"', html)
             self.assertIn(asset['label'], html)
-        self.assertIn('Present-day establishing geography', html)
+        self.assertIn('Present-day', html)
         self.assertNotIn('<histold-map', html)
 
     def test_windows_follow_word_timings_and_cover_total(self):

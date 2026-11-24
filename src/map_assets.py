@@ -22,15 +22,15 @@ def sanitize_svg(text: str) -> str:
 
 def available_map_ids() -> list[str]:
     """Return the reviewed asset IDs available to research and rendering."""
-    return sorted(json.loads((ROOT / 'manifest.json').read_text())['assets'])
+    return sorted(json.loads((ROOT / 'manifest.json').read_text(encoding='utf-8'))['assets'])
 
 
 def load_map(map_id: str) -> dict:
-    manifest = json.loads((ROOT / 'manifest.json').read_text())
+    manifest = json.loads((ROOT / 'manifest.json').read_text(encoding='utf-8'))
     asset = manifest['assets'].get(map_id)
     if not asset:
         raise ValueError(f'No vetted geographic asset: {map_id}')
-    text = (ROOT / asset['file']).read_text()
+    text = (ROOT / asset['file']).read_text(encoding='utf-8')
     if hashlib.sha256(text.encode()).hexdigest() != asset['sha256']:
         raise ValueError(f'Map checksum mismatch: {map_id}')
     return {**asset, 'map_id': map_id, 'svg': sanitize_svg(text)}

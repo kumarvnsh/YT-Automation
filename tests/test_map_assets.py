@@ -87,6 +87,8 @@ class MapAssetTests(unittest.TestCase):
         self.assertEqual(len(asset['source_sha256']), 64)
         html = bind_maps('<histold-map id="china"></histold-map>', [asset])
         self.assertIn('data-map-id="china"', html)
-        self.assertIn('viewBox="'+ET.fromstring(asset['svg']).attrib['viewBox']+'"', html)
+        from src.claude_motion import _rich
+        rich = _rich('china')
+        self.assertIn(f'viewBox="0 0 {rich["width"]} {rich["height"]}"', html)
         self.assertIn('China', html)
         self.assertNotIn('<histold-map', html)

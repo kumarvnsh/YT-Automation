@@ -439,19 +439,215 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
     return {'errors': sorted(set(errors)), 'warnings': warnings, 'sample_times': times}
 
 
+# Animated establishing maps (ideas adapted from map-motion, SpaceZephyr, MIT; our own vetted Natural Earth
+# outlines, no tiles or keys): a short fly-in, the outline drawing on, the land filling, then locator pins
+# dropping with a ripple. Names avoid kit-fx- so the checks count them as real motion.
+_MAP_MOTION_CSS = (
+    '<style id="histold-map-motion">'
+    '.histold-map svg{overflow:hidden!important}'
+    '.histold-map .hm-cam{transform-box:view-box;transform-origin:50% 50%;animation:hm-fly 1.6s cubic-bezier(.2,.7,.2,1) both}'
+    '@keyframes hm-fly{from{transform:scale(1.3)}to{transform:scale(1)}}'
+    '.histold-map .hm-cam path.hm-land{stroke:currentColor;stroke-dasharray:1;stroke-dashoffset:1;fill-opacity:0;'
+    'animation:hm-draw 1.2s ease-out var(--hd,0s) both,hm-fill .7s ease-out calc(var(--hd,0s) + .9s) both}'
+    '@keyframes hm-draw{to{stroke-dashoffset:0}}@keyframes hm-fill{to{fill-opacity:1}}'
+    '.histold-map .hm-drop{transform-origin:0 0;animation:hm-drop .45s cubic-bezier(.3,1.7,.5,1) var(--pd,2s) both}'
+    '@keyframes hm-drop{from{transform:scale(0)}to{transform:scale(1)}}'
+    '.histold-map .hm-ripple{transform-origin:0 0;fill:none;stroke:var(--parch);opacity:0;'
+    'animation:hm-ripple 1.6s ease-out calc(var(--pd,2s) + .3s) infinite}'
+    '@keyframes hm-ripple{from{transform:scale(.4);opacity:.9}to{transform:scale(2.6);opacity:0}}'
+    '</style>')
+
+
+def _view_box(svg: str) -> tuple[float, float]:
+    found = re.search(r'viewBox="\s*[-\d.]+\s+[-\d.]+\s+([\d.]+)\s+([\d.]+)"', svg)
+    return (float(found.group(1)), float(found.group(2))) if found else (480.0, 366.0)
+
+
+def _map_pins(asset: dict, width: float, size: float | None = None) -> str:
+    """Locator pins for verified coordinates inside this map's extent (equirectangular, 6 px/degree)."""
+    from html import escape
+    extent = asset.get('extent')
+    if not extent or not asset.get('pins'):
+        return ''
+    west, south, east, north = extent
+    size = size or width * .022
+    marks = []
+    for n, pin in enumerate(asset['pins'][:3]):
+        lon, lat = pin['lon'], pin['lat']
+        if not (west <= lon <= east and south <= lat <= north):
+            continue
+        x, y = (lon - west) * 6, (north - lat) * 6
+        delay = 2.1 + n * .5
+        label = escape(str(pin['label'])[:28])
+        anchor = 'end' if x > width * .7 else 'start'
+        dx = -size * 1.6 if anchor == 'end' else size * 1.6
+        marks.append(
+            f'<g transform="translate({x:.2f} {y:.2f})" style="--pd:{delay:.2f}s">'
+            f'<circle class="hm-ripple" r="{size:.2f}" stroke-width="{size * .25:.2f}"/>'
+            f'<g class="hm-drop"><path d="M0 0 C{-size:.2f} {-size * 1.4:.2f} {-size:.2f} {-size * 2.6:.2f} 0 {-size * 2.6:.2f} '
+            f'C{size:.2f} {-size * 2.6:.2f} {size:.2f} {-size * 1.4:.2f} 0 0Z" fill="var(--parch)" stroke="var(--ink)" '
+            f'stroke-width="{size * .2:.2f}"/><circle cy="{-size * 1.9:.2f}" r="{size * .45:.2f}" fill="var(--ink)"/>'
+            f'<text x="{dx:.2f}" y="{-size * .9:.2f}" text-anchor="{anchor}" font-size="{size * 2.1:.2f}" '
+            f'fill="var(--parch)" stroke="var(--ink)" stroke-width="{size * .5:.2f}" paint-order="stroke">{label}</text></g></g>')
+    return ''.join(marks)
+
+
+def _land(path: str) -> str:
+    return path.replace('<path', '<path class="hm-land" pathLength="1"', 1)
+
+
+def _animate_svg(svg: str, asset: dict) -> str:
+    """Wrap a vetted map SVG's paths in the camera group and add pins; geometry is untouched."""
+    width, height = _view_box(svg)
+    opened = re.search(r'<svg\b[^>]*>', svg)
+    body_end = svg.rfind('</svg>')
+    inner = re.sub(r'<path\b[^>]*/>', lambda m: _land(m.group(0)), svg[opened.end():body_end])
+    return (svg[:opened.end()] + f'<g class="hm-cam" stroke-width="{width * .006:.2f}">' + inner
+            + _map_pins(asset, width, height * .075) + '</g>' + svg[body_end:])  # cards are 180px tall
+
+
+# Rich establishing maps: Natural Earth II shaded relief with neighbours, rivers, lakes and a graticule,
+# themed to the scene style (assets built offline by scripts/build_rich_maps.py; all public domain).
+_RICH_DIR = Path(__file__).resolve().parent.parent / 'assets' / 'maps' / 'rich'
+_THEMES = {'flatlit': 'dark', 'papercut': 'vintage', 'inkfolk': 'ink'}
+_RICH_CSS = (
+    '<style id="histold-rich-map">'
+    '.hm-rich{position:relative;width:100%;border-radius:12px;overflow:hidden;border:2px solid color-mix(in srgb,var(--ink) 70%,transparent);'
+    '--hm-line:rgba(45,30,15,.55);--hm-water:#4f7f9a;--hm-grat:rgba(45,30,15,.2);background:var(--ink)}'
+    '.hm-rich[data-theme=dark]{--hm-line:rgba(255,255,255,.42);--hm-water:#3a7593;--hm-grat:rgba(255,255,255,.13)}'
+    '.hm-rich[data-theme=vintage]{--hm-water:#6d8584}'
+    '.hm-rich[data-theme=ink]{--hm-line:rgba(25,25,25,.6);--hm-water:#7d8e96;--hm-grat:rgba(25,25,25,.16);background:var(--parch)}'
+    '.hm-rich svg{display:block;width:100%;height:auto;overflow:hidden!important}'
+    '.hm-rich .hm-relief{filter:saturate(.92)}'
+    '.hm-rich[data-theme=dark] .hm-relief{filter:brightness(.45) saturate(.65) contrast(1.15)}'
+    '.hm-rich[data-theme=vintage] .hm-relief{filter:sepia(.6) saturate(.75) contrast(.95) brightness(1.04)}'
+    '.hm-rich[data-theme=ink] .hm-relief{filter:grayscale(1) contrast(1.2) brightness(1.18);opacity:.5}'
+    '.hm-rich .hm-cam{transform-box:view-box;animation:hm-dive 7s cubic-bezier(.2,.6,.3,1) both}'
+    '@keyframes hm-dive{from{transform:scale(1)}to{transform:scale(1.1)}}'
+    '.hm-rich .hm-grat{fill:none;stroke:var(--hm-grat);stroke-width:calc(var(--u)*.8);stroke-dasharray:calc(var(--u)*4) calc(var(--u)*4)}'
+    '.hm-rich .hm-nbr{fill:none;stroke:var(--hm-line);stroke-width:calc(var(--u)*.9);stroke-linejoin:round}'
+    '.hm-rich .hm-river{fill:none;stroke:var(--hm-water);stroke-width:calc(var(--u)*1.1);opacity:.85;stroke-linecap:round}'
+    '.hm-rich .hm-lake{fill:var(--hm-water);opacity:.85}'
+    '.histold-map.hm-rich .hm-cam path.hm-land{stroke:currentColor;stroke-dasharray:1;stroke-dashoffset:1;fill-opacity:0;stroke-width:calc(var(--u)*2.6);stroke-linejoin:round;'
+    'filter:drop-shadow(0 0 calc(var(--u)*5) currentColor);fill:currentColor;'
+    'animation:hm-draw 1.4s ease-out var(--hd,0s) both,hm-tint .8s ease-out calc(var(--hd,0s) + 1s) both}'
+    '@keyframes hm-tint{from{fill-opacity:0}to{fill-opacity:.32}}'
+    '.hm-rich .hm-name{font:700 calc(var(--u)*17px)/1 var(--display);fill:var(--parch);stroke:var(--ink);'
+    'stroke-width:calc(var(--u)*4);paint-order:stroke;animation:hm-pop .4s cubic-bezier(.3,1.6,.5,1) calc(var(--hd,0s) + 1.3s) both;transform-box:fill-box;transform-origin:50% 50%}'
+    '@keyframes hm-pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}'
+    '.hm-rich .hm-coord{position:absolute;left:10px;bottom:10px;padding:5px 9px 6px;border-radius:5px;background:var(--ink);'
+    'color:var(--parch);font:700 13px/1 var(--body);letter-spacing:.03em;animation:hm-pop .35s cubic-bezier(.3,1.6,.5,1) 2.6s both}'
+    '.hm-rich .hm-credit{position:absolute;right:8px;bottom:6px;font:600 9px/1 var(--body);color:#fff;opacity:.7;'
+    'text-shadow:0 0 3px #000}'
+    '</style>')
+
+
+def _rich(map_id: str) -> dict | None:
+    """The rich asset for a vetted map, checked against its recorded hashes; None if it is missing."""
+    import base64
+    import hashlib
+    try:
+        index = json.loads((_RICH_DIR / 'index.json').read_text(encoding='utf-8'))
+        entry = index[map_id]
+        raw = (_RICH_DIR / entry['json']).read_bytes()
+        if hashlib.sha256(raw).hexdigest() != entry['json_sha256']:
+            return None
+        record = json.loads(raw.decode('utf-8'))
+        image = (_RICH_DIR / record['relief']).read_bytes()
+        if hashlib.sha256(image).hexdigest() != record['relief_sha256']:
+            return None
+        record['relief_b64'] = base64.b64encode(image).decode('ascii')
+        return record
+    except (OSError, KeyError, ValueError):
+        return None
+
+
+def _map_theme(html: str) -> str:
+    from .cinematic_motion import scene_style, tagged_style
+    return _THEMES.get(tagged_style(html) or scene_style(), 'relief')
+
+
+def _coord_text(pin: dict) -> str:
+    lat, lon = pin['lat'], pin['lon']
+    return f"{abs(lat):.2f}° {'N' if lat >= 0 else 'S'} · {abs(lon):.2f}° {'E' if lon >= 0 else 'W'}"
+
+
+def _rich_card(group: list[dict], theme: str, labels: bool = True) -> str | None:
+    """One themed map for maps that share a projection (a country and its states, or a single map)."""
+    from html import escape
+    records = [_rich(a['map_id']) for a in group]
+    if any(r is None for r in records):
+        return None
+    base = next((r for r, a in zip(records, group) if a['map_id'] == 'united_states'), records[0])
+    if any((r['width'], r['height']) != (base['width'], base['height']) for r in records):
+        return None
+    width, height = base['width'], base['height']
+    unit = width / 470
+    focus = next((r['focus'] for r, a in zip(records, group) if a['map_id'] in ('minnesota', 'washington')), base['focus'])
+    subjects = []
+    for record, asset in zip(records, group):
+        state = asset['map_id'] in ('minnesota', 'washington')
+        color = 'var(--gold)' if state else 'var(--bone)' if asset['map_id'] == 'canada' else 'var(--accent)'
+        name = (f'<text class="hm-name" x="{record["focus"][0]}" y="{record["focus"][1]}" text-anchor="middle">'
+                f'{escape(asset.get("label", ""))}</text>') if labels and asset.get('label') else ''
+        subjects.append(f'<g data-map-id="{escape(asset["map_id"])}" color="{color}" style="--hd:{1.2 if state else 0}s">'
+                        f'<path class="hm-land" pathLength="1" d="{record["subject"]}"/>{name}</g>')
+    pins_from = [a for a in group if a.get('pins')]
+    pin_marks = ''.join(_map_pins({'extent': base['extent'], 'pins': a['pins']}, width, unit * 9) for a in pins_from[:1])
+    first_pin = pins_from[0]['pins'][0] if pins_from and pins_from[0]['pins'] else None
+    coord = f'<div class="hm-coord">{escape(_coord_text(first_pin))}</div>' if first_pin else ''
+    return (f'<div class="histold-map hm-rich" data-theme="{theme}">'
+            f'<svg viewBox="0 0 {width} {height}" style="--u:{unit:.3f}" role="img" aria-label="Present-day geography">'
+            f'<g class="hm-cam" style="transform-origin:{focus[0]}px {focus[1]}px">'
+            f'<image class="hm-relief" href="data:image/jpeg;base64,{base["relief_b64"]}" width="{width}" height="{height}" preserveAspectRatio="none"/>'
+            f'<path class="hm-grat" d="{base["graticule"]}"/><path class="hm-lake" d="{base["lakes"]}"/>'
+            f'<path class="hm-river" d="{base["rivers"]}"/><path class="hm-nbr" d="{base["neighbours"]}"/>'
+            + ''.join(subjects) + pin_marks + '</g></svg>'
+            f'{coord}<div class="hm-credit">Present-day · Natural Earth</div></div>')
+
+
+def attach_pins(maps: list[dict], research: dict) -> None:
+    """Give each map the research locations that carry coordinates inside its extent (up to three)."""
+    for asset in maps:
+        west, south, east, north = asset.get('extent') or (0, 0, 0, 0)
+        pins = []
+        for location in research.get('locations', []) or []:
+            if not isinstance(location, dict):
+                continue
+            lat, lon = location.get('lat'), location.get('lon')
+            if isinstance(lat, (int, float)) and isinstance(lon, (int, float)) and west <= lon <= east and south <= lat <= north:
+                pins.append({'label': str(location.get('pin_label') or location.get('name', '')).split(',')[0].strip(),
+                             'lat': float(lat), 'lon': float(lon)})
+        asset['pins'] = pins[:3]
+
+
 def bind_maps(html: str, assets: list[dict]) -> str:
     """Replace map placeholders with pinned geometry; the model never authors these paths."""
     from html import escape
     tokens = [f'<histold-map id="{a["map_id"]}"></histold-map>' for a in assets]
+    if any(token in html for token in tokens):
+        theme = _map_theme(html)
+        shared = [a for a in assets if a['map_id'] in {'canada', 'united_states', 'washington', 'minnesota'}]
+        groups = ([shared] if shared else []) + [[a] for a in assets if a not in shared]
+        cards = [_rich_card(g, theme) for g in groups]
+        if cards and all(cards):
+            bundle = _MAP_MOTION_CSS + _RICH_CSS + (cards[0] if len(cards) == 1 else
+                '<div style="display:flex;flex-direction:column;gap:10px;width:100%">' + ''.join(cards) + '</div>')
+            placed = False
+            for token in tokens:
+                if token in html:
+                    html = html.replace(token, bundle if not placed else '')
+                    placed = True
+            return re.sub(r'<histold-map\b[^>]*>\s*</histold-map>', '', html)
     if any(token in html for token in tokens) and any(
             a['map_id'] not in {'canada', 'united_states', 'washington', 'minnesota'} for a in assets):
         # Different extents need separate viewports; overlaying would invent relative positions.
         cards = []
         for asset in assets:
-            svg = asset['svg'].replace('<svg ', '<svg style="display:block;width:100%;height:180px;color:var(--accent)" ', 1)
+            svg = _animate_svg(asset['svg'], asset).replace('<svg ', '<svg style="display:block;width:100%;height:180px;color:var(--accent)" ', 1)
             cards.append(f'<div data-map-id="{escape(asset["map_id"])}" style="flex:1 1 150px;min-width:0;text-align:center">'
                          f'{svg}<div style="font-size:16px;color:var(--parch)">{escape(asset["label"])}</div></div>')
-        bundle = '<div class="histold-map" style="width:100%"><div style="display:flex;flex-wrap:wrap;gap:12px">'+''.join(cards)+'</div><div class="k-label" style="font-size:10px">Present-day establishing geography · separate extents</div></div>'
+        bundle = _MAP_MOTION_CSS+'<div class="histold-map" style="width:100%"><div style="display:flex;flex-wrap:wrap;gap:12px">'+''.join(cards)+'</div><div class="k-label" style="font-size:10px">Present-day establishing geography · separate extents</div></div>'
         placed = False
         for token in tokens:
             if token in html:
@@ -463,12 +659,14 @@ def bind_maps(html: str, assets: list[dict]) -> str:
         groups = []
         for asset in sorted(assets, key=lambda a: a['map_id'] in ('minnesota', 'washington')):
             x, y = labels[asset['map_id']]
-            path = re.search(r'<path\b.*?/>', asset['svg']).group(0)
+            path = _land(re.search(r'<path\b.*?/>', asset['svg']).group(0))
             color = 'var(--gold)' if asset['map_id'] in ('minnesota', 'washington') else 'var(--bone)' if asset['map_id'] == 'canada' else 'var(--accent)'
-            groups.append(f'<g data-map-id="{asset["map_id"]}" color="{color}">{path}'
+            state = asset['map_id'] in ('minnesota', 'washington')  # the region draws after the country
+            groups.append(f'<g data-map-id="{asset["map_id"]}" color="{color}" style="--hd:{1.1 if state else 0}s">{path}'
                           f'<text x="{x}" y="{y}" text-anchor="middle" fill="var(--parch)" stroke="var(--ink)" '
                           f'stroke-width="3" paint-order="stroke" font-size="14">{escape(asset["label"])}</text></g>')
-        bundle = '<div class="histold-map" style="width:100%"><svg viewBox="0 0 480 366" role="img" aria-label="Present-day establishing geography">'+''.join(groups)+'</svg><div class="k-label" style="font-size:10px">Present-day continental context</div></div>'
+        pins = ''.join(_map_pins(a, 480) for a in assets if a['map_id'] in ('united_states', 'canada'))
+        bundle = _MAP_MOTION_CSS+'<div class="histold-map" style="width:100%"><svg viewBox="0 0 480 366" role="img" aria-label="Present-day establishing geography"><g class="hm-cam" stroke-width="2">'+''.join(groups)+pins+'</g></svg><div class="k-label" style="font-size:10px">Present-day continental context</div></div>'
         placed = False
         for token in tokens:
             if token in html:
@@ -941,6 +1139,7 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         windows = [(s['start'], s['end']) for s in board['scenes']]
         cfg = Config(deepcopy(cfg.raw))
         maps = [load_map(asset['map_id']) for asset in st.get('maps', [])]
+        attach_pins(maps, st.get('research', {}))
         if cfg.get('video.claude_motion.portraits', True) and 'portraits' not in st:
             from .portrait_assets import fetch_portraits
             st['portraits'] = fetch_portraits(st.get('research', {}).get('people', []),
