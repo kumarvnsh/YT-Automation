@@ -33,9 +33,9 @@ def system_prompt(w: int, h: int, design: dict | None = None) -> str:
         prompt = prompt.replace('about 420px wide and 350–440px tall', 'about 500–650px wide and 230–330px tall')
     if textured():
         prompt += TEXTURE_NOTE.replace('{example}', _HERE.joinpath('cinematic_texture_example.html').read_text(encoding='utf-8'))
-    from .painted_scenes import PROMPT_NOTE, enabled
+    from .painted_scenes import enabled, prompt_note
     if enabled():
-        prompt += PROMPT_NOTE + 'The painted-backdrop layout rules above win over the illustration size in the texture style.\n'
+        prompt += prompt_note()
     return prompt
 
 

@@ -1,10 +1,12 @@
-"""Painted backdrops for Histold scenes made on the laptop.
+"""Painted pictures for Histold scenes made on the laptop.
 
-While Claude writes each scene's animation, Antigravity (Gemini) paints one full-screen illustration per scene
-on the owner's plan, with Codex as backup. The painting sits behind the scene with a slow camera push; Claude's labels, diagrams,
-maps and portraits stay on top. Only the laptop runner turns this on (HISTOLD_PAINTED=1, set from
-local_production.painted_scenes); cloud runs never paint. A painting that fails leaves that scene
-exactly as it renders today.
+While Claude writes each scene's animation, Antigravity (Gemini) paints one illustration per scene on the
+owner's plan, with Codex as backup. Two layouts (HISTOLD_PAINTED_MODE, from local_production.painted_scenes.mode):
+- ``inset`` (default, the owner's choice on 24 Nov): the painting is a framed picture inside the scene, in a
+  ``<div class="histold-painting">`` slot the scene writer places, on the normal paper background.
+- ``backdrop``: the painting fills the screen behind the scene with a slow camera push.
+Only the laptop runner turns this on (HISTOLD_PAINTED=1, set from local_production.painted_scenes); cloud
+runs never paint. A painting that fails leaves that scene exactly as it renders today.
 """
 from __future__ import annotations
 
@@ -28,6 +30,19 @@ top. Keep a real visual change at least every two seconds in your own layers; th
 camera move does not count as motion.
 """
 
+INSET_NOTE = """
+PAINTED PICTURE (this run): every scene gets one painted illustration of the moment, shown as a framed
+picture INSIDE your layout, never as the background. Keep your normal var(--parch) background. Place
+exactly one empty <div class="histold-painting"></div> where the picture should go and leave it empty:
+the renderer fills it with the painting, its frame and a slow camera push. Size it as the scene's main
+illustration: in a vertical frame full content width and about 38-48% of the usable height; in a
+landscape frame about half the width and most of the usable height, beside your text and diagrams.
+Give it an explicit width and height (or aspect-ratio), keep it clear of the caption band, and bring it
+in with an entrance like any other element. Labels, arrows, counters and portraits may sit next to it
+or overlap its edge, but never cover its middle. It counts toward the illustration area; keep a real
+visual change at least every two seconds in your own layers.
+"""
+
 STYLE = ('Rich painterly illustration in the manner of an editorial gouache or a museum mural: period-accurate '
          'architecture, clothing, tools and objects, cinematic lighting, atmospheric depth. Palette of deep teal, '
          'navy, warm cream, terracotta and muted brass.')
@@ -40,26 +55,45 @@ def enabled() -> bool:
     return os.environ.get('HISTOLD_PAINTED') == '1' and not _OFF
 
 
+def mode() -> str:
+    """'inset' (framed picture in the scene) unless 'backdrop' is asked for."""
+    return 'backdrop' if os.environ.get('HISTOLD_PAINTED_MODE', '').strip().lower() == 'backdrop' else 'inset'
+
+
+def prompt_note() -> str:
+    if mode() == 'backdrop':
+        return PROMPT_NOTE + 'The painted-backdrop layout rules above win over the illustration size in the texture style.\n'
+    return INSET_NOTE
+
+
 def disable() -> None:
     _OFF.append(True)
 
 
-def _prompt(title: str, narration: str, story: str, landscape: bool) -> str:
-    return (f'Paint one {"landscape 3:2" if landscape else "vertical 2:3"} illustration for a history documentary '
+def _prompt(title: str, narration: str, story: str, landscape: bool, inset: bool = False) -> str:
+    framing = ('It is shown as a framed picture inside the scene, so compose it as a complete picture with the '
+               'main subject clearly in the centre. ' if inset else
+               'Main subject in the middle third; keep the top sixth and the bottom quarter calmer and darker, '
+               'because a headline and captions are laid over them. ')
+    return (f'Paint one {"landscape 3:2" if landscape or inset else "vertical 2:3"} illustration for a history documentary '
             f'video titled "{title}".\nThis shot plays while the narrator says: "{narration}"\n'
             f'Whole story, for context only: "{story[:900]}"\n\n{STYLE}\n'
             'Show the place, event, object or scene the narration describes, as it looked at the time. '
-            'Main subject in the middle third; keep the top sixth and the bottom quarter calmer and darker, '
-            'because a headline and captions are laid over them. '
+            + framing +
             'No text, letters, numbers, signs, captions, logos, watermarks, borders or frames. '
             'Do not paint a recognisable face of a real named person: show people at a distance, from behind '
             'or in silhouette (real portraits are added separately). No gore.')
 
 
 def _fit(source: Path, dest: Path, w: int, h: int) -> Path:
-    """Cover-crop to the output frame and store as a compact JPEG for embedding."""
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(source), '-vf',
-                    f'scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}', '-q:v', '3', str(dest)],
+    """Store as a compact JPEG for embedding: cover-cropped to the frame for a backdrop, or kept whole
+    (at most the frame's longer side) for a framed picture, which the slot crops itself."""
+    if mode() == 'backdrop':
+        scale = f'scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}'
+    else:
+        side = max(w, h)
+        scale = f'scale={side}:{side}:force_original_aspect_ratio=decrease'
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(source), '-vf', scale, '-q:v', '3', str(dest)],
                    check=True, timeout=120, capture_output=True)
     return dest
 
@@ -86,7 +120,8 @@ class Painter:
         self.folder.mkdir(parents=True, exist_ok=True)
         self.stopped = False
         self.pool = ThreadPoolExecutor(max_workers=int(settings.get('parallel', 3)) if isinstance(settings, dict) else 3)
-        self.futures = {paint: self.pool.submit(self._paint, paint, _prompt(title, ' '.join(lines), story, w > h))
+        inset = mode() == 'inset'
+        self.futures = {paint: self.pool.submit(self._paint, paint, _prompt(title, ' '.join(lines), story, w > h, inset))
                         for paint, lines in groups.items()}
         self.pool.shutdown(wait=False)
 
@@ -120,6 +155,38 @@ class Painter:
         ready = {scene: done[paint] for scene, paint in enumerate(self.source) if done.get(paint)}
         print(f'  ✓ painted backdrops ready for {len(ready)}/{len(self.source)} scenes')
         return ready
+
+
+def apply_inset(html: str, image: Path | None, duration: float, index: int = 0) -> str:
+    """Fill the scene's ``.histold-painting`` slot with the painting, a frame and a slow push.
+
+    The scene keeps its own paper background. With no painting (it failed after the writer was told to
+    expect one) the slot becomes a quiet palette card, so the layout never has a hole. A scene that left
+    out the slot is returned unchanged."""
+    import re
+    if 'histold-painting' not in html:
+        return html
+    if image:
+        picture = f"url(data:image/jpeg;base64,{base64.b64encode(Path(image).read_bytes()).decode('ascii')}) center/cover no-repeat"
+    else:
+        picture = ('radial-gradient(120% 90% at 50% 40%,color-mix(in srgb,var(--parch) 80%,var(--accent) 20%) 0%,'
+                   'color-mix(in srgb,var(--parch) 86%,var(--ink) 14%) 100%)')
+    drift = ('-2%,-1%', '2%,-1.5%', '-1.5%,1%', '1.5%,1.5%')[index % 4]
+    style = ('<style id="histold-paint">'
+             '.histold-painting{position:relative;overflow:hidden;border-radius:14px;'
+             'border:5px solid color-mix(in srgb,var(--ink) 82%,var(--parch));'
+             'box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 0 0 2px color-mix(in srgb,var(--parch) 60%,transparent);'
+             'background:color-mix(in srgb,var(--parch) 88%,var(--ink))}'
+             '.histold-painting:empty{min-height:120px}'
+             '.histold-painting>.hp-pic{position:absolute;inset:-4%;pointer-events:none;'
+             f'background:{picture};'
+             f'animation:kit-fx-paint {max(duration, .5):.2f}s linear both}}'
+             f'@keyframes kit-fx-paint{{from{{transform:scale(1) translate(0,0)}}to{{transform:scale(1.08) translate({drift})}}}}'
+             '</style>')
+    html = re.sub(r'(<div\b[^>]*\bclass="[^"]*\bhistold-painting\b[^"]*"[^>]*>)',
+                  lambda m: m.group(1) + '<div class="hp-pic" aria-hidden="true"></div>', html, count=1)
+    head = re.search(r'</head\s*>', html, flags=re.I)
+    return html[:head.start()] + style + html[head.start():] if head else style + html
 
 
 def apply(html: str, image: Path | None, duration: float, index: int = 0) -> str:

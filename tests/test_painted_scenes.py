@@ -25,9 +25,9 @@ class Painted(unittest.TestCase):
     def test_only_the_laptop_flag_turns_it_on_and_adds_the_prompt_note(self):
         with mock.patch.dict(os.environ, {'HISTOLD_PAINTED': ''}):
             self.assertFalse(painted_scenes.enabled())
-            self.assertNotIn('PAINTED BACKDROP', system_prompt(540, 960))
-        with mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1'}):
-            self.assertIn('PAINTED BACKDROP', system_prompt(540, 960))
+            self.assertNotIn('PAINTED', system_prompt(540, 960))
+        with mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1', 'HISTOLD_PAINTED_MODE': ''}):
+            self.assertIn('PAINTED PICTURE', system_prompt(540, 960))
 
     def test_backdrop_sits_behind_the_scene_and_its_motion_is_ambient(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -37,6 +37,31 @@ class Painted(unittest.TestCase):
         self.assertIn('<div class="hp-paint"', html.split('<body>')[1])
         self.assertIn('animation:kit-fx-paint 4.00s', html)  # kit-fx-: motion checks ignore it
         self.assertIn('background:transparent!important', html)
+
+    def test_inset_is_the_default_and_asks_for_a_slot_not_a_background(self):
+        with mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1', 'HISTOLD_PAINTED_MODE': ''}):
+            self.assertEqual(painted_scenes.mode(), 'inset')
+            prompt = system_prompt(540, 960)
+            self.assertIn('PAINTED PICTURE', prompt)
+            self.assertIn('histold-painting', prompt)
+            self.assertNotIn('PAINTED BACKDROP', prompt)
+        with mock.patch.dict(os.environ, {'HISTOLD_PAINTED': '1', 'HISTOLD_PAINTED_MODE': 'backdrop'}):
+            self.assertIn('PAINTED BACKDROP', system_prompt(540, 960))
+        self.assertIn('framed picture', painted_scenes._prompt('T', 'n', 's', False, inset=True))
+
+    def test_inset_fills_the_slot_and_keeps_the_paper_background(self):
+        scene = SCENE.replace('Hi', 'Hi<div class="histold-painting" style="height:400px"></div>')
+        with tempfile.TemporaryDirectory() as folder:
+            image = Path(folder) / 'p.jpg'
+            image.write_bytes(b'\xff\xd8fake')
+            html = painted_scenes.apply_inset(prepare_html(scene, 0), image, 4.0, 1)
+        self.assertIn('style="height:400px"><div class="hp-pic"', html)
+        self.assertIn('animation:kit-fx-paint 4.00s', html)
+        self.assertIn('data:image/jpeg;base64,', html)
+        self.assertNotIn('background:transparent!important', html)
+        self.assertNotIn('hp-shade', html)
+        self.assertIn('radial-gradient(', painted_scenes.apply_inset(prepare_html(scene, 0), None, 3.0))
+        self.assertEqual(painted_scenes.apply_inset(SCENE, image, 3.0), SCENE)  # no slot: unchanged
 
     def test_light_palettes_swap_to_light_text_over_paintings(self):
         plain = prepare_html(SCENE, 0)

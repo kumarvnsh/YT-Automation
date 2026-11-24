@@ -934,6 +934,16 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
         bound = bind_photos(bind_icons(strip_layout_arrows(html))[0], st.get('portraits', []))[0]
         if cinematic:
             from .cinematic_motion import prepare_html
+            if painter and painted_scenes.mode() == 'inset':  # framed picture in a slot the writer placed
+                painting = (paints or {}).get(index) if paint else None
+                plain = prepare_html(bound, index, landscape=cw > ch,
+                                     theme_offset=(st.get('design') or {}).get('palette'))
+                s_, e_ = windows[index]
+                try:
+                    return painted_scenes.apply_inset(plain, painting, e_ - s_, index)
+                except Exception as exc:  # noqa: BLE001 - the slot becomes a palette card
+                    print(f'  ! scene {index} painting skipped ({str(exc)[:120]})')
+                    return painted_scenes.apply_inset(plain, None, e_ - s_, index)
             if painter:  # Claude wrote these scenes for a backdrop: always give them one
                 painting = (paints or {}).get(index) if paint else None
                 dark = prepare_html(bound, index, landscape=cw > ch, painted=True,

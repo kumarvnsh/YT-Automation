@@ -110,7 +110,9 @@ def tool_env(cfg) -> tuple[dict, list[str]]:
         env['HISTOLD_TEXTURE'] = '1'  # textured-illustration kit and brief (src/cinematic_texture.css)
     painted = local.get('painted_scenes', {}) or {}
     if painted.get('enabled') and not os.environ.get('HISTOLD_PAINTED') and _started(painted.get('start_after')):
-        env['HISTOLD_PAINTED'] = '1'  # Codex paints scene backdrops on the plan (src/painted_scenes.py)
+        env['HISTOLD_PAINTED'] = '1'  # Gemini/Codex paint a picture per scene on the plan (src/painted_scenes.py)
+        if not os.environ.get('HISTOLD_PAINTED_MODE'):
+            env['HISTOLD_PAINTED_MODE'] = str(painted.get('mode') or 'inset')  # inset = framed picture, not a background
     (ENV_ROOT / 'tmp').mkdir(parents=True, exist_ok=True)
     kokoro = ENV_ROOT / 'histold-kokoro' / 'Scripts' / 'python.exe'
     if kokoro.is_file():
