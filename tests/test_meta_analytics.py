@@ -84,6 +84,41 @@ class InstagramInsightsTests(unittest.TestCase):
         self.assertIn("missing instagram_basic", str(caught.exception))
         self.assertNotIn("secret-token", str(caught.exception))
 
+    @staticmethod
+    def _media_list(timestamp: str) -> Mock:
+        response = Mock(ok=True)
+        response.json.return_value = {"data": [{"id": "reel-1", "media_type": "VIDEO",
+                                                "timestamp": timestamp, "caption": "New reel"}]}
+        return response
+
+    @patch("scripts.export_meta_analytics._ig_reel_insights",
+           return_value={"shares": None, "unavailable_metrics": {}})
+    @patch("scripts.export_meta_analytics.requests.get")
+    @patch("scripts.export_meta_analytics._graph_get")
+    def test_brand_new_reel_without_insights_does_not_fail_export(self, graph_get, get, _ins) -> None:
+        from datetime import datetime, timedelta, timezone
+        fresh = (datetime.now(timezone.utc) - timedelta(minutes=3)).strftime("%Y-%m-%dT%H:%M:%S+0000")
+        graph_get.return_value = self._media_list(fresh)
+        empty = Mock(ok=True)
+        empty.json.return_value = {"data": []}
+        get.return_value = empty
+
+        videos = export_meta_analytics.fetch_instagram("token", "ig-1", "v21.0", 50)
+
+        self.assertIsNone(videos[0]["views"])
+        self.assertIn("insights_pending", videos[0]["unavailable_metrics"]["views"])
+
+    @patch("scripts.export_meta_analytics._ig_reel_insights",
+           return_value={"shares": None, "unavailable_metrics": {}})
+    @patch("scripts.export_meta_analytics.requests.get")
+    @patch("scripts.export_meta_analytics._graph_get")
+    def test_older_reel_without_insights_still_fails_export(self, graph_get, get, _ins) -> None:
+        graph_get.return_value = self._media_list("2026-01-01T10:00:00+0000")
+        get.return_value = Mock(ok=False, status_code=403, text="missing instagram_manage_insights")
+
+        with self.assertRaisesRegex(RuntimeError, "instagram_manage_insights"):
+            export_meta_analytics.fetch_instagram("token", "ig-1", "v21.0", 50)
+
 
 class FacebookInsightsTests(unittest.TestCase):
     def test_ad_views_cannot_be_mistaken_for_video_views(self):

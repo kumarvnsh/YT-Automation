@@ -257,6 +257,18 @@ def _ig_reel_insights(media_id: str, token: str, ver: str) -> dict:
     }
 
 
+IG_INSIGHTS_GRACE_HOURS = 24  # Meta can return no/erroring insights for brand-new media
+
+
+def _is_fresh(timestamp: str, now: datetime | None = None) -> bool:
+    try:
+        posted = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S%z")
+    except (TypeError, ValueError):
+        return False
+    age = (now or datetime.now(timezone.utc)) - posted
+    return age.total_seconds() < IG_INSIGHTS_GRACE_HOURS * 3600
+
+
 def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[dict]:
     r = _graph_get(
         f"{GRAPH}/{ver}/{ig_user_id}/media",
@@ -273,7 +285,18 @@ def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[d
     for m in r.json().get("data", []):
         if m.get("media_type") not in ("VIDEO", "REELS"):
             continue
-        views, metric = _ig_media_views(m["id"], token, ver, metric)
+        try:
+            views, metric = _ig_media_views(m["id"], token, ver, metric)
+        except RuntimeError as exc:
+            # Insights for a Reel posted minutes ago are not ready yet; only that
+            # case is tolerated. Older Reels failing still fails the export.
+            if not _is_fresh(m.get("timestamp", "")):
+                raise
+            print(f"  instagram media {m['id']} is too new for insights; views left unavailable")
+            views = None
+            pending = {"views": f"insights_pending: Reel younger than {IG_INSIGHTS_GRACE_HOURS}h; {exc}"[:300]}
+        else:
+            pending = {}
         videos.append({
             "id": m["id"],
             "title": _first_line(m.get("caption", "")),
@@ -285,6 +308,7 @@ def fetch_instagram(token: str, ig_user_id: str, ver: str, limit: int) -> list[d
             "url": m.get("permalink", ""),
             **_ig_reel_insights(m["id"], token, ver),
         })
+        videos[-1]["unavailable_metrics"].update(pending)
     return [_experiment_metrics(video, "instagram") for video in videos]
 
 
