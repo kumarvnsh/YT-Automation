@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T01:00:07.605146+00:00",
+  "updated": "2026-11-24T21:00:08.430901+00:00",
   "status": "pinned by you until 2026-11-30T04:17 UTC",
   "hours_utc": [
     11,
@@ -48,44 +48,44 @@
   ],
   "hour_stats": {
     "04": {
-      "n": 22,
-      "mean": 0.541,
-      "shrunk": 0.536
+      "n": 21,
+      "mean": 0.546,
+      "shrunk": 0.54
     },
     "07": {
       "n": 15,
-      "mean": 0.469,
-      "shrunk": 0.475
+      "mean": 0.466,
+      "shrunk": 0.472
     },
     "11": {
       "n": 3,
-      "mean": 0.342,
-      "shrunk": 0.421
+      "mean": 0.339,
+      "shrunk": 0.419
     },
     "12": {
       "n": 16,
-      "mean": 0.509,
-      "shrunk": 0.508
+      "mean": 0.507,
+      "shrunk": 0.506
     },
     "16": {
-      "n": 16,
-      "mean": 0.488,
-      "shrunk": 0.49
+      "n": 15,
+      "mean": 0.493,
+      "shrunk": 0.494
     },
     "17": {
       "n": 1,
-      "mean": 0.364,
-      "shrunk": 0.466
+      "mean": 0.361,
+      "shrunk": 0.465
     },
     "18": {
       "n": 16,
-      "mean": 0.461,
-      "shrunk": 0.467
+      "mean": 0.457,
+      "shrunk": 0.464
     },
     "23": {
       "n": 5,
-      "mean": 0.606,
-      "shrunk": 0.566
+      "mean": 0.603,
+      "shrunk": 0.564
     }
   },
   "masked_metrics": [
@@ -93,31 +93,37 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "FB 0 plays while IG reached 212, Nov 16 export gap"
+      "reason": "0 FB plays with insights 'available' while IG shows 212; part of Nov 13-16 near-zero FB cluster"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "FB 2 plays while IG reached 137"
-    },
-    {
-      "video_id": "-cPiNs-0pLA",
-      "platform": "fb",
-      "views": 3,
-      "reason": "FB 3 plays while IG reached 129"
+      "reason": "FB 2 plays with 32s avg watch vs IG 137; implausible FB count"
     },
     {
       "video_id": "SfvGGm6eaok",
       "platform": "fb",
       "views": 2,
-      "reason": "FB 2 plays while IG reached 139"
+      "reason": "FB 2 plays vs IG 139; historical Nov 13-16 FB fault pattern"
+    },
+    {
+      "video_id": "-cPiNs-0pLA",
+      "platform": "fb",
+      "views": 3,
+      "reason": "FB 3 plays with 23s watch time while IG 129"
     },
     {
       "video_id": "0xHy2ZVArUg",
       "platform": "yt",
       "views": 8,
-      "reason": "0.0% average viewed with 8 views at ~53h; likely analytics lag, not real 0% viewing"
+      "reason": "0.0% average viewed reported despite 8 views"
+    },
+    {
+      "video_id": "2aRdkpMSsVY",
+      "platform": "yt",
+      "views": 4,
+      "reason": "0.0% average viewed reported despite 4 views"
     },
     {
       "video_id": "yUDJaAj3Zvg",
@@ -156,12 +162,6 @@
       "reason": "Viewing percentage is 0.0% with 4 recorded views."
     },
     {
-      "video_id": "2aRdkpMSsVY",
-      "platform": "yt",
-      "views": 4,
-      "reason": "Viewing percentage is 0.0% with 3 recorded views."
-    },
-    {
       "video_id": "wUYjpa6ICeU",
       "platform": "yt",
       "views": 4,
@@ -170,7 +170,7 @@
     {
       "video_id": "ZE9tGMBB7Fg",
       "platform": "yt",
-      "views": 0,
+      "views": 2,
       "reason": "Viewing percentage missing in the recent export gap."
     },
     {
