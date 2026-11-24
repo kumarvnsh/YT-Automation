@@ -47,6 +47,11 @@ PRODUCTION CONTRACT:
   labels at least 18px. Use a detailed object or interconnected mechanism, not a
   small icon floating in a mostly empty canvas. Begin the main object at t=0;
   add meaningful changes as the words arrive instead of leaving empty containers.
+- NEVER show an empty frame, box, card, panel, screen or chart area waiting for later content.
+  A container appears in the same moment as its content, or already holds a first state
+  (the first gear, the first curve, a dim earlier value) that later cues build on. Every
+  visible panel must show real content within 0.5 s of appearing. The renderer rejects a
+  scene in which a framed panel stays empty for a second or more.
 - NEVER draw geographic outlines, coastlines, country silhouettes, location
   dots or route maps yourself. Use histold-map ONLY for verified map IDs supplied
   in the request. When no map IDs are supplied, explain through objects, printing

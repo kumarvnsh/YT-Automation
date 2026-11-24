@@ -48,5 +48,22 @@ class SceneStyleTests(unittest.TestCase):
         self.assertEqual(kits.tagged_style(kits.tag_style(kits.tag_style(scene, 'papercut'), 'flatlit')), 'flatlit')
 
 
+class EmptyPanelTests(unittest.TestCase):
+    def test_a_flat_framed_box_is_empty_and_one_with_drawing_is_not(self):
+        from PIL import Image, ImageDraw
+        from src.claude_motion import _panel_is_empty
+        shot = Image.new('L', (1080, 1920), 40)
+        draw = ImageDraw.Draw(shot)
+        draw.rectangle((100, 200, 900, 700), fill=90, outline=200, width=6)   # empty grey panel
+        draw.rectangle((100, 900, 900, 1400), fill=90, outline=200, width=6)  # panel with a gear row
+        for x in range(200, 800, 120):
+            draw.ellipse((x, 1080, x + 80, 1160), outline=230, width=8)
+        self.assertTrue(_panel_is_empty(shot, {'x': 50, 'y': 100, 'w': 400, 'h': 250}, 540))
+        self.assertFalse(_panel_is_empty(shot, {'x': 50, 'y': 450, 'w': 400, 'h': 250}, 540))
+
+    def test_the_scene_brief_forbids_empty_panels(self):
+        from pathlib import Path
+        self.assertIn('NEVER show an empty frame', Path('src/cinematic_2d_prompt.txt').read_text(encoding='utf-8'))
+
 if __name__ == '__main__':
     unittest.main()

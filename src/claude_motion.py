@@ -318,6 +318,34 @@ def summarize_motion(differences: list[float], times: list[float], limit: float 
     return []
 
 
+# Large framed boxes (cards, panels, screens, chart areas) a viewer reads as containers.
+_PANEL_JS = """() => [...document.querySelectorAll('.k-stage *')].filter(e => !e.closest('.histold-painting')).map(e => {
+  const r = e.getBoundingClientRect(), tag = e.tagName.toLowerCase(), s = getComputedStyle(e);
+  if (r.width < 140 || r.height < 90 || r.width > innerWidth * .97) return null;
+  for (let n = e; n && n.nodeType === 1; n = n.parentElement) {
+    const c = getComputedStyle(n); if (c.display === 'none' || c.visibility === 'hidden' || +c.opacity < .5) return null; }
+  let framed = false;
+  if (tag === 'rect') framed = (s.fill !== 'none' && +s.fillOpacity > .3) || (s.stroke !== 'none' && parseFloat(s.strokeWidth) >= 1.5);
+  else if (!(e instanceof SVGElement)) framed = (s.backgroundColor !== 'rgba(0, 0, 0, 0)' && s.backgroundColor !== 'transparent')
+    || parseFloat(s.borderTopWidth) >= 1.5 || s.boxShadow !== 'none';
+  if (!framed || r.bottom > innerHeight * .82) return null;
+  return {x: r.left, y: r.top, w: r.width, h: r.height};
+}).filter(Boolean)"""
+
+
+def _panel_is_empty(shot, box: dict, css_width: float) -> bool:
+    """True when the inside of a framed box shows no content: near-flat pixels, nothing drawn on it."""
+    import numpy as np
+    scale = shot.width / max(1.0, css_width)
+    x0, y0 = (box['x'] + box['w'] * .12) * scale, (box['y'] + box['h'] * .15) * scale
+    x1, y1 = (box['x'] + box['w'] * .88) * scale, (box['y'] + box['h'] * .85) * scale
+    if x1 - x0 < 20 or y1 - y0 < 20:
+        return False
+    inner = np.asarray(shot.crop((int(x0), int(y0), int(x1), int(y1))), dtype=float) / 255
+    marked = np.abs(inner - np.median(inner)) > .06  # strokes, text, shapes on the panel
+    return float(marked.mean()) < .004
+
+
 def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], branding: bool) -> dict:
     """Inspect actual timeline samples; ambient film effects cannot satisfy motion checks."""
     import io
@@ -328,7 +356,18 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
     page.add_style_tag(content='html::before,html::after{visibility:hidden!important}')
     errors, differences, previous = [], [], None
     visible_samples = []
+    empty_since: dict = {}
+    seen_empty: set = set()
     times = sample_times(duration, fps, cues)
+
+    def empty_panels(page, shot):
+        found = []
+        for box in page.evaluate(_PANEL_JS):
+            if _panel_is_empty(shot, box, page.viewport_size['width']):
+                key = tuple(round(v / 8) for v in (box['x'], box['y'], box['w'], box['h']))
+                found.append(key)
+                seen_empty.add(key)
+        return found
     for time in times:
         page.evaluate("t => document.getAnimations().forEach(a => {a.currentTime = (a.animationName || '').startsWith('kit-fx-') ? 0 : t})", time * 1000)
         errors.extend(f'{time:.2f}s: {e}' for e in page.evaluate(_LINT_JS))
@@ -345,7 +384,18 @@ def inspect_scene(page, html: str, duration: float, fps: int, cues: list[dict], 
             }).length""")
             if collisions:
                 errors.append(f'{time:.2f}s: text overlaps HISTOLD safe area')
-        frame = np.asarray(Image.open(io.BytesIO(page.screenshot(type='png'))).convert('L').resize((108, 192)), dtype=float) / 255
+        shot = Image.open(io.BytesIO(page.screenshot(type='png'))).convert('L')
+        frame = np.asarray(shot.resize((108, 192)), dtype=float) / 255
+        if time >= .5:
+            for key in empty_panels(page, shot):
+                empty_since.setdefault(key, time)
+                if time - empty_since[key] >= 1.0:
+                    errors.append(f'{empty_since[key]:.2f}s: a framed panel stays empty for over a second '
+                                  '(bring it in with its content, or start it holding a first state)')
+                    empty_since[key] = float('inf')
+            for key in [k for k in empty_since if k not in seen_empty]:
+                empty_since.pop(key)
+            seen_empty.clear()
         if previous is not None:
             # Share of pixels that visibly changed: a moving label or diagram counts even when
             # the frame-wide mean barely moves (that mean rejected our own reference scene).
