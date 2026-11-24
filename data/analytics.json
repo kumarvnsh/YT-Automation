@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-24T18:00:30.391611+00:00",
+      "updated": "2026-11-24T19:00:43.659236+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "n7DdFZD-ssU",
+          "title": "Jefferson's Envoys Went to Buy New Orleans and Said Yes to Far More",
+          "description": "President Jefferson sent James Monroe to France to join Robert Livingston, with up to ten million dollars to buy New Orleans and West Florida. As yellow fever ravaged France's army in Saint-Domingue, Napoleon dropped his Louisiana plans and offered the whole territory for fifteen million dollars. The envoys went far beyond their instructions and agreed, based on the U.S. State Department's Office of the Historian.\n#history #louisianapurchase #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of James Monroe: Gilbert Stuart, Public domain, via Wikimedia Commons\nPortrait of Napoleon Bonaparte: Jacques-Louis David, Public domain, via Wikimedia Commons",
+          "tags": [
+            "1803",
+            "american history",
+            "decisions with consequences",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "james monroe",
+            "louisiana purchase",
+            "napoleon",
+            "new orleans",
+            "robert livingston",
+            "thomas jefferson",
+            "world history"
+          ],
+          "publishedAt": "2026-11-24T18:18:27Z",
+          "thumbnail": "https://i.ytimg.com/vi/n7DdFZD-ssU/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-24",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
         {
           "id": "CYQTvgSN0wc",
           "title": "A 2,500-Pound Machine of Gears Did America's Tide Math",
@@ -2160,49 +2204,6 @@
           "shares": 0,
           "analytics_views": 14,
           "engaged_views": 1,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-24",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "IJn74t35Uu8",
-          "title": "Why Did Russia's Fleet Open Fire on British Fishermen?",
-          "description": "In October 1904, a Russian naval force fired on British trawlers in the North Sea, mistaking them for Japanese torpedo boats during the Russo-Japanese War. The mistake caused a serious diplomatic crisis and led to an international inquiry in Paris. #RussianHistory #NavalHistory #WorldHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "baltic fleet",
-            "did you know",
-            "dogger bank",
-            "education",
-            "everyday origins",
-            "forgotten history",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "mistakes that changed history",
-            "naval history",
-            "north sea",
-            "royal navy",
-            "russian history",
-            "russo japanese war",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T13:42:32Z",
-          "thumbnail": "https://i.ytimg.com/vi/IJn74t35Uu8/mqdefault.jpg",
-          "views": 15,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 108.07,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 54.0,
-          "shares": 0,
-          "analytics_views": 15,
-          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-24",
