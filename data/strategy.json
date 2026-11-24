@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T03:00:30.369275+00:00",
+  "updated": "2026-11-24T07:00:33.893689+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
         "Coal Miners Sent a Caged Canary Underground Before Going Back In"
       ],
-      "measured_videos": 114
+      "measured_videos": 113
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 116
+      "measured_videos": 115
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 111,
-          "mean_like_rate": 0.003164
+          "measured_videos": 110,
+          "mean_like_rate": 0.003193
         },
         "fb": {
-          "measured_videos": 108,
-          "mean_like_rate": 0.001945
+          "measured_videos": 107,
+          "mean_like_rate": 0.001963
         },
         "ig": {
-          "measured_videos": 121,
-          "mean_like_rate": 0.136813
+          "measured_videos": 120,
+          "mean_like_rate": 0.133786
         }
       },
       "Museum object": {
@@ -150,10 +150,10 @@
       }
     }
   },
-  "videos_scored": 114,
+  "videos_scored": 113,
   "weights": {
     "series": {
-      "school_myths": 0.0671,
+      "school_myths": 0.067,
       "mistakes": 0.0681,
       "almost": 0.0681,
       "erased": 0.072,
@@ -169,19 +169,19 @@
       "found_by_accident": 0.0696
     },
     "region": {
-      "india": 0.1141,
-      "africa": 0.1116,
-      "japan": 0.1162,
-      "china": 0.1156,
-      "russia": 0.1044,
-      "middle_east": 0.1071,
-      "europe": 0.1172,
-      "americas": 0.0957,
-      "asia_pacific": 0.1181
+      "india": 0.1139,
+      "africa": 0.1114,
+      "japan": 0.1179,
+      "china": 0.1154,
+      "russia": 0.1042,
+      "middle_east": 0.1069,
+      "europe": 0.117,
+      "americas": 0.0955,
+      "asia_pacific": 0.1179
     },
     "duration_variant": {
-      "concise": 0.5071,
-      "story": 0.4929
+      "concise": 0.5062,
+      "story": 0.4938
     }
   },
   "stats": {
@@ -250,11 +250,11 @@
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.492
+        "mean_score": 0.491
       },
       "japan": {
-        "n": 12,
-        "mean_score": 0.51
+        "n": 11,
+        "mean_score": 0.516
       },
       "china": {
         "n": 12,
@@ -262,7 +262,7 @@
       },
       "russia": {
         "n": 12,
-        "mean_score": 0.463
+        "mean_score": 0.462
       },
       "middle_east": {
         "n": 11,
@@ -270,7 +270,7 @@
       },
       "europe": {
         "n": 11,
-        "mean_score": 0.514
+        "mean_score": 0.513
       },
       "americas": {
         "n": 12,
@@ -278,17 +278,17 @@
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.517
+        "mean_score": 0.516
       }
     },
     "duration_variant": {
       "concise": {
         "n": 63,
-        "mean_score": 0.505
+        "mean_score": 0.504
       },
       "story": {
-        "n": 51,
-        "mean_score": 0.494
+        "n": 50,
+        "mean_score": 0.495
       }
     }
   },
@@ -312,31 +312,37 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "0 FB plays while IG shows 212"
+      "reason": "0 plays while IG 212, Nov 13-16 gap"
     },
     {
       "video_id": "g4aOe5vcitA",
       "platform": "fb",
       "views": 2,
-      "reason": "2 FB plays while IG shows 137"
+      "reason": "2 plays with 32s watch time while IG 137, Nov 13-16 gap"
     },
     {
       "video_id": "-cPiNs-0pLA",
       "platform": "fb",
       "views": 3,
-      "reason": "3 FB plays while IG shows 129"
+      "reason": "3 plays with 23s watch time while IG 129, Nov 13-16 FB reporting gap"
     },
     {
       "video_id": "SfvGGm6eaok",
       "platform": "fb",
       "views": 2,
-      "reason": "2 FB plays while IG shows 139"
+      "reason": "2 plays while IG 139, Nov 13-16 gap"
     },
     {
       "video_id": "0xHy2ZVArUg",
       "platform": "yt",
       "views": 8,
-      "reason": "0.0% average viewed with 8 views at ~53h; likely analytics lag, not real 0% viewing"
+      "reason": "0.0% average viewed reported despite 8 views"
+    },
+    {
+      "video_id": "2aRdkpMSsVY",
+      "platform": "yt",
+      "views": 4,
+      "reason": "0.0% average viewed reported despite 4 views"
     },
     {
       "video_id": "yUDJaAj3Zvg",
@@ -373,12 +379,6 @@
       "platform": "yt",
       "views": 4,
       "reason": "Viewing percentage is 0.0% with 4 recorded views."
-    },
-    {
-      "video_id": "2aRdkpMSsVY",
-      "platform": "yt",
-      "views": 4,
-      "reason": "Viewing percentage is 0.0% with 3 recorded views."
     },
     {
       "video_id": "wUYjpa6ICeU",
