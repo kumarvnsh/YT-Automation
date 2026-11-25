@@ -14,6 +14,8 @@ Usage:
   python scripts/run_local_publish.py --format short --slot 2026-11-22T11     (scheduled)
   python scripts/run_local_publish.py --format short --dry-run                 (research + script only)
   python scripts/run_local_publish.py --format short --no-upload               (render a preview)
+  python scripts/run_local_publish.py --format short --slot 2026-11-22T11 --ahead
+      (made ahead: render now, claim the slot when its hour starts, upload straight away)
 """
 from __future__ import annotations
 
@@ -25,6 +27,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -38,6 +41,8 @@ LOCK = HOME / 'control' / 'local-publish.lock'
 RETRY = HOME / 'control' / 'local-publish-retry.json'   # a video waiting for the plans to reset
 STATUS = HOME / 'control' / 'local-publish-status.json'  # the run in progress, for Studio HQ
 LOG_DIR = HOME / 'control' / 'local-publish'
+AHEAD_DIR = HOME / 'control' / 'made-ahead'           # one file per slot made ahead, read by scripts/dispatch.py
+CLAIM_WORKTREE = ENV_ROOT / 'claim-worktree'           # separate checkout, so a claim never resets this one
 PRE_UPLOAD_RETRIES = 2
 BUDGET_SECONDS = 5 * 3600
 
@@ -50,8 +55,8 @@ def log(*parts):
         handle.write(line + '\n')
 
 
-def run(cmd, env=None, check=False, timeout=None, capture=True):
-    result = subprocess.run(cmd, cwd=ROOT, env=env, capture_output=capture, text=True, encoding='utf-8',
+def run(cmd, env=None, check=False, timeout=None, capture=True, cwd=None):
+    result = subprocess.run(cmd, cwd=cwd or ROOT, env=env, capture_output=capture, text=True, encoding='utf-8',
                             errors='replace', timeout=timeout, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
     if check and result.returncode:
         raise RuntimeError(f'{cmd[0]} failed: {(result.stderr or result.stdout)[-300:]}')
@@ -106,6 +111,9 @@ def tool_env(cfg) -> tuple[dict, list[str]]:
     for var, key in (('FFMPEG_PRESET', 'preset'), ('FFMPEG_CRF', 'crf'), ('FRAME_JPEG_QUALITY', 'frame_quality')):
         if encode.get(key) not in (None, '') and not os.environ.get(var):
             env[var] = str(encode[key])
+    workers = local.get('render_workers')
+    if workers not in (None, '') and not os.environ.get('HISTOLD_RENDER_WORKERS'):
+        env['HISTOLD_RENDER_WORKERS'] = str(workers)  # scenes captured at once (src/claude_motion.py)
     if local.get('textured_style', True) and not os.environ.get('HISTOLD_TEXTURE'):
         env['HISTOLD_TEXTURE'] = '1'  # textured-illustration kit and brief (src/cinematic_texture.css)
     style = str(local.get('scene_style', 'auto') or 'off').strip().lower()
@@ -171,14 +179,15 @@ def stream(cmd, env, timeout, path: Path) -> subprocess.CompletedProcess:
     return subprocess.CompletedProcess(cmd, process.returncode, stdout=''.join(lines), stderr='')
 
 
-def step_loop(args, env) -> tuple[str, str]:
-    cmd = [sys.executable, '-m', 'src.main', '--format', args.format, '--step']
-    if getattr(args, 'stage', None):  # publish a finished preview: only the upload step runs
-        cmd = [sys.executable, '-m', 'src.main', '--stage', args.stage, '--force-upload', '--step']
-    if args.dry_run:
-        cmd.append('--dry-run')
-    if args.no_upload:
-        cmd.append('--no-upload')
+def step_loop(args, env, cmd=None) -> tuple[str, str]:
+    if cmd is None:
+        cmd = [sys.executable, '-m', 'src.main', '--format', args.format, '--step']
+        if getattr(args, 'stage', None):  # publish a finished preview: only the upload step runs
+            cmd = [sys.executable, '-m', 'src.main', '--stage', args.stage, '--force-upload', '--step']
+        if args.dry_run:
+            cmd.append('--dry-run')
+        if args.no_upload:
+            cmd.append('--no-upload')
     retries, end, last = 0, time.time() + BUDGET_SECONDS, ''
     while time.time() < end:
         result = stream(cmd, env, max(60, int(end - time.time())), LOG_DIR / f'{args.stamp}.log')
@@ -250,14 +259,14 @@ def record_state():
     return 'could not push'
 
 
-def claim(args, env) -> tuple[bool, str]:
+def claim(args, env, cwd=None) -> tuple[bool, str]:
     with tempfile.NamedTemporaryFile('w', delete=False, suffix='.env', dir=ENV_ROOT / 'tmp') as handle:
         github_env = handle.name
     claim_env = {**env, 'GITHUB_RUN_ATTEMPT': '1', 'GITHUB_ENV': github_env,
                  'PUBLISH_SCHEDULED': 'true' if args.slot else 'false', 'DISPATCH_SLOT': args.slot or '',
                  'VIDEO_FORMAT': args.format}
     key = f'slot-{args.slot}' if args.slot else f'local-{args.stamp}'
-    result = run([sys.executable, 'scripts/claim_histold_publish.py', args.format, key], env=claim_env, timeout=300)
+    result = run([sys.executable, 'scripts/claim_histold_publish.py', args.format, key], env=claim_env, timeout=300, cwd=cwd)
     Path(github_env).unlink(missing_ok=True)
     log('claim', key, (result.stdout or result.stderr).strip()[-200:])
     return result.returncode == 0, key
@@ -323,6 +332,202 @@ def fall_back(args, reason, key=None, env=None):
     return 0 if ok else 1
 
 
+def finish(args, status: str, out: str, key, env) -> int:
+    """Record a finished run, or hand a failed one to the retry or the paid cloud run."""
+    if status == 'DONE':
+        if not (args.dry_run or args.no_upload):
+            log('state', record_state())
+        return 0
+    failed = re.findall(r"!! step '([a-z_]+)' failed: (.*)", out)
+    step, error = failed[-1] if failed else ('', status)
+    if step == 'upload':
+        notify('❌ Sir, the local Histold upload failed (' + error[:160] + '). I did not retry it, to avoid a double post.')
+        return 1
+    if 'No plan provider could' in out:
+        return defer(args, f"step '{step}': plans used up", key, env)
+    return fall_back(args, (f"step '{step}' failed: " if step else '') + error[:160], key, env)
+
+
+# --------------------------------------------------------------------------- #
+# Made ahead: the video is rendered before its slot and uploaded the moment the slot opens
+# --------------------------------------------------------------------------- #
+def slot_start(slot: str) -> datetime:
+    return datetime.strptime(slot, '%Y-%m-%dT%H').replace(tzinfo=timezone.utc)
+
+
+def ahead_file(slot: str) -> Path:
+    return AHEAD_DIR / f'{slot}.json'
+
+
+def write_ahead(slot: str, **fields) -> None:
+    """Progress of a made-ahead video. scripts/dispatch.py reads it at the slot hour to know whether this
+    run still owns the slot or the usual run at the hour has to make the video."""
+    path = ahead_file(slot)
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        data = {}
+    data.update(fields, slot=slot, updated=datetime.now(timezone.utc).isoformat())
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=1), encoding='utf-8')
+
+
+def hand_back(stage: str | None) -> None:
+    """Turn an unfinished made-ahead preview into a normal stage, so the run at the slot hour (or the retry
+    after a plan reset) resumes it with its finished research and script and uploads it."""
+    if not stage:
+        return
+    path = ROOT / 'output' / stage / 'state.json'
+    try:
+        state = json.loads(path.read_text(encoding='utf-8'))
+        if state.get('no_upload') and not state.get('complete'):
+            state['no_upload'] = False
+            path.write_text(json.dumps(state, indent=2), encoding='utf-8')
+            log('handed back the unfinished made-ahead video', stage)
+    except (OSError, ValueError):
+        pass
+
+
+def claim_worktree() -> Path | None:
+    """A second checkout for the slot claim. The claim resets its checkout to origin/master, which must
+    not happen in this one while a video is being made in it."""
+    if (CLAIM_WORKTREE / '.git').exists():
+        return CLAIM_WORKTREE
+    run(['git', 'worktree', 'prune'], timeout=120)
+    result = run(['git', 'worktree', 'add', '--detach', str(CLAIM_WORKTREE), 'origin/master'], timeout=300)
+    if result.returncode:
+        log('claim checkout unavailable:', (result.stderr or result.stdout).strip()[-200:])
+        return None
+    return CLAIM_WORKTREE
+
+
+class SlotClaim(threading.Thread):
+    """Claims the slot as soon as its hour starts, while the video may still be rendering."""
+
+    def __init__(self, args, env, cwd: Path, margin: float = 20):
+        super().__init__(daemon=True)
+        self.args, self.env, self.cwd, self.margin = args, env, cwd, margin
+        self.cancelled = threading.Event()
+        self.ok, self.key = None, None
+
+    def run(self):
+        wait = (slot_start(self.args.slot) - datetime.now(timezone.utc)).total_seconds() + self.margin
+        if self.cancelled.wait(max(0.0, wait)):
+            return
+        try:
+            # The claim script resets its checkout only after it has started, so bring the checkout up to
+            # date first or it would run the previous version of itself.
+            run(['git', 'fetch', '-q', 'origin'], cwd=self.cwd, timeout=120)
+            run(['git', 'reset', '-q', '--hard', 'origin/master'], cwd=self.cwd, timeout=120)
+            self.ok, self.key = claim(self.args, self.env, cwd=self.cwd)
+        except Exception as exc:  # noqa: BLE001 - an unclaimed slot keeps the video as a preview
+            log('slot claim failed:', exc)
+            self.ok = False
+
+    def stop(self) -> None:
+        """Cancel a claim that has not started; one already running is waited for."""
+        self.cancelled.set()
+        self.join()
+
+
+_STAGE_RE = re.compile(r'Created stage: (\S+)|"stage":\s*"([^"]+)"')
+
+
+def produce_ahead(args, env) -> tuple[str, str, str | None]:
+    """Make a new preview stage (never resuming another video) step by step, without its upload."""
+    path = LOG_DIR / f'{args.stamp}.log'
+    first = stream([sys.executable, '-m', 'src.main', '--format', args.format, '--no-upload', '--fresh', '--step'],
+                   env, BUDGET_SECONDS, path)
+    out = (first.stdout or '') + (first.stderr or '')
+    found = [created or named for created, named in _STAGE_RE.findall(out)]
+    stage = found[-1] if found else None
+    if not stage:
+        return 'ERROR', out, None
+    write_ahead(args.slot, stage=stage)
+    if 'STATUS: DONE' in out:
+        return 'DONE', out, stage
+    status, rest = step_loop(args, env, [sys.executable, '-m', 'src.main', '--stage', stage, '--step'])
+    return status, out + rest, stage
+
+
+def make_ahead(args, env) -> int:
+    """Render the slot's video before its hour, then claim and upload it when the hour starts.
+
+    Nothing is claimed early, so the claim's slot-hour and daily-cap rules apply unchanged. A video that
+    fails before its slot is handed back to the usual run at the slot hour; one that fails after the claim
+    is handled like any local run (plan reset retry or paid cloud run).
+    """
+    worktree = claim_worktree()
+    if not worktree:
+        write_ahead(args.slot, state='gave_up', reason='no claim checkout')
+        return 0
+    write_ahead(args.slot, state='making', format=args.format, started=datetime.now(timezone.utc).isoformat())
+    watcher = SlotClaim(args, env, worktree)
+    watcher.start()
+    status, out, stage = produce_ahead(args, env)
+    log('made ahead', args.format, 'for', args.slot, status, stage or '')
+    if status != 'DONE':
+        hand_back(stage)
+        if watcher.is_alive():
+            if (slot_start(args.slot) - datetime.now(timezone.utc)).total_seconds() > 15 * 60:
+                watcher.stop()  # early enough that the usual run at the hour is still started
+            else:
+                watcher.join()  # the dispatcher may already have left this slot to us: claim it and fall back
+        if not watcher.ok:  # no claim: the usual run at the slot hour takes it from here
+            write_ahead(args.slot, state='gave_up', reason=status)
+            return 0
+        write_ahead(args.slot, state='failed')
+        return finish(args, status, out, watcher.key, env)
+    write_ahead(args.slot, state='waiting')
+    if watcher.is_alive():
+        log('video ready; waiting for the slot at', slot_start(args.slot).strftime('%H:%M UTC'))
+    watcher.join()
+    if not watcher.ok:
+        write_ahead(args.slot, state='kept_as_preview')
+        log('state', record_state())
+        notify(f'ℹ️ Sir, the Histold {args.format} made ahead for {args.slot} UTC could not take its slot '
+               "(for example, today's posting cap is reached). It is saved as a preview in Studio HQ.")
+        return 0
+    write_ahead(args.slot, state='publishing')
+    args.stage = stage
+    status, out = step_loop(args, env)
+    log('made-ahead upload', status)
+    write_ahead(args.slot, state='published' if status == 'DONE' else 'failed')
+    return finish(args, status, out, watcher.key, env)
+
+
+def own_ahead_stage(slot: str) -> None:
+    """The usual run at a slot hour: an unfinished video made ahead for this slot (its run stopped,
+    for example the laptop restarted) is handed back so this run resumes and uploads it."""
+    try:
+        data = json.loads(ahead_file(slot).read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return
+    if data.get('state') != 'published':
+        hand_back(data.get('stage'))
+
+
+AHEAD_LOCK_WAIT_MARGIN = 75 * 60   # a made-ahead video needs at least this long before its slot
+
+
+def take_lock(wait_until: float = 0):
+    """The single local-publish lock. A made-ahead run starts while the previous slot's video may still be
+    uploading, so it waits for that run (until ``wait_until``) instead of giving up at once."""
+    while True:
+        try:
+            return os.open(LOCK, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            try:
+                if time.time() - LOCK.stat().st_mtime >= BUDGET_SECONDS + 1800:
+                    LOCK.unlink(missing_ok=True)  # left by a run that died
+                    continue
+            except FileNotFoundError:
+                continue
+            if time.time() >= wait_until:
+                return None
+            time.sleep(30)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--format', choices=('short', 'long'), required=True)
@@ -333,20 +538,24 @@ def main() -> int:
     ap.add_argument('--no-sync', action='store_true', help='testing only: do not reset the clone to origin/master')
     ap.add_argument('--retry', action='store_true', help='make the video that waited for the plans to reset')
     ap.add_argument('--publish-stage', type=Path, help='upload a finished preview that passed its quality checks')
+    ap.add_argument('--ahead', action='store_true',
+                    help='with --slot: make the video before its hour, claim and upload it when the hour starts')
     args = ap.parse_args()
     args.stage = None
+    if args.ahead and (not args.slot or args.dry_run or args.no_upload or args.retry or args.publish_stage):
+        ap.error('--ahead needs a future --slot and no other mode')
+    if args.ahead and slot_start(args.slot) <= datetime.now(timezone.utc):
+        args.ahead = False  # started late (for example after sleep): this is now the usual slot run
     if args.retry:
         args.slot = ''  # the original hour has passed; the daily cap still applies to the claim
     args.stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     LOCK.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        fd = os.open(LOCK, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-    except FileExistsError:
-        if time.time() - LOCK.stat().st_mtime < BUDGET_SECONDS + 1800:
-            log('another local publish is running')
-            return 0
-        LOCK.unlink(missing_ok=True)
-        fd = os.open(LOCK, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    fd = take_lock(slot_start(args.slot).timestamp() - AHEAD_LOCK_WAIT_MARGIN if args.ahead else 0)
+    if fd is None:
+        log('another local publish is running')
+        if args.ahead:
+            write_ahead(args.slot, state='gave_up', reason='another local publish was still running')
+        return 0
     try:
         if not args.no_sync:
             git_sync()
@@ -361,11 +570,25 @@ def main() -> int:
         env, missing = tool_env(cfg)
         ready = plan_ai.status(cfg)
         if not args.stage and not any(ready[p]['ready'] for p in ('claude', 'codex')):  # research needs one; a preview upload needs none
+            if args.ahead:  # the usual run at the slot hour decides whether to wait for the reset
+                write_ahead(args.slot, state='gave_up', reason='plans resting or capped')
+                return 0
             return defer(args, 'Claude and Codex plans are both resting or capped')
         if args.retry:
             RETRY.unlink(missing_ok=True)
         if missing and not (args.dry_run or args.no_upload):
+            if args.ahead:
+                write_ahead(args.slot, state='gave_up', reason='local setup incomplete: ' + ', '.join(missing))
+                return 0
             return fall_back(args, 'local setup incomplete: ' + ', '.join(missing))
+        if args.ahead:
+            STATUS.write_text(json.dumps({'root': str(ROOT), 'log': str(LOG_DIR / f'{args.stamp}.log'), 'format': args.format,
+                                          'slot': args.slot, 'started': datetime.now(timezone.utc).isoformat(),
+                                          'kind': 'publish (made ahead)'}), encoding='utf-8')
+            log('local run', args.format, 'made ahead for slot', args.slot, 'start')
+            return make_ahead(args, env)
+        if args.slot and not args.stage:
+            own_ahead_stage(args.slot)
         key = None
         if not (args.dry_run or args.no_upload):
             ok, key = claim(args, env)
@@ -381,18 +604,7 @@ def main() -> int:
         log('local run', args.format, 'slot', args.slot or '-', 'start')
         status, out = step_loop(args, env)
         log('local run', args.format, status)
-        if status == 'DONE':
-            if not (args.dry_run or args.no_upload):
-                log('state', record_state())
-            return 0
-        failed = re.findall(r"!! step '([a-z_]+)' failed: (.*)", out)
-        step, error = failed[-1] if failed else ('', status)
-        if step == 'upload':
-            notify('❌ Sir, the local Histold upload failed (' + error[:160] + '). I did not retry it, to avoid a double post.')
-            return 1
-        if 'No plan provider could' in out:
-            return defer(args, f"step '{step}': plans used up", key, env)
-        return fall_back(args, (f"step '{step}' failed: " if step else '') + error[:160], key, env)
+        return finish(args, status, out, key, env)
     finally:
         os.close(fd)
         LOCK.unlink(missing_ok=True)

@@ -392,6 +392,8 @@ local_production:
     preset: "medium"           # sharper than veryfast at the same size, without straining the laptop
     crf: 17                    # near visually lossless, so YouTube's re-encode starts from a clean master
     frame_quality: 97          # JPEG quality of each captured scene frame (cloud: 90)
+  make_ahead_hours: 2          # start each video this many hours before its slot; it uploads when the hour starts (0 = make it at the hour, as before)
+  render_workers: 3            # scenes captured at the same time, each in its own Chromium (same frames, ~2.5x faster); 1 = one at a time
   textured_style: true         # laptop only: paper/ink/wash illustration kit + reference scene (src/cinematic_texture.css)
   scene_style: auto            # laptop only: auto = papercut / flatlit / inkfolk / cartoon per script, with fallback, then textured; set a kit name to force one; off = textured only
   painted_scenes:              # laptop only: Antigravity (Codex as backup) paints a picture per scene

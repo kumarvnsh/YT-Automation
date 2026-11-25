@@ -32,6 +32,18 @@ the automatic fallback.
    for another reason, the runner releases the claim and dispatches the paid cloud workflow for the
    same format, and Telegram says so. An upload failure is never retried (no double posts).
 
+6. **Made ahead (`local_production.make_ahead_hours`, default 2):** the dispatcher starts each video
+   that many hours before its slot (`run_local_publish.py --ahead`). It renders as a preview without
+   claiming anything; a helper claims the slot from a second checkout (`D:\YT-Automation-env\claim-worktree`)
+   when the hour starts, and the finished video uploads straight away, so it goes out on the hour instead of
+   30 to 60 minutes late. Progress is kept in `D:\histold\control\made-ahead\<slot>.json`. If the video
+   fails before its slot, it is handed back and the usual run at the hour resumes it (research and script kept);
+   if it cannot take its slot (cap reached, hours changed) it stays as a preview in Studio HQ. Set 0 to make
+   videos at the hour as before.
+7. **Parallel scene rendering (`local_production.render_workers`, default 3):** scenes are captured by that many
+   Chromium workers at once. Frames are identical to a one-at-a-time render; a scene that fails in a worker
+   goes through the usual fallbacks. Set 1 to render one scene at a time. Cloud runs always use 1.
+
 To go back to paid cloud runs entirely, set `local_production.enabled: false`.
 
 ## One-time setup (owner)
