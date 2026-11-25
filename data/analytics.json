@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-25T19:00:33.288445+00:00",
+      "updated": "2026-11-25T20:00:37.150828+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -35,6 +35,51 @@
       },
       "videos": [
         {
+          "id": "KNkWpUQfKL0",
+          "title": "Early Tin Cans Were Hand-Soldered at a Delaware Cannery",
+          "description": "Early tin cans had filling holes that workers closed by hand-soldering a cap, and can-making stayed largely manual for most of the 19th century. In Dover, Delaware, the Richardson & Robbins cannery made many of its own containers, a practice it kept until 1941. The firm's records show how a food factory once built and sealed its own packaging. #CanningHistory #DidYouKnow #EverydayObjects\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "19th century america",
+            "canning history",
+            "delaware history",
+            "did you know",
+            "dover delaware",
+            "education",
+            "everyday objects",
+            "everyday origins",
+            "food history",
+            "historical facts",
+            "history shorts",
+            "how things were made",
+            "industrial history",
+            "richardson and robbins",
+            "tin cans",
+            "unexpected histories",
+            "world history"
+          ],
+          "publishedAt": "2026-11-25T19:22:43Z",
+          "thumbnail": "https://i.ytimg.com/vi/KNkWpUQfKL0/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-25",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+          }
+        },
+        {
           "id": "wvlqEqhFxsM",
           "title": "The Smithsonian Hinged on One Clause About a Nephew's Heir",
           "description": "James Smithson never visited the United States, yet his will set aside money for an institution in Washington. The gift depended on one condition about his nephew. Congress then had to debate and pass a law before the Smithsonian existed.\n#history #smithsonian #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of James K. Polk: James_Polk.jpg: Brady, Mathew B., 1823 (ca.)-1896, photographer.\nderivative work, Public domain, via Wikimedia Commons",
@@ -60,7 +105,7 @@
           "publishedAt": "2026-11-25T18:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/wvlqEqhFxsM/mqdefault.jpg",
           "views": 0,
-          "likes": 0,
+          "likes": 1,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
@@ -103,7 +148,7 @@
           ],
           "publishedAt": "2026-11-25T11:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/vArZjtS1MRY/mqdefault.jpg",
-          "views": 2,
+          "views": 3,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -281,25 +326,24 @@
           ],
           "publishedAt": "2026-11-23T18:18:05Z",
           "thumbnail": "https://i.ytimg.com/vi/v7fM7kWvKF4/mqdefault.jpg",
-          "views": 50,
+          "views": 52,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 22.69,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 8.0,
+          "shares": 0,
+          "analytics_views": 25,
+          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "zMUOPEgxclQ",
@@ -331,19 +375,18 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 29.29,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 13.0,
+          "shares": 0,
+          "analytics_views": 5,
+          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "-7-YlK4o8mM",
@@ -376,12 +419,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 13.750000000000002,
+          "avg_view_pct": 26.009999999999998,
           "subs_gained": 0,
-          "average_watch_time_seconds": 6.0,
+          "average_watch_time_seconds": 11.0,
           "shares": 0,
-          "analytics_views": 18,
-          "engaged_views": 3,
+          "analytics_views": 32,
+          "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
@@ -420,12 +463,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 0.0,
+          "avg_view_pct": 38.54,
           "subs_gained": 0,
-          "average_watch_time_seconds": 0.0,
+          "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 5,
-          "engaged_views": 0,
+          "analytics_views": 6,
+          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
@@ -506,12 +549,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 53.53,
+          "avg_view_pct": 74.43,
           "subs_gained": 1,
-          "average_watch_time_seconds": 23.0,
+          "average_watch_time_seconds": 32.0,
           "shares": 1,
-          "analytics_views": 10,
-          "engaged_views": 3,
+          "analytics_views": 14,
+          "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
@@ -680,12 +723,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 18.68,
+          "avg_view_pct": 47.81,
           "subs_gained": 0,
-          "average_watch_time_seconds": 7.0,
+          "average_watch_time_seconds": 18.0,
           "shares": 0,
-          "analytics_views": 10,
-          "engaged_views": 2,
+          "analytics_views": 12,
+          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
@@ -1339,7 +1382,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 14,
+          "analytics_views": 15,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -1378,19 +1421,18 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 0.0,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 0.0,
+          "shares": 0,
+          "analytics_views": 1,
+          "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "unavailable_metrics": {
-            "avg_view_pct": "YouTube Analytics permission, report delay, or missing response row.",
-            "subs_gained": "YouTube Analytics permission, report delay, or missing response row.",
-            "average_watch_time_seconds": "YouTube Analytics permission, report delay, or missing response row.",
-            "shares": "YouTube Analytics permission, report delay, or missing response row.",
-            "analytics_views": "YouTube Analytics permission, report delay, or missing response row.",
-            "engaged_views": "YouTube Analytics permission, report delay, or missing response row."
-          }
+          "unavailable_metrics": {}
         },
         {
           "id": "IeZApCwr2NE",
@@ -1554,7 +1596,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 3,
+          "analytics_views": 4,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -1686,7 +1728,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 49.0,
           "shares": 0,
-          "analytics_views": 29,
+          "analytics_views": 31,
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -1731,7 +1773,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 14.0,
           "shares": 0,
-          "analytics_views": 16,
+          "analytics_views": 18,
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -2114,7 +2156,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 26,
+          "analytics_views": 27,
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -2160,49 +2202,6 @@
           "shares": 0,
           "analytics_views": 15,
           "engaged_views": 4,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-25",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "hk8oGsZj7I4",
-          "title": "Who Dug Britain's Trenches in the First World War?",
-          "description": "During the First World War, Britain recruited the Chinese Labour Corps for support work on the Western Front. Its workers dug trenches, cleared battlefields and worked on roads and railways, yet their contribution was little recognised afterwards. #WorldHistory #FirstWorldWar #ErasedFromHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "british history",
-            "china history",
-            "chinese labour corps",
-            "did you know",
-            "education",
-            "erased from history",
-            "everyday origins",
-            "first world war",
-            "forgotten history",
-            "historical facts",
-            "history shorts",
-            "shandong",
-            "surprising history",
-            "western front",
-            "world history",
-            "ww1 history"
-          ],
-          "publishedAt": "2026-11-14T15:24:52Z",
-          "thumbnail": "https://i.ytimg.com/vi/hk8oGsZj7I4/mqdefault.jpg",
-          "views": 28,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 46.1,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 24.0,
-          "shares": 0,
-          "analytics_views": 28,
-          "engaged_views": 8,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
