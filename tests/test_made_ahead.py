@@ -183,12 +183,15 @@ class Runner(Folder):
 class ClaimWatcher(Folder):
     def test_claims_when_the_hour_starts_and_can_be_cancelled_before(self):
         soon = SimpleNamespace(format='short', slot=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H'))
-        with mock.patch.object(runner, 'claim', return_value=(True, 'slot-x')) as claim:
+        with mock.patch.object(runner, 'claim', return_value=(True, 'slot-x')) as claim, \
+                mock.patch.object(runner, 'run', return_value=proc()) as git:
             watcher = runner.SlotClaim(soon, {}, self.root, margin=0)
             watcher.start()
             watcher.join(5)
         self.assertEqual((watcher.ok, watcher.key), (True, 'slot-x'))
         self.assertEqual(claim.call_args.kwargs['cwd'], self.root)  # never in the checkout making the video
+        self.assertEqual(git.call_args.args[0][:3], ['git', 'reset', '-q'])  # current claim code, not last version's
+        self.assertEqual(git.call_args.kwargs['cwd'], self.root)
         later = SimpleNamespace(format='short', slot=(datetime.now(timezone.utc) + timedelta(hours=2)).strftime('%Y-%m-%dT%H'))
         with mock.patch.object(runner, 'claim') as claim:
             watcher = runner.SlotClaim(later, {}, self.root)

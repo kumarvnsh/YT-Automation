@@ -415,6 +415,10 @@ class SlotClaim(threading.Thread):
         if self.cancelled.wait(max(0.0, wait)):
             return
         try:
+            # The claim script resets its checkout only after it has started, so bring the checkout up to
+            # date first or it would run the previous version of itself.
+            run(['git', 'fetch', '-q', 'origin'], cwd=self.cwd, timeout=120)
+            run(['git', 'reset', '-q', '--hard', 'origin/master'], cwd=self.cwd, timeout=120)
             self.ok, self.key = claim(self.args, self.env, cwd=self.cwd)
         except Exception as exc:  # noqa: BLE001 - an unclaimed slot keeps the video as a preview
             log('slot claim failed:', exc)
