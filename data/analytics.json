@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-25T18:00:36.209294+00:00",
+      "updated": "2026-11-25T19:00:33.288445+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,51 @@
         ]
       },
       "videos": [
+        {
+          "id": "wvlqEqhFxsM",
+          "title": "The Smithsonian Hinged on One Clause About a Nephew's Heir",
+          "description": "James Smithson never visited the United States, yet his will set aside money for an institution in Washington. The gift depended on one condition about his nephew. Congress then had to debate and pass a law before the Smithsonian existed.\n#history #smithsonian #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of James K. Polk: James_Polk.jpg: Brady, Mathew B., 1823 (ca.)-1896, photographer.\nderivative work, Public domain, via Wikimedia Commons",
+          "tags": [
+            "19th century",
+            "congress",
+            "decisions with consequences",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "james smithson",
+            "museum history",
+            "smithsonian",
+            "smithsonian institution",
+            "us history",
+            "washington dc",
+            "wills and inheritance",
+            "world history"
+          ],
+          "publishedAt": "2026-11-25T18:04:32Z",
+          "thumbnail": "https://i.ytimg.com/vi/wvlqEqhFxsM/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-25",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
         {
           "id": "vArZjtS1MRY",
           "title": "Old Lighthouse Flames Wasted Nearly All of Their Light",
@@ -236,7 +281,7 @@
           ],
           "publishedAt": "2026-11-23T18:18:05Z",
           "thumbnail": "https://i.ytimg.com/vi/v7fM7kWvKF4/mqdefault.jpg",
-          "views": 52,
+          "views": 50,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -585,7 +630,7 @@
           ],
           "publishedAt": "2026-11-21T11:55:53Z",
           "thumbnail": "https://i.ytimg.com/vi/4U8amYJZRCs/mqdefault.jpg",
-          "views": 28,
+          "views": 29,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -2158,48 +2203,6 @@
           "shares": 0,
           "analytics_views": 28,
           "engaged_views": 8,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-25",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "yZEtFoH-rGg",
-          "title": "Which Ancient Counting Habit Is Ticking on Your Wrist?",
-          "description": "Your clock's sixty minutes trace back to the number system of ancient Babylon. Scribes wrote numbers in base sixty on clay tablets, and that habit still shapes how we measure time. Here is where it comes from.\n#History #Babylon #DidYouKnow",
-          "tags": [
-            "ancient babylon",
-            "ancient mathematics",
-            "babylonian numbers",
-            "base 60",
-            "cuneiform",
-            "did you know",
-            "did you know history",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "mesopotamia",
-            "time measurement",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T14:59:32Z",
-          "thumbnail": "https://i.ytimg.com/vi/yZEtFoH-rGg/mqdefault.jpg",
-          "views": 13,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 101.95999999999998,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 30.0,
-          "shares": 0,
-          "analytics_views": 13,
-          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
