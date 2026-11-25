@@ -1119,6 +1119,63 @@ def _render_scene(page, html: str, duration: float, fps: int, dest: Path, preset
     return dest
 
 
+def render_workers() -> int:
+    """How many scenes are captured at once. HISTOLD_RENDER_WORKERS is set by the laptop runner from
+    local_production.render_workers; cloud runs leave it unset and keep one scene at a time."""
+    try:
+        return max(1, int(os.environ.get('HISTOLD_RENDER_WORKERS') or 1))
+    except ValueError:
+        return 1
+
+
+def _render_parallel(jobs: list[tuple[int, str, float, Path]], fps: int, preset: str, viewport: tuple[int, int],
+                     workers: int) -> dict[int, Path | Exception]:
+    """Capture several scenes at the same time, each worker with its own Chromium.
+
+    Scenes do not depend on each other and every frame is taken by seeking the animations, so the frames
+    are the same as a one-at-a-time render. Playwright's sync API is per thread, so each worker starts
+    its own instance. A scene that fails comes back as its exception; the caller retries it on the main
+    page with the usual fallbacks.
+    """
+    import queue
+    import threading
+    from playwright.sync_api import sync_playwright
+
+    todo: queue.Queue = queue.Queue()
+    for job in sorted(jobs, key=lambda job: -job[2]):  # longest first, so the workers finish together
+        todo.put(job)
+    results: dict[int, Path | Exception] = {}
+
+    def work():
+        try:
+            with sync_playwright() as p:
+                browser = p.chromium.launch()
+                try:
+                    page = browser.new_page(viewport={'width': viewport[0], 'height': viewport[1]},
+                                            device_scale_factor=_SCALE)
+                    while True:
+                        try:
+                            index, html, seconds, dest = todo.get_nowait()
+                        except queue.Empty:
+                            return
+                        try:
+                            results[index] = _render_scene(page, html, seconds, fps, dest, preset)
+                            print(f"  ✓ scene {index} rendered ({seconds:.1f}s)")
+                        except Exception as exc:  # noqa: BLE001 - retried on the main page
+                            results[index] = exc
+                finally:
+                    browser.close()
+        except Exception as exc:  # noqa: BLE001 - a worker that cannot start leaves its scenes to the others
+            print(f'  ! render worker unavailable ({str(exc)[:120]})')
+
+    threads = [threading.Thread(target=work, daemon=True) for _ in range(max(1, min(workers, len(jobs))))]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    return results
+
+
 def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: float) -> Path:
     """Build silent visuals; production recovers locally, legacy jobs use stock."""
     from . import video_builder as vb
@@ -1342,11 +1399,23 @@ def render_motion_video(cfg: Config, st: dict, stage: Path, words, duration: flo
                                    {p['credit'] for p in st.get('portraits', []) if p['id'] in shown})
             for i, html in scenes.items():
                 (scene_dir / f"scene_{i:02d}.html").write_text(html, encoding="utf-8")
+            ahead: dict[int, Path | Exception] = {}
+            workers = render_workers()
+            if workers > 1 and len(scenes) > 1:
+                jobs = [(i, scenes[i], e - s, scene_dir / f"scene_{i:02d}.mp4")
+                        for i, (s, e) in enumerate(windows) if i in scenes]
+                print(f'  rendering {len(jobs)} scenes with {min(workers, len(jobs))} workers')
+                ahead = _render_parallel(jobs, fps, preset, (cw, ch), workers)
             for i, (s, e) in enumerate(windows):
                 if i not in scenes:
                     continue
+                if isinstance(ahead.get(i), Path):
+                    clips[i] = ahead[i]
+                    continue
                 try:
                     try:
+                        if i in ahead:  # failed in a worker: go straight to the usual fallbacks below
+                            raise ahead[i]
                         clips[i] = _render_scene(page, scenes[i], e - s, fps,
                                                  scene_dir / f"scene_{i:02d}.mp4", preset)
                     except Exception as exc:  # noqa: BLE001

@@ -33,17 +33,19 @@ def _resolve_stage(cfg: Config, args):
             raise SystemExit(2)
         print(f"Targeting explicit stage: {stage.name}")
         return stage
-    if args.resume or args.step:
+    if (args.resume or args.step) and not args.fresh:
         stage = pipeline.active_stage(cfg, args.format if args.format != "both" else None)
         if stage is not None:
             print(f"Resuming stage: {stage.name}")
             return stage
         print("No incomplete stage found — starting a new one.")
     fmt = "short" if args.format == "both" else args.format
-    return pipeline.new_stage(
+    stage = pipeline.new_stage(
         cfg, fmt, no_upload=args.no_upload, dry_run=args.dry_run,
         topic=args.topic, privacy=args.privacy,
     )
+    print(f"Created stage: {stage.name}")
+    return stage
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -53,6 +55,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dry-run", action="store_true", help="Script + metadata only.")
     parser.add_argument("--resume", action="store_true",
                         help="Finish the newest incomplete run instead of starting fresh.")
+    parser.add_argument("--fresh", action="store_true",
+                        help="With --step: always start a new stage instead of resuming one "
+                             "(the laptop's made-ahead videos).")
     parser.add_argument("--step", action="store_true",
                         help="Execute exactly ONE pending step then exit (for time-capped schedulers).")
     parser.add_argument("--config", default=None)

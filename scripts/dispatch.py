@@ -15,7 +15,7 @@ import re
 import shutil
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -92,6 +92,56 @@ def local_publish(fmt: str, slot: str, dry_run: bool) -> bool:
 
 
 RETRY_FILE = Path(os.environ.get('HISTOLD_HOME', r'D:\histold')) / 'control' / 'local-publish-retry.json'
+AHEAD_DIR = Path(os.environ.get('HISTOLD_HOME', r'D:\histold')) / 'control' / 'made-ahead'
+LOCAL_LOCK = Path(os.environ.get('HISTOLD_HOME', r'D:\histold')) / 'control' / 'local-publish.lock'
+LOCK_MAX_AGE = 5 * 3600 + 1800    # scripts/run_local_publish.py treats an older lock as left by a dead run
+
+
+def ahead_owns(slot: str, now: float | None = None) -> bool:
+    """True while a video made ahead for this slot is in hand (being made, waiting, uploading or done),
+    so the usual run at the hour must not start a second one. A made-ahead run that gave up, or whose
+    process is gone (no live lock), leaves the slot to the usual run."""
+    try:
+        data = json.loads((AHEAD_DIR / f'{slot}.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return False
+    state = data.get('state') if isinstance(data, dict) else None
+    if state in ('published', 'kept_as_preview', 'failed'):
+        return True  # it already claimed (or could not claim) this slot; a second run would be refused
+    if state not in ('making', 'waiting', 'publishing'):
+        return False
+    try:
+        return (now or datetime.now(timezone.utc).timestamp()) - LOCAL_LOCK.stat().st_mtime < LOCK_MAX_AGE
+    except OSError:
+        return False
+
+
+def make_ahead(now: datetime, state: dict, dry_run: bool) -> bool:
+    """Start the video for the slot local_production.make_ahead_hours from now, so it is ready when the
+    hour starts. Off when the setting is 0 or local production is off."""
+    cfg = load_config()
+    local = cfg.get('local_production', {}) or {}
+    hours = int(local.get('make_ahead_hours') or 0)
+    if hours <= 0 or not local_enabled(local):
+        return False
+    target = (now + timedelta(hours=hours)).replace(minute=0, second=0, microsecond=0)
+    slot = target.strftime('%Y-%m-%dT%H')
+    fmt, _ = scheduled_format(ROOT, cfg, target)
+    if not fmt or state.get('ahead') == slot:
+        return False
+    python = Path(local.get('python') or r'D:\YT-Automation-env\histold-local\Scripts\python.exe')
+    if not python.is_file():
+        return False
+    cmd = [str(python), str(ROOT / 'scripts' / 'run_local_publish.py'), '--format', fmt, '--slot', slot, '--ahead']
+    if dry_run:
+        print('  would make ahead: ' + ' '.join(cmd))
+        return True
+    flags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else 0
+    subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     creationflags=flags)
+    state['ahead'] = slot
+    print(f'  make ahead: started the {fmt} for slot {slot}')
+    return True
 
 
 def retry_waiting_video(dry_run: bool, now: float | None = None) -> bool:
@@ -181,6 +231,9 @@ def main() -> int:
     elif fmt:
         if state.get('publish') == slot:
             print('  publish: already dispatched this hour')
+        elif ahead_owns(slot):
+            print('  publish: made ahead; that run claims and uploads it')
+            state['publish'] = slot
         elif local_publish(fmt, slot, args.dry_run):
             # Made on this laptop with the owner's plans; it falls back to the paid cloud run itself.
             state['publish'] = slot
@@ -191,6 +244,7 @@ def main() -> int:
     else:
         print('  publish: not a publish hour')
     retry_waiting_video(args.dry_run)
+    make_ahead(now, state, args.dry_run)
     fact_post(now, slot, state, args.dry_run)
     if not args.no_analytics:
         if state.get('analytics') == slot:
