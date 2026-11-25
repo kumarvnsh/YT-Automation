@@ -8518,5 +8518,71 @@
     "production_profile": 2,
     "facebook_id": "1859387985087175",
     "instagram_id": "18027730478945481"
+  },
+  {
+    "video_id": "wvlqEqhFxsM",
+    "run_id": "",
+    "stage_dir_name": "20261125_213007_050613_short",
+    "title": "The Smithsonian Hinged on One Clause About a Nephew's Heir",
+    "published_at": "2026-11-25T18:03:41.216864+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Museum object",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 20,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 19,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "James Smithson died in 1829 without ever visiting the United States, yet his will left a large sum to the country to open an institution in Washington. The money was conditional: it went to the U.S. only if his nephew had no heir. When the nephew died without one, the U.S. was notified in 1835. After congressional debate the government accepted more than $500,000, and President Polk later signed the act creating the Smithsonian Institution.",
+          "opening_visual": "A rendered diagram of a will document with a conditional branch: 'nephew has an heir \u2192 family' versus 'no heir \u2192 United States', next to a present-day U.S. locator pin on Washington, D.C.",
+          "payoff": "A single conditional clause in a foreigner's will, triggered by his nephew dying without an heir, led to the Smithsonian Institution. Limitations: the source doesn't explain Smithson's motives, so the video should not suggest any. Congressional acceptance was a separate, debated step, so the will alone did not create the institution.",
+          "viewer_reason": "Almost everyone has heard of the Smithsonian. Learning that it began with a stranger's conditional will is an instant, understandable surprise with a clear decision \u2192 trigger \u2192 debate \u2192 law chain.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Kudzu, brought to America as an ornamental and later planted for highway erosion control, now covers large areas of the South (NPS Shenandoah invasive species page).",
+          "opening_visual": "A map of the southeastern U.S. shaded for kudzu spread.",
+          "payoff": "A plant chosen to hold soil became an invasive pest.",
+          "viewer_reason": "A widely recognized plant with a backfire story.",
+          "rejection_reason": "I found the NPS page only through search and never fetched or verified it. The page doesn't name a specific decision-maker or decision, and acreage figures for kudzu are often exaggerated in popular retellings and would need independent corroboration I didn't get."
+        },
+        {
+          "premise": "The release of European starlings in New York's Central Park around 1890 led to one of North America's most widespread birds (NPS species pages).",
+          "opening_visual": "A Central Park pin expanding to a North America range map.",
+          "payoff": "A few hundred released birds became millions.",
+          "viewer_reason": "A common backyard bird with a surprising origin.",
+          "rejection_reason": "The popular 'Shakespeare's birds' motive needs independent corroboration I couldn't get on approved hosts. I didn't fetch or verify the NPS pages, and the release-to-spread chain risks a single-cause simplification."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Candidate 0 is the only premise with a clear documented decision, a concrete trigger and a verified chain to the outcome, all quoted from a fetched approved page (blogs.loc.gov, which belongs to loc.gov). The claims are narrow and qualified: the will was conditional, Congress debated before accepting, and a later act created the institution. It is recognizable and isn't on the recent-titles list. The three supplied pages (icebox, Ohio & Erie Canal, Douglas hike) match recent titles, so they weren't used."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 148,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "The Smithsonian began with a stranger's will. James Smithson never once visited America.",
+    "duration": 37.225958,
+    "production_profile": 2,
+    "facebook_id": "1152656903803565",
+    "instagram_id": "18126607663935634"
   }
 ]
