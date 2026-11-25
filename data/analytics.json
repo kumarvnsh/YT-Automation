@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-25T15:00:35.645118+00:00",
+      "updated": "2026-11-25T17:00:35.509271+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -58,7 +58,7 @@
           ],
           "publishedAt": "2026-11-25T11:04:16Z",
           "thumbnail": "https://i.ytimg.com/vi/vArZjtS1MRY/mqdefault.jpg",
-          "views": 0,
+          "views": 2,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -70,12 +70,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
-            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
           }
         },
         {
@@ -847,7 +847,7 @@
           ],
           "publishedAt": "2026-11-18T23:13:07Z",
           "thumbnail": "https://i.ytimg.com/vi/Z6HHB0Fv22g/mqdefault.jpg",
-          "views": 28,
+          "views": 29,
           "likes": 2,
           "comments": 0,
           "playlist_ids": [],
