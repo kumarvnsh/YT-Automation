@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-25T11:00:39.066560+00:00",
+      "updated": "2026-11-25T12:00:36.667937+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "vArZjtS1MRY",
+          "title": "Old Lighthouse Flames Wasted Nearly All of Their Light",
+          "description": "Early lighthouse fires and lamps lost most of their light before it ever reached a ship. Off North Carolina's dangerous Outer Banks, this short explains how Augustin Fresnel's lens of glass prisms bent scattered rays into one bright beam. Sources: U.S. National Park Service, Cape Hatteras National Seashore, and History of Lighthouses.\n#history #lighthouse #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of Augustin-Jean Fresnel: Augustin-Jean Fresnel, Public domain, via Wikimedia Commons",
+          "tags": [
+            "augustin fresnel",
+            "cape hatteras",
+            "did you know",
+            "education",
+            "everyday origins",
+            "fresnel lens",
+            "graveyard of the atlantic",
+            "historical facts",
+            "history shorts",
+            "ingenious solutions",
+            "lighthouse history",
+            "maritime history",
+            "navigation history",
+            "optics history",
+            "outer banks",
+            "world history"
+          ],
+          "publishedAt": "2026-11-25T11:04:16Z",
+          "thumbnail": "https://i.ytimg.com/vi/vArZjtS1MRY/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-25",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
         {
           "id": "n7DdFZD-ssU",
           "title": "Jefferson's Envoys Went to Buy New Orleans and Said Yes to Far More",
@@ -2156,51 +2200,6 @@
           "shares": 0,
           "analytics_views": 13,
           "engaged_views": 3,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-25",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "QN1FmIl8Cto",
-          "title": "Who Was Boycott, and Why Is His Name a Verb?",
-          "description": "Every time you refuse to buy something to make a point, you use a word that began in County Mayo in 1880. We follow the story of one estate agent, the workers who stopped working for him, and how his name became a tool of protest worldwide. #history #didyouknow #etymology",
-          "tags": [
-            "boycott",
-            "charles boycott",
-            "charles stewart parnell",
-            "county mayo",
-            "did you know",
-            "education",
-            "etymology",
-            "everyday origins",
-            "forgotten history",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "ireland 1880",
-            "irish history",
-            "land league",
-            "word history",
-            "word origins",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T14:38:28Z",
-          "thumbnail": "https://i.ytimg.com/vi/QN1FmIl8Cto/mqdefault.jpg",
-          "views": 16,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 20.79,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 33.0,
-          "shares": 0,
-          "analytics_views": 16,
-          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-25",
