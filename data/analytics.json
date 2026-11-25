@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-25T21:57:50.218495+00:00",
+      "updated": "2026-11-25T22:00:32.077340+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -59,7 +59,7 @@
           ],
           "publishedAt": "2026-11-25T19:22:43Z",
           "thumbnail": "https://i.ytimg.com/vi/KNkWpUQfKL0/mqdefault.jpg",
-          "views": 4,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -104,7 +104,7 @@
           ],
           "publishedAt": "2026-11-25T18:04:32Z",
           "thumbnail": "https://i.ytimg.com/vi/wvlqEqhFxsM/mqdefault.jpg",
-          "views": 3,
+          "views": 0,
           "likes": 1,
           "comments": 0,
           "playlist_ids": [],
@@ -116,12 +116,12 @@
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
@@ -848,7 +848,7 @@
           ],
           "publishedAt": "2026-11-20T04:30:40Z",
           "thumbnail": "https://i.ytimg.com/vi/wVpETSM4egg/mqdefault.jpg",
-          "views": 5,
+          "views": 4,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1197,7 +1197,7 @@
           ],
           "publishedAt": "2026-11-16T23:08:05Z",
           "thumbnail": "https://i.ytimg.com/vi/kItjTLy7eiw/mqdefault.jpg",
-          "views": 49,
+          "views": 48,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -1372,7 +1372,7 @@
           ],
           "publishedAt": "2026-11-16T16:17:48Z",
           "thumbnail": "https://i.ytimg.com/vi/3itSrNpadaE/mqdefault.jpg",
-          "views": 17,
+          "views": 16,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
