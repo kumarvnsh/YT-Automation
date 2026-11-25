@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T19:00:43.202910+00:00",
+  "updated": "2026-11-25T23:00:36.748747+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -113,7 +113,7 @@
       "Annotated blueprint": {
         "yt": {
           "measured_videos": 1,
-          "mean_like_rate": 0.035714
+          "mean_like_rate": 0.034483
         },
         "fb": {
           "measured_videos": 1,
@@ -317,10 +317,16 @@
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
     {
+      "video_id": "ZE9tGMBB7Fg",
+      "platform": "yt",
+      "views": 2,
+      "reason": "Average percentage viewed is flagged missing with two exported views."
+    },
+    {
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "Zero lifetime plays with insights available warrants a native count check."
+      "reason": "Zero lifetime plays with insights available warrants native verification."
     },
     {
       "video_id": "SfvGGm6eaok",
@@ -345,12 +351,6 @@
       "platform": "yt",
       "views": 1,
       "reason": "Viewing percentage exactly 0.0% on 1 view; may be the same one-view analytics gap"
-    },
-    {
-      "video_id": "ZE9tGMBB7Fg",
-      "platform": "yt",
-      "views": 2,
-      "reason": "Has 2 YouTube views at ~6.8 days but viewing percentage missing; likely outside the one-view fix's scope"
     },
     {
       "video_id": "g4aOe5vcitA",
