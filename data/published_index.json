@@ -8584,5 +8584,71 @@
     "production_profile": 2,
     "facebook_id": "1152656903803565",
     "instagram_id": "18126607663935634"
+  },
+  {
+    "video_id": "KNkWpUQfKL0",
+    "run_id": "45682238391",
+    "stage_dir_name": "20261125_191035_216423_short",
+    "title": "Early Tin Cans Were Hand-Soldered at a Delaware Cannery",
+    "published_at": "2026-11-25T19:22:08.249594+00:00",
+    "channel": "histold",
+    "slot": "morning",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": "run-45682238391",
+    "design": "Graphic novel",
+    "workflow": "publish",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 21,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 20,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A familiar tin can was once made and sealed by hand at the cannery that filled it.",
+          "opening_visual": "Map of the United States with a pin on Dover, Delaware, then a close view of the HAER cannery document.",
+          "payoff": "The can's hidden history is a factory making, filling and sealing its own containers. Limitation: the evidence is one HAER report about one firm, not all canneries.",
+          "viewer_reason": "Most people have opened a can but never asked who made the container.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "The key-opened can came from a Dover cannery.",
+          "opening_visual": "Key-opened can (no approved image retrieved).",
+          "payoff": "Would rest on an origin claim.",
+          "viewer_reason": "Surprising if true.",
+          "rejection_reason": "Rejected: the only source says the firm 'appears to have' originated it, and no second approved publisher was obtained. This is a first-invention claim that cannot be verified here."
+        },
+        {
+          "premise": "The 'father of canning' story hides a more complicated history of home canning.",
+          "opening_visual": "Canning manual or filmstrip (none retrieved).",
+          "payoff": "Would rest on one Library of Congress lecture summary describing how canning histories are written.",
+          "viewer_reason": "Connects to everyday kitchens.",
+          "rejection_reason": "Rejected: it is a historiographic critique drawn from a single abstract, with no concrete object or documented event to show on screen."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The selected premise has a concrete map pin, a documented manufacturing practice at one named firm, and an approved loc.gov source. It avoids a first-invention claim and avoids the listed recent subjects."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 149,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Early tin cans were soldered shut by hand.",
+    "duration": 39.45,
+    "production_profile": 2,
+    "facebook_id": "1053332424456403",
+    "instagram_id": "18032920265692512"
   }
 ]
