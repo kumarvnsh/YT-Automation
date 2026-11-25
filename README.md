@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="docs/readme/banner.jpg" alt="Histold" width="100%">
-</p>
-
 <h1 align="center">YT Automation</h1>
 
 <p align="center">
