@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T03:00:30.080728+00:00",
+  "updated": "2026-11-25T07:00:41.019929+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Ohio's 1820s Canal Route Was Shaped by Landowner Pressure",
         "Why Did Mexican Silver Cross the Pacific to Reach Manila?"
       ],
-      "measured_videos": 117
+      "measured_videos": 116
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 118
+      "measured_videos": 117
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 110,
-          "mean_like_rate": 0.003518
+          "measured_videos": 109,
+          "mean_like_rate": 0.00355
         },
         "fb": {
-          "measured_videos": 106,
-          "mean_like_rate": 0.001982
+          "measured_videos": 105,
+          "mean_like_rate": 0.001966
         },
         "ig": {
-          "measured_videos": 119,
-          "mean_like_rate": 0.13323
+          "measured_videos": 118,
+          "mean_like_rate": 0.134298
         }
       },
       "Museum object": {
@@ -75,7 +75,7 @@
         },
         "ig": {
           "measured_videos": 2,
-          "mean_like_rate": 0.295455
+          "mean_like_rate": 0.291667
         },
         "yt": {
           "measured_videos": 1,
@@ -158,14 +158,14 @@
       }
     }
   },
-  "videos_scored": 117,
+  "videos_scored": 116,
   "weights": {
     "series": {
       "school_myths": 0.0668,
       "mistakes": 0.068,
       "almost": 0.068,
-      "erased": 0.0697,
-      "unsolved": 0.0697,
+      "erased": 0.0696,
+      "unsolved": 0.0696,
       "weird_dark": 0.0722,
       "photo_story": 0.0722,
       "spy_gadgets": 0.0766,
@@ -173,54 +173,54 @@
       "secretly_deadly": 0.0722,
       "worst_jobs": 0.0766,
       "forgotten_rules": 0.0722,
-      "behind_legend": 0.0697,
-      "found_by_accident": 0.0697
+      "behind_legend": 0.0696,
+      "found_by_accident": 0.0696
     },
     "region": {
-      "india": 0.1137,
-      "africa": 0.1112,
-      "japan": 0.118,
-      "china": 0.1172,
-      "russia": 0.1042,
-      "middle_east": 0.1057,
-      "europe": 0.1168,
-      "americas": 0.0955,
-      "asia_pacific": 0.1178
+      "india": 0.1136,
+      "africa": 0.1111,
+      "japan": 0.1179,
+      "china": 0.117,
+      "russia": 0.105,
+      "middle_east": 0.1056,
+      "europe": 0.1167,
+      "americas": 0.0954,
+      "asia_pacific": 0.1177
     },
     "duration_variant": {
-      "concise": 0.5162,
-      "story": 0.4838
+      "concise": 0.5153,
+      "story": 0.4847
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "erased": {
         "n": 2,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "spy_gadgets": {
         "n": 0,
@@ -232,7 +232,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "worst_jobs": {
         "n": 0,
@@ -240,15 +240,15 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.419
+        "mean_score": 0.418
       }
     },
     "region": {
@@ -258,23 +258,23 @@
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.484
+        "mean_score": 0.483
       },
       "japan": {
         "n": 11,
-        "mean_score": 0.51
+        "mean_score": 0.509
       },
       "china": {
         "n": 11,
-        "mean_score": 0.507
+        "mean_score": 0.506
       },
       "russia": {
-        "n": 12,
-        "mean_score": 0.455
+        "n": 11,
+        "mean_score": 0.458
       },
       "middle_east": {
         "n": 12,
-        "mean_score": 0.462
+        "mean_score": 0.461
       },
       "europe": {
         "n": 11,
@@ -282,21 +282,21 @@
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.419
+        "mean_score": 0.418
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.509
+        "mean_score": 0.508
       }
     },
     "duration_variant": {
       "concise": {
         "n": 66,
-        "mean_score": 0.511
+        "mean_score": 0.51
       },
       "story": {
-        "n": 51,
-        "mean_score": 0.486
+        "n": 50,
+        "mean_score": 0.487
       }
     }
   },
