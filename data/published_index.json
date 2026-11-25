@@ -8452,5 +8452,71 @@
     "production_profile": 2,
     "facebook_id": "4591530097770972",
     "instagram_id": "17968745172212896"
+  },
+  {
+    "video_id": "vArZjtS1MRY",
+    "run_id": "",
+    "stage_dir_name": "20261125_143009_425924_short",
+    "title": "Old Lighthouse Flames Wasted Nearly All of Their Light",
+    "published_at": "2026-11-25T11:03:10.994255+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Illustrated newsreel",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 19,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 18,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Early lighthouse lights wasted most of their light: an open flame lost nearly 97% of it, and a flame with a reflector behind it still lost 60-80%. In 1822 Augustin Jean Fresnel introduced a lens made of glass prisms that bent the scattered rays into a single beam and lost at most 20% of the light.",
+          "opening_visual": "A simple diagram of a bare flame with rays going in every direction, labelled 'loses nearly 97%'. Then a cutaway of a beehive-shaped Fresnel lens bending those rays into one horizontal beam.",
+          "payoff": "The answer was not a bigger fire. It was glass that redirects light that already existed. NPS says a Fresnel lens loses at most 20% of its light and can shine to the horizon, more than 20 miles away. Limitation: the approved sources describe the dangerous Outer Banks waters, but they do not measure how many shipwrecks the lens prevented, so the video must not claim it ended or counted prevented wrecks.",
+          "viewer_reason": "Most viewers know what a lighthouse is. The surprise that most of a flame's light was wasted, and that prisms rather than more fuel fixed it, is easy to grasp and easy to draw.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Davy's safety lamp put a fine wire gauze around a miner's flame. The gauze cooled the flame so it could not light the flammable gas outside the lamp.",
+          "opening_visual": "Archival photo of a Davy safety lamp with a gauze chimney",
+          "payoff": "A wire mesh, not a solid wall, kept the flame from setting off the firedamp outside",
+          "viewer_reason": "Underground explosions are serious, and a mesh that stops fire is a counterintuitive fix",
+          "rejection_reason": "Smithsonian (si.edu) object and spotlight pages appeared in search, but every fetch returned HTTP 403. The excerpts could not be checked word for word, and no other approved, fetchable source was found. Search results also show that Smithsonian notes miners felt the lamps gave a false sense of safety. That qualification could not be cited either."
+        },
+        {
+          "premise": "Franklin-era lightning rods protected buildings by giving lightning a grounded path away from the structure",
+          "opening_visual": "Diagram of a pointed rod on a church steeple wired to the ground",
+          "payoff": "A metal rod gives lightning a route to the ground",
+          "viewer_reason": "Recognisable founder figure and a familiar object",
+          "rejection_reason": "No approved page that could be fetched documented the colonial fire problem and the rod's mechanism. The only NPS hit was a general preservation brief noting that the systems date to Franklin's time, which is not enough to explain the solution."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "This is the only candidate where the problem (heavy light loss along dangerous coasts), the mechanism (prisms that refract and reflect light into one beam) and the measured result (at most 20% loss, visible more than 20 miles) are all quoted directly from NPS pages that could be fetched. It also has a concrete visual that can be drawn as a diagram."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 147,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Lighthouse flames once wasted nearly all their light.",
+    "duration": 40.95,
+    "production_profile": 2,
+    "facebook_id": "1859387985087175",
+    "instagram_id": "18027730478945481"
   }
 ]
