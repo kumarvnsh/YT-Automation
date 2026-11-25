@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T15:00:34.690764+00:00",
+  "updated": "2026-11-25T19:00:43.202910+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 109,
-          "mean_like_rate": 0.00355
+          "measured_videos": 108,
+          "mean_like_rate": 0.00356
         },
         "fb": {
-          "measured_videos": 105,
-          "mean_like_rate": 0.001966
+          "measured_videos": 104,
+          "mean_like_rate": 0.001928
         },
         "ig": {
-          "measured_videos": 118,
-          "mean_like_rate": 0.134298
+          "measured_videos": 117,
+          "mean_like_rate": 0.135271
         }
       },
       "Museum object": {
@@ -84,16 +84,16 @@
       },
       "Archive dossier": {
         "fb": {
-          "measured_videos": 2,
-          "mean_like_rate": 0.002119
+          "measured_videos": 3,
+          "mean_like_rate": 0.001412
         },
         "ig": {
-          "measured_videos": 2,
-          "mean_like_rate": 0.010961
+          "measured_videos": 3,
+          "mean_like_rate": 0.118418
         },
         "yt": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.025641
+          "measured_videos": 2,
+          "mean_like_rate": 0.012821
         }
       },
       "Paper theater": {
@@ -177,15 +177,15 @@
       "found_by_accident": 0.0697
     },
     "region": {
-      "india": 0.1136,
-      "africa": 0.1111,
-      "japan": 0.1178,
-      "china": 0.117,
-      "russia": 0.105,
-      "middle_east": 0.1056,
-      "europe": 0.1167,
-      "americas": 0.0954,
-      "asia_pacific": 0.1176
+      "india": 0.1135,
+      "africa": 0.111,
+      "japan": 0.1177,
+      "china": 0.1169,
+      "russia": 0.1049,
+      "middle_east": 0.1066,
+      "europe": 0.1166,
+      "americas": 0.0953,
+      "asia_pacific": 0.1175
     },
     "duration_variant": {
       "concise": 0.5096,
@@ -273,8 +273,8 @@
         "mean_score": 0.463
       },
       "middle_east": {
-        "n": 12,
-        "mean_score": 0.466
+        "n": 11,
+        "mean_score": 0.47
       },
       "europe": {
         "n": 11,
@@ -308,11 +308,11 @@
     "Coal Miners Sent a Caged Canary Underground Before Going Back In"
   ],
   "losers": [
-    "The Panama Canal Builders Bought Wire Screens Against Mosquitoes",
     "Sichuan's Ancient Water Scheme Manages a River Without Blocking It",
     "The Smithsonian Began as a Backup Plan in One Man's Will",
     "Railroad Clocks Ran on Standard Time 35 Years Before U.S. Law Did",
-    "The Library of Congress Was Rebuilt From One Man's Private Bookshelves"
+    "The Library of Congress Was Rebuilt From One Man's Private Bookshelves",
+    "U.S. Lifesavers Fired a Cannon to Rescue Shipwrecked Crews"
   ],
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
@@ -320,19 +320,31 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "Exactly 0 FB plays with insight 'available' while IG has 212"
+      "reason": "Zero lifetime plays with insights available warrants a native count check."
+    },
+    {
+      "video_id": "SfvGGm6eaok",
+      "platform": "fb",
+      "views": 2,
+      "reason": "Two total plays in the Nov 14\u201316 cluster, alongside 139 Instagram views."
     },
     {
       "video_id": "0xHy2ZVArUg",
       "platform": "yt",
       "views": 8,
-      "reason": "Viewing percentage reported as exactly 0.0 despite 8 views; may be a placeholder"
+      "reason": "Viewing percentage reported as exactly 0.0% despite 8 views; looks like a placeholder"
     },
     {
       "video_id": "yd3PWoRjNac",
       "platform": "yt",
       "views": 7,
-      "reason": "Viewing percentage reported as exactly 0.0 despite 7 views; may be a placeholder"
+      "reason": "Viewing percentage reported as exactly 0.0% despite 7 views; looks like a placeholder"
+    },
+    {
+      "video_id": "UEqFpOBSXdU",
+      "platform": "yt",
+      "views": 1,
+      "reason": "Viewing percentage exactly 0.0% on 1 view; may be the same one-view analytics gap"
     },
     {
       "video_id": "ZE9tGMBB7Fg",
@@ -345,12 +357,6 @@
       "platform": "fb",
       "views": 2,
       "reason": "FB 2 plays with 32s avg watch vs IG 137; implausible FB count"
-    },
-    {
-      "video_id": "SfvGGm6eaok",
-      "platform": "fb",
-      "views": 2,
-      "reason": "FB 2 plays vs IG 139; historical Nov 13-16 FB fault pattern"
     },
     {
       "video_id": "-cPiNs-0pLA",
@@ -369,12 +375,6 @@
       "platform": "fb",
       "views": 3,
       "reason": "FB 3 plays vs IG 107 and YT 40 during Nov 13-16 low-FB window"
-    },
-    {
-      "video_id": "UEqFpOBSXdU",
-      "platform": "yt",
-      "views": 1,
-      "reason": "Trial lane median implies 72h YouTube checkpoint recorded 0, but export showed 1 view at ~71h; confirm checkpoint snapshot timing"
     },
     {
       "video_id": "lCQJdMRx814",
