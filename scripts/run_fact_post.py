@@ -59,16 +59,20 @@ def _latest(fact_posts) -> str | None:
     return rows[-1]['id'] if rows else None
 
 
-def make(cfg, slot: str, resume: str | None = None) -> int:
+def make(cfg, slot: str, resume: str | None = None, quiet: bool = False) -> int:
+    """quiet: an automatic retry of a post that already waits, so the owner was told once already."""
     from src import fact_posts, plan_ai, telegram_control
     try:
         entry = fact_posts.make_post(cfg, slot, resume=resume)
     except plan_ai.PlanUnavailable as exc:
         log('waiting for the plans:', exc)
+        if quiet:
+            return 0
         what = 'image makers (Gemini and Codex)' if 'image provider' in str(exc) else 'Claude and Codex limits'
         post = _latest(fact_posts)
         telegram_control.notify(f'⏳ Sir, the {what} are used up, so this Histold fact post waits for them to reset. '
-                                'Tap Retry to try again sooner.', retry_button(post) if post else None)
+                                'It will be retried quietly; tap Retry to try again sooner.',
+                                retry_button(post) if post else None)
         return 0
     except Exception as exc:  # noqa: BLE001
         log('fact post failed:', type(exc).__name__, exc)
@@ -131,11 +135,15 @@ def main() -> int:
             if not waiting:
                 return make(cfg, '')
             code = 0
-            for row in waiting:  # oldest first, each keeping its own verified fact
-                code = make(cfg, row.get('slot') or '', resume=row['id'])
+            for i, row in enumerate(waiting):  # oldest first, each keeping its own verified fact
+                code = make(cfg, row.get('slot') or '', resume=row['id'], quiet=True)
                 still = next((r for r in fact_posts.load_queue() if r['id'] == row['id']), {})
                 if still.get('status') == 'waiting_plans':
-                    break  # the image makers ran out again: the rest keep waiting for the next retry
+                    # The image makers ran out again: the rest wait for the same reset, so their stale
+                    # retry times must not keep the dispatcher retrying every hour.
+                    for rest in waiting[i + 1:]:
+                        fact_posts.update(rest['id'], retry_at=still.get('retry_at'))
+                    break
             return code
         return make(cfg, args.slot)
     finally:
