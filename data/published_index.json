@@ -8650,5 +8650,71 @@
     "production_profile": 2,
     "facebook_id": "1053332424456403",
     "instagram_id": "18032920265692512"
+  },
+  {
+    "video_id": "zEwl7ook7VE",
+    "run_id": "",
+    "stage_dir_name": "20261126_023007_492623_short",
+    "title": "Hawaii's Rat-Fighting Mongooses Had a Scheduling Problem",
+    "published_at": "2026-11-25T23:02:11.471097+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Moving atlas",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 22,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 21,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "In the 1880s, mongooses were brought to Hawaii to control rats in sugarcane fields. The plan failed because rats are nocturnal and mongooses are mostly active by day. The mongooses then preyed on native birds, especially ground nesters such as the n\u0113n\u0113.",
+          "opening_visual": "A simple day/night split-screen diagram: a sun over a mongoose on one side, a moon over a rat on the other, set over a sugarcane-field silhouette; then a present-day locator pin on Hawai\u02bbi Volcanoes National Park.",
+          "payoff": "The pest-control plan failed because of a timing mismatch: the hunter and its target were awake at different times. According to Hawai\u02bbi Volcanoes National Park, mongooses instead devastated native bird populations and are especially dangerous to ground-nesting species such as the threatened n\u0113n\u0113. Source limitation: the NPS page gives only 'the 1880s', with no exact year and no named decision-maker, and it does not claim mongooses are the only cause of native bird declines.",
+          "viewer_reason": "The reason it failed is surprising and easy to grasp in seconds (day animal vs. night animal), and it shows in general terms how releasing a species to solve one problem can create another.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Congress's 1913 Raker Act allowed a dam in Yosemite's Hetch Hetchy Valley. NPS says the public disapproval after the bill passed was one of the driving forces behind the Organic Act, which created the National Park Service within three years.",
+          "opening_visual": "Before/after diagram of the Hetch Hetchy Valley floor vs. reservoir level ('under 300 feet of water').",
+          "payoff": "Losing a valley helped push Congress to create the agency that protects national parks.",
+          "viewer_reason": "A clear defeat-to-victory reversal with a recognizable subject (Yosemite).",
+          "rejection_reason": "The NPS Yosemite page supports the qualified link, but the topic is too close to recent conservation and canal subjects such as the Douglas hike to save a park. The opening also depends on landscape imagery rather than a simple diagram or archival object. The fetched page also gives 'within three years' rather than an explicit 1916 date, so the date would need more sourcing."
+        },
+        {
+          "premise": "In the late 1860s, an amateur naturalist in Medford, Massachusetts was raising European gypsy (spongy) moth caterpillars. Some escaped, and the species went on to defoliate forests across the Northeast.",
+          "opening_visual": "A map pin on Medford, Massachusetts, with spread rings expanding across New England.",
+          "payoff": "A backyard experiment turned into a long-running forest pest.",
+          "viewer_reason": "Surprising scale from a single household escape.",
+          "rejection_reason": "Searching with site:nps.gov returned no NPS page. The only result on an approved host (music.si.edu) was not verified as covering the escape. Other results were state-government, university and wiki sources outside the approved list, and they disagree about how the escape happened (broken cage vs. windstorm) and about the year (1868 vs. 1869). The core claims cannot be supported from approved institutions."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Candidate 0 has the most immediately understandable surprise (day animal vs. night animal), a renderable diagram opening, and a payoff narrated in the source's own words. All of its core claims are directly supported by one approved NPS page, it avoids every recent subject, and it needs no historical borders or single-cause overstatement. It fits about 35 seconds."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 150,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Hawaii's rat-hunting mongooses worked days. Rats came out at night.",
+    "duration": 42.8,
+    "production_profile": 2,
+    "facebook_id": "2005736904013114",
+    "instagram_id": "18119636420160432"
   }
 ]
