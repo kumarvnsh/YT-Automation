@@ -407,10 +407,11 @@ local_production:
 # Made on this laptop: Claude researches and verifies, Codex draws from an archival reference,
 # our template adds the text and logo. The dispatcher starts one at each hour below.
 fact_posts:
-  enabled: false               # scheduled posting; Studio HQ > Histold > Posts can also make one now
+  enabled: true                # create ahead and publish finished cards at the hours below
   hours_utc: [10, 14, 20]      # 3:30 PM, 7:30 PM and 1:30 AM IST; between the Shorts at 12, 18 and 23 UTC
-  approve_until: "2026-11-29"  # until this date each card waits for your OK in Telegram / Studio HQ
+  approve_until: ""            # owner authorized automatic IG + Facebook image posts on 25 Nov 2026
   always_approve: false
+  ready_buffer: 3              # reuse finished cards first; prepare one replacement per hourly run
 
 # Provider order for local runs (src/plan_ai.py). Cloud runs never use this.
 local_ai:

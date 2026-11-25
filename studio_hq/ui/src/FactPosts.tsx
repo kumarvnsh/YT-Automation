@@ -34,12 +34,12 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
         <span className={'status ' + (data.schedule.enabled ? 'good' : 'neutral')}>{data.schedule.enabled ? 'On schedule' : 'Paused'}</span></div>
       <div className="live-metrics">
         <div><small>Posted today</small><strong>{data.posted_today} of {data.schedule.hours_utc.length || 3}</strong></div>
-        <div><small>Waiting for your OK</small><strong>{waiting.length}</strong></div>
+        <div><small>{approval ? 'Waiting for your OK' : 'Ready for next slots'}</small><strong>{approval ? waiting.length : data.posts.filter(post => post.status === 'approved').length}</strong></div>
         <div><small>Daily times (IST)</small><strong className="small-strong">{data.schedule.hours_utc.map(ist).join(' · ') || '—'}</strong></div>
       </div>
       <div className="live-state">
         <p>{approval ? `Until ${new Date(data.schedule.approve_until + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}, each post waits for your OK here or in Telegram. After that, posts that pass every check go out on their own.`
-          : 'Posts that pass every check go out on their own.'}</p>
+          : 'Finished cards publish automatically at the daily times below. Existing cards go first; new ones are prepared ahead. No approval needed.'}</p>
         {data.running && <p className="control-note"><WandSparkles size={14}/>A fact post is being made right now.</p>}
       </div>
       {send && <div className="live-buttons">
@@ -50,7 +50,7 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
               detail: 'No fact posts are made at the daily times until you turn them back on. Waiting posts stay here.',
               command: { action: 'fact_post_schedule', channel: 'histold', enabled: false } })}><Pause size={16}/>Pause schedule</button>
           : <button className="action" disabled={busy} onClick={() => setPending({ title: 'Post three times a day?',
-              detail: 'A fact post is made at each daily time on your Claude and Codex plans.',
+              detail: 'Finished cards publish at the daily times. New cards are prepared ahead on your plans.',
               command: { action: 'fact_post_schedule', channel: 'histold', enabled: true } })}><Play size={16}/>Start schedule</button>}
         {failed > 0 && <button className="action" disabled={busy} onClick={() => setPending({
           title: `Remove ${failed === 1 ? 'the failed post' : `all ${failed} failed posts`} from the list?`,

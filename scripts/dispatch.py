@@ -186,13 +186,17 @@ def fact_post(now: datetime, slot: str, state: dict, dry_run: bool) -> bool:
         return False
     mode = None
     if now.hour in (posts.get('hours_utc') or []) and now.minute < PUBLISH_WINDOW_MIN and state.get('fact_post') != slot:
-        mode = ['--make', '--slot', slot]
+        mode = ['--scheduled', '--slot', slot]
     else:
         try:
             sys.path.insert(0, str(ROOT))
-            from src.fact_posts import load_queue
-            if any(r.get('status') == 'waiting_plans' and float(r.get('retry_at') or 0) <= now.timestamp() for r in load_queue()):
-                mode = ['--retry']
+            from src.fact_posts import load_queue, ready_posts
+            rows = load_queue()
+            waiting = any(r.get('status') == 'waiting_plans' and float(r.get('retry_at') or 0) <= now.timestamp() for r in rows)
+            if len(ready_posts(cfg)) < int(posts.get('ready_buffer', 3)):
+                # Retries only make cards, never burst-post them outside the daily slots.
+                if waiting or not any(r.get('status') == 'waiting_plans' for r in rows):
+                    mode = ['--prepare']
         except Exception:  # noqa: BLE001
             mode = None
     if not mode:
@@ -203,7 +207,7 @@ def fact_post(now: datetime, slot: str, state: dict, dry_run: bool) -> bool:
         return True
     flags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else 0
     subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=flags)
-    if mode[0] == '--make':
+    if mode[0] == '--scheduled':
         state['fact_post'] = slot
     print('  fact post: started ' + ' '.join(mode))
     return True

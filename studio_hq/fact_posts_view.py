@@ -19,7 +19,7 @@ from .media import media_id
 
 ACTIONS = ('fact_post_decide', 'fact_post_make', 'fact_post_schedule', 'fact_post_remove', 'fact_post_retry')
 POST_ID = re.compile(r'\d{8}_\d{6}_[0-9a-f]{6}')
-STATUS = {'making': 'Being made', 'awaiting_approval': 'Waiting for your OK', 'approved': 'Approved', 'posting': 'Posting',
+STATUS = {'making': 'Being made', 'awaiting_approval': 'Waiting for your OK', 'approved': 'Ready for scheduled time', 'posting': 'Posting',
           'posted': 'Posted', 'partly_posted': 'Partly posted', 'skipped': 'Skipped', 'failed': 'Failed',
           'waiting_plans': 'Waiting for plan limits', 'replaced': 'Remade', 'removed': 'Removed'}
 HIDDEN = ('replaced', 'removed')  # kept in the queue for history, never listed

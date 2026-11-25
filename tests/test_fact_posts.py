@@ -63,6 +63,60 @@ class Queue(unittest.TestCase):
         fp.decide('20261122_124801_5b2615', 'skip', start=lambda _id: self.fail('must not post'))
         self.assertEqual(fp.load_queue()[0]['status'], 'skipped')
 
+    def cards(self):
+        card = Path(self.folder.name) / 'card.jpg'
+        card.write_bytes(b'jpg')
+        rows = [{'id': str(i), 'created': f'2026-11-2{i}', 'status': 'awaiting_approval',
+                 'card': str(card), 'caption': 'Checked history'} for i in (1, 2, 3)]
+        fp.save_queue(rows)
+        return rows
+
+    def test_automatic_mode_reuses_oldest_backlog_once_per_slot(self):
+        self.cards()
+        cfg = Config({'fact_posts': {'hours_utc': [10, 14, 20]}})
+        when = datetime(2026, 11, 25, 20, tzinfo=timezone.utc)
+        self.assertEqual(fp.claim_slot(cfg, '2026-11-25T20', when)['id'], '1')
+        self.assertIsNone(fp.claim_slot(cfg, '2026-11-25T20', when))
+        self.assertEqual(len(fp.ready_posts(cfg)), 3)  # claim alone does not publish
+        fp.update('1', status='posted', facebook_id='fb', instagram_id='ig')
+        self.assertEqual([r['id'] for r in fp.ready_posts(cfg)], ['2', '3'])
+
+    def test_no_burst_publication_outside_slot_or_after_window(self):
+        self.cards()
+        cfg = Config({'fact_posts': {'hours_utc': [10, 14, 20]}})
+        for hour, minute, slot in [(18, 0, '2026-11-25T18'), (20, 20, '2026-11-25T20'),
+                                    (20, 0, '2026-11-24T20')]:
+            self.assertIsNone(fp.claim_slot(cfg, slot, datetime(2026, 11, 25, hour, minute, tzinfo=timezone.utc)))
+        self.assertFalse(any(r.get('publish_slot') for r in fp.load_queue()))
+
+    def test_skip_removed_failed_missing_and_partial_cards_are_excluded(self):
+        rows = self.cards()
+        rows[0]['status'] = 'skipped'
+        rows[1]['status'] = 'approved'
+        rows[1]['facebook_id'] = 'already-live'
+        rows[2]['card'] = str(Path(self.folder.name) / 'missing.jpg')
+        rows += [dict(rows[0], id='removed', status='removed'), dict(rows[0], id='failed', status='failed')]
+        fp.save_queue(rows)
+        self.assertEqual(fp.ready_posts(Config({})), [])
+
+    def test_approval_mode_still_honors_explicit_review_setting(self):
+        self.cards()
+        self.assertEqual(fp.ready_posts(Config({'fact_posts': {'always_approve': True}})), [])
+
+    def test_preparation_never_publishes_and_full_buffer_never_generates(self):
+        from scripts import run_fact_post as runner
+        self.cards()
+        cfg = Config({'fact_posts': {'ready_buffer': 3}})
+        with mock.patch.object(runner, 'make') as make, mock.patch.object(runner, 'post') as publish, \
+                mock.patch.object(runner, 'log'):
+            self.assertEqual(runner.prepare(cfg), 0)
+            make.assert_not_called()
+            publish.assert_not_called()
+        with mock.patch.object(fp, 'make_post', return_value={'id': 'new', 'status': 'approved'}), \
+                mock.patch.object(runner, 'post') as publish, mock.patch.object(runner, 'log'):
+            self.assertEqual(runner.make(cfg, ''), 0)
+            publish.assert_not_called()
+
 
 class Verification(unittest.TestCase):
     def test_quotes_must_be_on_two_institutions_pages(self):

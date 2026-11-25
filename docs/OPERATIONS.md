@@ -254,6 +254,20 @@ layout keeps the sidebar and sortable table. Filters apply to both presentations
 
 ## Automated content factory (scheduled publishing)
 
+Histold image posts on Facebook and Instagram are owner-authorized without per-post approval
+(25 November 2026). `fact_posts` in `config.yaml` keeps the agreed 10:00, 14:00 and 20:00 UTC
+slots (3:30 PM, 7:30 PM and 1:30 AM IST). The hourly dispatcher publishes the oldest ready
+card first with `run_fact_post.py --scheduled --slot YYYY-MM-DDTHH`. Each slot is recorded
+on its queue entry, so repeated dispatches cannot take another card. Existing approval-waiting
+cards become ready automatically. Skipped, removed, failed and already published cards stay excluded.
+
+Between slots, `--prepare` replenishes a three-card buffer, one card per run, and retries
+verified facts after provider limits reset. It never publishes immediately. Late/missed slots
+are not burst-posted; cards remain for the next daily time. Source and card checks still apply.
+The Windows laptop must be awake with its hourly Histold Strategist task running. The Studio HQ
+Posts pause switch remains authoritative. Platform IDs are saved immediately after success;
+partial/uncertain publications require reconciliation instead of taking another card for that slot.
+
 Production scheduling is driven by the **always-on Windows laptop**. Its hourly task
 runs `scripts/run_strategist.ps1`, which uses `scripts/dispatch.py` (GitHub CLI) to
 dispatch `publish.yml` (`scheduled=true`) at the hours in `data/growth_plan.json`, and

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Make or post one Histold fact image post on this laptop (see src/fact_posts.py).
 
-  --make [--slot HOUR]   research, illustrate, render and check one post; during the approval period it is
-                         sent to Telegram with Approve / Skip, otherwise it is posted straight away
+  --make                 research, illustrate, render and check one post for the scheduled queue
+  --prepare              replenish the ready buffer, reusing a waiting fact first
+  --scheduled --slot HOUR publish one finished card at a configured daily hour
   --post ID              post an approved card to Facebook and Instagram
   --retry                remake the post that waited for the plan limits to reset (its fact is kept)
   --retry-post ID        remake one failed or waiting post, keeping its verified fact (Telegram / Studio HQ button)
@@ -15,7 +16,7 @@ import argparse
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -84,7 +85,42 @@ def make(cfg, slot: str, resume: str | None = None, quiet: bool = False) -> int:
     if entry['status'] == 'awaiting_approval':
         notify_draft(entry)
         return 0
-    return post(cfg, entry['id'])
+    log('queued for the next scheduled time', entry['id'])
+    return 0
+
+
+def scheduled(cfg, slot: str) -> int:
+    from src import fact_posts
+    entry = fact_posts.claim_slot(cfg, slot)
+    if entry:
+        code = post(cfg, entry['id'])
+        if code == 0:
+            prepare(cfg)
+        return code
+    log('no card claimed for slot', slot, '(empty queue, already handled, or outside posting window)')
+    return 0
+
+
+def prepare(cfg) -> int:
+    from src import fact_posts
+    if len(fact_posts.ready_posts(cfg)) >= int(cfg.get('fact_posts.ready_buffer', 3)):
+        log('finished-card buffer is full')
+        return 0
+    current = datetime.now(timezone.utc)
+    upcoming = [current.replace(hour=int(h), minute=0, second=0, microsecond=0) + timedelta(days=d)
+                for d in (0, 1) for h in cfg.get('fact_posts.hours_utc', [])]
+    future = [t for t in upcoming if t > current]
+    if future and (min(future) - current).total_seconds() < 2 * 3600:
+        log('leaving the runner free for the upcoming publishing slot')
+        return 0
+    waiting = [r for r in fact_posts.load_queue() if r.get('status') == 'waiting_plans']
+    due = [r for r in waiting if float(r.get('retry_at') or 0) <= time.time()]
+    if due:
+        return make(cfg, '', resume=due[0]['id'], quiet=True)
+    if waiting:
+        log('waiting for provider reset')
+        return 0
+    return make(cfg, '')
 
 
 def post(cfg, post_id: str) -> int:
@@ -101,6 +137,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     group = ap.add_mutually_exclusive_group(required=True)
     group.add_argument('--make', action='store_true')
+    group.add_argument('--prepare', action='store_true')
+    group.add_argument('--scheduled', action='store_true')
     group.add_argument('--post')
     group.add_argument('--retry', action='store_true')
     group.add_argument('--retry-post')
@@ -115,7 +153,7 @@ def main() -> int:
             if time.time() - LOCK.stat().st_mtime > 3600:
                 LOCK.unlink(missing_ok=True)
                 continue
-            if not (args.post or args.retry_post):
+            if not (args.post or args.retry_post or args.scheduled):
                 log('another fact post is being made')
                 return 0
             time.sleep(10)
@@ -124,7 +162,16 @@ def main() -> int:
     try:
         from src.config import load_config
         cfg = load_config()
+        from src import fact_posts
+        if not fact_posts.needs_approval(cfg):
+            for row in fact_posts.load_queue():
+                if row.get('status') == 'awaiting_approval':
+                    fact_posts.update(row['id'], status='approved', authorized_at=fact_posts.now())
         environment(cfg)
+        if args.scheduled:
+            return scheduled(cfg, args.slot)
+        if args.prepare:
+            return prepare(cfg)
         if args.post:
             return post(cfg, args.post)
         if args.retry_post:
