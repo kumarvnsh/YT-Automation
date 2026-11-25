@@ -1,480 +1,246 @@
-# YT-Automation — Daily "History / Did-You-Know" Video Bot
+<p align="center">
+  <img src="docs/readme/banner.jpg" alt="Histold" width="100%">
+</p>
 
-Fully scripted pipeline that, on each run, **writes a script → generates a voiceover → pulls matching stock footage → burns in captions → renders an MP4 → uploads it to YouTube**. Supports both vertical **Shorts** and horizontal **long-form** videos. Point a scheduler at it and it runs hands-off every day.
+<h1 align="center">YT Automation</h1>
 
-Histold's current automatic Shorts prioritize **Facebook and surprising world history**, with YouTube and Instagram distribution retained. New jobs interleave nine regional groups, three evergreen series and 30/50-second duration tests. Facebook is published first; a missing Reel ID fails the step, and known successful platform IDs survive retries. The workflow allows up to 10 scheduled uploads per IST day; cron-job.org controls the actual posting times. Manual topics and existing stage snapshots keep their original settings.
+<p align="center">
+  <b>An end to end content studio that researches, writes, narrates, animates, checks and publishes<br>
+  history Shorts for the Histold channel, every day, without anyone touching an editor.</b>
+</p>
 
-See the [content playbook and prepared Page copy](docs/facebook-content-playbook.md), [Facebook Insights import/report guide](docs/facebook-growth.md), and [world map/source provenance](docs/world-history-sources.md). Raw dashboard CSVs, demographic notes and financial baselines stay in ignored `data/private/`. No Page edits, comment replies or video uploads are triggered by these local import/report commands.
+<p align="center">
+  <a href="https://www.youtube.com/channel/UCJImBb1E8e0llDt8ISdF_1g"><img alt="Watch on YouTube" src="https://img.shields.io/badge/Watch-Histold%20on%20YouTube-FF0000?logo=youtube&logoColor=white"></a>
+  <a href="https://github.com/kumarvnsh/YT-Automation/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/kumarvnsh/YT-Automation/actions/workflows/tests.yml/badge.svg"></a>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white">
+  <img alt="Node" src="https://img.shields.io/badge/Node-22-339933?logo=nodedotjs&logoColor=white">
+  <img alt="FFmpeg" src="https://img.shields.io/badge/FFmpeg-render-007808?logo=ffmpeg&logoColor=white">
+</p>
 
-## How it works
+---
 
+Histold tells short, surprising and carefully sourced stories from world history: why Japan once wrapped masterpieces as packing paper, how lifesavers fired a cannon to rescue shipwrecked crews, what a caged canary really did in a coal mine. Every one of those videos was made by this repository.
+
+A single run picks a fresh topic, researches it against approved sources, writes a script for the ear, records a voiceover, draws and animates each scene, lays timed captions on top, runs a strict quality gate and then publishes to Facebook Reels, YouTube Shorts and Instagram Reels. An always on Windows laptop drives the schedule, a growth agent tunes the posting hours from real analytics, and a private Telegram bot plus the Studio HQ dashboard let the owner watch and steer everything from a phone.
+
+## See it in action
+
+These are real Shorts published by the pipeline with no manual editing. Click any thumbnail to watch it on YouTube.
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://www.youtube.com/shorts/Z6w2dgH6oOk"><img src="https://i.ytimg.com/vi/Z6w2dgH6oOk/hqdefault.jpg" alt="Edo Japan's Prized Pale Face Powder Hid a Poison"></a><br>
+      <sub><b>Edo Japan's Prized Pale Face Powder Hid a Poison</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://www.youtube.com/shorts/v7fM7kWvKF4"><img src="https://i.ytimg.com/vi/v7fM7kWvKF4/hqdefault.jpg" alt="U.S. Lifesavers Fired a Cannon to Rescue Shipwrecked Crews"></a><br>
+      <sub><b>U.S. Lifesavers Fired a Cannon to Rescue Shipwrecked Crews</b></sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://www.youtube.com/shorts/S7egTTzf3qc"><img src="https://i.ytimg.com/vi/S7egTTzf3qc/hqdefault.jpg" alt="Why Were Japan's Masterpieces Once Used as Packing Paper?"></a><br>
+      <sub><b>Why Were Japan's Masterpieces Once Used as Packing Paper?</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://www.youtube.com/shorts/kItjTLy7eiw"><img src="https://i.ytimg.com/vi/kItjTLy7eiw/hqdefault.jpg" alt="Were the Pyramids of Giza Really Built by Enslaved People?"></a><br>
+      <sub><b>Were the Pyramids of Giza Really Built by Enslaved People?</b></sub>
+    </td>
+    <td align="center">
+      <a href="https://www.youtube.com/shorts/4U8amYJZRCs"><img src="https://i.ytimg.com/vi/4U8amYJZRCs/hqdefault.jpg" alt="Coal Miners Sent a Caged Canary Underground Before Going Back In"></a><br>
+      <sub><b>Coal Miners Sent a Caged Canary Underground Before Going Back In</b></sub>
+    </td>
+    <td align="center">
+      <a href="https://www.youtube.com/shorts/i8oWcZUKfJA"><img src="https://i.ytimg.com/vi/i8oWcZUKfJA/hqdefault.jpg" alt="Sichuan's Ancient Water Scheme Manages a River Without Blocking It"></a><br>
+      <sub><b>Sichuan's Ancient Water Scheme Manages a River Without Blocking It</b></sub>
+    </td>
+  </tr>
+</table>
+
+More on the [Histold channel](https://www.youtube.com/channel/UCJImBb1E8e0llDt8ISdF_1g). Every Short also goes out as a Facebook Reel and an Instagram Reel.
+
+## What it does
+
+**It finds stories worth telling.** Topics rotate across nine world regions (India, African countries, Japan, China, Russia, the Middle East, Europe, the Americas, Asia Pacific) and a few recurring series such as *Myths You Learned in School* and *Mistakes That Changed History*. Used and reserved topics are tracked so two videos never cover the same story.
+
+**It researches before it writes.** A research step searches approved institutions and archives, keeps citation excerpts, and hands the script writer an evidence packet instead of letting it improvise. If a story cannot be supported, the run moves on to a different one rather than guessing.
+
+**It writes for the ear.** The script is built around a literally true hook, short spoken sentences and a satisfying answer at the end, split into segments that each become one on screen scene. Titles, descriptions, tags and source credits are written at the same time.
+
+**It sounds human.** Narration uses the open weight Kokoro voice running on CPU, with Edge TTS as a fallback. Word timings come from the voice engine itself, or from a local wav2vec2 forced aligner when those are missing, so captions and reveals land on the exact word.
+
+**It animates every scene.** Each segment becomes an illustrated documentary scene built as HTML and SVG, in one of several art kits (papercut, flat lit, ink folk, cartoon, textured), with vetted map outlines, icons and archival portraits. On the laptop, a painted illustration can be dropped into the most important scenes. Chromium captures each scene frame by frame and FFmpeg assembles the final 1080 x 1920 video with branding, music and animated captions. A Three.js renderer is available as a 3D alternative.
+
+**It refuses to ship bad video.** A deterministic quality gate checks script structure, metadata, narration length, audio, captions, resolution, duration and frame defects such as static openings or frozen scenes. A failed check blocks the upload.
+
+**It publishes everywhere and learns from it.** Uploads go to Facebook Reels first, then YouTube Shorts and Instagram Reels, plus Stories. An hourly analytics export feeds a growth agent that moves at most one posting hour every two weeks toward the hours that actually perform, and a weekly review summarises what is working.
+
+**It also makes fact posts.** A separate track produces 1080 x 1350 image cards for Facebook and Instagram: a verified fact with two sources, a painterly illustration drawn from a licence checked archival reference, and Histold's own text template on top. Cards can wait for the owner's approval in Telegram or Studio HQ before posting.
+
+## How the workflow fits together
+
+### The big picture
+
+```mermaid
+flowchart TB
+    A["Hourly analytics export<br/>YouTube, Facebook, Instagram"] --> G["Growth agent<br/>picks the best posting hours"]
+    G --> D["Dispatcher on the laptop<br/>checks the plan every hour"]
+    D -->|two hours before a slot| L["Local production<br/>Claude and Codex plans, local Qwen"]
+    D -->|fact post hour| F["Fact post maker<br/>verified fact, illustration, card"]
+    L -.->|plans used up or a step failed| P["GitHub Actions publish.yml<br/>paid cloud fallback"]
+    L --> U["Publish on the hour<br/>Facebook, YouTube, Instagram"]
+    P --> U
+    F -->|Facebook and Instagram| U
+    U --> A
+    C["Owner's phone<br/>Telegram bot and Studio HQ"] <-.->|alerts, approvals, fixes| L
 ```
-topic (angle + dedupe)
-   └─> script_generator   LLM writes title, description, tags, segmented narration
-         └─> tts          CPU Kokoro voiceover (+ native timing, Edge fallback)
-               └─> captions   word timings → animated ASS subtitles
-               └─> assets     Pexels stock video/photo per segment (keywords)
-                     └─> video_builder   ffmpeg: clips + Ken-Burns + music + captions
-                           └─> youtube_uploader   Data API v3 upload (OAuth)
+
+The laptop is the conductor. Every hour the dispatcher checks the publishing plan, and when a slot is coming up it starts local production two hours early so the finished video is ready the moment the hour begins. Local runs use the owner's Claude and Codex plans (with local Qwen as a last resort) instead of paid API credits. If the plans are exhausted the run waits for the reset, and if something else breaks before upload the slot is handed to the paid GitHub Actions workflow so the day's post still goes out. An upload is never retried blindly, so there are no double posts.
+
+### Inside one video
+
+```mermaid
+flowchart LR
+    subgraph W["Write"]
+        direction TB
+        A["Topic<br/>region, series, dedupe"] --> B["Research<br/>approved sources"] --> C["Script<br/>hook, segments, title"]
+    end
+    subgraph S["Sound"]
+        direction TB
+        D["Voiceover<br/>Kokoro, Edge fallback"] --> E["Align<br/>word timings"] --> F["Audio check"] --> G["Captions<br/>animated subtitles"]
+    end
+    subgraph V["Picture"]
+        direction TB
+        H["Assets<br/>maps, icons, portraits, paintings"] --> I["Render<br/>one scene per segment"] --> J["Compose<br/>FFmpeg, branding, music"]
+    end
+    subgraph X["Ship"]
+        direction TB
+        K{"Quality gate"} -->|pass| L["Thumbnail"] --> M["Upload<br/>Facebook, YouTube, Instagram"]
+        K -->|fail| N["Repair or stop<br/>nothing is published"]
+    end
+    W --> S --> V --> X
 ```
 
-Each run writes everything to `output/<timestamp>_<format>_<slug>/` (script.json, voiceover.mp3, captions.ass, video.mp4, metadata.json).
+Each run writes everything it produces (research packet, script, voiceover, storyboard, captions, scenes, final video and reports) into its own stage folder, so any step can be resumed, inspected or retried without starting over. Every new job also snapshots the configuration it started with, which means changing `config.yaml` never changes a video that is already in progress.
 
-## Histold production profile
+### Steering it from a phone
 
-New Histold Shorts use the versioned production profile in root `config.yaml`:
+The Telegram bot is the owner's control desk. It answers only to its paired owner and offers `/today` for the day's uploads and fact posts, `/stats` for views and top videos, `/status` and `/problems` for health checks with one tap fixes, `/posts` for fact cards waiting for approval, and a few maintenance commands for the laptop. Studio HQ is the private web dashboard (React front end, Rust hub, Python data layer) with analytics, live production state, previews, controls and an assistant backed by a local model. It is reached privately over Tailscale and is never exposed publicly.
 
-```
-research → script → voiceover → align → audio_check
-  → captions → assets → render → compose → quality → thumbnail → upload
-```
+## Tech stack
 
-Research uses Anthropic's runtime web search and retains citation excerpts from
-approved institutions. The script uses that research directly; there is no separate
-post-script factual verification stage. Unsupported research or unresolved material
-disputes still stop the job before script generation.
-Broaden `research.authoritative_domains` deliberately for new historical topics.
-When search citations omit a core source, one bounded repair pass retrieves the
-approved source pages directly (including checked redirects), then searches for
-remaining evidence if necessary. Fetched text, response hashes, and both attempts
-remain in `research.json`. Rejected claims explicitly classified as nonessential
-(`material_to_core_story: false`) move to background findings and `excluded_claims`;
-the script must not use those findings. Core disputes are never relabeled to pass.
-If validation still fails, research retries once with the failed packet and errors.
-Automatic runs can then try one different story in the same niche, with one retry
-for that story (four research packets maximum). An explicit `--topic` stays fixed
-and gets only the same-topic retry. Known material contradictions remain blocking
-on same-topic retries. Each packet is saved as `research_attempt_N.json` in the run
-artifact; `research.json` contains the final packet. Exhausted attempts still stop
-the job before script generation. Recovery can add research API cost.
-Workflow failures identify the affected claim and source IDs.
+| Area | Tools |
+| --- | --- |
+| Orchestration | Python 3.11, GitHub Actions, Windows Task Scheduler |
+| Writing and research | Claude (API or plan), Codex, local Qwen 3 8B through Ollama |
+| Voice | Kokoro (`am_michael`) on CPU, Edge TTS fallback, wav2vec2 forced alignment |
+| Visuals | HTML and SVG scene kits, Playwright Chromium, Three.js and HyperFrames for 3D, Natural Earth map outlines, game-icons.net, Wikimedia Commons portraits |
+| Video | FFmpeg (x264), libass captions |
+| Publishing | YouTube Data API v3, Meta Graph API for Facebook and Instagram |
+| Analytics | YouTube Analytics, Meta Insights, growth agent, weekly review |
+| Control | Telegram bot, Studio HQ (React, Vite, Rust Axum), Tailscale |
 
-`storyboard.json` records measured word timing, frame boundaries and reveal cues.
-Kokoro and Edge supply native word boundaries. If these are absent/inconsistent
-(including a timing chunk that crosses a scene boundary),
-`tts.alignment_provider: local` force-aligns the known script on CPU with
-torchaudio's English wav2vec2 model (`src/forced_align.py`, run under
-`KOKORO_PYTHON`; needs `torchaudio==2.6.0`, model cached in `~/.cache/torch`).
-Words with low acoustic confidence fail the alignment rather than pass silently.
-If the local worker fails and `OPENAI_API_KEY` is set, Whisper transcription
-timestamps are tried instead (`openai` uses Whisper directly); estimated timing
-cannot pass strict production. Web research and Whisper fallback add API cost.
+## Getting started
 
-Conservative silence diagnostics warn without trimming audio. Exact intentional
-pause windows can be recorded in the storyboard's `allowed_pauses`; rerun the
-audio check afterward. Required maps use pinned Natural Earth outlines; initially
-United States, Canada, Minnesota and Washington are supported. Other essential
-geography and historical boundary overlays stop the job until vetted assets are
-added. These maps establish present-day context and do not resolve local roads.
+### Requirements
 
-Final composition adds HISTOLD and captions. Missing libass, stale evidence or
-timing, changed media, narration truncation, and blocking frame defects prevent
-upload. Static-scene detection and pauses remain warning heuristics. Missing or
-invalid generated scenes use a local house template with supplied narration and
-vetted maps, and must pass the same frame checks. This recovery needs no image
-credits. Historical stock-fallback reports still require review or a corrected render.
-
-Every new job snapshots its production settings; older jobs retain legacy
-behavior, and Astrotold does not opt into the new profile. Set
-`production.enabled: false` to use the legacy profile for future jobs. Existing
-production jobs keep their recorded rules.
-
-The first six new Shorts reserve alternating categories from
-`data/experiments/histold-six-reels.json`. Published records retain category,
-hook, duration, profile and platform IDs. The analytics workflow captures
-24/72/168-hour observations with actual age and late flags, and excludes these
-posts from automatic reposting. YouTube rates use compatible Analytics report
-views; unavailable Meta watch-time, retention, shares or attributed followers
-remain null with reasons. Two examples per category are exploratory.
-
-Local verification commands (no publishing or notifications):
+You need Python 3.11, Node 22, FFmpeg with libass on your `PATH`, and a Chromium for Playwright. For the Kokoro voice, create a separate Python 3.11 environment with `torch==2.6.0` and `requirements-kokoro.txt`, then point `KOKORO_PYTHON` at its interpreter. Without it the pipeline falls back to Edge TTS.
 
 ```bash
-python -m unittest discover -s tests -t . -v
-python scripts/validate_histold_render.py  # Chromium + FFmpeg synthetic fixtures, no AI calls
-python scripts/report_experiment.py      # Reads existing exports, no API calls
+git clone https://github.com/kumarvnsh/YT-Automation.git
+cd YT-Automation
+
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+npm ci                             # Three.js and HyperFrames for the 3D renderer
+python -m playwright install chromium
 ```
 
-The render fixture uses synthetic tone audio and is a technical check, not a
-finished historical Reel. To generate a real unpublished Short use
-`python -m src.main --format short --no-upload`; this makes configured API calls
-and may send configured notifications. Failed evidence stays in `research.json`;
-inspect the saved attempts if automatic recovery also fails.
+### Keys and sign ins
 
-## Facebook Content Monetization and Stars tracking
-
-Import per-Reel dashboard figures with `python scripts/import_facebook_monetization.py /path/to/export.csv`.
-Use `assets/templates/facebook-monetization.csv` for the supported normalized headers;
-this is a Histold import format, not an assumed native Meta export format. Dates are
-inclusive `YYYY-MM-DD`, IDs must be Facebook Reel IDs, currency is the exported
-three-letter code, and numbers use decimal points without grouping/currency symbols.
-Leave unavailable values blank; a real reported zero can be entered as `0`.
-
-For different dashboard headers, pass `--mapping /path/to/mapping.json`, a JSON object
-mapping canonical names to actual headers, for example `{"media_id":"Post ID"}`.
-Map earnings only when the column's meaning and reporting period match. Use one row
-per Reel/period/currency. Reimporting the same key updates it; overlapping periods
-are rejected to prevent double counting. Page-level earnings cannot be attributed
-to individual Reels by this importer.
-
-The ledger and report stay in git-ignored `data/private/`. The report joins known
-Reel IDs to titles, categories and experiment IDs, keeps Stars separate, and derives
-Content Monetization earnings per 1,000 qualified views only from the same row.
-No earnings are inferred from total views or Stars counts. No API permissions or
-automatic financial exports are assumed; importing new dashboard data is manual.
-
-## One-time setup
-
-1. **System dependency — ffmpeg** (required):
-   - macOS: `brew install ffmpeg`
-   - Ubuntu: `sudo apt-get install ffmpeg`
-
-2. **Python deps** (Python 3.10+):
-   ```bash
-   cd ~/Documents/YT-Automation
-   python3 -m venv .venv && source .venv/bin/activate
-   pip install -r requirements.txt
-   ```
-
-3. **API keys** — copy and fill:
-   ```bash
-   cp .env.example .env
-   ```
-   Minimum to render videos:
-   - `ANTHROPIC_API_KEY` *(or set `script.provider: openai` + `OPENAI_API_KEY`)* — writes the script.
-   - `PEXELS_API_KEY` — free at <https://www.pexels.com/api/> — stock footage.
-   - Histold voiceover uses **Kokoro Michael** (`am_michael`, speed `0.95`) on CPU, with **Edge fallback**. GitHub Actions installs an isolated worker and caches model downloads. No TTS API key or running Mac is required. For local Kokoro use, install `torch==2.6.0` and `requirements-kokoro.txt` in a separate Python 3.11 environment and set `KOKORO_PYTHON` to its interpreter. Otherwise generation falls back to Edge. The manual **Voiceover CPU Smoke Test** workflow produces audio and timing artifacts without publishing a video.
-
-4. **YouTube upload** (one-time OAuth):
-   - Google Cloud Console → new project → enable **YouTube Data API v3**.
-   - Credentials → **Create OAuth client ID** → type **Desktop** → download JSON → save as `secrets/client_secret.json`.
-   - OAuth consent screen → add your Google account under **Test users**.
-   - Run once: `python scripts/setup_oauth.py` (opens a browser, caches `secrets/token.json`).
-
-## Run it
+Copy the example environment file and fill in only the providers you plan to use.
 
 ```bash
-# Script only — no media, no cost beyond the LLM call. Great first test:
+cp .env.example .env
+```
+
+`ANTHROPIC_API_KEY` (or `OPENAI_API_KEY`) writes the scripts, `PEXELS_API_KEY` is only needed for the stock footage fallback, and `META_ACCESS_TOKEN` is a non expiring Meta system user token for Facebook and Instagram. For YouTube, create a Desktop OAuth client in Google Cloud with the YouTube Data API v3 enabled, save it as `secrets/client_secret.json`, and run `python scripts/setup_oauth.py` once to cache the upload token. The `.env` file and the whole `secrets/` folder are git ignored and must never be committed. Uploads also refuse to run unless the signed in channel matches `youtube.expected_channel_id`.
+
+The cloud workflow reads the same values from GitHub Actions secrets; see [GITHUB_ACTIONS_SETUP.md](GITHUB_ACTIONS_SETUP.md). To run production on the laptop with your own Claude and Codex plans, follow [docs/LOCAL_PRODUCTION.md](docs/LOCAL_PRODUCTION.md).
+
+### Your first video
+
+Start small. A dry run writes the research and script only, which is the cheapest way to see what the channel would say.
+
+```bash
+# Research and script only
 python -m src.main --format short --dry-run
 
-# Render a Short but don't upload:
+# Make a full Short but keep it on disk
 python -m src.main --format short --no-upload
 
-# Full run (render + upload per config.yaml):
+# Make and publish according to config.yaml
 python -m src.main --format short
-python -m src.main --format long
-python -m src.main --format both
 ```
 
-> ⚠️ `config.yaml` ships with `youtube.privacy_status: private` on purpose. Review a few generated videos, then switch to `unlisted` or `public` when you trust the output.
+Output lands in `output/<timestamp>_short_<slug>/`. Note that `--no-upload` still makes the configured AI calls and may send configured notifications.
 
-## Daily automation (decide later)
+### Checks you can run offline
 
-The pipeline is scheduler-agnostic. `scripts/run_daily.sh` is the entry point.
-
-- **macOS cron** — `crontab -e`:
-  ```
-  0 9 * * * /Users/vnshkumar/Documents/YT-Automation/scripts/run_daily.sh >> /Users/vnshkumar/Documents/YT-Automation/logs/cron.log 2>&1
-  ```
-- **macOS launchd** — more reliable than cron on laptops; create a `LaunchAgent` plist calling `run_daily.sh`.
-- **Cloud (hands-off, Mac can be off)** — GitHub Actions on a `schedule:` cron, with keys stored as repo **Secrets** and `secrets/token.json` committed as an encrypted secret. Ask and I'll generate the workflow file.
-
-## Laptop dashboard app and local AI
-
-Run `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_dashboard.ps1`
-on the Windows laptop. Open **http://localhost:8787** and sign in using the key in
-`D:\histold\dashboard_key.txt`. The key, logs, and process metadata live outside the
-repository. The server reads `D:\histold\YT-Automation`, refreshing its snapshot every
-ten minutes. **Refresh dashboard** reloads sooner; platform exports arrive at the next
-hourly laptop sync.
-
-Local Ollama chat can propose pausing, boosting, or resetting a series/region/length,
-pinning publish hours for 1–30 days, returning control to the agent, or refreshing
-analytics. Press **Confirm** to apply a proposal. The server checks it again and writes
-only `data/growth_overrides.json` or `data/growth_plan.json` through the GitHub CLI.
-The daily post count stays fixed. Controls use UTC; chat also accepts explicit IST
-times ending in `:30`, converting exactly to whole UTC hours. At least one option in
-each dimension must remain active.
-
-Chat understands **"Analyze again and change the publish timings"** as a sequence:
-read the newest committed analytics exports, run local Qwen analysis, then propose a
-validated posting-hour experiment. The card shows UTC/IST times, sample counts, and
-the measurement period; only **Confirm** changes the schedule. Untried hours are
-identified as experiments. If analysis fails, no schedule proposal is made. An
-acknowledgement such as **"Yes, do that"** re-shows the previous validated card.
-Independent clauses are checked separately, so **"Don't change the schedule; boost
-Europe"** can still produce the requested Europe boost.
-
-The **Histold Dashboard** login task runs `scripts/autostart.ps1`: it starts the dashboard,
-the WhatsApp gateway and the Shotsnip clipping worker, then opens the installed Histold
-app (log: `D:\histold\autostart.log`). The operations tick restarts a dead Shotsnip
-worker unless **Stop local clipping** was pressed. The hourly runner also invokes
-`start_dashboard.ps1`, checking its process and restarting it when code changes.
-For remote access, install Tailscale on both devices and sign in to the same account.
-Run `tailscale serve --bg 8787` on the laptop and enable Serve at the URL it prints.
-Open the resulting private HTTPS address on another device and enter the dashboard
-key. The laptop must remain powered and connected for live access and AI chat.
-
-Use **Install app** or Edge/Chrome's Install menu. On Mac, Safari offers **File → Add
-to Dock**; on iPhone, Safari offers **Share → Add to Home Screen**. Offline mode shows
-the last cached view; live data and controls need the laptop connection. **Sign out**
-clears the app cache on that device.
-
-Facebook activation/payout status is owner-reported. A read-only Graph API probe can
-retrieve Page-level estimated earnings using the existing GitHub Actions secret.
-`scripts/probe_facebook_monetization.py` encrypts its response to a laptop-held RSA
-key using AES-GCM; only the encrypted artifact leaves the Actions runner. The local
-report is `data/private/facebook-api-monetization.json`. The dashboard uses a single
-numeric approximate-earnings stream with its response currency description; it never
-adds overlapping metrics or API versions, nor guesses a `microAmount` conversion.
-This is a separately fetched snapshot, not part of the hourly analytics exporter yet.
-The bonus probe requests documented `earning_source` / `monetization_tool` breakdowns
-and rolling `days_28` metrics. `extra_bonus` is shown only when returned, including an
-explicit zero. Rolling observations are never summed: only the latest is shown.
-If the rolling estimate and daily-detail subtotal disagree, both stay visible with a
-reconciliation note; no all-in total is inferred. Other bonus programs may not be
-represented by `extra_bonus`.
-Per-Reel earnings/qualified views can require additional monetization-admin access.
-Optional CSV reports can still be imported with `scripts/import_facebook_monetization.py`.
-All raw financial reports and private keys stay outside tracked source files.
-
-**Content insights:** `scripts/content_insights.py --data-root D:\histold\YT-Automation`
-asks local `qwen3:8b` to review measured content patterns. The server and hourly runner
-refresh stale reports once per day; **Analyze with Qwen** refreshes on demand. Reports
-stay in ignored `data/private/content-insights.json`. The dashboard computes medians
-and sample counts itself, considers videos aged 48 hours–28 days, and requires six
-measured Facebook videos before surfacing a group finding. Qwen's title observations
-are hypotheses, distinct from the measured rankings. Missing values are never treated
-as zero. The view uses peak exported metrics rather than age-matched measurements;
-it cannot establish causality, viewer locations, or earnings.
-
-The phone layout uses four bottom navigation targets and paged video cards; the desktop
-layout keeps the sidebar and sortable table. Filters apply to both presentations.
-
-## Automated content factory (scheduled publishing)
-
-Production scheduling is driven by the **always-on Windows laptop**. Its hourly task
-runs `scripts/run_strategist.ps1`, which uses `scripts/dispatch.py` (GitHub CLI) to
-dispatch `publish.yml` (`scheduled=true`) at the hours in `data/growth_plan.json`, and
-`analytics.yml` every hour (GitHub's own cron for analytics is a 6-hourly backup). In
-the workflow, the **publish-hour gate** (`scripts/publish_gate.py`) re-checks every
-scheduled run against the same plan and cancels anything outside it or starting after
-:40. How many videos a day stays fixed by `growth.posts_per_day` in `config.yaml`; a
-missing, stale or invalid plan falls back to `growth.default_hours_utc`. The cap of 10
-successful scheduled uploads per IST day and the 45-minute duplicate guard remain.
-
-The **growth agent** (`scripts/growth_agent.py`, daily) scores each publish hour on
-reach (Facebook views double-weighted, plus total views) and swaps at most one hour
-every `growth.change_interval_days`, within `growth.allowed_hours_utc` (the US + Europe
-audience window). Once per ISO week the runner writes `data/reviews/<week>.md`, a
-"what's working" review drafted by a local model (Ollama, `qwen3:8b`) over numbers
-computed in code; its topic ideas are unverified and advisory only. Every run also
-rebuilds the **laptop dashboard** (`scripts/build_dashboard.py` →
-`D:\histold\dashboard\index.html`, a self-contained file: no server, works with a
-private repo).
-
-Each dispatch that passes the gate is an **independent job slot**:
-
-- The workflow derives `PUBLISH_SLOT=morning` (before 14:00 IST) or
-  `PUBLISH_SLOT=evening` from the runner clock and passes it to the pipeline.
-- Each new stage records a `job_id` and `slot`, and reserves its topic in
-  `data/topic_reservations.json` right after script generation. A reservation
-  is idempotent per job (safe to resume) and rejects near-duplicate topics
-  across slots, so the morning and evening videos always cover distinct topics.
-- The workflow commits `data/topic_reservations.json` back to the repo along
-  with the other dedup state.
-
-### Continuous motion
-
-Future Histold scenes are checked at 0.15s and 0.3s, then throughout the narration. Static openings and foreground holds of 1.5 seconds trigger repair or animated local recovery. Recovery scenes use vetted map outlines or animated diagrams with timed short labels; a static map introduction is no longer the recovery template. Run the browser check with `PYTHONPATH=. python scripts/validate_continuous_motion.py` after installing Chromium for Playwright.
-
-### Script provider routing
-
-Script generation defaults to **Claude with automatic OpenAI fallback**: if the
-Anthropic call fails or returns invalid JSON, the same prompt is retried on
-OpenAI, and the stage records `script_provider` / `script_fallback_used`.
-Configure in `config.yaml`:
-
-```yaml
-script:
-  provider: "anthropic"     # primary provider
-  routing: "fallback"       # fallback | random | round_robin (optional modes)
-  fallback_provider: "openai"
+```bash
+python -m unittest discover -s tests -t . -v      # unit tests
+python scripts/validate_histold_render.py         # Chromium + FFmpeg render check with synthetic audio, no AI calls
+python scripts/report_experiment.py               # reads existing exports, no API calls
 ```
-
-`random` picks a provider per run; `round_robin` alternates runs (state in
-`data/provider_rotation.json`). Removing `routing` restores the legacy
-single-provider behavior.
-
-### Quality gate
-
-Every **new** job runs a deterministic, local `quality` step between compose
-and upload — no API calls, just state/file checks and one ffprobe call:
-script structure, upload metadata, topic reservation, narration length, audio,
-captions, assets, video presence, resolution, duration ratio, and configured
-banned terms. The report is written to `<stage>/quality.json`; a failed check
-**blocks the upload** and fails the run. Tune thresholds under `quality:` in
-`config.yaml`. Stages created before this feature keep their original step
-list and remain resumable/approvable as before.
-
-> Scope note: this phase does **not** change the Pexels asset flow and does
-> **not** add AI image generation. Analytics-based topic weighting and
-> provider performance selection are deferred.
 
 ## Configuration
 
-All non-secret behavior lives in **`config.yaml`** — niche persona, target durations, TTS voice, resolutions, caption styling, privacy status, default tags, provider routing, and quality thresholds. No code changes needed to retune the channel.
+Everything that is not a secret lives in [`config.yaml`](config.yaml), so retuning the channel never needs a code change. The sections you will touch most are these.
 
-## Cost notes
+| Section | What it controls |
+| --- | --- |
+| `channel` | Niche, narrator persona and content rules handed to the script writer |
+| `editorial` | Regions, series and the rotation used for automatic Shorts |
+| `growth` | Posts per day, daily cap, allowed and default posting hours, how often the schedule may change |
+| `research` | Approved source domains and how strictly evidence is enforced |
+| `script` | Provider and fallback routing (Claude first, OpenAI if it fails) |
+| `tts` | Voice engine, voice, speed and the alignment fallback |
+| `video` | Resolution, renderer (`cinematic_2d` or 3D), caption style and encode quality |
+| `quality` | Thresholds for the pre upload quality gate |
+| `youtube`, `meta` | Privacy, category, tags, cross posting, Stories and trial Reels |
+| `local_production` | Laptop runs, make ahead hours, parallel render workers, scene style and painted scenes |
+| `local_ai` | Provider order and per plan budgets for laptop runs |
+| `fact_posts` | Fact post schedule and the approval window |
 
-- **edge-tts**: free. **Pexels**: free. **LLM**: a few cents per script. **YouTube API**: free (default quota allows ~6 uploads/day).
-- Switching TTS to ElevenLabs or video to an AI-video model adds cost — both are config flags.
-
-## Important / legal
-
-- Use only **royalty-free** music (`assets/music/` README lists sources). Pexels stock is free to use.
-- Keep content factually accurate and advertiser-friendly; the script prompt enforces this but **spot-check** outputs, especially before going public.
-- Respect YouTube's policies on automated/repetitious content — varied, genuinely informative videos fare best.
+The 3D renderer can be switched for daily runs with `python -m src.visual_mode on` or `off`, which sets a repository variable rather than editing local config.
 
 ## Project layout
 
 ```
-config.yaml            channel + pipeline settings (edit this)
-.env                   secrets (you create from .env.example)
-requirements.txt
-src/
-  config.py            config + env loader
-  topics.py            angle picker + dedupe (data/used_topics.json)
-  script_generator.py  LLM → title/description/tags/segments
-  tts.py               Kokoro / edge-tts / elevenlabs / openai voiceover
-  kokoro_voice.py      isolated CPU worker with native token timestamps
-  captions.py          word timings → ASS subtitles
-  assets.py            Pexels stock fetch per segment
-  video_builder.py     ffmpeg assembly
-  youtube_uploader.py  Data API v3 upload
-  main.py              orchestrator / CLI
-scripts/
-  setup_oauth.py       one-time YouTube auth
-  run_daily.sh         scheduler entry point
-assets/music/          drop royalty-free tracks here (optional)
-output/                generated videos + metadata
+config.yaml              channel and pipeline settings
+src/                     the pipeline: research, script, tts, alignment, scenes, render, quality, uploaders
+  pipeline.py            step loop, resumable stage state
+  cinematic_*.css/.svg   scene art kits
+  plan_ai.py             local Claude, Codex, Antigravity and Qwen routing
+  fact_posts.py          fact image cards for Facebook and Instagram
+  telegram_control.py    owner bot commands and approvals
+scripts/                 entry points: dispatcher, local publisher, analytics, growth agent, reports, setup
+studio_hq/               Studio HQ dashboard (Python data layer, React UI, Rust hub)
+assets/                  fonts, vetted maps, icons, branding, templates
+channels/astrotold/      a separate numerology channel that reuses the same engine
+data/                    tracked state: published index, analytics, growth plan, topic reservations
+tests/                   unit tests
+.github/workflows/       publish, analytics, approve, republish, playlist, tests
+docs/                    setup guides and the full operations reference
 ```
 
+## Further reading
 
-### Daily Shorts 3D switch
+The [operations reference](docs/OPERATIONS.md) is the full manual: the production profile in detail, research recovery rules, alignment, the quality gate, earnings tracking, dashboard setup and automatic recovery. Other guides cover [local production](docs/LOCAL_PRODUCTION.md), [GitHub Actions setup](GITHUB_ACTIONS_SETUP.md), [phone control](docs/PHONE_CONTROL.md), [Studio HQ](docs/creator-control/README.md), the [Facebook content playbook](docs/facebook-content-playbook.md) and [map and source provenance](docs/world-history-sources.md). The Shotsnip clipping channel lives in its own repository, [YT-Cliping-Automation](https://github.com/kumarvnsh/YT-Cliping-Automation).
 
-The switch selects 3D or cinematic 2D for new Histold Shorts. From an authenticated `gh`
-checkout, persist the setting for daily and manual GitHub runs:
+## Content and credits
 
-```sh
-python -m src.visual_mode off  # cinematic 2D illustrations, diagrams and subtle sound effects
-python -m src.visual_mode on   # 3D renderer
-```
-
-The command sets repository variable `HISTOLD_3D`; it does not edit local config.
-Use `--repo OWNER/REPO` to target another checkout explicitly. For a local run,
-use `VIDEO_3D=off python -m src.main --format short` (or `VIDEO_3D=on`).
-An explicit `VIDEO_MODE=claude_motion` (legacy), `cinematic_2d`, or `three_motion` takes priority;
-clear repository variable `VIDEO_MODE` to let the persistent switch control runs.
-Each new stage records its renderer so changing the switch cannot change an
-in-flight render. Older stages keep their original mode behavior. Long videos
-continue using b-roll.
-
-Local 3D setup requires Node 22 and `npm ci` at the repository root, alongside
-Python dependencies, ffmpeg, and `python -m playwright install chromium`.
-HyperFrames and Three.js use the pinned local `node_modules` packages.
-# Local earnings collection and data gaps
-
-The dashboard attempts read-only earnings collection hourly. Reports and diagnostics
-stay under `D:\histold\YT-Automation\data\private`; they are never committed.
-Missing credentials or rejected requests retain the previous successful report.
-Dashboard Refresh reloads available exports; it does not authorize a new account.
-
-In PowerShell, from `D:\YT-Automation`:
-
-```powershell
-# Enter your existing Meta token privately at the hidden terminal prompt.
-powershell -ExecutionPolicy Bypass -File scripts\setup_private_earnings.ps1 -Platform Meta
-
-# First place your Google Desktop OAuth client JSON at:
-# D:\histold\YT-Automation\secrets\client_secret.json
-# Enable YouTube Data API v3 and YouTube Analytics API in that Google project.
-# Then approve the separate read-only earnings login in your browser:
-powershell -ExecutionPolicy Bypass -File scripts\setup_private_earnings.ps1 -Platform YouTube
-```
-
-Meta's token file is restricted to your Windows user and SYSTEM. It is stored outside
-both clones at `D:\histold\secrets\meta-earnings-token.txt`. No additional Meta
-permission has been shown to resolve the bonus discrepancy. Existing Page access
-can be reused; never paste tokens into chat. The YouTube login requests monetary
-analytics and channel-read access, and saves `secrets/earnings-token.json` separately
-from the upload token. Use the Histold channel account; the configured channel ID is checked.
-
-Facebook collection requests explicit watch time and retains raw retention graphs;
-these are not assumed to equal a completion rate. Instagram metric failures are
-isolated and include redacted API reasons. Data gaps show affected-video counts.
-Per-post earnings use Page attachment IDs to map videos to posts; unmatched IDs
-remain unavailable. Ordinary earnings exclude bonuses, and a returned bonus zero
-is not treated as proof of no bonus income. Reported currency and reporting periods
-must be verified before combining amounts. The public API may not expose every bonus.
-
-These exporter changes must be deployed to GitHub before hourly Actions collect the
-new engagement fields. Local commits alone do not update the Actions runner.
-
-## Jarvis operations and owner updates (local)
-
-The local monitoring worker checks export freshness and the latest completed workflow
-results. A deliberate cancelled publish (such as the daily cap) is not a failure alert.
-Reports, snapshots, audience data and notification state stay in `data/private/`.
-
-- Audience: YouTube viewer-country views use a separate Analytics report. Facebook
-  Page-like geography and Instagram follower geography are distinctly labelled and
-  may be unavailable. Video subject region is never treated as viewer location.
-- Country percentages use returned countries only; suppressed locations are not
-  inferred. The broad Europe reporting group includes UK, Russia and Turkey.
-- Weekly review: measured content groups, returned YouTube daily views/subscribers,
-  daily retention, private earnings sources, and the existing local-AI analysis.
-  New daily snapshot comparisons need seven days to build a baseline and compare only
-  matching IDs; lifetime view counts are not mislabelled as new weekly views.
-- Recommendations remain advisory and use the existing confirmation controls.
-
-OpenWA is installed separately under `D:\histold\OpenWA` from
-https://github.com/rmyndharis/OpenWA, with a checksum-verified portable Node runtime.
-The gateway is bound to `127.0.0.1:2785`, uses the Baileys engine and persistent SQLite,
-and keeps its credentials/session files outside this repository. It is an unofficial
-WhatsApp Web gateway. Its documented call support is inbound events/rejection, not
-outbound conversational AI calling. Do not confuse it with the different openwa.dev package.
-
-WhatsApp briefings target 09:00 Asia/Kolkata and catch up after a missed start.
-Only the configured owner recipient is allowed by the scoped gateway API key.
-A send is deduplicated persistently; uncertain network outcomes are not retried
-blindly. Gateway acceptance is distinct from WhatsApp delivery/read receipts.
-No incoming chat command can publish content or change strategy.
-
-Run once in Administrator PowerShell to install the separate logged-off monitoring
-and gateway-watchdog task (does not alter the publishing task):
-
-```powershell
-powershell -ExecutionPolicy Bypass -File D:\YT-Automation\scripts\install_operations_task.ps1
-powershell -ExecutionPolicy Bypass -File D:\YT-Automation\scripts\start_dashboard.ps1
-```
-
-Outbound updates currently use the owner-approved personal session and appear in the Message yourself chat; the dedicated-number request was withdrawn.
-A random local identifier is not a WhatsApp number: the owner must obtain and verify
-an eligible SIM/eSIM or business-provider number. Rented provider numbers may require
-an official WhatsApp Business API integration instead of this linked-device gateway.
-Never enable the personal session when a dedicated sender was requested.
-
-### Automatic operational recovery
-
-The monitor checks GitHub's current index and analytics exports, cached privately for
-up to three minutes, rather than assuming the dedicated clone is current. If exports
-are genuinely stale and no analytics job is active, it can dispatch analytics.yml
-at most twice/hour, at least 15 minutes apart. It refuses that action if automatic
-republishing is enabled. Network uncertainty is not treated as confirmed success.
-Dashboard and OpenWA process health are probed independently; known local launchers
-can be retried at most once per 15 minutes. An OS permission failure remains visible.
-Concurrent checks share an OS file lock. Actions and verified resolutions are logged
-privately in data/private/recovery-history.json and exposed in the monitoring report.
-No recovery action publishes videos, modifies source code, changes credentials,
-retries an ambiguous WhatsApp send or resets the dedicated publishing clone.
+Histold aims to be accurate and advertiser friendly. Illustrations are clearly illustrations and are never presented as archival evidence. Map outlines come from Natural Earth, icons from [game-icons.net](https://game-icons.net) under CC BY 3.0, and portraits from Wikimedia Commons with credits written into each video description. Fonts are DM Sans and Libre Baskerville under the SIL Open Font License. Only royalty free music is used.
