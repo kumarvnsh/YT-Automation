@@ -8848,5 +8848,70 @@
     "production_profile": 2,
     "facebook_id": "1820201515953050",
     "instagram_id": "18193167682412279"
+  },
+  {
+    "video_id": "8XAlGVTZqiE",
+    "run_id": "",
+    "stage_dir_name": "20261127_023007_108207_short",
+    "title": "Electric Tattoo Machines Borrowed Their Design From an Edison Pen",
+    "published_at": "2026-11-26T23:02:06.272813+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Annotated blueprint",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 25,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 24,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A Smithsonian tattoo kit from about the 1920s\u20131930s holds a machine whose design the museum says was adapted from Thomas Edison's electric pen: a motor drove a needle up and down, which made tattooing faster and less painful than hand methods.",
+          "opening_visual": "Archival museum photo of the painted wooden 'Eletrical Tattooing' case (SAAM 1986.65.379), with its needles and ink bottle, next to a simple diagram of a motor pushing a needle up and down.",
+          "payoff": "A tattoo tool shares its basic idea with a pen design by Thomas Edison: a reciprocating motor driving a needle. Limits: this rests on one approved page (SAAM). That page spells the tattoo artist's name 'Samuel Reilly' and says he 'invented' the machine in 1891. Neither the invention claim nor the date is narrated. No approved page found here describes what Edison's pen was originally for, so the narration does not say.",
+          "viewer_reason": "Tattoos are familiar to almost everyone, and Edison is a household name. An object that links the two is a surprise viewers get instantly, and the diagram makes the mechanism easy to follow."
+        },
+        {
+          "premise": "Disposable paper cups spread because public-health campaigns targeted shared 'common' drinking cups in schools and train stations, which states began banning around 1909\u20131912.",
+          "opening_visual": "A tin dipper chained to a public water barrel, then a paper cup.",
+          "payoff": "A throwaway cup started as a germ-control measure.",
+          "viewer_reason": "Paper cups are everywhere, and the public-health reason is a clear surprise.",
+          "rejection_reason": "Searches of approved hosts (si.edu, loc.gov) turned up nothing. The only supporting results were from unapproved sites (smithsonianmag.com, Lafayette College, genealogy blogs), so the core claims cannot be cited here."
+        },
+        {
+          "premise": "A plain Modjeska cold cream jar dug up at Fort Stanwix in Rome, NY, links to the Larkin soap company of Buffalo, which hired Frank Lloyd Wright to design its headquarters.",
+          "opening_visual": "A milk-glass jar with 'MODJESKA COLD CREAM, BUFFALO, NY' embossed on its base.",
+          "payoff": "A cosmetics jar opens onto mail-order soap marketing and Wright's lost Larkin Building.",
+          "viewer_reason": "An ordinary jar found in an old privy with famous connections.",
+          "rejection_reason": "The NPS page is a chain of loosely linked anecdotes (Wright, Wizard of Oz illustrator, Lusitania). There is no single clear reason the object's history matters, the piece leans on the extra naming anecdotes the brief says to avoid, and it is too scattered for 35 seconds. Its excerpts were also only summarized, not quoted verbatim."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Only candidate 0 has a fetched approved-host page with verbatim excerpts supporting the whole narrow premise: the object, the Edison-pen adaptation, the motor-driven needle, and the benefit over hand methods. It is a concrete archival object with a simple diagram that can be rendered. It avoids a first-invention claim by narrating only the museum's design-lineage statement."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 153,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Tattoo machines adapted a pen design by Edison.",
+    "duration": 37.45,
+    "production_profile": 2,
+    "facebook_id": "2633797877059700",
+    "instagram_id": "17895224919621312"
   }
 ]
