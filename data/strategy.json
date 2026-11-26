@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26T03:00:35.882896+00:00",
+  "updated": "2026-11-26T07:00:34.942475+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -10,7 +10,7 @@
         "Why Did Mexican Silver Cross the Pacific to Reach Manila?",
         "Coal Miners Sent a Caged Canary Underground Before Going Back In"
       ],
-      "measured_videos": 116
+      "measured_videos": 115
     },
     "facebook": {
       "winners": [
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 119
+      "measured_videos": 118
     }
   },
   "evaluation_metric": "likes / views",
@@ -28,16 +28,16 @@
     "short": {
       "Unassigned": {
         "yt": {
-          "measured_videos": 108,
-          "mean_like_rate": 0.00356
+          "measured_videos": 107,
+          "mean_like_rate": 0.003514
         },
         "fb": {
-          "measured_videos": 104,
-          "mean_like_rate": 0.001928
+          "measured_videos": 103,
+          "mean_like_rate": 0.001947
         },
         "ig": {
-          "measured_videos": 117,
-          "mean_like_rate": 0.135271
+          "measured_videos": 116,
+          "mean_like_rate": 0.136289
         }
       },
       "Museum object": {
@@ -158,69 +158,69 @@
       }
     }
   },
-  "videos_scored": 116,
+  "videos_scored": 115,
   "weights": {
     "series": {
-      "school_myths": 0.067,
-      "mistakes": 0.0682,
-      "almost": 0.0682,
-      "erased": 0.0697,
-      "unsolved": 0.0697,
-      "weird_dark": 0.0722,
-      "photo_story": 0.0722,
-      "spy_gadgets": 0.0763,
-      "animals": 0.0763,
-      "secretly_deadly": 0.0722,
-      "worst_jobs": 0.0763,
-      "forgotten_rules": 0.0722,
-      "behind_legend": 0.0697,
-      "found_by_accident": 0.0697
+      "school_myths": 0.0673,
+      "mistakes": 0.0683,
+      "almost": 0.0683,
+      "erased": 0.0698,
+      "unsolved": 0.0698,
+      "weird_dark": 0.0721,
+      "photo_story": 0.0721,
+      "spy_gadgets": 0.0761,
+      "animals": 0.0761,
+      "secretly_deadly": 0.0721,
+      "worst_jobs": 0.0761,
+      "forgotten_rules": 0.0721,
+      "behind_legend": 0.0698,
+      "found_by_accident": 0.0698
     },
     "region": {
-      "india": 0.1135,
-      "africa": 0.111,
-      "japan": 0.1177,
-      "china": 0.1169,
-      "russia": 0.1049,
-      "middle_east": 0.1066,
-      "europe": 0.1166,
-      "americas": 0.0953,
-      "asia_pacific": 0.1175
+      "india": 0.1145,
+      "africa": 0.1121,
+      "japan": 0.1188,
+      "china": 0.118,
+      "russia": 0.106,
+      "middle_east": 0.1076,
+      "europe": 0.108,
+      "americas": 0.0963,
+      "asia_pacific": 0.1186
     },
     "duration_variant": {
-      "concise": 0.5096,
-      "story": 0.4904
+      "concise": 0.5151,
+      "story": 0.4849
     }
   },
   "stats": {
     "series": {
       "school_myths": {
         "n": 4,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "mistakes": {
         "n": 3,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "almost": {
         "n": 3,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "erased": {
         "n": 2,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "unsolved": {
         "n": 2,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "weird_dark": {
         "n": 1,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "photo_story": {
         "n": 1,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "spy_gadgets": {
         "n": 0,
@@ -232,7 +232,7 @@
       },
       "secretly_deadly": {
         "n": 1,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "worst_jobs": {
         "n": 0,
@@ -240,63 +240,63 @@
       },
       "forgotten_rules": {
         "n": 1,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "behind_legend": {
         "n": 2,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "found_by_accident": {
         "n": 2,
-        "mean_score": 0.422
+        "mean_score": 0.426
       }
     },
     "region": {
       "india": {
         "n": 13,
-        "mean_score": 0.498
+        "mean_score": 0.501
       },
       "africa": {
         "n": 14,
-        "mean_score": 0.488
+        "mean_score": 0.492
       },
       "japan": {
         "n": 11,
-        "mean_score": 0.514
+        "mean_score": 0.518
       },
       "china": {
         "n": 11,
-        "mean_score": 0.511
+        "mean_score": 0.515
       },
       "russia": {
         "n": 11,
-        "mean_score": 0.463
+        "mean_score": 0.467
       },
       "middle_east": {
         "n": 11,
-        "mean_score": 0.47
+        "mean_score": 0.473
       },
       "europe": {
-        "n": 11,
-        "mean_score": 0.51
+        "n": 10,
+        "mean_score": 0.474
       },
       "americas": {
         "n": 12,
-        "mean_score": 0.422
+        "mean_score": 0.426
       },
       "asia_pacific": {
         "n": 11,
-        "mean_score": 0.513
+        "mean_score": 0.517
       }
     },
     "duration_variant": {
       "concise": {
         "n": 66,
-        "mean_score": 0.506
+        "mean_score": 0.51
       },
       "story": {
-        "n": 50,
-        "mean_score": 0.492
+        "n": 49,
+        "mean_score": 0.487
       }
     }
   },
@@ -320,13 +320,13 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "Zero lifetime plays with insights marked available warrants a native check."
+      "reason": "Export shows zero lifetime plays with insights marked available."
     },
     {
       "video_id": "ZE9tGMBB7Fg",
       "platform": "yt",
       "views": 2,
-      "reason": "Average percentage viewed is marked missing despite 2 exported views."
+      "reason": "Average percentage viewed is absent and explicitly flagged as missing despite two recorded views."
     },
     {
       "video_id": "SfvGGm6eaok",
