@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T23:00:36.748747+00:00",
+  "updated": "2026-11-26T03:00:35.882896+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -20,7 +20,7 @@
         "Before Paper, What Were Ancient Egyptians Writing On?",
         "The Stone That Unlocked Egypt, Yet Egypt Can't Have It Back?"
       ],
-      "measured_videos": 118
+      "measured_videos": 119
     }
   },
   "evaluation_metric": "likes / views",
@@ -93,7 +93,7 @@
         },
         "yt": {
           "measured_videos": 2,
-          "mean_like_rate": 0.012821
+          "mean_like_rate": 0.0125
         }
       },
       "Paper theater": {
@@ -102,12 +102,12 @@
           "mean_like_rate": 0.083333
         },
         "fb": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.002994
+          "measured_videos": 2,
+          "mean_like_rate": 0.001497
         },
         "ig": {
-          "measured_videos": 1,
-          "mean_like_rate": 0.166667
+          "measured_videos": 2,
+          "mean_like_rate": 0.111111
         }
       },
       "Annotated blueprint": {
@@ -317,16 +317,16 @@
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
     {
-      "video_id": "ZE9tGMBB7Fg",
-      "platform": "yt",
-      "views": 2,
-      "reason": "Average percentage viewed is flagged missing with two exported views."
-    },
-    {
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "Zero lifetime plays with insights available warrants native verification."
+      "reason": "Zero lifetime plays with insights marked available warrants a native check."
+    },
+    {
+      "video_id": "ZE9tGMBB7Fg",
+      "platform": "yt",
+      "views": 2,
+      "reason": "Average percentage viewed is marked missing despite 2 exported views."
     },
     {
       "video_id": "SfvGGm6eaok",
