@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-26T19:00:44.857604+00:00",
+      "updated": "2026-11-26T20:00:37.685749+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -103,7 +103,7 @@
           ],
           "publishedAt": "2026-11-26T11:02:52Z",
           "thumbnail": "https://i.ytimg.com/vi/XZaKs-OVykM/mqdefault.jpg",
-          "views": 4,
+          "views": 5,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -382,20 +382,19 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 13.11,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 5.0,
+          "shares": 0,
+          "analytics_views": 12,
+          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "analytics_status": "no_row",
-          "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
-          }
+          "analytics_status": "reported",
+          "unavailable_metrics": {}
         },
         {
           "id": "fEJ_p-XAW-4",
@@ -473,12 +472,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 22.69,
+          "avg_view_pct": 36.79,
           "subs_gained": 0,
-          "average_watch_time_seconds": 8.0,
+          "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 25,
-          "engaged_views": 3,
+          "analytics_views": 43,
+          "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
@@ -562,12 +561,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 26.009999999999998,
+          "avg_view_pct": 28.74,
           "subs_gained": 0,
-          "average_watch_time_seconds": 11.0,
+          "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 32,
-          "engaged_views": 5,
+          "analytics_views": 39,
+          "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
@@ -611,7 +610,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 6,
+          "analytics_views": 8,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -695,12 +694,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 74.43,
+          "avg_view_pct": 76.34,
           "subs_gained": 1,
-          "average_watch_time_seconds": 32.0,
+          "average_watch_time_seconds": 33.0,
           "shares": 1,
-          "analytics_views": 14,
-          "engaged_views": 5,
+          "analytics_views": 15,
+          "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
@@ -1055,7 +1054,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 14.0,
           "shares": 0,
-          "analytics_views": 20,
+          "analytics_views": 21,
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -1096,12 +1095,12 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
-          "avg_view_pct": 72.11,
+          "avg_view_pct": 67.4,
           "subs_gained": 0,
-          "average_watch_time_seconds": 28.0,
+          "average_watch_time_seconds": 26.0,
           "shares": 0,
-          "analytics_views": 27,
-          "engaged_views": 9,
+          "analytics_views": 28,
+          "engaged_views": 10,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
@@ -1140,20 +1139,19 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 21.94,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 7.0,
+          "shares": 0,
+          "analytics_views": 2,
+          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "analytics_status": "no_row",
-          "unavailable_metrics": {
-            "avg_view_pct": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
-            "subs_gained": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
-            "average_watch_time_seconds": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
-            "shares": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
-            "analytics_views": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
-            "engaged_views": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count)."
-          }
+          "analytics_status": "reported",
+          "unavailable_metrics": {}
         },
         {
           "id": "A8P0T0TA-5I",
@@ -1547,7 +1545,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 15,
+          "analytics_views": 16,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-14",
@@ -1810,7 +1808,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 26.0,
           "shares": 0,
-          "analytics_views": 39,
+          "analytics_views": 40,
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
