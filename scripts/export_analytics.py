@@ -214,11 +214,14 @@ def _retention_and_subs(
 ANALYTICS_DELAY_DAYS = 3
 
 
-def _missing_metric_reason(video: dict, today: str) -> str:
+def _missing_metric_reason(video: dict, today: str, report_ok: bool = False) -> str:
     """Explain why YouTube Analytics returned no row for this video.
 
     YouTube returns no row for a video nobody has watched, and its per-video
     metrics usually arrive 2-3 days after publication; neither is a fault.
+    When the same report returned rows for other videos (report_ok), a missing
+    row means Analytics counted no views for this one: the public view count
+    can include views Analytics does not count.
     """
     if video.get("views") == 0:
         return "No views yet; YouTube Analytics reports nothing for an unwatched video."
@@ -229,6 +232,9 @@ def _missing_metric_reason(video: dict, today: str) -> str:
         age_days = None
     if age_days is not None and age_days < ANALYTICS_DELAY_DAYS:
         return "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+    if report_ok:
+        return ("No counted views: YouTube Analytics returned rows for other videos but none for this one, "
+                "so it has counted no views for it (the public view count can include views Analytics does not count).")
     return "YouTube Analytics permission, report delay, or missing response row."
 
 
@@ -265,10 +271,12 @@ def main() -> int:
     except Exception as exc:  # noqa: BLE001 - keep basic analytics working
         print(f"  ! YouTube Analytics client skipped: {exc}", file=sys.stderr)
         retention = {}
+    report_ok = bool(retention)
     for video in videos:
         video.update(retention.get(video["id"], {}))
         video["analytics_period"] = {"start_date": start_date, "end_date": today, "note": "Rates use views from this same Analytics report; Data API counts may differ."}
-        reason = _missing_metric_reason(video, today)
+        video["analytics_status"] = "reported" if video["id"] in retention else ("no_row" if report_ok else "unavailable")
+        reason = _missing_metric_reason(video, today, report_ok)
         video["unavailable_metrics"] = {
             key: reason
             for key in ("avg_view_pct", "subs_gained", "average_watch_time_seconds", "shares", "analytics_views", "engaged_views")

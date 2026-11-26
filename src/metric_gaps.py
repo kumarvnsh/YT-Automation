@@ -13,8 +13,8 @@ from datetime import datetime, timedelta, timezone
 
 REPORT_DELAY = timedelta(days=3)
 STATUSES = ('reported', 'no_views_yet', 'reporting_delay', 'missing')
-RULE = ('yt_pct (YouTube average percentage viewed) is normally absent for a video with no YouTube views yet '
-        "(yt_pct_status 'no_views_yet') and for about 3 days after upload ('reporting_delay'). Those are not faults "
+RULE = ('yt_pct (YouTube average percentage viewed) is normally absent for a video with no YouTube views yet, '
+        "including one whose public views YouTube Analytics has not counted (yt_pct_status 'no_views_yet'), and for about 3 days after upload ('reporting_delay'). Those are not faults "
         "and must not be reported as active failures or suspect metrics. Only yt_pct_status 'missing' is a fault.")
 # Reports about viewing percentage / retention gaps, whatever key or wording the model picks.
 PERCENT_TOPIC = re.compile(r'view(ing|ed)?[\s_-]*(percent|percentage|pct|%)|percent(age)?[\s_-]*(of\s+)?(the\s+)?(video\s+)?'
@@ -33,7 +33,9 @@ def _published(value) -> datetime | None:
 def yt_pct_status(video: dict, now: datetime) -> str:
     if isinstance(video.get('yt_pct'), (int, float)):
         return 'reported'
-    if not video.get('yt'):
+    # 'no_row': the Analytics report worked for other videos but counted no views for this one,
+    # even if the public view count is above zero.
+    if not video.get('yt') or video.get('yt_analytics') == 'no_row':
         return 'no_views_yet'
     published = _published(video.get('at'))
     if published is None or now - published < REPORT_DELAY:

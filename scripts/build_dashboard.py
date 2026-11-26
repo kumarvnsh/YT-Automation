@@ -165,6 +165,7 @@ def collect(now: datetime, log: Path, root: Path | None = None, exports: dict | 
             'fb_watch_seconds':fb.get('average_watch_time_seconds'),
             'ig': num(ig.get('views')), 'ig_likes': num(ig.get('likes')), 'ig_skip': ig.get('skip_rate'),
             'yt': num(yt.get('views')), 'yt_likes': num(yt.get('likes')), 'yt_pct': yt.get('avg_view_pct'),
+            'yt_analytics': yt.get('analytics_status'),
             'score': scores.get(e.get('title', '')),
             'fb_id': str(e['facebook_id']) if e.get('facebook_id') else None,
             'ig_id': str(e['instagram_id']) if e.get('instagram_id') else None,

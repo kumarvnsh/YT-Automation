@@ -26,6 +26,16 @@ class Classify(unittest.TestCase):
         self.assertEqual([metric_gaps.yt_pct_status(v, NOW) for v in NORMAL], ['reported', 'no_views_yet', 'reporting_delay'])
         self.assertEqual(metric_gaps.yt_pct_status(video('dddddddd', 5, 30, None), NOW), 'missing')
 
+    def test_video_analytics_counted_no_views_for_is_not_a_fault(self):
+        # 2 public views, 8 days old, Analytics report returned rows for others but none for it.
+        uncounted = {**video('ZE9tGMBB7Fg', 8, 2, None), 'yt_analytics': 'no_row'}
+        self.assertEqual(metric_gaps.yt_pct_status(uncounted, NOW), 'no_views_yet')
+        failed_report = {**video('eeeeeeee', 8, 2, None), 'yt_analytics': 'unavailable'}
+        self.assertEqual(metric_gaps.yt_pct_status(failed_report, NOW), 'missing')
+        kept, settled = metric_gaps.screen(findings(FAILURE), NORMAL + [uncounted], NOW)
+        self.assertEqual(kept['active_failures'], [])
+        self.assertEqual(settled[0]['key'], FAILURE['key'])
+
     def test_annotate_counts_and_names_real_faults(self):
         videos, counts = metric_gaps.annotate(NORMAL + [video('dddddddd', 5, 30, None)], NOW)
         self.assertEqual(videos[1]['yt_pct_status'], 'no_views_yet')

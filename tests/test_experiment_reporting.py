@@ -76,6 +76,8 @@ def test_youtube_missing_retention_reason_names_the_real_cause():
     assert 'Report delay' in recent
     stale = _missing_metric_reason({'views': 20, 'publishedAt': '2026-11-10T11:46:57Z'}, '2026-11-21')
     assert 'permission' in stale
+    uncounted = _missing_metric_reason({'views': 2, 'publishedAt': '2026-11-10T11:46:57Z'}, '2026-11-21', report_ok=True)
+    assert 'No counted views' in uncounted
 
 
 def test_youtube_report_exports_its_own_view_denominator():
