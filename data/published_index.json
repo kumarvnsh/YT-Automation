@@ -8782,5 +8782,71 @@
     "production_profile": 2,
     "facebook_id": "1684732802996587",
     "instagram_id": "18135215119704215"
+  },
+  {
+    "video_id": "FQt7hL5lDBI",
+    "run_id": "",
+    "stage_dir_name": "20261126_213007_362476_short",
+    "title": "A Glass Beehive Fixed Lighthouses That Were Wasting Their Light",
+    "published_at": "2026-11-26T18:02:19.641533+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Paper theater",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 24,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 23,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Off North Carolina's Outer Banks, lighthouses that wasted most of their lamp light were replaced with Fresnel lenses. These are beehive-shaped sets of glass prisms that bend scattered light into one beam. Per the NPS, they lose at most 20% of the light, and their beams could be seen more than 20 miles away instead of 8-12.",
+          "opening_visual": "A simple diagram: a bare flame with rays scattering in every direction (labelled 'open flame: ~97% of light lost'), then the same flame inside a ring of prisms bending the rays into one flat beam. Then a present-day locator pin on Cape Hatteras, North Carolina.",
+          "payoff": "The fix was not a stronger flame. It was glass that bends light toward the sea, so a lens losing at most 20% replaced lights that lost 60-97%. By 1859 almost all North Carolina lighthouses had one. Limitation: the NPS source does not measure how many wrecks the lenses prevented. Narrate the gains in visibility and efficiency only, and do not say the lenses ended shipwrecks.",
+          "viewer_reason": "Most people know what a lighthouse looks like, and the before-and-after numbers (97% lost vs. at most 20% lost; 8-12 miles vs. more than 20) are easy to grasp. The mechanism is easy to show as a diagram.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "In the First World War, Britain painted ships in bold 'dazzle' patterns. The aim was not to hide them but to make it hard for an enemy to judge their course and speed.",
+          "opening_visual": "Archival photograph of a dazzle-painted ship",
+          "payoff": "Camouflage that works by confusing the eye rather than hiding the ship",
+          "viewer_reason": "A visually striking reversal of what camouflage is supposed to do",
+          "rejection_reason": "The Imperial War Museums pages returned HTTP 403, so no excerpt could be fetched and checked word for word. The search snippet also says falling losses were largely due to convoys, so the payoff would need independent support I could not get."
+        },
+        {
+          "premise": "Before electric refrigerators, ice cut from frozen ponds in winter was stored in ice houses insulated with sawdust or straw, so it lasted into summer.",
+          "opening_visual": "Catalog illustration of 1850 ice-cutting tools",
+          "payoff": "Winter cold stored and sold in summer",
+          "viewer_reason": "Everyday kitchen history with a clear mechanism",
+          "rejection_reason": "The supplied NPS icebox page supports it, but it repeats the recent subject 'How Did Kitchens Stay Cold Before Electricity?'."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "It is the only candidate that fits the lane (a documented dangerous problem plus an unexpected way of solving it), is not a recent subject, and has all its facts on one approved NPS page I fetched. The claims are kept to the source's own comparisons of efficiency and visibility, with no claim about lives saved."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 152,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "A bare flame wastes nearly all its light. Tests put the loss near 97 percent.",
+    "duration": 39.7,
+    "production_profile": 2,
+    "facebook_id": "1820201515953050",
+    "instagram_id": "18193167682412279"
   }
 ]
