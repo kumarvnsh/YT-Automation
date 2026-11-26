@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T18:00:07.072834+00:00",
+  "updated": "2026-11-26T14:00:07.568434+00:00",
   "status": "pinned by you until 2026-11-30T04:17 UTC",
   "hours_utc": [
     11,
@@ -48,29 +48,29 @@
   ],
   "hour_stats": {
     "04": {
-      "n": 20,
-      "mean": 0.547,
-      "shrunk": 0.54
+      "n": 19,
+      "mean": 0.549,
+      "shrunk": 0.543
     },
     "07": {
       "n": 15,
-      "mean": 0.47,
-      "shrunk": 0.475
+      "mean": 0.471,
+      "shrunk": 0.476
     },
     "11": {
       "n": 3,
-      "mean": 0.345,
-      "shrunk": 0.423
+      "mean": 0.344,
+      "shrunk": 0.422
     },
     "12": {
       "n": 16,
       "mean": 0.51,
-      "shrunk": 0.508
+      "shrunk": 0.509
     },
     "16": {
       "n": 14,
       "mean": 0.48,
-      "shrunk": 0.483
+      "shrunk": 0.484
     },
     "17": {
       "n": 1,
@@ -84,7 +84,7 @@
     },
     "23": {
       "n": 5,
-      "mean": 0.608,
+      "mean": 0.607,
       "shrunk": 0.567
     }
   },
@@ -93,7 +93,13 @@
       "video_id": "wUYjpa6ICeU",
       "platform": "fb",
       "views": 0,
-      "reason": "Zero total plays despite available insights and 212 Instagram views."
+      "reason": "Paper Money shows zero lifetime plays with Insights marked available. Verify against native Insights."
+    },
+    {
+      "video_id": "ZE9tGMBB7Fg",
+      "platform": "yt",
+      "views": 2,
+      "reason": "Average percentage viewed is missing despite 2 exported views and an upload older than the usual reporting delay."
     },
     {
       "video_id": "SfvGGm6eaok",
@@ -118,12 +124,6 @@
       "platform": "yt",
       "views": 1,
       "reason": "Viewing percentage exactly 0.0% on 1 view; may be the same one-view analytics gap"
-    },
-    {
-      "video_id": "ZE9tGMBB7Fg",
-      "platform": "yt",
-      "views": 2,
-      "reason": "Has 2 YouTube views at ~6.8 days but viewing percentage missing; likely outside the one-view fix's scope"
     },
     {
       "video_id": "g4aOe5vcitA",
