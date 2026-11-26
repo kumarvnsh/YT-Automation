@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26T07:00:34.942475+00:00",
+  "updated": "2026-11-26T11:00:40.550369+00:00",
   "primary_platform": "youtube",
   "platforms": {
     "youtube": {
@@ -317,16 +317,16 @@
   "method": "Data-driven topic strategist: scores recent editorial Shorts across platforms and",
   "masked_metrics": [
     {
-      "video_id": "wUYjpa6ICeU",
-      "platform": "fb",
-      "views": 0,
-      "reason": "Export shows zero lifetime plays with insights marked available."
-    },
-    {
       "video_id": "ZE9tGMBB7Fg",
       "platform": "yt",
       "views": 2,
-      "reason": "Average percentage viewed is absent and explicitly flagged as missing despite two recorded views."
+      "reason": "Average percentage viewed is missing despite 2 exported views and an upload older than the usual reporting delay."
+    },
+    {
+      "video_id": "wUYjpa6ICeU",
+      "platform": "fb",
+      "views": 0,
+      "reason": "Zero lifetime plays with insights marked available needs native verification."
     },
     {
       "video_id": "SfvGGm6eaok",
