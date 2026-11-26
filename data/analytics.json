@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-26T18:00:30.783534+00:00",
+      "updated": "2026-11-26T19:00:44.857604+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,51 @@
         ]
       },
       "videos": [
+        {
+          "id": "FQt7hL5lDBI",
+          "title": "A Glass Beehive Fixed Lighthouses That Were Wasting Their Light",
+          "description": "A bare flame wastes nearly all of its light. Off North Carolina's Outer Banks, weak lighthouses often added to the danger for ships. Augustin Fresnel's 1822 lens solved the problem with glass prisms that bend scattered light into one bright beam visible more than 20 miles out to sea. Source: U.S. National Park Service, Cape Hatteras National Seashore.\n#history #lighthouse #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of Augustin-Jean Fresnel: Augustin-Jean Fresnel, Public domain, via Wikimedia Commons",
+          "tags": [
+            "augustin fresnel",
+            "cape hatteras",
+            "did you know",
+            "education",
+            "everyday origins",
+            "fresnel lens",
+            "historical facts",
+            "history of science",
+            "history shorts",
+            "ingenious solutions",
+            "lighthouse history",
+            "maritime history",
+            "north carolina history",
+            "optics",
+            "outer banks",
+            "world history"
+          ],
+          "publishedAt": "2026-11-26T18:02:43Z",
+          "thumbnail": "https://i.ytimg.com/vi/FQt7hL5lDBI/mqdefault.jpg",
+          "views": 11,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-26",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "analytics_status": "no_row",
+          "unavailable_metrics": {
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+          }
+        },
         {
           "id": "XZaKs-OVykM",
           "title": "A Washington ZIP Code Still Carries a Pre-1963 Mail Zone",
@@ -2210,48 +2255,6 @@
           "shares": 0,
           "analytics_views": 23,
           "engaged_views": 7,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-26",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "analytics_status": "reported",
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "hs_frBOTDE8",
-          "title": "What Did India's Legendary Conqueror Carve Into His Stone?",
-          "description": "Ashoka is often remembered as a fearsome conqueror of ancient India. His own rock edicts, carved across his realm, show a different side of the story. Behind the Legend: what the stones say in his own words. #IndianHistory #AncientIndia #BehindTheLegend\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "ancient india",
-            "ancient inscriptions",
-            "ashoka",
-            "behind the legend",
-            "did you know",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "indian history",
-            "kalinga war",
-            "mauryan empire",
-            "rock edicts",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T16:12:01Z",
-          "thumbnail": "https://i.ytimg.com/vi/hs_frBOTDE8/mqdefault.jpg",
-          "views": 15,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 16.8,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 5.0,
-          "shares": 0,
-          "analytics_views": 15,
-          "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
