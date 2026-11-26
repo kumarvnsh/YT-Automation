@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-26T11:00:28.778288+00:00",
+      "updated": "2026-11-26T12:00:35.507782+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,51 @@
         ]
       },
       "videos": [
+        {
+          "id": "XZaKs-OVykM",
+          "title": "A Washington ZIP Code Still Carries a Pre-1963 Mail Zone",
+          "description": "Before ZIP codes, letters to many U.S. cities carried a short zone number, such as Washington 18, D.C. When the Zone Improvement Plan arrived on July 1, 1963, that zone number became the last two digits of Washington's ZIP Code 20018. This short history uses Library of Congress sources to trace how an old city mail zone was folded into the five-digit code.\n#history #zipcode #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)",
+          "tags": [
+            "1963",
+            "did you know",
+            "education",
+            "everyday objects",
+            "everyday origins",
+            "historical facts",
+            "history shorts",
+            "library of congress",
+            "mail sorting",
+            "post office",
+            "postal history",
+            "us mail",
+            "washington dc",
+            "world history",
+            "zip code",
+            "zone improvement plan"
+          ],
+          "publishedAt": "2026-11-26T11:02:52Z",
+          "thumbnail": "https://i.ytimg.com/vi/XZaKs-OVykM/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-26",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "analytics_status": "no_row",
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
         {
           "id": "zEwl7ook7VE",
           "title": "Hawaii's Rat-Fighting Mongooses Had a Scheduling Problem",
@@ -644,7 +689,7 @@
           ],
           "publishedAt": "2026-11-21T23:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/i8oWcZUKfJA/mqdefault.jpg",
-          "views": 23,
+          "views": 24,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -2207,50 +2252,6 @@
           "shares": 0,
           "analytics_views": 15,
           "engaged_views": 4,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-26",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "analytics_status": "reported",
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "4vjxe7HaQZI",
-          "title": "Were the World's Finest Ocean Maps Ever Meant to Leave Shore?",
-          "description": "Marshallese navigators in the central Pacific learned the ocean with woven stick charts made of palm sticks and shells. Find out what these charts showed and why they were mostly used on land. #PacificHistory #WeirdHistory #Navigation\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "did you know",
-            "education",
-            "everyday origins",
-            "historical facts",
-            "history shorts",
-            "indigenous knowledge",
-            "marshall islands",
-            "ocean swells",
-            "pacific history",
-            "pacific navigation",
-            "polynesian navigation",
-            "rebbelib",
-            "stick charts",
-            "traditional navigation",
-            "weird history",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T15:57:36Z",
-          "thumbnail": "https://i.ytimg.com/vi/4vjxe7HaQZI/mqdefault.jpg",
-          "views": 27,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 20.67,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 9.0,
-          "shares": 0,
-          "analytics_views": 27,
-          "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-26",
