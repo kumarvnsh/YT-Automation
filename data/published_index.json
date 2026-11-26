@@ -8716,5 +8716,71 @@
     "production_profile": 2,
     "facebook_id": "2005736904013114",
     "instagram_id": "18119636420160432"
+  },
+  {
+    "video_id": "XZaKs-OVykM",
+    "run_id": "",
+    "stage_dir_name": "20261126_143008_361127_short",
+    "title": "A Washington ZIP Code Still Carries a Pre-1963 Mail Zone",
+    "published_at": "2026-11-26T11:02:24.540334+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Archive dossier",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 23,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 22,
+      "lane": "everyday_origins",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A familiar five-digit ZIP code can preserve an older city postal zone number: under the 1963 Zone Improvement Plan, mail once addressed to 'Washington 18, D.C.' carried ZIP Code 20018.",
+          "opening_visual": "Close-up of an addressed envelope reading 'Washington 18, D.C.', then the '18' slides into the end of '20018'.",
+          "payoff": "The last two digits of a big-city ZIP code can be a holdover from the pre-1963 local zone system, which began in 1943 for 124 urban areas according to the Library of Congress. Limitation: the Washington 18 to 20018 case is the one documented example used here; the source says the final two digits indicate a delivery unit of a larger city post office, not that every ZIP code keeps an old zone number. The often-told wartime reason for the 1943 zones could not be confirmed on an approved page that loaded, so it is not narrated.",
+          "viewer_reason": "Nearly everyone writes a ZIP code. Learning that part of it may be an older 1940s-era city zone makes a familiar habit look different right away.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Kennedy-era households put a sign in the front window to tell the iceman to deliver more ice to their icebox.",
+          "opening_visual": "Window card on the Kennedy birthplace house, with the Bohn Syphon icebox behind it.",
+          "payoff": null,
+          "viewer_reason": null,
+          "rejection_reason": "Too close to a recent title, 'How Did Kitchens Stay Cold Before Electricity?', which used the same NPS icebox page."
+        },
+        {
+          "premise": "Britain's 1840 Penny Black made the sender, not the recipient, prepay postage.",
+          "opening_visual": "Archival image of an unused Penny Black stamp.",
+          "payoff": null,
+          "viewer_reason": null,
+          "rejection_reason": "The search returned no bl.uk pages. The only approved-host result was a National Archives image asset with no explanatory text, so the prepayment change could not be cited from an approved page."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "It is the only fresh candidate where approved Library of Congress pages could be fetched and quoted for every narrated fact: the 1943 zones, the meaning and date of the ZIP Code, and the Washington 18 to 20018 carryover. It gives a concrete envelope visual and an immediate surprise about an everyday habit. The claim is kept narrow: one documented example of a zone number carrying over, not a general rule or a first-invention claim."
+    },
+    "voice": "kokoro",
+    "category": "everyday_origins",
+    "editorial_slot": 151,
+    "editorial_region": "global",
+    "editorial_series": "Everyday Objects, Unexpected Histories",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Old Zone 18 still hides inside a Washington ZIP code.",
+    "duration": 43.45,
+    "production_profile": 2,
+    "facebook_id": "1684732802996587",
+    "instagram_id": "18135215119704215"
   }
 ]
