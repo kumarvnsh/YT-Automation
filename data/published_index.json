@@ -8913,5 +8913,71 @@
     "production_profile": 2,
     "facebook_id": "2633797877059700",
     "instagram_id": "17895224919621312"
+  },
+  {
+    "video_id": "zNnDAV_c8Fs",
+    "run_id": "",
+    "stage_dir_name": "20261127_143008_380335_short",
+    "title": "Washington's Answer to Smallpox Was a Planned Dose of Smallpox",
+    "published_at": "2026-11-27T11:02:44.271025+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Split-screen comparison",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 26,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 25,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "In 1777, with smallpox threatening the Continental Army, George Washington ordered troops deliberately given a controlled, usually mild smallpox infection through a small cut, then isolated, so they would become immune.",
+          "opening_visual": "A simple diagram of an arm with a small incision and a drop labeled 'pus from an active pustule', then an arrow to 'mild case' and finally 'immunity'.",
+          "payoff": "The fix for a deadly disease was to give soldiers that same disease on purpose, under control. NPS says the method usually caused mild symptoms. Boylston's 1721 Boston estimates were about 14% deaths for natural infection and 2% for inoculation, so it was much safer but not risk-free. By late 1777 smallpox in the army had dropped substantially. Limits: all of this comes from one NPS article, the death rates are 1721 Boston estimates rather than army figures, and the 2% means inoculation still killed some people.",
+          "viewer_reason": "The reversal is instantly surprising (infect soldiers to protect them), it connects to how vaccines work today, and the mechanism fits in one simple diagram.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Revolutionary forces stretched a giant iron chain across the Hudson River at West Point to block British warships from sailing upriver.",
+          "opening_visual": "A surviving chain link from a museum collection, then a river diagram with the chain across it.",
+          "payoff": "A chain of iron links across the river as a barrier to ships.",
+          "viewer_reason": "Huge, physical, easy to picture.",
+          "rejection_reason": "The only approved source found was a short NPS museum catalog entry for one chain link. The surrounding details (length, the West Point to Constitution Island span, whether the chain was ever tested) appeared only on non-approved sites, so the mechanism and payoff can't be fully sourced. The 'never tested' payoff would also mean the chain's effect can't be shown."
+        },
+        {
+          "premise": "Soldiers in Canada who inoculated themselves without medical supervision or quarantine spread smallpox rapidly instead of containing it.",
+          "opening_visual": "A soldier's arm with a self-made cut, and dots spreading through a camp diagram.",
+          "payoff": "Why isolation mattered as much as the cut itself.",
+          "viewer_reason": "A cautionary twist on the same technique.",
+          "rejection_reason": "It's a story of failure, not an ingenious solution, so it doesn't fit the lane. It also lacks a specific place, date and outcome on approved pages. It works better as one line of background inside the selected story."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "The selected premise has the clearest surprise, the most familiar subject (Washington and vaccines), and a mechanism we can draw as a diagram without invented images. It is limited to what the NPS page directly states: a usually mild controlled infection, isolation, staggered timing, and a substantial drop by late 1777. It avoids absolute claims like 'ended smallpox'."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 154,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "To stop smallpox, Washington ordered his soldiers infected.",
+    "duration": 44.95,
+    "production_profile": 2,
+    "facebook_id": "991641516894974",
+    "instagram_id": "18158689267481982"
   }
 ]
