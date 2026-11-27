@@ -9045,5 +9045,71 @@
     "production_profile": 2,
     "facebook_id": "1801950354189505",
     "instagram_id": "17941258995128372"
+  },
+  {
+    "video_id": "z8FXKZVAFQE",
+    "run_id": "",
+    "stage_dir_name": "20261128_023007_739061_short",
+    "title": "An Open Lighthouse Flame Lost Nearly 97% of Its Light",
+    "published_at": "2026-11-27T23:02:58.084327+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Museum object",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 28,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 27,
+      "lane": "ingenious_solutions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Early lighthouse lamps let most of their light scatter away, so the beam was weak. In 1822 Augustin Jean Fresnel introduced a lens made of glass prisms. It bends light that would otherwise scatter into one beam, losing at most 20% of it compared with 60-97% for older setups. That pushed visibility from 8-12 miles to more than 20.",
+          "opening_visual": "Simple diagram: a bare flame sends rays in every direction, labeled 'nearly 97% lost.' Then a ring of prisms bends the same rays into one horizontal beam.",
+          "payoff": "The same flame could now be seen roughly twice as far, out to the horizon more than 20 miles away, because the light was redirected instead of wasted. By 1859 almost all of North Carolina's lighthouses used these lenses, off waters known as the 'Graveyard of the Atlantic.' Source limitation: the NPS page gives no details for the light-loss 'tests' and does not count shipwrecks prevented. The story claims better visibility, not a measured drop in wrecks.",
+          "viewer_reason": "It's an immediately visible, physical trick: the light doesn't get brighter, it gets aimed. It's easy to show with a ray diagram and the prism lens itself.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Hoover Dam's mass concrete would have taken more than a century to cool on its own, so engineers ran refrigerated water through pipes buried in the concrete.",
+          "opening_visual": "Cutaway diagram of concrete blocks with cooling pipes running through them.",
+          "payoff": "Chilled water from an on-site refrigeration plant cooled the dam in a few years instead of a century.",
+          "viewer_reason": "Surprising fact about a recognizable landmark.",
+          "rejection_reason": "The detailed evidence for the cooling system is on usbr.gov, which isn't an approved host. The only approved-host result was an NPS National Register nomination asset that I didn't fetch or verify, so I can't cite the mechanism from approved pages."
+        },
+        {
+          "premise": "A safety net strung under the Golden Gate Bridge during construction caught workers who fell.",
+          "opening_visual": "A net hanging beneath a bridge deck under construction.",
+          "payoff": "Nineteen men caught by the net formed the 'Halfway to Hell Club.'",
+          "viewer_reason": "Recognizable landmark and a human-scale rescue.",
+          "rejection_reason": "No approved institution came up in the search. Results were from goldengate.org, history.com and similar sites, and death and save counts differ between sources, so I can't get the independent approved corroboration it needs."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Only the Fresnel lens is fully documented on a fetched approved page (nps.gov). It has a clear problem (light wasted), an unexpected mechanism (prisms bending light into one beam), a measurable result (8-12 miles to more than 20), and a simple visual that can be rendered as a diagram. The premise stays narrow: it claims longer visibility, not a measured reduction in shipwrecks."
+    },
+    "voice": "kokoro",
+    "category": "ingenious_solutions",
+    "editorial_slot": 156,
+    "editorial_region": "global",
+    "editorial_series": "Ingenious Solutions",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "An open flame loses nearly 97% of its light. It scatters in every direction.",
+    "duration": 41.8,
+    "production_profile": 2,
+    "facebook_id": "1946919356020991",
+    "instagram_id": "18159500857538084"
   }
 ]
