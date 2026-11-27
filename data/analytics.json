@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-27T19:00:34.397640+00:00",
+      "updated": "2026-11-27T20:00:31.461682+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -339,20 +339,19 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 35.1,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 14.0,
+          "shares": 0,
+          "analytics_views": 13,
+          "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
             "end_date": "2026-11-27",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "analytics_status": "no_row",
-          "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
-          }
+          "analytics_status": "reported",
+          "unavailable_metrics": {}
         },
         {
           "id": "wvlqEqhFxsM",
@@ -385,20 +384,19 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 20.53,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 7.0,
+          "shares": 0,
+          "analytics_views": 3,
+          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
             "end_date": "2026-11-27",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "analytics_status": "no_row",
-          "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
-          }
+          "analytics_status": "reported",
+          "unavailable_metrics": {}
         },
         {
           "id": "vArZjtS1MRY",
@@ -430,20 +428,19 @@
           "playlist_ids": [],
           "playlists": [],
           "is_unsorted": true,
+          "avg_view_pct": 18.29,
+          "subs_gained": 0,
+          "average_watch_time_seconds": 7.0,
+          "shares": 0,
+          "analytics_views": 4,
+          "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
             "end_date": "2026-11-27",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
-          "analytics_status": "no_row",
-          "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
-          }
+          "analytics_status": "reported",
+          "unavailable_metrics": {}
         },
         {
           "id": "n7DdFZD-ssU",
@@ -525,7 +522,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 5.0,
           "shares": 0,
-          "analytics_views": 12,
+          "analytics_views": 14,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -615,7 +612,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 43,
+          "analytics_views": 52,
           "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -704,7 +701,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 13.0,
           "shares": 0,
-          "analytics_views": 39,
+          "analytics_views": 40,
           "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -970,7 +967,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 16.0,
           "shares": 0,
-          "analytics_views": 28,
+          "analytics_views": 29,
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -1149,7 +1146,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 7.0,
           "shares": 0,
-          "analytics_views": 4,
+          "analytics_views": 5,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -1238,7 +1235,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 26.0,
           "shares": 0,
-          "analytics_views": 28,
+          "analytics_views": 29,
           "engaged_views": 10,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -1505,7 +1502,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 34.0,
           "shares": 0,
-          "analytics_views": 48,
+          "analytics_views": 49,
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -1684,7 +1681,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 15.0,
           "shares": 0,
-          "analytics_views": 16,
+          "analytics_views": 17,
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
@@ -2128,7 +2125,7 @@
           "subs_gained": 0,
           "average_watch_time_seconds": 9.0,
           "shares": 0,
-          "analytics_views": 11,
+          "analytics_views": 12,
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-15",
