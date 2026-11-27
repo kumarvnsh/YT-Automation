@@ -7,7 +7,7 @@ type Time = (value: string | null) => string;
 export type FactPost = {
   id: string; status: string; label: string; headline: string | null; fact: string | null; image: string | null;
   sources: { publisher: string | null; url: string | null }[]; created: string | null; posted_at: string | null;
-  error: string | null; facebook_url: string | null; instagram: boolean;
+  error: string | null; facebook_url: string | null; instagram: boolean; repost?: boolean;
 };
 export type FactPostsData = {
   schedule: { enabled: boolean; hours_utc: number[]; approve_until: string | null; changed_at: string | null };
@@ -80,9 +80,9 @@ export function FactPosts({ data, busy, send, recent, time }: { data: FactPostsD
                   detail: post.headline ?? '', command: { action: 'fact_post_decide', channel: 'histold', id: post.id, choice: 'approve' } })}>Post it</button>
                 <button className="action" disabled={busy} onClick={() => send({ action: 'fact_post_decide', channel: 'histold', id: post.id, choice: 'skip' })}>Skip</button>
               </>}
-              {send && (post.status === 'failed' || post.status === 'waiting_plans') && <button className="action primary" disabled={busy || data.running}
+              {send && (post.status === 'failed' || post.status === 'waiting_plans' || post.status === 'partly_posted') && <button className="action primary" disabled={busy || data.running}
                 aria-label={`Retry fact post ${post.headline ?? ''}`.trim()}
-                onClick={() => send({ action: 'fact_post_retry', channel: 'histold', id: post.id })}><RotateCw size={14}/>Retry</button>}
+                onClick={() => send({ action: 'fact_post_retry', channel: 'histold', id: post.id })}><RotateCw size={14}/>{post.repost ? 'Post again' : 'Retry'}</button>}
               {send && post.status === 'failed' && <button className="action" disabled={busy} aria-label={`Remove failed post ${post.headline ?? ''}`.trim()}
                 onClick={() => send({ action: 'fact_post_remove', channel: 'histold', id: post.id })}><Trash2 size={14}/>Remove</button>}
               {post.facebook_url && <a className="action" href={post.facebook_url} target="_blank" rel="noreferrer">Facebook <ArrowUpRight size={14}/></a>}

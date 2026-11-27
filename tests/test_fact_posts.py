@@ -50,6 +50,38 @@ class Queue(unittest.TestCase):
         self.assertEqual((entry['id'], entry['headline'], entry['status']), (pid, 'Wright Flyer', 'awaiting_approval'))
         self.assertEqual(len(fp.load_queue()), 1)
 
+    def test_partly_posted_retry_sends_the_same_card_again(self):
+        pid = '20261127_090000_abc123'
+        fp.save_queue([{'id': pid, 'status': 'partly_posted', 'facebook_id': '1_2', 'headline': 'Gagarin'}])
+        started = []
+        self.assertIn('to Instagram again', fp.retry(pid, start=lambda *a: started.append(a)))
+        self.assertEqual(started, [(pid,)])  # plain --post: no new card, Facebook is not repeated
+
+    def test_instagram_only_gets_a_checked_jpeg_url(self):
+        card = Path(self.folder.name) / 'card.jpg'
+        card.write_bytes(b'\xff\xd8\xff')
+        cleaned = []
+        hosts = (('Facebook CDN', lambda *a: ('https://fb/x.jpg', lambda: cleaned.append('fb'))),
+                 ('GitHub release', lambda *a: ('https://gh/x.jpg', lambda: cleaned.append('gh'))))
+        bad = {'https://fb/x.jpg': 'is served as text/html, not image/jpeg', 'https://gh/x.jpg': None}
+        with mock.patch.object(fp, 'IMAGE_HOSTS', hosts):
+            url, cleanup = fp.host_image_for_instagram(card, 't', 'p', 'v21.0', check=bad.get)
+            self.assertEqual((url, cleaned), ('https://gh/x.jpg', ['fb']))  # the refused host is cleaned up at once
+            with self.assertRaisesRegex(RuntimeError, 'GitHub release is served as application/octet-stream'):
+                fp.host_image_for_instagram(card, 't', 'p', 'v21.0', check=lambda u: 'is served as application/octet-stream, not image/jpeg')
+
+    def test_image_url_problem_spots_a_download_that_is_not_an_image(self):
+        def fake(content_type, body, status=200):
+            r = mock.Mock(ok=status == 200, status_code=status, headers={'Content-Type': content_type})
+            r.iter_content.return_value = iter([body])
+            return r
+        with mock.patch('requests.get', return_value=fake('application/octet-stream', b'\xff\xd8\xff\xe0')):
+            self.assertIn('octet-stream', fp.image_url_problem('https://github.com/x/releases/download/a/fact.jpg'))
+        with mock.patch('requests.get', return_value=fake('image/jpeg', b'<html>')):
+            self.assertEqual(fp.image_url_problem('https://x'), 'is not JPEG data')
+        with mock.patch('requests.get', return_value=fake('image/jpeg', b'\xff\xd8\xff\xe0')):
+            self.assertIsNone(fp.image_url_problem('https://scontent.xx.fbcdn.net/x.jpg'))
+
     def test_decide_approves_once_and_starts_posting(self):
         fp.save_queue([{'id': '20261122_124801_5b2615', 'status': 'awaiting_approval'}])
         started = []
@@ -236,6 +268,20 @@ class StudioView(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     view.check(body)
             self.assertIn('Skipped', view.perform(config, {'action': 'fact_post_decide', 'id': '20261122_124801_5b2615', 'choice': 'skip'}))
+
+    def test_studio_hq_retry_reposts_a_partly_posted_card(self):
+        from studio_hq import fact_posts_view as view
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            folder = root / 'private' / 'drafts' / 'fact-posts'
+            folder.mkdir(parents=True)
+            pid = '20261127_090000_abc123'
+            (folder / 'queue.json').write_text(json.dumps([{'id': pid, 'status': 'partly_posted', 'facebook_id': '1_2'}]))
+            config = {'dashboard_private_snapshot': str(root / 'private' / 'snap.json'), 'dashboard_histold_index_root': str(root / 'clone')}
+            self.assertTrue(view.snapshot(config, {})['posts'][0]['repost'])
+            with mock.patch.object(view, '_runner') as runner:
+                self.assertIn('same card', view.perform(config, {'action': 'fact_post_retry', 'id': pid}))
+            runner.assert_called_once_with(config, ['--post', pid])
 
     def test_failed_posts_can_be_removed_from_the_list(self):
         from studio_hq import fact_posts_view as view

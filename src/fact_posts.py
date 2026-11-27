@@ -438,20 +438,134 @@ def make_post(cfg: Config, slot: str = '', resume: str | None = None) -> dict:
 
 # ---------------------------------------------------------------- 5. post
 
+def image_url_problem(url: str) -> str | None:
+    """Why Instagram would refuse to pull this URL as a photo, or None when it looks like a real public JPEG.
+
+    Instagram fetches image_url itself and only accepts a direct image response. A GitHub Release asset, for
+    example, redirects to a download served as application/octet-stream, which Instagram rejects with
+    error 9004 / 2207052 "Only photo or video can be accepted as media type".
+    """
+    import requests
+    try:
+        r = requests.get(url, timeout=30, allow_redirects=True, stream=True)
+        try:
+            kind = r.headers.get('Content-Type', '').split(';')[0].strip().lower()
+            head = next(r.iter_content(16), b'') if r.ok else b''
+        finally:
+            r.close()
+    except Exception as exc:  # noqa: BLE001
+        return f'could not be fetched ({type(exc).__name__})'
+    if r.status_code != 200:
+        return f'answered HTTP {r.status_code}'
+    if kind != 'image/jpeg':
+        return f'is served as {kind or "no content type"}, not image/jpeg'
+    if not head.startswith(b'\xff\xd8\xff'):
+        return 'is not JPEG data'
+    return None
+
+
+def _host_on_facebook(card: Path, user_token: str, page_id: str, ver: str):
+    """Upload the card as an unpublished Page photo and return its Facebook CDN JPEG URL (public, image/jpeg).
+
+    The unpublished photo never appears on the Page; it is deleted once Instagram has its copy.
+    """
+    import requests
+    from .meta_uploader import GRAPH, _page_access_token, _raise_graph
+    page_token = _page_access_token(user_token, page_id, ver)
+    with card.open('rb') as handle:
+        r = requests.post(f'{GRAPH}/{ver}/{page_id}/photos', data={'published': 'false', 'access_token': page_token},
+                          files={'source': ('card.jpg', handle, 'image/jpeg')}, timeout=120)
+    _raise_graph(r, 'FB image hosting')
+    photo = r.json()['id']
+
+    def cleanup() -> None:
+        try:
+            requests.delete(f'{GRAPH}/{ver}/{photo}', params={'access_token': page_token}, timeout=30)
+        except Exception:  # noqa: BLE001
+            pass  # an unpublished photo nobody sees; not worth failing the post over
+
+    try:
+        s = requests.get(f'{GRAPH}/{ver}/{photo}', params={'fields': 'images', 'access_token': page_token}, timeout=30)
+        _raise_graph(s, 'FB image hosting lookup')
+        images = [i for i in s.json().get('images') or [] if i.get('source')]
+        if not images:
+            raise RuntimeError('Facebook returned no image URL for the hosted card')
+        return max(images, key=lambda i: int(i.get('width') or 0))['source'], cleanup
+    except Exception:
+        cleanup()
+        raise
+
+
+def _host_on_github(card: Path, *_):
+    from .meta_uploader import _host_file
+    return _host_file(card, 'image/jpeg', 'fact')
+
+
+IMAGE_HOSTS = (('Facebook CDN', _host_on_facebook), ('GitHub release', _host_on_github))
+
+
+def host_image_for_instagram(card: Path, token: str, page_id: str, ver: str, *, check=image_url_problem):
+    """Host the card somewhere Instagram accepts, checking each URL before Instagram sees it.
+
+    Returns (url, cleanup). Raises with every host's reason when none of them serves a real public JPEG.
+    """
+    problems = []
+    for name, host in IMAGE_HOSTS:
+        cleanup = None
+        try:
+            url, cleanup = host(card, token, page_id, ver)
+            problem = check(url)
+        except Exception as exc:  # noqa: BLE001
+            problem = f'{type(exc).__name__}: {exc}'[:160]
+        if not problem:
+            return url, cleanup
+        if cleanup:
+            cleanup()
+        problems.append(f'{name} {problem}')
+    raise RuntimeError('no public JPEG URL for Instagram (' + '; '.join(problems) + ')')
+
+
+def _publish_instagram_image(token: str, ig_user: str, ver: str, url: str, text: str) -> str:
+    import requests
+    from .meta_uploader import GRAPH, _raise_graph
+    r = requests.post(f'{GRAPH}/{ver}/{ig_user}/media', data={'image_url': url, 'caption': text, 'access_token': token}, timeout=60)
+    _raise_graph(r, 'IG image container')
+    creation = r.json()['id']
+    for _ in range(24):
+        s = requests.get(f'{GRAPH}/{ver}/{creation}', params={'fields': 'status_code', 'access_token': token}, timeout=30)
+        _raise_graph(s, 'IG container status')
+        if s.json().get('status_code') == 'FINISHED':
+            break
+        if s.json().get('status_code') in ('ERROR', 'EXPIRED'):
+            raise RuntimeError(f"IG container {s.json().get('status_code')}")
+        time.sleep(5)
+    else:
+        raise RuntimeError('IG container did not finish processing in time')
+    pub = requests.post(f'{GRAPH}/{ver}/{ig_user}/media_publish', data={'creation_id': creation, 'access_token': token}, timeout=60)
+    _raise_graph(pub, 'IG media_publish')
+    return pub.json()['id']
+
+
+def can_repost(entry: dict) -> bool:
+    """A card that was approved and sent, but did not reach every platform, can be posted again as it is."""
+    status = entry.get('status')
+    return status == 'partly_posted' or (status == 'failed' and bool(entry.get('publish_attempted')) and Path(str(entry.get('card') or '')).is_file())
+
+
 def publish(cfg: Config, post_id: str) -> dict:
     """Facebook photo (direct upload) + Instagram image (hosted URL). A platform that succeeded is never repeated."""
     import requests
     from .config import env
-    from .meta_uploader import GRAPH, _host_file, _page_access_token, _raise_graph
+    from .meta_uploader import GRAPH, _page_access_token, _raise_graph
     entry = next((r for r in load_queue() if r['id'] == post_id), None)
-    if not entry or entry.get('status') not in ('approved', 'posting', 'partly_posted'):
+    if not entry or not (entry.get('status') in ('approved', 'posting') or can_repost(entry)):
         raise ValueError('That post is not approved for posting')
     token = env('META_ACCESS_TOKEN')
     if not token:
         raise RuntimeError('META_ACCESS_TOKEN is not set')
     ver, page_id, ig_user = cfg.get('meta.api_version', 'v21.0'), str(cfg.get('meta.page_id')), str(cfg.get('meta.ig_user_id'))
     card, text = Path(entry['card']), entry['caption']
-    update(post_id, status='posting')
+    update(post_id, status='posting', publish_attempted=entry.get('publish_attempted') or now())
     results = {k: entry.get(k) for k in ('facebook_id', 'instagram_id')}
     errors = []
     if not results['facebook_id']:
@@ -470,24 +584,11 @@ def publish(cfg: Config, post_id: str) -> dict:
     if not results['instagram_id']:
         cleanup = None
         try:
-            url, cleanup = _host_file(card, 'image/jpeg', 'fact')
-            r = requests.post(f'{GRAPH}/{ver}/{ig_user}/media', data={'image_url': url, 'caption': text, 'access_token': token}, timeout=60)
-            _raise_graph(r, 'IG image container')
-            creation = r.json()['id']
-            for _ in range(24):
-                s = requests.get(f'{GRAPH}/{ver}/{creation}', params={'fields': 'status_code', 'access_token': token}, timeout=30)
-                _raise_graph(s, 'IG container status')
-                if s.json().get('status_code') == 'FINISHED':
-                    break
-                if s.json().get('status_code') in ('ERROR', 'EXPIRED'):
-                    raise RuntimeError(f"IG container {s.json().get('status_code')}")
-                time.sleep(5)
-            pub = requests.post(f'{GRAPH}/{ver}/{ig_user}/media_publish', data={'creation_id': creation, 'access_token': token}, timeout=60)
-            _raise_graph(pub, 'IG media_publish')
-            results['instagram_id'] = pub.json()['id']
+            url, cleanup = host_image_for_instagram(card, token, page_id, ver)
+            results['instagram_id'] = _publish_instagram_image(token, ig_user, ver, url, text)
             update(post_id, **results)
         except Exception as exc:  # noqa: BLE001
-            errors.append(f'Instagram: {exc}'[:200])
+            errors.append(f'Instagram: {exc}'[:300])
         finally:
             if cleanup:
                 cleanup()
@@ -508,10 +609,18 @@ def start_posting(post_id: str, *args: str) -> None:
 
 
 def retry(post_id: str, *, start=start_posting) -> str:
-    """Remake a failed or waiting post, keeping its verified fact (Telegram and Studio HQ Retry buttons)."""
+    """Telegram and Studio HQ Retry buttons.
+
+    A card that went out to only one platform (or none, after approval) is posted again as it is; a post that
+    failed while being made is remade, keeping its verified fact.
+    """
     entry = next((r for r in load_queue() if r['id'] == post_id), None)
     if not entry:
         raise ValueError('That fact post no longer exists.')
+    if can_repost(entry):  # the card is fine; only send it to the platform that missed it
+        start(post_id)
+        missing = [name for name, key in (('Facebook', 'facebook_id'), ('Instagram', 'instagram_id')) if not entry.get(key)]
+        return f"Posting the same card to {' and '.join(missing)} again now."
     if entry.get('status') not in ('failed', 'waiting_plans'):
         return f"That post is already {str(entry.get('status')).replace('_', ' ')}."
     start(post_id, '--retry-post')

@@ -73,11 +73,18 @@ def snapshot(config, media: dict | None) -> dict | None:
                      'sources': [{'publisher': s.get('publisher'), 'url': s.get('url')} for s in row.get('sources') or [] if isinstance(s, dict)],
                      'created': row.get('created'), 'posted_at': row.get('posted_at'), 'error': row.get('error'),
                      'facebook_url': f'https://www.facebook.com/{facebook}' if isinstance(facebook, str) and re.fullmatch(r'[\d_]+', facebook) else None,
-                     'instagram': bool(row.get('instagram_id'))})
+                     'instagram': bool(row.get('instagram_id')), 'repost': repostable(row)})
     today = datetime.now(timezone.utc).date().isoformat()
     return {'schedule': schedule(config), 'posts': rows,
             'posted_today': sum(1 for r in queue(config) if str(r.get('posted_at') or '').startswith(today)),
             'running': (control(config) / 'fact-post.lock').is_file()}
+
+
+def repostable(row: dict) -> bool:
+    """Same rule as src.fact_posts.can_repost: the card went out but missed a platform, so send it again unchanged."""
+    status = row.get('status')
+    return status == 'partly_posted' or (status == 'failed' and bool(row.get('publish_attempted'))
+                                         and Path(str(row.get('card') or '')).is_file())
 
 
 def check(body) -> str:
@@ -128,11 +135,14 @@ def perform(config, body) -> str:
     rows = queue(config)
     if action == 'fact_post_retry':
         entry = next((r for r in rows if isinstance(r, dict) and r.get('id') == body['id']), None)
-        if not entry or entry.get('status') not in ('failed', 'waiting_plans'):
-            raise ValueError('Only a failed or waiting post can be retried.')
+        if not entry or entry.get('status') not in ('failed', 'waiting_plans', 'partly_posted'):
+            raise ValueError('Only a failed, waiting or partly posted post can be retried.')
         lock = control(config) / 'fact-post.lock'
         if lock.is_file() and time.time() - lock.stat().st_mtime < 3600:
             raise ValueError('A fact post is being made right now; retry when it finishes.')
+        if repostable(entry):
+            _runner(config, ['--post', body['id']])
+            return 'Posting the same card again to the platform that missed it. Check back in a minute.'
         _runner(config, ['--retry-post', body['id']])
         return 'Retrying it with the same fact. The new card appears here, and in Telegram for your OK, in about 5 minutes.'
     if action == 'fact_post_remove':
