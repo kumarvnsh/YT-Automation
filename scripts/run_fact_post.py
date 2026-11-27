@@ -4,7 +4,7 @@
   --make                 research, illustrate, render and check one post for the scheduled queue
   --prepare              replenish the ready buffer, reusing a waiting fact first
   --scheduled --slot HOUR publish one finished card at a configured daily hour
-  --post ID              post an approved card to Facebook and Instagram
+  --post ID              post an approved card to Facebook and Instagram (again, for a partly posted card)
   --retry                remake the post that waited for the plan limits to reset (its fact is kept)
   --retry-post ID        remake one failed or waiting post, keeping its verified fact (Telegram / Studio HQ button)
 
@@ -129,7 +129,9 @@ def post(cfg, post_id: str) -> int:
     log('post', post_id, entry['status'], entry.get('error') or '')
     if entry['status'] == 'posted':
         return 0
-    telegram_control.notify(f"⚠️ Sir, the fact post \"{entry.get('headline')}\" was {entry['status'].replace('_', ' ')}: {entry.get('error')}")
+    again = ' Tap Retry to send the same card again.' if fact_posts.can_repost(entry) else ''
+    telegram_control.notify(f"⚠️ Sir, the fact post \"{entry.get('headline')}\" was {entry['status'].replace('_', ' ')}: {entry.get('error')}{again}",
+                            retry_button(post_id) if again else None)
     return 1
 
 
