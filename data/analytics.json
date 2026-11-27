@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-27T00:00:38.527998+00:00",
+      "updated": "2026-11-27T01:00:27.202124+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -59,7 +59,7 @@
           ],
           "publishedAt": "2026-11-26T23:02:46Z",
           "thumbnail": "https://i.ytimg.com/vi/8XAlGVTZqiE/mqdefault.jpg",
-          "views": 4,
+          "views": 0,
           "likes": 0,
           "comments": 0,
           "playlist_ids": [],
@@ -72,12 +72,12 @@
           },
           "analytics_status": "no_row",
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
           }
         },
         {
