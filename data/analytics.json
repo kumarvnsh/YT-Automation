@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-27T11:00:27.655305+00:00",
+      "updated": "2026-11-27T12:00:31.786725+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,53 @@
         ]
       },
       "videos": [
+        {
+          "id": "zNnDAV_c8Fs",
+          "title": "Washington's Answer to Smallpox Was a Planned Dose of Smallpox",
+          "description": "In 1777, smallpox threatened George Washington's Continental Army, the force fighting Britain in the American Revolution. His answer was inoculation: soldiers were deliberately given a usually mild case of smallpox under control, in staggered groups, then isolated while they recovered. By late 1777, the disease had substantially declined in the army.\n#history #smallpox #georgewashington\n\nPortrait of George Washington: Gilbert Stuart, Public domain, via Wikimedia Commons",
+          "tags": [
+            "1777",
+            "american revolution",
+            "boston 1721",
+            "continental army",
+            "did you know",
+            "disease prevention",
+            "education",
+            "everyday origins",
+            "george washington",
+            "historical facts",
+            "history",
+            "history shorts",
+            "ingenious solutions",
+            "inoculation",
+            "medical history",
+            "smallpox",
+            "world history",
+            "zabdiel boylston"
+          ],
+          "publishedAt": "2026-11-27T11:03:29Z",
+          "thumbnail": "https://i.ytimg.com/vi/zNnDAV_c8Fs/mqdefault.jpg",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-14",
+            "end_date": "2026-11-27",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "analytics_status": "no_row",
+          "unavailable_metrics": {
+            "avg_view_pct": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "subs_gained": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "average_watch_time_seconds": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "shares": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "analytics_views": "No views yet; YouTube Analytics reports nothing for an unwatched video.",
+            "engaged_views": "No views yet; YouTube Analytics reports nothing for an unwatched video."
+          }
+        },
         {
           "id": "8XAlGVTZqiE",
           "title": "Electric Tattoo Machines Borrowed Their Design From an Edison Pen",
@@ -2211,50 +2258,6 @@
           "shares": 0,
           "analytics_views": 4,
           "engaged_views": 1,
-          "analytics_period": {
-            "start_date": "2026-11-14",
-            "end_date": "2026-11-27",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "analytics_status": "reported",
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "SfvGGm6eaok",
-          "title": "Was Japan Really Locked Shut for 200 Years?",
-          "description": "Many students learn that Japan closed its doors completely for about two centuries. The Library of Congress describes the sakoku period as relative seclusion, with limited contact at Nagasaki and rules over trade and relations. This short video explains what the policy actually did and how it ended.\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "commodore perry",
-            "did you know",
-            "edo period",
-            "education",
-            "everyday origins",
-            "harris treaty",
-            "historical facts",
-            "history facts",
-            "history shorts",
-            "japan history",
-            "japan isolation",
-            "japanese history",
-            "myths you learned in school",
-            "nagasaki",
-            "sakoku",
-            "world history"
-          ],
-          "publishedAt": "2026-11-14T16:39:35Z",
-          "thumbnail": "https://i.ytimg.com/vi/SfvGGm6eaok/mqdefault.jpg",
-          "views": 6,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 28.499999999999996,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 10.0,
-          "shares": 0,
-          "analytics_views": 6,
-          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-14",
             "end_date": "2026-11-27",
