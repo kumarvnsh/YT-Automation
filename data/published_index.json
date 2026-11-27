@@ -8979,5 +8979,71 @@
     "production_profile": 2,
     "facebook_id": "991641516894974",
     "instagram_id": "18158689267481982"
+  },
+  {
+    "video_id": "AkEb2UW0-vo",
+    "run_id": "",
+    "stage_dir_name": "20261127_213008_025667_short",
+    "title": "Voyager's Team Turned Down the Pale Blue Dot Photo Several Times",
+    "published_at": "2026-11-27T18:02:09.502371+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Illustrated newsreel",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 27,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 26,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "Voyager engineers turned down Carl Sagan's idea of photographing Earth several times, partly because pointing the cameras close to the Sun could damage them. After eight years and six requests it was approved. On Feb. 14, 1990, Voyager 1 photographed Earth as a dot about one pixel wide, and then its cameras were turned off for good.",
+          "opening_visual": "NASA's Pale Blue Dot image (Voyager 1, Feb. 14, 1990), slowly zooming in on the single bright pixel that is Earth",
+          "payoff": "The photo nobody had planned came at the very end: right after the family-portrait images, Voyager 1 powered its cameras off forever to save energy for the long journey ahead. Source limitation: the NASA pages give the date of the family-portrait sequence and Voyager's distance from the Sun (3.7 billion miles; 40 AU), not its distance from Earth. They do not say exactly which frame was the last one taken, so the narration should say 'after this imaging' and not 'its very last photo'.",
+          "viewer_reason": "Nearly everyone knows the image. The surprise is that engineers refused it several times, that it was a one-pixel shot that risked the cameras, and that the cameras were shut off right after.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Eisenhower later cited his slow 1919 Army convoy across the country, along with his WWII experience, when urging Congress to pass the Federal-Aid Highway Act of 1956.",
+          "opening_visual": "A map of the convoy route along the Lincoln Highway from Washington to San Francisco",
+          "payoff": "A young officer's miserable road trip shows up decades later in the case for the interstate system.",
+          "viewer_reason": "Almost every viewer drives on interstates.",
+          "rejection_reason": "Every archives.gov page (Prologue 2006, the Milestone Documents page, the 'America on the Move' exhibit, the News article) failed to load with connection resets, so I could not fetch or quote any excerpt. Search summaries also point to a highway-history view that the convoy's influence is overstated, and checking that would need approved sources I could not reach. It cannot be cited, so it is rejected."
+        },
+        {
+          "premise": "Frederic Tudor bought up ice-harvesting rights on Massachusetts ponds, and by 1847 nearly half of the ice shipped to 28 U.S. cities came from Boston, most of it his.",
+          "opening_visual": "The 1850 Library of Congress catalog plate of ice saws and grapples shown on the NPS page",
+          "payoff": "A pond in Massachusetts in winter cooled kitchens in faraway cities.",
+          "viewer_reason": "It links the home refrigerator to a surprising older trade.",
+          "rejection_reason": "It overlaps recent subjects ('How Did Kitchens Stay Cold Before Electricity?' and 'Could a Desert Keep Ice Frozen...'). It also rests on one NPS page that only mentions Tudor in passing, so the causal chain behind his decision is thin."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "Candidate 0 is the only one that is new (not in the recent-titles list), backed by fetched pages on an approved host, and has a clear decision and consequence: repeated refusals over cost and risk, approval after eight years, a one-pixel Earth, and then the cameras switched off for good. The opening visual is a real NASA archival image, not an invented one. The claims stay narrow, with no claim that it is the most famous photo or that it caused anything later."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 155,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Voyager's team kept refusing to take this photo.",
+    "duration": 41.325,
+    "production_profile": 2,
+    "facebook_id": "1801950354189505",
+    "instagram_id": "17941258995128372"
   }
 ]
