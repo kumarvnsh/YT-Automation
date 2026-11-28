@@ -9111,5 +9111,71 @@
     "production_profile": 2,
     "facebook_id": "1946919356020991",
     "instagram_id": "18159500857538084"
+  },
+  {
+    "video_id": "s9eFrS018aY",
+    "run_id": "",
+    "stage_dir_name": "20261128_143008_177520_short",
+    "title": "The Smithsonian Began With a Backup Clause in a Foreigner's Will",
+    "published_at": "2026-11-28T11:02:21.515911+00:00",
+    "channel": "histold",
+    "slot": "manual",
+    "scheduled": false,
+    "format": "short",
+    "publish_claim": null,
+    "design": "Graphic novel",
+    "workflow": "local",
+    "retitled_at": null,
+    "republished_from": null,
+    "republished_as": null,
+    "experiment": "histold-clear-stories-v1",
+    "experiment_slot": 29,
+    "ab_test": null,
+    "creative_test": null,
+    "growth_trial": {
+      "id": "histold-clear-stories-v1",
+      "index": 28,
+      "lane": "decisions",
+      "planned_posts": 42
+    },
+    "editorial_selection": {
+      "candidates": [
+        {
+          "premise": "A British scientist who never visited the United States wrote a will that sent his fortune to the country only if his nephew died without an heir. The nephew did, and that backup clause led to the Smithsonian Institution in Washington, D.C.",
+          "opening_visual": "A rendered will page with one clause highlighted: the money goes to the United States only if the nephew has no heir.",
+          "payoff": "A backup clause in a foreigner's will, followed by a decision in Congress to accept the gift of more than $500,000, ended with President Polk signing the act that created the Smithsonian in 1846. Limitations: the source does not explain why Smithson chose the United States, and the nephew and Congress's decision are links in the chain alongside the will. The will was not the sole cause.",
+          "viewer_reason": "Most viewers know the Smithsonian. Few know it began with a man who never came to America and a clause that only took effect because of a family accident.",
+          "rejection_reason": null
+        },
+        {
+          "premise": "Justice William O. Douglas answered a Washington Post editorial backing a parkway with a 185-mile hike, and the paper changed its position (from the supplied NPS C&O Canal page).",
+          "opening_visual": null,
+          "payoff": null,
+          "viewer_reason": null,
+          "rejection_reason": "Repeats a recent subject: 'A Supreme Court Justice Answered a Road Plan With a Hike'."
+        },
+        {
+          "premise": "Frederic Tudor bought up ice-harvesting rights on Massachusetts ponds and shipped ice worldwide. Decades later the Kennedy family still got ice from a company named after those ponds (from the supplied NPS icebox page).",
+          "opening_visual": null,
+          "payoff": null,
+          "viewer_reason": null,
+          "rejection_reason": "Repeats recent subjects ('How Did Kitchens Stay Cold Before Electricity?' and the desert-ice title), and the link between Tudor's choice and the consequence is thin on the page."
+        }
+      ],
+      "selected_index": 0,
+      "selection_reason": "It is a clear, recognizable surprise (a man who never visited left his fortune to the United States) with a short chain of events, all quoted from one approved Library of Congress page. No subject on the avoid list overlaps. It can be shown with a rendered will clause and a simple timeline (1829, 1835, 1846)."
+    },
+    "voice": "kokoro",
+    "category": "decisions",
+    "editorial_slot": 157,
+    "editorial_region": "global",
+    "editorial_series": "Decisions With Consequences",
+    "this_week_event": null,
+    "duration_variant": "concise",
+    "hook": "Never visited America. Left it a fortune anyway.",
+    "duration": 35.7,
+    "production_profile": 2,
+    "facebook_id": "2416670502469382",
+    "instagram_id": "18143385436713619"
   }
 ]
