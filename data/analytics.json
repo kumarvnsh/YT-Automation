@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-27T23:00:37.278414+00:00",
+      "updated": "2026-11-28T00:00:40.792138+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,53 @@
         ]
       },
       "videos": [
+        {
+          "id": "z8FXKZVAFQE",
+          "title": "An Open Lighthouse Flame Lost Nearly 97% of Its Light",
+          "description": "Tests cited by the U.S. National Park Service found that an open flame loses nearly 97% of its light. Reflectors only partly fixed the problem. In 1822, French physicist Augustin Fresnel built a lens of glass prisms that bent scattered rays into one beam, so lighthouse light could reach the horizon more than 20 miles away.\n#history #lighthouse #ingenioussolutions\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of Augustin Jean Fresnel: Augustin-Jean Fresnel, Public domain, via Wikimedia Commons",
+          "tags": [
+            "19th century technology",
+            "augustin fresnel",
+            "cape hatteras",
+            "did you know",
+            "education",
+            "everyday origins",
+            "fresnel lens",
+            "glass prisms",
+            "historical facts",
+            "history shorts",
+            "ingenious solutions",
+            "lighthouse history",
+            "maritime history",
+            "navigation",
+            "north carolina history",
+            "optics history",
+            "science history",
+            "world history"
+          ],
+          "publishedAt": "2026-11-27T23:03:42Z",
+          "thumbnail": "https://i.ytimg.com/vi/z8FXKZVAFQE/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-15",
+            "end_date": "2026-11-28",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "analytics_status": "no_row",
+          "unavailable_metrics": {
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+          }
+        },
         {
           "id": "AkEb2UW0-vo",
           "title": "Voyager's Team Turned Down the Pale Blue Dot Photo Several Times",
@@ -67,7 +114,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -114,7 +161,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -160,7 +207,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -205,7 +252,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -250,7 +297,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -295,17 +342,17 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
           "unavailable_metrics": {
-            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
-            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+            "avg_view_pct": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
+            "subs_gained": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
+            "average_watch_time_seconds": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
+            "shares": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
+            "analytics_views": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count).",
+            "engaged_views": "No counted views: YouTube Analytics returned rows for other videos but none for this one, so it has counted no views for it (the public view count can include views Analytics does not count)."
           }
         },
         {
@@ -347,7 +394,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -392,7 +439,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -436,7 +483,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -474,7 +521,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -526,7 +573,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -565,7 +612,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -616,7 +663,7 @@
           "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -660,7 +707,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -705,7 +752,7 @@
           "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -750,7 +797,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -794,7 +841,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -838,7 +885,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -883,7 +930,7 @@
           "engaged_views": 5,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -927,7 +974,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -971,7 +1018,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1016,7 +1063,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1061,7 +1108,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1099,7 +1146,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -1150,7 +1197,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1194,7 +1241,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1239,7 +1286,7 @@
           "engaged_views": 10,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1283,7 +1330,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1327,7 +1374,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1372,7 +1419,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1416,7 +1463,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1461,7 +1508,7 @@
           "engaged_views": 16,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1506,7 +1553,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1550,7 +1597,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1588,7 +1635,7 @@
           "is_unsorted": true,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "no_row",
@@ -1641,7 +1688,7 @@
           "engaged_views": 2,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1685,7 +1732,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1729,7 +1776,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1773,7 +1820,7 @@
           "engaged_views": 0,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1817,7 +1864,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1861,7 +1908,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1904,7 +1951,7 @@
           "engaged_views": 1,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1948,7 +1995,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -1993,7 +2040,7 @@
           "engaged_views": 7,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -2039,7 +2086,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -2085,7 +2132,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -2129,7 +2176,7 @@
           "engaged_views": 6,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -2172,7 +2219,7 @@
           "engaged_views": 4,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
@@ -2216,51 +2263,7 @@
           "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "analytics_status": "reported",
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "MlqYQmvK-SY",
-          "title": "How Close Did a Million Artworks Come to Staying Behind?",
-          "description": "In 1941, the Hermitage Museum in Leningrad packed its collections for evacuation as the Second World War reached the Soviet Union. The museum's own history describes how a third train was never able to leave before the city was cut off. Here is how the collections were saved and returned.\n#HermitageMuseum #WorldWarII #RussianHistory\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "did you know",
-            "education",
-            "everyday origins",
-            "hermitage museum",
-            "historical facts",
-            "history did you know",
-            "history shorts",
-            "historys almost moments",
-            "leningrad siege",
-            "museum history",
-            "russian history",
-            "soviet history",
-            "st petersburg",
-            "wartime evacuation",
-            "world history",
-            "world war two"
-          ],
-          "publishedAt": "2026-11-15T04:13:51Z",
-          "thumbnail": "https://i.ytimg.com/vi/MlqYQmvK-SY/mqdefault.jpg",
-          "views": 9,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 48.76,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 17.0,
-          "shares": 0,
-          "analytics_views": 4,
-          "engaged_views": 1,
-          "analytics_period": {
-            "start_date": "2026-11-15",
-            "end_date": "2026-11-27",
+            "end_date": "2026-11-28",
             "note": "Rates use views from this same Analytics report; Data API counts may differ."
           },
           "analytics_status": "reported",
