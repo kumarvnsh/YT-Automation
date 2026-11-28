@@ -2,7 +2,7 @@
   "channels": {
     "histold": {
       "channel": "histold",
-      "updated": "2026-11-28T11:00:36.124803+00:00",
+      "updated": "2026-11-28T12:00:40.192432+00:00",
       "playlists": {
         "uploads_playlist_id": "UUJImBb1E8e0llDt8ISdF_1g",
         "items": [
@@ -34,6 +34,50 @@
         ]
       },
       "videos": [
+        {
+          "id": "s9eFrS018aY",
+          "title": "The Smithsonian Began With a Backup Clause in a Foreigner's Will",
+          "description": "James Smithson never visited the United States, yet his will named the country as a backup heir. The money would go there only if his nephew died without an heir. That clause, the nephew's death and a decision in Congress to accept the gift led President Polk to sign the act creating the Smithsonian in 1846.\n#history #smithsonian #didyouknow\n\nIllustrations: game-icons.net (CC BY 3.0)\nPortrait of James K. Polk: James_Polk.jpg: Brady, Mathew B., 1823 (ca.)-1896, photographer.\nderivative work, Public domain, via Wikimedia Commons\nPortrait of James Smithson: Henri-Joseph Johns, Public domain, via Wikimedia Commons",
+          "tags": [
+            "american history",
+            "congress",
+            "decisions with consequences",
+            "did you know",
+            "education",
+            "everyday origins",
+            "historical facts",
+            "history",
+            "history shorts",
+            "james k polk",
+            "james smithson",
+            "museum history",
+            "smithsonian institution",
+            "washington dc",
+            "world history"
+          ],
+          "publishedAt": "2026-11-28T11:03:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/s9eFrS018aY/mqdefault.jpg",
+          "views": 1,
+          "likes": 0,
+          "comments": 0,
+          "playlist_ids": [],
+          "playlists": [],
+          "is_unsorted": true,
+          "analytics_period": {
+            "start_date": "2026-11-15",
+            "end_date": "2026-11-28",
+            "note": "Rates use views from this same Analytics report; Data API counts may differ."
+          },
+          "analytics_status": "no_row",
+          "unavailable_metrics": {
+            "avg_view_pct": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "subs_gained": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "average_watch_time_seconds": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "shares": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "analytics_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload.",
+            "engaged_views": "Report delay: YouTube Analytics usually publishes per-video metrics 2-3 days after upload."
+          }
+        },
         {
           "id": "z8FXKZVAFQE",
           "title": "An Open Lighthouse Flame Lost Nearly 97% of Its Light",
@@ -2217,50 +2261,6 @@
           "shares": 0,
           "analytics_views": 9,
           "engaged_views": 4,
-          "analytics_period": {
-            "start_date": "2026-11-15",
-            "end_date": "2026-11-28",
-            "note": "Rates use views from this same Analytics report; Data API counts may differ."
-          },
-          "analytics_status": "reported",
-          "unavailable_metrics": {}
-        },
-        {
-          "id": "MnAdN0TEL38",
-          "title": "Why Would a Merchant Tell His Couriers to Hide Tin in Their Underwear?",
-          "description": "Around 4,000 years ago, Old Assyrian merchants carried textiles and tin across the mountains to Kanesh in Anatolia. Their clay letters and about 23,000 tablets show how this ancient trade worked. #AncientHistory #TradeHistory #Cuneiform\n\nIllustrations: game-icons.net (CC BY 3.0)",
-          "tags": [
-            "anatolia",
-            "ancient history",
-            "ancient merchants",
-            "bronze age trade",
-            "cuneiform tablets",
-            "did you know",
-            "education",
-            "everyday origins",
-            "hidden history",
-            "historical facts",
-            "history shorts",
-            "kanesh",
-            "mesopotamia",
-            "old assyrian traders",
-            "tin trade",
-            "world history"
-          ],
-          "publishedAt": "2026-11-15T07:15:02Z",
-          "thumbnail": "https://i.ytimg.com/vi/MnAdN0TEL38/mqdefault.jpg",
-          "views": 12,
-          "likes": 0,
-          "comments": 0,
-          "playlist_ids": [],
-          "playlists": [],
-          "is_unsorted": true,
-          "avg_view_pct": 28.43,
-          "subs_gained": 0,
-          "average_watch_time_seconds": 14.0,
-          "shares": 0,
-          "analytics_views": 12,
-          "engaged_views": 3,
           "analytics_period": {
             "start_date": "2026-11-15",
             "end_date": "2026-11-28",
